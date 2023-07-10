@@ -17,7 +17,7 @@ jobs:
       speakeasy_version: latest
       openapi_doc_location: https://docs.speakeasyapi.dev/openapi.yaml
       languages: |-
-        - typescript
+        - csharp
       publish_typescript: true
       force: ${{ github.event.inputs.force }}
     secrets:
