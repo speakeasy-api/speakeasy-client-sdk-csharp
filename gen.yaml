@@ -8,7 +8,7 @@ generation:
   sdkClassName: SDK
   singleTagPerOp: false
 csharp:
-  version: 1.0.0
+  version: 1.0.1
   author: Speakeasy
   maxMethodParams: 0
   packageName: openapi
