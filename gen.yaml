@@ -5,10 +5,10 @@ management:
   speakeasyVersion: 1.56.0
   generationVersion: 2.61.0
 generation:
-  sdkClassName: SDK
+  sdkClassName: Speakeasy
   singleTagPerOp: false
 csharp:
   version: 1.0.0
   author: Speakeasy
   maxMethodParams: 0
-  packageName: openapi
+  packageName: SpeakeasySDK
