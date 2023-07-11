@@ -18,7 +18,7 @@ jobs:
       openapi_doc_location: https://docs.speakeasyapi.dev/openapi.yaml
       languages: |-
         - csharp
-      publish_typescript: true
+      publish_csharp: true
       force: ${{ github.event.inputs.force }}
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
