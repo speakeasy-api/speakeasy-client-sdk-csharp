@@ -2,10 +2,11 @@
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <PackageId>SpeakeasySDK</PackageId>
-    <Version>1.0.4</Version>
+    <Version>1.0.5</Version>
     <Authors>Speakeasy</Authors>
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
+    <PackageReadmeFile>../README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
