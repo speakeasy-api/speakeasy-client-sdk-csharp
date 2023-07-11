@@ -7,10 +7,10 @@
 // the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace SDK.Models.Operations
+namespace Speakeasy.Models.Operations
 {
     using System.Net.Http;
-using SDK.Models.Shared;
+using Speakeasy.Models.Shared;
     
     public class ValidateApiKeyResponse {
         public string? ContentType { get; set; }

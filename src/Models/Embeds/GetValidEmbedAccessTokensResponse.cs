@@ -7,11 +7,11 @@
 // the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace SDK.Models.Embeds
+namespace Speakeasy.Models.Embeds
 {
     using System.Collections.Generic;
 using System.Net.Http;
-using SDK.Models.Shared;
+using Speakeasy.Models.Shared;
     
     public class GetValidEmbedAccessTokensResponse {
         public string? ContentType { get; set; }

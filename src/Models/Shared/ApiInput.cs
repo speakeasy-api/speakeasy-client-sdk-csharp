@@ -7,7 +7,7 @@
 // the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace SDK.Models.Shared
+namespace Speakeasy.Models.Shared
 {
     using System.Collections.Generic;
 using Newtonsoft.Json;

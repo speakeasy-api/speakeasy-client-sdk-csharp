@@ -22,11 +22,11 @@ Delete a particular schema revision for an Api.
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Security;
-using SDK.Models.Schemas;
+using Speakeasy;
+using Speakeasy.Models.Security;
+using Speakeasy.Models.Schemas;
 
-var sdk = new SDKSDK(
+var sdk = new SpeakeasySDK(
     security: new Security() {
         apiKey = "",
     }
@@ -54,11 +54,11 @@ Download the latest schema for a particular apiID.
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Security;
-using SDK.Models.Schemas;
+using Speakeasy;
+using Speakeasy.Models.Security;
+using Speakeasy.Models.Schemas;
 
-var sdk = new SDKSDK(
+var sdk = new SpeakeasySDK(
     security: new Security() {
         apiKey = "",
     }
@@ -86,11 +86,11 @@ Download a particular schema revision for an Api.
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Security;
-using SDK.Models.Schemas;
+using Speakeasy;
+using Speakeasy.Models.Security;
+using Speakeasy.Models.Schemas;
 
-var sdk = new SDKSDK(
+var sdk = new SpeakeasySDK(
     security: new Security() {
         apiKey = "",
     }
@@ -119,11 +119,11 @@ This won't include the schema itself, that can be retrieved via the downloadSche
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Security;
-using SDK.Models.Schemas;
+using Speakeasy;
+using Speakeasy.Models.Security;
+using Speakeasy.Models.Schemas;
 
-var sdk = new SDKSDK(
+var sdk = new SpeakeasySDK(
     security: new Security() {
         apiKey = "",
     }
@@ -151,11 +151,11 @@ Get a diff of two schema revisions for an Api.
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Security;
-using SDK.Models.Schemas;
+using Speakeasy;
+using Speakeasy.Models.Security;
+using Speakeasy.Models.Schemas;
 
-var sdk = new SDKSDK(
+var sdk = new SpeakeasySDK(
     security: new Security() {
         apiKey = "",
     }
@@ -184,11 +184,11 @@ This won't include the schema itself, that can be retrieved via the downloadSche
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Security;
-using SDK.Models.Schemas;
+using Speakeasy;
+using Speakeasy.Models.Security;
+using Speakeasy.Models.Schemas;
 
-var sdk = new SDKSDK(
+var sdk = new SpeakeasySDK(
     security: new Security() {
         apiKey = "",
     }
@@ -217,11 +217,11 @@ This won't include the schemas themselves, they can be retrieved via the downloa
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Security;
-using SDK.Models.Schemas;
+using Speakeasy;
+using Speakeasy.Models.Security;
+using Speakeasy.Models.Schemas;
 
-var sdk = new SDKSDK(
+var sdk = new SpeakeasySDK(
     security: new Security() {
         apiKey = "",
     }
@@ -250,11 +250,11 @@ This will be used to populate ApiEndpoints and used as a base for any schema gen
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Security;
-using SDK.Models.Schemas;
+using Speakeasy;
+using Speakeasy.Models.Security;
+using Speakeasy.Models.Schemas;
 
-var sdk = new SDKSDK(
+var sdk = new SpeakeasySDK(
     security: new Security() {
         apiKey = "",
     }

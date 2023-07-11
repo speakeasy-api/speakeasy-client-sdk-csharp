@@ -20,11 +20,11 @@ Delete a particular version of an Api. The will also delete all associated ApiEn
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Security;
-using SDK.Models.Apis;
+using Speakeasy;
+using Speakeasy.Models.Security;
+using Speakeasy.Models.Apis;
 
-var sdk = new SDKSDK(
+var sdk = new SpeakeasySDK(
     security: new Security() {
         apiKey = "",
     }
@@ -53,11 +53,11 @@ Returns the original document and the newly generated document allowing a diff t
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Security;
-using SDK.Models.Apis;
+using Speakeasy;
+using Speakeasy.Models.Security;
+using Speakeasy.Models.Apis;
 
-var sdk = new SDKSDK(
+var sdk = new SpeakeasySDK(
     security: new Security() {
         apiKey = "",
     }
@@ -85,11 +85,11 @@ Generates a postman collection containing all endpoints for a particular API. In
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Security;
-using SDK.Models.Apis;
+using Speakeasy;
+using Speakeasy.Models.Security;
+using Speakeasy.Models.Apis;
 
-var sdk = new SDKSDK(
+var sdk = new SpeakeasySDK(
     security: new Security() {
         apiKey = "",
     }
@@ -118,11 +118,11 @@ Supports filtering the versions based on metadata attributes.
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Security;
-using SDK.Models.Apis;
+using Speakeasy;
+using Speakeasy.Models.Security;
+using Speakeasy.Models.Apis;
 
-var sdk = new SDKSDK(
+var sdk = new SpeakeasySDK(
     security: new Security() {
         apiKey = "",
     }
@@ -151,11 +151,11 @@ Supports filtering the APIs based on metadata attributes.
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Security;
-using SDK.Models.Apis;
+using Speakeasy;
+using Speakeasy.Models.Security;
+using Speakeasy.Models.Apis;
 
-var sdk = new SDKSDK(
+var sdk = new SpeakeasySDK(
     security: new Security() {
         apiKey = "",
     }
@@ -184,11 +184,11 @@ If the Api exists, it will be updated.
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Security;
-using SDK.Models.Apis;
+using Speakeasy;
+using Speakeasy.Models.Security;
+using Speakeasy.Models.Apis;
 
-var sdk = new SDKSDK(
+var sdk = new SpeakeasySDK(
     security: new Security() {
         apiKey = "",
     }

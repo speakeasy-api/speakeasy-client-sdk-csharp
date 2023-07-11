@@ -7,14 +7,14 @@
 // the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace SDK.Models.Metadata
+namespace Speakeasy.Models.Metadata
 {
     using System;
 using System.Net.Http;
 using System.Text;
 using Newtonsoft.Json;
-using SDK.Models.Shared;
-using SDK.Utils;
+using Speakeasy.Models.Shared;
+using Speakeasy.Utils;
     
     public class InsertVersionMetadataRequest
     {

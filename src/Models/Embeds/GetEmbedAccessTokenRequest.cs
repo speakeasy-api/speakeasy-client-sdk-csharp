@@ -7,14 +7,14 @@
 // the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace SDK.Models.Embeds
+namespace Speakeasy.Models.Embeds
 {
     using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using Newtonsoft.Json;
-using SDK.Models.Shared;
-using SDK.Utils;
+using Speakeasy.Models.Shared;
+using Speakeasy.Utils;
     
     public class GetEmbedAccessTokenRequest
     {

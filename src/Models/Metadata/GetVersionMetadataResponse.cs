@@ -7,11 +7,11 @@
 // the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace SDK.Models.Metadata
+namespace Speakeasy.Models.Metadata
 {
     using System.Collections.Generic;
 using System.Net.Http;
-using SDK.Models.Shared;
+using Speakeasy.Models.Shared;
     
     public class GetVersionMetadataResponse {
         public string? ContentType { get; set; }

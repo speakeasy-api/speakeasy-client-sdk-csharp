@@ -6,18 +6,18 @@
 ### Nuget
 
 ```bash
-dotnet add package openapi
+dotnet add package SpeakeasySDK
 ```
 <!-- End SDK Installation -->
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
 ```csharp
-using SDK;
-using SDK.Models.Security;
-using SDK.Models.Apis;
+using Speakeasy;
+using Speakeasy.Models.Security;
+using Speakeasy.Models.Apis;
 
-var sdk = new SDKSDK(
+var sdk = new SpeakeasySDK(
     security: new Security() {
         apiKey = "",
     }
@@ -30,9 +30,9 @@ var res = await sdk.Apis.GetApis(request);
 <!-- Start SDK Available Operations -->
 ## Available Resources and Operations
 
-### [SDK](docs/Sdks/SDK/README.md)
+### [Speakeasy SDK](docs/Sdks/Speakeasy/README.md)
 
-* [ValidateApiKey](docs/Sdks/SDK/README.md#validateapikey) - Validate the current api key.
+* [ValidateApiKey](docs/Sdks/Speakeasy/README.md#validateapikey) - Validate the current api key.
 
 ### [apiEndpoints](docs/Sdks/ApiEndpoints/README.md)
 

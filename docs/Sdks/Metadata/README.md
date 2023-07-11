@@ -17,11 +17,11 @@ Delete metadata for a particular apiID and versionID.
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Security;
-using SDK.Models.Metadata;
+using Speakeasy;
+using Speakeasy.Models.Security;
+using Speakeasy.Models.Metadata;
 
-var sdk = new SDKSDK(
+var sdk = new SpeakeasySDK(
     security: new Security() {
         apiKey = "",
     }
@@ -49,11 +49,11 @@ Get all metadata for a particular apiID and versionID.
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Security;
-using SDK.Models.Metadata;
+using Speakeasy;
+using Speakeasy.Models.Security;
+using Speakeasy.Models.Metadata;
 
-var sdk = new SDKSDK(
+var sdk = new SpeakeasySDK(
     security: new Security() {
         apiKey = "",
     }
@@ -81,11 +81,11 @@ Insert metadata for a particular apiID and versionID.
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Security;
-using SDK.Models.Metadata;
+using Speakeasy;
+using Speakeasy.Models.Security;
+using Speakeasy.Models.Metadata;
 
-var sdk = new SDKSDK(
+var sdk = new SpeakeasySDK(
     security: new Security() {
         apiKey = "",
     }

@@ -11,7 +11,7 @@ using System;
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace SDK.Utils
+namespace Speakeasy.Utils
 {
     internal class EnumSerializer: JsonConverter
     {

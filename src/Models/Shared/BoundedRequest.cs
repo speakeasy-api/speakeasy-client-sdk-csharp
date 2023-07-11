@@ -7,12 +7,12 @@
 // the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace SDK.Models.Shared
+namespace Speakeasy.Models.Shared
 {
     using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using SDK.Models.Shared;
+using Speakeasy.Models.Shared;
     
 /// <summary>
 /// A BoundedRequest is a request that has been logged by the Speakeasy without the contents of the request.

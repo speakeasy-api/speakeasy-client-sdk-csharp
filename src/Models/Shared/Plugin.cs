@@ -7,13 +7,13 @@
 // the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace SDK.Models.Shared
+namespace Speakeasy.Models.Shared
 {
     using System;
 using System.Net.Http;
 using System.Text;
 using Newtonsoft.Json;
-using SDK.Utils;
+using Speakeasy.Utils;
     
 /// <summary>
 /// A plugin is a short script that is run against ingested requests

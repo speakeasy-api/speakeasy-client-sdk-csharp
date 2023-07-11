@@ -8,7 +8,7 @@ generation:
   sdkClassName: Speakeasy
   singleTagPerOp: false
 csharp:
-  version: 1.0.2
+  version: 1.0.3
   author: Speakeasy
   maxMethodParams: 0
   packageName: SpeakeasySDK

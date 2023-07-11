@@ -7,16 +7,16 @@
 // the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace SDK.Plugins
+namespace Speakeasy.Plugins
 {
     using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using SDK.Models.Plugins;
-using SDK.Models.Shared;
-using SDK.Utils;
+using Speakeasy.Models.Plugins;
+using Speakeasy.Models.Shared;
+using Speakeasy.Utils;
 
     public interface IPluginsSDK
     {
@@ -30,7 +30,7 @@ using SDK.Utils;
 
         public SDKConfig Config { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.2";
+        private const string _sdkVersion = "1.0.3";
         private const string _sdkGenVersion = "2.61.0";
         private const string _openapiDocVersion = "0.3.0";
         public Uri ServerUrl { get { return _defaultClient.Client.BaseAddress; } }

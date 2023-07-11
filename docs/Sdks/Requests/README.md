@@ -18,11 +18,11 @@ Allowing it to be replayed with the same inputs that were captured by the SDK.
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Security;
-using SDK.Models.Requests;
+using Speakeasy;
+using Speakeasy.Models.Security;
+using Speakeasy.Models.Requests;
 
-var sdk = new SDKSDK(
+var sdk = new SpeakeasySDK(
     security: new Security() {
         apiKey = "",
     }
@@ -50,11 +50,11 @@ Get information about a particular request.
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Security;
-using SDK.Models.Requests;
+using Speakeasy;
+using Speakeasy.Models.Security;
+using Speakeasy.Models.Requests;
 
-var sdk = new SDKSDK(
+var sdk = new SpeakeasySDK(
     security: new Security() {
         apiKey = "",
     }
@@ -83,11 +83,11 @@ Allows the filtering of requests on a number of criteria such as ApiID, VersionI
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Security;
-using SDK.Models.Requests;
+using Speakeasy;
+using Speakeasy.Models.Security;
+using Speakeasy.Models.Requests;
 
-var sdk = new SDKSDK(
+var sdk = new SpeakeasySDK(
     security: new Security() {
         apiKey = "",
     }

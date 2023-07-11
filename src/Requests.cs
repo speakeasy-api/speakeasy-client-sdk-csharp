@@ -7,15 +7,15 @@
 // the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace SDK.Requests
+namespace Speakeasy.Requests
 {
     using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using SDK.Models.Requests;
-using SDK.Models.Shared;
-using SDK.Utils;
+using Speakeasy.Models.Requests;
+using Speakeasy.Models.Shared;
+using Speakeasy.Utils;
 
     public interface IRequestsSDK
     {
@@ -29,7 +29,7 @@ using SDK.Utils;
 
         public SDKConfig Config { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.2";
+        private const string _sdkVersion = "1.0.3";
         private const string _sdkGenVersion = "2.61.0";
         private const string _openapiDocVersion = "0.3.0";
         public Uri ServerUrl { get { return _defaultClient.Client.BaseAddress; } }

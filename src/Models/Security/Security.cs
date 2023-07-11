@@ -7,10 +7,10 @@
 // the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace SDK.Models.Security
+namespace Speakeasy.Models.Security
 {
     using Newtonsoft.Json;
-using SDK.Utils;
+using Speakeasy.Utils;
     
     public class Security
     {

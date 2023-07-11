@@ -7,10 +7,10 @@
 // the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace SDK.Models.Requests
+namespace Speakeasy.Models.Requests
 {
     using System.Net.Http;
-using SDK.Models.Shared;
+using Speakeasy.Models.Shared;
     
     public class GetRequestFromEventLogResponse {
         public string? ContentType { get; set; }

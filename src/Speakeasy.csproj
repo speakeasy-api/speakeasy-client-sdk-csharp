@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <IsPackable>true</IsPackable>
-    <PackageId>openapi</PackageId>
-    <Version>1.0.2</Version>
+    <PackageId>SpeakeasySDK</PackageId>
+    <Version>1.0.3</Version>
     <Authors>Speakeasy</Authors>
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>

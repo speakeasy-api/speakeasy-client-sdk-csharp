@@ -7,7 +7,7 @@
 // the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace SDK.Models.Apis
+namespace Speakeasy.Models.Apis
 {
     using Newtonsoft.Json;
     

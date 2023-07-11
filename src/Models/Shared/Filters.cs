@@ -7,11 +7,11 @@
 // the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace SDK.Models.Shared
+namespace Speakeasy.Models.Shared
 {
     using System.Collections.Generic;
 using Newtonsoft.Json;
-using SDK.Models.Shared;
+using Speakeasy.Models.Shared;
     
 /// <summary>
 /// Filters are used to query requests.

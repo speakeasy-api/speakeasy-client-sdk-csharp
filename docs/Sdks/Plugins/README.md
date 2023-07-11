@@ -17,11 +17,11 @@ Get all plugins for the current workspace.
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Security;
-using SDK.Models.Plugins;
+using Speakeasy;
+using Speakeasy.Models.Security;
+using Speakeasy.Models.Plugins;
 
-var sdk = new SDKSDK(
+var sdk = new SpeakeasySDK(
     security: new Security() {
         apiKey = "",
     }
@@ -43,11 +43,11 @@ Run a plugin
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Security;
-using SDK.Models.Plugins;
+using Speakeasy;
+using Speakeasy.Models.Security;
+using Speakeasy.Models.Plugins;
 
-var sdk = new SDKSDK(
+var sdk = new SpeakeasySDK(
     security: new Security() {
         apiKey = "",
     }
@@ -75,11 +75,11 @@ Upsert a plugin
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Security;
-using SDK.Models.Plugins;
+using Speakeasy;
+using Speakeasy.Models.Security;
+using Speakeasy.Models.Plugins;
 
-var sdk = new SDKSDK(
+var sdk = new SpeakeasySDK(
     security: new Security() {
         apiKey = "",
     }

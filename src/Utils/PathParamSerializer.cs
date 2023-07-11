@@ -7,7 +7,7 @@
 // the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace SDK.Utils
+namespace Speakeasy.Utils
 {
     using System;
     using System.Collections.Generic;

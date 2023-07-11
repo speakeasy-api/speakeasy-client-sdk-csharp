@@ -7,10 +7,10 @@
 // the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace SDK.Models.Schemas
+namespace Speakeasy.Models.Schemas
 {
     using System.Net.Http;
-using SDK.Models.Shared;
+using Speakeasy.Models.Shared;
     
     public class DeleteSchemaResponse {
         public string? ContentType { get; set; }

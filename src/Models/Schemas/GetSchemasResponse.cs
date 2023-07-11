@@ -7,11 +7,11 @@
 // the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace SDK.Models.Schemas
+namespace Speakeasy.Models.Schemas
 {
     using System.Collections.Generic;
 using System.Net.Http;
-using SDK.Models.Shared;
+using Speakeasy.Models.Shared;
     
     public class GetSchemasResponse {
         public string? ContentType { get; set; }

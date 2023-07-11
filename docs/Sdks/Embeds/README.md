@@ -18,11 +18,11 @@ Filters can be applied allowing views to be filtered to things like particular c
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Security;
-using SDK.Models.Embeds;
+using Speakeasy;
+using Speakeasy.Models.Security;
+using Speakeasy.Models.Embeds;
 
-var sdk = new SDKSDK(
+var sdk = new SpeakeasySDK(
     security: new Security() {
         apiKey = "",
     }
@@ -50,11 +50,11 @@ Get all valid embed access tokens for the current workspace.
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Security;
-using SDK.Models.Embeds;
+using Speakeasy;
+using Speakeasy.Models.Security;
+using Speakeasy.Models.Embeds;
 
-var sdk = new SDKSDK(
+var sdk = new SpeakeasySDK(
     security: new Security() {
         apiKey = "",
     }
@@ -76,11 +76,11 @@ Revoke an embed access EmbedToken.
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Security;
-using SDK.Models.Embeds;
+using Speakeasy;
+using Speakeasy.Models.Security;
+using Speakeasy.Models.Embeds;
 
-var sdk = new SDKSDK(
+var sdk = new SpeakeasySDK(
     security: new Security() {
         apiKey = "",
     }

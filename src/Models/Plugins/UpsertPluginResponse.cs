@@ -7,10 +7,10 @@
 // the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace SDK.Models.Plugins
+namespace Speakeasy.Models.Plugins
 {
     using System.Net.Http;
-using SDK.Models.Shared;
+using Speakeasy.Models.Shared;
     
     public class UpsertPluginResponse {
         public string? ContentType { get; set; }

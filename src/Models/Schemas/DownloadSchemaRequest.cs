@@ -7,12 +7,12 @@
 // the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace SDK.Models.Schemas
+namespace Speakeasy.Models.Schemas
 {
     using System;
 using System.Net.Http;
 using Newtonsoft.Json;
-using SDK.Utils;
+using Speakeasy.Utils;
     
     public class DownloadSchemaRequest
     {

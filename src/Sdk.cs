@@ -7,26 +7,26 @@
 // the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace SDK
+namespace Speakeasy
 {
     using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using SDK.ApiEndpoints;
-using SDK.Apis;
-using SDK.Embeds;
-using SDK.Metadata;
-using SDK.Plugins;
-using SDK.Requests;
-using SDK.Schemas;
-using SDK.Models.Operations;
-using SDK.Models.Shared;
-using SDK.Models.Security;
-using SDK.Utils;
+using Speakeasy.ApiEndpoints;
+using Speakeasy.Apis;
+using Speakeasy.Embeds;
+using Speakeasy.Metadata;
+using Speakeasy.Plugins;
+using Speakeasy.Requests;
+using Speakeasy.Schemas;
+using Speakeasy.Models.Operations;
+using Speakeasy.Models.Shared;
+using Speakeasy.Models.Security;
+using Speakeasy.Utils;
 
-    public interface ISDKSDK
+    public interface ISpeakeasySDK
     {
         public IApiEndpointsSDK ApiEndpoints { get; }
         public IApisSDK Apis { get; }
@@ -39,7 +39,7 @@ using SDK.Utils;
     {
     }
 
-    public class SDKSDK: ISDKSDK
+    public class SpeakeasySDK: ISpeakeasySDK
     {
         public SDKConfig Config { get; private set; }
         public static Dictionary<string, string> ServerList = new Dictionary<string, string>()
@@ -48,7 +48,7 @@ using SDK.Utils;
         };
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.2";
+        private const string _sdkVersion = "1.0.3";
         private const string _sdkGenVersion = "2.61.0";
         private const string _openapiDocVersion = "0.3.0";
         public Uri ServerUrl { get { return _defaultClient.Client.BaseAddress; } }
@@ -62,12 +62,12 @@ using SDK.Utils;
         public IRequestsSDK Requests { get; private set; }
         public ISchemasSDK Schemas { get; private set; }
 
-        public SDKSDK(HttpClient? client = null, string? serverUrl = null, Security? security = null)
+        public SpeakeasySDK(HttpClient? client = null, string? serverUrl = null, Security? security = null)
         {
             _defaultClient = new SpeakeasyHttpClient(client);
             if(client == null)
             {
-                var _serverUrl = serverUrl ?? SDKSDK.ServerList["Serverprod"];
+                var _serverUrl = serverUrl ?? SpeakeasySDK.ServerList["Serverprod"];
 
                 _defaultClient.SetBaseUrl(_serverUrl);
             }

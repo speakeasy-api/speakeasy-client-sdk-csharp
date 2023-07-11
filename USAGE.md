@@ -1,10 +1,10 @@
 <!-- Start SDK Example Usage -->
 ```csharp
-using SDK;
-using SDK.Models.Security;
-using SDK.Models.Apis;
+using Speakeasy;
+using Speakeasy.Models.Security;
+using Speakeasy.Models.Apis;
 
-var sdk = new SDKSDK(
+var sdk = new SpeakeasySDK(
     security: new Security() {
         apiKey = "",
     }

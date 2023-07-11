@@ -1,4 +1,4 @@
-# SDK
+# Speakeasy SDK
 
 ## Overview
 
@@ -17,20 +17,20 @@ Validate the current api key.
 ### Example Usage
 
 ```csharp
-using SDK;
-using SDK.Models.Security;
+using Speakeasy;
+using Speakeasy.Models.Security;
 
-var sdk = new SDKSDK(
+var sdk = new SpeakeasySDK(
     security: new Security() {
         apiKey = "",
     }
 );
 
-var res = await sdk.SDK.ValidateApiKey();
+var res = await sdk.Speakeasy.ValidateApiKey();
 ```
 
 
 ### Response
 
-**[ValidateApiKeyResponse](../../Models/SDK/ValidateApiKeyResponse.md)**
+**[ValidateApiKeyResponse](../../Models/Speakeasy/ValidateApiKeyResponse.md)**
 

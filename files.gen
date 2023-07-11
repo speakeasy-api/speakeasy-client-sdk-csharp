@@ -96,7 +96,7 @@ src/Models/Shared/Schema.cs
 src/Models/Shared/SchemaDiffValueChange.cs
 src/Models/Shared/SchemaDiff.cs
 src/Models/Security/Security.cs
-docs/Sdks/SDK/README.md
+docs/Sdks/Speakeasy/README.md
 docs/Sdks/ApiEndpoints/README.md
 docs/Sdks/Apis/README.md
 docs/Sdks/Embeds/README.md
@@ -204,4 +204,4 @@ src/Utils/PathParamSerializer.cs
 src/Utils/QueryParamSerializer.cs
 src/Utils/SpeakeasyHttpClient.cs
 src/Utils/Utilities.cs
-src/SDK.csproj
+src/Speakeasy.csproj

@@ -7,14 +7,14 @@
 // the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace SDK.Models.Requests
+namespace Speakeasy.Models.Requests
 {
     using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using Newtonsoft.Json;
-using SDK.Models.Shared;
-using SDK.Utils;
+using Speakeasy.Models.Shared;
+using Speakeasy.Utils;
     
     public class QueryEventLogRequest
     {

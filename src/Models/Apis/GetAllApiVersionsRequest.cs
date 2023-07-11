@@ -7,13 +7,13 @@
 // the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace SDK.Models.Apis
+namespace Speakeasy.Models.Apis
 {
     using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using Newtonsoft.Json;
-using SDK.Utils;
+using Speakeasy.Utils;
     
     public class GetAllApiVersionsRequest
     {
