@@ -35,3 +35,9 @@ Based on:
 Based on:
 - OpenAPI Doc 0.3.0 https://docs.speakeasyapi.dev/openapi.yaml
 - Speakeasy CLI 1.56.3 (2.61.4) https://github.com/speakeasy-api/speakeasy
+
+## 2023-07-12 01:09:10
+### Changes
+Based on:
+- OpenAPI Doc 0.3.0 https://docs.speakeasyapi.dev/openapi.yaml
+- Speakeasy CLI 1.56.4 (2.61.5) https://github.com/speakeasy-api/speakeasy
