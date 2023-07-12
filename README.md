@@ -1,4 +1,4 @@
-# openapi
+# Speakeasy
 
 <!-- Start SDK Installation -->
 ## SDK Installation
