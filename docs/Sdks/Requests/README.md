@@ -24,11 +24,13 @@ using Speakeasy.Models.Requests;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.Requests.GenerateRequestPostmanCollection(request);
+var res = await sdk.Requests.GenerateRequestPostmanCollectionAsync(new GenerateRequestPostmanCollectionRequest() {
+    RequestID = "quo",
+});
 ```
 
 ### Parameters
@@ -56,11 +58,13 @@ using Speakeasy.Models.Requests;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.Requests.GetRequestFromEventLog(request);
+var res = await sdk.Requests.GetRequestFromEventLogAsync(new GetRequestFromEventLogRequest() {
+    RequestID = "sequi",
+});
 ```
 
 ### Parameters
@@ -86,14 +90,43 @@ Allows the filtering of requests on a number of criteria such as ApiID, VersionI
 using Speakeasy;
 using Speakeasy.Models.Security;
 using Speakeasy.Models.Requests;
+using Speakeasy.Models.Shared;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.Requests.QueryEventLog(request);
+var res = await sdk.Requests.QueryEventLogAsync(new QueryEventLogRequest() {
+    Filters = new Filters() {
+        Filters = new List<Filter>() {
+            new Filter() {
+                Key = "ipsam",
+                Operator = "id",
+                Value = "possimus",
+            },
+            new Filter() {
+                Key = "aut",
+                Operator = "quasi",
+                Value = "error",
+            },
+            new Filter() {
+                Key = "temporibus",
+                Operator = "laborum",
+                Value = "quasi",
+            },
+            new Filter() {
+                Key = "reiciendis",
+                Operator = "voluptatibus",
+                Value = "vero",
+            },
+        },
+        Limit = 468651,
+        Offset = 509624,
+        Operator = "voluptatibus",
+    },
+});
 ```
 
 ### Parameters

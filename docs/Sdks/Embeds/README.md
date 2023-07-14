@@ -21,14 +21,30 @@ Filters can be applied allowing views to be filtered to things like particular c
 using Speakeasy;
 using Speakeasy.Models.Security;
 using Speakeasy.Models.Embeds;
+using Speakeasy.Models.Shared;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.Embeds.GetEmbedAccessToken(request);
+var res = await sdk.Embeds.GetEmbedAccessTokenAsync(new GetEmbedAccessTokenRequest() {
+    Description = "laborum",
+    Duration = 170909,
+    Filters = new Filters() {
+        Filters = new List<Filter>() {
+            new Filter() {
+                Key = "corporis",
+                Operator = "explicabo",
+                Value = "nobis",
+            },
+        },
+        Limit = 315428,
+        Offset = 607831,
+        Operator = "nemo",
+    },
+});
 ```
 
 ### Parameters
@@ -56,11 +72,11 @@ using Speakeasy.Models.Embeds;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.Embeds.GetValidEmbedAccessTokens();
+var res = await sdk.Embeds.GetValidEmbedAccessTokensAsync();
 ```
 
 
@@ -82,11 +98,13 @@ using Speakeasy.Models.Embeds;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.Embeds.RevokeEmbedAccessToken(request);
+var res = await sdk.Embeds.RevokeEmbedAccessTokenAsync(new RevokeEmbedAccessTokenRequest() {
+    TokenID = "minima",
+});
 ```
 
 ### Parameters

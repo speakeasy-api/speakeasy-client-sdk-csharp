@@ -22,11 +22,11 @@ using Speakeasy.Models.Security;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.Speakeasy.ValidateApiKey();
+var res = await sdk.Speakeasy.ValidateApiKeyAsync();
 ```
 
 

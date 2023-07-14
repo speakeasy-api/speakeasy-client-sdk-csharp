@@ -28,11 +28,15 @@ using Speakeasy.Models.Schemas;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.Schemas.DeleteSchema(request);
+var res = await sdk.Schemas.DeleteSchemaAsync(new DeleteSchemaRequest() {
+    ApiID = "ipsa",
+    RevisionID = "omnis",
+    VersionID = "voluptate",
+});
 ```
 
 ### Parameters
@@ -60,11 +64,14 @@ using Speakeasy.Models.Schemas;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.Schemas.DownloadSchema(request);
+var res = await sdk.Schemas.DownloadSchemaAsync(new DownloadSchemaRequest() {
+    ApiID = "cum",
+    VersionID = "perferendis",
+});
 ```
 
 ### Parameters
@@ -92,11 +99,15 @@ using Speakeasy.Models.Schemas;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.Schemas.DownloadSchemaRevision(request);
+var res = await sdk.Schemas.DownloadSchemaRevisionAsync(new DownloadSchemaRevisionRequest() {
+    ApiID = "doloremque",
+    RevisionID = "reprehenderit",
+    VersionID = "ut",
+});
 ```
 
 ### Parameters
@@ -125,11 +136,14 @@ using Speakeasy.Models.Schemas;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.Schemas.GetSchema(request);
+var res = await sdk.Schemas.GetSchemaAsync(new GetSchemaRequest() {
+    ApiID = "maiores",
+    VersionID = "dicta",
+});
 ```
 
 ### Parameters
@@ -157,11 +171,16 @@ using Speakeasy.Models.Schemas;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.Schemas.GetSchemaDiff(request);
+var res = await sdk.Schemas.GetSchemaDiffAsync(new GetSchemaDiffRequest() {
+    ApiID = "corporis",
+    BaseRevisionID = "dolore",
+    TargetRevisionID = "iusto",
+    VersionID = "dicta",
+});
 ```
 
 ### Parameters
@@ -190,11 +209,15 @@ using Speakeasy.Models.Schemas;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.Schemas.GetSchemaRevision(request);
+var res = await sdk.Schemas.GetSchemaRevisionAsync(new GetSchemaRevisionRequest() {
+    ApiID = "harum",
+    RevisionID = "enim",
+    VersionID = "accusamus",
+});
 ```
 
 ### Parameters
@@ -223,11 +246,14 @@ using Speakeasy.Models.Schemas;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.Schemas.GetSchemas(request);
+var res = await sdk.Schemas.GetSchemasAsync(new GetSchemasRequest() {
+    ApiID = "commodi",
+    VersionID = "repudiandae",
+});
 ```
 
 ### Parameters
@@ -256,11 +282,20 @@ using Speakeasy.Models.Schemas;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.Schemas.RegisterSchema(request);
+var res = await sdk.Schemas.RegisterSchemaAsync(new RegisterSchemaRequest() {
+    RequestBody = new RegisterSchemaRequestBody() {
+        File = new RegisterSchemaRequestBodyFile() {
+            Content = "quae as bytes <<<>>>",
+            File = "ipsum",
+        },
+    },
+    ApiID = "quidem",
+    VersionID = "molestias",
+});
 ```
 
 ### Parameters

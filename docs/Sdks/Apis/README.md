@@ -26,11 +26,14 @@ using Speakeasy.Models.Apis;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.Apis.DeleteApi(request);
+var res = await sdk.Apis.DeleteApiAsync(new DeleteApiRequest() {
+    ApiID = "quod",
+    VersionID = "esse",
+});
 ```
 
 ### Parameters
@@ -59,11 +62,14 @@ using Speakeasy.Models.Apis;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.Apis.GenerateOpenApiSpec(request);
+var res = await sdk.Apis.GenerateOpenApiSpecAsync(new GenerateOpenApiSpecRequest() {
+    ApiID = "totam",
+    VersionID = "porro",
+});
 ```
 
 ### Parameters
@@ -91,11 +97,14 @@ using Speakeasy.Models.Apis;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.Apis.GeneratePostmanCollection(request);
+var res = await sdk.Apis.GeneratePostmanCollectionAsync(new GeneratePostmanCollectionRequest() {
+    ApiID = "dolorum",
+    VersionID = "dicta",
+});
 ```
 
 ### Parameters
@@ -124,11 +133,30 @@ using Speakeasy.Models.Apis;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.Apis.GetAllApiVersions(request);
+var res = await sdk.Apis.GetAllApiVersionsAsync(new GetAllApiVersionsRequest() {
+    ApiID = "nam",
+    Metadata = new Dictionary<string, List<string>>() {
+        { "occaecati", new List<string>() {
+            "deleniti",
+        } },
+        { "hic", new List<string>() {
+            "totam",
+            "beatae",
+            "commodi",
+            "molestiae",
+        } },
+        { "modi", new List<string>() {
+            "impedit",
+        } },
+    },
+    Op = new GetAllApiVersionsOp() {
+        And = false,
+    },
+});
 ```
 
 ### Parameters
@@ -157,11 +185,26 @@ using Speakeasy.Models.Apis;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.Apis.GetApis(request);
+var res = await sdk.Apis.GetApisAsync(new GetApisRequest() {
+    Metadata = new Dictionary<string, List<string>>() {
+        { "esse", new List<string>() {
+            "excepturi",
+        } },
+        { "aspernatur", new List<string>() {
+            "ad",
+        } },
+        { "natus", new List<string>() {
+            "iste",
+        } },
+    },
+    Op = new GetApisOp() {
+        And = false,
+    },
+});
 ```
 
 ### Parameters
@@ -187,14 +230,36 @@ If the Api exists, it will be updated.
 using Speakeasy;
 using Speakeasy.Models.Security;
 using Speakeasy.Models.Apis;
+using Speakeasy.Models.Shared;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.Apis.UpsertApi(request);
+var res = await sdk.Apis.UpsertApiAsync(new UpsertApiRequest() {
+    ApiInput = new ApiInput() {
+        ApiId = "dolor",
+        Description = "natus",
+        MetaData = new Dictionary<string, List<string>>() {
+            { "hic", new List<string>() {
+                "fuga",
+                "in",
+                "corporis",
+                "iste",
+            } },
+            { "iure", new List<string>() {
+                "quidem",
+                "architecto",
+                "ipsa",
+                "reiciendis",
+            } },
+        },
+        VersionId = "est",
+    },
+    ApiID = "mollitia",
+});
 ```
 
 ### Parameters

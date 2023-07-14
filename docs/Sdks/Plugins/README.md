@@ -23,11 +23,11 @@ using Speakeasy.Models.Plugins;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.Plugins.GetPlugins();
+var res = await sdk.Plugins.GetPluginsAsync();
 ```
 
 
@@ -46,14 +46,29 @@ Run a plugin
 using Speakeasy;
 using Speakeasy.Models.Security;
 using Speakeasy.Models.Plugins;
+using Speakeasy.Models.Shared;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.Plugins.RunPlugin(request);
+var res = await sdk.Plugins.RunPluginAsync(new RunPluginRequest() {
+    Filters = new Filters() {
+        Filters = new List<Filter>() {
+            new Filter() {
+                Key = "repellat",
+                Operator = "mollitia",
+                Value = "occaecati",
+            },
+        },
+        Limit = 253291,
+        Offset = 414369,
+        Operator = "quam",
+    },
+    PluginID = "molestiae",
+});
 ```
 
 ### Parameters
@@ -78,14 +93,24 @@ Upsert a plugin
 using Speakeasy;
 using Speakeasy.Models.Security;
 using Speakeasy.Models.Plugins;
+using Speakeasy.Models.Shared;
+using System;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.Plugins.UpsertPlugin(request);
+var res = await sdk.Plugins.UpsertPluginAsync(new Plugin() {
+    Code = "velit",
+    CreatedAt = DateTime.Parse("2022-09-06T22:51:09.401Z"),
+    EvalHash = "quis",
+    PluginId = "vitae",
+    Title = "Miss",
+    UpdatedAt = DateTime.Parse("2022-05-14T10:37:30.872Z"),
+    WorkspaceId = "odit",
+});
 ```
 
 ### Parameters

@@ -28,11 +28,15 @@ using Speakeasy.Models.ApiEndpoints;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.ApiEndpoints.DeleteApiEndpoint(request);
+var res = await sdk.ApiEndpoints.DeleteApiEndpointAsync(new DeleteApiEndpointRequest() {
+    ApiEndpointID = "delectus",
+    ApiID = "tempora",
+    VersionID = "suscipit",
+});
 ```
 
 ### Parameters
@@ -61,11 +65,15 @@ using Speakeasy.Models.ApiEndpoints;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.ApiEndpoints.FindApiEndpoint(request);
+var res = await sdk.ApiEndpoints.FindApiEndpointAsync(new FindApiEndpointRequest() {
+    ApiID = "molestiae",
+    DisplayName = "minus",
+    VersionID = "placeat",
+});
 ```
 
 ### Parameters
@@ -94,11 +102,15 @@ using Speakeasy.Models.ApiEndpoints;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.ApiEndpoints.GenerateOpenApiSpecForApiEndpoint(request);
+var res = await sdk.ApiEndpoints.GenerateOpenApiSpecForApiEndpointAsync(new GenerateOpenApiSpecForApiEndpointRequest() {
+    ApiEndpointID = "voluptatum",
+    ApiID = "iusto",
+    VersionID = "excepturi",
+});
 ```
 
 ### Parameters
@@ -126,11 +138,15 @@ using Speakeasy.Models.ApiEndpoints;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.ApiEndpoints.GeneratePostmanCollectionForApiEndpoint(request);
+var res = await sdk.ApiEndpoints.GeneratePostmanCollectionForApiEndpointAsync(new GeneratePostmanCollectionForApiEndpointRequest() {
+    ApiEndpointID = "nisi",
+    ApiID = "recusandae",
+    VersionID = "temporibus",
+});
 ```
 
 ### Parameters
@@ -158,11 +174,13 @@ using Speakeasy.Models.ApiEndpoints;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.ApiEndpoints.GetAllApiEndpoints(request);
+var res = await sdk.ApiEndpoints.GetAllApiEndpointsAsync(new GetAllApiEndpointsRequest() {
+    ApiID = "ab",
+});
 ```
 
 ### Parameters
@@ -190,11 +208,14 @@ using Speakeasy.Models.ApiEndpoints;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.ApiEndpoints.GetAllForVersionApiEndpoints(request);
+var res = await sdk.ApiEndpoints.GetAllForVersionApiEndpointsAsync(new GetAllForVersionApiEndpointsRequest() {
+    ApiID = "quis",
+    VersionID = "veritatis",
+});
 ```
 
 ### Parameters
@@ -222,11 +243,15 @@ using Speakeasy.Models.ApiEndpoints;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.ApiEndpoints.GetApiEndpoint(request);
+var res = await sdk.ApiEndpoints.GetApiEndpointAsync(new GetApiEndpointRequest() {
+    ApiEndpointID = "deserunt",
+    ApiID = "perferendis",
+    VersionID = "ipsam",
+});
 ```
 
 ### Parameters
@@ -251,14 +276,27 @@ Upsert an ApiEndpoint. If the ApiEndpoint does not exist it will be created, oth
 using Speakeasy;
 using Speakeasy.Models.Security;
 using Speakeasy.Models.ApiEndpoints;
+using Speakeasy.Models.Shared;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.ApiEndpoints.UpsertApiEndpoint(request);
+var res = await sdk.ApiEndpoints.UpsertApiEndpointAsync(new UpsertApiEndpointRequest() {
+    ApiEndpointInput = new ApiEndpointInput() {
+        ApiEndpointId = "repellendus",
+        Description = "sapiente",
+        DisplayName = "quo",
+        Method = "odit",
+        Path = "at",
+        VersionId = "at",
+    },
+    ApiEndpointID = "maiores",
+    ApiID = "molestiae",
+    VersionID = "quod",
+});
 ```
 
 ### Parameters

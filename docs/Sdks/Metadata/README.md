@@ -23,11 +23,16 @@ using Speakeasy.Models.Metadata;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.Metadata.DeleteVersionMetadata(request);
+var res = await sdk.Metadata.DeleteVersionMetadataAsync(new DeleteVersionMetadataRequest() {
+    ApiID = "excepturi",
+    MetaKey = "accusantium",
+    MetaValue = "iure",
+    VersionID = "culpa",
+});
 ```
 
 ### Parameters
@@ -55,11 +60,14 @@ using Speakeasy.Models.Metadata;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.Metadata.GetVersionMetadata(request);
+var res = await sdk.Metadata.GetVersionMetadataAsync(new GetVersionMetadataRequest() {
+    ApiID = "doloribus",
+    VersionID = "sapiente",
+});
 ```
 
 ### Parameters
@@ -84,14 +92,22 @@ Insert metadata for a particular apiID and versionID.
 using Speakeasy;
 using Speakeasy.Models.Security;
 using Speakeasy.Models.Metadata;
+using Speakeasy.Models.Shared;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.Metadata.InsertVersionMetadata(request);
+var res = await sdk.Metadata.InsertVersionMetadataAsync(new InsertVersionMetadataRequest() {
+    VersionMetadataInput = new VersionMetadataInput() {
+        MetaKey = "architecto",
+        MetaValue = "mollitia",
+    },
+    ApiID = "dolorem",
+    VersionID = "culpa",
+});
 ```
 
 ### Parameters

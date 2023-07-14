@@ -12,6 +12,8 @@ dotnet add package SpeakeasySDK
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
+
+
 ```csharp
 using Speakeasy;
 using Speakeasy.Models.Security;
@@ -19,11 +21,32 @@ using Speakeasy.Models.Apis;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
-        apiKey = "",
+        APIKey = "",
     }
 );
 
-var res = await sdk.Apis.GetApis(request);
+var res = await sdk.Apis.GetApisAsync(new GetApisRequest() {
+    Metadata = new Dictionary<string, List<string>>() {
+        { "provident", new List<string>() {
+            "quibusdam",
+            "unde",
+            "nulla",
+        } },
+        { "corrupti", new List<string>() {
+            "vel",
+            "error",
+            "deserunt",
+            "suscipit",
+        } },
+        { "iure", new List<string>() {
+            "debitis",
+            "ipsa",
+        } },
+    },
+    Op = new GetApisOp() {
+        And = false,
+    },
+});
 ```
 <!-- End SDK Example Usage -->
 

@@ -80,9 +80,9 @@ namespace Speakeasy.Utils
 
         private static string SerializeDelimited(bool explode, string name, object value, string delimiter)
         {
-            if(value == null || Utilities.IsPrimitive(value))
+            if(value == null || Utilities.IsPrimitive(value) || Utilities.IsDate(value))
             {
-                return $"{name}={JsonConvert.SerializeObject(value)}";
+                return $"{name}={JsonConvert.SerializeObject(value,  new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new IsoDateTimeSerializer(), new EnumSerializer() }})}";
             }
 
             if(Utilities.IsString(value))
