@@ -49,8 +49,8 @@ using Speakeasy.Utils;
         };
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.5.0";
-        private const string _sdkGenVersion = "2.73.0";
+        private const string _sdkVersion = "1.5.1";
+        private const string _sdkGenVersion = "2.73.1";
         private const string _openapiDocVersion = "0.3.0";
         public Uri ServerUrl { get { return _defaultClient.Client.BaseAddress; } }
         private SpeakeasyHttpClient _defaultClient;
