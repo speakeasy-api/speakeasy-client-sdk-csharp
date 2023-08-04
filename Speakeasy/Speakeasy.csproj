@@ -2,7 +2,7 @@
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <PackageId>SpeakeasySDK</PackageId>
-    <Version>1.7.0</Version>
+    <Version>1.8.0</Version>
     <Authors>Speakeasy</Authors>
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
