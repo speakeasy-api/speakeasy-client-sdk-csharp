@@ -35,8 +35,8 @@ using Speakeasy.Utils;
 
         public SDKConfig Config { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.8.0";
-        private const string _sdkGenVersion = "2.81.1";
+        private const string _sdkVersion = "1.9.0";
+        private const string _sdkGenVersion = "2.82.0";
         private const string _openapiDocVersion = "0.3.0";
         public Uri ServerUrl { get { return _defaultClient.Client.BaseAddress; } }
         private SpeakeasyHttpClient _defaultClient;
