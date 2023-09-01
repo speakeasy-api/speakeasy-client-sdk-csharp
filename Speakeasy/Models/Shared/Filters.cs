@@ -10,42 +10,39 @@
 #nullable enable
 namespace Speakeasy.Models.Shared
 {
+    using Newtonsoft.Json;
     using System.Collections.Generic;
-using Newtonsoft.Json;
-using Speakeasy.Models.Shared;
     
-/// <summary>
-/// Filters are used to query requests.
-/// </summary>
+    
+    /// <summary>
+    /// Filters are used to query requests.
+    /// </summary>
     public class Filters
     {
-    /// <summary>
-    /// A list of filters to apply to the query.
-    /// </summary>
-        
+        /// <summary>
+        /// A list of filters to apply to the query.
+        /// </summary>
         [JsonProperty("filters")]
         public List<Filter> FiltersValue { get; set; }
         
-    /// <summary>
-    /// The maximum number of results to return.
-    /// </summary>
-        
+        /// <summary>
+        /// The maximum number of results to return.
+        /// </summary>
         [JsonProperty("limit")]
         public int Limit { get; set; }
         
-    /// <summary>
-    /// The offset to start the query from.
-    /// </summary>
-        
+        /// <summary>
+        /// The offset to start the query from.
+        /// </summary>
         [JsonProperty("offset")]
         public int Offset { get; set; }
         
-    /// <summary>
-    /// The operator to use when combining filters.
-    /// </summary>
-        
+        /// <summary>
+        /// The operator to use when combining filters.
+        /// </summary>
         [JsonProperty("operator")]
         public string Operator { get; set; }
         
     }
+    
 }

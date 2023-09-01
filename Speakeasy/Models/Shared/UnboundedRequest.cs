@@ -10,48 +10,45 @@
 #nullable enable
 namespace Speakeasy.Models.Shared
 {
+    using Newtonsoft.Json;
     using System;
-using Newtonsoft.Json;
     
-/// <summary>
-/// An UnboundedRequest represents the HAR content capture by Speakeasy when logging a request.
-/// </summary>
+    
+    /// <summary>
+    /// An UnboundedRequest represents the HAR content capture by Speakeasy when logging a request.
+    /// </summary>
     public class UnboundedRequest
     {
-    /// <summary>
-    /// Creation timestamp.
-    /// </summary>
-        
+        /// <summary>
+        /// Creation timestamp.
+        /// </summary>
         [JsonProperty("created_at")]
         public DateTime CreatedAt { get; set; }
         
-    /// <summary>
-    /// The HAR content of the request.
-    /// </summary>
-        
+        /// <summary>
+        /// The HAR content of the request.
+        /// </summary>
         [JsonProperty("har")]
         public string Har { get; set; }
         
-    /// <summary>
-    /// The size of the HAR content in bytes.
-    /// </summary>
-        
+        /// <summary>
+        /// The size of the HAR content in bytes.
+        /// </summary>
         [JsonProperty("har_size_bytes")]
         public int HarSizeBytes { get; set; }
         
-    /// <summary>
-    /// The ID of this request.
-    /// </summary>
-        
+        /// <summary>
+        /// The ID of this request.
+        /// </summary>
         [JsonProperty("request_id")]
         public string RequestId { get; set; }
         
-    /// <summary>
-    /// The workspace ID this request was made to.
-    /// </summary>
-        
+        /// <summary>
+        /// The workspace ID this request was made to.
+        /// </summary>
         [JsonProperty("workspace_id")]
         public string WorkspaceId { get; set; }
         
     }
+    
 }

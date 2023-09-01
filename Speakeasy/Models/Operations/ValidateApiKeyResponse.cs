@@ -10,20 +10,28 @@
 #nullable enable
 namespace Speakeasy.Models.Operations
 {
+    using Speakeasy.Models.Shared;
     using System.Net.Http;
-using Speakeasy.Models.Shared;
+    using System;
     
-    public class ValidateApiKeyResponse {
+    
+    public class ValidateApiKeyResponse
+    {
+        
         public string? ContentType { get; set; }
         
-    /// <summary>
-    /// Default error response
-    /// </summary>
+        /// <summary>
+        /// Default error response
+        /// </summary>
+        
         public Error? Error { get; set; }
         
+        
         public int StatusCode { get; set; }
+        
         
         public HttpResponseMessage? RawResponse { get; set; }
         
     }
+    
 }

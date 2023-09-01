@@ -8,16 +8,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 #nullable enable
-namespace Speakeasy.Plugins
+namespace Speakeasy
 {
+    using Newtonsoft.Json;
+    using Speakeasy.Models.Operations;
+    using Speakeasy.Models.Shared;
+    using Speakeasy.Utils;
+    using System.Collections.Generic;
+    using System.Net.Http.Headers;
+    using System.Net.Http;
+    using System.Threading.Tasks;
     using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Speakeasy.Models.Plugins;
-using Speakeasy.Models.Shared;
-using Speakeasy.Utils;
 
     public interface IPluginsSDK
     {
@@ -28,113 +29,160 @@ using Speakeasy.Utils;
 
     public class PluginsSDK: IPluginsSDK
     {
-
         public SDKConfig Config { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.12.0";
-        private const string _sdkGenVersion = "2.89.1";
+        private const string _sdkVersion = "1.13.0";
+        private const string _sdkGenVersion = "2.91.2";
         private const string _openapiDocVersion = "0.3.0";
-        public Uri ServerUrl { get { return _defaultClient.Client.BaseAddress; } }
-        private SpeakeasyHttpClient _defaultClient;
-        private SpeakeasyHttpClient _securityClient;
+        private string _serverUrl = "";
+        private ISpeakeasyHttpClient _defaultClient;
+        private ISpeakeasyHttpClient _securityClient;
 
-        public PluginsSDK(SpeakeasyHttpClient defaultClient, SpeakeasyHttpClient securityClient, SDKConfig config)
+        public PluginsSDK(ISpeakeasyHttpClient defaultClient, ISpeakeasyHttpClient securityClient, string serverUrl, SDKConfig config)
         {
             _defaultClient = defaultClient;
             _securityClient = securityClient;
+            _serverUrl = serverUrl;
             Config = config;
         }
-
         
-    /// <summary>
-    /// Get all plugins for the current workspace.
-    /// </summary>
-    public async Task<GetPluginsResponse> GetPluginsAsync()
-    {
-        string baseUrl = "";
-        var message = new HttpRequestMessage(HttpMethod.Get, baseUrl + "/v1/plugins");
-        var client = _securityClient;
 
-        message.Headers.Add("user-agent", $"speakeasy-sdk/{_language} {_sdkVersion} {_sdkGenVersion} {_openapiDocVersion}");
-        var httpResponseMessage = await client.SendAsync(message);
-        var response = new GetPluginsResponse
+        /// <summary>
+        /// Get all plugins for the current workspace.
+        /// </summary>
+        public async Task<GetPluginsResponse> GetPluginsAsync()
         {
-            StatusCode = (int)httpResponseMessage.StatusCode,
-            ContentType = httpResponseMessage.Content.Headers.ContentType?.MediaType,
-            RawResponse = httpResponseMessage
-        };
-        if((response.StatusCode == 200))
-        {
-            if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+            string baseUrl = _serverUrl;
+            if (baseUrl.EndsWith("/"))
             {
-                response.Plugins = JsonConvert.DeserializeObject<List<Plugin>>(await httpResponseMessage.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
+                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
             }
+            var urlString = baseUrl + "/v1/plugins";
+            
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("user-agent", $"speakeasy-sdk/{_language} {_sdkVersion} {_sdkGenVersion} {_openapiDocVersion}");
+            
+            
+            var client = _securityClient;
+            
+            var httpResponse = await client.SendAsync(httpRequest);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            
+            var response = new GetPluginsResponse
+            {
+                StatusCode = (int)httpResponse.StatusCode,
+                ContentType = contentType,
+                RawResponse = httpResponse
+            };
+            if((response.StatusCode == 200))
+            {
+                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+                {
+                    response.Plugins = JsonConvert.DeserializeObject<List<Plugin>>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
+                }
+                
+                return response;
+            }
+            response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
             return response;
         }
-        response.Error = JsonConvert.DeserializeObject<Error>(await httpResponseMessage.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
-        return response;
-    }
-
         
-    /// <summary>
-    /// Run a plugin
-    /// </summary>
-    public async Task<RunPluginResponse> RunPluginAsync(RunPluginRequest? request = null)
-    {
-        string baseUrl = "";
-        var message = RunPluginRequest.BuildHttpRequestMessage("runPlugin", request, baseUrl);
-        var client = _securityClient;
 
-        message.Headers.Add("user-agent", $"speakeasy-sdk/{_language} {_sdkVersion} {_sdkGenVersion} {_openapiDocVersion}");
-        var httpResponseMessage = await client.SendAsync(message);
-        var response = new RunPluginResponse
+        /// <summary>
+        /// Run a plugin
+        /// </summary>
+        public async Task<RunPluginResponse> RunPluginAsync(RunPluginRequest? request = null)
         {
-            StatusCode = (int)httpResponseMessage.StatusCode,
-            ContentType = httpResponseMessage.Content.Headers.ContentType?.MediaType,
-            RawResponse = httpResponseMessage
-        };
-        if((response.StatusCode == 200))
-        {
-            if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+            string baseUrl = _serverUrl;
+            if (baseUrl.EndsWith("/"))
             {
-                response.BoundedRequests = JsonConvert.DeserializeObject<List<BoundedRequest>>(await httpResponseMessage.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
+                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
             }
+            var urlString = URLBuilder.Build(baseUrl, "/v1/plugins/{pluginID}", request);
+            
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
+            httpRequest.Headers.Add("user-agent", $"speakeasy-sdk/{_language} {_sdkVersion} {_sdkGenVersion} {_openapiDocVersion}");
+            
+            
+            var client = _securityClient;
+            
+            var httpResponse = await client.SendAsync(httpRequest);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            
+            var response = new RunPluginResponse
+            {
+                StatusCode = (int)httpResponse.StatusCode,
+                ContentType = contentType,
+                RawResponse = httpResponse
+            };
+            if((response.StatusCode == 200))
+            {
+                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+                {
+                    response.BoundedRequests = JsonConvert.DeserializeObject<List<BoundedRequest>>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
+                }
+                
+                return response;
+            }
+            response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
             return response;
         }
-        response.Error = JsonConvert.DeserializeObject<Error>(await httpResponseMessage.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
-        return response;
-    }
-
         
-    /// <summary>
-    /// Upsert a plugin
-    /// </summary>
-    public async Task<UpsertPluginResponse> UpsertPluginAsync(Plugin request)
-    {
-        string baseUrl = "";
-        var message = Plugin.BuildHttpRequestMessage("upsertPlugin", request, baseUrl);
-        var client = _securityClient;
 
-        message.Headers.Add("user-agent", $"speakeasy-sdk/{_language} {_sdkVersion} {_sdkGenVersion} {_openapiDocVersion}");
-        var httpResponseMessage = await client.SendAsync(message);
-        var response = new UpsertPluginResponse
+        /// <summary>
+        /// Upsert a plugin
+        /// </summary>
+        public async Task<UpsertPluginResponse> UpsertPluginAsync(Plugin request)
         {
-            StatusCode = (int)httpResponseMessage.StatusCode,
-            ContentType = httpResponseMessage.Content.Headers.ContentType?.MediaType,
-            RawResponse = httpResponseMessage
-        };
-        if((response.StatusCode == 200))
-        {
-            if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+            string baseUrl = _serverUrl;
+            if (baseUrl.EndsWith("/"))
             {
-                response.Plugin = JsonConvert.DeserializeObject<Plugin>(await httpResponseMessage.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
+                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
             }
+            var urlString = baseUrl + "/v1/plugins";
+            
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
+            httpRequest.Headers.Add("user-agent", $"speakeasy-sdk/{_language} {_sdkVersion} {_sdkGenVersion} {_openapiDocVersion}");
+            
+            var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json");
+            if (serializedBody == null) 
+            {
+                throw new ArgumentNullException("request body is required");
+            }
+            else
+            {
+                httpRequest.Content = serializedBody;
+            }
+            
+            var client = _securityClient;
+            
+            var httpResponse = await client.SendAsync(httpRequest);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            
+            var response = new UpsertPluginResponse
+            {
+                StatusCode = (int)httpResponse.StatusCode,
+                ContentType = contentType,
+                RawResponse = httpResponse
+            };
+            if((response.StatusCode == 200))
+            {
+                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+                {
+                    response.Plugin = JsonConvert.DeserializeObject<Plugin>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
+                }
+                
+                return response;
+            }
+            response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
             return response;
         }
-        response.Error = JsonConvert.DeserializeObject<Error>(await httpResponseMessage.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
-        return response;
-    }
-
         
     }
 }

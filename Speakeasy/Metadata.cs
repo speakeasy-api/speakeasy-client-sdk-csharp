@@ -8,15 +8,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 #nullable enable
-namespace Speakeasy.Metadata
+namespace Speakeasy
 {
+    using Newtonsoft.Json;
+    using Speakeasy.Models.Operations;
+    using Speakeasy.Models.Shared;
+    using Speakeasy.Utils;
+    using System.Collections.Generic;
+    using System.Net.Http.Headers;
+    using System.Net.Http;
+    using System.Threading.Tasks;
     using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Speakeasy.Models.Metadata;
-using Speakeasy.Models.Shared;
-using Speakeasy.Utils;
 
     public interface IMetadataSDK
     {
@@ -27,109 +29,156 @@ using Speakeasy.Utils;
 
     public class MetadataSDK: IMetadataSDK
     {
-
         public SDKConfig Config { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.12.0";
-        private const string _sdkGenVersion = "2.89.1";
+        private const string _sdkVersion = "1.13.0";
+        private const string _sdkGenVersion = "2.91.2";
         private const string _openapiDocVersion = "0.3.0";
-        public Uri ServerUrl { get { return _defaultClient.Client.BaseAddress; } }
-        private SpeakeasyHttpClient _defaultClient;
-        private SpeakeasyHttpClient _securityClient;
+        private string _serverUrl = "";
+        private ISpeakeasyHttpClient _defaultClient;
+        private ISpeakeasyHttpClient _securityClient;
 
-        public MetadataSDK(SpeakeasyHttpClient defaultClient, SpeakeasyHttpClient securityClient, SDKConfig config)
+        public MetadataSDK(ISpeakeasyHttpClient defaultClient, ISpeakeasyHttpClient securityClient, string serverUrl, SDKConfig config)
         {
             _defaultClient = defaultClient;
             _securityClient = securityClient;
+            _serverUrl = serverUrl;
             Config = config;
         }
-
         
-    /// <summary>
-    /// Delete metadata for a particular apiID and versionID.
-    /// </summary>
-    public async Task<DeleteVersionMetadataResponse> DeleteVersionMetadataAsync(DeleteVersionMetadataRequest? request = null)
-    {
-        string baseUrl = "";
-        var message = DeleteVersionMetadataRequest.BuildHttpRequestMessage("deleteVersionMetadata", request, baseUrl);
-        var client = _securityClient;
 
-        message.Headers.Add("user-agent", $"speakeasy-sdk/{_language} {_sdkVersion} {_sdkGenVersion} {_openapiDocVersion}");
-        var httpResponseMessage = await client.SendAsync(message);
-        var response = new DeleteVersionMetadataResponse
+        /// <summary>
+        /// Delete metadata for a particular apiID and versionID.
+        /// </summary>
+        public async Task<DeleteVersionMetadataResponse> DeleteVersionMetadataAsync(DeleteVersionMetadataRequest? request = null)
         {
-            StatusCode = (int)httpResponseMessage.StatusCode,
-            ContentType = httpResponseMessage.Content.Headers.ContentType?.MediaType,
-            RawResponse = httpResponseMessage
-        };
-        if((response.StatusCode == 200))
-        {
-            return response;
-        }
-        response.Error = JsonConvert.DeserializeObject<Error>(await httpResponseMessage.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
-        return response;
-    }
-
-        
-    /// <summary>
-    /// Get all metadata for a particular apiID and versionID.
-    /// </summary>
-    public async Task<GetVersionMetadataResponse> GetVersionMetadataAsync(GetVersionMetadataRequest? request = null)
-    {
-        string baseUrl = "";
-        var message = GetVersionMetadataRequest.BuildHttpRequestMessage("getVersionMetadata", request, baseUrl);
-        var client = _securityClient;
-
-        message.Headers.Add("user-agent", $"speakeasy-sdk/{_language} {_sdkVersion} {_sdkGenVersion} {_openapiDocVersion}");
-        var httpResponseMessage = await client.SendAsync(message);
-        var response = new GetVersionMetadataResponse
-        {
-            StatusCode = (int)httpResponseMessage.StatusCode,
-            ContentType = httpResponseMessage.Content.Headers.ContentType?.MediaType,
-            RawResponse = httpResponseMessage
-        };
-        if((response.StatusCode == 200))
-        {
-            if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+            string baseUrl = _serverUrl;
+            if (baseUrl.EndsWith("/"))
             {
-                response.VersionMetadata = JsonConvert.DeserializeObject<List<VersionMetadata>>(await httpResponseMessage.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
+                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
             }
-            return response;
-        }
-        response.Error = JsonConvert.DeserializeObject<Error>(await httpResponseMessage.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
-        return response;
-    }
+            var urlString = URLBuilder.Build(baseUrl, "/v1/apis/{apiID}/version/{versionID}/metadata/{metaKey}/{metaValue}", request);
+            
 
-        
-    /// <summary>
-    /// Insert metadata for a particular apiID and versionID.
-    /// </summary>
-    public async Task<InsertVersionMetadataResponse> InsertVersionMetadataAsync(InsertVersionMetadataRequest request)
-    {
-        string baseUrl = "";
-        var message = InsertVersionMetadataRequest.BuildHttpRequestMessage("insertVersionMetadata", request, baseUrl);
-        var client = _securityClient;
+            var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
+            httpRequest.Headers.Add("user-agent", $"speakeasy-sdk/{_language} {_sdkVersion} {_sdkGenVersion} {_openapiDocVersion}");
+            
+            
+            var client = _securityClient;
+            
+            var httpResponse = await client.SendAsync(httpRequest);
 
-        message.Headers.Add("user-agent", $"speakeasy-sdk/{_language} {_sdkVersion} {_sdkGenVersion} {_openapiDocVersion}");
-        var httpResponseMessage = await client.SendAsync(message);
-        var response = new InsertVersionMetadataResponse
-        {
-            StatusCode = (int)httpResponseMessage.StatusCode,
-            ContentType = httpResponseMessage.Content.Headers.ContentType?.MediaType,
-            RawResponse = httpResponseMessage
-        };
-        if((response.StatusCode == 200))
-        {
-            if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            
+            var response = new DeleteVersionMetadataResponse
             {
-                response.VersionMetadata = JsonConvert.DeserializeObject<VersionMetadata>(await httpResponseMessage.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
+                StatusCode = (int)httpResponse.StatusCode,
+                ContentType = contentType,
+                RawResponse = httpResponse
+            };
+            if((response.StatusCode == 200))
+            {
+                
+                return response;
             }
+            response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
             return response;
         }
-        response.Error = JsonConvert.DeserializeObject<Error>(await httpResponseMessage.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
-        return response;
-    }
+        
 
+        /// <summary>
+        /// Get all metadata for a particular apiID and versionID.
+        /// </summary>
+        public async Task<GetVersionMetadataResponse> GetVersionMetadataAsync(GetVersionMetadataRequest? request = null)
+        {
+            string baseUrl = _serverUrl;
+            if (baseUrl.EndsWith("/"))
+            {
+                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+            }
+            var urlString = URLBuilder.Build(baseUrl, "/v1/apis/{apiID}/version/{versionID}/metadata", request);
+            
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("user-agent", $"speakeasy-sdk/{_language} {_sdkVersion} {_sdkGenVersion} {_openapiDocVersion}");
+            
+            
+            var client = _securityClient;
+            
+            var httpResponse = await client.SendAsync(httpRequest);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            
+            var response = new GetVersionMetadataResponse
+            {
+                StatusCode = (int)httpResponse.StatusCode,
+                ContentType = contentType,
+                RawResponse = httpResponse
+            };
+            if((response.StatusCode == 200))
+            {
+                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+                {
+                    response.VersionMetadata = JsonConvert.DeserializeObject<List<VersionMetadata>>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
+                }
+                
+                return response;
+            }
+            response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
+            return response;
+        }
+        
+
+        /// <summary>
+        /// Insert metadata for a particular apiID and versionID.
+        /// </summary>
+        public async Task<InsertVersionMetadataResponse> InsertVersionMetadataAsync(InsertVersionMetadataRequest request)
+        {
+            string baseUrl = _serverUrl;
+            if (baseUrl.EndsWith("/"))
+            {
+                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+            }
+            var urlString = URLBuilder.Build(baseUrl, "/v1/apis/{apiID}/version/{versionID}/metadata", request);
+            
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
+            httpRequest.Headers.Add("user-agent", $"speakeasy-sdk/{_language} {_sdkVersion} {_sdkGenVersion} {_openapiDocVersion}");
+            
+            var serializedBody = RequestBodySerializer.Serialize(request, "VersionMetadataInput", "json");
+            if (serializedBody == null) 
+            {
+                throw new ArgumentNullException("request body is required");
+            }
+            else
+            {
+                httpRequest.Content = serializedBody;
+            }
+            
+            var client = _securityClient;
+            
+            var httpResponse = await client.SendAsync(httpRequest);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            
+            var response = new InsertVersionMetadataResponse
+            {
+                StatusCode = (int)httpResponse.StatusCode,
+                ContentType = contentType,
+                RawResponse = httpResponse
+            };
+            if((response.StatusCode == 200))
+            {
+                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+                {
+                    response.VersionMetadata = JsonConvert.DeserializeObject<VersionMetadata>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
+                }
+                
+                return response;
+            }
+            response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
+            return response;
+        }
         
     }
 }

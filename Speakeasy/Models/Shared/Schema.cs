@@ -10,55 +10,51 @@
 #nullable enable
 namespace Speakeasy.Models.Shared
 {
+    using Newtonsoft.Json;
     using System;
-using Newtonsoft.Json;
     
-/// <summary>
-/// A Schema represents an API schema for a particular Api and Version.
-/// </summary>
+    
+    /// <summary>
+    /// A Schema represents an API schema for a particular Api and Version.
+    /// </summary>
     public class Schema
     {
-    /// <summary>
-    /// The ID of the Api this Schema belongs to.
-    /// </summary>
-        
+        /// <summary>
+        /// The ID of the Api this Schema belongs to.
+        /// </summary>
         [JsonProperty("api_id")]
         public string ApiId { get; set; }
         
-    /// <summary>
-    /// Creation timestamp.
-    /// </summary>
-        
+        /// <summary>
+        /// Creation timestamp.
+        /// </summary>
         [JsonProperty("created_at")]
         public DateTime CreatedAt { get; set; }
         
-    /// <summary>
-    /// A detailed description of the Schema.
-    /// </summary>
-        
+        /// <summary>
+        /// A detailed description of the Schema.
+        /// </summary>
         [JsonProperty("description")]
         public string Description { get; set; }
         
-    /// <summary>
-    /// An ID referencing this particular revision of the Schema.
-    /// </summary>
-        
+        /// <summary>
+        /// An ID referencing this particular revision of the Schema.
+        /// </summary>
         [JsonProperty("revision_id")]
         public string RevisionId { get; set; }
         
-    /// <summary>
-    /// The version ID of the Api this Schema belongs to.
-    /// </summary>
-        
+        /// <summary>
+        /// The version ID of the Api this Schema belongs to.
+        /// </summary>
         [JsonProperty("version_id")]
         public string VersionId { get; set; }
         
-    /// <summary>
-    /// The workspace ID this Schema belongs to.
-    /// </summary>
-        
+        /// <summary>
+        /// The workspace ID this Schema belongs to.
+        /// </summary>
         [JsonProperty("workspace_id")]
         public string WorkspaceId { get; set; }
         
     }
+    
 }

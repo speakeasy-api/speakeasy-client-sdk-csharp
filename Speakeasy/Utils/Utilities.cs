@@ -12,27 +12,79 @@ namespace Speakeasy.Utils
 {
     using System;
     using System.Linq;
+    using System.Net.Http.Headers;
     using System.Collections.Generic;
     using System.Text.RegularExpressions;
     using Newtonsoft.Json;
     using NodaTime;
+    using System.Collections;
 
     public class Utilities
     {
-        public static bool IsDictionary(object obj) =>
-            obj != null && obj.GetType().GetInterface(typeof(IDictionary<,>).Name) != null;
+        public static string SerializeJSON(object obj)
+        {
+            return JsonConvert.SerializeObject(
+                obj,
+                new JsonSerializerSettings()
+                {
+                    NullValueHandling = NullValueHandling.Ignore,
+                    Converters = new JsonConverter[]
+                    {
+                        new IsoDateTimeSerializer(),
+                        new EnumSerializer()
+                    }
+                }
+            );
+        }
 
-        public static bool IsList(object obj) =>
-            (!Utilities.IsDictionary(obj) && !Utilities.IsString(obj) && obj.GetType().GetInterface(typeof(IEnumerable<>).Name) != null);
+        public static bool IsDictionary(object o)
+        {
+            if (o == null)
+                return false;
+            return o is IDictionary
+                && o.GetType().IsGenericType
+                && o.GetType().GetGenericTypeDefinition().IsAssignableFrom(typeof(Dictionary<,>));
+        }
 
-        public static bool IsString(object obj) =>
-            obj != null && obj.GetType().IsAssignableTo(typeof(string));
+        public static bool IsList(object o)
+        {
+            if (o == null)
+                return false;
+            return o is IList
+                && o.GetType().IsGenericType
+                && o.GetType().GetGenericTypeDefinition().IsAssignableFrom(typeof(List<>));
+        }
 
-        public static bool IsPrimitive(object obj) =>
-            obj != null && obj.GetType().IsPrimitive;
+        public static bool IsClass(object o)
+        {
+            if (o == null)
+                return false;
+            return o.GetType().IsClass && o.GetType().FullName.StartsWith("SDK.Models");
+        }
 
-        public static bool IsEnum(object obj) =>
-            obj != null && obj.GetType().IsEnum;
+        // TODO: code review polyfilled for IsAssignableTo
+        public static bool IsSameOrSubclass(Type potentialBase, Type potentialDescendant)
+        {
+            return potentialDescendant.IsSubclassOf(potentialBase)
+                || potentialDescendant == potentialBase;
+        }
+
+        public static bool IsString(object obj)
+        {
+            if (obj != null)
+            {
+                var type = obj.GetType();
+                return IsSameOrSubclass(type, typeof(string));
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool IsPrimitive(object obj) => obj != null && obj.GetType().IsPrimitive;
+
+        public static bool IsEnum(object obj) => obj != null && obj.GetType().IsEnum;
 
         public static bool IsDate(object obj) =>
             obj != null && (obj.GetType() == typeof(DateTime) || obj.GetType() == typeof(LocalDate));
@@ -46,6 +98,38 @@ namespace Speakeasy.Utils
                 return match.Groups.Values.Last().ToString();
             }
             return input;
+        }
+
+        public static string ValueToString(object value)
+        {
+            if (value.GetType() == typeof(DateTime))
+            {
+                return ((DateTime)value)
+                    .ToUniversalTime()
+                    .ToString("o", System.Globalization.CultureInfo.InvariantCulture);
+            }
+            else if (value.GetType() == typeof(LocalDate))
+            {
+                return ((LocalDate)value)
+                    .ToDateTimeUnspecified()
+                    .ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+            }
+            else if (value.GetType() == typeof(bool))
+            {
+                return (bool)value ? "true" : "false";
+            }
+            else if (IsEnum(value))
+            {
+                var method = Type.GetType(value.GetType().FullName + "Extension")
+                    ?.GetMethod("Value");
+                if (method == null)
+                {
+                    return Convert.ChangeType(value, Enum.GetUnderlyingType(value.GetType())).ToString();
+                }
+                return (string)method.Invoke(null, new[] { value });
+            }
+
+            return value.ToString();
         }
 
         public static string ToString(object obj)
@@ -90,39 +174,37 @@ namespace Speakeasy.Utils
 
         public static bool IsContentTypeMatch(string expected, string actual)
         {
-            if(expected == actual || expected == "*" || expected == "*/*")
+            if (expected == actual || expected == "*" || expected == "*/*")
             {
                 return true;
             }
 
-            var expectedSubs = expected.Split('/');
-            var actualSubs = actual.Split('/');
-
-            var expectedMediaType = expectedSubs[0];
-            var expectedEncoding = expectedSubs[1];
-            var actualMediaType = actualSubs[0];
-            var actualEncoding = actualSubs[1];
-
-            if(expectedMediaType == "*" && expectedEncoding == actualEncoding)
+            try
             {
-                return true;
-            }
+                var mediaType = MediaTypeHeaderValue.Parse(actual).MediaType;
 
-            if(expectedMediaType != actualMediaType)
-            {
-                return false;
-            }
+                if (expected == mediaType)
+                {
+                    return true;
+                }
 
-            if(expectedEncoding == "*" || expectedEncoding == actualEncoding)
-            {
-                return true;
+                var parts = mediaType.Split('/');
+                if (parts.Length == 2)
+                {
+                    if (parts[0] + "/*" == expected || "*/" + parts[1] == expected)
+                    {
+                        return true;
+                    }
+                }
             }
+            catch (Exception) { }
+
             return false;
         }
 
         public static string PrefixBearer(string authHeaderValue)
         {
-            if(authHeaderValue.StartsWith("bearer ", StringComparison.InvariantCultureIgnoreCase))
+            if (authHeaderValue.StartsWith("bearer ", StringComparison.InvariantCultureIgnoreCase))
             {
                 return authHeaderValue;
             }

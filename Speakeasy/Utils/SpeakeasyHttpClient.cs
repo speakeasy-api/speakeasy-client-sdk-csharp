@@ -15,42 +15,82 @@ namespace Speakeasy.Utils
     using System.Net.Http;
     using System.Threading.Tasks;
 
-    public class SpeakeasyHttpClient
+    public interface ISpeakeasyHttpClient
     {
-        public HttpClient Client { get; private set; }
-        private Dictionary<string, List<string>> _headers { get; } = new Dictionary<string, List<string>>();
+        void AddHeader(string key, string value);
+        void AddQueryParam(string key, string value);
+        Task<HttpResponseMessage> SendAsync(HttpRequestMessage message);
+    }
 
-        internal SpeakeasyHttpClient(HttpClient client)
-        {
-            if(client == null)
-            {
-                client = new HttpClient();
-            }
-            Client = client;
-        }
+    public class SpeakeasyHttpClient : ISpeakeasyHttpClient
+    {
+        private ISpeakeasyHttpClient? client;
 
-        public void SetBaseUrl(string url)
+        private Dictionary<string, List<string>> headers { get; } =
+            new Dictionary<string, List<string>>();
+
+        private Dictionary<string, List<string>> queryParams { get; } =
+            new Dictionary<string, List<string>>();
+
+        internal SpeakeasyHttpClient(ISpeakeasyHttpClient? client = null)
         {
-            Client.BaseAddress = new Uri(url);
+            this.client = client;
         }
 
         public void AddHeader(string key, string value)
         {
-            if(!_headers.ContainsKey(key))
+            if (headers.ContainsKey(key))
             {
-                _headers.Add(key, new List<string>());
+                headers[key].Add(value);
             }
-            _headers[key].Add(value);
+            else
+            {
+                headers.Add(key, new List<string> { value });
+            }
+        }
+
+        public void AddQueryParam(string key, string value)
+        {
+            if (queryParams.ContainsKey(key))
+            {
+                queryParams[key].Add(value);
+            }
+            else
+            {
+                queryParams.Add(key, new List<string> { value });
+            }
         }
 
         public async Task<HttpResponseMessage> SendAsync(HttpRequestMessage message)
         {
-            foreach(var h in _headers)
+            foreach(var hh in headers)
             {
-                message.Headers.Add(h.Key, h.Value);
+                foreach(var hv in hh.Value)
+                {
+                    message.Headers.Add(hh.Key, hv);
+                }
             }
 
-            return await Client.SendAsync(message);
+            /*var qp = URLBuilder.SerializeQueryParams(queryParams);
+
+            if (qp != "")
+            {
+                if (message.uri.Query == "")
+                {
+                    message.url += "?" + qp;
+                }
+                else
+                {
+                    message.url += "&" + qp;
+                }
+            }*/
+
+            if (client != null)
+            {
+                return await client.SendAsync(message);
+            }
+
+	    return await new HttpClient().SendAsync(message);
         }
     }
 }

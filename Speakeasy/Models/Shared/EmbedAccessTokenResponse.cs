@@ -12,14 +12,15 @@ namespace Speakeasy.Models.Shared
 {
     using Newtonsoft.Json;
     
-/// <summary>
-/// An EmbedAccessTokenResponse contains a token that can be used to embed a Speakeasy dashboard.
-/// </summary>
+    
+    /// <summary>
+    /// An EmbedAccessTokenResponse contains a token that can be used to embed a Speakeasy dashboard.
+    /// </summary>
     public class EmbedAccessTokenResponse
     {
-        
         [JsonProperty("access_token")]
         public string AccessToken { get; set; }
         
     }
+    
 }

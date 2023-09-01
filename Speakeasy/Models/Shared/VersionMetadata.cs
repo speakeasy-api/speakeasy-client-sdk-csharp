@@ -10,55 +10,51 @@
 #nullable enable
 namespace Speakeasy.Models.Shared
 {
+    using Newtonsoft.Json;
     using System;
-using Newtonsoft.Json;
     
-/// <summary>
-/// A set of keys and associated values, attached to a particular version of an Api.
-/// </summary>
+    
+    /// <summary>
+    /// A set of keys and associated values, attached to a particular version of an Api.
+    /// </summary>
     public class VersionMetadata
     {
-    /// <summary>
-    /// The ID of the Api this Metadata belongs to.
-    /// </summary>
-        
+        /// <summary>
+        /// The ID of the Api this Metadata belongs to.
+        /// </summary>
         [JsonProperty("api_id")]
         public string ApiId { get; set; }
         
-    /// <summary>
-    /// Creation timestamp.
-    /// </summary>
-        
+        /// <summary>
+        /// Creation timestamp.
+        /// </summary>
         [JsonProperty("created_at")]
         public DateTime CreatedAt { get; set; }
         
-    /// <summary>
-    /// The key for this metadata.
-    /// </summary>
-        
+        /// <summary>
+        /// The key for this metadata.
+        /// </summary>
         [JsonProperty("meta_key")]
         public string MetaKey { get; set; }
         
-    /// <summary>
-    /// One of the values for this metadata.
-    /// </summary>
-        
+        /// <summary>
+        /// One of the values for this metadata.
+        /// </summary>
         [JsonProperty("meta_value")]
         public string MetaValue { get; set; }
         
-    /// <summary>
-    /// The version ID of the Api this Metadata belongs to.
-    /// </summary>
-        
+        /// <summary>
+        /// The version ID of the Api this Metadata belongs to.
+        /// </summary>
         [JsonProperty("version_id")]
         public string VersionId { get; set; }
         
-    /// <summary>
-    /// The workspace ID this Metadata belongs to.
-    /// </summary>
-        
+        /// <summary>
+        /// The workspace ID this Metadata belongs to.
+        /// </summary>
         [JsonProperty("workspace_id")]
         public string WorkspaceId { get; set; }
         
     }
+    
 }

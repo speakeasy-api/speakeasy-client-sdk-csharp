@@ -3,8 +3,8 @@
 
 ```csharp
 using Speakeasy;
-using Speakeasy.Models.Security;
-using Speakeasy.Models.Apis;
+using Speakeasy.Models.Shared;
+using Speakeasy.Models.Operations;
 
 var sdk = new SpeakeasySDK(
     security: new Security() {
@@ -34,5 +34,7 @@ var res = await sdk.Apis.GetApisAsync(new GetApisRequest() {
         And = false,
     },
 });
+
+// handle response
 ```
 <!-- End SDK Example Usage -->

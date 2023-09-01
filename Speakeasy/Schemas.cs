@@ -8,15 +8,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 #nullable enable
-namespace Speakeasy.Schemas
+namespace Speakeasy
 {
+    using Newtonsoft.Json;
+    using Speakeasy.Models.Operations;
+    using Speakeasy.Models.Shared;
+    using Speakeasy.Utils;
+    using System.Collections.Generic;
+    using System.Net.Http.Headers;
+    using System.Net.Http;
+    using System.Threading.Tasks;
     using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Speakeasy.Models.Schemas;
-using Speakeasy.Models.Shared;
-using Speakeasy.Utils;
 
     public interface ISchemasSDK
     {
@@ -32,283 +34,395 @@ using Speakeasy.Utils;
 
     public class SchemasSDK: ISchemasSDK
     {
-
         public SDKConfig Config { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.12.0";
-        private const string _sdkGenVersion = "2.89.1";
+        private const string _sdkVersion = "1.13.0";
+        private const string _sdkGenVersion = "2.91.2";
         private const string _openapiDocVersion = "0.3.0";
-        public Uri ServerUrl { get { return _defaultClient.Client.BaseAddress; } }
-        private SpeakeasyHttpClient _defaultClient;
-        private SpeakeasyHttpClient _securityClient;
+        private string _serverUrl = "";
+        private ISpeakeasyHttpClient _defaultClient;
+        private ISpeakeasyHttpClient _securityClient;
 
-        public SchemasSDK(SpeakeasyHttpClient defaultClient, SpeakeasyHttpClient securityClient, SDKConfig config)
+        public SchemasSDK(ISpeakeasyHttpClient defaultClient, ISpeakeasyHttpClient securityClient, string serverUrl, SDKConfig config)
         {
             _defaultClient = defaultClient;
             _securityClient = securityClient;
+            _serverUrl = serverUrl;
             Config = config;
         }
-
         
-    /// <summary>
-    /// Delete a particular schema revision for an Api.
-    /// </summary>
-    public async Task<DeleteSchemaResponse> DeleteSchemaAsync(DeleteSchemaRequest? request = null)
-    {
-        string baseUrl = "";
-        var message = DeleteSchemaRequest.BuildHttpRequestMessage("deleteSchema", request, baseUrl);
-        var client = _securityClient;
 
-        message.Headers.Add("user-agent", $"speakeasy-sdk/{_language} {_sdkVersion} {_sdkGenVersion} {_openapiDocVersion}");
-        var httpResponseMessage = await client.SendAsync(message);
-        var response = new DeleteSchemaResponse
+        /// <summary>
+        /// Delete a particular schema revision for an Api.
+        /// </summary>
+        public async Task<DeleteSchemaResponse> DeleteSchemaAsync(DeleteSchemaRequest? request = null)
         {
-            StatusCode = (int)httpResponseMessage.StatusCode,
-            ContentType = httpResponseMessage.Content.Headers.ContentType?.MediaType,
-            RawResponse = httpResponseMessage
-        };
-        if((response.StatusCode == 200))
-        {
+            string baseUrl = _serverUrl;
+            if (baseUrl.EndsWith("/"))
+            {
+                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+            }
+            var urlString = URLBuilder.Build(baseUrl, "/v1/apis/{apiID}/version/{versionID}/schema/{revisionID}", request);
+            
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
+            httpRequest.Headers.Add("user-agent", $"speakeasy-sdk/{_language} {_sdkVersion} {_sdkGenVersion} {_openapiDocVersion}");
+            
+            
+            var client = _securityClient;
+            
+            var httpResponse = await client.SendAsync(httpRequest);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            
+            var response = new DeleteSchemaResponse
+            {
+                StatusCode = (int)httpResponse.StatusCode,
+                ContentType = contentType,
+                RawResponse = httpResponse
+            };
+            if((response.StatusCode == 200))
+            {
+                
+                return response;
+            }
+            response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
             return response;
         }
-        response.Error = JsonConvert.DeserializeObject<Error>(await httpResponseMessage.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
-        return response;
-    }
-
         
-    /// <summary>
-    /// Download the latest schema for a particular apiID.
-    /// </summary>
-    public async Task<DownloadSchemaResponse> DownloadSchemaAsync(DownloadSchemaRequest? request = null)
-    {
-        string baseUrl = "";
-        var message = DownloadSchemaRequest.BuildHttpRequestMessage("downloadSchema", request, baseUrl);
-        var client = _securityClient;
 
-        message.Headers.Add("user-agent", $"speakeasy-sdk/{_language} {_sdkVersion} {_sdkGenVersion} {_openapiDocVersion}");
-        var httpResponseMessage = await client.SendAsync(message);
-        var response = new DownloadSchemaResponse
+        /// <summary>
+        /// Download the latest schema for a particular apiID.
+        /// </summary>
+        public async Task<DownloadSchemaResponse> DownloadSchemaAsync(DownloadSchemaRequest? request = null)
         {
-            StatusCode = (int)httpResponseMessage.StatusCode,
-            ContentType = httpResponseMessage.Content.Headers.ContentType?.MediaType,
-            RawResponse = httpResponseMessage
-        };
-        if((response.StatusCode == 200))
-        {
-            if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+            string baseUrl = _serverUrl;
+            if (baseUrl.EndsWith("/"))
             {
-                response.Schema = await response.RawResponse.Content.ReadAsByteArrayAsync();
+                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
             }
-            if(Utilities.IsContentTypeMatch("application/x-yaml",response.ContentType))
+            var urlString = URLBuilder.Build(baseUrl, "/v1/apis/{apiID}/version/{versionID}/schema/download", request);
+            
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("user-agent", $"speakeasy-sdk/{_language} {_sdkVersion} {_sdkGenVersion} {_openapiDocVersion}");
+            
+            
+            var client = _securityClient;
+            
+            var httpResponse = await client.SendAsync(httpRequest);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            
+            var response = new DownloadSchemaResponse
             {
-                response.Schema = await response.RawResponse.Content.ReadAsByteArrayAsync();
+                StatusCode = (int)httpResponse.StatusCode,
+                ContentType = contentType,
+                RawResponse = httpResponse
+            };
+            if((response.StatusCode == 200))
+            {
+                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+                {
+                    response.Schema = await httpResponse.Content.ReadAsByteArrayAsync();
+                }
+                if(Utilities.IsContentTypeMatch("application/x-yaml",response.ContentType))
+                {
+                    response.Schema = await httpResponse.Content.ReadAsByteArrayAsync();
+                }
+                
+                return response;
             }
+            response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
             return response;
         }
-        response.Error = JsonConvert.DeserializeObject<Error>(await httpResponseMessage.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
-        return response;
-    }
-
         
-    /// <summary>
-    /// Download a particular schema revision for an Api.
-    /// </summary>
-    public async Task<DownloadSchemaRevisionResponse> DownloadSchemaRevisionAsync(DownloadSchemaRevisionRequest? request = null)
-    {
-        string baseUrl = "";
-        var message = DownloadSchemaRevisionRequest.BuildHttpRequestMessage("downloadSchemaRevision", request, baseUrl);
-        var client = _securityClient;
 
-        message.Headers.Add("user-agent", $"speakeasy-sdk/{_language} {_sdkVersion} {_sdkGenVersion} {_openapiDocVersion}");
-        var httpResponseMessage = await client.SendAsync(message);
-        var response = new DownloadSchemaRevisionResponse
+        /// <summary>
+        /// Download a particular schema revision for an Api.
+        /// </summary>
+        public async Task<DownloadSchemaRevisionResponse> DownloadSchemaRevisionAsync(DownloadSchemaRevisionRequest? request = null)
         {
-            StatusCode = (int)httpResponseMessage.StatusCode,
-            ContentType = httpResponseMessage.Content.Headers.ContentType?.MediaType,
-            RawResponse = httpResponseMessage
-        };
-        if((response.StatusCode == 200))
-        {
-            if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+            string baseUrl = _serverUrl;
+            if (baseUrl.EndsWith("/"))
             {
-                response.Schema = await response.RawResponse.Content.ReadAsByteArrayAsync();
+                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
             }
-            if(Utilities.IsContentTypeMatch("application/x-yaml",response.ContentType))
+            var urlString = URLBuilder.Build(baseUrl, "/v1/apis/{apiID}/version/{versionID}/schema/{revisionID}/download", request);
+            
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("user-agent", $"speakeasy-sdk/{_language} {_sdkVersion} {_sdkGenVersion} {_openapiDocVersion}");
+            
+            
+            var client = _securityClient;
+            
+            var httpResponse = await client.SendAsync(httpRequest);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            
+            var response = new DownloadSchemaRevisionResponse
             {
-                response.Schema = await response.RawResponse.Content.ReadAsByteArrayAsync();
+                StatusCode = (int)httpResponse.StatusCode,
+                ContentType = contentType,
+                RawResponse = httpResponse
+            };
+            if((response.StatusCode == 200))
+            {
+                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+                {
+                    response.Schema = await httpResponse.Content.ReadAsByteArrayAsync();
+                }
+                if(Utilities.IsContentTypeMatch("application/x-yaml",response.ContentType))
+                {
+                    response.Schema = await httpResponse.Content.ReadAsByteArrayAsync();
+                }
+                
+                return response;
             }
+            response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
             return response;
         }
-        response.Error = JsonConvert.DeserializeObject<Error>(await httpResponseMessage.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
-        return response;
-    }
-
         
-    /// <summary>
-    /// Get information about the latest schema.
-    /// 
-    /// <remarks>
-    /// Returns information about the last uploaded schema for a particular API version. 
-    /// This won't include the schema itself, that can be retrieved via the downloadSchema operation.
-    /// </remarks>
-    /// </summary>
-    public async Task<GetSchemaResponse> GetSchemaAsync(GetSchemaRequest? request = null)
-    {
-        string baseUrl = "";
-        var message = GetSchemaRequest.BuildHttpRequestMessage("getSchema", request, baseUrl);
-        var client = _securityClient;
 
-        message.Headers.Add("user-agent", $"speakeasy-sdk/{_language} {_sdkVersion} {_sdkGenVersion} {_openapiDocVersion}");
-        var httpResponseMessage = await client.SendAsync(message);
-        var response = new GetSchemaResponse
+        /// <summary>
+        /// Get information about the latest schema.
+        /// 
+        /// <remarks>
+        /// Returns information about the last uploaded schema for a particular API version. 
+        /// This won't include the schema itself, that can be retrieved via the downloadSchema operation.
+        /// </remarks>
+        /// </summary>
+        public async Task<GetSchemaResponse> GetSchemaAsync(GetSchemaRequest? request = null)
         {
-            StatusCode = (int)httpResponseMessage.StatusCode,
-            ContentType = httpResponseMessage.Content.Headers.ContentType?.MediaType,
-            RawResponse = httpResponseMessage
-        };
-        if((response.StatusCode == 200))
-        {
-            if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+            string baseUrl = _serverUrl;
+            if (baseUrl.EndsWith("/"))
             {
-                response.Schema = JsonConvert.DeserializeObject<Schema>(await httpResponseMessage.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
+                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
             }
-            return response;
-        }
-        response.Error = JsonConvert.DeserializeObject<Error>(await httpResponseMessage.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
-        return response;
-    }
+            var urlString = URLBuilder.Build(baseUrl, "/v1/apis/{apiID}/version/{versionID}/schema", request);
+            
 
-        
-    /// <summary>
-    /// Get a diff of two schema revisions for an Api.
-    /// </summary>
-    public async Task<GetSchemaDiffResponse> GetSchemaDiffAsync(GetSchemaDiffRequest? request = null)
-    {
-        string baseUrl = "";
-        var message = GetSchemaDiffRequest.BuildHttpRequestMessage("getSchemaDiff", request, baseUrl);
-        var client = _securityClient;
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("user-agent", $"speakeasy-sdk/{_language} {_sdkVersion} {_sdkGenVersion} {_openapiDocVersion}");
+            
+            
+            var client = _securityClient;
+            
+            var httpResponse = await client.SendAsync(httpRequest);
 
-        message.Headers.Add("user-agent", $"speakeasy-sdk/{_language} {_sdkVersion} {_sdkGenVersion} {_openapiDocVersion}");
-        var httpResponseMessage = await client.SendAsync(message);
-        var response = new GetSchemaDiffResponse
-        {
-            StatusCode = (int)httpResponseMessage.StatusCode,
-            ContentType = httpResponseMessage.Content.Headers.ContentType?.MediaType,
-            RawResponse = httpResponseMessage
-        };
-        if((response.StatusCode == 200))
-        {
-            if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            
+            var response = new GetSchemaResponse
             {
-                response.SchemaDiff = JsonConvert.DeserializeObject<SchemaDiff>(await httpResponseMessage.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
-            }
-            return response;
-        }
-        response.Error = JsonConvert.DeserializeObject<Error>(await httpResponseMessage.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
-        return response;
-    }
-
-        
-    /// <summary>
-    /// Get information about a particular schema revision for an Api.
-    /// 
-    /// <remarks>
-    /// Returns information about the last uploaded schema for a particular schema revision. 
-    /// This won't include the schema itself, that can be retrieved via the downloadSchema operation.
-    /// </remarks>
-    /// </summary>
-    public async Task<GetSchemaRevisionResponse> GetSchemaRevisionAsync(GetSchemaRevisionRequest? request = null)
-    {
-        string baseUrl = "";
-        var message = GetSchemaRevisionRequest.BuildHttpRequestMessage("getSchemaRevision", request, baseUrl);
-        var client = _securityClient;
-
-        message.Headers.Add("user-agent", $"speakeasy-sdk/{_language} {_sdkVersion} {_sdkGenVersion} {_openapiDocVersion}");
-        var httpResponseMessage = await client.SendAsync(message);
-        var response = new GetSchemaRevisionResponse
-        {
-            StatusCode = (int)httpResponseMessage.StatusCode,
-            ContentType = httpResponseMessage.Content.Headers.ContentType?.MediaType,
-            RawResponse = httpResponseMessage
-        };
-        if((response.StatusCode == 200))
-        {
-            if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+                StatusCode = (int)httpResponse.StatusCode,
+                ContentType = contentType,
+                RawResponse = httpResponse
+            };
+            if((response.StatusCode == 200))
             {
-                response.Schema = JsonConvert.DeserializeObject<Schema>(await httpResponseMessage.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
+                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+                {
+                    response.Schema = JsonConvert.DeserializeObject<Schema>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
+                }
+                
+                return response;
             }
+            response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
             return response;
         }
-        response.Error = JsonConvert.DeserializeObject<Error>(await httpResponseMessage.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
-        return response;
-    }
-
         
-    /// <summary>
-    /// Get information about all schemas associated with a particular apiID.
-    /// 
-    /// <remarks>
-    /// Returns information the schemas associated with a particular apiID. 
-    /// This won't include the schemas themselves, they can be retrieved via the downloadSchema operation.
-    /// </remarks>
-    /// </summary>
-    public async Task<GetSchemasResponse> GetSchemasAsync(GetSchemasRequest? request = null)
-    {
-        string baseUrl = "";
-        var message = GetSchemasRequest.BuildHttpRequestMessage("getSchemas", request, baseUrl);
-        var client = _securityClient;
 
-        message.Headers.Add("user-agent", $"speakeasy-sdk/{_language} {_sdkVersion} {_sdkGenVersion} {_openapiDocVersion}");
-        var httpResponseMessage = await client.SendAsync(message);
-        var response = new GetSchemasResponse
+        /// <summary>
+        /// Get a diff of two schema revisions for an Api.
+        /// </summary>
+        public async Task<GetSchemaDiffResponse> GetSchemaDiffAsync(GetSchemaDiffRequest? request = null)
         {
-            StatusCode = (int)httpResponseMessage.StatusCode,
-            ContentType = httpResponseMessage.Content.Headers.ContentType?.MediaType,
-            RawResponse = httpResponseMessage
-        };
-        if((response.StatusCode == 200))
-        {
-            if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+            string baseUrl = _serverUrl;
+            if (baseUrl.EndsWith("/"))
             {
-                response.Schemata = JsonConvert.DeserializeObject<List<Schema>>(await httpResponseMessage.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
+                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
             }
+            var urlString = URLBuilder.Build(baseUrl, "/v1/apis/{apiID}/version/{versionID}/schema/{baseRevisionID}/diff/{targetRevisionID}", request);
+            
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("user-agent", $"speakeasy-sdk/{_language} {_sdkVersion} {_sdkGenVersion} {_openapiDocVersion}");
+            
+            
+            var client = _securityClient;
+            
+            var httpResponse = await client.SendAsync(httpRequest);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            
+            var response = new GetSchemaDiffResponse
+            {
+                StatusCode = (int)httpResponse.StatusCode,
+                ContentType = contentType,
+                RawResponse = httpResponse
+            };
+            if((response.StatusCode == 200))
+            {
+                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+                {
+                    response.SchemaDiff = JsonConvert.DeserializeObject<SchemaDiff>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
+                }
+                
+                return response;
+            }
+            response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
             return response;
         }
-        response.Error = JsonConvert.DeserializeObject<Error>(await httpResponseMessage.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
-        return response;
-    }
-
         
-    /// <summary>
-    /// Register a schema.
-    /// 
-    /// <remarks>
-    /// Allows uploading a schema for a particular API version.
-    /// This will be used to populate ApiEndpoints and used as a base for any schema generation if present.
-    /// </remarks>
-    /// </summary>
-    public async Task<RegisterSchemaResponse> RegisterSchemaAsync(RegisterSchemaRequest request)
-    {
-        string baseUrl = "";
-        var message = RegisterSchemaRequest.BuildHttpRequestMessage("registerSchema", request, baseUrl);
-        var client = _securityClient;
 
-        message.Headers.Add("user-agent", $"speakeasy-sdk/{_language} {_sdkVersion} {_sdkGenVersion} {_openapiDocVersion}");
-        var httpResponseMessage = await client.SendAsync(message);
-        var response = new RegisterSchemaResponse
+        /// <summary>
+        /// Get information about a particular schema revision for an Api.
+        /// 
+        /// <remarks>
+        /// Returns information about the last uploaded schema for a particular schema revision. 
+        /// This won't include the schema itself, that can be retrieved via the downloadSchema operation.
+        /// </remarks>
+        /// </summary>
+        public async Task<GetSchemaRevisionResponse> GetSchemaRevisionAsync(GetSchemaRevisionRequest? request = null)
         {
-            StatusCode = (int)httpResponseMessage.StatusCode,
-            ContentType = httpResponseMessage.Content.Headers.ContentType?.MediaType,
-            RawResponse = httpResponseMessage
-        };
-        if((response.StatusCode == 200))
-        {
+            string baseUrl = _serverUrl;
+            if (baseUrl.EndsWith("/"))
+            {
+                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+            }
+            var urlString = URLBuilder.Build(baseUrl, "/v1/apis/{apiID}/version/{versionID}/schema/{revisionID}", request);
+            
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("user-agent", $"speakeasy-sdk/{_language} {_sdkVersion} {_sdkGenVersion} {_openapiDocVersion}");
+            
+            
+            var client = _securityClient;
+            
+            var httpResponse = await client.SendAsync(httpRequest);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            
+            var response = new GetSchemaRevisionResponse
+            {
+                StatusCode = (int)httpResponse.StatusCode,
+                ContentType = contentType,
+                RawResponse = httpResponse
+            };
+            if((response.StatusCode == 200))
+            {
+                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+                {
+                    response.Schema = JsonConvert.DeserializeObject<Schema>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
+                }
+                
+                return response;
+            }
+            response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
             return response;
         }
-        response.Error = JsonConvert.DeserializeObject<Error>(await httpResponseMessage.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
-        return response;
-    }
+        
 
+        /// <summary>
+        /// Get information about all schemas associated with a particular apiID.
+        /// 
+        /// <remarks>
+        /// Returns information the schemas associated with a particular apiID. 
+        /// This won't include the schemas themselves, they can be retrieved via the downloadSchema operation.
+        /// </remarks>
+        /// </summary>
+        public async Task<GetSchemasResponse> GetSchemasAsync(GetSchemasRequest? request = null)
+        {
+            string baseUrl = _serverUrl;
+            if (baseUrl.EndsWith("/"))
+            {
+                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+            }
+            var urlString = URLBuilder.Build(baseUrl, "/v1/apis/{apiID}/version/{versionID}/schemas", request);
+            
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("user-agent", $"speakeasy-sdk/{_language} {_sdkVersion} {_sdkGenVersion} {_openapiDocVersion}");
+            
+            
+            var client = _securityClient;
+            
+            var httpResponse = await client.SendAsync(httpRequest);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            
+            var response = new GetSchemasResponse
+            {
+                StatusCode = (int)httpResponse.StatusCode,
+                ContentType = contentType,
+                RawResponse = httpResponse
+            };
+            if((response.StatusCode == 200))
+            {
+                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+                {
+                    response.Schemata = JsonConvert.DeserializeObject<List<Schema>>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
+                }
+                
+                return response;
+            }
+            response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
+            return response;
+        }
+        
+
+        /// <summary>
+        /// Register a schema.
+        /// 
+        /// <remarks>
+        /// Allows uploading a schema for a particular API version.
+        /// This will be used to populate ApiEndpoints and used as a base for any schema generation if present.
+        /// </remarks>
+        /// </summary>
+        public async Task<RegisterSchemaResponse> RegisterSchemaAsync(RegisterSchemaRequest request)
+        {
+            string baseUrl = _serverUrl;
+            if (baseUrl.EndsWith("/"))
+            {
+                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+            }
+            var urlString = URLBuilder.Build(baseUrl, "/v1/apis/{apiID}/version/{versionID}/schema", request);
+            
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
+            httpRequest.Headers.Add("user-agent", $"speakeasy-sdk/{_language} {_sdkVersion} {_sdkGenVersion} {_openapiDocVersion}");
+            
+            var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "multipart");
+            if (serializedBody == null) 
+            {
+                throw new ArgumentNullException("request body is required");
+            }
+            else
+            {
+                httpRequest.Content = serializedBody;
+            }
+            
+            var client = _securityClient;
+            
+            var httpResponse = await client.SendAsync(httpRequest);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            
+            var response = new RegisterSchemaResponse
+            {
+                StatusCode = (int)httpResponse.StatusCode,
+                ContentType = contentType,
+                RawResponse = httpResponse
+            };
+            if((response.StatusCode == 200))
+            {
+                
+                return response;
+            }
+            response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
+            return response;
+        }
         
     }
 }
