@@ -20,6 +20,7 @@ jobs:
         - csharp
       publish_csharp: true
       force: ${{ github.event.inputs.force }}
+      create_release: true
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
       nuget_api_key: ${{ secrets.NUGET_API_KEY }}
