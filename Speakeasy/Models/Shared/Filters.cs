@@ -29,13 +29,13 @@ namespace Speakeasy.Models.Shared
         /// The maximum number of results to return.
         /// </summary>
         [JsonProperty("limit")]
-        public int Limit { get; set; }
+        public long Limit { get; set; }
         
         /// <summary>
         /// The offset to start the query from.
         /// </summary>
         [JsonProperty("offset")]
-        public int Offset { get; set; }
+        public long Offset { get; set; }
         
         /// <summary>
         /// The operator to use when combining filters.

@@ -48,7 +48,7 @@ namespace Speakeasy.Models.Shared
         /// The latency of the request.
         /// </summary>
         [JsonProperty("latency")]
-        public int Latency { get; set; }
+        public long Latency { get; set; }
         
         /// <summary>
         /// Metadata associated with this request
@@ -90,7 +90,7 @@ namespace Speakeasy.Models.Shared
         /// The status code of the request.
         /// </summary>
         [JsonProperty("status")]
-        public int Status { get; set; }
+        public long Status { get; set; }
         
         /// <summary>
         /// The version ID of the Api this request was made to.

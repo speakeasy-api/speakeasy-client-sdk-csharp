@@ -35,7 +35,7 @@ namespace Speakeasy.Models.Shared
         /// The size of the HAR content in bytes.
         /// </summary>
         [JsonProperty("har_size_bytes")]
-        public int HarSizeBytes { get; set; }
+        public long HarSizeBytes { get; set; }
         
         /// <summary>
         /// The ID of this request.

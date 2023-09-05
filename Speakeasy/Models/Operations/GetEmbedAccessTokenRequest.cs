@@ -26,7 +26,7 @@ namespace Speakeasy.Models.Operations
         /// The duration (in minutes) of the embed access token.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=duration")]
-        public int? Duration { get; set; }
+        public long? Duration { get; set; }
         
         /// <summary>
         /// The filter to apply to the query.
