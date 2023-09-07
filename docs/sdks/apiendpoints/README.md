@@ -33,9 +33,9 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.ApiEndpoints.DeleteApiEndpointAsync(new DeleteApiEndpointRequest() {
-    ApiEndpointID = "delectus",
-    ApiID = "tempora",
-    VersionID = "suscipit",
+    ApiEndpointID = "distinctio",
+    ApiID = "quibusdam",
+    VersionID = "unde",
 });
 
 // handle response
@@ -72,9 +72,9 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.ApiEndpoints.FindApiEndpointAsync(new FindApiEndpointRequest() {
-    ApiID = "molestiae",
-    DisplayName = "minus",
-    VersionID = "placeat",
+    ApiID = "nulla",
+    DisplayName = "corrupti",
+    VersionID = "illum",
 });
 
 // handle response
@@ -111,9 +111,9 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.ApiEndpoints.GenerateOpenApiSpecForApiEndpointAsync(new GenerateOpenApiSpecForApiEndpointRequest() {
-    ApiEndpointID = "voluptatum",
-    ApiID = "iusto",
-    VersionID = "excepturi",
+    ApiEndpointID = "vel",
+    ApiID = "error",
+    VersionID = "deserunt",
 });
 
 // handle response
@@ -149,9 +149,9 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.ApiEndpoints.GeneratePostmanCollectionForApiEndpointAsync(new GeneratePostmanCollectionForApiEndpointRequest() {
-    ApiEndpointID = "nisi",
-    ApiID = "recusandae",
-    VersionID = "temporibus",
+    ApiEndpointID = "suscipit",
+    ApiID = "iure",
+    VersionID = "magnam",
 });
 
 // handle response
@@ -187,7 +187,7 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.ApiEndpoints.GetAllApiEndpointsAsync(new GetAllApiEndpointsRequest() {
-    ApiID = "ab",
+    ApiID = "debitis",
 });
 
 // handle response
@@ -223,8 +223,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.ApiEndpoints.GetAllForVersionApiEndpointsAsync(new GetAllForVersionApiEndpointsRequest() {
-    ApiID = "quis",
-    VersionID = "veritatis",
+    ApiID = "ipsa",
+    VersionID = "delectus",
 });
 
 // handle response
@@ -260,9 +260,9 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.ApiEndpoints.GetApiEndpointAsync(new GetApiEndpointRequest() {
-    ApiEndpointID = "deserunt",
-    ApiID = "perferendis",
-    VersionID = "ipsam",
+    ApiEndpointID = "tempora",
+    ApiID = "suscipit",
+    VersionID = "molestiae",
 });
 
 // handle response
@@ -299,16 +299,16 @@ var sdk = new SpeakeasySDK(
 
 var res = await sdk.ApiEndpoints.UpsertApiEndpointAsync(new UpsertApiEndpointRequest() {
     ApiEndpointInput = new ApiEndpointInput() {
-        ApiEndpointId = "repellendus",
-        Description = "sapiente",
-        DisplayName = "quo",
-        Method = "odit",
-        Path = "at",
-        VersionId = "at",
+        ApiEndpointId = "minus",
+        Description = "placeat",
+        DisplayName = "voluptatum",
+        Method = "iusto",
+        Path = "excepturi",
+        VersionId = "nisi",
     },
-    ApiEndpointID = "maiores",
-    ApiID = "molestiae",
-    VersionID = "quod",
+    ApiEndpointID = "recusandae",
+    ApiID = "temporibus",
+    VersionID = "ab",
 });
 
 // handle response

@@ -29,19 +29,19 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Embeds.GetEmbedAccessTokenAsync(new GetEmbedAccessTokenRequest() {
-    Description = "laborum",
-    Duration = 170909,
+    Description = "porro",
+    Duration = 678880,
     Filters = new Filters() {
         Filters = new List<Filter>() {
             new Filter() {
-                Key = "corporis",
-                Operator = "explicabo",
-                Value = "nobis",
+                Key = "dicta",
+                Operator = "nam",
+                Value = "officia",
             },
         },
-        Limit = 315428,
-        Offset = 607831,
-        Operator = "nemo",
+        Limit = 582020,
+        Offset = 143353,
+        Operator = "deleniti",
     },
 });
 
@@ -105,7 +105,7 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Embeds.RevokeEmbedAccessTokenAsync(new RevokeEmbedAccessTokenRequest() {
-    TokenID = "minima",
+    TokenID = "hic",
 });
 
 // handle response

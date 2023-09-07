@@ -31,8 +31,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Apis.DeleteApiAsync(new DeleteApiRequest() {
-    ApiID = "quod",
-    VersionID = "esse",
+    ApiID = "quis",
+    VersionID = "veritatis",
 });
 
 // handle response
@@ -69,8 +69,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Apis.GenerateOpenApiSpecAsync(new GenerateOpenApiSpecRequest() {
-    ApiID = "totam",
-    VersionID = "porro",
+    ApiID = "deserunt",
+    VersionID = "perferendis",
 });
 
 // handle response
@@ -106,8 +106,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Apis.GeneratePostmanCollectionAsync(new GeneratePostmanCollectionRequest() {
-    ApiID = "dolorum",
-    VersionID = "dicta",
+    ApiID = "ipsam",
+    VersionID = "repellendus",
 });
 
 // handle response
@@ -144,19 +144,10 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Apis.GetAllApiVersionsAsync(new GetAllApiVersionsRequest() {
-    ApiID = "nam",
+    ApiID = "sapiente",
     Metadata = new Dictionary<string, List<string>>() {
-        { "occaecati", new List<string>() {
-            "deleniti",
-        } },
-        { "hic", new List<string>() {
-            "totam",
-            "beatae",
-            "commodi",
-            "molestiae",
-        } },
-        { "modi", new List<string>() {
-            "impedit",
+        { "quo", new List<string>() {
+            "odit",
         } },
     },
     Op = new GetAllApiVersionsOp() {
@@ -199,14 +190,8 @@ var sdk = new SpeakeasySDK(
 
 var res = await sdk.Apis.GetApisAsync(new GetApisRequest() {
     Metadata = new Dictionary<string, List<string>>() {
-        { "esse", new List<string>() {
-            "excepturi",
-        } },
-        { "aspernatur", new List<string>() {
-            "ad",
-        } },
-        { "natus", new List<string>() {
-            "iste",
+        { "at", new List<string>() {
+            "at",
         } },
     },
     Op = new GetApisOp() {
@@ -249,25 +234,16 @@ var sdk = new SpeakeasySDK(
 
 var res = await sdk.Apis.UpsertApiAsync(new UpsertApiRequest() {
     ApiInput = new ApiInput() {
-        ApiId = "dolor",
-        Description = "natus",
+        ApiId = "maiores",
+        Description = "molestiae",
         MetaData = new Dictionary<string, List<string>>() {
-            { "hic", new List<string>() {
-                "fuga",
-                "in",
-                "corporis",
-                "iste",
-            } },
-            { "iure", new List<string>() {
-                "quidem",
-                "architecto",
-                "ipsa",
-                "reiciendis",
+            { "quod", new List<string>() {
+                "quod",
             } },
         },
-        VersionId = "est",
+        VersionId = "esse",
     },
-    ApiID = "mollitia",
+    ApiID = "totam",
 });
 
 // handle response
