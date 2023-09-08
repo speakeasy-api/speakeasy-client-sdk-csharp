@@ -20,7 +20,7 @@ namespace Speakeasy.Models.Shared
     public class Plugin
     {
         [JsonProperty("code")]
-        public string Code { get; set; }
+        public string Code { get; set; } = default!;
         
         [JsonProperty("created_at")]
         public DateTime? CreatedAt { get; set; }
@@ -29,16 +29,16 @@ namespace Speakeasy.Models.Shared
         public string? EvalHash { get; set; }
         
         [JsonProperty("plugin_id")]
-        public string PluginId { get; set; }
+        public string PluginId { get; set; } = default!;
         
         [JsonProperty("title")]
-        public string Title { get; set; }
+        public string Title { get; set; } = default!;
         
         [JsonProperty("updated_at")]
         public DateTime? UpdatedAt { get; set; }
         
         [JsonProperty("workspace_id")]
-        public string WorkspaceId { get; set; }
+        public string WorkspaceId { get; set; } = default!;
         
     }
     

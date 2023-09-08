@@ -23,37 +23,37 @@ namespace Speakeasy.Models.Shared
         /// Creation timestamp.
         /// </summary>
         [JsonProperty("created_at")]
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = default!;
         
         /// <summary>
         /// The ID of the user that created this token.
         /// </summary>
         [JsonProperty("created_by")]
-        public string CreatedBy { get; set; }
+        public string CreatedBy { get; set; } = default!;
         
         /// <summary>
         /// A detailed description of the EmbedToken.
         /// </summary>
         [JsonProperty("description")]
-        public string Description { get; set; }
+        public string Description { get; set; } = default!;
         
         /// <summary>
         /// The time this token expires.
         /// </summary>
         [JsonProperty("expires_at")]
-        public DateTime ExpiresAt { get; set; }
+        public DateTime ExpiresAt { get; set; } = default!;
         
         /// <summary>
         /// The filters applied to this token.
         /// </summary>
         [JsonProperty("filters")]
-        public string Filters { get; set; }
+        public string Filters { get; set; } = default!;
         
         /// <summary>
         /// The ID of this EmbedToken.
         /// </summary>
         [JsonProperty("id")]
-        public string Id { get; set; }
+        public string Id { get; set; } = default!;
         
         /// <summary>
         /// The last time this token was used.
@@ -77,7 +77,7 @@ namespace Speakeasy.Models.Shared
         /// The workspace ID this token belongs to.
         /// </summary>
         [JsonProperty("workspace_id")]
-        public string WorkspaceId { get; set; }
+        public string WorkspaceId { get; set; } = default!;
         
     }
     

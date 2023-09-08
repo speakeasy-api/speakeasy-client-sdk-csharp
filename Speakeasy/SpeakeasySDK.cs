@@ -43,8 +43,8 @@ namespace Speakeasy
         };
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.13.4";
-        private const string _sdkGenVersion = "2.101.0";
+        private const string _sdkVersion = "1.13.5";
+        private const string _sdkGenVersion = "2.107.0";
         private const string _openapiDocVersion = "0.3.0";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;

@@ -23,13 +23,13 @@ namespace Speakeasy.Models.Shared
         /// The ID of this Api. This is a human-readable name (subject to change).
         /// </summary>
         [JsonProperty("api_id")]
-        public string ApiId { get; set; }
+        public string ApiId { get; set; } = default!;
         
         /// <summary>
         /// A detailed description of the Api.
         /// </summary>
         [JsonProperty("description")]
-        public string Description { get; set; }
+        public string Description { get; set; } = default!;
         
         /// <summary>
         /// A set of values associated with a meta_data key. This field is only set on get requests.
@@ -41,7 +41,7 @@ namespace Speakeasy.Models.Shared
         /// The version ID of this Api. This is semantic version identifier.
         /// </summary>
         [JsonProperty("version_id")]
-        public string VersionId { get; set; }
+        public string VersionId { get; set; } = default!;
         
     }
     

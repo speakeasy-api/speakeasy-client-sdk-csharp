@@ -20,19 +20,19 @@ namespace Speakeasy.Models.Operations
         /// A JSON representation of the metadata to insert.
         /// </summary>
         [SpeakeasyMetadata("request:mediaType=application/json")]
-        public VersionMetadataInput VersionMetadataInput { get; set; }
+        public VersionMetadataInput VersionMetadataInput { get; set; } = default!;
         
         /// <summary>
         /// The ID of the Api to insert metadata for.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=apiID")]
-        public string ApiID { get; set; }
+        public string ApiID { get; set; } = default!;
         
         /// <summary>
         /// The version ID of the Api to insert metadata for.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=versionID")]
-        public string VersionID { get; set; }
+        public string VersionID { get; set; } = default!;
         
     }
     

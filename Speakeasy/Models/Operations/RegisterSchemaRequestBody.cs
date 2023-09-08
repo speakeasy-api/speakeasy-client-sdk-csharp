@@ -19,7 +19,7 @@ namespace Speakeasy.Models.Operations
     public class RegisterSchemaRequestBody
     {
         [SpeakeasyMetadata("multipartForm:file")]
-        public RegisterSchemaRequestBodyFile File { get; set; }
+        public RegisterSchemaRequestBodyFile File { get; set; } = default!;
         
     }
     

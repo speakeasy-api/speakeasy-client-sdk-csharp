@@ -19,13 +19,13 @@ namespace Speakeasy.Models.Shared
         /// Represents the previous value of the element.
         /// </summary>
         [JsonProperty("From")]
-        public string From { get; set; }
+        public string From { get; set; } = default!;
         
         /// <summary>
         /// Represents the current value of the element.
         /// </summary>
         [JsonProperty("To")]
-        public string To { get; set; }
+        public string To { get; set; } = default!;
         
     }
     

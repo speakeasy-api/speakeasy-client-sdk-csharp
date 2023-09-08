@@ -24,19 +24,19 @@ namespace Speakeasy.Models.Shared
         /// The ID of this Api. This is a human-readable name (subject to change).
         /// </summary>
         [JsonProperty("api_id")]
-        public string ApiId { get; set; }
+        public string ApiId { get; set; } = default!;
         
         /// <summary>
         /// Creation timestamp.
         /// </summary>
         [JsonProperty("created_at")]
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = default!;
         
         /// <summary>
         /// A detailed description of the Api.
         /// </summary>
         [JsonProperty("description")]
-        public string Description { get; set; }
+        public string Description { get; set; } = default!;
         
         /// <summary>
         /// Determines if all the endpoints within the Api are found in the OpenAPI spec associated with the Api.
@@ -54,19 +54,19 @@ namespace Speakeasy.Models.Shared
         /// Last update timestamp.
         /// </summary>
         [JsonProperty("updated_at")]
-        public DateTime UpdatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; } = default!;
         
         /// <summary>
         /// The version ID of this Api. This is semantic version identifier.
         /// </summary>
         [JsonProperty("version_id")]
-        public string VersionId { get; set; }
+        public string VersionId { get; set; } = default!;
         
         /// <summary>
         /// The workspace ID this Api belongs to.
         /// </summary>
         [JsonProperty("workspace_id")]
-        public string WorkspaceId { get; set; }
+        public string WorkspaceId { get; set; } = default!;
         
     }
     

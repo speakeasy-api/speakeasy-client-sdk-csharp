@@ -22,13 +22,13 @@ namespace Speakeasy.Models.Shared
         /// A developer-facing error message.
         /// </summary>
         [JsonProperty("message")]
-        public string Message { get; set; }
+        public string Message { get; set; } = default!;
         
         /// <summary>
         /// The HTTP status code
         /// </summary>
         [JsonProperty("status_code")]
-        public int StatusCode { get; set; }
+        public int StatusCode { get; set; } = default!;
         
     }
     

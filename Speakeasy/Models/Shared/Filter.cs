@@ -22,19 +22,19 @@ namespace Speakeasy.Models.Shared
         /// The key of the filter.
         /// </summary>
         [JsonProperty("key")]
-        public string Key { get; set; }
+        public string Key { get; set; } = default!;
         
         /// <summary>
         /// The operator of the filter.
         /// </summary>
         [JsonProperty("operator")]
-        public string Operator { get; set; }
+        public string Operator { get; set; } = default!;
         
         /// <summary>
         /// The value of the filter.
         /// </summary>
         [JsonProperty("value")]
-        public string Value { get; set; }
+        public string Value { get; set; } = default!;
         
     }
     

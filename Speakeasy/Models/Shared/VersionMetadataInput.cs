@@ -22,13 +22,13 @@ namespace Speakeasy.Models.Shared
         /// The key for this metadata.
         /// </summary>
         [JsonProperty("meta_key")]
-        public string MetaKey { get; set; }
+        public string MetaKey { get; set; } = default!;
         
         /// <summary>
         /// One of the values for this metadata.
         /// </summary>
         [JsonProperty("meta_value")]
-        public string MetaValue { get; set; }
+        public string MetaValue { get; set; } = default!;
         
     }
     

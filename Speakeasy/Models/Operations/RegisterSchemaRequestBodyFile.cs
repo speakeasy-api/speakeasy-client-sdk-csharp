@@ -16,10 +16,10 @@ namespace Speakeasy.Models.Operations
     public class RegisterSchemaRequestBodyFile
     {
         [SpeakeasyMetadata("multipartForm:content")]
-        public byte[] Content { get; set; }
+        public byte[] Content { get; set; } = default!;
         
         [SpeakeasyMetadata("multipartForm:name=file")]
-        public string File { get; set; }
+        public string File { get; set; } = default!;
         
     }
     

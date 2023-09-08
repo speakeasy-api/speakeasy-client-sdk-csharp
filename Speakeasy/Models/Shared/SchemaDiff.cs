@@ -23,19 +23,19 @@ namespace Speakeasy.Models.Shared
         /// Holds every addition change in the diff.
         /// </summary>
         [JsonProperty("additions")]
-        public List<string> Additions { get; set; }
+        public List<string> Additions { get; set; } = default!;
         
         /// <summary>
         /// Holds every deletion change in the diff.
         /// </summary>
         [JsonProperty("deletions")]
-        public List<string> Deletions { get; set; }
+        public List<string> Deletions { get; set; } = default!;
         
         /// <summary>
         /// Holds every modification change in the diff.
         /// </summary>
         [JsonProperty("modifications")]
-        public Dictionary<string, SchemaDiffValueChange> Modifications { get; set; }
+        public Dictionary<string, SchemaDiffValueChange> Modifications { get; set; } = default!;
         
     }
     

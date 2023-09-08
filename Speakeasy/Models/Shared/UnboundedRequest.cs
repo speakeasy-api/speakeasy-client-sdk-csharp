@@ -23,31 +23,31 @@ namespace Speakeasy.Models.Shared
         /// Creation timestamp.
         /// </summary>
         [JsonProperty("created_at")]
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = default!;
         
         /// <summary>
         /// The HAR content of the request.
         /// </summary>
         [JsonProperty("har")]
-        public string Har { get; set; }
+        public string Har { get; set; } = default!;
         
         /// <summary>
         /// The size of the HAR content in bytes.
         /// </summary>
         [JsonProperty("har_size_bytes")]
-        public long HarSizeBytes { get; set; }
+        public long HarSizeBytes { get; set; } = default!;
         
         /// <summary>
         /// The ID of this request.
         /// </summary>
         [JsonProperty("request_id")]
-        public string RequestId { get; set; }
+        public string RequestId { get; set; } = default!;
         
         /// <summary>
         /// The workspace ID this request was made to.
         /// </summary>
         [JsonProperty("workspace_id")]
-        public string WorkspaceId { get; set; }
+        public string WorkspaceId { get; set; } = default!;
         
     }
     

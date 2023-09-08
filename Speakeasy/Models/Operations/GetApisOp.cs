@@ -22,7 +22,7 @@ namespace Speakeasy.Models.Operations
         /// Whether to AND or OR the filters
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=and")]
-        public bool And { get; set; }
+        public bool And { get; set; } = default!;
         
     }
     

@@ -6,6 +6,8 @@ Speakeasy/Plugins.cs
 Speakeasy/Requests.cs
 Speakeasy/Schemas.cs
 Speakeasy/SpeakeasySDK.cs
+Speakeasy/Utils/BigIntSerializer.cs
+Speakeasy/Utils/DecimalSerializer.cs
 Speakeasy/Utils/EnumSerializer.cs
 Speakeasy/Utils/FlexibleObjectDeserializer.cs
 Speakeasy/Utils/HeaderSerializer.cs

@@ -20,13 +20,13 @@ namespace Speakeasy.Models.Operations
         /// A JSON representation of the Api to upsert
         /// </summary>
         [SpeakeasyMetadata("request:mediaType=application/json")]
-        public ApiInput ApiInput { get; set; }
+        public ApiInput ApiInput { get; set; } = default!;
         
         /// <summary>
         /// The ID of the Api to upsert.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=apiID")]
-        public string ApiID { get; set; }
+        public string ApiID { get; set; } = default!;
         
     }
     

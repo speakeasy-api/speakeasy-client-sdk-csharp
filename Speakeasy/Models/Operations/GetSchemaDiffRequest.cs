@@ -19,25 +19,25 @@ namespace Speakeasy.Models.Operations
         /// The ID of the Api to retrieve schemas for.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=apiID")]
-        public string ApiID { get; set; }
+        public string ApiID { get; set; } = default!;
         
         /// <summary>
         /// The base revision ID of the schema to retrieve.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=baseRevisionID")]
-        public string BaseRevisionID { get; set; }
+        public string BaseRevisionID { get; set; } = default!;
         
         /// <summary>
         /// The target revision ID of the schema to retrieve.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=targetRevisionID")]
-        public string TargetRevisionID { get; set; }
+        public string TargetRevisionID { get; set; } = default!;
         
         /// <summary>
         /// The version ID of the Api to delete metadata for.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=versionID")]
-        public string VersionID { get; set; }
+        public string VersionID { get; set; } = default!;
         
     }
     

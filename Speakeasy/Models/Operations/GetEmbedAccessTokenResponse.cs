@@ -18,7 +18,7 @@ namespace Speakeasy.Models.Operations
     public class GetEmbedAccessTokenResponse
     {
         
-        public string? ContentType { get; set; }
+        public string? ContentType { get; set; } = default!;
         
         /// <summary>
         /// OK
@@ -33,7 +33,7 @@ namespace Speakeasy.Models.Operations
         public Error? Error { get; set; }
         
         
-        public int StatusCode { get; set; }
+        public int StatusCode { get; set; } = default!;
         
         
         public HttpResponseMessage? RawResponse { get; set; }

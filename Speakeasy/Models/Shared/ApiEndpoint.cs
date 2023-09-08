@@ -23,31 +23,31 @@ namespace Speakeasy.Models.Shared
         /// The ID of this ApiEndpoint. This is a hash of the method and path.
         /// </summary>
         [JsonProperty("api_endpoint_id")]
-        public string ApiEndpointId { get; set; }
+        public string ApiEndpointId { get; set; } = default!;
         
         /// <summary>
         /// The ID of the Api this ApiEndpoint belongs to.
         /// </summary>
         [JsonProperty("api_id")]
-        public string ApiId { get; set; }
+        public string ApiId { get; set; } = default!;
         
         /// <summary>
         /// Creation timestamp.
         /// </summary>
         [JsonProperty("created_at")]
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = default!;
         
         /// <summary>
         /// A detailed description of the ApiEndpoint.
         /// </summary>
         [JsonProperty("description")]
-        public string Description { get; set; }
+        public string Description { get; set; } = default!;
         
         /// <summary>
         /// A human-readable name for the ApiEndpoint.
         /// </summary>
         [JsonProperty("display_name")]
-        public string DisplayName { get; set; }
+        public string DisplayName { get; set; } = default!;
         
         /// <summary>
         /// Determines if the endpoint was found in the OpenAPI spec associated with the parent Api.
@@ -59,31 +59,31 @@ namespace Speakeasy.Models.Shared
         /// HTTP verb.
         /// </summary>
         [JsonProperty("method")]
-        public string Method { get; set; }
+        public string Method { get; set; } = default!;
         
         /// <summary>
         /// Path that handles this Api.
         /// </summary>
         [JsonProperty("path")]
-        public string Path { get; set; }
+        public string Path { get; set; } = default!;
         
         /// <summary>
         /// Last update timestamp.
         /// </summary>
         [JsonProperty("updated_at")]
-        public DateTime UpdatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; } = default!;
         
         /// <summary>
         /// The version ID of the Api this ApiEndpoint belongs to.
         /// </summary>
         [JsonProperty("version_id")]
-        public string VersionId { get; set; }
+        public string VersionId { get; set; } = default!;
         
         /// <summary>
         /// The workspace ID this ApiEndpoint belongs to.
         /// </summary>
         [JsonProperty("workspace_id")]
-        public string WorkspaceId { get; set; }
+        public string WorkspaceId { get; set; } = default!;
         
     }
     

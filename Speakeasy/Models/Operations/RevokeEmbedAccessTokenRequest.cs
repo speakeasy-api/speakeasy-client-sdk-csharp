@@ -19,7 +19,7 @@ namespace Speakeasy.Models.Operations
         /// The ID of the EmbedToken to revoke.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=tokenID")]
-        public string TokenID { get; set; }
+        public string TokenID { get; set; } = default!;
         
     }
     

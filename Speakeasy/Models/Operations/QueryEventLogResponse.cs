@@ -25,7 +25,7 @@ namespace Speakeasy.Models.Operations
         public List<BoundedRequest>? BoundedRequests { get; set; }
         
         
-        public string? ContentType { get; set; }
+        public string? ContentType { get; set; } = default!;
         
         /// <summary>
         /// Default error response
@@ -34,7 +34,7 @@ namespace Speakeasy.Models.Operations
         public Error? Error { get; set; }
         
         
-        public int StatusCode { get; set; }
+        public int StatusCode { get; set; } = default!;
         
         
         public HttpResponseMessage? RawResponse { get; set; }

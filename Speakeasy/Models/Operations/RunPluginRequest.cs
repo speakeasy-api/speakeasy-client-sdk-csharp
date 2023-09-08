@@ -26,7 +26,7 @@ namespace Speakeasy.Models.Operations
         /// The ID of the plugin to run.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=pluginID")]
-        public string PluginID { get; set; }
+        public string PluginID { get; set; } = default!;
         
     }
     

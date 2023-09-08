@@ -23,37 +23,37 @@ namespace Speakeasy.Models.Shared
         /// The ID of the Api this Metadata belongs to.
         /// </summary>
         [JsonProperty("api_id")]
-        public string ApiId { get; set; }
+        public string ApiId { get; set; } = default!;
         
         /// <summary>
         /// Creation timestamp.
         /// </summary>
         [JsonProperty("created_at")]
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = default!;
         
         /// <summary>
         /// The key for this metadata.
         /// </summary>
         [JsonProperty("meta_key")]
-        public string MetaKey { get; set; }
+        public string MetaKey { get; set; } = default!;
         
         /// <summary>
         /// One of the values for this metadata.
         /// </summary>
         [JsonProperty("meta_value")]
-        public string MetaValue { get; set; }
+        public string MetaValue { get; set; } = default!;
         
         /// <summary>
         /// The version ID of the Api this Metadata belongs to.
         /// </summary>
         [JsonProperty("version_id")]
-        public string VersionId { get; set; }
+        public string VersionId { get; set; } = default!;
         
         /// <summary>
         /// The workspace ID this Metadata belongs to.
         /// </summary>
         [JsonProperty("workspace_id")]
-        public string WorkspaceId { get; set; }
+        public string WorkspaceId { get; set; } = default!;
         
     }
     

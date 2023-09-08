@@ -19,7 +19,7 @@ namespace Speakeasy.Models.Shared
     public class EmbedAccessTokenResponse
     {
         [JsonProperty("access_token")]
-        public string AccessToken { get; set; }
+        public string AccessToken { get; set; } = default!;
         
     }
     

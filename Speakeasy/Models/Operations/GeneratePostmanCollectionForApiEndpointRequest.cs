@@ -19,19 +19,19 @@ namespace Speakeasy.Models.Operations
         /// The ID of the ApiEndpoint to generate a Postman collection for.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=apiEndpointID")]
-        public string ApiEndpointID { get; set; }
+        public string ApiEndpointID { get; set; } = default!;
         
         /// <summary>
         /// The ID of the Api to generate a Postman collection for.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=apiID")]
-        public string ApiID { get; set; }
+        public string ApiID { get; set; } = default!;
         
         /// <summary>
         /// The version ID of the Api to generate a Postman collection for.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=versionID")]
-        public string VersionID { get; set; }
+        public string VersionID { get; set; } = default!;
         
     }
     

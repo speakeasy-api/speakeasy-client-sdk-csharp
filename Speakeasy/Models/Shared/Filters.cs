@@ -23,25 +23,25 @@ namespace Speakeasy.Models.Shared
         /// A list of filters to apply to the query.
         /// </summary>
         [JsonProperty("filters")]
-        public List<Filter> FiltersValue { get; set; }
+        public List<Filter> FiltersValue { get; set; } = default!;
         
         /// <summary>
         /// The maximum number of results to return.
         /// </summary>
         [JsonProperty("limit")]
-        public long Limit { get; set; }
+        public long Limit { get; set; } = default!;
         
         /// <summary>
         /// The offset to start the query from.
         /// </summary>
         [JsonProperty("offset")]
-        public long Offset { get; set; }
+        public long Offset { get; set; } = default!;
         
         /// <summary>
         /// The operator to use when combining filters.
         /// </summary>
         [JsonProperty("operator")]
-        public string Operator { get; set; }
+        public string Operator { get; set; } = default!;
         
     }
     

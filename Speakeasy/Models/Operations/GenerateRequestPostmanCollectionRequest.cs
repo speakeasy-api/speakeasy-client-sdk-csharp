@@ -19,7 +19,7 @@ namespace Speakeasy.Models.Operations
         /// The ID of the request to retrieve.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=requestID")]
-        public string RequestID { get; set; }
+        public string RequestID { get; set; } = default!;
         
     }
     

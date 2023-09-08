@@ -20,7 +20,7 @@ namespace Speakeasy.Models.Operations
         /// The ID of the Api to retrieve.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=apiID")]
-        public string ApiID { get; set; }
+        public string ApiID { get; set; } = default!;
         
         /// <summary>
         /// Metadata to filter Apis on
