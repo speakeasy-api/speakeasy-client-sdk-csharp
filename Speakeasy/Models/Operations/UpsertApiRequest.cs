@@ -13,21 +13,19 @@ namespace Speakeasy.Models.Operations
     using Speakeasy.Models.Shared;
     using Speakeasy.Utils;
     
-    
     public class UpsertApiRequest
     {
+
         /// <summary>
         /// A JSON representation of the Api to upsert
         /// </summary>
         [SpeakeasyMetadata("request:mediaType=application/json")]
         public ApiInput ApiInput { get; set; } = default!;
-        
+
         /// <summary>
         /// The ID of the Api to upsert.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=apiID")]
         public string ApiID { get; set; } = default!;
-        
     }
-    
 }

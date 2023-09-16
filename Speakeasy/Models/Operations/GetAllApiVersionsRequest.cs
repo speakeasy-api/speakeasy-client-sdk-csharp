@@ -13,27 +13,25 @@ namespace Speakeasy.Models.Operations
     using Speakeasy.Utils;
     using System.Collections.Generic;
     
-    
     public class GetAllApiVersionsRequest
     {
+
         /// <summary>
         /// The ID of the Api to retrieve.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=apiID")]
         public string ApiID { get; set; } = default!;
-        
+
         /// <summary>
         /// Metadata to filter Apis on
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=deepObject,explode=true,name=metadata")]
         public Dictionary<string, List<string>>? Metadata { get; set; }
-        
+
         /// <summary>
         /// Configuration for filter operations
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=deepObject,explode=true,name=op")]
         public GetAllApiVersionsOp? Op { get; set; }
-        
     }
-    
 }

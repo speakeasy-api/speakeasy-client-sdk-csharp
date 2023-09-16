@@ -13,33 +13,31 @@ namespace Speakeasy.Models.Operations
     using Speakeasy.Models.Shared;
     using Speakeasy.Utils;
     
-    
     public class UpsertApiEndpointRequest
     {
+
         /// <summary>
         /// A JSON representation of the ApiEndpoint to upsert.
         /// </summary>
         [SpeakeasyMetadata("request:mediaType=application/json")]
         public ApiEndpointInput ApiEndpointInput { get; set; } = default!;
-        
+
         /// <summary>
         /// The ID of the ApiEndpoint to upsert.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=apiEndpointID")]
         public string ApiEndpointID { get; set; } = default!;
-        
+
         /// <summary>
         /// The ID of the Api the ApiEndpoint belongs to.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=apiID")]
         public string ApiID { get; set; } = default!;
-        
+
         /// <summary>
         /// The version ID of the Api the ApiEndpoint belongs to.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=versionID")]
         public string VersionID { get; set; } = default!;
-        
     }
-    
 }

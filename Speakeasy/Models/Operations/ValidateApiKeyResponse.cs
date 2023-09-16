@@ -14,24 +14,18 @@ namespace Speakeasy.Models.Operations
     using System.Net.Http;
     using System;
     
-    
     public class ValidateApiKeyResponse
     {
-        
+
         public string? ContentType { get; set; } = default!;
-        
+
         /// <summary>
         /// Default error response
         /// </summary>
-        
         public Error? Error { get; set; }
-        
-        
+
         public int StatusCode { get; set; } = default!;
-        
-        
+
         public HttpResponseMessage? RawResponse { get; set; }
-        
     }
-    
 }

@@ -20,10 +20,30 @@ namespace Speakeasy
     using System.Threading.Tasks;
     using System;
 
+    /// <summary>
+    /// REST APIs for managing embeds
+    /// </summary>
     public interface IEmbedsSDK
     {
+
+        /// <summary>
+        /// Get an embed access token for the current workspace.
+        /// 
+        /// <remarks>
+        /// Returns an embed access token for the current workspace. This can be used to authenticate access to externally embedded content.<br/>
+        /// Filters can be applied allowing views to be filtered to things like particular customerIds.
+        /// </remarks>
+        /// </summary>
         Task<GetEmbedAccessTokenResponse> GetEmbedAccessTokenAsync(GetEmbedAccessTokenRequest? request = null);
+
+        /// <summary>
+        /// Get all valid embed access tokens for the current workspace.
+        /// </summary>
         Task<GetValidEmbedAccessTokensResponse> GetValidEmbedAccessTokensAsync();
+
+        /// <summary>
+        /// Revoke an embed access EmbedToken.
+        /// </summary>
         Task<RevokeEmbedAccessTokenResponse> RevokeEmbedAccessTokenAsync(RevokeEmbedAccessTokenRequest? request = null);
     }
 
@@ -31,8 +51,8 @@ namespace Speakeasy
     {
         public SDKConfig Config { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.13.5";
-        private const string _sdkGenVersion = "2.107.0";
+        private const string _sdkVersion = "1.13.6";
+        private const string _sdkGenVersion = "2.115.2";
         private const string _openapiDocVersion = "0.3.0";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
@@ -47,14 +67,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Get an embed access token for the current workspace.
-        /// 
-        /// <remarks>
-        /// Returns an embed access token for the current workspace. This can be used to authenticate access to externally embedded content.
-        /// Filters can be applied allowing views to be filtered to things like particular customerIds.
-        /// </remarks>
-        /// </summary>
         public async Task<GetEmbedAccessTokenResponse> GetEmbedAccessTokenAsync(GetEmbedAccessTokenRequest? request = null)
         {
             string baseUrl = _serverUrl;
@@ -95,9 +107,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Get all valid embed access tokens for the current workspace.
-        /// </summary>
         public async Task<GetValidEmbedAccessTokensResponse> GetValidEmbedAccessTokensAsync()
         {
             string baseUrl = _serverUrl;
@@ -138,9 +147,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Revoke an embed access EmbedToken.
-        /// </summary>
         public async Task<RevokeEmbedAccessTokenResponse> RevokeEmbedAccessTokenAsync(RevokeEmbedAccessTokenRequest? request = null)
         {
             string baseUrl = _serverUrl;

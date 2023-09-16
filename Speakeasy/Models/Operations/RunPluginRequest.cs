@@ -13,21 +13,19 @@ namespace Speakeasy.Models.Operations
     using Speakeasy.Models.Shared;
     using Speakeasy.Utils;
     
-    
     public class RunPluginRequest
     {
+
         /// <summary>
         /// The filter to apply to the query.
         /// </summary>
         [SpeakeasyMetadata("queryParam:serialization=json,name=filters")]
         public Filters? Filters { get; set; }
-        
+
         /// <summary>
         /// The ID of the plugin to run.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=pluginID")]
         public string PluginID { get; set; } = default!;
-        
     }
-    
 }

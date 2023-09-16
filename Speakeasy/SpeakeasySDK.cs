@@ -19,15 +19,53 @@ namespace Speakeasy
     using System.Threading.Tasks;
     using System;
 
+    /// <summary>
+    /// Speakeasy API: The Speakeasy API allows teams to manage common operations with their APIs
+    /// 
+    /// <see>https://speakeasyapi.dev/docs/} - The Speakeasy Platform Documentation</see>
+    /// </summary>
     public interface ISpeakeasySDK
     {
+
+        /// <summary>
+        /// REST APIs for managing ApiEndpoint entities
+        /// </summary>
         public IApiEndpointsSDK ApiEndpoints { get; }
+
+        /// <summary>
+        /// REST APIs for managing Api entities
+        /// </summary>
         public IApisSDK Apis { get; }
+
+        /// <summary>
+        /// REST APIs for managing embeds
+        /// </summary>
         public IEmbedsSDK Embeds { get; }
+
+        /// <summary>
+        /// REST APIs for managing Version Metadata entities
+        /// </summary>
         public IMetadataSDK Metadata { get; }
+
+        /// <summary>
+        /// REST APIs for managing and running plugins
+        /// </summary>
         public IPluginsSDK Plugins { get; }
+
+        /// <summary>
+        /// REST APIs for retrieving request information
+        /// </summary>
         public IRequestsSDK Requests { get; }
+
+        /// <summary>
+        /// REST APIs for managing Schema entities
+        /// </summary>
         public ISchemasSDK Schemas { get; }
+
+        /// <summary>
+        /// Validate the current api key.
+        /// </summary>
+        Task<ValidateApiKeyResponse> ValidateApiKeyAsync();
     }
     
     public class SDKConfig
@@ -43,8 +81,8 @@ namespace Speakeasy
         };
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.13.5";
-        private const string _sdkGenVersion = "2.107.0";
+        private const string _sdkVersion = "1.13.6";
+        private const string _sdkGenVersion = "2.115.2";
         private const string _openapiDocVersion = "0.3.0";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
@@ -82,9 +120,6 @@ namespace Speakeasy
             Schemas = new SchemasSDK(_defaultClient, _securityClient, _serverUrl, Config);
         }
 
-        /// <summary>
-        /// Validate the current api key.
-        /// </summary>
         public async Task<ValidateApiKeyResponse> ValidateApiKeyAsync()
         {
             string baseUrl = _serverUrl;

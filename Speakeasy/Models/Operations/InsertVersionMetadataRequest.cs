@@ -13,27 +13,25 @@ namespace Speakeasy.Models.Operations
     using Speakeasy.Models.Shared;
     using Speakeasy.Utils;
     
-    
     public class InsertVersionMetadataRequest
     {
+
         /// <summary>
         /// A JSON representation of the metadata to insert.
         /// </summary>
         [SpeakeasyMetadata("request:mediaType=application/json")]
         public VersionMetadataInput VersionMetadataInput { get; set; } = default!;
-        
+
         /// <summary>
         /// The ID of the Api to insert metadata for.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=apiID")]
         public string ApiID { get; set; } = default!;
-        
+
         /// <summary>
         /// The version ID of the Api to insert metadata for.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=versionID")]
         public string VersionID { get; set; } = default!;
-        
     }
-    
 }

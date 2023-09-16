@@ -20,10 +20,35 @@ namespace Speakeasy
     using System.Threading.Tasks;
     using System;
 
+    /// <summary>
+    /// REST APIs for retrieving request information
+    /// </summary>
     public interface IRequestsSDK
     {
+
+        /// <summary>
+        /// Generate a Postman collection for a particular request.
+        /// 
+        /// <remarks>
+        /// Generates a Postman collection for a particular request. <br/>
+        /// Allowing it to be replayed with the same inputs that were captured by the SDK.
+        /// </remarks>
+        /// </summary>
         Task<GenerateRequestPostmanCollectionResponse> GenerateRequestPostmanCollectionAsync(GenerateRequestPostmanCollectionRequest? request = null);
+
+        /// <summary>
+        /// Get information about a particular request.
+        /// </summary>
         Task<GetRequestFromEventLogResponse> GetRequestFromEventLogAsync(GetRequestFromEventLogRequest? request = null);
+
+        /// <summary>
+        /// Query the event log to retrieve a list of requests.
+        /// 
+        /// <remarks>
+        /// Supports retrieving a list of request captured by the SDK for this workspace.<br/>
+        /// Allows the filtering of requests on a number of criteria such as ApiID, VersionID, Path, Method, etc.
+        /// </remarks>
+        /// </summary>
         Task<QueryEventLogResponse> QueryEventLogAsync(QueryEventLogRequest? request = null);
     }
 
@@ -31,8 +56,8 @@ namespace Speakeasy
     {
         public SDKConfig Config { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.13.5";
-        private const string _sdkGenVersion = "2.107.0";
+        private const string _sdkVersion = "1.13.6";
+        private const string _sdkGenVersion = "2.115.2";
         private const string _openapiDocVersion = "0.3.0";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
@@ -47,14 +72,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Generate a Postman collection for a particular request.
-        /// 
-        /// <remarks>
-        /// Generates a Postman collection for a particular request. 
-        /// Allowing it to be replayed with the same inputs that were captured by the SDK.
-        /// </remarks>
-        /// </summary>
         public async Task<GenerateRequestPostmanCollectionResponse> GenerateRequestPostmanCollectionAsync(GenerateRequestPostmanCollectionRequest? request = null)
         {
             string baseUrl = _serverUrl;
@@ -95,9 +112,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Get information about a particular request.
-        /// </summary>
         public async Task<GetRequestFromEventLogResponse> GetRequestFromEventLogAsync(GetRequestFromEventLogRequest? request = null)
         {
             string baseUrl = _serverUrl;
@@ -138,14 +152,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Query the event log to retrieve a list of requests.
-        /// 
-        /// <remarks>
-        /// Supports retrieving a list of request captured by the SDK for this workspace.
-        /// Allows the filtering of requests on a number of criteria such as ApiID, VersionID, Path, Method, etc.
-        /// </remarks>
-        /// </summary>
         public async Task<QueryEventLogResponse> QueryEventLogAsync(QueryEventLogRequest? request = null)
         {
             string baseUrl = _serverUrl;

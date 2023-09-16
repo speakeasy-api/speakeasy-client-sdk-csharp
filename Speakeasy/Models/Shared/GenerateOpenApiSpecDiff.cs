@@ -12,15 +12,13 @@ namespace Speakeasy.Models.Shared
 {
     using Newtonsoft.Json;
     
-    
     public class GenerateOpenApiSpecDiff
     {
+
         [JsonProperty("current_schema")]
         public string CurrentSchema { get; set; } = default!;
-        
+
         [JsonProperty("new_schema")]
         public string NewSchema { get; set; } = default!;
-        
     }
-    
 }

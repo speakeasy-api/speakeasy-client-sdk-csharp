@@ -12,27 +12,25 @@ namespace Speakeasy.Models.Operations
 {
     using Speakeasy.Utils;
     
-    
     public class FindApiEndpointRequest
     {
+
         /// <summary>
         /// The ID of the Api the ApiEndpoint belongs to.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=apiID")]
         public string ApiID { get; set; } = default!;
-        
+
         /// <summary>
         /// The displayName of the ApiEndpoint to find (set by operationId from OpenAPI schema).
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=displayName")]
         public string DisplayName { get; set; } = default!;
-        
+
         /// <summary>
         /// The version ID of the Api the ApiEndpoint belongs to.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=versionID")]
         public string VersionID { get; set; } = default!;
-        
     }
-    
 }

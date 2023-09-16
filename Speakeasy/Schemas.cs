@@ -20,15 +20,70 @@ namespace Speakeasy
     using System.Threading.Tasks;
     using System;
 
+    /// <summary>
+    /// REST APIs for managing Schema entities
+    /// </summary>
     public interface ISchemasSDK
     {
+
+        /// <summary>
+        /// Delete a particular schema revision for an Api.
+        /// </summary>
         Task<DeleteSchemaResponse> DeleteSchemaAsync(DeleteSchemaRequest? request = null);
+
+        /// <summary>
+        /// Download the latest schema for a particular apiID.
+        /// </summary>
         Task<DownloadSchemaResponse> DownloadSchemaAsync(DownloadSchemaRequest? request = null);
+
+        /// <summary>
+        /// Download a particular schema revision for an Api.
+        /// </summary>
         Task<DownloadSchemaRevisionResponse> DownloadSchemaRevisionAsync(DownloadSchemaRevisionRequest? request = null);
+
+        /// <summary>
+        /// Get information about the latest schema.
+        /// 
+        /// <remarks>
+        /// Returns information about the last uploaded schema for a particular API version. <br/>
+        /// This won&apos;t include the schema itself, that can be retrieved via the downloadSchema operation.
+        /// </remarks>
+        /// </summary>
         Task<GetSchemaResponse> GetSchemaAsync(GetSchemaRequest? request = null);
+
+        /// <summary>
+        /// Get a diff of two schema revisions for an Api.
+        /// </summary>
         Task<GetSchemaDiffResponse> GetSchemaDiffAsync(GetSchemaDiffRequest? request = null);
+
+        /// <summary>
+        /// Get information about a particular schema revision for an Api.
+        /// 
+        /// <remarks>
+        /// Returns information about the last uploaded schema for a particular schema revision. <br/>
+        /// This won&apos;t include the schema itself, that can be retrieved via the downloadSchema operation.
+        /// </remarks>
+        /// </summary>
         Task<GetSchemaRevisionResponse> GetSchemaRevisionAsync(GetSchemaRevisionRequest? request = null);
+
+        /// <summary>
+        /// Get information about all schemas associated with a particular apiID.
+        /// 
+        /// <remarks>
+        /// Returns information the schemas associated with a particular apiID. <br/>
+        /// This won&apos;t include the schemas themselves, they can be retrieved via the downloadSchema operation.
+        /// </remarks>
+        /// </summary>
         Task<GetSchemasResponse> GetSchemasAsync(GetSchemasRequest? request = null);
+
+        /// <summary>
+        /// Register a schema.
+        /// 
+        /// <remarks>
+        /// Allows uploading a schema for a particular API version.<br/>
+        /// This will be used to populate ApiEndpoints and used as a base for any schema generation if present.
+        /// </remarks>
+        /// </summary>
         Task<RegisterSchemaResponse> RegisterSchemaAsync(RegisterSchemaRequest request);
     }
 
@@ -36,8 +91,8 @@ namespace Speakeasy
     {
         public SDKConfig Config { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.13.5";
-        private const string _sdkGenVersion = "2.107.0";
+        private const string _sdkVersion = "1.13.6";
+        private const string _sdkGenVersion = "2.115.2";
         private const string _openapiDocVersion = "0.3.0";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
@@ -52,9 +107,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Delete a particular schema revision for an Api.
-        /// </summary>
         public async Task<DeleteSchemaResponse> DeleteSchemaAsync(DeleteSchemaRequest? request = null)
         {
             string baseUrl = _serverUrl;
@@ -91,9 +143,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Download the latest schema for a particular apiID.
-        /// </summary>
         public async Task<DownloadSchemaResponse> DownloadSchemaAsync(DownloadSchemaRequest? request = null)
         {
             string baseUrl = _serverUrl;
@@ -138,9 +187,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Download a particular schema revision for an Api.
-        /// </summary>
         public async Task<DownloadSchemaRevisionResponse> DownloadSchemaRevisionAsync(DownloadSchemaRevisionRequest? request = null)
         {
             string baseUrl = _serverUrl;
@@ -185,14 +231,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Get information about the latest schema.
-        /// 
-        /// <remarks>
-        /// Returns information about the last uploaded schema for a particular API version. 
-        /// This won't include the schema itself, that can be retrieved via the downloadSchema operation.
-        /// </remarks>
-        /// </summary>
         public async Task<GetSchemaResponse> GetSchemaAsync(GetSchemaRequest? request = null)
         {
             string baseUrl = _serverUrl;
@@ -233,9 +271,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Get a diff of two schema revisions for an Api.
-        /// </summary>
         public async Task<GetSchemaDiffResponse> GetSchemaDiffAsync(GetSchemaDiffRequest? request = null)
         {
             string baseUrl = _serverUrl;
@@ -276,14 +311,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Get information about a particular schema revision for an Api.
-        /// 
-        /// <remarks>
-        /// Returns information about the last uploaded schema for a particular schema revision. 
-        /// This won't include the schema itself, that can be retrieved via the downloadSchema operation.
-        /// </remarks>
-        /// </summary>
         public async Task<GetSchemaRevisionResponse> GetSchemaRevisionAsync(GetSchemaRevisionRequest? request = null)
         {
             string baseUrl = _serverUrl;
@@ -324,14 +351,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Get information about all schemas associated with a particular apiID.
-        /// 
-        /// <remarks>
-        /// Returns information the schemas associated with a particular apiID. 
-        /// This won't include the schemas themselves, they can be retrieved via the downloadSchema operation.
-        /// </remarks>
-        /// </summary>
         public async Task<GetSchemasResponse> GetSchemasAsync(GetSchemasRequest? request = null)
         {
             string baseUrl = _serverUrl;
@@ -372,14 +391,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Register a schema.
-        /// 
-        /// <remarks>
-        /// Allows uploading a schema for a particular API version.
-        /// This will be used to populate ApiEndpoints and used as a base for any schema generation if present.
-        /// </remarks>
-        /// </summary>
         public async Task<RegisterSchemaResponse> RegisterSchemaAsync(RegisterSchemaRequest request)
         {
             string baseUrl = _serverUrl;

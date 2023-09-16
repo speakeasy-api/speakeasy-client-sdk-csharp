@@ -20,15 +20,72 @@ namespace Speakeasy
     using System.Threading.Tasks;
     using System;
 
+    /// <summary>
+    /// REST APIs for managing ApiEndpoint entities
+    /// </summary>
     public interface IApiEndpointsSDK
     {
+
+        /// <summary>
+        /// Delete an ApiEndpoint.
+        /// 
+        /// <remarks>
+        /// Delete an ApiEndpoint. This will also delete all associated Request Logs (if using a Postgres datastore).
+        /// </remarks>
+        /// </summary>
         Task<DeleteApiEndpointResponse> DeleteApiEndpointAsync(DeleteApiEndpointRequest? request = null);
+
+        /// <summary>
+        /// Find an ApiEndpoint via its displayName.
+        /// 
+        /// <remarks>
+        /// Find an ApiEndpoint via its displayName (set by operationId from a registered OpenAPI schema).<br/>
+        /// This is useful for finding the ID of an ApiEndpoint to use in the /v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID} endpoints.
+        /// </remarks>
+        /// </summary>
         Task<FindApiEndpointResponse> FindApiEndpointAsync(FindApiEndpointRequest? request = null);
+
+        /// <summary>
+        /// Generate an OpenAPI specification for a particular ApiEndpoint.
+        /// 
+        /// <remarks>
+        /// This endpoint will generate a new operation in any registered OpenAPI document if the operation does not already exist in the document.<br/>
+        /// Returns the original document and the newly generated document allowing a diff to be performed to see what has changed.
+        /// </remarks>
+        /// </summary>
         Task<GenerateOpenApiSpecForApiEndpointResponse> GenerateOpenApiSpecForApiEndpointAsync(GenerateOpenApiSpecForApiEndpointRequest? request = null);
+
+        /// <summary>
+        /// Generate a Postman collection for a particular ApiEndpoint.
+        /// 
+        /// <remarks>
+        /// Generates a postman collection that allows the endpoint to be called from postman variables produced for any path/query/header parameters included in the OpenAPI document.
+        /// </remarks>
+        /// </summary>
         Task<GeneratePostmanCollectionForApiEndpointResponse> GeneratePostmanCollectionForApiEndpointAsync(GeneratePostmanCollectionForApiEndpointRequest? request = null);
+
+        /// <summary>
+        /// Get all Api endpoints for a particular apiID.
+        /// </summary>
         Task<GetAllApiEndpointsResponse> GetAllApiEndpointsAsync(GetAllApiEndpointsRequest? request = null);
+
+        /// <summary>
+        /// Get all ApiEndpoints for a particular apiID and versionID.
+        /// </summary>
         Task<GetAllForVersionApiEndpointsResponse> GetAllForVersionApiEndpointsAsync(GetAllForVersionApiEndpointsRequest? request = null);
+
+        /// <summary>
+        /// Get an ApiEndpoint.
+        /// </summary>
         Task<GetApiEndpointResponse> GetApiEndpointAsync(GetApiEndpointRequest? request = null);
+
+        /// <summary>
+        /// Upsert an ApiEndpoint.
+        /// 
+        /// <remarks>
+        /// Upsert an ApiEndpoint. If the ApiEndpoint does not exist it will be created, otherwise it will be updated.
+        /// </remarks>
+        /// </summary>
         Task<UpsertApiEndpointResponse> UpsertApiEndpointAsync(UpsertApiEndpointRequest request);
     }
 
@@ -36,8 +93,8 @@ namespace Speakeasy
     {
         public SDKConfig Config { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.13.5";
-        private const string _sdkGenVersion = "2.107.0";
+        private const string _sdkVersion = "1.13.6";
+        private const string _sdkGenVersion = "2.115.2";
         private const string _openapiDocVersion = "0.3.0";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
@@ -52,13 +109,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Delete an ApiEndpoint.
-        /// 
-        /// <remarks>
-        /// Delete an ApiEndpoint. This will also delete all associated Request Logs (if using a Postgres datastore).
-        /// </remarks>
-        /// </summary>
         public async Task<DeleteApiEndpointResponse> DeleteApiEndpointAsync(DeleteApiEndpointRequest? request = null)
         {
             string baseUrl = _serverUrl;
@@ -95,14 +145,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Find an ApiEndpoint via its displayName.
-        /// 
-        /// <remarks>
-        /// Find an ApiEndpoint via its displayName (set by operationId from a registered OpenAPI schema).
-        /// This is useful for finding the ID of an ApiEndpoint to use in the /v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID} endpoints.
-        /// </remarks>
-        /// </summary>
         public async Task<FindApiEndpointResponse> FindApiEndpointAsync(FindApiEndpointRequest? request = null)
         {
             string baseUrl = _serverUrl;
@@ -143,14 +185,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Generate an OpenAPI specification for a particular ApiEndpoint.
-        /// 
-        /// <remarks>
-        /// This endpoint will generate a new operation in any registered OpenAPI document if the operation does not already exist in the document.
-        /// Returns the original document and the newly generated document allowing a diff to be performed to see what has changed.
-        /// </remarks>
-        /// </summary>
         public async Task<GenerateOpenApiSpecForApiEndpointResponse> GenerateOpenApiSpecForApiEndpointAsync(GenerateOpenApiSpecForApiEndpointRequest? request = null)
         {
             string baseUrl = _serverUrl;
@@ -191,13 +225,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Generate a Postman collection for a particular ApiEndpoint.
-        /// 
-        /// <remarks>
-        /// Generates a postman collection that allows the endpoint to be called from postman variables produced for any path/query/header parameters included in the OpenAPI document.
-        /// </remarks>
-        /// </summary>
         public async Task<GeneratePostmanCollectionForApiEndpointResponse> GeneratePostmanCollectionForApiEndpointAsync(GeneratePostmanCollectionForApiEndpointRequest? request = null)
         {
             string baseUrl = _serverUrl;
@@ -238,9 +265,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Get all Api endpoints for a particular apiID.
-        /// </summary>
         public async Task<GetAllApiEndpointsResponse> GetAllApiEndpointsAsync(GetAllApiEndpointsRequest? request = null)
         {
             string baseUrl = _serverUrl;
@@ -281,9 +305,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Get all ApiEndpoints for a particular apiID and versionID.
-        /// </summary>
         public async Task<GetAllForVersionApiEndpointsResponse> GetAllForVersionApiEndpointsAsync(GetAllForVersionApiEndpointsRequest? request = null)
         {
             string baseUrl = _serverUrl;
@@ -324,9 +345,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Get an ApiEndpoint.
-        /// </summary>
         public async Task<GetApiEndpointResponse> GetApiEndpointAsync(GetApiEndpointRequest? request = null)
         {
             string baseUrl = _serverUrl;
@@ -367,13 +385,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Upsert an ApiEndpoint.
-        /// 
-        /// <remarks>
-        /// Upsert an ApiEndpoint. If the ApiEndpoint does not exist it will be created, otherwise it will be updated.
-        /// </remarks>
-        /// </summary>
         public async Task<UpsertApiEndpointResponse> UpsertApiEndpointAsync(UpsertApiEndpointRequest request)
         {
             string baseUrl = _serverUrl;

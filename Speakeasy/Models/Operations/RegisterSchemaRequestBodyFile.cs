@@ -12,15 +12,13 @@ namespace Speakeasy.Models.Operations
 {
     using Speakeasy.Utils;
     
-    
     public class RegisterSchemaRequestBodyFile
     {
+
         [SpeakeasyMetadata("multipartForm:content")]
         public byte[] Content { get; set; } = default!;
-        
+
         [SpeakeasyMetadata("multipartForm:name=file")]
         public string File { get; set; } = default!;
-        
     }
-    
 }

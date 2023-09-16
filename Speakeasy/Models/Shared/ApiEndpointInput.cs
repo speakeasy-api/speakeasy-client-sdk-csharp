@@ -12,48 +12,46 @@ namespace Speakeasy.Models.Shared
 {
     using Newtonsoft.Json;
     
-    
     /// <summary>
     /// An ApiEndpoint is a description of an Endpoint for an API.
     /// </summary>
     public class ApiEndpointInput
     {
+
         /// <summary>
         /// The ID of this ApiEndpoint. This is a hash of the method and path.
         /// </summary>
         [JsonProperty("api_endpoint_id")]
         public string ApiEndpointId { get; set; } = default!;
-        
+
         /// <summary>
         /// A detailed description of the ApiEndpoint.
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; set; } = default!;
-        
+
         /// <summary>
         /// A human-readable name for the ApiEndpoint.
         /// </summary>
         [JsonProperty("display_name")]
         public string DisplayName { get; set; } = default!;
-        
+
         /// <summary>
         /// HTTP verb.
         /// </summary>
         [JsonProperty("method")]
         public string Method { get; set; } = default!;
-        
+
         /// <summary>
         /// Path that handles this Api.
         /// </summary>
         [JsonProperty("path")]
         public string Path { get; set; } = default!;
-        
+
         /// <summary>
         /// The version ID of the Api this ApiEndpoint belongs to.
         /// </summary>
         [JsonProperty("version_id")]
         public string VersionId { get; set; } = default!;
-        
     }
-    
 }

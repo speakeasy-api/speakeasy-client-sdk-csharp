@@ -20,13 +20,68 @@ namespace Speakeasy
     using System.Threading.Tasks;
     using System;
 
+    /// <summary>
+    /// REST APIs for managing Api entities
+    /// </summary>
     public interface IApisSDK
     {
+
+        /// <summary>
+        /// Delete an Api.
+        /// 
+        /// <remarks>
+        /// Delete a particular version of an Api. The will also delete all associated ApiEndpoints, Metadata, Schemas &amp; Request Logs (if using a Postgres datastore).
+        /// </remarks>
+        /// </summary>
         Task<DeleteApiResponse> DeleteApiAsync(DeleteApiRequest? request = null);
+
+        /// <summary>
+        /// Generate an OpenAPI specification for a particular Api.
+        /// 
+        /// <remarks>
+        /// This endpoint will generate any missing operations in any registered OpenAPI document if the operation does not already exist in the document.<br/>
+        /// Returns the original document and the newly generated document allowing a diff to be performed to see what has changed.
+        /// </remarks>
+        /// </summary>
         Task<GenerateOpenApiSpecResponse> GenerateOpenApiSpecAsync(GenerateOpenApiSpecRequest? request = null);
+
+        /// <summary>
+        /// Generate a Postman collection for a particular Api.
+        /// 
+        /// <remarks>
+        /// Generates a postman collection containing all endpoints for a particular API. Includes variables produced for any path/query/header parameters included in the OpenAPI document.
+        /// </remarks>
+        /// </summary>
         Task<GeneratePostmanCollectionResponse> GeneratePostmanCollectionAsync(GeneratePostmanCollectionRequest? request = null);
+
+        /// <summary>
+        /// Get all Api versions for a particular ApiEndpoint.
+        /// 
+        /// <remarks>
+        /// Get all Api versions for a particular ApiEndpoint.<br/>
+        /// Supports filtering the versions based on metadata attributes.
+        /// </remarks>
+        /// </summary>
         Task<GetAllApiVersionsResponse> GetAllApiVersionsAsync(GetAllApiVersionsRequest? request = null);
+
+        /// <summary>
+        /// Get a list of Apis for a given workspace
+        /// 
+        /// <remarks>
+        /// Get a list of all Apis and their versions for a given workspace.<br/>
+        /// Supports filtering the APIs based on metadata attributes.
+        /// </remarks>
+        /// </summary>
         Task<GetApisResponse> GetApisAsync(GetApisRequest? request = null);
+
+        /// <summary>
+        /// Upsert an Api
+        /// 
+        /// <remarks>
+        /// Upsert an Api. If the Api does not exist, it will be created.<br/>
+        /// If the Api exists, it will be updated.
+        /// </remarks>
+        /// </summary>
         Task<UpsertApiResponse> UpsertApiAsync(UpsertApiRequest request);
     }
 
@@ -34,8 +89,8 @@ namespace Speakeasy
     {
         public SDKConfig Config { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.13.5";
-        private const string _sdkGenVersion = "2.107.0";
+        private const string _sdkVersion = "1.13.6";
+        private const string _sdkGenVersion = "2.115.2";
         private const string _openapiDocVersion = "0.3.0";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
@@ -50,13 +105,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Delete an Api.
-        /// 
-        /// <remarks>
-        /// Delete a particular version of an Api. The will also delete all associated ApiEndpoints, Metadata, Schemas & Request Logs (if using a Postgres datastore).
-        /// </remarks>
-        /// </summary>
         public async Task<DeleteApiResponse> DeleteApiAsync(DeleteApiRequest? request = null)
         {
             string baseUrl = _serverUrl;
@@ -93,14 +141,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Generate an OpenAPI specification for a particular Api.
-        /// 
-        /// <remarks>
-        /// This endpoint will generate any missing operations in any registered OpenAPI document if the operation does not already exist in the document.
-        /// Returns the original document and the newly generated document allowing a diff to be performed to see what has changed.
-        /// </remarks>
-        /// </summary>
         public async Task<GenerateOpenApiSpecResponse> GenerateOpenApiSpecAsync(GenerateOpenApiSpecRequest? request = null)
         {
             string baseUrl = _serverUrl;
@@ -141,13 +181,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Generate a Postman collection for a particular Api.
-        /// 
-        /// <remarks>
-        /// Generates a postman collection containing all endpoints for a particular API. Includes variables produced for any path/query/header parameters included in the OpenAPI document.
-        /// </remarks>
-        /// </summary>
         public async Task<GeneratePostmanCollectionResponse> GeneratePostmanCollectionAsync(GeneratePostmanCollectionRequest? request = null)
         {
             string baseUrl = _serverUrl;
@@ -188,14 +221,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Get all Api versions for a particular ApiEndpoint.
-        /// 
-        /// <remarks>
-        /// Get all Api versions for a particular ApiEndpoint.
-        /// Supports filtering the versions based on metadata attributes.
-        /// </remarks>
-        /// </summary>
         public async Task<GetAllApiVersionsResponse> GetAllApiVersionsAsync(GetAllApiVersionsRequest? request = null)
         {
             string baseUrl = _serverUrl;
@@ -236,14 +261,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Get a list of Apis for a given workspace
-        /// 
-        /// <remarks>
-        /// Get a list of all Apis and their versions for a given workspace.
-        /// Supports filtering the APIs based on metadata attributes.
-        /// </remarks>
-        /// </summary>
         public async Task<GetApisResponse> GetApisAsync(GetApisRequest? request = null)
         {
             string baseUrl = _serverUrl;
@@ -284,14 +301,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Upsert an Api
-        /// 
-        /// <remarks>
-        /// Upsert an Api. If the Api does not exist, it will be created.
-        /// If the Api exists, it will be updated.
-        /// </remarks>
-        /// </summary>
         public async Task<UpsertApiResponse> UpsertApiAsync(UpsertApiRequest request)
         {
             string baseUrl = _serverUrl;

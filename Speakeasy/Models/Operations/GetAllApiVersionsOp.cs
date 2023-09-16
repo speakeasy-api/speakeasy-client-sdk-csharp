@@ -12,18 +12,16 @@ namespace Speakeasy.Models.Operations
 {
     using Speakeasy.Utils;
     
-    
     /// <summary>
     /// Configuration for filter operations
     /// </summary>
     public class GetAllApiVersionsOp
     {
+
         /// <summary>
         /// Whether to AND or OR the filters
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=and")]
         public bool And { get; set; } = default!;
-        
     }
-    
 }

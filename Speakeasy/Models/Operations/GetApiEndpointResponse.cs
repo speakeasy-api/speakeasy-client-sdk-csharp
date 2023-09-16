@@ -14,30 +14,23 @@ namespace Speakeasy.Models.Operations
     using System.Net.Http;
     using System;
     
-    
     public class GetApiEndpointResponse
     {
+
         /// <summary>
         /// OK
         /// </summary>
-        
         public ApiEndpoint? ApiEndpoint { get; set; }
-        
-        
+
         public string? ContentType { get; set; } = default!;
-        
+
         /// <summary>
         /// Default error response
         /// </summary>
-        
         public Error? Error { get; set; }
-        
-        
+
         public int StatusCode { get; set; } = default!;
-        
-        
+
         public HttpResponseMessage? RawResponse { get; set; }
-        
     }
-    
 }

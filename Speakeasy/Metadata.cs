@@ -20,10 +20,25 @@ namespace Speakeasy
     using System.Threading.Tasks;
     using System;
 
+    /// <summary>
+    /// REST APIs for managing Version Metadata entities
+    /// </summary>
     public interface IMetadataSDK
     {
+
+        /// <summary>
+        /// Delete metadata for a particular apiID and versionID.
+        /// </summary>
         Task<DeleteVersionMetadataResponse> DeleteVersionMetadataAsync(DeleteVersionMetadataRequest? request = null);
+
+        /// <summary>
+        /// Get all metadata for a particular apiID and versionID.
+        /// </summary>
         Task<GetVersionMetadataResponse> GetVersionMetadataAsync(GetVersionMetadataRequest? request = null);
+
+        /// <summary>
+        /// Insert metadata for a particular apiID and versionID.
+        /// </summary>
         Task<InsertVersionMetadataResponse> InsertVersionMetadataAsync(InsertVersionMetadataRequest request);
     }
 
@@ -31,8 +46,8 @@ namespace Speakeasy
     {
         public SDKConfig Config { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.13.5";
-        private const string _sdkGenVersion = "2.107.0";
+        private const string _sdkVersion = "1.13.6";
+        private const string _sdkGenVersion = "2.115.2";
         private const string _openapiDocVersion = "0.3.0";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
@@ -47,9 +62,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Delete metadata for a particular apiID and versionID.
-        /// </summary>
         public async Task<DeleteVersionMetadataResponse> DeleteVersionMetadataAsync(DeleteVersionMetadataRequest? request = null)
         {
             string baseUrl = _serverUrl;
@@ -86,9 +98,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Get all metadata for a particular apiID and versionID.
-        /// </summary>
         public async Task<GetVersionMetadataResponse> GetVersionMetadataAsync(GetVersionMetadataRequest? request = null)
         {
             string baseUrl = _serverUrl;
@@ -129,9 +138,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Insert metadata for a particular apiID and versionID.
-        /// </summary>
         public async Task<InsertVersionMetadataResponse> InsertVersionMetadataAsync(InsertVersionMetadataRequest request)
         {
             string baseUrl = _serverUrl;

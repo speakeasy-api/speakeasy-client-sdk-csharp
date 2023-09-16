@@ -13,30 +13,28 @@ namespace Speakeasy.Models.Shared
     using Newtonsoft.Json;
     using System.Collections.Generic;
     
-    
     /// <summary>
     /// A SchemaDiff represents a diff of two Schemas.
     /// </summary>
     public class SchemaDiff
     {
+
         /// <summary>
         /// Holds every addition change in the diff.
         /// </summary>
         [JsonProperty("additions")]
         public List<string> Additions { get; set; } = default!;
-        
+
         /// <summary>
         /// Holds every deletion change in the diff.
         /// </summary>
         [JsonProperty("deletions")]
         public List<string> Deletions { get; set; } = default!;
-        
+
         /// <summary>
         /// Holds every modification change in the diff.
         /// </summary>
         [JsonProperty("modifications")]
         public Dictionary<string, SchemaDiffValueChange> Modifications { get; set; } = default!;
-        
     }
-    
 }

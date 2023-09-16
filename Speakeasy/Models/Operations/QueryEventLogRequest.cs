@@ -13,15 +13,13 @@ namespace Speakeasy.Models.Operations
     using Speakeasy.Models.Shared;
     using Speakeasy.Utils;
     
-    
     public class QueryEventLogRequest
     {
+
         /// <summary>
         /// The filter to apply to the query.
         /// </summary>
         [SpeakeasyMetadata("queryParam:serialization=json,name=filters")]
         public Filters? Filters { get; set; }
-        
     }
-    
 }

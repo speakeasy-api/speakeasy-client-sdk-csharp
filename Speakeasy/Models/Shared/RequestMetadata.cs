@@ -12,18 +12,16 @@ namespace Speakeasy.Models.Shared
 {
     using Newtonsoft.Json;
     
-    
     /// <summary>
     /// Key-Value pairs associated with a request
     /// </summary>
     public class RequestMetadata
     {
+
         [JsonProperty("key")]
         public string? Key { get; set; }
-        
+
         [JsonProperty("value")]
         public string? Value { get; set; }
-        
     }
-    
 }

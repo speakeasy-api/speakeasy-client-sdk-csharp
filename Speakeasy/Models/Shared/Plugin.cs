@@ -13,33 +13,31 @@ namespace Speakeasy.Models.Shared
     using Newtonsoft.Json;
     using System;
     
-    
     /// <summary>
     /// A plugin is a short script that is run against ingested requests
     /// </summary>
     public class Plugin
     {
+
         [JsonProperty("code")]
         public string Code { get; set; } = default!;
-        
+
         [JsonProperty("created_at")]
         public DateTime? CreatedAt { get; set; }
-        
+
         [JsonProperty("eval_hash")]
         public string? EvalHash { get; set; }
-        
+
         [JsonProperty("plugin_id")]
         public string PluginId { get; set; } = default!;
-        
+
         [JsonProperty("title")]
         public string Title { get; set; } = default!;
-        
+
         [JsonProperty("updated_at")]
         public DateTime? UpdatedAt { get; set; }
-        
+
         [JsonProperty("workspace_id")]
         public string WorkspaceId { get; set; } = default!;
-        
     }
-    
 }

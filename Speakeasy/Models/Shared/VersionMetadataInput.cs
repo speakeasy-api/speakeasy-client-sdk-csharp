@@ -12,24 +12,22 @@ namespace Speakeasy.Models.Shared
 {
     using Newtonsoft.Json;
     
-    
     /// <summary>
     /// A set of keys and associated values, attached to a particular version of an Api.
     /// </summary>
     public class VersionMetadataInput
     {
+
         /// <summary>
         /// The key for this metadata.
         /// </summary>
         [JsonProperty("meta_key")]
         public string MetaKey { get; set; } = default!;
-        
+
         /// <summary>
         /// One of the values for this metadata.
         /// </summary>
         [JsonProperty("meta_value")]
         public string MetaValue { get; set; } = default!;
-        
     }
-    
 }

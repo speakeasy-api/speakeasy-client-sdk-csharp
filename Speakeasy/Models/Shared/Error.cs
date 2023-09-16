@@ -12,24 +12,22 @@ namespace Speakeasy.Models.Shared
 {
     using Newtonsoft.Json;
     
-    
     /// <summary>
     /// The `Status` type defines a logical error model
     /// </summary>
     public class Error
     {
+
         /// <summary>
         /// A developer-facing error message.
         /// </summary>
         [JsonProperty("message")]
         public string Message { get; set; } = default!;
-        
+
         /// <summary>
         /// The HTTP status code
         /// </summary>
         [JsonProperty("status_code")]
         public int StatusCode { get; set; } = default!;
-        
     }
-    
 }

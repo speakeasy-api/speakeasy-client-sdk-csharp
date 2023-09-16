@@ -12,15 +12,13 @@ namespace Speakeasy.Models.Operations
 {
     using Speakeasy.Utils;
     
-    
     public class GetAllApiEndpointsRequest
     {
+
         /// <summary>
         /// The ID of the Api to retrieve ApiEndpoints for.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=apiID")]
         public string ApiID { get; set; } = default!;
-        
     }
-    
 }

@@ -12,21 +12,19 @@ namespace Speakeasy.Models.Operations
 {
     using Speakeasy.Utils;
     
-    
     public class GenerateOpenApiSpecRequest
     {
+
         /// <summary>
         /// The ID of the Api to generate an OpenAPI specification for.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=apiID")]
         public string ApiID { get; set; } = default!;
-        
+
         /// <summary>
         /// The version ID of the Api to generate an OpenAPI specification for.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=versionID")]
         public string VersionID { get; set; } = default!;
-        
     }
-    
 }

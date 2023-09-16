@@ -12,33 +12,31 @@ namespace Speakeasy.Models.Operations
 {
     using Speakeasy.Utils;
     
-    
     public class DeleteVersionMetadataRequest
     {
+
         /// <summary>
         /// The ID of the Api to delete metadata for.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=apiID")]
         public string ApiID { get; set; } = default!;
-        
+
         /// <summary>
         /// The key of the metadata to delete.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=metaKey")]
         public string MetaKey { get; set; } = default!;
-        
+
         /// <summary>
         /// The value of the metadata to delete.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=metaValue")]
         public string MetaValue { get; set; } = default!;
-        
+
         /// <summary>
         /// The version ID of the Api to delete metadata for.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=versionID")]
         public string VersionID { get; set; } = default!;
-        
     }
-    
 }

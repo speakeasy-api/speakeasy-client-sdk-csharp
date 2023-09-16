@@ -20,10 +20,25 @@ namespace Speakeasy
     using System.Threading.Tasks;
     using System;
 
+    /// <summary>
+    /// REST APIs for managing and running plugins
+    /// </summary>
     public interface IPluginsSDK
     {
+
+        /// <summary>
+        /// Get all plugins for the current workspace.
+        /// </summary>
         Task<GetPluginsResponse> GetPluginsAsync();
+
+        /// <summary>
+        /// Run a plugin
+        /// </summary>
         Task<RunPluginResponse> RunPluginAsync(RunPluginRequest? request = null);
+
+        /// <summary>
+        /// Upsert a plugin
+        /// </summary>
         Task<UpsertPluginResponse> UpsertPluginAsync(Plugin request);
     }
 
@@ -31,8 +46,8 @@ namespace Speakeasy
     {
         public SDKConfig Config { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.13.5";
-        private const string _sdkGenVersion = "2.107.0";
+        private const string _sdkVersion = "1.13.6";
+        private const string _sdkGenVersion = "2.115.2";
         private const string _openapiDocVersion = "0.3.0";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
@@ -47,9 +62,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Get all plugins for the current workspace.
-        /// </summary>
         public async Task<GetPluginsResponse> GetPluginsAsync()
         {
             string baseUrl = _serverUrl;
@@ -90,9 +102,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Run a plugin
-        /// </summary>
         public async Task<RunPluginResponse> RunPluginAsync(RunPluginRequest? request = null)
         {
             string baseUrl = _serverUrl;
@@ -133,9 +142,6 @@ namespace Speakeasy
         }
         
 
-        /// <summary>
-        /// Upsert a plugin
-        /// </summary>
         public async Task<UpsertPluginResponse> UpsertPluginAsync(Plugin request)
         {
             string baseUrl = _serverUrl;

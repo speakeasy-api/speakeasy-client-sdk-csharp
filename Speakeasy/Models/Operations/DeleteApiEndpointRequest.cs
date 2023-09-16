@@ -12,27 +12,25 @@ namespace Speakeasy.Models.Operations
 {
     using Speakeasy.Utils;
     
-    
     public class DeleteApiEndpointRequest
     {
+
         /// <summary>
         /// The ID of the ApiEndpoint to delete.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=apiEndpointID")]
         public string ApiEndpointID { get; set; } = default!;
-        
+
         /// <summary>
         /// The ID of the Api the ApiEndpoint belongs to.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=apiID")]
         public string ApiID { get; set; } = default!;
-        
+
         /// <summary>
         /// The version ID of the Api the ApiEndpoint belongs to.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=versionID")]
         public string VersionID { get; set; } = default!;
-        
     }
-    
 }

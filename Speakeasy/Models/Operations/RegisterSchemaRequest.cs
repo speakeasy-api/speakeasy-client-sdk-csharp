@@ -12,27 +12,25 @@ namespace Speakeasy.Models.Operations
 {
     using Speakeasy.Utils;
     
-    
     public class RegisterSchemaRequest
     {
+
         /// <summary>
         /// The schema file to upload provided as a multipart/form-data file segment.
         /// </summary>
         [SpeakeasyMetadata("request:mediaType=multipart/form-data")]
         public RegisterSchemaRequestBody RequestBody { get; set; } = default!;
-        
+
         /// <summary>
         /// The ID of the Api to get the schema for.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=apiID")]
         public string ApiID { get; set; } = default!;
-        
+
         /// <summary>
         /// The version ID of the Api to delete metadata for.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=versionID")]
         public string VersionID { get; set; } = default!;
-        
     }
-    
 }

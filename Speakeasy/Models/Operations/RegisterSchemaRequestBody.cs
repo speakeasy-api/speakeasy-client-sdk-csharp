@@ -12,15 +12,13 @@ namespace Speakeasy.Models.Operations
 {
     using Speakeasy.Utils;
     
-    
     /// <summary>
     /// The schema file to upload provided as a multipart/form-data file segment.
     /// </summary>
     public class RegisterSchemaRequestBody
     {
+
         [SpeakeasyMetadata("multipartForm:file")]
         public RegisterSchemaRequestBodyFile File { get; set; } = default!;
-        
     }
-    
 }
