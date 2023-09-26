@@ -33,9 +33,9 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Schemas.DeleteSchemaAsync(new DeleteSchemaRequest() {
-    ApiID = "mollitia",
-    RevisionID = "laborum",
-    VersionID = "dolores",
+    ApiID = "dolores",
+    RevisionID = "dolorem",
+    VersionID = "corporis",
 });
 
 // handle response
@@ -71,8 +71,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Schemas.DownloadSchemaAsync(new DownloadSchemaRequest() {
-    ApiID = "dolorem",
-    VersionID = "corporis",
+    ApiID = "explicabo",
+    VersionID = "nobis",
 });
 
 // handle response
@@ -108,9 +108,9 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Schemas.DownloadSchemaRevisionAsync(new DownloadSchemaRevisionRequest() {
-    ApiID = "explicabo",
-    RevisionID = "nobis",
-    VersionID = "enim",
+    ApiID = "enim",
+    RevisionID = "omnis",
+    VersionID = "nemo",
 });
 
 // handle response
@@ -147,8 +147,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Schemas.GetSchemaAsync(new GetSchemaRequest() {
-    ApiID = "omnis",
-    VersionID = "nemo",
+    ApiID = "minima",
+    VersionID = "excepturi",
 });
 
 // handle response
@@ -184,10 +184,10 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Schemas.GetSchemaDiffAsync(new GetSchemaDiffRequest() {
-    ApiID = "minima",
-    BaseRevisionID = "excepturi",
-    TargetRevisionID = "accusantium",
-    VersionID = "iure",
+    ApiID = "accusantium",
+    BaseRevisionID = "iure",
+    TargetRevisionID = "culpa",
+    VersionID = "doloribus",
 });
 
 // handle response
@@ -224,9 +224,9 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Schemas.GetSchemaRevisionAsync(new GetSchemaRevisionRequest() {
-    ApiID = "culpa",
-    RevisionID = "doloribus",
-    VersionID = "sapiente",
+    ApiID = "sapiente",
+    RevisionID = "architecto",
+    VersionID = "mollitia",
 });
 
 // handle response
@@ -263,8 +263,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Schemas.GetSchemasAsync(new GetSchemasRequest() {
-    ApiID = "architecto",
-    VersionID = "mollitia",
+    ApiID = "dolorem",
+    VersionID = "culpa",
 });
 
 // handle response
@@ -303,12 +303,12 @@ var sdk = new SpeakeasySDK(
 var res = await sdk.Schemas.RegisterSchemaAsync(new RegisterSchemaRequest() {
     RequestBody = new RegisterSchemaRequestBody() {
         File = new RegisterSchemaRequestBodyFile() {
-            Content = "dolorem as bytes <<<>>>",
-            File = "culpa",
+            Content = "consequuntur as bytes <<<>>>",
+            File = "repellat",
         },
     },
-    ApiID = "consequuntur",
-    VersionID = "repellat",
+    ApiID = "mollitia",
+    VersionID = "occaecati",
 });
 
 // handle response

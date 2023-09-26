@@ -72,6 +72,11 @@ namespace Speakeasy
     {
     }
 
+    /// <summary>
+    /// Speakeasy API: The Speakeasy API allows teams to manage common operations with their APIs
+    /// 
+    /// <see>https://speakeasyapi.dev/docs/} - The Speakeasy Platform Documentation</see>
+    /// </summary>
     public class SpeakeasySDK: ISpeakeasySDK
     {
         public SDKConfig Config { get; private set; }
@@ -81,8 +86,8 @@ namespace Speakeasy
         };
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.13.7";
-        private const string _sdkGenVersion = "2.118.1";
+        private const string _sdkVersion = "1.14.0";
+        private const string _sdkGenVersion = "2.129.1";
         private const string _openapiDocVersion = "0.3.0";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
@@ -151,7 +156,7 @@ namespace Speakeasy
                 
                 return response;
             }
-            response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer() }});
+            response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
             return response;
         }
     }

@@ -29,7 +29,7 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Requests.GenerateRequestPostmanCollectionAsync(new GenerateRequestPostmanCollectionRequest() {
-    RequestID = "iste",
+    RequestID = "saepe",
 });
 
 // handle response
@@ -65,7 +65,7 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Requests.GetRequestFromEventLogAsync(new GetRequestFromEventLogRequest() {
-    RequestID = "iure",
+    RequestID = "quidem",
 });
 
 // handle response
@@ -105,14 +105,14 @@ var res = await sdk.Requests.QueryEventLogAsync(new QueryEventLogRequest() {
     Filters = new Filters() {
         Filters = new List<Filter>() {
             new Filter() {
-                Key = "saepe",
-                Operator = "quidem",
-                Value = "architecto",
+                Key = "architecto",
+                Operator = "ipsa",
+                Value = "reiciendis",
             },
         },
-        Limit = 60225,
-        Offset = 969810,
-        Operator = "est",
+        Limit = 666767,
+        Offset = 653140,
+        Operator = "laborum",
     },
 });
 

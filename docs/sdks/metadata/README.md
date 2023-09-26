@@ -28,10 +28,10 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Metadata.DeleteVersionMetadataAsync(new DeleteVersionMetadataRequest() {
-    ApiID = "optio",
-    MetaKey = "totam",
-    MetaValue = "beatae",
-    VersionID = "commodi",
+    ApiID = "beatae",
+    MetaKey = "commodi",
+    MetaValue = "molestiae",
+    VersionID = "modi",
 });
 
 // handle response
@@ -67,8 +67,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Metadata.GetVersionMetadataAsync(new GetVersionMetadataRequest() {
-    ApiID = "molestiae",
-    VersionID = "modi",
+    ApiID = "qui",
+    VersionID = "impedit",
 });
 
 // handle response
@@ -105,11 +105,11 @@ var sdk = new SpeakeasySDK(
 
 var res = await sdk.Metadata.InsertVersionMetadataAsync(new InsertVersionMetadataRequest() {
     VersionMetadataInput = new VersionMetadataInput() {
-        MetaKey = "qui",
-        MetaValue = "impedit",
+        MetaKey = "cum",
+        MetaValue = "esse",
     },
-    ApiID = "cum",
-    VersionID = "esse",
+    ApiID = "ipsum",
+    VersionID = "excepturi",
 });
 
 // handle response

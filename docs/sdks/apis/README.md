@@ -31,8 +31,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Apis.DeleteApiAsync(new DeleteApiRequest() {
-    ApiID = "quis",
-    VersionID = "veritatis",
+    ApiID = "deserunt",
+    VersionID = "perferendis",
 });
 
 // handle response
@@ -69,8 +69,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Apis.GenerateOpenApiSpecAsync(new GenerateOpenApiSpecRequest() {
-    ApiID = "deserunt",
-    VersionID = "perferendis",
+    ApiID = "ipsam",
+    VersionID = "repellendus",
 });
 
 // handle response
@@ -106,8 +106,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Apis.GeneratePostmanCollectionAsync(new GeneratePostmanCollectionRequest() {
-    ApiID = "ipsam",
-    VersionID = "repellendus",
+    ApiID = "sapiente",
+    VersionID = "quo",
 });
 
 // handle response
@@ -144,10 +144,10 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Apis.GetAllApiVersionsAsync(new GetAllApiVersionsRequest() {
-    ApiID = "sapiente",
+    ApiID = "odit",
     Metadata = new Dictionary<string, List<string>>() {
-        { "quo", new List<string>() {
-            "odit",
+        { "at", new List<string>() {
+            "at",
         } },
     },
     Op = new GetAllApiVersionsOp() {
@@ -190,8 +190,8 @@ var sdk = new SpeakeasySDK(
 
 var res = await sdk.Apis.GetApisAsync(new GetApisRequest() {
     Metadata = new Dictionary<string, List<string>>() {
-        { "at", new List<string>() {
-            "at",
+        { "maiores", new List<string>() {
+            "molestiae",
         } },
     },
     Op = new GetApisOp() {
@@ -234,16 +234,16 @@ var sdk = new SpeakeasySDK(
 
 var res = await sdk.Apis.UpsertApiAsync(new UpsertApiRequest() {
     ApiInput = new ApiInput() {
-        ApiId = "maiores",
-        Description = "molestiae",
+        ApiId = "quod",
+        Description = "quod",
         MetaData = new Dictionary<string, List<string>>() {
-            { "quod", new List<string>() {
-                "quod",
+            { "esse", new List<string>() {
+                "totam",
             } },
         },
-        VersionId = "esse",
+        VersionId = "porro",
     },
-    ApiID = "totam",
+    ApiID = "dolorum",
 });
 
 // handle response

@@ -58,16 +58,16 @@ var res = await sdk.Plugins.RunPluginAsync(new RunPluginRequest() {
     Filters = new Filters() {
         Filters = new List<Filter>() {
             new Filter() {
-                Key = "ipsum",
-                Operator = "excepturi",
-                Value = "aspernatur",
+                Key = "aspernatur",
+                Operator = "perferendis",
+                Value = "ad",
             },
         },
-        Limit = 18789,
-        Offset = 324141,
-        Operator = "natus",
+        Limit = 617636,
+        Offset = 149675,
+        Operator = "iste",
     },
-    PluginID = "sed",
+    PluginID = "dolor",
 });
 
 // handle response
@@ -103,13 +103,13 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Plugins.UpsertPluginAsync(new Plugin() {
-    Code = "iste",
-    CreatedAt = DateTime.Parse("2022-05-20T19:39:29.035Z"),
-    EvalHash = "laboriosam",
-    PluginId = "hic",
-    Title = "Dr.",
-    UpdatedAt = DateTime.Parse("2022-02-06T12:52:33.708Z"),
-    WorkspaceId = "corporis",
+    Code = "natus",
+    CreatedAt = DateTime.Parse("2022-01-21T12:46:00.641Z"),
+    EvalHash = "saepe",
+    PluginId = "fuga",
+    Title = "Ms.",
+    UpdatedAt = DateTime.Parse("2022-05-22T05:33:50.280Z"),
+    WorkspaceId = "iure",
 });
 
 // handle response

@@ -110,14 +110,6 @@ Speakeasy/Models/Shared/Schema.cs
 Speakeasy/Models/Shared/SchemaDiffValueChange.cs
 Speakeasy/Models/Shared/SchemaDiff.cs
 Speakeasy/Models/Shared/Security.cs
-docs/sdks/speakeasy/README.md
-docs/sdks/apiendpoints/README.md
-docs/sdks/apis/README.md
-docs/sdks/embeds/README.md
-docs/sdks/metadata/README.md
-docs/sdks/plugins/README.md
-docs/sdks/requests/README.md
-docs/sdks/schemas/README.md
 USAGE.md
 docs/models/operations/ValidateApiKeyResponse.md
 docs/models/operations/DeleteApiEndpointRequest.md
@@ -209,4 +201,12 @@ docs/models/shared/Schema.md
 docs/models/shared/SchemaDiffValueChange.md
 docs/models/shared/SchemaDiff.md
 docs/models/shared/Security.md
+docs/sdks/speakeasy/README.md
+docs/sdks/apiendpoints/README.md
+docs/sdks/apis/README.md
+docs/sdks/embeds/README.md
+docs/sdks/metadata/README.md
+docs/sdks/plugins/README.md
+docs/sdks/requests/README.md
+docs/sdks/schemas/README.md
 .gitattributes

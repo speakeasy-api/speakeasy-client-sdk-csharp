@@ -12,8 +12,6 @@ dotnet add package SpeakeasySDK
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
-
-
 ```csharp
 using Speakeasy;
 using Speakeasy.Models.Shared;
@@ -27,8 +25,8 @@ var sdk = new SpeakeasySDK(
 
 var res = await sdk.Apis.GetApisAsync(new GetApisRequest() {
     Metadata = new Dictionary<string, List<string>>() {
-        { "corrupti", new List<string>() {
-            "provident",
+        { "distinctio", new List<string>() {
+            "quibusdam",
         } },
     },
     Op = new GetApisOp() {
@@ -102,6 +100,18 @@ var res = await sdk.Apis.GetApisAsync(new GetApisRequest() {
 * [GetSchemas](docs/sdks/schemas/README.md#getschemas) - Get information about all schemas associated with a particular apiID.
 * [RegisterSchema](docs/sdks/schemas/README.md#registerschema) - Register a schema.
 <!-- End SDK Available Operations -->
+
+
+
+<!-- Start Dev Containers -->
+
+
+
+<!-- End Dev Containers -->
+
+<!-- Placeholder for Future Speakeasy SDK Sections -->
+
+
 
 ### Maturity
 
