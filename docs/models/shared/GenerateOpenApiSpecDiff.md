@@ -5,5 +5,5 @@
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `currentSchema`    | *string*           | :heavy_check_mark: | N/A                |
-| `newSchema`        | *string*           | :heavy_check_mark: | N/A                |
+| `CurrentSchema`    | *string*           | :heavy_check_mark: | N/A                |
+| `NewSchema`        | *string*           | :heavy_check_mark: | N/A                |

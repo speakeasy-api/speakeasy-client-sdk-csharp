@@ -7,4 +7,4 @@ An EmbedAccessTokenResponse contains a token that can be used to embed a Speakea
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `accessToken`      | *string*           | :heavy_check_mark: | N/A                |
+| `AccessToken`      | *string*           | :heavy_check_mark: | N/A                |

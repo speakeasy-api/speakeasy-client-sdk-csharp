@@ -7,4 +7,4 @@ Configuration for filter operations
 
 | Field                            | Type                             | Required                         | Description                      |
 | -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `and`                            | *bool*                           | :heavy_check_mark:               | Whether to AND or OR the filters |
+| `And`                            | *bool*                           | :heavy_check_mark:               | Whether to AND or OR the filters |

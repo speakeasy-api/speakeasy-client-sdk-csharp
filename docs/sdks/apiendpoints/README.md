@@ -1,4 +1,5 @@
-# ApiEndpoints
+# ApiEndpointsSDK
+(*ApiEndpoints*)
 
 ## Overview
 

@@ -5,4 +5,4 @@
 
 | Field                                           | Type                                            | Required                                        | Description                                     |
 | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| `apiID`                                         | *string*                                        | :heavy_check_mark:                              | The ID of the Api to retrieve ApiEndpoints for. |
+| `ApiID`                                         | *string*                                        | :heavy_check_mark:                              | The ID of the Api to retrieve ApiEndpoints for. |

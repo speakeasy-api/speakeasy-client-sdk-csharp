@@ -1,4 +1,5 @@
-# Embeds
+# EmbedsSDK
+(*Embeds*)
 
 ## Overview
 

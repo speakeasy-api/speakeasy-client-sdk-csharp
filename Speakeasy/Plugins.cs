@@ -49,8 +49,8 @@ namespace Speakeasy
     {
         public SDKConfig Config { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.14.0";
-        private const string _sdkGenVersion = "2.129.1";
+        private const string _sdkVersion = "1.14.1";
+        private const string _sdkGenVersion = "2.131.1";
         private const string _openapiDocVersion = "0.3.0";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
@@ -93,7 +93,7 @@ namespace Speakeasy
             };
             if((response.StatusCode == 200))
             {
-                if(Utilities.IsContentTypeMatch("application/json", response.ContentType))
+                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Plugins = JsonConvert.DeserializeObject<List<Plugin>>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
@@ -133,7 +133,7 @@ namespace Speakeasy
             };
             if((response.StatusCode == 200))
             {
-                if(Utilities.IsContentTypeMatch("application/json", response.ContentType))
+                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.BoundedRequests = JsonConvert.DeserializeObject<List<BoundedRequest>>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
@@ -182,7 +182,7 @@ namespace Speakeasy
             };
             if((response.StatusCode == 200))
             {
-                if(Utilities.IsContentTypeMatch("application/json", response.ContentType))
+                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Plugin = JsonConvert.DeserializeObject<Plugin>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }

@@ -7,5 +7,5 @@ Key-Value pairs associated with a request
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `key`              | *string*           | :heavy_minus_sign: | N/A                |
-| `value`            | *string*           | :heavy_minus_sign: | N/A                |
+| `Key`              | *string*           | :heavy_minus_sign: | N/A                |
+| `Value`            | *string*           | :heavy_minus_sign: | N/A                |

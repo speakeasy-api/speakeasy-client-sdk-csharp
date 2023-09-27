@@ -1,4 +1,5 @@
-# Plugins
+# PluginsSDK
+(*Plugins*)
 
 ## Overview
 
