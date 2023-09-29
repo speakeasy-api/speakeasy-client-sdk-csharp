@@ -29,10 +29,10 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Metadata.DeleteVersionMetadataAsync(new DeleteVersionMetadataRequest() {
-    ApiID = "beatae",
-    MetaKey = "commodi",
-    MetaValue = "molestiae",
-    VersionID = "modi",
+    ApiID = "East static North",
+    MetaKey = "veniam",
+    MetaValue = "cocoa",
+    VersionID = "deposit",
 });
 
 // handle response
@@ -68,8 +68,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Metadata.GetVersionMetadataAsync(new GetVersionMetadataRequest() {
-    ApiID = "qui",
-    VersionID = "impedit",
+    ApiID = "Games",
+    VersionID = "Centralized cyan",
 });
 
 // handle response
@@ -106,11 +106,11 @@ var sdk = new SpeakeasySDK(
 
 var res = await sdk.Metadata.InsertVersionMetadataAsync(new InsertVersionMetadataRequest() {
     VersionMetadataInput = new VersionMetadataInput() {
-        MetaKey = "cum",
-        MetaValue = "esse",
+        MetaKey = "calculating",
+        MetaValue = "Bedfordshire",
     },
-    ApiID = "ipsum",
-    VersionID = "excepturi",
+    ApiID = "West Northeast",
+    VersionID = "candela",
 });
 
 // handle response

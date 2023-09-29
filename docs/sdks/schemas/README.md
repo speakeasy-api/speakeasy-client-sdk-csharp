@@ -34,9 +34,9 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Schemas.DeleteSchemaAsync(new DeleteSchemaRequest() {
-    ApiID = "dolores",
-    RevisionID = "dolorem",
-    VersionID = "corporis",
+    ApiID = "Hybrid",
+    RevisionID = "Funk Garden Specialist",
+    VersionID = "male",
 });
 
 // handle response
@@ -72,8 +72,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Schemas.DownloadSchemaAsync(new DownloadSchemaRequest() {
-    ApiID = "explicabo",
-    VersionID = "nobis",
+    ApiID = "Specialist correctly",
+    VersionID = "customer Exclusive oof",
 });
 
 // handle response
@@ -109,9 +109,9 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Schemas.DownloadSchemaRevisionAsync(new DownloadSchemaRevisionRequest() {
-    ApiID = "enim",
-    RevisionID = "omnis",
-    VersionID = "nemo",
+    ApiID = "Belarus hacking firewall",
+    RevisionID = "Coupe affidavit Cheese",
+    VersionID = "pink deposit",
 });
 
 // handle response
@@ -148,8 +148,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Schemas.GetSchemaAsync(new GetSchemaRequest() {
-    ApiID = "minima",
-    VersionID = "excepturi",
+    ApiID = "Assistant",
+    VersionID = "banter Cotton withdrawal",
 });
 
 // handle response
@@ -185,10 +185,10 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Schemas.GetSchemaDiffAsync(new GetSchemaDiffRequest() {
-    ApiID = "accusantium",
-    BaseRevisionID = "iure",
-    TargetRevisionID = "culpa",
-    VersionID = "doloribus",
+    ApiID = "Tuna",
+    BaseRevisionID = "South Van",
+    TargetRevisionID = "whoever",
+    VersionID = "henry Tulare",
 });
 
 // handle response
@@ -225,9 +225,9 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Schemas.GetSchemaRevisionAsync(new GetSchemaRevisionRequest() {
-    ApiID = "sapiente",
-    RevisionID = "architecto",
-    VersionID = "mollitia",
+    ApiID = "Mauritius",
+    RevisionID = "West Rustic Plastic",
+    VersionID = "Yttrium Loan",
 });
 
 // handle response
@@ -264,8 +264,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Schemas.GetSchemasAsync(new GetSchemasRequest() {
-    ApiID = "dolorem",
-    VersionID = "culpa",
+    ApiID = "white",
+    VersionID = "optical round",
 });
 
 // handle response
@@ -304,12 +304,12 @@ var sdk = new SpeakeasySDK(
 var res = await sdk.Schemas.RegisterSchemaAsync(new RegisterSchemaRequest() {
     RequestBody = new RegisterSchemaRequestBody() {
         File = new RegisterSchemaRequestBodyFile() {
-            Content = "consequuntur as bytes <<<>>>",
-            File = "repellat",
+            Content = "mg|mf\".]!\ as bytes <<<>>>",
+            File = "Bronze Table Blues",
         },
     },
-    ApiID = "mollitia",
-    VersionID = "occaecati",
+    ApiID = "Oganesson",
+    VersionID = "matrix Pennsylvania Southeast",
 });
 
 // handle response

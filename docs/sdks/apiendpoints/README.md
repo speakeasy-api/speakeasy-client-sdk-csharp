@@ -34,9 +34,9 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.ApiEndpoints.DeleteApiEndpointAsync(new DeleteApiEndpointRequest() {
-    ApiEndpointID = "unde",
-    ApiID = "nulla",
-    VersionID = "corrupti",
+    ApiEndpointID = "bus Gasoline Southwest",
+    ApiID = "candela",
+    VersionID = "indexing maxime bypassing",
 });
 
 // handle response
@@ -73,9 +73,9 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.ApiEndpoints.FindApiEndpointAsync(new FindApiEndpointRequest() {
-    ApiID = "illum",
-    DisplayName = "vel",
-    VersionID = "error",
+    ApiID = "insignificant",
+    DisplayName = "payment",
+    VersionID = "Highland North Awesome",
 });
 
 // handle response
@@ -112,9 +112,9 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.ApiEndpoints.GenerateOpenApiSpecForApiEndpointAsync(new GenerateOpenApiSpecForApiEndpointRequest() {
-    ApiEndpointID = "deserunt",
-    ApiID = "suscipit",
-    VersionID = "iure",
+    ApiEndpointID = "Tactics ew explicabo",
+    ApiID = "gray act",
+    VersionID = "bah",
 });
 
 // handle response
@@ -150,9 +150,9 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.ApiEndpoints.GeneratePostmanCollectionForApiEndpointAsync(new GeneratePostmanCollectionForApiEndpointRequest() {
-    ApiEndpointID = "magnam",
-    ApiID = "debitis",
-    VersionID = "ipsa",
+    ApiEndpointID = "silver Bronze Outdoors",
+    ApiID = "Virtual admirable Southeast",
+    VersionID = "Northeast Bicycle mark",
 });
 
 // handle response
@@ -188,7 +188,7 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.ApiEndpoints.GetAllApiEndpointsAsync(new GetAllApiEndpointsRequest() {
-    ApiID = "delectus",
+    ApiID = "Director JSON candela",
 });
 
 // handle response
@@ -224,8 +224,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.ApiEndpoints.GetAllForVersionApiEndpointsAsync(new GetAllForVersionApiEndpointsRequest() {
-    ApiID = "tempora",
-    VersionID = "suscipit",
+    ApiID = "THX Tuna sparkling",
+    VersionID = "Assurance",
 });
 
 // handle response
@@ -261,9 +261,9 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.ApiEndpoints.GetApiEndpointAsync(new GetApiEndpointRequest() {
-    ApiEndpointID = "molestiae",
-    ApiID = "minus",
-    VersionID = "placeat",
+    ApiEndpointID = "Optimized male SSD",
+    ApiID = "Soul Land",
+    VersionID = "Androgyne Hydrogen",
 });
 
 // handle response
@@ -300,16 +300,16 @@ var sdk = new SpeakeasySDK(
 
 var res = await sdk.ApiEndpoints.UpsertApiEndpointAsync(new UpsertApiEndpointRequest() {
     ApiEndpointInput = new ApiEndpointInput() {
-        ApiEndpointId = "voluptatum",
-        Description = "iusto",
-        DisplayName = "excepturi",
-        Method = "nisi",
-        Path = "recusandae",
-        VersionId = "temporibus",
+        ApiEndpointId = "Convertible Turner Cotton",
+        Description = "Triple-buffered optimal methodology",
+        DisplayName = "Langosh Northwest Mabelle",
+        Method = "South",
+        Path = "/rescue",
+        VersionId = "East Land viral",
     },
-    ApiEndpointID = "ab",
-    ApiID = "quis",
-    VersionID = "veritatis",
+    ApiEndpointID = "Electric Operations systems",
+    ApiID = "Operations East Unbranded",
+    VersionID = "parsing Convertible",
 });
 
 // handle response

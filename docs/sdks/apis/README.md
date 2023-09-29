@@ -32,8 +32,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Apis.DeleteApiAsync(new DeleteApiRequest() {
-    ApiID = "deserunt",
-    VersionID = "perferendis",
+    ApiID = "Applications Mercedes fuchsia",
+    VersionID = "Conroe",
 });
 
 // handle response
@@ -70,8 +70,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Apis.GenerateOpenApiSpecAsync(new GenerateOpenApiSpecRequest() {
-    ApiID = "ipsam",
-    VersionID = "repellendus",
+    ApiID = "frictionless District South",
+    VersionID = "West Global",
 });
 
 // handle response
@@ -107,8 +107,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Apis.GeneratePostmanCollectionAsync(new GeneratePostmanCollectionRequest() {
-    ApiID = "sapiente",
-    VersionID = "quo",
+    ApiID = "extend Security",
+    VersionID = "reconfirm",
 });
 
 // handle response
@@ -145,10 +145,10 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Apis.GetAllApiVersionsAsync(new GetAllApiVersionsRequest() {
-    ApiID = "odit",
+    ApiID = "yum Rustic Berkshire",
     Metadata = new Dictionary<string, List<string>>() {
-        { "at", new List<string>() {
-            "at",
+        { "assumenda", new List<string>() {
+            "Fresh",
         } },
     },
     Op = new GetAllApiVersionsOp() {
@@ -191,8 +191,8 @@ var sdk = new SpeakeasySDK(
 
 var res = await sdk.Apis.GetApisAsync(new GetApisRequest() {
     Metadata = new Dictionary<string, List<string>>() {
-        { "maiores", new List<string>() {
-            "molestiae",
+        { "aut", new List<string>() {
+            "bypassing",
         } },
     },
     Op = new GetApisOp() {
@@ -235,16 +235,16 @@ var sdk = new SpeakeasySDK(
 
 var res = await sdk.Apis.UpsertApiAsync(new UpsertApiRequest() {
     ApiInput = new ApiInput() {
-        ApiId = "quod",
-        Description = "quod",
+        ApiId = "Martinique redefine Garland",
+        Description = "Balanced 24/7 utilisation",
         MetaData = new Dictionary<string, List<string>>() {
-            { "esse", new List<string>() {
-                "totam",
+            { "deleniti", new List<string>() {
+                "male",
             } },
         },
-        VersionId = "porro",
+        VersionId = "Forward",
     },
-    ApiID = "dolorum",
+    ApiID = "Facilitator",
 });
 
 // handle response

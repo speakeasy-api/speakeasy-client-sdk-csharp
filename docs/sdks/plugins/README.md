@@ -59,16 +59,16 @@ var res = await sdk.Plugins.RunPluginAsync(new RunPluginRequest() {
     Filters = new Filters() {
         Filters = new List<Filter>() {
             new Filter() {
-                Key = "aspernatur",
-                Operator = "perferendis",
-                Value = "ad",
+                Key = "<key>",
+                Operator = "West parse Pickup",
+                Value = "purple Pants",
             },
         },
-        Limit = 617636,
-        Offset = 149675,
-        Operator = "iste",
+        Limit = 996936,
+        Offset = 273299,
+        Operator = "Bedfordshire meaningfully",
     },
-    PluginID = "dolor",
+    PluginID = "Botswana Metal",
 });
 
 // handle response
@@ -104,13 +104,13 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Plugins.UpsertPluginAsync(new Plugin() {
-    Code = "natus",
-    CreatedAt = DateTime.Parse("2022-01-21T12:46:00.641Z"),
-    EvalHash = "saepe",
-    PluginId = "fuga",
-    Title = "Ms.",
-    UpdatedAt = DateTime.Parse("2022-05-22T05:33:50.280Z"),
-    WorkspaceId = "iure",
+    Code = "drafty",
+    CreatedAt = DateTime.Parse("2023-03-17T19:17:52.123Z"),
+    EvalHash = "Benin Berkshire",
+    PluginId = "Soul Kuna",
+    Title = "Plastic siemens navigate",
+    UpdatedAt = DateTime.Parse("2022-12-27T19:05:38.030Z"),
+    WorkspaceId = "owlishly JSON till",
 });
 
 // handle response
