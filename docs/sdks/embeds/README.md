@@ -30,13 +30,11 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Embeds.GetEmbedAccessTokenAsync(new GetEmbedAccessTokenRequest() {
-    Description = "Versatile asynchronous leverage",
-    Duration = 554373,
     Filters = new Filters() {
         Filters = new List<Filter>() {
             new Filter() {
                 Key = "<key>",
-                Operator = "Account",
+                Operator = "Northeast compress Account",
                 Value = "unless to frame",
             },
         },

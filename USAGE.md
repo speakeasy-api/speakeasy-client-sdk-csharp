@@ -14,8 +14,8 @@ var sdk = new SpeakeasySDK(
 
 var res = await sdk.Apis.GetApisAsync(new GetApisRequest() {
     Metadata = new Dictionary<string, List<string>>() {
-        { "aut", new List<string>() {
-            "bypassing",
+        { "South", new List<string>() {
+            "Southwest",
         } },
     },
     Op = new GetApisOp() {

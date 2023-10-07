@@ -147,8 +147,8 @@ var sdk = new SpeakeasySDK(
 var res = await sdk.Apis.GetAllApiVersionsAsync(new GetAllApiVersionsRequest() {
     ApiID = "yum Rustic Berkshire",
     Metadata = new Dictionary<string, List<string>>() {
-        { "assumenda", new List<string>() {
-            "Fresh",
+        { "Dodge", new List<string>() {
+            "Salad",
         } },
     },
     Op = new GetAllApiVersionsOp() {
@@ -191,8 +191,8 @@ var sdk = new SpeakeasySDK(
 
 var res = await sdk.Apis.GetApisAsync(new GetApisRequest() {
     Metadata = new Dictionary<string, List<string>>() {
-        { "aut", new List<string>() {
-            "bypassing",
+        { "South", new List<string>() {
+            "Southwest",
         } },
     },
     Op = new GetApisOp() {
@@ -238,8 +238,8 @@ var res = await sdk.Apis.UpsertApiAsync(new UpsertApiRequest() {
         ApiId = "Martinique redefine Garland",
         Description = "Balanced 24/7 utilisation",
         MetaData = new Dictionary<string, List<string>>() {
-            { "deleniti", new List<string>() {
-                "male",
+            { "pixel", new List<string>() {
+                "Buckinghamshire",
             } },
         },
         VersionId = "Forward",

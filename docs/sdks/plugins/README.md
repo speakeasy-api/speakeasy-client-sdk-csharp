@@ -105,12 +105,9 @@ var sdk = new SpeakeasySDK(
 
 var res = await sdk.Plugins.UpsertPluginAsync(new Plugin() {
     Code = "drafty",
-    CreatedAt = DateTime.Parse("2023-03-17T19:17:52.123Z"),
-    EvalHash = "Benin Berkshire",
-    PluginId = "Soul Kuna",
-    Title = "Plastic siemens navigate",
-    UpdatedAt = DateTime.Parse("2022-12-27T19:05:38.030Z"),
-    WorkspaceId = "owlishly JSON till",
+    PluginId = "Rock North exuding",
+    Title = "navigating schemas",
+    WorkspaceId = "Plastic siemens navigate",
 });
 
 // handle response
