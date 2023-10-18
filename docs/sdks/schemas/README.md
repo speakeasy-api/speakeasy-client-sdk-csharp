@@ -34,9 +34,9 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Schemas.DeleteSchemaAsync(new DeleteSchemaRequest() {
-    ApiID = "Hybrid",
-    RevisionID = "Funk Garden Specialist",
-    VersionID = "male",
+    ApiID = "West",
+    RevisionID = "Tricycle",
+    VersionID = "Funk",
 });
 
 // handle response
@@ -72,8 +72,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Schemas.DownloadSchemaAsync(new DownloadSchemaRequest() {
-    ApiID = "Specialist correctly",
-    VersionID = "customer Exclusive oof",
+    ApiID = "SMTP",
+    VersionID = "North",
 });
 
 // handle response
@@ -109,9 +109,9 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Schemas.DownloadSchemaRevisionAsync(new DownloadSchemaRevisionRequest() {
-    ApiID = "Belarus hacking firewall",
-    RevisionID = "Coupe affidavit Cheese",
-    VersionID = "pink deposit",
+    ApiID = "Cargo",
+    RevisionID = "hacking",
+    VersionID = "firewall",
 });
 
 // handle response
@@ -148,8 +148,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Schemas.GetSchemaAsync(new GetSchemaRequest() {
-    ApiID = "Assistant",
-    VersionID = "banter Cotton withdrawal",
+    ApiID = "Handcrafted",
+    VersionID = "Hybrid",
 });
 
 // handle response
@@ -185,10 +185,10 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Schemas.GetSchemaDiffAsync(new GetSchemaDiffRequest() {
-    ApiID = "Tuna",
-    BaseRevisionID = "South Van",
-    TargetRevisionID = "whoever",
-    VersionID = "henry Tulare",
+    ApiID = "North",
+    BaseRevisionID = "Central",
+    TargetRevisionID = "South",
+    VersionID = "Van",
 });
 
 // handle response
@@ -225,9 +225,9 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Schemas.GetSchemaRevisionAsync(new GetSchemaRevisionRequest() {
-    ApiID = "Mauritius",
-    RevisionID = "West Rustic Plastic",
-    VersionID = "Yttrium Loan",
+    ApiID = "City",
+    RevisionID = "web",
+    VersionID = "sternly",
 });
 
 // handle response
@@ -264,8 +264,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Schemas.GetSchemasAsync(new GetSchemasRequest() {
-    ApiID = "white",
-    VersionID = "optical round",
+    ApiID = "indigo",
+    VersionID = "Fantastic",
 });
 
 // handle response
@@ -305,11 +305,11 @@ var res = await sdk.Schemas.RegisterSchemaAsync(new RegisterSchemaRequest() {
     RequestBody = new RegisterSchemaRequestBody() {
         File = new RegisterSchemaRequestBodyFile() {
             Content = "mg|mf\".]!\ as bytes <<<>>>",
-            File = "Bronze Table Blues",
+            File = "Avon",
         },
     },
-    ApiID = "Oganesson",
-    VersionID = "matrix Pennsylvania Southeast",
+    ApiID = "Pants",
+    VersionID = "Table",
 });
 
 // handle response

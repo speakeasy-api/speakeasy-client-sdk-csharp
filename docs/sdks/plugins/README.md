@@ -60,15 +60,15 @@ var res = await sdk.Plugins.RunPluginAsync(new RunPluginRequest() {
         Filters = new List<Filter>() {
             new Filter() {
                 Key = "<key>",
-                Operator = "West parse Pickup",
-                Value = "purple Pants",
+                Operator = "Designer",
+                Value = "Pickup",
             },
         },
-        Limit = 996936,
-        Offset = 273299,
-        Operator = "Bedfordshire meaningfully",
+        Limit = 455139,
+        Offset = 173644,
+        Operator = "Indiana",
     },
-    PluginID = "Botswana Metal",
+    PluginID = "Chrysler",
 });
 
 // handle response
@@ -104,10 +104,10 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Plugins.UpsertPluginAsync(new Plugin() {
-    Code = "drafty",
-    PluginId = "Rock North exuding",
-    Title = "navigating schemas",
-    WorkspaceId = "Plastic siemens navigate",
+    Code = "Fish",
+    PluginId = "Rock",
+    Title = "North",
+    WorkspaceId = "exuding",
 });
 
 // handle response

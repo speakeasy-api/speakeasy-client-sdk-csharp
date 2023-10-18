@@ -30,7 +30,7 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Requests.GenerateRequestPostmanCollectionAsync(new GenerateRequestPostmanCollectionRequest() {
-    RequestID = "payment male Rustic",
+    RequestID = "Architect",
 });
 
 // handle response
@@ -66,7 +66,7 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Requests.GetRequestFromEventLogAsync(new GetRequestFromEventLogRequest() {
-    RequestID = "Tuna Concrete North",
+    RequestID = "Chevrolet",
 });
 
 // handle response
@@ -107,13 +107,13 @@ var res = await sdk.Requests.QueryEventLogAsync(new QueryEventLogRequest() {
         Filters = new List<Filter>() {
             new Filter() {
                 Key = "<key>",
-                Operator = "payment",
-                Value = "West Practical port",
+                Operator = "Cotton",
+                Value = "Interactions",
             },
         },
-        Limit = 736151,
-        Offset = 477827,
-        Operator = "Burg",
+        Limit = 6323,
+        Offset = 788512,
+        Operator = "Practical",
     },
 });
 

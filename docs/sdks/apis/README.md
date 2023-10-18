@@ -32,8 +32,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Apis.DeleteApiAsync(new DeleteApiRequest() {
-    ApiID = "Applications Mercedes fuchsia",
-    VersionID = "Conroe",
+    ApiID = "plaintive",
+    VersionID = "THX",
 });
 
 // handle response
@@ -70,8 +70,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Apis.GenerateOpenApiSpecAsync(new GenerateOpenApiSpecRequest() {
-    ApiID = "frictionless District South",
-    VersionID = "West Global",
+    ApiID = "fixed",
+    VersionID = "bandwidth",
 });
 
 // handle response
@@ -107,8 +107,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Apis.GeneratePostmanCollectionAsync(new GeneratePostmanCollectionRequest() {
-    ApiID = "extend Security",
-    VersionID = "reconfirm",
+    ApiID = "Paradigm",
+    VersionID = "olive",
 });
 
 // handle response
@@ -145,10 +145,10 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Apis.GetAllApiVersionsAsync(new GetAllApiVersionsRequest() {
-    ApiID = "yum Rustic Berkshire",
+    ApiID = "azure",
     Metadata = new Dictionary<string, List<string>>() {
-        { "Dodge", new List<string>() {
-            "Salad",
+        { "enhance", new List<string>() {
+            "Garrison",
         } },
     },
     Op = new GetAllApiVersionsOp() {
@@ -235,16 +235,16 @@ var sdk = new SpeakeasySDK(
 
 var res = await sdk.Apis.UpsertApiAsync(new UpsertApiRequest() {
     ApiInput = new ApiInput() {
-        ApiId = "Martinique redefine Garland",
-        Description = "Balanced 24/7 utilisation",
+        ApiId = "Van",
+        Description = "Front-line zero defect algorithm",
         MetaData = new Dictionary<string, List<string>>() {
-            { "pixel", new List<string>() {
-                "Buckinghamshire",
+            { "Balanced", new List<string>() {
+                "West",
             } },
         },
-        VersionId = "Forward",
+        VersionId = "pixel",
     },
-    ApiID = "Facilitator",
+    ApiID = "Buckinghamshire",
 });
 
 // handle response

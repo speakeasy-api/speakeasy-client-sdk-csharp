@@ -34,13 +34,13 @@ var res = await sdk.Embeds.GetEmbedAccessTokenAsync(new GetEmbedAccessTokenReque
         Filters = new List<Filter>() {
             new Filter() {
                 Key = "<key>",
-                Operator = "Northeast compress Account",
-                Value = "unless to frame",
+                Operator = "along",
+                Value = "quos",
             },
         },
-        Limit = 792058,
-        Offset = 425010,
-        Operator = "kilogram innovative Virginia",
+        Limit = 263313,
+        Offset = 411277,
+        Operator = "male",
     },
 });
 
@@ -104,7 +104,7 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Embeds.RevokeEmbedAccessTokenAsync(new RevokeEmbedAccessTokenRequest() {
-    TokenID = "Small",
+    TokenID = "Ball",
 });
 
 // handle response
