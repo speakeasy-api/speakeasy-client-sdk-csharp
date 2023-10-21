@@ -34,13 +34,13 @@ var res = await sdk.Embeds.GetEmbedAccessTokenAsync(new GetEmbedAccessTokenReque
         Filters = new List<Filter>() {
             new Filter() {
                 Key = "<key>",
-                Operator = "along",
-                Value = "quos",
+                Operator = "string",
+                Value = "string",
             },
         },
-        Limit = 263313,
-        Offset = 411277,
-        Operator = "male",
+        Limit = 964408,
+        Offset = 95617,
+        Operator = "string",
     },
 });
 
@@ -104,7 +104,7 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Embeds.RevokeEmbedAccessTokenAsync(new RevokeEmbedAccessTokenRequest() {
-    TokenID = "Ball",
+    TokenID = "string",
 });
 
 // handle response

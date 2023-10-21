@@ -30,7 +30,7 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Requests.GenerateRequestPostmanCollectionAsync(new GenerateRequestPostmanCollectionRequest() {
-    RequestID = "Architect",
+    RequestID = "string",
 });
 
 // handle response
@@ -66,7 +66,7 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Requests.GetRequestFromEventLogAsync(new GetRequestFromEventLogRequest() {
-    RequestID = "Chevrolet",
+    RequestID = "string",
 });
 
 // handle response
@@ -107,13 +107,13 @@ var res = await sdk.Requests.QueryEventLogAsync(new QueryEventLogRequest() {
         Filters = new List<Filter>() {
             new Filter() {
                 Key = "<key>",
-                Operator = "Cotton",
-                Value = "Interactions",
+                Operator = "string",
+                Value = "string",
             },
         },
-        Limit = 6323,
-        Offset = 788512,
-        Operator = "Practical",
+        Limit = 241978,
+        Offset = 451388,
+        Operator = "string",
     },
 });
 

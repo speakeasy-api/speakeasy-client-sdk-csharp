@@ -34,9 +34,9 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Schemas.DeleteSchemaAsync(new DeleteSchemaRequest() {
-    ApiID = "West",
-    RevisionID = "Tricycle",
-    VersionID = "Funk",
+    ApiID = "string",
+    RevisionID = "string",
+    VersionID = "string",
 });
 
 // handle response
@@ -72,8 +72,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Schemas.DownloadSchemaAsync(new DownloadSchemaRequest() {
-    ApiID = "SMTP",
-    VersionID = "North",
+    ApiID = "string",
+    VersionID = "string",
 });
 
 // handle response
@@ -109,9 +109,9 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Schemas.DownloadSchemaRevisionAsync(new DownloadSchemaRevisionRequest() {
-    ApiID = "Cargo",
-    RevisionID = "hacking",
-    VersionID = "firewall",
+    ApiID = "string",
+    RevisionID = "string",
+    VersionID = "string",
 });
 
 // handle response
@@ -148,8 +148,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Schemas.GetSchemaAsync(new GetSchemaRequest() {
-    ApiID = "Handcrafted",
-    VersionID = "Hybrid",
+    ApiID = "string",
+    VersionID = "string",
 });
 
 // handle response
@@ -185,10 +185,10 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Schemas.GetSchemaDiffAsync(new GetSchemaDiffRequest() {
-    ApiID = "North",
-    BaseRevisionID = "Central",
-    TargetRevisionID = "South",
-    VersionID = "Van",
+    ApiID = "string",
+    BaseRevisionID = "string",
+    TargetRevisionID = "string",
+    VersionID = "string",
 });
 
 // handle response
@@ -225,9 +225,9 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Schemas.GetSchemaRevisionAsync(new GetSchemaRevisionRequest() {
-    ApiID = "City",
-    RevisionID = "web",
-    VersionID = "sternly",
+    ApiID = "string",
+    RevisionID = "string",
+    VersionID = "string",
 });
 
 // handle response
@@ -264,8 +264,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Schemas.GetSchemasAsync(new GetSchemasRequest() {
-    ApiID = "indigo",
-    VersionID = "Fantastic",
+    ApiID = "string",
+    VersionID = "string",
 });
 
 // handle response
@@ -305,11 +305,11 @@ var res = await sdk.Schemas.RegisterSchemaAsync(new RegisterSchemaRequest() {
     RequestBody = new RegisterSchemaRequestBody() {
         File = new RegisterSchemaRequestBodyFile() {
             Content = "mg|mf\".]!\ as bytes <<<>>>",
-            File = "Avon",
+            File = "string",
         },
     },
-    ApiID = "Pants",
-    VersionID = "Table",
+    ApiID = "string",
+    VersionID = "string",
 });
 
 // handle response

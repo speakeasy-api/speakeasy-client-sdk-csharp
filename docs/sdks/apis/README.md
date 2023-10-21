@@ -32,8 +32,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Apis.DeleteApiAsync(new DeleteApiRequest() {
-    ApiID = "plaintive",
-    VersionID = "THX",
+    ApiID = "string",
+    VersionID = "string",
 });
 
 // handle response
@@ -70,8 +70,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Apis.GenerateOpenApiSpecAsync(new GenerateOpenApiSpecRequest() {
-    ApiID = "fixed",
-    VersionID = "bandwidth",
+    ApiID = "string",
+    VersionID = "string",
 });
 
 // handle response
@@ -107,8 +107,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Apis.GeneratePostmanCollectionAsync(new GeneratePostmanCollectionRequest() {
-    ApiID = "Paradigm",
-    VersionID = "olive",
+    ApiID = "string",
+    VersionID = "string",
 });
 
 // handle response
@@ -145,10 +145,10 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Apis.GetAllApiVersionsAsync(new GetAllApiVersionsRequest() {
-    ApiID = "azure",
+    ApiID = "string",
     Metadata = new Dictionary<string, List<string>>() {
-        { "enhance", new List<string>() {
-            "Garrison",
+        { "key", new List<string>() {
+            "string",
         } },
     },
     Op = new GetAllApiVersionsOp() {
@@ -191,8 +191,8 @@ var sdk = new SpeakeasySDK(
 
 var res = await sdk.Apis.GetApisAsync(new GetApisRequest() {
     Metadata = new Dictionary<string, List<string>>() {
-        { "South", new List<string>() {
-            "Southwest",
+        { "key", new List<string>() {
+            "string",
         } },
     },
     Op = new GetApisOp() {
@@ -235,16 +235,16 @@ var sdk = new SpeakeasySDK(
 
 var res = await sdk.Apis.UpsertApiAsync(new UpsertApiRequest() {
     ApiInput = new ApiInput() {
-        ApiId = "Van",
-        Description = "Front-line zero defect algorithm",
+        ApiId = "string",
+        Description = "Synchronised 5th generation knowledge user",
         MetaData = new Dictionary<string, List<string>>() {
-            { "Balanced", new List<string>() {
-                "West",
+            { "key", new List<string>() {
+                "string",
             } },
         },
-        VersionId = "pixel",
+        VersionId = "string",
     },
-    ApiID = "Buckinghamshire",
+    ApiID = "string",
 });
 
 // handle response

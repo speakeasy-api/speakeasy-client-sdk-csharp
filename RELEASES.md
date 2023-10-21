@@ -299,3 +299,13 @@ Based on:
 - [csharp v1.16.4] .
 ### Releases
 - [NuGet v1.16.4] https://www.nuget.org/packages/SpeakeasySDK/1.16.4 - .
+
+## 2023-10-21 00:03:13
+### Changes
+Based on:
+- OpenAPI Doc 0.3.0 https://docs.speakeasyapi.dev/openapi.yaml
+- Speakeasy CLI 1.104.0 (2.169.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [csharp v1.17.0] .
+### Releases
+- [NuGet v1.17.0] https://www.nuget.org/packages/SpeakeasySDK/1.17.0 - .

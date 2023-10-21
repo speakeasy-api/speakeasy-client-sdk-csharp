@@ -34,9 +34,9 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.ApiEndpoints.DeleteApiEndpointAsync(new DeleteApiEndpointRequest() {
-    ApiEndpointID = "blue",
-    ApiID = "Gasoline",
-    VersionID = "Southwest",
+    ApiEndpointID = "string",
+    ApiID = "string",
+    VersionID = "string",
 });
 
 // handle response
@@ -73,9 +73,9 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.ApiEndpoints.FindApiEndpointAsync(new FindApiEndpointRequest() {
-    ApiID = "Cotton",
-    DisplayName = "Chief",
-    VersionID = "Wooden",
+    ApiID = "string",
+    DisplayName = "string",
+    VersionID = "string",
 });
 
 // handle response
@@ -112,9 +112,9 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.ApiEndpoints.GenerateOpenApiSpecForApiEndpointAsync(new GenerateOpenApiSpecForApiEndpointRequest() {
-    ApiEndpointID = "Mazda",
-    ApiID = "web",
-    VersionID = "explicabo",
+    ApiEndpointID = "string",
+    ApiID = "string",
+    VersionID = "string",
 });
 
 // handle response
@@ -150,9 +150,9 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.ApiEndpoints.GeneratePostmanCollectionForApiEndpointAsync(new GeneratePostmanCollectionForApiEndpointRequest() {
-    ApiEndpointID = "indigo",
-    ApiID = "barring",
-    VersionID = "Senior",
+    ApiEndpointID = "string",
+    ApiID = "string",
+    VersionID = "string",
 });
 
 // handle response
@@ -188,7 +188,7 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.ApiEndpoints.GetAllApiEndpointsAsync(new GetAllApiEndpointsRequest() {
-    ApiID = "unless",
+    ApiID = "string",
 });
 
 // handle response
@@ -224,8 +224,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.ApiEndpoints.GetAllForVersionApiEndpointsAsync(new GetAllForVersionApiEndpointsRequest() {
-    ApiID = "now",
-    VersionID = "Diesel",
+    ApiID = "string",
+    VersionID = "string",
 });
 
 // handle response
@@ -261,9 +261,9 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.ApiEndpoints.GetApiEndpointAsync(new GetApiEndpointRequest() {
-    ApiEndpointID = "flog",
-    ApiID = "synthesize",
-    VersionID = "Barium",
+    ApiEndpointID = "string",
+    ApiID = "string",
+    VersionID = "string",
 });
 
 // handle response
@@ -300,16 +300,16 @@ var sdk = new SpeakeasySDK(
 
 var res = await sdk.ApiEndpoints.UpsertApiEndpointAsync(new UpsertApiEndpointRequest() {
     ApiEndpointInput = new ApiEndpointInput() {
-        ApiEndpointId = "Facilitator",
-        Description = "Cross-group bottom-line productivity",
-        DisplayName = "nor",
-        Method = "Northwest",
-        Path = "/private",
-        VersionId = "what",
+        ApiEndpointId = "string",
+        Description = "Public-key systematic attitude",
+        DisplayName = "string",
+        Method = "string",
+        Path = "/etc/periodic",
+        VersionId = "string",
     },
-    ApiEndpointID = "Trans",
-    ApiID = "Kia",
-    VersionID = "Electronic",
+    ApiEndpointID = "string",
+    ApiID = "string",
+    VersionID = "string",
 });
 
 // handle response

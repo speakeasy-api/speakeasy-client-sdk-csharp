@@ -60,15 +60,15 @@ var res = await sdk.Plugins.RunPluginAsync(new RunPluginRequest() {
         Filters = new List<Filter>() {
             new Filter() {
                 Key = "<key>",
-                Operator = "Designer",
-                Value = "Pickup",
+                Operator = "string",
+                Value = "string",
             },
         },
-        Limit = 455139,
-        Offset = 173644,
-        Operator = "Indiana",
+        Limit = 669298,
+        Offset = 94585,
+        Operator = "string",
     },
-    PluginID = "Chrysler",
+    PluginID = "string",
 });
 
 // handle response
@@ -104,10 +104,10 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Plugins.UpsertPluginAsync(new Plugin() {
-    Code = "Fish",
-    PluginId = "Rock",
-    Title = "North",
-    WorkspaceId = "exuding",
+    Code = "string",
+    PluginId = "string",
+    Title = "string",
+    WorkspaceId = "string",
 });
 
 // handle response

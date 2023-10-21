@@ -29,10 +29,10 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Metadata.DeleteVersionMetadataAsync(new DeleteVersionMetadataRequest() {
-    ApiID = "Hydrogen",
-    MetaKey = "Cargo",
-    MetaValue = "Minnetonka",
-    VersionID = "communities",
+    ApiID = "string",
+    MetaKey = "string",
+    MetaValue = "string",
+    VersionID = "string",
 });
 
 // handle response
@@ -68,8 +68,8 @@ var sdk = new SpeakeasySDK(
 );
 
 var res = await sdk.Metadata.GetVersionMetadataAsync(new GetVersionMetadataRequest() {
-    ApiID = "Bronze",
-    VersionID = "Buckinghamshire",
+    ApiID = "string",
+    VersionID = "string",
 });
 
 // handle response
@@ -106,11 +106,11 @@ var sdk = new SpeakeasySDK(
 
 var res = await sdk.Metadata.InsertVersionMetadataAsync(new InsertVersionMetadataRequest() {
     VersionMetadataInput = new VersionMetadataInput() {
-        MetaKey = "Borders",
-        MetaValue = "Potassium",
+        MetaKey = "string",
+        MetaValue = "string",
     },
-    ApiID = "Bedfordshire",
-    VersionID = "Dram",
+    ApiID = "string",
+    VersionID = "string",
 });
 
 // handle response
