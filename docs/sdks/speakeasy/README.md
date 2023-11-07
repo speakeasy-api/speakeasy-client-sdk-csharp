@@ -18,16 +18,16 @@ Validate the current api key.
 ### Example Usage
 
 ```csharp
-using Speakeasy;
-using Speakeasy.Models.Shared;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
 
-var sdk = new SpeakeasySDK(
+var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
     }
 );
 
-var res = await sdk.Speakeasy.ValidateApiKeyAsync();
+var res = await sdk.ValidateApiKeyAsync();
 
 // handle response
 ```

@@ -1,5 +1,5 @@
-# PluginsSDK
-(*Plugins*)
+# Plugins
+(*.Plugins*)
 
 ## Overview
 
@@ -18,10 +18,10 @@ Get all plugins for the current workspace.
 ### Example Usage
 
 ```csharp
-using Speakeasy;
-using Speakeasy.Models.Shared;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
 
-var sdk = new SpeakeasySDK(
+var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
     }
@@ -45,11 +45,12 @@ Run a plugin
 ### Example Usage
 
 ```csharp
-using Speakeasy;
-using Speakeasy.Models.Shared;
-using Speakeasy.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
+using System.Collections.Generic;
 
-var sdk = new SpeakeasySDK(
+var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
     }
@@ -93,11 +94,10 @@ Upsert a plugin
 ### Example Usage
 
 ```csharp
-using Speakeasy;
-using Speakeasy.Models.Shared;
-using System;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
 
-var sdk = new SpeakeasySDK(
+var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
     }

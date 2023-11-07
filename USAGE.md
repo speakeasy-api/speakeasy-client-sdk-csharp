@@ -2,11 +2,12 @@
 
 
 ```csharp
-using Speakeasy;
-using Speakeasy.Models.Shared;
-using Speakeasy.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
+using System.Collections.Generic;
 
-var sdk = new SpeakeasySDK(
+var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
     }
@@ -18,7 +19,7 @@ var res = await sdk.Apis.GetApisAsync(new GetApisRequest() {
             "string",
         } },
     },
-    Op = new GetApisOp() {
+    Op = new QueryParamOp() {
         And = false,
     },
 });

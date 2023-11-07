@@ -1,5 +1,5 @@
-# ApisSDK
-(*Apis*)
+# Apis
+(*.Apis*)
 
 ## Overview
 
@@ -21,11 +21,11 @@ Delete a particular version of an Api. The will also delete all associated ApiEn
 ### Example Usage
 
 ```csharp
-using Speakeasy;
-using Speakeasy.Models.Shared;
-using Speakeasy.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 
-var sdk = new SpeakeasySDK(
+var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
     }
@@ -59,11 +59,11 @@ Returns the original document and the newly generated document allowing a diff t
 ### Example Usage
 
 ```csharp
-using Speakeasy;
-using Speakeasy.Models.Shared;
-using Speakeasy.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 
-var sdk = new SpeakeasySDK(
+var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
     }
@@ -96,11 +96,11 @@ Generates a postman collection containing all endpoints for a particular API. In
 ### Example Usage
 
 ```csharp
-using Speakeasy;
-using Speakeasy.Models.Shared;
-using Speakeasy.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 
-var sdk = new SpeakeasySDK(
+var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
     }
@@ -134,11 +134,12 @@ Supports filtering the versions based on metadata attributes.
 ### Example Usage
 
 ```csharp
-using Speakeasy;
-using Speakeasy.Models.Shared;
-using Speakeasy.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
+using System.Collections.Generic;
 
-var sdk = new SpeakeasySDK(
+var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
     }
@@ -151,7 +152,7 @@ var res = await sdk.Apis.GetAllApiVersionsAsync(new GetAllApiVersionsRequest() {
             "string",
         } },
     },
-    Op = new GetAllApiVersionsOp() {
+    Op = new Op() {
         And = false,
     },
 });
@@ -179,11 +180,12 @@ Supports filtering the APIs based on metadata attributes.
 ### Example Usage
 
 ```csharp
-using Speakeasy;
-using Speakeasy.Models.Shared;
-using Speakeasy.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
+using System.Collections.Generic;
 
-var sdk = new SpeakeasySDK(
+var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
     }
@@ -195,7 +197,7 @@ var res = await sdk.Apis.GetApisAsync(new GetApisRequest() {
             "string",
         } },
     },
-    Op = new GetApisOp() {
+    Op = new QueryParamOp() {
         And = false,
     },
 });
@@ -223,18 +225,19 @@ If the Api exists, it will be updated.
 ### Example Usage
 
 ```csharp
-using Speakeasy;
-using Speakeasy.Models.Shared;
-using Speakeasy.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
+using System.Collections.Generic;
 
-var sdk = new SpeakeasySDK(
+var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
     }
 );
 
 var res = await sdk.Apis.UpsertApiAsync(new UpsertApiRequest() {
-    ApiInput = new ApiInput() {
+    Api = new ApiInput() {
         ApiId = "string",
         Description = "Synchronised 5th generation knowledge user",
         MetaData = new Dictionary<string, List<string>>() {

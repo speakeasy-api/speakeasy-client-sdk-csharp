@@ -1,5 +1,5 @@
-# ApiEndpointsSDK
-(*ApiEndpoints*)
+# ApiEndpoints
+(*.ApiEndpoints*)
 
 ## Overview
 
@@ -23,11 +23,11 @@ Delete an ApiEndpoint. This will also delete all associated Request Logs (if usi
 ### Example Usage
 
 ```csharp
-using Speakeasy;
-using Speakeasy.Models.Shared;
-using Speakeasy.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 
-var sdk = new SpeakeasySDK(
+var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
     }
@@ -62,11 +62,11 @@ This is useful for finding the ID of an ApiEndpoint to use in the /v1/apis/{apiI
 ### Example Usage
 
 ```csharp
-using Speakeasy;
-using Speakeasy.Models.Shared;
-using Speakeasy.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 
-var sdk = new SpeakeasySDK(
+var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
     }
@@ -101,11 +101,11 @@ Returns the original document and the newly generated document allowing a diff t
 ### Example Usage
 
 ```csharp
-using Speakeasy;
-using Speakeasy.Models.Shared;
-using Speakeasy.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 
-var sdk = new SpeakeasySDK(
+var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
     }
@@ -139,11 +139,11 @@ Generates a postman collection that allows the endpoint to be called from postma
 ### Example Usage
 
 ```csharp
-using Speakeasy;
-using Speakeasy.Models.Shared;
-using Speakeasy.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 
-var sdk = new SpeakeasySDK(
+var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
     }
@@ -177,11 +177,11 @@ Get all Api endpoints for a particular apiID.
 ### Example Usage
 
 ```csharp
-using Speakeasy;
-using Speakeasy.Models.Shared;
-using Speakeasy.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 
-var sdk = new SpeakeasySDK(
+var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
     }
@@ -213,11 +213,11 @@ Get all ApiEndpoints for a particular apiID and versionID.
 ### Example Usage
 
 ```csharp
-using Speakeasy;
-using Speakeasy.Models.Shared;
-using Speakeasy.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 
-var sdk = new SpeakeasySDK(
+var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
     }
@@ -250,11 +250,11 @@ Get an ApiEndpoint.
 ### Example Usage
 
 ```csharp
-using Speakeasy;
-using Speakeasy.Models.Shared;
-using Speakeasy.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 
-var sdk = new SpeakeasySDK(
+var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
     }
@@ -288,18 +288,18 @@ Upsert an ApiEndpoint. If the ApiEndpoint does not exist it will be created, oth
 ### Example Usage
 
 ```csharp
-using Speakeasy;
-using Speakeasy.Models.Shared;
-using Speakeasy.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 
-var sdk = new SpeakeasySDK(
+var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
     }
 );
 
 var res = await sdk.ApiEndpoints.UpsertApiEndpointAsync(new UpsertApiEndpointRequest() {
-    ApiEndpointInput = new ApiEndpointInput() {
+    ApiEndpoint = new ApiEndpointInput() {
         ApiEndpointId = "string",
         Description = "Public-key systematic attitude",
         DisplayName = "string",

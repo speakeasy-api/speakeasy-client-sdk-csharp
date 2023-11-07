@@ -13,11 +13,12 @@ dotnet add package SpeakeasySDK
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
 ```csharp
-using Speakeasy;
-using Speakeasy.Models.Shared;
-using Speakeasy.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
+using System.Collections.Generic;
 
-var sdk = new SpeakeasySDK(
+var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
     }
@@ -29,7 +30,7 @@ var res = await sdk.Apis.GetApisAsync(new GetApisRequest() {
             "string",
         } },
     },
-    Op = new GetApisOp() {
+    Op = new QueryParamOp() {
         And = false,
     },
 });
@@ -45,7 +46,16 @@ var res = await sdk.Apis.GetApisAsync(new GetApisRequest() {
 
 * [ValidateApiKey](docs/sdks/speakeasy/README.md#validateapikey) - Validate the current api key.
 
-### [ApiEndpoints](docs/sdks/apiendpoints/README.md)
+### [.Apis](docs/sdks/apis/README.md)
+
+* [DeleteApi](docs/sdks/apis/README.md#deleteapi) - Delete an Api.
+* [GenerateOpenApiSpec](docs/sdks/apis/README.md#generateopenapispec) - Generate an OpenAPI specification for a particular Api.
+* [GeneratePostmanCollection](docs/sdks/apis/README.md#generatepostmancollection) - Generate a Postman collection for a particular Api.
+* [GetAllApiVersions](docs/sdks/apis/README.md#getallapiversions) - Get all Api versions for a particular ApiEndpoint.
+* [GetApis](docs/sdks/apis/README.md#getapis) - Get a list of Apis for a given workspace
+* [UpsertApi](docs/sdks/apis/README.md#upsertapi) - Upsert an Api
+
+### [.ApiEndpoints](docs/sdks/apiendpoints/README.md)
 
 * [DeleteApiEndpoint](docs/sdks/apiendpoints/README.md#deleteapiendpoint) - Delete an ApiEndpoint.
 * [FindApiEndpoint](docs/sdks/apiendpoints/README.md#findapiendpoint) - Find an ApiEndpoint via its displayName.
@@ -56,40 +66,13 @@ var res = await sdk.Apis.GetApisAsync(new GetApisRequest() {
 * [GetApiEndpoint](docs/sdks/apiendpoints/README.md#getapiendpoint) - Get an ApiEndpoint.
 * [UpsertApiEndpoint](docs/sdks/apiendpoints/README.md#upsertapiendpoint) - Upsert an ApiEndpoint.
 
-### [Apis](docs/sdks/apis/README.md)
-
-* [DeleteApi](docs/sdks/apis/README.md#deleteapi) - Delete an Api.
-* [GenerateOpenApiSpec](docs/sdks/apis/README.md#generateopenapispec) - Generate an OpenAPI specification for a particular Api.
-* [GeneratePostmanCollection](docs/sdks/apis/README.md#generatepostmancollection) - Generate a Postman collection for a particular Api.
-* [GetAllApiVersions](docs/sdks/apis/README.md#getallapiversions) - Get all Api versions for a particular ApiEndpoint.
-* [GetApis](docs/sdks/apis/README.md#getapis) - Get a list of Apis for a given workspace
-* [UpsertApi](docs/sdks/apis/README.md#upsertapi) - Upsert an Api
-
-### [Embeds](docs/sdks/embeds/README.md)
-
-* [GetEmbedAccessToken](docs/sdks/embeds/README.md#getembedaccesstoken) - Get an embed access token for the current workspace.
-* [GetValidEmbedAccessTokens](docs/sdks/embeds/README.md#getvalidembedaccesstokens) - Get all valid embed access tokens for the current workspace.
-* [RevokeEmbedAccessToken](docs/sdks/embeds/README.md#revokeembedaccesstoken) - Revoke an embed access EmbedToken.
-
-### [Metadata](docs/sdks/metadata/README.md)
+### [.Metadata](docs/sdks/metadata/README.md)
 
 * [DeleteVersionMetadata](docs/sdks/metadata/README.md#deleteversionmetadata) - Delete metadata for a particular apiID and versionID.
 * [GetVersionMetadata](docs/sdks/metadata/README.md#getversionmetadata) - Get all metadata for a particular apiID and versionID.
 * [InsertVersionMetadata](docs/sdks/metadata/README.md#insertversionmetadata) - Insert metadata for a particular apiID and versionID.
 
-### [Plugins](docs/sdks/plugins/README.md)
-
-* [GetPlugins](docs/sdks/plugins/README.md#getplugins) - Get all plugins for the current workspace.
-* [RunPlugin](docs/sdks/plugins/README.md#runplugin) - Run a plugin
-* [UpsertPlugin](docs/sdks/plugins/README.md#upsertplugin) - Upsert a plugin
-
-### [Requests](docs/sdks/requests/README.md)
-
-* [GenerateRequestPostmanCollection](docs/sdks/requests/README.md#generaterequestpostmancollection) - Generate a Postman collection for a particular request.
-* [GetRequestFromEventLog](docs/sdks/requests/README.md#getrequestfromeventlog) - Get information about a particular request.
-* [QueryEventLog](docs/sdks/requests/README.md#queryeventlog) - Query the event log to retrieve a list of requests.
-
-### [Schemas](docs/sdks/schemas/README.md)
+### [.Schemas](docs/sdks/schemas/README.md)
 
 * [DeleteSchema](docs/sdks/schemas/README.md#deleteschema) - Delete a particular schema revision for an Api.
 * [DownloadSchema](docs/sdks/schemas/README.md#downloadschema) - Download the latest schema for a particular apiID.
@@ -99,6 +82,24 @@ var res = await sdk.Apis.GetApisAsync(new GetApisRequest() {
 * [GetSchemaRevision](docs/sdks/schemas/README.md#getschemarevision) - Get information about a particular schema revision for an Api.
 * [GetSchemas](docs/sdks/schemas/README.md#getschemas) - Get information about all schemas associated with a particular apiID.
 * [RegisterSchema](docs/sdks/schemas/README.md#registerschema) - Register a schema.
+
+### [.Requests](docs/sdks/requests/README.md)
+
+* [GenerateRequestPostmanCollection](docs/sdks/requests/README.md#generaterequestpostmancollection) - Generate a Postman collection for a particular request.
+* [GetRequestFromEventLog](docs/sdks/requests/README.md#getrequestfromeventlog) - Get information about a particular request.
+* [QueryEventLog](docs/sdks/requests/README.md#queryeventlog) - Query the event log to retrieve a list of requests.
+
+### [.Plugins](docs/sdks/plugins/README.md)
+
+* [GetPlugins](docs/sdks/plugins/README.md#getplugins) - Get all plugins for the current workspace.
+* [RunPlugin](docs/sdks/plugins/README.md#runplugin) - Run a plugin
+* [UpsertPlugin](docs/sdks/plugins/README.md#upsertplugin) - Upsert a plugin
+
+### [.Embeds](docs/sdks/embeds/README.md)
+
+* [GetEmbedAccessToken](docs/sdks/embeds/README.md#getembedaccesstoken) - Get an embed access token for the current workspace.
+* [GetValidEmbedAccessTokens](docs/sdks/embeds/README.md#getvalidembedaccesstokens) - Get all valid embed access tokens for the current workspace.
+* [RevokeEmbedAccessToken](docs/sdks/embeds/README.md#revokeembedaccesstoken) - Revoke an embed access EmbedToken.
 <!-- End SDK Available Operations -->
 
 

@@ -2,24 +2,32 @@ configVersion: 1.0.0
 management:
   docChecksum: ba638b2ad28966c596e28321a2003686
   docVersion: 0.3.0
-  speakeasyVersion: 1.104.0
-  generationVersion: 2.169.0
+  speakeasyVersion: 1.114.1
+  generationVersion: 2.181.1
 generation:
-  repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
+  comments: {}
   sdkClassName: Speakeasy
-  singleTagPerOp: false
+  repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
 features:
   csharp:
-    core: 2.93.0
+    core: 3.1.0
     examples: 2.81.3
     globalSecurity: 2.81.1
     globalServerURLs: 2.82.0
     inputOutputModels: 2.81.1
     serverIDs: 2.81.1
 csharp:
-  version: 1.17.0
+  version: 2.0.0
   author: Speakeasy
   dotnetVersion: net5.0
+  imports:
+    option: openapi
+    paths:
+      callbacks: Models/Callbacks
+      errors: Models/Errors
+      operations: Models/Operations
+      shared: Models/Shared
+      webhooks: Models/Webhooks
   maxMethodParams: 0
   packageName: SpeakeasySDK
   published: true

@@ -1,5 +1,5 @@
-# MetadataSDK
-(*Metadata*)
+# Metadata
+(*.Metadata*)
 
 ## Overview
 
@@ -18,11 +18,11 @@ Delete metadata for a particular apiID and versionID.
 ### Example Usage
 
 ```csharp
-using Speakeasy;
-using Speakeasy.Models.Shared;
-using Speakeasy.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 
-var sdk = new SpeakeasySDK(
+var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
     }
@@ -57,11 +57,11 @@ Get all metadata for a particular apiID and versionID.
 ### Example Usage
 
 ```csharp
-using Speakeasy;
-using Speakeasy.Models.Shared;
-using Speakeasy.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 
-var sdk = new SpeakeasySDK(
+var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
     }
@@ -94,18 +94,18 @@ Insert metadata for a particular apiID and versionID.
 ### Example Usage
 
 ```csharp
-using Speakeasy;
-using Speakeasy.Models.Shared;
-using Speakeasy.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 
-var sdk = new SpeakeasySDK(
+var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
     }
 );
 
 var res = await sdk.Metadata.InsertVersionMetadataAsync(new InsertVersionMetadataRequest() {
-    VersionMetadataInput = new VersionMetadataInput() {
+    VersionMetadata = new VersionMetadataInput() {
         MetaKey = "string",
         MetaValue = "string",
     },
