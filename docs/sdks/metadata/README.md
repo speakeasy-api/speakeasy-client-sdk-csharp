@@ -1,5 +1,5 @@
 # Metadata
-(*.Metadata*)
+(*Metadata*)
 
 ## Overview
 
@@ -42,12 +42,12 @@ var res = await sdk.Metadata.DeleteVersionMetadataAsync(new DeleteVersionMetadat
 
 | Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `request`                                                                               | [DeleteVersionMetadataRequest](../../models/operations/DeleteVersionMetadataRequest.md) | :heavy_check_mark:                                                                      | The request object to use for the request.                                              |
+| `request`                                                                               | [DeleteVersionMetadataRequest](../../Models/Operations/DeleteVersionMetadataRequest.md) | :heavy_check_mark:                                                                      | The request object to use for the request.                                              |
 
 
 ### Response
 
-**[DeleteVersionMetadataResponse](../../models/operations/DeleteVersionMetadataResponse.md)**
+**[DeleteVersionMetadataResponse](../../Models/Operations/DeleteVersionMetadataResponse.md)**
 
 
 ## GetVersionMetadata
@@ -79,12 +79,12 @@ var res = await sdk.Metadata.GetVersionMetadataAsync(new GetVersionMetadataReque
 
 | Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
 | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `request`                                                                         | [GetVersionMetadataRequest](../../models/operations/GetVersionMetadataRequest.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
+| `request`                                                                         | [GetVersionMetadataRequest](../../Models/Operations/GetVersionMetadataRequest.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
 
 
 ### Response
 
-**[GetVersionMetadataResponse](../../models/operations/GetVersionMetadataResponse.md)**
+**[GetVersionMetadataResponse](../../Models/Operations/GetVersionMetadataResponse.md)**
 
 
 ## InsertVersionMetadata
@@ -120,10 +120,10 @@ var res = await sdk.Metadata.InsertVersionMetadataAsync(new InsertVersionMetadat
 
 | Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `request`                                                                               | [InsertVersionMetadataRequest](../../models/operations/InsertVersionMetadataRequest.md) | :heavy_check_mark:                                                                      | The request object to use for the request.                                              |
+| `request`                                                                               | [InsertVersionMetadataRequest](../../Models/Operations/InsertVersionMetadataRequest.md) | :heavy_check_mark:                                                                      | The request object to use for the request.                                              |
 
 
 ### Response
 
-**[InsertVersionMetadataResponse](../../models/operations/InsertVersionMetadataResponse.md)**
+**[InsertVersionMetadataResponse](../../Models/Operations/InsertVersionMetadataResponse.md)**
 

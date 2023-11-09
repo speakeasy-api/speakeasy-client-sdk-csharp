@@ -1,5 +1,5 @@
 # Schemas
-(*.Schemas*)
+(*Schemas*)
 
 ## Overview
 
@@ -46,12 +46,12 @@ var res = await sdk.Schemas.DeleteSchemaAsync(new DeleteSchemaRequest() {
 
 | Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `request`                                                             | [DeleteSchemaRequest](../../models/operations/DeleteSchemaRequest.md) | :heavy_check_mark:                                                    | The request object to use for the request.                            |
+| `request`                                                             | [DeleteSchemaRequest](../../Models/Operations/DeleteSchemaRequest.md) | :heavy_check_mark:                                                    | The request object to use for the request.                            |
 
 
 ### Response
 
-**[DeleteSchemaResponse](../../models/operations/DeleteSchemaResponse.md)**
+**[DeleteSchemaResponse](../../Models/Operations/DeleteSchemaResponse.md)**
 
 
 ## DownloadSchema
@@ -83,12 +83,12 @@ var res = await sdk.Schemas.DownloadSchemaAsync(new DownloadSchemaRequest() {
 
 | Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `request`                                                                 | [DownloadSchemaRequest](../../models/operations/DownloadSchemaRequest.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
+| `request`                                                                 | [DownloadSchemaRequest](../../Models/Operations/DownloadSchemaRequest.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
 
 
 ### Response
 
-**[DownloadSchemaResponse](../../models/operations/DownloadSchemaResponse.md)**
+**[DownloadSchemaResponse](../../Models/Operations/DownloadSchemaResponse.md)**
 
 
 ## DownloadSchemaRevision
@@ -121,12 +121,12 @@ var res = await sdk.Schemas.DownloadSchemaRevisionAsync(new DownloadSchemaRevisi
 
 | Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `request`                                                                                 | [DownloadSchemaRevisionRequest](../../models/operations/DownloadSchemaRevisionRequest.md) | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
+| `request`                                                                                 | [DownloadSchemaRevisionRequest](../../Models/Operations/DownloadSchemaRevisionRequest.md) | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
 
 
 ### Response
 
-**[DownloadSchemaRevisionResponse](../../models/operations/DownloadSchemaRevisionResponse.md)**
+**[DownloadSchemaRevisionResponse](../../Models/Operations/DownloadSchemaRevisionResponse.md)**
 
 
 ## GetSchema
@@ -159,12 +159,12 @@ var res = await sdk.Schemas.GetSchemaAsync(new GetSchemaRequest() {
 
 | Parameter                                                       | Type                                                            | Required                                                        | Description                                                     |
 | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| `request`                                                       | [GetSchemaRequest](../../models/operations/GetSchemaRequest.md) | :heavy_check_mark:                                              | The request object to use for the request.                      |
+| `request`                                                       | [GetSchemaRequest](../../Models/Operations/GetSchemaRequest.md) | :heavy_check_mark:                                              | The request object to use for the request.                      |
 
 
 ### Response
 
-**[GetSchemaResponse](../../models/operations/GetSchemaResponse.md)**
+**[GetSchemaResponse](../../Models/Operations/GetSchemaResponse.md)**
 
 
 ## GetSchemaDiff
@@ -198,12 +198,12 @@ var res = await sdk.Schemas.GetSchemaDiffAsync(new GetSchemaDiffRequest() {
 
 | Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `request`                                                               | [GetSchemaDiffRequest](../../models/operations/GetSchemaDiffRequest.md) | :heavy_check_mark:                                                      | The request object to use for the request.                              |
+| `request`                                                               | [GetSchemaDiffRequest](../../Models/Operations/GetSchemaDiffRequest.md) | :heavy_check_mark:                                                      | The request object to use for the request.                              |
 
 
 ### Response
 
-**[GetSchemaDiffResponse](../../models/operations/GetSchemaDiffResponse.md)**
+**[GetSchemaDiffResponse](../../Models/Operations/GetSchemaDiffResponse.md)**
 
 
 ## GetSchemaRevision
@@ -237,12 +237,12 @@ var res = await sdk.Schemas.GetSchemaRevisionAsync(new GetSchemaRevisionRequest(
 
 | Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
 | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `request`                                                                       | [GetSchemaRevisionRequest](../../models/operations/GetSchemaRevisionRequest.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
+| `request`                                                                       | [GetSchemaRevisionRequest](../../Models/Operations/GetSchemaRevisionRequest.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
 
 
 ### Response
 
-**[GetSchemaRevisionResponse](../../models/operations/GetSchemaRevisionResponse.md)**
+**[GetSchemaRevisionResponse](../../Models/Operations/GetSchemaRevisionResponse.md)**
 
 
 ## GetSchemas
@@ -275,12 +275,12 @@ var res = await sdk.Schemas.GetSchemasAsync(new GetSchemasRequest() {
 
 | Parameter                                                         | Type                                                              | Required                                                          | Description                                                       |
 | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
-| `request`                                                         | [GetSchemasRequest](../../models/operations/GetSchemasRequest.md) | :heavy_check_mark:                                                | The request object to use for the request.                        |
+| `request`                                                         | [GetSchemasRequest](../../Models/Operations/GetSchemasRequest.md) | :heavy_check_mark:                                                | The request object to use for the request.                        |
 
 
 ### Response
 
-**[GetSchemasResponse](../../models/operations/GetSchemasResponse.md)**
+**[GetSchemasResponse](../../Models/Operations/GetSchemasResponse.md)**
 
 
 ## RegisterSchema
@@ -319,10 +319,10 @@ var res = await sdk.Schemas.RegisterSchemaAsync(new RegisterSchemaRequest() {
 
 | Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `request`                                                                 | [RegisterSchemaRequest](../../models/operations/RegisterSchemaRequest.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
+| `request`                                                                 | [RegisterSchemaRequest](../../Models/Operations/RegisterSchemaRequest.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
 
 
 ### Response
 
-**[RegisterSchemaResponse](../../models/operations/RegisterSchemaResponse.md)**
+**[RegisterSchemaResponse](../../Models/Operations/RegisterSchemaResponse.md)**
 

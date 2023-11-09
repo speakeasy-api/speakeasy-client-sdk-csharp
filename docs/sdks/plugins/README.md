@@ -1,5 +1,5 @@
 # Plugins
-(*.Plugins*)
+(*Plugins*)
 
 ## Overview
 
@@ -35,7 +35,7 @@ var res = await sdk.Plugins.GetPluginsAsync();
 
 ### Response
 
-**[GetPluginsResponse](../../models/operations/GetPluginsResponse.md)**
+**[GetPluginsResponse](../../Models/Operations/GetPluginsResponse.md)**
 
 
 ## RunPlugin
@@ -79,12 +79,12 @@ var res = await sdk.Plugins.RunPluginAsync(new RunPluginRequest() {
 
 | Parameter                                                       | Type                                                            | Required                                                        | Description                                                     |
 | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| `request`                                                       | [RunPluginRequest](../../models/operations/RunPluginRequest.md) | :heavy_check_mark:                                              | The request object to use for the request.                      |
+| `request`                                                       | [RunPluginRequest](../../Models/Operations/RunPluginRequest.md) | :heavy_check_mark:                                              | The request object to use for the request.                      |
 
 
 ### Response
 
-**[RunPluginResponse](../../models/operations/RunPluginResponse.md)**
+**[RunPluginResponse](../../Models/Operations/RunPluginResponse.md)**
 
 
 ## UpsertPlugin
@@ -117,10 +117,10 @@ var res = await sdk.Plugins.UpsertPluginAsync(new Plugin() {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Plugin](../../models/shared/Plugin.md)    | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [Plugin](../../Models/Shared/Plugin.md)    | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
 
-**[UpsertPluginResponse](../../models/operations/UpsertPluginResponse.md)**
+**[UpsertPluginResponse](../../Models/Operations/UpsertPluginResponse.md)**
 

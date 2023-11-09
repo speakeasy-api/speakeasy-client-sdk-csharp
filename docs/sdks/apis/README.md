@@ -1,5 +1,5 @@
 # Apis
-(*.Apis*)
+(*Apis*)
 
 ## Overview
 
@@ -43,12 +43,12 @@ var res = await sdk.Apis.DeleteApiAsync(new DeleteApiRequest() {
 
 | Parameter                                                       | Type                                                            | Required                                                        | Description                                                     |
 | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| `request`                                                       | [DeleteApiRequest](../../models/operations/DeleteApiRequest.md) | :heavy_check_mark:                                              | The request object to use for the request.                      |
+| `request`                                                       | [DeleteApiRequest](../../Models/Operations/DeleteApiRequest.md) | :heavy_check_mark:                                              | The request object to use for the request.                      |
 
 
 ### Response
 
-**[DeleteApiResponse](../../models/operations/DeleteApiResponse.md)**
+**[DeleteApiResponse](../../Models/Operations/DeleteApiResponse.md)**
 
 
 ## GenerateOpenApiSpec
@@ -81,12 +81,12 @@ var res = await sdk.Apis.GenerateOpenApiSpecAsync(new GenerateOpenApiSpecRequest
 
 | Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
 | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `request`                                                                           | [GenerateOpenApiSpecRequest](../../models/operations/GenerateOpenApiSpecRequest.md) | :heavy_check_mark:                                                                  | The request object to use for the request.                                          |
+| `request`                                                                           | [GenerateOpenApiSpecRequest](../../Models/Operations/GenerateOpenApiSpecRequest.md) | :heavy_check_mark:                                                                  | The request object to use for the request.                                          |
 
 
 ### Response
 
-**[GenerateOpenApiSpecResponse](../../models/operations/GenerateOpenApiSpecResponse.md)**
+**[GenerateOpenApiSpecResponse](../../Models/Operations/GenerateOpenApiSpecResponse.md)**
 
 
 ## GeneratePostmanCollection
@@ -118,12 +118,12 @@ var res = await sdk.Apis.GeneratePostmanCollectionAsync(new GeneratePostmanColle
 
 | Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
 | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `request`                                                                                       | [GeneratePostmanCollectionRequest](../../models/operations/GeneratePostmanCollectionRequest.md) | :heavy_check_mark:                                                                              | The request object to use for the request.                                                      |
+| `request`                                                                                       | [GeneratePostmanCollectionRequest](../../Models/Operations/GeneratePostmanCollectionRequest.md) | :heavy_check_mark:                                                                              | The request object to use for the request.                                                      |
 
 
 ### Response
 
-**[GeneratePostmanCollectionResponse](../../models/operations/GeneratePostmanCollectionResponse.md)**
+**[GeneratePostmanCollectionResponse](../../Models/Operations/GeneratePostmanCollectionResponse.md)**
 
 
 ## GetAllApiVersions
@@ -164,12 +164,12 @@ var res = await sdk.Apis.GetAllApiVersionsAsync(new GetAllApiVersionsRequest() {
 
 | Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
 | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `request`                                                                       | [GetAllApiVersionsRequest](../../models/operations/GetAllApiVersionsRequest.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
+| `request`                                                                       | [GetAllApiVersionsRequest](../../Models/Operations/GetAllApiVersionsRequest.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
 
 
 ### Response
 
-**[GetAllApiVersionsResponse](../../models/operations/GetAllApiVersionsResponse.md)**
+**[GetAllApiVersionsResponse](../../Models/Operations/GetAllApiVersionsResponse.md)**
 
 
 ## GetApis
@@ -209,12 +209,12 @@ var res = await sdk.Apis.GetApisAsync(new GetApisRequest() {
 
 | Parameter                                                   | Type                                                        | Required                                                    | Description                                                 |
 | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| `request`                                                   | [GetApisRequest](../../models/operations/GetApisRequest.md) | :heavy_check_mark:                                          | The request object to use for the request.                  |
+| `request`                                                   | [GetApisRequest](../../Models/Operations/GetApisRequest.md) | :heavy_check_mark:                                          | The request object to use for the request.                  |
 
 
 ### Response
 
-**[GetApisResponse](../../models/operations/GetApisResponse.md)**
+**[GetApisResponse](../../Models/Operations/GetApisResponse.md)**
 
 
 ## UpsertApi
@@ -257,10 +257,10 @@ var res = await sdk.Apis.UpsertApiAsync(new UpsertApiRequest() {
 
 | Parameter                                                       | Type                                                            | Required                                                        | Description                                                     |
 | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| `request`                                                       | [UpsertApiRequest](../../models/operations/UpsertApiRequest.md) | :heavy_check_mark:                                              | The request object to use for the request.                      |
+| `request`                                                       | [UpsertApiRequest](../../Models/Operations/UpsertApiRequest.md) | :heavy_check_mark:                                              | The request object to use for the request.                      |
 
 
 ### Response
 
-**[UpsertApiResponse](../../models/operations/UpsertApiResponse.md)**
+**[UpsertApiResponse](../../Models/Operations/UpsertApiResponse.md)**
 

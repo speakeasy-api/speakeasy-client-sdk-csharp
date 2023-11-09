@@ -35,5 +35,5 @@ var res = await sdk.ValidateApiKeyAsync();
 
 ### Response
 
-**[ValidateApiKeyResponse](../../models/operations/ValidateApiKeyResponse.md)**
+**[ValidateApiKeyResponse](../../Models/Operations/ValidateApiKeyResponse.md)**
 
