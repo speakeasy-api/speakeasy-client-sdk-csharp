@@ -49,10 +49,10 @@ namespace SpeakeasySDK
     {
         public SDKConfig Config { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.1.0";
-        private const string _sdkGenVersion = "2.185.0";
+        private const string _sdkVersion = "2.2.0";
+        private const string _sdkGenVersion = "2.192.1";
         private const string _openapiDocVersion = "0.3.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 2.1.0 2.185.0 0.3.0 SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 2.2.0 2.192.1 0.3.0 SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private ISpeakeasyHttpClient _securityClient;
@@ -68,14 +68,9 @@ namespace SpeakeasySDK
 
         public async Task<DeleteVersionMetadataResponse> DeleteVersionMetadataAsync(DeleteVersionMetadataRequest? request = null)
         {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.Config.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/v1/apis/{apiID}/version/{versionID}/metadata/{metaKey}/{metaValue}", request);
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
             
@@ -105,14 +100,9 @@ namespace SpeakeasySDK
 
         public async Task<GetVersionMetadataResponse> GetVersionMetadataAsync(GetVersionMetadataRequest? request = null)
         {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.Config.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/v1/apis/{apiID}/version/{versionID}/metadata", request);
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
             
@@ -146,14 +136,9 @@ namespace SpeakeasySDK
 
         public async Task<InsertVersionMetadataResponse> InsertVersionMetadataAsync(InsertVersionMetadataRequest request)
         {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.Config.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/v1/apis/{apiID}/version/{versionID}/metadata", request);
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
             

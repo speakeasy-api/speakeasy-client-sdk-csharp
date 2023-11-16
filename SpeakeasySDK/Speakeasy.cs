@@ -19,6 +19,8 @@ namespace SpeakeasySDK
     using System.Threading.Tasks;
     using System;
 
+
+
     /// <summary>
     /// Speakeasy API: The Speakeasy API allows teams to manage common operations with their APIs
     /// 
@@ -70,6 +72,27 @@ namespace SpeakeasySDK
     
     public class SDKConfig
     {
+        public static Dictionary<string, string> ServerList = new Dictionary<string, string>()
+        {
+            {"Serverprod", "https://api.prod.speakeasyapi.dev" },
+        };
+        /// Contains the list of servers available to the SDK
+        public string serverUrl = "";
+        public string server = "";
+
+        public string GetTemplatedServerDetails()
+        {
+            if (!String.IsNullOrEmpty(this.serverUrl))
+            {
+                return Utilities.TemplateUrl(Utilities.RemoveSuffix(this.serverUrl, "/"), new Dictionary<string, string>());
+            }
+            if (!String.IsNullOrEmpty(this.server))
+            {
+                this.server = "Serverprod";
+            }
+
+            return Utilities.TemplateUrl(SDKConfig.ServerList[this.server], new Dictionary<string, string>());
+        }
     }
 
     /// <summary>
@@ -80,16 +103,13 @@ namespace SpeakeasySDK
     public class Speakeasy: ISpeakeasy
     {
         public SDKConfig Config { get; private set; }
-        public static Dictionary<string, string> ServerList = new Dictionary<string, string>()
-        {
-            {"Serverprod", "https://api.prod.speakeasyapi.dev" },
-        };
+
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.1.0";
-        private const string _sdkGenVersion = "2.185.0";
+        private const string _sdkVersion = "2.2.0";
+        private const string _sdkGenVersion = "2.192.1";
         private const string _openapiDocVersion = "0.3.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 2.1.0 2.185.0 0.3.0 SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 2.2.0 2.192.1 0.3.0 SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private ISpeakeasyHttpClient _securityClient;
@@ -101,9 +121,14 @@ namespace SpeakeasySDK
         public IPlugins Plugins { get; private set; }
         public IEmbeds Embeds { get; private set; }
 
-        public Speakeasy(Security? security = null, string? serverUrl = null, ISpeakeasyHttpClient? client = null)
+        public Speakeasy(Security? security = null, string? server = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null)
         {
-            _serverUrl = serverUrl ?? Speakeasy.ServerList["Serverprod"];
+            if (serverUrl != null) {
+                if (urlParams != null) {
+                    serverUrl = Utilities.TemplateUrl(serverUrl, urlParams);
+                }
+                _serverUrl = serverUrl;
+            }
 
             _defaultClient = new SpeakeasyHttpClient(client);
             _securityClient = _defaultClient;
@@ -115,6 +140,7 @@ namespace SpeakeasySDK
             
             Config = new SDKConfig()
             {
+                serverUrl = _serverUrl
             };
 
             Apis = new Apis(_defaultClient, _securityClient, _serverUrl, Config);
@@ -128,14 +154,9 @@ namespace SpeakeasySDK
 
         public async Task<ValidateApiKeyResponse> ValidateApiKeyAsync()
         {
-            string baseUrl = _serverUrl;
-            if (baseUrl.EndsWith("/"))
-            {
-                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
-            }
+            string baseUrl = this.Config.GetTemplatedServerDetails();
             var urlString = baseUrl + "/v1/auth/validate";
             
-
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
             

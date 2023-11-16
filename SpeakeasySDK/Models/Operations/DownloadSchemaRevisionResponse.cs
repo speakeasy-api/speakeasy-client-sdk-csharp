@@ -45,6 +45,6 @@ namespace SpeakeasySDK.Models.Operations
         /// <summary>
         /// Raw HTTP response; suitable for custom response parsing
         /// </summary>
-        public HttpResponseMessage? RawResponse { get; set; }
+        public HttpResponseMessage RawResponse { get; set; } = default!;
     }
 }

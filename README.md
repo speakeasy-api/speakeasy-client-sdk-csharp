@@ -12,6 +12,8 @@ dotnet add package SpeakeasySDK
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
+### Example
+
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;

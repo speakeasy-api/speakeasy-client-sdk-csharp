@@ -1,6 +1,4 @@
 <!-- Start SDK Example Usage -->
-
-
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
