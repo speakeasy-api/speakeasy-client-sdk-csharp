@@ -110,7 +110,6 @@ SpeakeasySDK/Models/Shared/Plugin.cs
 SpeakeasySDK/Models/Shared/EmbedAccessTokenResponse.cs
 SpeakeasySDK/Models/Shared/EmbedToken.cs
 SpeakeasySDK/Models/Shared/Security.cs
-USAGE.md
 docs/Models/Operations/ValidateApiKeyResponse.md
 docs/Models/Operations/DeleteApiRequest.md
 docs/Models/Operations/DeleteApiResponse.md
@@ -209,4 +208,5 @@ docs/sdks/schemas/README.md
 docs/sdks/requests/README.md
 docs/sdks/plugins/README.md
 docs/sdks/embeds/README.md
+USAGE.md
 .gitattributes

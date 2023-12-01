@@ -57,12 +57,12 @@ namespace SpeakeasySDK
     /// </summary>
     public class Requests: IRequests
     {
-        public SDKConfig Config { get; private set; }
+        public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.2.1";
-        private const string _sdkGenVersion = "2.194.1";
+        private const string _sdkVersion = "2.2.2";
+        private const string _sdkGenVersion = "2.205.0";
         private const string _openapiDocVersion = "0.3.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 2.2.1 2.194.1 0.3.0 SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 2.2.2 2.205.0 0.3.0 SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private ISpeakeasyHttpClient _securityClient;
@@ -72,13 +72,13 @@ namespace SpeakeasySDK
             _defaultClient = defaultClient;
             _securityClient = securityClient;
             _serverUrl = serverUrl;
-            Config = config;
+            SDKConfiguration = config;
         }
         
 
         public async Task<GenerateRequestPostmanCollectionResponse> GenerateRequestPostmanCollectionAsync(GenerateRequestPostmanCollectionRequest? request = null)
         {
-            string baseUrl = this.Config.GetTemplatedServerDetails();
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/v1/eventlog/{requestID}/generate/postman", request);
             
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
@@ -114,7 +114,7 @@ namespace SpeakeasySDK
 
         public async Task<GetRequestFromEventLogResponse> GetRequestFromEventLogAsync(GetRequestFromEventLogRequest? request = null)
         {
-            string baseUrl = this.Config.GetTemplatedServerDetails();
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/v1/eventlog/{requestID}", request);
             
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
@@ -150,7 +150,7 @@ namespace SpeakeasySDK
 
         public async Task<QueryEventLogResponse> QueryEventLogAsync(QueryEventLogRequest? request = null)
         {
-            string baseUrl = this.Config.GetTemplatedServerDetails();
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/v1/eventlog/query", request);
             
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);

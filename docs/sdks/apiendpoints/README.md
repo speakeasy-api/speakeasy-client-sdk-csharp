@@ -30,14 +30,15 @@ using SpeakeasySDK.Models.Operations;
 var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
-    }
-);
+    });
 
-var res = await sdk.ApiEndpoints.DeleteApiEndpointAsync(new DeleteApiEndpointRequest() {
+DeleteApiEndpointRequest req = new DeleteApiEndpointRequest() {
     ApiEndpointID = "string",
     ApiID = "string",
     VersionID = "string",
-});
+};
+
+var res = await sdk.ApiEndpoints.DeleteApiEndpointAsync(req);
 
 // handle response
 ```
@@ -69,14 +70,15 @@ using SpeakeasySDK.Models.Operations;
 var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
-    }
-);
+    });
 
-var res = await sdk.ApiEndpoints.FindApiEndpointAsync(new FindApiEndpointRequest() {
+FindApiEndpointRequest req = new FindApiEndpointRequest() {
     ApiID = "string",
     DisplayName = "string",
     VersionID = "string",
-});
+};
+
+var res = await sdk.ApiEndpoints.FindApiEndpointAsync(req);
 
 // handle response
 ```
@@ -108,14 +110,15 @@ using SpeakeasySDK.Models.Operations;
 var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
-    }
-);
+    });
 
-var res = await sdk.ApiEndpoints.GenerateOpenApiSpecForApiEndpointAsync(new GenerateOpenApiSpecForApiEndpointRequest() {
+GenerateOpenApiSpecForApiEndpointRequest req = new GenerateOpenApiSpecForApiEndpointRequest() {
     ApiEndpointID = "string",
     ApiID = "string",
     VersionID = "string",
-});
+};
+
+var res = await sdk.ApiEndpoints.GenerateOpenApiSpecForApiEndpointAsync(req);
 
 // handle response
 ```
@@ -146,14 +149,15 @@ using SpeakeasySDK.Models.Operations;
 var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
-    }
-);
+    });
 
-var res = await sdk.ApiEndpoints.GeneratePostmanCollectionForApiEndpointAsync(new GeneratePostmanCollectionForApiEndpointRequest() {
+GeneratePostmanCollectionForApiEndpointRequest req = new GeneratePostmanCollectionForApiEndpointRequest() {
     ApiEndpointID = "string",
     ApiID = "string",
     VersionID = "string",
-});
+};
+
+var res = await sdk.ApiEndpoints.GeneratePostmanCollectionForApiEndpointAsync(req);
 
 // handle response
 ```
@@ -184,12 +188,13 @@ using SpeakeasySDK.Models.Operations;
 var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
-    }
-);
+    });
 
-var res = await sdk.ApiEndpoints.GetAllApiEndpointsAsync(new GetAllApiEndpointsRequest() {
+GetAllApiEndpointsRequest req = new GetAllApiEndpointsRequest() {
     ApiID = "string",
-});
+};
+
+var res = await sdk.ApiEndpoints.GetAllApiEndpointsAsync(req);
 
 // handle response
 ```
@@ -220,13 +225,14 @@ using SpeakeasySDK.Models.Operations;
 var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
-    }
-);
+    });
 
-var res = await sdk.ApiEndpoints.GetAllForVersionApiEndpointsAsync(new GetAllForVersionApiEndpointsRequest() {
+GetAllForVersionApiEndpointsRequest req = new GetAllForVersionApiEndpointsRequest() {
     ApiID = "string",
     VersionID = "string",
-});
+};
+
+var res = await sdk.ApiEndpoints.GetAllForVersionApiEndpointsAsync(req);
 
 // handle response
 ```
@@ -257,14 +263,15 @@ using SpeakeasySDK.Models.Operations;
 var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
-    }
-);
+    });
 
-var res = await sdk.ApiEndpoints.GetApiEndpointAsync(new GetApiEndpointRequest() {
+GetApiEndpointRequest req = new GetApiEndpointRequest() {
     ApiEndpointID = "string",
     ApiID = "string",
     VersionID = "string",
-});
+};
+
+var res = await sdk.ApiEndpoints.GetApiEndpointAsync(req);
 
 // handle response
 ```
@@ -295,10 +302,9 @@ using SpeakeasySDK.Models.Operations;
 var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
-    }
-);
+    });
 
-var res = await sdk.ApiEndpoints.UpsertApiEndpointAsync(new UpsertApiEndpointRequest() {
+UpsertApiEndpointRequest req = new UpsertApiEndpointRequest() {
     ApiEndpoint = new ApiEndpointInput() {
         ApiEndpointId = "string",
         Description = "Public-key systematic attitude",
@@ -310,7 +316,9 @@ var res = await sdk.ApiEndpoints.UpsertApiEndpointAsync(new UpsertApiEndpointReq
     ApiEndpointID = "string",
     ApiID = "string",
     VersionID = "string",
-});
+};
+
+var res = await sdk.ApiEndpoints.UpsertApiEndpointAsync(req);
 
 // handle response
 ```

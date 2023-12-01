@@ -27,10 +27,9 @@ using System.Collections.Generic;
 var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
-    }
-);
+    });
 
-var res = await sdk.Embeds.GetEmbedAccessTokenAsync(new GetEmbedAccessTokenRequest() {
+GetEmbedAccessTokenRequest req = new GetEmbedAccessTokenRequest() {
     Filters = new Filters() {
         Filters = new List<Filter>() {
             new Filter() {
@@ -43,7 +42,9 @@ var res = await sdk.Embeds.GetEmbedAccessTokenAsync(new GetEmbedAccessTokenReque
         Offset = 95617,
         Operator = "string",
     },
-});
+};
+
+var res = await sdk.Embeds.GetEmbedAccessTokenAsync(req);
 
 // handle response
 ```
@@ -73,8 +74,7 @@ using SpeakeasySDK.Models.Shared;
 var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
-    }
-);
+    });
 
 var res = await sdk.Embeds.GetValidEmbedAccessTokensAsync();
 
@@ -101,12 +101,13 @@ using SpeakeasySDK.Models.Operations;
 var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
-    }
-);
+    });
 
-var res = await sdk.Embeds.RevokeEmbedAccessTokenAsync(new RevokeEmbedAccessTokenRequest() {
+RevokeEmbedAccessTokenRequest req = new RevokeEmbedAccessTokenRequest() {
     TokenID = "string",
-});
+};
+
+var res = await sdk.Embeds.RevokeEmbedAccessTokenAsync(req);
 
 // handle response
 ```

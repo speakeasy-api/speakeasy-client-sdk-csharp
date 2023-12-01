@@ -24,8 +24,7 @@ using SpeakeasySDK.Models.Shared;
 var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
-    }
-);
+    });
 
 var res = await sdk.Plugins.GetPluginsAsync();
 
@@ -53,10 +52,9 @@ using System.Collections.Generic;
 var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
-    }
-);
+    });
 
-var res = await sdk.Plugins.RunPluginAsync(new RunPluginRequest() {
+RunPluginRequest req = new RunPluginRequest() {
     Filters = new Filters() {
         Filters = new List<Filter>() {
             new Filter() {
@@ -70,7 +68,9 @@ var res = await sdk.Plugins.RunPluginAsync(new RunPluginRequest() {
         Operator = "string",
     },
     PluginID = "string",
-});
+};
+
+var res = await sdk.Plugins.RunPluginAsync(req);
 
 // handle response
 ```
@@ -100,15 +100,16 @@ using SpeakeasySDK.Models.Shared;
 var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
-    }
-);
+    });
 
-var res = await sdk.Plugins.UpsertPluginAsync(new Plugin() {
+Plugin req = new Plugin() {
     Code = "string",
     PluginId = "string",
     Title = "string",
     WorkspaceId = "string",
-});
+};
+
+var res = await sdk.Plugins.UpsertPluginAsync(req);
 
 // handle response
 ```

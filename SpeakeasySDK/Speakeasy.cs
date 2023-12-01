@@ -90,8 +90,10 @@ namespace SpeakeasySDK
             {
                 this.server = "Serverprod";
             }
+            Dictionary<string, string> serverDefault = new Dictionary<string, string>();
+            
 
-            return Utilities.TemplateUrl(SDKConfig.ServerList[this.server], new Dictionary<string, string>());
+            return Utilities.TemplateUrl(SDKConfig.ServerList[this.server], serverDefault);
         }
     }
 
@@ -102,13 +104,13 @@ namespace SpeakeasySDK
     /// </summary>
     public class Speakeasy: ISpeakeasy
     {
-        public SDKConfig Config { get; private set; }
+        public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.2.1";
-        private const string _sdkGenVersion = "2.194.1";
+        private const string _sdkVersion = "2.2.2";
+        private const string _sdkGenVersion = "2.205.0";
         private const string _openapiDocVersion = "0.3.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 2.2.1 2.194.1 0.3.0 SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 2.2.2 2.205.0 0.3.0 SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private ISpeakeasyHttpClient _securityClient;
@@ -137,23 +139,23 @@ namespace SpeakeasySDK
                 _securityClient = SecuritySerializer.Apply(_defaultClient, security);
             }
             
-            Config = new SDKConfig()
+            SDKConfiguration = new SDKConfig()
             {
                 serverUrl = _serverUrl
             };
 
-            Apis = new Apis(_defaultClient, _securityClient, _serverUrl, Config);
-            ApiEndpoints = new ApiEndpoints(_defaultClient, _securityClient, _serverUrl, Config);
-            Metadata = new Metadata(_defaultClient, _securityClient, _serverUrl, Config);
-            Schemas = new Schemas(_defaultClient, _securityClient, _serverUrl, Config);
-            Requests = new Requests(_defaultClient, _securityClient, _serverUrl, Config);
-            Plugins = new Plugins(_defaultClient, _securityClient, _serverUrl, Config);
-            Embeds = new Embeds(_defaultClient, _securityClient, _serverUrl, Config);
+            Apis = new Apis(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
+            ApiEndpoints = new ApiEndpoints(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
+            Metadata = new Metadata(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
+            Schemas = new Schemas(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
+            Requests = new Requests(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
+            Plugins = new Plugins(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
+            Embeds = new Embeds(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
         }
 
         public async Task<ValidateApiKeyResponse> ValidateApiKeyAsync()
         {
-            string baseUrl = this.Config.GetTemplatedServerDetails();
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = baseUrl + "/v1/auth/validate";
             
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);

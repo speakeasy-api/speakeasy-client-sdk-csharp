@@ -26,12 +26,13 @@ using SpeakeasySDK.Models.Operations;
 var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
-    }
-);
+    });
 
-var res = await sdk.Requests.GenerateRequestPostmanCollectionAsync(new GenerateRequestPostmanCollectionRequest() {
+GenerateRequestPostmanCollectionRequest req = new GenerateRequestPostmanCollectionRequest() {
     RequestID = "string",
-});
+};
+
+var res = await sdk.Requests.GenerateRequestPostmanCollectionAsync(req);
 
 // handle response
 ```
@@ -62,12 +63,13 @@ using SpeakeasySDK.Models.Operations;
 var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
-    }
-);
+    });
 
-var res = await sdk.Requests.GetRequestFromEventLogAsync(new GetRequestFromEventLogRequest() {
+GetRequestFromEventLogRequest req = new GetRequestFromEventLogRequest() {
     RequestID = "string",
-});
+};
+
+var res = await sdk.Requests.GetRequestFromEventLogAsync(req);
 
 // handle response
 ```
@@ -100,10 +102,9 @@ using System.Collections.Generic;
 var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
-    }
-);
+    });
 
-var res = await sdk.Requests.QueryEventLogAsync(new QueryEventLogRequest() {
+QueryEventLogRequest req = new QueryEventLogRequest() {
     Filters = new Filters() {
         Filters = new List<Filter>() {
             new Filter() {
@@ -116,7 +117,9 @@ var res = await sdk.Requests.QueryEventLogAsync(new QueryEventLogRequest() {
         Offset = 451388,
         Operator = "string",
     },
-});
+};
+
+var res = await sdk.Requests.QueryEventLogAsync(req);
 
 // handle response
 ```

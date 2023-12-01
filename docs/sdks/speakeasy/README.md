@@ -24,8 +24,7 @@ using SpeakeasySDK.Models.Shared;
 var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
-    }
-);
+    });
 
 var res = await sdk.ValidateApiKeyAsync();
 

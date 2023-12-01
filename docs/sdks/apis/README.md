@@ -28,13 +28,14 @@ using SpeakeasySDK.Models.Operations;
 var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
-    }
-);
+    });
 
-var res = await sdk.Apis.DeleteApiAsync(new DeleteApiRequest() {
+DeleteApiRequest req = new DeleteApiRequest() {
     ApiID = "string",
     VersionID = "string",
-});
+};
+
+var res = await sdk.Apis.DeleteApiAsync(req);
 
 // handle response
 ```
@@ -66,13 +67,14 @@ using SpeakeasySDK.Models.Operations;
 var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
-    }
-);
+    });
 
-var res = await sdk.Apis.GenerateOpenApiSpecAsync(new GenerateOpenApiSpecRequest() {
+GenerateOpenApiSpecRequest req = new GenerateOpenApiSpecRequest() {
     ApiID = "string",
     VersionID = "string",
-});
+};
+
+var res = await sdk.Apis.GenerateOpenApiSpecAsync(req);
 
 // handle response
 ```
@@ -103,13 +105,14 @@ using SpeakeasySDK.Models.Operations;
 var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
-    }
-);
+    });
 
-var res = await sdk.Apis.GeneratePostmanCollectionAsync(new GeneratePostmanCollectionRequest() {
+GeneratePostmanCollectionRequest req = new GeneratePostmanCollectionRequest() {
     ApiID = "string",
     VersionID = "string",
-});
+};
+
+var res = await sdk.Apis.GeneratePostmanCollectionAsync(req);
 
 // handle response
 ```
@@ -142,10 +145,9 @@ using System.Collections.Generic;
 var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
-    }
-);
+    });
 
-var res = await sdk.Apis.GetAllApiVersionsAsync(new GetAllApiVersionsRequest() {
+GetAllApiVersionsRequest req = new GetAllApiVersionsRequest() {
     ApiID = "string",
     Metadata = new Dictionary<string, List<string>>() {
         { "key", new List<string>() {
@@ -155,7 +157,9 @@ var res = await sdk.Apis.GetAllApiVersionsAsync(new GetAllApiVersionsRequest() {
     Op = new Op() {
         And = false,
     },
-});
+};
+
+var res = await sdk.Apis.GetAllApiVersionsAsync(req);
 
 // handle response
 ```
@@ -188,10 +192,9 @@ using System.Collections.Generic;
 var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
-    }
-);
+    });
 
-var res = await sdk.Apis.GetApisAsync(new GetApisRequest() {
+GetApisRequest req = new GetApisRequest() {
     Metadata = new Dictionary<string, List<string>>() {
         { "key", new List<string>() {
             "string",
@@ -200,7 +203,9 @@ var res = await sdk.Apis.GetApisAsync(new GetApisRequest() {
     Op = new QueryParamOp() {
         And = false,
     },
-});
+};
+
+var res = await sdk.Apis.GetApisAsync(req);
 
 // handle response
 ```
@@ -233,10 +238,9 @@ using System.Collections.Generic;
 var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
-    }
-);
+    });
 
-var res = await sdk.Apis.UpsertApiAsync(new UpsertApiRequest() {
+UpsertApiRequest req = new UpsertApiRequest() {
     Api = new ApiInput() {
         ApiId = "string",
         Description = "Synchronised 5th generation knowledge user",
@@ -248,7 +252,9 @@ var res = await sdk.Apis.UpsertApiAsync(new UpsertApiRequest() {
         VersionId = "string",
     },
     ApiID = "string",
-});
+};
+
+var res = await sdk.Apis.UpsertApiAsync(req);
 
 // handle response
 ```

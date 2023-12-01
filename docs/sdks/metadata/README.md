@@ -25,15 +25,16 @@ using SpeakeasySDK.Models.Operations;
 var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
-    }
-);
+    });
 
-var res = await sdk.Metadata.DeleteVersionMetadataAsync(new DeleteVersionMetadataRequest() {
+DeleteVersionMetadataRequest req = new DeleteVersionMetadataRequest() {
     ApiID = "string",
     MetaKey = "string",
     MetaValue = "string",
     VersionID = "string",
-});
+};
+
+var res = await sdk.Metadata.DeleteVersionMetadataAsync(req);
 
 // handle response
 ```
@@ -64,13 +65,14 @@ using SpeakeasySDK.Models.Operations;
 var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
-    }
-);
+    });
 
-var res = await sdk.Metadata.GetVersionMetadataAsync(new GetVersionMetadataRequest() {
+GetVersionMetadataRequest req = new GetVersionMetadataRequest() {
     ApiID = "string",
     VersionID = "string",
-});
+};
+
+var res = await sdk.Metadata.GetVersionMetadataAsync(req);
 
 // handle response
 ```
@@ -101,17 +103,18 @@ using SpeakeasySDK.Models.Operations;
 var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "",
-    }
-);
+    });
 
-var res = await sdk.Metadata.InsertVersionMetadataAsync(new InsertVersionMetadataRequest() {
+InsertVersionMetadataRequest req = new InsertVersionMetadataRequest() {
     VersionMetadata = new VersionMetadataInput() {
         MetaKey = "string",
         MetaValue = "string",
     },
     ApiID = "string",
     VersionID = "string",
-});
+};
+
+var res = await sdk.Metadata.InsertVersionMetadataAsync(req);
 
 // handle response
 ```
