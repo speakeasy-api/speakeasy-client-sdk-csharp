@@ -26,7 +26,7 @@ using System.Collections.Generic;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 GetEmbedAccessTokenRequest req = new GetEmbedAccessTokenRequest() {
@@ -73,7 +73,7 @@ using SpeakeasySDK.Models.Shared;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 var res = await sdk.Embeds.GetValidEmbedAccessTokensAsync();
@@ -100,7 +100,7 @@ using SpeakeasySDK.Models.Operations;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 RevokeEmbedAccessTokenRequest req = new RevokeEmbedAccessTokenRequest() {

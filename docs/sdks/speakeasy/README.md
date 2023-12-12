@@ -23,7 +23,7 @@ using SpeakeasySDK.Models.Shared;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 var res = await sdk.ValidateApiKeyAsync();

@@ -27,7 +27,7 @@ using SpeakeasySDK.Models.Operations;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 DeleteApiRequest req = new DeleteApiRequest() {
@@ -66,7 +66,7 @@ using SpeakeasySDK.Models.Operations;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 GenerateOpenApiSpecRequest req = new GenerateOpenApiSpecRequest() {
@@ -104,7 +104,7 @@ using SpeakeasySDK.Models.Operations;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 GeneratePostmanCollectionRequest req = new GeneratePostmanCollectionRequest() {
@@ -144,7 +144,7 @@ using System.Collections.Generic;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 GetAllApiVersionsRequest req = new GetAllApiVersionsRequest() {
@@ -191,7 +191,7 @@ using System.Collections.Generic;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 GetApisRequest req = new GetApisRequest() {
@@ -237,7 +237,7 @@ using System.Collections.Generic;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 UpsertApiRequest req = new UpsertApiRequest() {

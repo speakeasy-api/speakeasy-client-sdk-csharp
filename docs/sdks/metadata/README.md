@@ -24,7 +24,7 @@ using SpeakeasySDK.Models.Operations;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 DeleteVersionMetadataRequest req = new DeleteVersionMetadataRequest() {
@@ -64,7 +64,7 @@ using SpeakeasySDK.Models.Operations;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 GetVersionMetadataRequest req = new GetVersionMetadataRequest() {
@@ -102,7 +102,7 @@ using SpeakeasySDK.Models.Operations;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 InsertVersionMetadataRequest req = new InsertVersionMetadataRequest() {

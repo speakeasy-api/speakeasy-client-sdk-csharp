@@ -29,7 +29,7 @@ using SpeakeasySDK.Models.Operations;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 DeleteSchemaRequest req = new DeleteSchemaRequest() {
@@ -68,7 +68,7 @@ using SpeakeasySDK.Models.Operations;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 DownloadSchemaRequest req = new DownloadSchemaRequest() {
@@ -106,7 +106,7 @@ using SpeakeasySDK.Models.Operations;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 DownloadSchemaRevisionRequest req = new DownloadSchemaRevisionRequest() {
@@ -146,7 +146,7 @@ using SpeakeasySDK.Models.Operations;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 GetSchemaRequest req = new GetSchemaRequest() {
@@ -184,7 +184,7 @@ using SpeakeasySDK.Models.Operations;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 GetSchemaDiffRequest req = new GetSchemaDiffRequest() {
@@ -225,7 +225,7 @@ using SpeakeasySDK.Models.Operations;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 GetSchemaRevisionRequest req = new GetSchemaRevisionRequest() {
@@ -265,7 +265,7 @@ using SpeakeasySDK.Models.Operations;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 GetSchemasRequest req = new GetSchemasRequest() {
@@ -304,7 +304,7 @@ using SpeakeasySDK.Models.Operations;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 RegisterSchemaRequest req = new RegisterSchemaRequest() {

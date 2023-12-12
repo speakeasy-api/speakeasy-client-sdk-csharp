@@ -23,7 +23,7 @@ using SpeakeasySDK.Models.Shared;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 var res = await sdk.Plugins.GetPluginsAsync();
@@ -51,7 +51,7 @@ using System.Collections.Generic;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 RunPluginRequest req = new RunPluginRequest() {
@@ -99,7 +99,7 @@ using SpeakeasySDK.Models.Shared;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 Plugin req = new Plugin() {

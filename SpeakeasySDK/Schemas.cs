@@ -94,10 +94,10 @@ namespace SpeakeasySDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.2.2";
-        private const string _sdkGenVersion = "2.205.0";
+        private const string _sdkVersion = "2.3.0";
+        private const string _sdkGenVersion = "2.213.3";
         private const string _openapiDocVersion = "0.3.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 2.2.2 2.205.0 0.3.0 SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 2.3.0 2.213.3 0.3.0 SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private ISpeakeasyHttpClient _securityClient;

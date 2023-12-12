@@ -29,7 +29,7 @@ using SpeakeasySDK.Models.Operations;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 DeleteApiEndpointRequest req = new DeleteApiEndpointRequest() {
@@ -69,7 +69,7 @@ using SpeakeasySDK.Models.Operations;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 FindApiEndpointRequest req = new FindApiEndpointRequest() {
@@ -109,7 +109,7 @@ using SpeakeasySDK.Models.Operations;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 GenerateOpenApiSpecForApiEndpointRequest req = new GenerateOpenApiSpecForApiEndpointRequest() {
@@ -148,7 +148,7 @@ using SpeakeasySDK.Models.Operations;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 GeneratePostmanCollectionForApiEndpointRequest req = new GeneratePostmanCollectionForApiEndpointRequest() {
@@ -187,7 +187,7 @@ using SpeakeasySDK.Models.Operations;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 GetAllApiEndpointsRequest req = new GetAllApiEndpointsRequest() {
@@ -224,7 +224,7 @@ using SpeakeasySDK.Models.Operations;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 GetAllForVersionApiEndpointsRequest req = new GetAllForVersionApiEndpointsRequest() {
@@ -262,7 +262,7 @@ using SpeakeasySDK.Models.Operations;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 GetApiEndpointRequest req = new GetApiEndpointRequest() {
@@ -301,7 +301,7 @@ using SpeakeasySDK.Models.Operations;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 UpsertApiEndpointRequest req = new UpsertApiEndpointRequest() {

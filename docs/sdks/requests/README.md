@@ -25,7 +25,7 @@ using SpeakeasySDK.Models.Operations;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 GenerateRequestPostmanCollectionRequest req = new GenerateRequestPostmanCollectionRequest() {
@@ -62,7 +62,7 @@ using SpeakeasySDK.Models.Operations;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 GetRequestFromEventLogRequest req = new GetRequestFromEventLogRequest() {
@@ -101,7 +101,7 @@ using System.Collections.Generic;
 
 var sdk = new Speakeasy(
     security: new Security() {
-        APIKey = "",
+        APIKey = "<YOUR_API_KEY_HERE>",
     });
 
 QueryEventLogRequest req = new QueryEventLogRequest() {
