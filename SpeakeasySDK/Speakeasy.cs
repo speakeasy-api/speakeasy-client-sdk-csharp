@@ -107,10 +107,10 @@ namespace SpeakeasySDK
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.3.1";
-        private const string _sdkGenVersion = "2.237.2";
+        private const string _sdkVersion = "3.0.0";
+        private const string _sdkGenVersion = "2.245.1";
         private const string _openapiDocVersion = "0.3.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 2.3.1 2.237.2 0.3.0 SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 3.0.0 2.245.1 0.3.0 SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private ISpeakeasyHttpClient _securityClient;
@@ -124,8 +124,11 @@ namespace SpeakeasySDK
 
         public Speakeasy(Security? security = null, string? server = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null)
         {
-            if (serverUrl != null) {
-                if (urlParams != null) {
+
+            if (serverUrl != null)
+            {
+                if (urlParams != null)
+                {
                     serverUrl = Utilities.TemplateUrl(serverUrl, urlParams);
                 }
                 _serverUrl = serverUrl;
@@ -133,12 +136,12 @@ namespace SpeakeasySDK
 
             _defaultClient = new SpeakeasyHttpClient(client);
             _securityClient = _defaultClient;
-            
+
             if(security != null)
             {
                 _securityClient = SecuritySerializer.Apply(_defaultClient, security);
             }
-            
+
             SDKConfiguration = new SDKConfig()
             {
                 serverUrl = _serverUrl

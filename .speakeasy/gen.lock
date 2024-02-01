@@ -4,9 +4,9 @@ management:
   docChecksum: ba638b2ad28966c596e28321a2003686
   docVersion: 0.3.0
   speakeasyVersion: internal
-  generationVersion: 2.237.2
-  releaseVersion: 2.3.1
-  configChecksum: 80c8ab98feea932ef9ce06465f8c6375
+  generationVersion: 2.245.1
+  releaseVersion: 3.0.0
+  configChecksum: 79f37e2d96bbb04a0e7c2f62b58e1b2c
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
@@ -14,10 +14,10 @@ features:
   csharp:
     core: 3.3.1
     examples: 2.81.3
-    globalSecurity: 2.81.3
+    globalSecurity: 2.82.0
     globalServerURLs: 2.82.2
     inputOutputModels: 2.83.0
-    serverIDs: 2.82.0
+    serverIDs: 2.82.1
 generatedFiles:
   - SpeakeasySDK/Apis.cs
   - SpeakeasySDK/ApiEndpoints.cs
