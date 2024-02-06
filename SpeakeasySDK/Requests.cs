@@ -59,18 +59,18 @@ namespace SpeakeasySDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "3.0.0";
-        private const string _sdkGenVersion = "2.245.1";
+        private const string _sdkVersion = "4.0.0";
+        private const string _sdkGenVersion = "2.250.2";
         private const string _openapiDocVersion = "0.3.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 3.0.0 2.245.1 0.3.0 SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 4.0.0 2.250.2 0.3.0 SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
-        private ISpeakeasyHttpClient _securityClient;
+        private Func<Security>? _securitySource;
 
-        public Requests(ISpeakeasyHttpClient defaultClient, ISpeakeasyHttpClient securityClient, string serverUrl, SDKConfig config)
+        public Requests(ISpeakeasyHttpClient defaultClient, Func<Security>? securitySource, string serverUrl, SDKConfig config)
         {
             _defaultClient = defaultClient;
-            _securityClient = securityClient;
+            _securitySource = securitySource;
             _serverUrl = serverUrl;
             SDKConfiguration = config;
         }
@@ -85,8 +85,12 @@ namespace SpeakeasySDK
             httpRequest.Headers.Add("user-agent", _userAgent);
             
             
-            var client = _securityClient;
-            
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -104,12 +108,13 @@ namespace SpeakeasySDK
                 {
                     response.PostmanCollection = await httpResponse.Content.ReadAsByteArrayAsync();
                 }
-                
+
                 return response;
             }
             response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
             return response;
         }
+
         
 
         public async Task<GetRequestFromEventLogResponse> GetRequestFromEventLogAsync(GetRequestFromEventLogRequest? request = null)
@@ -121,8 +126,12 @@ namespace SpeakeasySDK
             httpRequest.Headers.Add("user-agent", _userAgent);
             
             
-            var client = _securityClient;
-            
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -140,12 +149,13 @@ namespace SpeakeasySDK
                 {
                     response.UnboundedRequest = JsonConvert.DeserializeObject<UnboundedRequest>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
             return response;
         }
+
         
 
         public async Task<QueryEventLogResponse> QueryEventLogAsync(QueryEventLogRequest? request = null)
@@ -157,8 +167,12 @@ namespace SpeakeasySDK
             httpRequest.Headers.Add("user-agent", _userAgent);
             
             
-            var client = _securityClient;
-            
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -176,12 +190,13 @@ namespace SpeakeasySDK
                 {
                     response.Classes = JsonConvert.DeserializeObject<List<BoundedRequest>>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
             return response;
         }
+
         
     }
 }

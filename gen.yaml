@@ -5,8 +5,9 @@ generation:
     optionalPropertyRendering: withExample
   fixes:
     nameResolutionDec2023: false
+    parameterOrderingFeb2024: false
 csharp:
-  version: 3.0.0
+  version: 4.0.0
   author: Speakeasy
   dotnetVersion: net5.0
   flattenGlobalSecurity: false

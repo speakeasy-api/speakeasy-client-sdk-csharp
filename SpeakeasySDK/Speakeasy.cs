@@ -107,13 +107,13 @@ namespace SpeakeasySDK
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "3.0.0";
-        private const string _sdkGenVersion = "2.245.1";
+        private const string _sdkVersion = "4.0.0";
+        private const string _sdkGenVersion = "2.250.2";
         private const string _openapiDocVersion = "0.3.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 3.0.0 2.245.1 0.3.0 SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 4.0.0 2.250.2 0.3.0 SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
-        private ISpeakeasyHttpClient _securityClient;
+        private Func<Security>? _securitySource;
         public IApis Apis { get; private set; }
         public IApiEndpoints ApiEndpoints { get; private set; }
         public IMetadata Metadata { get; private set; }
@@ -122,7 +122,7 @@ namespace SpeakeasySDK
         public IPlugins Plugins { get; private set; }
         public IEmbeds Embeds { get; private set; }
 
-        public Speakeasy(Security? security = null, string? server = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null)
+        public Speakeasy(Security? security = null, Func<Security>? securitySource = null, string? server = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null)
         {
 
             if (serverUrl != null)
@@ -135,11 +135,14 @@ namespace SpeakeasySDK
             }
 
             _defaultClient = new SpeakeasyHttpClient(client);
-            _securityClient = _defaultClient;
 
-            if(security != null)
+            if(securitySource != null)
             {
-                _securityClient = SecuritySerializer.Apply(_defaultClient, security);
+                _securitySource = securitySource;
+            }
+            else if(security != null)
+            {
+                _securitySource = () => security;
             }
 
             SDKConfiguration = new SDKConfig()
@@ -147,13 +150,13 @@ namespace SpeakeasySDK
                 serverUrl = _serverUrl
             };
 
-            Apis = new Apis(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
-            ApiEndpoints = new ApiEndpoints(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
-            Metadata = new Metadata(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
-            Schemas = new Schemas(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
-            Requests = new Requests(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
-            Plugins = new Plugins(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
-            Embeds = new Embeds(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
+            Apis = new Apis(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+            ApiEndpoints = new ApiEndpoints(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+            Metadata = new Metadata(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+            Schemas = new Schemas(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+            Requests = new Requests(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+            Plugins = new Plugins(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+            Embeds = new Embeds(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
         }
 
         public async Task<ValidateApiKeyResponse> ValidateApiKeyAsync()
@@ -165,8 +168,12 @@ namespace SpeakeasySDK
             httpRequest.Headers.Add("user-agent", _userAgent);
             
             
-            var client = _securityClient;
-            
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
@@ -180,11 +187,12 @@ namespace SpeakeasySDK
             
             if((response.StatusCode == 200))
             {
-                
+
                 return response;
             }
             response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
             return response;
         }
+
     }
 }
