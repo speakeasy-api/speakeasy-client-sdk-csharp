@@ -41,6 +41,6 @@ namespace SpeakeasySDK.Models.Operations
         /// <summary>
         /// OK
         /// </summary>
-        public List<VersionMetadata>? Classes { get; set; }
+        public List<VersionMetadata>? VersionMetadata { get; set; }
     }
 }

@@ -22,9 +22,11 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new Speakeasy(
+    security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    },
+    workspaceID: "string");
 
 DeleteVersionMetadataRequest req = new DeleteVersionMetadataRequest() {
     ApiID = "string",
@@ -61,9 +63,11 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new Speakeasy(
+    security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    },
+    workspaceID: "string");
 
 GetVersionMetadataRequest req = new GetVersionMetadataRequest() {
     ApiID = "string",
@@ -98,9 +102,11 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new Speakeasy(
+    security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    },
+    workspaceID: "string");
 
 InsertVersionMetadataRequest req = new InsertVersionMetadataRequest() {
     VersionMetadata = new VersionMetadataInput() {

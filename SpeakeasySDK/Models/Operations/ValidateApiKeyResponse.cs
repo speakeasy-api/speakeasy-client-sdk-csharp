@@ -18,6 +18,11 @@ namespace SpeakeasySDK.Models.Operations
     {
 
         /// <summary>
+        /// OK
+        /// </summary>
+        public ApiKeyDetails? ApiKeyDetails { get; set; }
+
+        /// <summary>
         /// HTTP response content type for this operation
         /// </summary>
         public string? ContentType { get; set; } = default!;

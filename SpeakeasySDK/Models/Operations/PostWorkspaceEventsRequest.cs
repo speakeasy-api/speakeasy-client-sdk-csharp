@@ -12,20 +12,18 @@ namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
+    using System.Collections.Generic;
     
-    public class RunPluginRequest
+    public class PostWorkspaceEventsRequest
     {
 
-        /// <summary>
-        /// The filter to apply to the query.
-        /// </summary>
-        [SpeakeasyMetadata("queryParam:serialization=json,name=filters")]
-        public Filters? Filters { get; set; }
+        [SpeakeasyMetadata("request:mediaType=application/json")]
+        public List<CliEvent> RequestBody { get; set; } = default!;
 
         /// <summary>
-        /// The ID of the plugin to run.
+        /// Unique identifier of the workspace.
         /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=pluginID")]
-        public string PluginID { get; set; } = default!;
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=workspaceID")]
+        public string? WorkspaceID { get; set; }
     }
 }

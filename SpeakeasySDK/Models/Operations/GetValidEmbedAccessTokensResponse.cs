@@ -24,6 +24,11 @@ namespace SpeakeasySDK.Models.Operations
         public string? ContentType { get; set; } = default!;
 
         /// <summary>
+        /// OK
+        /// </summary>
+        public List<EmbedToken>? EmbedTokens { get; set; }
+
+        /// <summary>
         /// Default error response
         /// </summary>
         public Error? Error { get; set; }
@@ -37,10 +42,5 @@ namespace SpeakeasySDK.Models.Operations
         /// Raw HTTP response; suitable for custom response parsing
         /// </summary>
         public HttpResponseMessage RawResponse { get; set; } = default!;
-
-        /// <summary>
-        /// OK
-        /// </summary>
-        public List<EmbedToken>? Classes { get; set; }
     }
 }

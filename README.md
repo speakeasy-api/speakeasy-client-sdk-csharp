@@ -21,9 +21,11 @@ using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 using System.Collections.Generic;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new Speakeasy(
+    security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    },
+    workspaceID: "string");
 
 GetApisRequest req = new GetApisRequest() {
     Metadata = new Dictionary<string, List<string>>() {
@@ -44,10 +46,6 @@ var res = await sdk.Apis.GetApisAsync(req);
 
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
-
-### [Speakeasy SDK](docs/sdks/speakeasy/README.md)
-
-* [ValidateApiKey](docs/sdks/speakeasy/README.md#validateapikey) - Validate the current api key.
 
 ### [Apis](docs/sdks/apis/README.md)
 
@@ -86,23 +84,25 @@ var res = await sdk.Apis.GetApisAsync(req);
 * [GetSchemas](docs/sdks/schemas/README.md#getschemas) - Get information about all schemas associated with a particular apiID.
 * [RegisterSchema](docs/sdks/schemas/README.md#registerschema) - Register a schema.
 
+### [Auth](docs/sdks/auth/README.md)
+
+* [ValidateApiKey](docs/sdks/auth/README.md#validateapikey) - Validate the current api key.
+
 ### [Requests](docs/sdks/requests/README.md)
 
 * [GenerateRequestPostmanCollection](docs/sdks/requests/README.md#generaterequestpostmancollection) - Generate a Postman collection for a particular request.
 * [GetRequestFromEventLog](docs/sdks/requests/README.md#getrequestfromeventlog) - Get information about a particular request.
 * [QueryEventLog](docs/sdks/requests/README.md#queryeventlog) - Query the event log to retrieve a list of requests.
 
-### [Plugins](docs/sdks/plugins/README.md)
-
-* [GetPlugins](docs/sdks/plugins/README.md#getplugins) - Get all plugins for the current workspace.
-* [RunPlugin](docs/sdks/plugins/README.md#runplugin) - Run a plugin
-* [UpsertPlugin](docs/sdks/plugins/README.md#upsertplugin) - Upsert a plugin
-
 ### [Embeds](docs/sdks/embeds/README.md)
 
 * [GetEmbedAccessToken](docs/sdks/embeds/README.md#getembedaccesstoken) - Get an embed access token for the current workspace.
 * [GetValidEmbedAccessTokens](docs/sdks/embeds/README.md#getvalidembedaccesstokens) - Get all valid embed access tokens for the current workspace.
 * [RevokeEmbedAccessToken](docs/sdks/embeds/README.md#revokeembedaccesstoken) - Revoke an embed access EmbedToken.
+
+### [Events](docs/sdks/events/README.md)
+
+* [PostWorkspaceEvents](docs/sdks/events/README.md#postworkspaceevents) - Post events for a specific workspace
 <!-- End Available Resources and Operations [operations] -->
 
 
@@ -142,16 +142,79 @@ You can set the security parameters through the `security` optional parameter wh
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new Speakeasy(
+    security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    },
+    workspaceID: "string");
 
-var res = await sdk.ValidateApiKeyAsync();
+DeleteApiRequest req = new DeleteApiRequest() {
+    ApiID = "string",
+    VersionID = "string",
+};
+
+var res = await sdk.Apis.DeleteApiAsync(req);
 
 // handle response
 ```
 <!-- End Authentication [security] -->
+
+<!-- Start Global Parameters [global-parameters] -->
+## Global Parameters
+
+## Global Parameters
+
+A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
+
+For example, you can set `workspaceID` to `"string"` at SDK initialization and then you do not have to pass the same value on calls to operations like `PostWorkspaceEvents`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+
+
+### Available Globals
+
+The following global parameter is available.
+
+| Name | Type | Required | Description |
+| ---- | ---- |:--------:| ----------- |
+| workspaceID | string |  | The WorkspaceID parameter. |
+
+
+### Example
+
+```csharp
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
+using System.Collections.Generic;
+
+var sdk = new Speakeasy(
+    security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    },
+    workspaceID: "string");
+
+PostWorkspaceEventsRequest req = new PostWorkspaceEventsRequest() {
+    RequestBody = new List<CliEvent>() {
+        new CliEvent() {
+            CreatedAt = System.DateTime.Parse("2024-11-21T06:58:42.120Z"),
+            ExecutionId = "string",
+            Id = "<ID>",
+            InteractionType = InteractionType.CliExec,
+            LocalStartedAt = System.DateTime.Parse("2024-05-07T12:35:47.182Z"),
+            SpeakeasyApiKeyName = "string",
+            SpeakeasyVersion = "string",
+            Success = false,
+            WorkspaceId = "string",
+        },
+    },
+};
+
+var res = await sdk.Events.PostWorkspaceEventsAsync(req);
+
+// handle response
+```
+<!-- End Global Parameters [global-parameters] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

@@ -19,6 +19,11 @@ namespace SpeakeasySDK.Models.Operations
     {
 
         /// <summary>
+        /// OK
+        /// </summary>
+        public List<ApiEndpoint>? ApiEndpoints { get; set; }
+
+        /// <summary>
         /// HTTP response content type for this operation
         /// </summary>
         public string? ContentType { get; set; } = default!;
@@ -37,10 +42,5 @@ namespace SpeakeasySDK.Models.Operations
         /// Raw HTTP response; suitable for custom response parsing
         /// </summary>
         public HttpResponseMessage RawResponse { get; set; } = default!;
-
-        /// <summary>
-        /// OK
-        /// </summary>
-        public List<ApiEndpoint>? Classes { get; set; }
     }
 }

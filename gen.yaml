@@ -6,8 +6,9 @@ generation:
   fixes:
     nameResolutionDec2023: false
     parameterOrderingFeb2024: false
+    requestResponseComponentNamesFeb2024: false
 csharp:
-  version: 4.0.0
+  version: 5.0.0
   author: Speakeasy
   dotnetVersion: net5.0
   flattenGlobalSecurity: false

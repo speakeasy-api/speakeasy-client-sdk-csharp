@@ -11,7 +11,6 @@
 namespace SpeakeasySDK
 {
     using Newtonsoft.Json;
-    using SpeakeasySDK.Models.Operations;
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System.Collections.Generic;
@@ -50,14 +49,14 @@ namespace SpeakeasySDK
         public ISchemas Schemas { get; }
 
         /// <summary>
+        /// REST APIs for managing Authentication
+        /// </summary>
+        public IAuth Auth { get; }
+
+        /// <summary>
         /// REST APIs for retrieving request information
         /// </summary>
         public IRequests Requests { get; }
-
-        /// <summary>
-        /// REST APIs for managing and running plugins
-        /// </summary>
-        public IPlugins Plugins { get; }
 
         /// <summary>
         /// REST APIs for managing embeds
@@ -65,9 +64,9 @@ namespace SpeakeasySDK
         public IEmbeds Embeds { get; }
 
         /// <summary>
-        /// Validate the current api key.
+        /// REST APIs for capturing event data
         /// </summary>
-        Task<ValidateApiKeyResponse> ValidateApiKeyAsync();
+        public IEvents Events { get; }
     }
     
     public class SDKConfig
@@ -79,6 +78,7 @@ namespace SpeakeasySDK
         /// Contains the list of servers available to the SDK
         public string serverUrl = "";
         public string server = "";
+        public string? WorkspaceID;
 
         public string GetTemplatedServerDetails()
         {
@@ -107,10 +107,10 @@ namespace SpeakeasySDK
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "4.0.0";
-        private const string _sdkGenVersion = "2.250.2";
-        private const string _openapiDocVersion = "0.3.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 4.0.0 2.250.2 0.3.0 SpeakeasySDK";
+        private const string _sdkVersion = "5.0.0";
+        private const string _sdkGenVersion = "2.250.16";
+        private const string _openapiDocVersion = "0.4.0";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.0.0 2.250.16 0.4.0 SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private Func<Security>? _securitySource;
@@ -118,11 +118,12 @@ namespace SpeakeasySDK
         public IApiEndpoints ApiEndpoints { get; private set; }
         public IMetadata Metadata { get; private set; }
         public ISchemas Schemas { get; private set; }
+        public IAuth Auth { get; private set; }
         public IRequests Requests { get; private set; }
-        public IPlugins Plugins { get; private set; }
         public IEmbeds Embeds { get; private set; }
+        public IEvents Events { get; private set; }
 
-        public Speakeasy(Security? security = null, Func<Security>? securitySource = null, string? server = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null)
+        public Speakeasy(Security? security = null, Func<Security>? securitySource = null, string? workspaceID = null, string? server = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null)
         {
 
             if (serverUrl != null)
@@ -147,6 +148,7 @@ namespace SpeakeasySDK
 
             SDKConfiguration = new SDKConfig()
             {
+                WorkspaceID = workspaceID,
                 serverUrl = _serverUrl
             };
 
@@ -154,45 +156,10 @@ namespace SpeakeasySDK
             ApiEndpoints = new ApiEndpoints(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
             Metadata = new Metadata(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
             Schemas = new Schemas(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+            Auth = new Auth(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
             Requests = new Requests(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
-            Plugins = new Plugins(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
             Embeds = new Embeds(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+            Events = new Events(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
         }
-
-        public async Task<ValidateApiKeyResponse> ValidateApiKeyAsync()
-        {
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
-            var urlString = baseUrl + "/v1/auth/validate";
-            
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
-            var client = _defaultClient;
-            if (_securitySource != null)
-            {
-                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
-            }
-
-            var httpResponse = await client.SendAsync(httpRequest);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
-            var response = new ValidateApiKeyResponse
-            {
-                StatusCode = (int)httpResponse.StatusCode,
-                ContentType = contentType,
-                RawResponse = httpResponse
-            };
-            
-            if((response.StatusCode == 200))
-            {
-
-                return response;
-            }
-            response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
-            return response;
-        }
-
     }
 }

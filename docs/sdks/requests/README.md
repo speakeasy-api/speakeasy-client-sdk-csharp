@@ -23,9 +23,11 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new Speakeasy(
+    security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    },
+    workspaceID: "string");
 
 GenerateRequestPostmanCollectionRequest req = new GenerateRequestPostmanCollectionRequest() {
     RequestID = "string",
@@ -59,9 +61,11 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new Speakeasy(
+    security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    },
+    workspaceID: "string");
 
 GetRequestFromEventLogRequest req = new GetRequestFromEventLogRequest() {
     RequestID = "string",
@@ -97,9 +101,11 @@ using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 using System.Collections.Generic;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new Speakeasy(
+    security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    },
+    workspaceID: "string");
 
 QueryEventLogRequest req = new QueryEventLogRequest() {
     Filters = new Filters() {

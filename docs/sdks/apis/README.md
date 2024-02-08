@@ -25,9 +25,11 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new Speakeasy(
+    security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    },
+    workspaceID: "string");
 
 DeleteApiRequest req = new DeleteApiRequest() {
     ApiID = "string",
@@ -63,9 +65,11 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new Speakeasy(
+    security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    },
+    workspaceID: "string");
 
 GenerateOpenApiSpecRequest req = new GenerateOpenApiSpecRequest() {
     ApiID = "string",
@@ -100,9 +104,11 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new Speakeasy(
+    security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    },
+    workspaceID: "string");
 
 GeneratePostmanCollectionRequest req = new GeneratePostmanCollectionRequest() {
     ApiID = "string",
@@ -139,9 +145,11 @@ using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 using System.Collections.Generic;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new Speakeasy(
+    security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    },
+    workspaceID: "string");
 
 GetAllApiVersionsRequest req = new GetAllApiVersionsRequest() {
     ApiID = "string",
@@ -185,9 +193,11 @@ using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 using System.Collections.Generic;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new Speakeasy(
+    security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    },
+    workspaceID: "string");
 
 GetApisRequest req = new GetApisRequest() {
     Metadata = new Dictionary<string, List<string>>() {
@@ -230,9 +240,11 @@ using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 using System.Collections.Generic;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new Speakeasy(
+    security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    },
+    workspaceID: "string");
 
 UpsertApiRequest req = new UpsertApiRequest() {
     Api = new ApiInput() {

@@ -27,9 +27,11 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new Speakeasy(
+    security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    },
+    workspaceID: "string");
 
 DeleteApiEndpointRequest req = new DeleteApiEndpointRequest() {
     ApiEndpointID = "string",
@@ -66,9 +68,11 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new Speakeasy(
+    security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    },
+    workspaceID: "string");
 
 FindApiEndpointRequest req = new FindApiEndpointRequest() {
     ApiID = "string",
@@ -105,9 +109,11 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new Speakeasy(
+    security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    },
+    workspaceID: "string");
 
 GenerateOpenApiSpecForApiEndpointRequest req = new GenerateOpenApiSpecForApiEndpointRequest() {
     ApiEndpointID = "string",
@@ -143,9 +149,11 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new Speakeasy(
+    security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    },
+    workspaceID: "string");
 
 GeneratePostmanCollectionForApiEndpointRequest req = new GeneratePostmanCollectionForApiEndpointRequest() {
     ApiEndpointID = "string",
@@ -181,9 +189,11 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new Speakeasy(
+    security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    },
+    workspaceID: "string");
 
 GetAllApiEndpointsRequest req = new GetAllApiEndpointsRequest() {
     ApiID = "string",
@@ -217,9 +227,11 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new Speakeasy(
+    security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    },
+    workspaceID: "string");
 
 GetAllForVersionApiEndpointsRequest req = new GetAllForVersionApiEndpointsRequest() {
     ApiID = "string",
@@ -254,9 +266,11 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new Speakeasy(
+    security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    },
+    workspaceID: "string");
 
 GetApiEndpointRequest req = new GetApiEndpointRequest() {
     ApiEndpointID = "string",
@@ -292,9 +306,11 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new Speakeasy(
+    security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    },
+    workspaceID: "string");
 
 UpsertApiEndpointRequest req = new UpsertApiEndpointRequest() {
     ApiEndpoint = new ApiEndpointInput() {

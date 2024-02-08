@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f73d2126-985b-4d69-88ee-b7c69254d8bf
 management:
-  docChecksum: ba638b2ad28966c596e28321a2003686
-  docVersion: 0.3.0
+  docChecksum: dff663dce4f21ddf3fc2332b7d7be92b
+  docVersion: 0.4.0
   speakeasyVersion: internal
-  generationVersion: 2.250.2
-  releaseVersion: 4.0.0
-  configChecksum: 10e199d2145a10ee0a3425da249d2f93
+  generationVersion: 2.250.16
+  releaseVersion: 5.0.0
+  configChecksum: 096aab2a7201348a8eae9afce9989c37
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
@@ -16,6 +16,7 @@ features:
     examples: 2.81.3
     globalSecurity: 2.83.0
     globalServerURLs: 2.82.2
+    globals: 2.81.2
     inputOutputModels: 2.83.0
     serverIDs: 2.82.1
 generatedFiles:
@@ -23,9 +24,10 @@ generatedFiles:
   - SpeakeasySDK/ApiEndpoints.cs
   - SpeakeasySDK/Metadata.cs
   - SpeakeasySDK/Schemas.cs
+  - SpeakeasySDK/Auth.cs
   - SpeakeasySDK/Requests.cs
-  - SpeakeasySDK/Plugins.cs
   - SpeakeasySDK/Embeds.cs
+  - SpeakeasySDK/Events.cs
   - SpeakeasySDK/Speakeasy.cs
   - SpeakeasySDK/Utils/BigIntSerializer.cs
   - SpeakeasySDK/Utils/DecimalSerializer.cs
@@ -41,7 +43,6 @@ generatedFiles:
   - SpeakeasySDK/Utils/Utilities.cs
   - SpeakeasySDK/SpeakeasySDK.csproj
   - SpeakeasySDK.sln
-  - SpeakeasySDK/Models/Operations/ValidateApiKeyResponse.cs
   - SpeakeasySDK/Models/Operations/DeleteApiRequest.cs
   - SpeakeasySDK/Models/Operations/DeleteApiResponse.cs
   - SpeakeasySDK/Models/Operations/GenerateOpenApiSpecRequest.cs
@@ -96,21 +97,20 @@ generatedFiles:
   - SpeakeasySDK/Models/Operations/RegisterSchemaRequestBody.cs
   - SpeakeasySDK/Models/Operations/RegisterSchemaRequest.cs
   - SpeakeasySDK/Models/Operations/RegisterSchemaResponse.cs
+  - SpeakeasySDK/Models/Operations/ValidateApiKeyResponse.cs
   - SpeakeasySDK/Models/Operations/GenerateRequestPostmanCollectionRequest.cs
   - SpeakeasySDK/Models/Operations/GenerateRequestPostmanCollectionResponse.cs
   - SpeakeasySDK/Models/Operations/GetRequestFromEventLogRequest.cs
   - SpeakeasySDK/Models/Operations/GetRequestFromEventLogResponse.cs
   - SpeakeasySDK/Models/Operations/QueryEventLogRequest.cs
   - SpeakeasySDK/Models/Operations/QueryEventLogResponse.cs
-  - SpeakeasySDK/Models/Operations/GetPluginsResponse.cs
-  - SpeakeasySDK/Models/Operations/RunPluginRequest.cs
-  - SpeakeasySDK/Models/Operations/RunPluginResponse.cs
-  - SpeakeasySDK/Models/Operations/UpsertPluginResponse.cs
   - SpeakeasySDK/Models/Operations/GetEmbedAccessTokenRequest.cs
   - SpeakeasySDK/Models/Operations/GetEmbedAccessTokenResponse.cs
   - SpeakeasySDK/Models/Operations/GetValidEmbedAccessTokensResponse.cs
   - SpeakeasySDK/Models/Operations/RevokeEmbedAccessTokenRequest.cs
   - SpeakeasySDK/Models/Operations/RevokeEmbedAccessTokenResponse.cs
+  - SpeakeasySDK/Models/Operations/PostWorkspaceEventsRequest.cs
+  - SpeakeasySDK/Models/Operations/PostWorkspaceEventsResponse.cs
   - SpeakeasySDK/Models/Shared/Error.cs
   - SpeakeasySDK/Models/Shared/GenerateOpenApiSpecDiff.cs
   - SpeakeasySDK/Models/Shared/Api.cs
@@ -122,16 +122,18 @@ generatedFiles:
   - SpeakeasySDK/Models/Shared/Schema.cs
   - SpeakeasySDK/Models/Shared/ValueChange.cs
   - SpeakeasySDK/Models/Shared/SchemaDiff.cs
+  - SpeakeasySDK/Models/Shared/ApiKeyDetails.cs
   - SpeakeasySDK/Models/Shared/UnboundedRequest.cs
   - SpeakeasySDK/Models/Shared/BoundedRequest.cs
   - SpeakeasySDK/Models/Shared/RequestMetadata.cs
   - SpeakeasySDK/Models/Shared/Filters.cs
   - SpeakeasySDK/Models/Shared/Filter.cs
-  - SpeakeasySDK/Models/Shared/Plugin.cs
   - SpeakeasySDK/Models/Shared/EmbedAccessTokenResponse.cs
   - SpeakeasySDK/Models/Shared/EmbedToken.cs
+  - SpeakeasySDK/Models/Shared/GenerateBumpType.cs
+  - SpeakeasySDK/Models/Shared/InteractionType.cs
+  - SpeakeasySDK/Models/Shared/CliEvent.cs
   - SpeakeasySDK/Models/Shared/Security.cs
-  - docs/Models/Operations/ValidateApiKeyResponse.md
   - docs/Models/Operations/DeleteApiRequest.md
   - docs/Models/Operations/DeleteApiResponse.md
   - docs/Models/Operations/GenerateOpenApiSpecRequest.md
@@ -186,21 +188,20 @@ generatedFiles:
   - docs/Models/Operations/RegisterSchemaRequestBody.md
   - docs/Models/Operations/RegisterSchemaRequest.md
   - docs/Models/Operations/RegisterSchemaResponse.md
+  - docs/Models/Operations/ValidateApiKeyResponse.md
   - docs/Models/Operations/GenerateRequestPostmanCollectionRequest.md
   - docs/Models/Operations/GenerateRequestPostmanCollectionResponse.md
   - docs/Models/Operations/GetRequestFromEventLogRequest.md
   - docs/Models/Operations/GetRequestFromEventLogResponse.md
   - docs/Models/Operations/QueryEventLogRequest.md
   - docs/Models/Operations/QueryEventLogResponse.md
-  - docs/Models/Operations/GetPluginsResponse.md
-  - docs/Models/Operations/RunPluginRequest.md
-  - docs/Models/Operations/RunPluginResponse.md
-  - docs/Models/Operations/UpsertPluginResponse.md
   - docs/Models/Operations/GetEmbedAccessTokenRequest.md
   - docs/Models/Operations/GetEmbedAccessTokenResponse.md
   - docs/Models/Operations/GetValidEmbedAccessTokensResponse.md
   - docs/Models/Operations/RevokeEmbedAccessTokenRequest.md
   - docs/Models/Operations/RevokeEmbedAccessTokenResponse.md
+  - docs/Models/Operations/PostWorkspaceEventsRequest.md
+  - docs/Models/Operations/PostWorkspaceEventsResponse.md
   - docs/Models/Shared/Error.md
   - docs/Models/Shared/GenerateOpenApiSpecDiff.md
   - docs/Models/Shared/Api.md
@@ -212,22 +213,26 @@ generatedFiles:
   - docs/Models/Shared/Schema.md
   - docs/Models/Shared/ValueChange.md
   - docs/Models/Shared/SchemaDiff.md
+  - docs/Models/Shared/ApiKeyDetails.md
   - docs/Models/Shared/UnboundedRequest.md
   - docs/Models/Shared/BoundedRequest.md
   - docs/Models/Shared/RequestMetadata.md
   - docs/Models/Shared/Filters.md
   - docs/Models/Shared/Filter.md
-  - docs/Models/Shared/Plugin.md
   - docs/Models/Shared/EmbedAccessTokenResponse.md
   - docs/Models/Shared/EmbedToken.md
+  - docs/Models/Shared/GenerateBumpType.md
+  - docs/Models/Shared/InteractionType.md
+  - docs/Models/Shared/CliEvent.md
   - docs/Models/Shared/Security.md
   - docs/sdks/speakeasy/README.md
   - docs/sdks/apis/README.md
   - docs/sdks/apiendpoints/README.md
   - docs/sdks/metadata/README.md
   - docs/sdks/schemas/README.md
+  - docs/sdks/auth/README.md
   - docs/sdks/requests/README.md
-  - docs/sdks/plugins/README.md
   - docs/sdks/embeds/README.md
+  - docs/sdks/events/README.md
   - USAGE.md
   - .gitattributes
