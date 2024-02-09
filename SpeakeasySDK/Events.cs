@@ -10,6 +10,7 @@
 #nullable enable
 namespace SpeakeasySDK
 {
+    using Newtonsoft.Json;
     using SpeakeasySDK.Models.Operations;
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
@@ -41,10 +42,10 @@ namespace SpeakeasySDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.0.0";
-        private const string _sdkGenVersion = "2.250.16";
+        private const string _sdkVersion = "5.0.1";
+        private const string _sdkGenVersion = "2.250.22";
         private const string _openapiDocVersion = "0.4.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.0.0 2.250.16 0.4.0 SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.0.1 2.250.22 0.4.0 SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private Func<Security>? _securitySource;
@@ -95,6 +96,20 @@ namespace SpeakeasySDK
                 RawResponse = httpResponse
             };
             
+            if((response.StatusCode >= 200 && response.StatusCode < 300))
+            {
+
+                return response;
+            }
+            if((response.StatusCode >= 500 && response.StatusCode < 600))
+            {
+                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+                {
+                    response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
+                }
+
+                return response;
+            }
             return response;
         }
 
