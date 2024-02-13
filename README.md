@@ -27,16 +27,7 @@ var sdk = new Speakeasy(
     },
     workspaceID: "string");
 
-GetApisRequest req = new GetApisRequest() {
-    Metadata = new Dictionary<string, List<string>>() {
-        { "key", new List<string>() {
-            "string",
-        } },
-    },
-    Op = new QueryParamOp() {
-        And = false,
-    },
-};
+GetApisRequest req = new GetApisRequest() {};
 
 var res = await sdk.Apis.GetApisAsync(req);
 

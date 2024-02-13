@@ -107,20 +107,7 @@ var sdk = new Speakeasy(
     },
     workspaceID: "string");
 
-QueryEventLogRequest req = new QueryEventLogRequest() {
-    Filters = new Filters() {
-        Filters = new List<Filter>() {
-            new Filter() {
-                Key = "<key>",
-                Operator = "string",
-                Value = "string",
-            },
-        },
-        Limit = 241978,
-        Offset = 451388,
-        Operator = "string",
-    },
-};
+QueryEventLogRequest req = new QueryEventLogRequest() {};
 
 var res = await sdk.Requests.QueryEventLogAsync(req);
 

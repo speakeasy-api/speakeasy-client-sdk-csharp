@@ -30,20 +30,7 @@ var sdk = new Speakeasy(
     },
     workspaceID: "string");
 
-GetEmbedAccessTokenRequest req = new GetEmbedAccessTokenRequest() {
-    Filters = new Filters() {
-        Filters = new List<Filter>() {
-            new Filter() {
-                Key = "<key>",
-                Operator = "string",
-                Value = "string",
-            },
-        },
-        Limit = 964408,
-        Offset = 95617,
-        Operator = "string",
-    },
-};
+GetEmbedAccessTokenRequest req = new GetEmbedAccessTokenRequest() {};
 
 var res = await sdk.Embeds.GetEmbedAccessTokenAsync(req);
 

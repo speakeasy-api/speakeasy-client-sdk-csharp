@@ -153,14 +153,6 @@ var sdk = new Speakeasy(
 
 GetAllApiVersionsRequest req = new GetAllApiVersionsRequest() {
     ApiID = "string",
-    Metadata = new Dictionary<string, List<string>>() {
-        { "key", new List<string>() {
-            "string",
-        } },
-    },
-    Op = new Op() {
-        And = false,
-    },
 };
 
 var res = await sdk.Apis.GetAllApiVersionsAsync(req);
@@ -199,16 +191,7 @@ var sdk = new Speakeasy(
     },
     workspaceID: "string");
 
-GetApisRequest req = new GetApisRequest() {
-    Metadata = new Dictionary<string, List<string>>() {
-        { "key", new List<string>() {
-            "string",
-        } },
-    },
-    Op = new QueryParamOp() {
-        And = false,
-    },
-};
+GetApisRequest req = new GetApisRequest() {};
 
 var res = await sdk.Apis.GetApisAsync(req);
 
@@ -250,11 +233,6 @@ UpsertApiRequest req = new UpsertApiRequest() {
     Api = new ApiInput() {
         ApiId = "string",
         Description = "Synchronised 5th generation knowledge user",
-        MetaData = new Dictionary<string, List<string>>() {
-            { "key", new List<string>() {
-                "string",
-            } },
-        },
         VersionId = "string",
     },
     ApiID = "string",
