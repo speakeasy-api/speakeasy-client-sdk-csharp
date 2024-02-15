@@ -29,11 +29,11 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 DeleteApiRequest req = new DeleteApiRequest() {
-    ApiID = "string",
-    VersionID = "string",
+    ApiID = "<value>",
+    VersionID = "<value>",
 };
 
 var res = await sdk.Apis.DeleteApiAsync(req);
@@ -69,11 +69,11 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 GenerateOpenApiSpecRequest req = new GenerateOpenApiSpecRequest() {
-    ApiID = "string",
-    VersionID = "string",
+    ApiID = "<value>",
+    VersionID = "<value>",
 };
 
 var res = await sdk.Apis.GenerateOpenApiSpecAsync(req);
@@ -108,11 +108,11 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 GeneratePostmanCollectionRequest req = new GeneratePostmanCollectionRequest() {
-    ApiID = "string",
-    VersionID = "string",
+    ApiID = "<value>",
+    VersionID = "<value>",
 };
 
 var res = await sdk.Apis.GeneratePostmanCollectionAsync(req);
@@ -149,10 +149,10 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 GetAllApiVersionsRequest req = new GetAllApiVersionsRequest() {
-    ApiID = "string",
+    ApiID = "<value>",
 };
 
 var res = await sdk.Apis.GetAllApiVersionsAsync(req);
@@ -189,7 +189,7 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 GetApisRequest req = new GetApisRequest() {};
 
@@ -227,15 +227,15 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 UpsertApiRequest req = new UpsertApiRequest() {
     Api = new ApiInput() {
-        ApiId = "string",
+        ApiId = "<value>",
         Description = "Synchronised 5th generation knowledge user",
-        VersionId = "string",
+        VersionId = "<value>",
     },
-    ApiID = "string",
+    ApiID = "<value>",
 };
 
 var res = await sdk.Apis.UpsertApiAsync(req);

@@ -8,7 +8,7 @@ generation:
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
 csharp:
-  version: 5.0.1
+  version: 5.0.2
   author: Speakeasy
   dotnetVersion: net5.0
   flattenGlobalSecurity: false

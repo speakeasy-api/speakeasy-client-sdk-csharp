@@ -12,13 +12,10 @@ namespace SpeakeasySDK.Models.Shared
 {
     using Newtonsoft.Json;
     
-    public class ApiKeyDetails
+    public class AccessDetails
     {
 
-        [JsonProperty("generation_access_unlimited")]
-        public bool? GenerationAccessUnlimited { get; set; }
-
-        [JsonProperty("workspace_id")]
-        public string WorkspaceId { get; set; } = default!;
+        [JsonProperty("generation_allowed")]
+        public bool GenerationAllowed { get; set; } = default!;
     }
 }

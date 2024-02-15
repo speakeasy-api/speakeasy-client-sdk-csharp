@@ -25,20 +25,20 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 PostWorkspaceEventsRequest req = new PostWorkspaceEventsRequest() {
     RequestBody = new List<CliEvent>() {
         new CliEvent() {
             CreatedAt = System.DateTime.Parse("2024-11-21T06:58:42.120Z"),
-            ExecutionId = "string",
-            Id = "<ID>",
+            ExecutionId = "<value>",
+            Id = "<id>",
             InteractionType = InteractionType.CliExec,
             LocalStartedAt = System.DateTime.Parse("2024-05-07T12:35:47.182Z"),
-            SpeakeasyApiKeyName = "string",
-            SpeakeasyVersion = "string",
+            SpeakeasyApiKeyName = "<value>",
+            SpeakeasyVersion = "<value>",
             Success = false,
-            WorkspaceId = "string",
+            WorkspaceId = "<value>",
         },
     },
 };

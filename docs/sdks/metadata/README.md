@@ -26,13 +26,13 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 DeleteVersionMetadataRequest req = new DeleteVersionMetadataRequest() {
-    ApiID = "string",
-    MetaKey = "string",
-    MetaValue = "string",
-    VersionID = "string",
+    ApiID = "<value>",
+    MetaKey = "<value>",
+    MetaValue = "<value>",
+    VersionID = "<value>",
 };
 
 var res = await sdk.Metadata.DeleteVersionMetadataAsync(req);
@@ -67,11 +67,11 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 GetVersionMetadataRequest req = new GetVersionMetadataRequest() {
-    ApiID = "string",
-    VersionID = "string",
+    ApiID = "<value>",
+    VersionID = "<value>",
 };
 
 var res = await sdk.Metadata.GetVersionMetadataAsync(req);
@@ -106,15 +106,15 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 InsertVersionMetadataRequest req = new InsertVersionMetadataRequest() {
     VersionMetadata = new VersionMetadataInput() {
-        MetaKey = "string",
-        MetaValue = "string",
+        MetaKey = "<value>",
+        MetaValue = "<value>",
     },
-    ApiID = "string",
-    VersionID = "string",
+    ApiID = "<value>",
+    VersionID = "<value>",
 };
 
 var res = await sdk.Metadata.InsertVersionMetadataAsync(req);

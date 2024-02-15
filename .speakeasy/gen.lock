@@ -1,18 +1,18 @@
 lockVersion: 2.0.0
 id: f73d2126-985b-4d69-88ee-b7c69254d8bf
 management:
-  docChecksum: 557634d4bb5964b949ae70f79f40d856
+  docChecksum: c81aa4e807522359d28c09ee16d252ba
   docVersion: 0.4.0
   speakeasyVersion: internal
-  generationVersion: 2.253.0
-  releaseVersion: 5.0.1
-  configChecksum: f1970ed44322201d4ca3e80f2cc82268
+  generationVersion: 2.258.0
+  releaseVersion: 5.0.2
+  configChecksum: e52374a18288e2218094e21db61361c9
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
 features:
   csharp:
-    core: 3.3.1
+    core: 3.3.2
     examples: 2.81.3
     globalSecurity: 2.83.0
     globalServerURLs: 2.82.2
@@ -97,6 +97,8 @@ generatedFiles:
   - SpeakeasySDK/Models/Operations/RegisterSchemaRequestBody.cs
   - SpeakeasySDK/Models/Operations/RegisterSchemaRequest.cs
   - SpeakeasySDK/Models/Operations/RegisterSchemaResponse.cs
+  - SpeakeasySDK/Models/Operations/GetWorkspaceAccessRequest.cs
+  - SpeakeasySDK/Models/Operations/GetWorkspaceAccessResponse.cs
   - SpeakeasySDK/Models/Operations/ValidateApiKeyResponse.cs
   - SpeakeasySDK/Models/Operations/GenerateRequestPostmanCollectionRequest.cs
   - SpeakeasySDK/Models/Operations/GenerateRequestPostmanCollectionResponse.cs
@@ -122,6 +124,7 @@ generatedFiles:
   - SpeakeasySDK/Models/Shared/Schema.cs
   - SpeakeasySDK/Models/Shared/ValueChange.cs
   - SpeakeasySDK/Models/Shared/SchemaDiff.cs
+  - SpeakeasySDK/Models/Shared/AccessDetails.cs
   - SpeakeasySDK/Models/Shared/ApiKeyDetails.cs
   - SpeakeasySDK/Models/Shared/UnboundedRequest.cs
   - SpeakeasySDK/Models/Shared/BoundedRequest.cs
@@ -188,6 +191,8 @@ generatedFiles:
   - docs/Models/Operations/RegisterSchemaRequestBody.md
   - docs/Models/Operations/RegisterSchemaRequest.md
   - docs/Models/Operations/RegisterSchemaResponse.md
+  - docs/Models/Operations/GetWorkspaceAccessRequest.md
+  - docs/Models/Operations/GetWorkspaceAccessResponse.md
   - docs/Models/Operations/ValidateApiKeyResponse.md
   - docs/Models/Operations/GenerateRequestPostmanCollectionRequest.md
   - docs/Models/Operations/GenerateRequestPostmanCollectionResponse.md
@@ -213,6 +218,7 @@ generatedFiles:
   - docs/Models/Shared/Schema.md
   - docs/Models/Shared/ValueChange.md
   - docs/Models/Shared/SchemaDiff.md
+  - docs/Models/Shared/AccessDetails.md
   - docs/Models/Shared/ApiKeyDetails.md
   - docs/Models/Shared/UnboundedRequest.md
   - docs/Models/Shared/BoundedRequest.md

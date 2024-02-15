@@ -8,17 +8,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 #nullable enable
-namespace SpeakeasySDK.Models.Shared
+namespace SpeakeasySDK.Models.Operations
 {
-    using Newtonsoft.Json;
+    using SpeakeasySDK.Utils;
     
-    public class ApiKeyDetails
+    public class GetWorkspaceAccessRequest
     {
 
-        [JsonProperty("generation_access_unlimited")]
-        public bool? GenerationAccessUnlimited { get; set; }
-
-        [JsonProperty("workspace_id")]
-        public string WorkspaceId { get; set; } = default!;
+        /// <summary>
+        /// Unique identifier of the generation target.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=genLockId")]
+        public string? GenLockId { get; set; }
     }
 }

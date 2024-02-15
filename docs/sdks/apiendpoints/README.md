@@ -31,12 +31,12 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 DeleteApiEndpointRequest req = new DeleteApiEndpointRequest() {
-    ApiEndpointID = "string",
-    ApiID = "string",
-    VersionID = "string",
+    ApiEndpointID = "<value>",
+    ApiID = "<value>",
+    VersionID = "<value>",
 };
 
 var res = await sdk.ApiEndpoints.DeleteApiEndpointAsync(req);
@@ -72,12 +72,12 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 FindApiEndpointRequest req = new FindApiEndpointRequest() {
-    ApiID = "string",
-    DisplayName = "string",
-    VersionID = "string",
+    ApiID = "<value>",
+    DisplayName = "Don.Strosin",
+    VersionID = "<value>",
 };
 
 var res = await sdk.ApiEndpoints.FindApiEndpointAsync(req);
@@ -113,12 +113,12 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 GenerateOpenApiSpecForApiEndpointRequest req = new GenerateOpenApiSpecForApiEndpointRequest() {
-    ApiEndpointID = "string",
-    ApiID = "string",
-    VersionID = "string",
+    ApiEndpointID = "<value>",
+    ApiID = "<value>",
+    VersionID = "<value>",
 };
 
 var res = await sdk.ApiEndpoints.GenerateOpenApiSpecForApiEndpointAsync(req);
@@ -153,12 +153,12 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 GeneratePostmanCollectionForApiEndpointRequest req = new GeneratePostmanCollectionForApiEndpointRequest() {
-    ApiEndpointID = "string",
-    ApiID = "string",
-    VersionID = "string",
+    ApiEndpointID = "<value>",
+    ApiID = "<value>",
+    VersionID = "<value>",
 };
 
 var res = await sdk.ApiEndpoints.GeneratePostmanCollectionForApiEndpointAsync(req);
@@ -193,10 +193,10 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 GetAllApiEndpointsRequest req = new GetAllApiEndpointsRequest() {
-    ApiID = "string",
+    ApiID = "<value>",
 };
 
 var res = await sdk.ApiEndpoints.GetAllApiEndpointsAsync(req);
@@ -231,11 +231,11 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 GetAllForVersionApiEndpointsRequest req = new GetAllForVersionApiEndpointsRequest() {
-    ApiID = "string",
-    VersionID = "string",
+    ApiID = "<value>",
+    VersionID = "<value>",
 };
 
 var res = await sdk.ApiEndpoints.GetAllForVersionApiEndpointsAsync(req);
@@ -270,12 +270,12 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 GetApiEndpointRequest req = new GetApiEndpointRequest() {
-    ApiEndpointID = "string",
-    ApiID = "string",
-    VersionID = "string",
+    ApiEndpointID = "<value>",
+    ApiID = "<value>",
+    VersionID = "<value>",
 };
 
 var res = await sdk.ApiEndpoints.GetApiEndpointAsync(req);
@@ -310,20 +310,20 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 UpsertApiEndpointRequest req = new UpsertApiEndpointRequest() {
     ApiEndpoint = new ApiEndpointInput() {
-        ApiEndpointId = "string",
+        ApiEndpointId = "<value>",
         Description = "Public-key systematic attitude",
-        DisplayName = "string",
-        Method = "string",
-        Path = "/etc/periodic",
-        VersionId = "string",
+        DisplayName = "Camille.Schaefer11",
+        Method = "<value>",
+        Path = "/Library",
+        VersionId = "<value>",
     },
-    ApiEndpointID = "string",
-    ApiID = "string",
-    VersionID = "string",
+    ApiEndpointID = "<value>",
+    ApiID = "<value>",
+    VersionID = "<value>",
 };
 
 var res = await sdk.ApiEndpoints.UpsertApiEndpointAsync(req);

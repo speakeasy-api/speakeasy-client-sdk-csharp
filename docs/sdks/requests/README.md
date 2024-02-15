@@ -27,10 +27,10 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 GenerateRequestPostmanCollectionRequest req = new GenerateRequestPostmanCollectionRequest() {
-    RequestID = "string",
+    RequestID = "<value>",
 };
 
 var res = await sdk.Requests.GenerateRequestPostmanCollectionAsync(req);
@@ -65,10 +65,10 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 GetRequestFromEventLogRequest req = new GetRequestFromEventLogRequest() {
-    RequestID = "string",
+    RequestID = "<value>",
 };
 
 var res = await sdk.Requests.GetRequestFromEventLogAsync(req);
@@ -105,7 +105,7 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 QueryEventLogRequest req = new QueryEventLogRequest() {};
 

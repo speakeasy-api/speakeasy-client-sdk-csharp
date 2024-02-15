@@ -25,7 +25,7 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 GetApisRequest req = new GetApisRequest() {};
 
@@ -77,6 +77,7 @@ var res = await sdk.Apis.GetApisAsync(req);
 
 ### [Auth](docs/sdks/auth/README.md)
 
+* [GetWorkspaceAccess](docs/sdks/auth/README.md#getworkspaceaccess) - Get access allowances for a particular workspace
 * [ValidateApiKey](docs/sdks/auth/README.md#validateapikey) - Validate the current api key.
 
 ### [Requests](docs/sdks/requests/README.md)
@@ -139,11 +140,11 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 DeleteApiRequest req = new DeleteApiRequest() {
-    ApiID = "string",
-    VersionID = "string",
+    ApiID = "<value>",
+    VersionID = "<value>",
 };
 
 var res = await sdk.Apis.DeleteApiAsync(req);
@@ -159,7 +160,7 @@ var res = await sdk.Apis.DeleteApiAsync(req);
 
 A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
 
-For example, you can set `workspaceID` to `"string"` at SDK initialization and then you do not have to pass the same value on calls to operations like `PostWorkspaceEvents`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+For example, you can set `workspaceID` to `"<value>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `PostWorkspaceEvents`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
 ### Available Globals
@@ -183,20 +184,20 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 PostWorkspaceEventsRequest req = new PostWorkspaceEventsRequest() {
     RequestBody = new List<CliEvent>() {
         new CliEvent() {
             CreatedAt = System.DateTime.Parse("2024-11-21T06:58:42.120Z"),
-            ExecutionId = "string",
-            Id = "<ID>",
+            ExecutionId = "<value>",
+            Id = "<id>",
             InteractionType = InteractionType.CliExec,
             LocalStartedAt = System.DateTime.Parse("2024-05-07T12:35:47.182Z"),
-            SpeakeasyApiKeyName = "string",
-            SpeakeasyVersion = "string",
+            SpeakeasyApiKeyName = "<value>",
+            SpeakeasyVersion = "<value>",
             Success = false,
-            WorkspaceId = "string",
+            WorkspaceId = "<value>",
         },
     },
 };

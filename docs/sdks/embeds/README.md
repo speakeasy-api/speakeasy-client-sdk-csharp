@@ -28,7 +28,7 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 GetEmbedAccessTokenRequest req = new GetEmbedAccessTokenRequest() {};
 
@@ -63,7 +63,7 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 var res = await sdk.Embeds.GetValidEmbedAccessTokensAsync();
 
@@ -91,10 +91,10 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 RevokeEmbedAccessTokenRequest req = new RevokeEmbedAccessTokenRequest() {
-    TokenID = "string",
+    TokenID = "<value>",
 };
 
 var res = await sdk.Embeds.RevokeEmbedAccessTokenAsync(req);

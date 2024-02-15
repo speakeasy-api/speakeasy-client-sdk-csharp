@@ -31,12 +31,12 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 DeleteSchemaRequest req = new DeleteSchemaRequest() {
-    ApiID = "string",
-    RevisionID = "string",
-    VersionID = "string",
+    ApiID = "<value>",
+    RevisionID = "<value>",
+    VersionID = "<value>",
 };
 
 var res = await sdk.Schemas.DeleteSchemaAsync(req);
@@ -71,11 +71,11 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 DownloadSchemaRequest req = new DownloadSchemaRequest() {
-    ApiID = "string",
-    VersionID = "string",
+    ApiID = "<value>",
+    VersionID = "<value>",
 };
 
 var res = await sdk.Schemas.DownloadSchemaAsync(req);
@@ -110,12 +110,12 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 DownloadSchemaRevisionRequest req = new DownloadSchemaRevisionRequest() {
-    ApiID = "string",
-    RevisionID = "string",
-    VersionID = "string",
+    ApiID = "<value>",
+    RevisionID = "<value>",
+    VersionID = "<value>",
 };
 
 var res = await sdk.Schemas.DownloadSchemaRevisionAsync(req);
@@ -151,11 +151,11 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 GetSchemaRequest req = new GetSchemaRequest() {
-    ApiID = "string",
-    VersionID = "string",
+    ApiID = "<value>",
+    VersionID = "<value>",
 };
 
 var res = await sdk.Schemas.GetSchemaAsync(req);
@@ -190,13 +190,13 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 GetSchemaDiffRequest req = new GetSchemaDiffRequest() {
-    ApiID = "string",
-    BaseRevisionID = "string",
-    TargetRevisionID = "string",
-    VersionID = "string",
+    ApiID = "<value>",
+    BaseRevisionID = "<value>",
+    TargetRevisionID = "<value>",
+    VersionID = "<value>",
 };
 
 var res = await sdk.Schemas.GetSchemaDiffAsync(req);
@@ -232,12 +232,12 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 GetSchemaRevisionRequest req = new GetSchemaRevisionRequest() {
-    ApiID = "string",
-    RevisionID = "string",
-    VersionID = "string",
+    ApiID = "<value>",
+    RevisionID = "<value>",
+    VersionID = "<value>",
 };
 
 var res = await sdk.Schemas.GetSchemaRevisionAsync(req);
@@ -273,11 +273,11 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 GetSchemasRequest req = new GetSchemasRequest() {
-    ApiID = "string",
-    VersionID = "string",
+    ApiID = "<value>",
+    VersionID = "<value>",
 };
 
 var res = await sdk.Schemas.GetSchemasAsync(req);
@@ -313,7 +313,7 @@ var sdk = new Speakeasy(
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     },
-    workspaceID: "string");
+    workspaceID: "<value>");
 
 RegisterSchemaRequest req = new RegisterSchemaRequest() {
     RequestBody = new RegisterSchemaRequestBody() {
@@ -322,8 +322,8 @@ RegisterSchemaRequest req = new RegisterSchemaRequest() {
             FileName = "bronze_table_blues.m2a",
         },
     },
-    ApiID = "string",
-    VersionID = "string",
+    ApiID = "<value>",
+    VersionID = "<value>",
 };
 
 var res = await sdk.Schemas.RegisterSchemaAsync(req);
