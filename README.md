@@ -128,7 +128,7 @@ This SDK supports the following security scheme globally:
 
 | Name     | Type     | Scheme   |
 | -------- | -------- | -------- |
-| `apiKey` | apiKey   | API key  |
+| `APIKey` | apiKey   | API key  |
 
 You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. For example:
 ```csharp

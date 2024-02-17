@@ -15,6 +15,9 @@ namespace SpeakeasySDK.Models.Shared
     public class ApiKeyDetails
     {
 
+        [JsonProperty("account_type")]
+        public AccountType AccountType { get; set; } = default!;
+
         [JsonProperty("generation_access_unlimited")]
         public bool? GenerationAccessUnlimited { get; set; }
 

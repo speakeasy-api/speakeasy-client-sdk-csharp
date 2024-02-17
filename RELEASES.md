@@ -449,3 +449,13 @@ Based on:
 - [csharp v5.0.2] .
 ### Releases
 - [NuGet v5.0.2] https://www.nuget.org/packages/SpeakeasySDK/5.0.2 - .
+
+## 2024-02-17 00:03:26
+### Changes
+Based on:
+- OpenAPI Doc 0.4.0 https://docs.speakeasyapi.dev/openapi.yaml
+- Speakeasy CLI 1.183.2 (2.262.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [csharp v5.0.3] .
+### Releases
+- [NuGet v5.0.3] https://www.nuget.org/packages/SpeakeasySDK/5.0.3 - .

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f73d2126-985b-4d69-88ee-b7c69254d8bf
 management:
-  docChecksum: c81aa4e807522359d28c09ee16d252ba
+  docChecksum: 90bb5b2f880d4a86868122f9a6b08d40
   docVersion: 0.4.0
   speakeasyVersion: internal
-  generationVersion: 2.258.0
-  releaseVersion: 5.0.2
-  configChecksum: e52374a18288e2218094e21db61361c9
+  generationVersion: 2.262.2
+  releaseVersion: 5.0.3
+  configChecksum: 9a945d58feb93baa7c10cc9fa7ebeeb9
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
@@ -14,7 +14,7 @@ features:
   csharp:
     core: 3.3.2
     examples: 2.81.3
-    globalSecurity: 2.83.0
+    globalSecurity: 2.83.1
     globalServerURLs: 2.82.2
     globals: 2.81.2
     inputOutputModels: 2.83.0
@@ -125,6 +125,7 @@ generatedFiles:
   - SpeakeasySDK/Models/Shared/ValueChange.cs
   - SpeakeasySDK/Models/Shared/SchemaDiff.cs
   - SpeakeasySDK/Models/Shared/AccessDetails.cs
+  - SpeakeasySDK/Models/Shared/AccountType.cs
   - SpeakeasySDK/Models/Shared/ApiKeyDetails.cs
   - SpeakeasySDK/Models/Shared/UnboundedRequest.cs
   - SpeakeasySDK/Models/Shared/BoundedRequest.cs
@@ -219,6 +220,7 @@ generatedFiles:
   - docs/Models/Shared/ValueChange.md
   - docs/Models/Shared/SchemaDiff.md
   - docs/Models/Shared/AccessDetails.md
+  - docs/Models/Shared/AccountType.md
   - docs/Models/Shared/ApiKeyDetails.md
   - docs/Models/Shared/UnboundedRequest.md
   - docs/Models/Shared/BoundedRequest.md
