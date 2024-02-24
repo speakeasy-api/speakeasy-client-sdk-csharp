@@ -1,20 +1,20 @@
 lockVersion: 2.0.0
 id: f73d2126-985b-4d69-88ee-b7c69254d8bf
 management:
-  docChecksum: 90bb5b2f880d4a86868122f9a6b08d40
+  docChecksum: 10893fff3e9a4e77b8628de48190cd77
   docVersion: 0.4.0
   speakeasyVersion: internal
-  generationVersion: 2.262.2
-  releaseVersion: 5.0.3
-  configChecksum: 9a945d58feb93baa7c10cc9fa7ebeeb9
+  generationVersion: 2.272.4
+  releaseVersion: 5.1.0
+  configChecksum: f7a98cf464bfb7da3e8ffda128cd350e
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
 features:
   csharp:
-    core: 3.3.2
+    core: 3.4.3
     examples: 2.81.3
-    globalSecurity: 2.83.1
+    globalSecurity: 2.83.2
     globalServerURLs: 2.82.2
     globals: 2.81.2
     inputOutputModels: 2.83.0
@@ -29,6 +29,7 @@ generatedFiles:
   - SpeakeasySDK/Embeds.cs
   - SpeakeasySDK/Events.cs
   - SpeakeasySDK/Speakeasy.cs
+  - global.json
   - SpeakeasySDK/Utils/BigIntSerializer.cs
   - SpeakeasySDK/Utils/DecimalSerializer.cs
   - SpeakeasySDK/Utils/EnumSerializer.cs
