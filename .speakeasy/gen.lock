@@ -1,20 +1,20 @@
 lockVersion: 2.0.0
 id: f73d2126-985b-4d69-88ee-b7c69254d8bf
 management:
-  docChecksum: 90bb5b2f880d4a86868122f9a6b08d40
+  docChecksum: e7803aa801c8a80e23dbe21edbf4e9c5
   docVersion: 0.4.0
   speakeasyVersion: internal
-  generationVersion: 2.262.2
-  releaseVersion: 5.0.3
-  configChecksum: 9a945d58feb93baa7c10cc9fa7ebeeb9
+  generationVersion: 2.272.7
+  releaseVersion: 5.1.0
+  configChecksum: f7a98cf464bfb7da3e8ffda128cd350e
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
 features:
   csharp:
-    core: 3.3.2
+    core: 3.4.3
     examples: 2.81.3
-    globalSecurity: 2.83.1
+    globalSecurity: 2.83.3
     globalServerURLs: 2.82.2
     globals: 2.81.2
     inputOutputModels: 2.83.0
@@ -29,6 +29,7 @@ generatedFiles:
   - SpeakeasySDK/Embeds.cs
   - SpeakeasySDK/Events.cs
   - SpeakeasySDK/Speakeasy.cs
+  - global.json
   - SpeakeasySDK/Utils/BigIntSerializer.cs
   - SpeakeasySDK/Utils/DecimalSerializer.cs
   - SpeakeasySDK/Utils/EnumSerializer.cs
@@ -111,6 +112,10 @@ generatedFiles:
   - SpeakeasySDK/Models/Operations/GetValidEmbedAccessTokensResponse.cs
   - SpeakeasySDK/Models/Operations/RevokeEmbedAccessTokenRequest.cs
   - SpeakeasySDK/Models/Operations/RevokeEmbedAccessTokenResponse.cs
+  - SpeakeasySDK/Models/Operations/GetWorkspaceEventsRequest.cs
+  - SpeakeasySDK/Models/Operations/GetWorkspaceEventsResponse.cs
+  - SpeakeasySDK/Models/Operations/GetWorkspaceTargetsRequest.cs
+  - SpeakeasySDK/Models/Operations/GetWorkspaceTargetsResponse.cs
   - SpeakeasySDK/Models/Operations/PostWorkspaceEventsRequest.cs
   - SpeakeasySDK/Models/Operations/PostWorkspaceEventsResponse.cs
   - SpeakeasySDK/Models/Shared/Error.cs
@@ -137,6 +142,7 @@ generatedFiles:
   - SpeakeasySDK/Models/Shared/GenerateBumpType.cs
   - SpeakeasySDK/Models/Shared/InteractionType.cs
   - SpeakeasySDK/Models/Shared/CliEvent.cs
+  - SpeakeasySDK/Models/Shared/TargetSDK.cs
   - SpeakeasySDK/Models/Shared/Security.cs
   - docs/Models/Operations/DeleteApiRequest.md
   - docs/Models/Operations/DeleteApiResponse.md
@@ -206,6 +212,10 @@ generatedFiles:
   - docs/Models/Operations/GetValidEmbedAccessTokensResponse.md
   - docs/Models/Operations/RevokeEmbedAccessTokenRequest.md
   - docs/Models/Operations/RevokeEmbedAccessTokenResponse.md
+  - docs/Models/Operations/GetWorkspaceEventsRequest.md
+  - docs/Models/Operations/GetWorkspaceEventsResponse.md
+  - docs/Models/Operations/GetWorkspaceTargetsRequest.md
+  - docs/Models/Operations/GetWorkspaceTargetsResponse.md
   - docs/Models/Operations/PostWorkspaceEventsRequest.md
   - docs/Models/Operations/PostWorkspaceEventsResponse.md
   - docs/Models/Shared/Error.md
@@ -232,6 +242,7 @@ generatedFiles:
   - docs/Models/Shared/GenerateBumpType.md
   - docs/Models/Shared/InteractionType.md
   - docs/Models/Shared/CliEvent.md
+  - docs/Models/Shared/TargetSDK.md
   - docs/Models/Shared/Security.md
   - docs/sdks/speakeasy/README.md
   - docs/sdks/apis/README.md
