@@ -86,9 +86,13 @@ namespace SpeakeasySDK
             {
                 return Utilities.TemplateUrl(Utilities.RemoveSuffix(this.serverUrl, "/"), new Dictionary<string, string>());
             }
-            if (!String.IsNullOrEmpty(this.server))
+            if (String.IsNullOrEmpty(this.server))
             {
                 this.server = "Serverprod";
+            }
+            else if (!SDKConfig.ServerList.ContainsKey(this.server))
+            {
+                throw new Exception(string.Format("Invalid server \"{0}\"", this.server));
             }
             Dictionary<string, string> serverDefault = new Dictionary<string, string>();
             
@@ -107,10 +111,10 @@ namespace SpeakeasySDK
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.0.3";
-        private const string _sdkGenVersion = "2.262.2";
+        private const string _sdkVersion = "5.1.0";
+        private const string _sdkGenVersion = "2.275.4";
         private const string _openapiDocVersion = "0.4.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.0.3 2.262.2 0.4.0 SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.1.0 2.275.4 0.4.0 SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private Func<Security>? _securitySource;
@@ -144,10 +148,6 @@ namespace SpeakeasySDK
             else if(security != null)
             {
                 _securitySource = () => security;
-            }
-            else
-            {
-                throw new Exception("security and securitySource cannot both be null");
             }
 
             SDKConfiguration = new SDKConfig()
