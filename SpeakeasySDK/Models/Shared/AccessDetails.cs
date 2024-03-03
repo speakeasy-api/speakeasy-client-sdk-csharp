@@ -17,5 +17,8 @@ namespace SpeakeasySDK.Models.Shared
 
         [JsonProperty("generation_allowed")]
         public bool GenerationAllowed { get; set; } = default!;
+
+        [JsonProperty("message")]
+        public string Message { get; set; } = default!;
     }
 }
