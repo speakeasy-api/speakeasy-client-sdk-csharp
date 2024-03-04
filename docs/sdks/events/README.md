@@ -7,7 +7,81 @@ REST APIs for capturing event data
 
 ### Available Operations
 
+* [GetWorkspaceEvents](#getworkspaceevents) - Load recent events for a particular workspace
+* [GetWorkspaceTargets](#getworkspacetargets) - Load targets for a particular workspace
 * [PostWorkspaceEvents](#postworkspaceevents) - Post events for a specific workspace
+
+## GetWorkspaceEvents
+
+Load recent events for a particular workspace
+
+### Example Usage
+
+```csharp
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
+
+var sdk = new Speakeasy(
+    security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    },
+    workspaceID: "<value>");
+
+GetWorkspaceEventsRequest req = new GetWorkspaceEventsRequest() {};
+
+var res = await sdk.Events.GetWorkspaceEventsAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `request`                                                                         | [GetWorkspaceEventsRequest](../../Models/Operations/GetWorkspaceEventsRequest.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
+
+
+### Response
+
+**[GetWorkspaceEventsResponse](../../Models/Operations/GetWorkspaceEventsResponse.md)**
+
+
+## GetWorkspaceTargets
+
+Load targets for a particular workspace
+
+### Example Usage
+
+```csharp
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
+
+var sdk = new Speakeasy(
+    security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    },
+    workspaceID: "<value>");
+
+GetWorkspaceTargetsRequest req = new GetWorkspaceTargetsRequest() {};
+
+var res = await sdk.Events.GetWorkspaceTargetsAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `request`                                                                           | [GetWorkspaceTargetsRequest](../../Models/Operations/GetWorkspaceTargetsRequest.md) | :heavy_check_mark:                                                                  | The request object to use for the request.                                          |
+
+
+### Response
+
+**[GetWorkspaceTargetsResponse](../../Models/Operations/GetWorkspaceTargetsResponse.md)**
+
 
 ## PostWorkspaceEvents
 

@@ -10,15 +10,8 @@
 #nullable enable
 namespace SpeakeasySDK.Models.Shared
 {
-    using SpeakeasySDK.Utils;
     
-    public class Security
+    public class Claims
     {
-
-        [SpeakeasyMetadata("security:scheme=true,type=apiKey,subType=header,name=x-api-key")]
-        public string? APIKey { get; set; }
-
-        [SpeakeasyMetadata("security:scheme=true,type=http,subType=bearer,name=Authorization")]
-        public string? Bearer { get; set; }
     }
 }
