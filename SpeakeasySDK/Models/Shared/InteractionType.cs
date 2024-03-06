@@ -22,6 +22,16 @@ namespace SpeakeasySDK.Models.Shared
         CliExec,
         [JsonProperty("TARGET_GENERATE")]
         TargetGenerate,
+        [JsonProperty("AUTHENTICATE")]
+        Authenticate,
+        [JsonProperty("QUICKSTART")]
+        Quickstart,
+        [JsonProperty("RUN")]
+        Run,
+        [JsonProperty("CONFIGURE")]
+        Configure,
+        [JsonProperty("PUBLISH")]
+        Publish,
     }
 
     public static class InteractionTypeExtension
