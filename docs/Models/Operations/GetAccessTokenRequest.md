@@ -1,9 +1,8 @@
-# Security
+# GetAccessTokenRequest
 
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `APIKey`           | *string*           | :heavy_minus_sign: | N/A                |
-| `Bearer`           | *string*           | :heavy_minus_sign: | N/A                |
+| `WorkspaceId`      | *string*           | :heavy_check_mark: | The workspace ID   |

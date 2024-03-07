@@ -11,21 +11,27 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Models.Shared;
+    using System.Collections.Generic;
     using System.Net.Http;
     using System;
     
-    public class GetWorkspaceAccessResponse
+    public class GetWorkspaceEventsResponse
     {
 
         /// <summary>
-        /// OK
+        /// Success
         /// </summary>
-        public AccessDetails? AccessDetails { get; set; }
+        public List<CliEvent>? CliEventBatch { get; set; }
 
         /// <summary>
         /// HTTP response content type for this operation
         /// </summary>
         public string? ContentType { get; set; } = default!;
+
+        /// <summary>
+        /// Error
+        /// </summary>
+        public Error? Error { get; set; }
 
         /// <summary>
         /// HTTP response status code for this operation
