@@ -11,21 +11,19 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Models.Shared;
+    using System.Collections.Generic;
     using System.Net.Http;
     using System;
     
-    public class GetWorkspaceAccessResponse
+    public class GetWorkspaceTargetsResponse
     {
-
-        /// <summary>
-        /// OK
-        /// </summary>
-        public AccessDetails? AccessDetails { get; set; }
 
         /// <summary>
         /// HTTP response content type for this operation
         /// </summary>
         public string? ContentType { get; set; } = default!;
+
+        public Error? Error { get; set; }
 
         /// <summary>
         /// HTTP response status code for this operation
@@ -36,5 +34,10 @@ namespace SpeakeasySDK.Models.Operations
         /// Raw HTTP response; suitable for custom response parsing
         /// </summary>
         public HttpResponseMessage RawResponse { get; set; } = default!;
+
+        /// <summary>
+        /// Success
+        /// </summary>
+        public List<TargetSDK>? TargetSDKList { get; set; }
     }
 }
