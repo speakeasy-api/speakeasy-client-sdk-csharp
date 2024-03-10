@@ -8,17 +8,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 #nullable enable
-namespace SpeakeasySDK.Models.Shared
+namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Utils;
     
-    public class Security
+    public class GetAccessTokenRequest
     {
 
-        [SpeakeasyMetadata("security:scheme=true,type=apiKey,subType=header,name=x-api-key")]
-        public string? APIKey { get; set; }
-
-        [SpeakeasyMetadata("security:scheme=true,type=http,subType=bearer,name=Authorization")]
-        public string? Bearer { get; set; }
+        /// <summary>
+        /// The workspace ID
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=workspace_id")]
+        public string WorkspaceId { get; set; } = default!;
     }
 }

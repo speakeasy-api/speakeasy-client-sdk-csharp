@@ -14,18 +14,23 @@ namespace SpeakeasySDK.Models.Operations
     using System.Net.Http;
     using System;
     
-    public class GetWorkspaceAccessResponse
+    public class GetAccessTokenResponse
     {
 
         /// <summary>
         /// OK
         /// </summary>
-        public AccessDetails? AccessDetails { get; set; }
+        public AccessToken? AccessToken { get; set; }
 
         /// <summary>
         /// HTTP response content type for this operation
         /// </summary>
         public string? ContentType { get; set; } = default!;
+
+        /// <summary>
+        /// Default error response
+        /// </summary>
+        public Error? Error { get; set; }
 
         /// <summary>
         /// HTTP response status code for this operation
