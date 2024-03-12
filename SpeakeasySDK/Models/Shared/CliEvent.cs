@@ -23,6 +23,12 @@ namespace SpeakeasySDK.Models.Shared
         public string? CommitHead { get; set; }
 
         /// <summary>
+        /// Name of the CI environment.
+        /// </summary>
+        [JsonProperty("continuous_integration_environment")]
+        public string? ContinuousIntegrationEnvironment { get; set; }
+
+        /// <summary>
         /// Timestamp when the event was created in the database.
         /// </summary>
         [JsonProperty("created_at")]
@@ -59,7 +65,7 @@ namespace SpeakeasySDK.Models.Shared
         public string? GenerateConfigPostRaw { get; set; }
 
         /// <summary>
-        /// Version of the generated target (post generation)
+        /// The version of the customer&apos;s SDK that we just generated
         /// </summary>
         [JsonProperty("generate_config_post_version")]
         public string? GenerateConfigPostVersion { get; set; }
@@ -77,7 +83,7 @@ namespace SpeakeasySDK.Models.Shared
         public string? GenerateConfigPreRaw { get; set; }
 
         /// <summary>
-        /// Version of the generated target (prior to generation)
+        /// The version of the customer&apos;s SDK before we generated
         /// </summary>
         [JsonProperty("generate_config_pre_version")]
         public string? GenerateConfigPreVersion { get; set; }
@@ -203,7 +209,7 @@ namespace SpeakeasySDK.Models.Shared
         public string? GitUserEmail { get; set; }
 
         /// <summary>
-        /// User name from git configuration.
+        /// User&apos;s name from git configuration. (not GitHub username)
         /// </summary>
         [JsonProperty("git_user_name")]
         public string? GitUserName { get; set; }
@@ -249,6 +255,30 @@ namespace SpeakeasySDK.Models.Shared
         /// </summary>
         [JsonProperty("management_doc_version")]
         public string? ManagementDocVersion { get; set; }
+
+        /// <summary>
+        /// Name of the published package.
+        /// </summary>
+        [JsonProperty("publish_package_name")]
+        public string? PublishPackageName { get; set; }
+
+        /// <summary>
+        /// Name of the registry where the package was published.
+        /// </summary>
+        [JsonProperty("publish_package_registry_name")]
+        public string? PublishPackageRegistryName { get; set; }
+
+        /// <summary>
+        /// URL of the published package.
+        /// </summary>
+        [JsonProperty("publish_package_url")]
+        public string? PublishPackageUrl { get; set; }
+
+        /// <summary>
+        /// Version of the published package.
+        /// </summary>
+        [JsonProperty("publish_package_version")]
+        public string? PublishPackageVersion { get; set; }
 
         /// <summary>
         /// Full CLI command.

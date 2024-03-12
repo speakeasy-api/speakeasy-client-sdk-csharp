@@ -34,12 +34,12 @@ namespace SpeakeasySDK
         /// Allowing it to be replayed with the same inputs that were captured by the SDK.
         /// </remarks>
         /// </summary>
-        Task<GenerateRequestPostmanCollectionResponse> GenerateRequestPostmanCollectionAsync(GenerateRequestPostmanCollectionRequest? request = null);
+        Task<GenerateRequestPostmanCollectionResponse> GenerateRequestPostmanCollectionAsync(GenerateRequestPostmanCollectionRequest request);
 
         /// <summary>
         /// Get information about a particular request.
         /// </summary>
-        Task<GetRequestFromEventLogResponse> GetRequestFromEventLogAsync(GetRequestFromEventLogRequest? request = null);
+        Task<GetRequestFromEventLogResponse> GetRequestFromEventLogAsync(GetRequestFromEventLogRequest request);
 
         /// <summary>
         /// Query the event log to retrieve a list of requests.
@@ -49,7 +49,7 @@ namespace SpeakeasySDK
         /// Allows the filtering of requests on a number of criteria such as ApiID, VersionID, Path, Method, etc.
         /// </remarks>
         /// </summary>
-        Task<QueryEventLogResponse> QueryEventLogAsync(QueryEventLogRequest? request = null);
+        Task<QueryEventLogResponse> QueryEventLogAsync(QueryEventLogRequest request);
     }
 
     /// <summary>
@@ -59,10 +59,10 @@ namespace SpeakeasySDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.0.3";
-        private const string _sdkGenVersion = "2.262.2";
+        private const string _sdkVersion = "5.1.0";
+        private const string _sdkGenVersion = "2.279.1";
         private const string _openapiDocVersion = "0.4.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.0.3 2.262.2 0.4.0 SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.1.0 2.279.1 0.4.0 SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private Func<Security>? _securitySource;
@@ -74,17 +74,15 @@ namespace SpeakeasySDK
             _serverUrl = serverUrl;
             SDKConfiguration = config;
         }
-        
 
-        public async Task<GenerateRequestPostmanCollectionResponse> GenerateRequestPostmanCollectionAsync(GenerateRequestPostmanCollectionRequest? request = null)
+        public async Task<GenerateRequestPostmanCollectionResponse> GenerateRequestPostmanCollectionAsync(GenerateRequestPostmanCollectionRequest request)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/v1/eventlog/{requestID}/generate/postman", request);
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
+
             var client = _defaultClient;
             if (_securitySource != null)
             {
@@ -94,14 +92,14 @@ namespace SpeakeasySDK
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new GenerateRequestPostmanCollectionResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/octet-stream",response.ContentType))
@@ -111,21 +109,19 @@ namespace SpeakeasySDK
 
                 return response;
             }
-            response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
+                    response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
             return response;
         }
 
-        
 
-        public async Task<GetRequestFromEventLogResponse> GetRequestFromEventLogAsync(GetRequestFromEventLogRequest? request = null)
+        public async Task<GetRequestFromEventLogResponse> GetRequestFromEventLogAsync(GetRequestFromEventLogRequest request)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/v1/eventlog/{requestID}", request);
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
+
             var client = _defaultClient;
             if (_securitySource != null)
             {
@@ -135,14 +131,14 @@ namespace SpeakeasySDK
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new GetRequestFromEventLogResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
@@ -152,21 +148,19 @@ namespace SpeakeasySDK
 
                 return response;
             }
-            response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
+                    response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
             return response;
         }
 
-        
 
-        public async Task<QueryEventLogResponse> QueryEventLogAsync(QueryEventLogRequest? request = null)
+        public async Task<QueryEventLogResponse> QueryEventLogAsync(QueryEventLogRequest request)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/v1/eventlog/query", request);
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
+
             var client = _defaultClient;
             if (_securitySource != null)
             {
@@ -176,14 +170,14 @@ namespace SpeakeasySDK
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new QueryEventLogResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
@@ -193,10 +187,9 @@ namespace SpeakeasySDK
 
                 return response;
             }
-            response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
+                    response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
             return response;
         }
 
-        
     }
 }

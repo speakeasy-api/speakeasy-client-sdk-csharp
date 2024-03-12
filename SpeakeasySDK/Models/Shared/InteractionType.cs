@@ -18,10 +18,24 @@ namespace SpeakeasySDK.Models.Shared
     /// </summary>
     public enum InteractionType
     {
+        [JsonProperty("CI_EXEC")]
+        CiExec,
         [JsonProperty("CLI_EXEC")]
         CliExec,
         [JsonProperty("TARGET_GENERATE")]
         TargetGenerate,
+        [JsonProperty("TOMBSTONE")]
+        Tombstone,
+        [JsonProperty("AUTHENTICATE")]
+        Authenticate,
+        [JsonProperty("QUICKSTART")]
+        Quickstart,
+        [JsonProperty("RUN")]
+        Run,
+        [JsonProperty("CONFIGURE")]
+        Configure,
+        [JsonProperty("PUBLISH")]
+        Publish,
     }
 
     public static class InteractionTypeExtension

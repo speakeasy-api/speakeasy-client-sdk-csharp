@@ -77,6 +77,7 @@ var res = await sdk.Apis.GetApisAsync(req);
 
 ### [Auth](docs/sdks/auth/README.md)
 
+* [GetAccessToken](docs/sdks/auth/README.md#getaccesstoken) - Get or refresh an access token for the current workspace.
 * [GetWorkspaceAccess](docs/sdks/auth/README.md#getworkspaceaccess) - Get access allowances for a particular workspace
 * [ValidateApiKey](docs/sdks/auth/README.md#validateapikey) - Validate the current api key.
 
@@ -86,6 +87,10 @@ var res = await sdk.Apis.GetApisAsync(req);
 * [GetRequestFromEventLog](docs/sdks/requests/README.md#getrequestfromeventlog) - Get information about a particular request.
 * [QueryEventLog](docs/sdks/requests/README.md#queryeventlog) - Query the event log to retrieve a list of requests.
 
+### [Organizations](docs/sdks/organizations/README.md)
+
+* [GetOrganizations](docs/sdks/organizations/README.md#getorganizations) - Get organizations for a user
+
 ### [Embeds](docs/sdks/embeds/README.md)
 
 * [GetEmbedAccessToken](docs/sdks/embeds/README.md#getembedaccesstoken) - Get an embed access token for the current workspace.
@@ -94,6 +99,8 @@ var res = await sdk.Apis.GetApisAsync(req);
 
 ### [Events](docs/sdks/events/README.md)
 
+* [GetWorkspaceEvents](docs/sdks/events/README.md#getworkspaceevents) - Load recent events for a particular workspace
+* [GetWorkspaceTargets](docs/sdks/events/README.md#getworkspacetargets) - Load targets for a particular workspace
 * [PostWorkspaceEvents](docs/sdks/events/README.md#postworkspaceevents) - Post events for a specific workspace
 <!-- End Available Resources and Operations [operations] -->
 
@@ -124,13 +131,14 @@ The default server can also be overridden globally by passing a URL to the `serv
 
 ### Per-Client Security Schemes
 
-This SDK supports the following security scheme globally:
+This SDK supports the following security schemes globally:
 
-| Name     | Type     | Scheme   |
-| -------- | -------- | -------- |
-| `APIKey` | apiKey   | API key  |
+| Name        | Type        | Scheme      |
+| ----------- | ----------- | ----------- |
+| `APIKey`    | apiKey      | API key     |
+| `Bearer`    | http        | HTTP Bearer |
 
-You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. For example:
+You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
@@ -160,7 +168,7 @@ var res = await sdk.Apis.DeleteApiAsync(req);
 
 A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
 
-For example, you can set `workspaceID` to `"<value>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `PostWorkspaceEvents`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+For example, you can set `workspaceID` to `"<value>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `GetWorkspaceEvents`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
 ### Available Globals
@@ -178,7 +186,6 @@ The following global parameter is available.
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
-using System.Collections.Generic;
 
 var sdk = new Speakeasy(
     security: new Security() {
@@ -186,23 +193,9 @@ var sdk = new Speakeasy(
     },
     workspaceID: "<value>");
 
-PostWorkspaceEventsRequest req = new PostWorkspaceEventsRequest() {
-    RequestBody = new List<CliEvent>() {
-        new CliEvent() {
-            CreatedAt = System.DateTime.Parse("2024-11-21T06:58:42.120Z"),
-            ExecutionId = "<value>",
-            Id = "<id>",
-            InteractionType = InteractionType.CliExec,
-            LocalStartedAt = System.DateTime.Parse("2024-05-07T12:35:47.182Z"),
-            SpeakeasyApiKeyName = "<value>",
-            SpeakeasyVersion = "<value>",
-            Success = false,
-            WorkspaceId = "<value>",
-        },
-    },
-};
+GetWorkspaceEventsRequest req = new GetWorkspaceEventsRequest() {};
 
-var res = await sdk.Events.PostWorkspaceEventsAsync(req);
+var res = await sdk.Events.GetWorkspaceEventsAsync(req);
 
 // handle response
 ```

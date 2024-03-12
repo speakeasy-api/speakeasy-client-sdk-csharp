@@ -1,0 +1,15 @@
+# Organization
+
+A speakeasy organization
+
+
+## Fields
+
+| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `AccountType`                                                                         | [OrganizationAccountType](../../Models/Shared/OrganizationAccountType.md)             | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `CreatedAt`                                                                           | [DateTime](https://learn.microsoft.com/en-us/dotnet/api/system.datetime?view=net-5.0) | :heavy_minus_sign:                                                                    | N/A                                                                                   |
+| `Id`                                                                                  | *string*                                                                              | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `Name`                                                                                | *string*                                                                              | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `Slug`                                                                                | *string*                                                                              | :heavy_minus_sign:                                                                    | N/A                                                                                   |
+| `UpdatedAt`                                                                           | [DateTime](https://learn.microsoft.com/en-us/dotnet/api/system.datetime?view=net-5.0) | :heavy_minus_sign:                                                                    | N/A                                                                                   |

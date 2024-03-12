@@ -1,21 +1,21 @@
 lockVersion: 2.0.0
 id: f73d2126-985b-4d69-88ee-b7c69254d8bf
 management:
-  docChecksum: 90bb5b2f880d4a86868122f9a6b08d40
+  docChecksum: 3d1ffb0cc7307a0362c5389c0fa1fdb5
   docVersion: 0.4.0
-  speakeasyVersion: internal
-  generationVersion: 2.262.2
-  releaseVersion: 5.0.3
-  configChecksum: 9a945d58feb93baa7c10cc9fa7ebeeb9
+  speakeasyVersion: 1.205.2
+  generationVersion: 2.279.1
+  releaseVersion: 5.1.0
+  configChecksum: f7a98cf464bfb7da3e8ffda128cd350e
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
 features:
   csharp:
-    core: 3.3.2
+    core: 3.4.3
     examples: 2.81.3
-    globalSecurity: 2.83.1
-    globalServerURLs: 2.82.2
+    globalSecurity: 2.83.3
+    globalServerURLs: 2.82.3
     globals: 2.81.2
     inputOutputModels: 2.83.0
     serverIDs: 2.82.1
@@ -26,9 +26,11 @@ generatedFiles:
   - SpeakeasySDK/Schemas.cs
   - SpeakeasySDK/Auth.cs
   - SpeakeasySDK/Requests.cs
+  - SpeakeasySDK/Organizations.cs
   - SpeakeasySDK/Embeds.cs
   - SpeakeasySDK/Events.cs
   - SpeakeasySDK/Speakeasy.cs
+  - global.json
   - SpeakeasySDK/Utils/BigIntSerializer.cs
   - SpeakeasySDK/Utils/DecimalSerializer.cs
   - SpeakeasySDK/Utils/EnumSerializer.cs
@@ -97,6 +99,8 @@ generatedFiles:
   - SpeakeasySDK/Models/Operations/RegisterSchemaRequestBody.cs
   - SpeakeasySDK/Models/Operations/RegisterSchemaRequest.cs
   - SpeakeasySDK/Models/Operations/RegisterSchemaResponse.cs
+  - SpeakeasySDK/Models/Operations/GetAccessTokenRequest.cs
+  - SpeakeasySDK/Models/Operations/GetAccessTokenResponse.cs
   - SpeakeasySDK/Models/Operations/GetWorkspaceAccessRequest.cs
   - SpeakeasySDK/Models/Operations/GetWorkspaceAccessResponse.cs
   - SpeakeasySDK/Models/Operations/ValidateApiKeyResponse.cs
@@ -106,11 +110,16 @@ generatedFiles:
   - SpeakeasySDK/Models/Operations/GetRequestFromEventLogResponse.cs
   - SpeakeasySDK/Models/Operations/QueryEventLogRequest.cs
   - SpeakeasySDK/Models/Operations/QueryEventLogResponse.cs
+  - SpeakeasySDK/Models/Operations/GetOrganizationsResponse.cs
   - SpeakeasySDK/Models/Operations/GetEmbedAccessTokenRequest.cs
   - SpeakeasySDK/Models/Operations/GetEmbedAccessTokenResponse.cs
   - SpeakeasySDK/Models/Operations/GetValidEmbedAccessTokensResponse.cs
   - SpeakeasySDK/Models/Operations/RevokeEmbedAccessTokenRequest.cs
   - SpeakeasySDK/Models/Operations/RevokeEmbedAccessTokenResponse.cs
+  - SpeakeasySDK/Models/Operations/GetWorkspaceEventsRequest.cs
+  - SpeakeasySDK/Models/Operations/GetWorkspaceEventsResponse.cs
+  - SpeakeasySDK/Models/Operations/GetWorkspaceTargetsRequest.cs
+  - SpeakeasySDK/Models/Operations/GetWorkspaceTargetsResponse.cs
   - SpeakeasySDK/Models/Operations/PostWorkspaceEventsRequest.cs
   - SpeakeasySDK/Models/Operations/PostWorkspaceEventsResponse.cs
   - SpeakeasySDK/Models/Shared/Error.cs
@@ -124,6 +133,11 @@ generatedFiles:
   - SpeakeasySDK/Models/Shared/Schema.cs
   - SpeakeasySDK/Models/Shared/ValueChange.cs
   - SpeakeasySDK/Models/Shared/SchemaDiff.cs
+  - SpeakeasySDK/Models/Shared/Claims.cs
+  - SpeakeasySDK/Models/Shared/User.cs
+  - SpeakeasySDK/Models/Shared/Workspaces.cs
+  - SpeakeasySDK/Models/Shared/AccessToken.cs
+  - SpeakeasySDK/Models/Shared/Level.cs
   - SpeakeasySDK/Models/Shared/AccessDetails.cs
   - SpeakeasySDK/Models/Shared/AccountType.cs
   - SpeakeasySDK/Models/Shared/ApiKeyDetails.cs
@@ -132,11 +146,14 @@ generatedFiles:
   - SpeakeasySDK/Models/Shared/RequestMetadata.cs
   - SpeakeasySDK/Models/Shared/Filters.cs
   - SpeakeasySDK/Models/Shared/Filter.cs
+  - SpeakeasySDK/Models/Shared/OrganizationAccountType.cs
+  - SpeakeasySDK/Models/Shared/Organization.cs
   - SpeakeasySDK/Models/Shared/EmbedAccessTokenResponse.cs
   - SpeakeasySDK/Models/Shared/EmbedToken.cs
   - SpeakeasySDK/Models/Shared/GenerateBumpType.cs
-  - SpeakeasySDK/Models/Shared/InteractionType.cs
   - SpeakeasySDK/Models/Shared/CliEvent.cs
+  - SpeakeasySDK/Models/Shared/InteractionType.cs
+  - SpeakeasySDK/Models/Shared/TargetSDK.cs
   - SpeakeasySDK/Models/Shared/Security.cs
   - docs/Models/Operations/DeleteApiRequest.md
   - docs/Models/Operations/DeleteApiResponse.md
@@ -192,6 +209,8 @@ generatedFiles:
   - docs/Models/Operations/RegisterSchemaRequestBody.md
   - docs/Models/Operations/RegisterSchemaRequest.md
   - docs/Models/Operations/RegisterSchemaResponse.md
+  - docs/Models/Operations/GetAccessTokenRequest.md
+  - docs/Models/Operations/GetAccessTokenResponse.md
   - docs/Models/Operations/GetWorkspaceAccessRequest.md
   - docs/Models/Operations/GetWorkspaceAccessResponse.md
   - docs/Models/Operations/ValidateApiKeyResponse.md
@@ -201,11 +220,16 @@ generatedFiles:
   - docs/Models/Operations/GetRequestFromEventLogResponse.md
   - docs/Models/Operations/QueryEventLogRequest.md
   - docs/Models/Operations/QueryEventLogResponse.md
+  - docs/Models/Operations/GetOrganizationsResponse.md
   - docs/Models/Operations/GetEmbedAccessTokenRequest.md
   - docs/Models/Operations/GetEmbedAccessTokenResponse.md
   - docs/Models/Operations/GetValidEmbedAccessTokensResponse.md
   - docs/Models/Operations/RevokeEmbedAccessTokenRequest.md
   - docs/Models/Operations/RevokeEmbedAccessTokenResponse.md
+  - docs/Models/Operations/GetWorkspaceEventsRequest.md
+  - docs/Models/Operations/GetWorkspaceEventsResponse.md
+  - docs/Models/Operations/GetWorkspaceTargetsRequest.md
+  - docs/Models/Operations/GetWorkspaceTargetsResponse.md
   - docs/Models/Operations/PostWorkspaceEventsRequest.md
   - docs/Models/Operations/PostWorkspaceEventsResponse.md
   - docs/Models/Shared/Error.md
@@ -219,6 +243,11 @@ generatedFiles:
   - docs/Models/Shared/Schema.md
   - docs/Models/Shared/ValueChange.md
   - docs/Models/Shared/SchemaDiff.md
+  - docs/Models/Shared/Claims.md
+  - docs/Models/Shared/User.md
+  - docs/Models/Shared/Workspaces.md
+  - docs/Models/Shared/AccessToken.md
+  - docs/Models/Shared/Level.md
   - docs/Models/Shared/AccessDetails.md
   - docs/Models/Shared/AccountType.md
   - docs/Models/Shared/ApiKeyDetails.md
@@ -227,11 +256,14 @@ generatedFiles:
   - docs/Models/Shared/RequestMetadata.md
   - docs/Models/Shared/Filters.md
   - docs/Models/Shared/Filter.md
+  - docs/Models/Shared/OrganizationAccountType.md
+  - docs/Models/Shared/Organization.md
   - docs/Models/Shared/EmbedAccessTokenResponse.md
   - docs/Models/Shared/EmbedToken.md
   - docs/Models/Shared/GenerateBumpType.md
-  - docs/Models/Shared/InteractionType.md
   - docs/Models/Shared/CliEvent.md
+  - docs/Models/Shared/InteractionType.md
+  - docs/Models/Shared/TargetSDK.md
   - docs/Models/Shared/Security.md
   - docs/sdks/speakeasy/README.md
   - docs/sdks/apis/README.md
@@ -240,6 +272,7 @@ generatedFiles:
   - docs/sdks/schemas/README.md
   - docs/sdks/auth/README.md
   - docs/sdks/requests/README.md
+  - docs/sdks/organizations/README.md
   - docs/sdks/embeds/README.md
   - docs/sdks/events/README.md
   - USAGE.md

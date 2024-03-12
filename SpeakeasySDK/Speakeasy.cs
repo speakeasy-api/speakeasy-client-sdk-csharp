@@ -18,8 +18,6 @@ namespace SpeakeasySDK
     using System.Threading.Tasks;
     using System;
 
-
-
     /// <summary>
     /// Speakeasy API: The Speakeasy API allows teams to manage common operations with their APIs
     /// 
@@ -57,6 +55,7 @@ namespace SpeakeasySDK
         /// REST APIs for retrieving request information
         /// </summary>
         public IRequests Requests { get; }
+        public IOrganizations Organizations { get; }
 
         /// <summary>
         /// REST APIs for managing embeds
@@ -68,16 +67,26 @@ namespace SpeakeasySDK
         /// </summary>
         public IEvents Events { get; }
     }
-    
+
     public class SDKConfig
     {
-        public static Dictionary<string, string> ServerList = new Dictionary<string, string>()
+        /// <summary>
+        /// Server identifiers available to the SDK.
+        /// </summary>
+        public enum Server {
+        Prod,
+        }
+
+        /// <summary>
+        /// Server URLs available to the SDK.
+        /// </summary>
+        public static readonly Dictionary<Server, string> ServerMap = new Dictionary<Server, string>()
         {
-            {"Serverprod", "https://api.prod.speakeasyapi.dev" },
+            { Server.Prod, "https://api.prod.speakeasyapi.dev" },
         };
-        /// Contains the list of servers available to the SDK
+
         public string serverUrl = "";
-        public string server = "";
+        public Server? server = null;
         public string? WorkspaceID;
 
         public string GetTemplatedServerDetails()
@@ -86,14 +95,18 @@ namespace SpeakeasySDK
             {
                 return Utilities.TemplateUrl(Utilities.RemoveSuffix(this.serverUrl, "/"), new Dictionary<string, string>());
             }
-            if (!String.IsNullOrEmpty(this.server))
+            if (this.server is null)
             {
-                this.server = "Serverprod";
+                this.server = SDKConfig.Server.Prod;
             }
-            Dictionary<string, string> serverDefault = new Dictionary<string, string>();
-            
+            else if (!SDKConfig.ServerMap.ContainsKey(this.server.Value))
+            {
+                throw new Exception($"Invalid server \"{this.server.Value}\"");
+            }
 
-            return Utilities.TemplateUrl(SDKConfig.ServerList[this.server], serverDefault);
+            Dictionary<string, string> serverDefault = new Dictionary<string, string>();
+
+            return Utilities.TemplateUrl(SDKConfig.ServerMap[this.server.Value], serverDefault);
         }
     }
 
@@ -107,11 +120,12 @@ namespace SpeakeasySDK
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.0.3";
-        private const string _sdkGenVersion = "2.262.2";
+        private const string _sdkVersion = "5.1.0";
+        private const string _sdkGenVersion = "2.279.1";
         private const string _openapiDocVersion = "0.4.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.0.3 2.262.2 0.4.0 SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.1.0 2.279.1 0.4.0 SpeakeasySDK";
         private string _serverUrl = "";
+        private SDKConfig.Server? _server = null;
         private ISpeakeasyHttpClient _defaultClient;
         private Func<Security>? _securitySource;
         public IApis Apis { get; private set; }
@@ -120,11 +134,16 @@ namespace SpeakeasySDK
         public ISchemas Schemas { get; private set; }
         public IAuth Auth { get; private set; }
         public IRequests Requests { get; private set; }
+        public IOrganizations Organizations { get; private set; }
         public IEmbeds Embeds { get; private set; }
         public IEvents Events { get; private set; }
 
-        public Speakeasy(Security? security = null, Func<Security>? securitySource = null, string? workspaceID = null, string? server = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null)
+        public Speakeasy(Security? security = null, Func<Security>? securitySource = null, string? workspaceID = null, SDKConfig.Server? server = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null)
         {
+            if (server != null)
+            {
+              _server = server;
+            }
 
             if (serverUrl != null)
             {
@@ -145,14 +164,11 @@ namespace SpeakeasySDK
             {
                 _securitySource = () => security;
             }
-            else
-            {
-                throw new Exception("security and securitySource cannot both be null");
-            }
 
             SDKConfiguration = new SDKConfig()
             {
                 WorkspaceID = workspaceID,
+                server = _server,
                 serverUrl = _serverUrl
             };
 
@@ -162,6 +178,7 @@ namespace SpeakeasySDK
             Schemas = new Schemas(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
             Auth = new Auth(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
             Requests = new Requests(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+            Organizations = new Organizations(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
             Embeds = new Embeds(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
             Events = new Events(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
         }

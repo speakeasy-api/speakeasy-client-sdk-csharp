@@ -33,7 +33,7 @@ namespace SpeakeasySDK
         /// Delete an ApiEndpoint. This will also delete all associated Request Logs (if using a Postgres datastore).
         /// </remarks>
         /// </summary>
-        Task<DeleteApiEndpointResponse> DeleteApiEndpointAsync(DeleteApiEndpointRequest? request = null);
+        Task<DeleteApiEndpointResponse> DeleteApiEndpointAsync(DeleteApiEndpointRequest request);
 
         /// <summary>
         /// Find an ApiEndpoint via its displayName.
@@ -43,7 +43,7 @@ namespace SpeakeasySDK
         /// This is useful for finding the ID of an ApiEndpoint to use in the /v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID} endpoints.
         /// </remarks>
         /// </summary>
-        Task<FindApiEndpointResponse> FindApiEndpointAsync(FindApiEndpointRequest? request = null);
+        Task<FindApiEndpointResponse> FindApiEndpointAsync(FindApiEndpointRequest request);
 
         /// <summary>
         /// Generate an OpenAPI specification for a particular ApiEndpoint.
@@ -53,7 +53,7 @@ namespace SpeakeasySDK
         /// Returns the original document and the newly generated document allowing a diff to be performed to see what has changed.
         /// </remarks>
         /// </summary>
-        Task<GenerateOpenApiSpecForApiEndpointResponse> GenerateOpenApiSpecForApiEndpointAsync(GenerateOpenApiSpecForApiEndpointRequest? request = null);
+        Task<GenerateOpenApiSpecForApiEndpointResponse> GenerateOpenApiSpecForApiEndpointAsync(GenerateOpenApiSpecForApiEndpointRequest request);
 
         /// <summary>
         /// Generate a Postman collection for a particular ApiEndpoint.
@@ -62,22 +62,22 @@ namespace SpeakeasySDK
         /// Generates a postman collection that allows the endpoint to be called from postman variables produced for any path/query/header parameters included in the OpenAPI document.
         /// </remarks>
         /// </summary>
-        Task<GeneratePostmanCollectionForApiEndpointResponse> GeneratePostmanCollectionForApiEndpointAsync(GeneratePostmanCollectionForApiEndpointRequest? request = null);
+        Task<GeneratePostmanCollectionForApiEndpointResponse> GeneratePostmanCollectionForApiEndpointAsync(GeneratePostmanCollectionForApiEndpointRequest request);
 
         /// <summary>
         /// Get all Api endpoints for a particular apiID.
         /// </summary>
-        Task<GetAllApiEndpointsResponse> GetAllApiEndpointsAsync(GetAllApiEndpointsRequest? request = null);
+        Task<GetAllApiEndpointsResponse> GetAllApiEndpointsAsync(GetAllApiEndpointsRequest request);
 
         /// <summary>
         /// Get all ApiEndpoints for a particular apiID and versionID.
         /// </summary>
-        Task<GetAllForVersionApiEndpointsResponse> GetAllForVersionApiEndpointsAsync(GetAllForVersionApiEndpointsRequest? request = null);
+        Task<GetAllForVersionApiEndpointsResponse> GetAllForVersionApiEndpointsAsync(GetAllForVersionApiEndpointsRequest request);
 
         /// <summary>
         /// Get an ApiEndpoint.
         /// </summary>
-        Task<GetApiEndpointResponse> GetApiEndpointAsync(GetApiEndpointRequest? request = null);
+        Task<GetApiEndpointResponse> GetApiEndpointAsync(GetApiEndpointRequest request);
 
         /// <summary>
         /// Upsert an ApiEndpoint.
@@ -96,10 +96,10 @@ namespace SpeakeasySDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.0.3";
-        private const string _sdkGenVersion = "2.262.2";
+        private const string _sdkVersion = "5.1.0";
+        private const string _sdkGenVersion = "2.279.1";
         private const string _openapiDocVersion = "0.4.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.0.3 2.262.2 0.4.0 SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.1.0 2.279.1 0.4.0 SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private Func<Security>? _securitySource;
@@ -111,17 +111,15 @@ namespace SpeakeasySDK
             _serverUrl = serverUrl;
             SDKConfiguration = config;
         }
-        
 
-        public async Task<DeleteApiEndpointResponse> DeleteApiEndpointAsync(DeleteApiEndpointRequest? request = null)
+        public async Task<DeleteApiEndpointResponse> DeleteApiEndpointAsync(DeleteApiEndpointRequest request)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}", request);
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
+
             var client = _defaultClient;
             if (_securitySource != null)
             {
@@ -131,34 +129,32 @@ namespace SpeakeasySDK
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new DeleteApiEndpointResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
 
                 return response;
             }
-            response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
+                    response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
             return response;
         }
 
-        
 
-        public async Task<FindApiEndpointResponse> FindApiEndpointAsync(FindApiEndpointRequest? request = null)
+        public async Task<FindApiEndpointResponse> FindApiEndpointAsync(FindApiEndpointRequest request)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/v1/apis/{apiID}/version/{versionID}/api_endpoints/find/{displayName}", request);
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
+
             var client = _defaultClient;
             if (_securitySource != null)
             {
@@ -168,14 +164,14 @@ namespace SpeakeasySDK
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new FindApiEndpointResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
@@ -185,21 +181,19 @@ namespace SpeakeasySDK
 
                 return response;
             }
-            response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
+                    response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
             return response;
         }
 
-        
 
-        public async Task<GenerateOpenApiSpecForApiEndpointResponse> GenerateOpenApiSpecForApiEndpointAsync(GenerateOpenApiSpecForApiEndpointRequest? request = null)
+        public async Task<GenerateOpenApiSpecForApiEndpointResponse> GenerateOpenApiSpecForApiEndpointAsync(GenerateOpenApiSpecForApiEndpointRequest request)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}/generate/openapi", request);
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
+
             var client = _defaultClient;
             if (_securitySource != null)
             {
@@ -209,14 +203,14 @@ namespace SpeakeasySDK
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new GenerateOpenApiSpecForApiEndpointResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
@@ -226,21 +220,19 @@ namespace SpeakeasySDK
 
                 return response;
             }
-            response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
+                    response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
             return response;
         }
 
-        
 
-        public async Task<GeneratePostmanCollectionForApiEndpointResponse> GeneratePostmanCollectionForApiEndpointAsync(GeneratePostmanCollectionForApiEndpointRequest? request = null)
+        public async Task<GeneratePostmanCollectionForApiEndpointResponse> GeneratePostmanCollectionForApiEndpointAsync(GeneratePostmanCollectionForApiEndpointRequest request)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}/generate/postman", request);
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
+
             var client = _defaultClient;
             if (_securitySource != null)
             {
@@ -250,14 +242,14 @@ namespace SpeakeasySDK
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new GeneratePostmanCollectionForApiEndpointResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/octet-stream",response.ContentType))
@@ -267,21 +259,19 @@ namespace SpeakeasySDK
 
                 return response;
             }
-            response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
+                    response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
             return response;
         }
 
-        
 
-        public async Task<GetAllApiEndpointsResponse> GetAllApiEndpointsAsync(GetAllApiEndpointsRequest? request = null)
+        public async Task<GetAllApiEndpointsResponse> GetAllApiEndpointsAsync(GetAllApiEndpointsRequest request)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/v1/apis/{apiID}/api_endpoints", request);
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
+
             var client = _defaultClient;
             if (_securitySource != null)
             {
@@ -291,14 +281,14 @@ namespace SpeakeasySDK
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new GetAllApiEndpointsResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
@@ -308,21 +298,19 @@ namespace SpeakeasySDK
 
                 return response;
             }
-            response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
+                    response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
             return response;
         }
 
-        
 
-        public async Task<GetAllForVersionApiEndpointsResponse> GetAllForVersionApiEndpointsAsync(GetAllForVersionApiEndpointsRequest? request = null)
+        public async Task<GetAllForVersionApiEndpointsResponse> GetAllForVersionApiEndpointsAsync(GetAllForVersionApiEndpointsRequest request)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/v1/apis/{apiID}/version/{versionID}/api_endpoints", request);
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
+
             var client = _defaultClient;
             if (_securitySource != null)
             {
@@ -332,14 +320,14 @@ namespace SpeakeasySDK
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new GetAllForVersionApiEndpointsResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
@@ -349,21 +337,19 @@ namespace SpeakeasySDK
 
                 return response;
             }
-            response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
+                    response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
             return response;
         }
 
-        
 
-        public async Task<GetApiEndpointResponse> GetApiEndpointAsync(GetApiEndpointRequest? request = null)
+        public async Task<GetApiEndpointResponse> GetApiEndpointAsync(GetApiEndpointRequest request)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}", request);
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
+
             var client = _defaultClient;
             if (_securitySource != null)
             {
@@ -373,14 +359,14 @@ namespace SpeakeasySDK
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new GetApiEndpointResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
@@ -390,30 +376,25 @@ namespace SpeakeasySDK
 
                 return response;
             }
-            response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
+                    response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
             return response;
         }
 
-        
 
         public async Task<UpsertApiEndpointResponse> UpsertApiEndpointAsync(UpsertApiEndpointRequest request)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/v1/apis/{apiID}/version/{versionID}/api_endpoints/{apiEndpointID}", request);
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            var serializedBody = RequestBodySerializer.Serialize(request, "ApiEndpoint", "json");
-            if (serializedBody == null)
-            {
-                throw new ArgumentNullException("request body is required");
-            }
-            else
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "ApiEndpoint", "json", false, false);
+            if (serializedBody != null)
             {
                 httpRequest.Content = serializedBody;
             }
-            
+
             var client = _defaultClient;
             if (_securitySource != null)
             {
@@ -423,14 +404,14 @@ namespace SpeakeasySDK
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new UpsertApiEndpointResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
@@ -440,10 +421,9 @@ namespace SpeakeasySDK
 
                 return response;
             }
-            response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
+                    response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
             return response;
         }
 
-        
     }
 }

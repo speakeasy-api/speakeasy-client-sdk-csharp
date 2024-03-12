@@ -14,6 +14,7 @@ namespace SpeakeasySDK
     using SpeakeasySDK.Models.Operations;
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
+    using System.Collections.Generic;
     using System.Net.Http.Headers;
     using System.Net.Http;
     using System.Threading.Tasks;
@@ -24,6 +25,16 @@ namespace SpeakeasySDK
     /// </summary>
     public interface IEvents
     {
+
+        /// <summary>
+        /// Load recent events for a particular workspace
+        /// </summary>
+        Task<GetWorkspaceEventsResponse> GetWorkspaceEventsAsync(GetWorkspaceEventsRequest request);
+
+        /// <summary>
+        /// Load targets for a particular workspace
+        /// </summary>
+        Task<GetWorkspaceTargetsResponse> GetWorkspaceTargetsAsync(GetWorkspaceTargetsRequest request);
 
         /// <summary>
         /// Post events for a specific workspace
@@ -42,10 +53,10 @@ namespace SpeakeasySDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.0.3";
-        private const string _sdkGenVersion = "2.262.2";
+        private const string _sdkVersion = "5.1.0";
+        private const string _sdkGenVersion = "2.279.1";
         private const string _openapiDocVersion = "0.4.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.0.3 2.262.2 0.4.0 SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.1.0 2.279.1 0.4.0 SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private Func<Security>? _securitySource;
@@ -57,28 +68,21 @@ namespace SpeakeasySDK
             _serverUrl = serverUrl;
             SDKConfiguration = config;
         }
-        
 
-        public async Task<PostWorkspaceEventsResponse> PostWorkspaceEventsAsync(PostWorkspaceEventsRequest request)
+        public async Task<GetWorkspaceEventsResponse> GetWorkspaceEventsAsync(GetWorkspaceEventsRequest request)
         {
+            if (request == null)
+            {
+                request = new GetWorkspaceEventsRequest();
+            }
             request.WorkspaceID ??= SDKConfiguration.WorkspaceID;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/{workspaceID}/events", request);
-            
-            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "json");
-            if (serializedBody == null)
-            {
-                throw new ArgumentNullException("request body is required");
-            }
-            else
-            {
-                httpRequest.Content = serializedBody;
-            }
-            
+
             var client = _defaultClient;
             if (_securitySource != null)
             {
@@ -88,19 +92,24 @@ namespace SpeakeasySDK
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
-            var response = new PostWorkspaceEventsResponse
+
+            var response = new GetWorkspaceEventsResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
-            if((response.StatusCode >= 200 && response.StatusCode < 300))
+
+            if((response.StatusCode == 200))
             {
+                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+                {
+                    response.CliEventBatch = JsonConvert.DeserializeObject<List<CliEvent>>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
+                }
 
                 return response;
             }
+
             if((response.StatusCode >= 500 && response.StatusCode < 600))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
@@ -113,6 +122,115 @@ namespace SpeakeasySDK
             return response;
         }
 
-        
+
+        public async Task<GetWorkspaceTargetsResponse> GetWorkspaceTargetsAsync(GetWorkspaceTargetsRequest request)
+        {
+            if (request == null)
+            {
+                request = new GetWorkspaceTargetsRequest();
+            }
+            request.WorkspaceID ??= SDKConfiguration.WorkspaceID;
+            
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
+            var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/{workspaceID}/events/targets", request);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("user-agent", _userAgent);
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
+            var httpResponse = await client.SendAsync(httpRequest);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+
+            var response = new GetWorkspaceTargetsResponse
+            {
+                StatusCode = (int)httpResponse.StatusCode,
+                ContentType = contentType,
+                RawResponse = httpResponse
+            };
+
+            if((response.StatusCode == 200))
+            {
+                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+                {
+                    response.TargetSDKList = JsonConvert.DeserializeObject<List<TargetSDK>>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
+                }
+
+                return response;
+            }
+
+            if((response.StatusCode >= 500 && response.StatusCode < 600))
+            {
+                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+                {
+                    response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
+                }
+
+                return response;
+            }
+            return response;
+        }
+
+
+        public async Task<PostWorkspaceEventsResponse> PostWorkspaceEventsAsync(PostWorkspaceEventsRequest request)
+        {
+            if (request == null)
+            {
+                request = new PostWorkspaceEventsRequest();
+            }
+            request.WorkspaceID ??= SDKConfiguration.WorkspaceID;
+            
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
+            var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/{workspaceID}/events", request);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
+            httpRequest.Headers.Add("user-agent", _userAgent);
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "json", false, false);
+            if (serializedBody != null)
+            {
+                httpRequest.Content = serializedBody;
+            }
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
+            var httpResponse = await client.SendAsync(httpRequest);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+
+            var response = new PostWorkspaceEventsResponse
+            {
+                StatusCode = (int)httpResponse.StatusCode,
+                ContentType = contentType,
+                RawResponse = httpResponse
+            };
+
+            if((response.StatusCode >= 200 && response.StatusCode < 300))
+            {
+
+                return response;
+            }
+
+            if((response.StatusCode >= 500 && response.StatusCode < 600))
+            {
+                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+                {
+                    response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
+                }
+
+                return response;
+            }
+            return response;
+        }
+
     }
 }

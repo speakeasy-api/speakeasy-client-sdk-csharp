@@ -7,8 +7,43 @@ REST APIs for managing Authentication
 
 ### Available Operations
 
+* [GetAccessToken](#getaccesstoken) - Get or refresh an access token for the current workspace.
 * [GetWorkspaceAccess](#getworkspaceaccess) - Get access allowances for a particular workspace
 * [ValidateApiKey](#validateapikey) - Validate the current api key.
+
+## GetAccessToken
+
+Get or refresh an access token for the current workspace.
+
+### Example Usage
+
+```csharp
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
+
+var sdk = new Speakeasy(workspaceID: "<value>");
+
+GetAccessTokenRequest req = new GetAccessTokenRequest() {
+    WorkspaceId = "<value>",
+};
+
+var res = await sdk.Auth.GetAccessTokenAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `request`                                                                 | [GetAccessTokenRequest](../../Models/Operations/GetAccessTokenRequest.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
+
+
+### Response
+
+**[GetAccessTokenResponse](../../Models/Operations/GetAccessTokenResponse.md)**
+
 
 ## GetWorkspaceAccess
 
