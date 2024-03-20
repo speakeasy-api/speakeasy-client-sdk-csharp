@@ -10,6 +10,7 @@
 #nullable enable
 namespace SpeakeasySDK.Models.Operations
 {
+    using SpeakeasySDK.Models.Operations;
     using SpeakeasySDK.Utils;
     
     public class RegisterSchemaRequest

@@ -40,6 +40,7 @@ namespace SpeakeasySDK.Utils
             {
                 new IsoDateTimeSerializer(),
                 new EnumSerializer(),
+                new FlexibleObjectDeserializer()
             };
         }
 

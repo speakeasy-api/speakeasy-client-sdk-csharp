@@ -11,6 +11,7 @@
 namespace SpeakeasySDK.Models.Shared
 {
     using Newtonsoft.Json;
+    using SpeakeasySDK.Models.Shared;
     
     public class ApiKeyDetails
     {
