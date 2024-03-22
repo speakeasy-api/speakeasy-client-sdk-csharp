@@ -31,6 +31,11 @@ namespace SpeakeasySDK
         Task<GetAccessTokenResponse> GetAccessTokenAsync(GetAccessTokenRequest request);
 
         /// <summary>
+        /// Get information about the current user.
+        /// </summary>
+        Task<GetUserResponse> GetUserAsync();
+
+        /// <summary>
         /// Get access allowances for a particular workspace
         /// 
         /// <remarks>
@@ -52,10 +57,10 @@ namespace SpeakeasySDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.1.1";
-        private const string _sdkGenVersion = "2.283.1";
+        private const string _sdkVersion = "5.1.2";
+        private const string _sdkGenVersion = "2.286.7";
         private const string _openapiDocVersion = "0.4.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.1.1 2.283.1 0.4.0 SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.1.2 2.286.7 0.4.0 SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private Func<Security>? _securitySource;
@@ -94,6 +99,46 @@ namespace SpeakeasySDK
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.AccessToken = JsonConvert.DeserializeObject<AccessToken>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
+                }
+
+                return response;
+            }
+                    response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
+            return response;
+        }
+
+
+        public async Task<GetUserResponse> GetUserAsync()
+        {
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
+
+            var urlString = baseUrl + "/v1/user";
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("user-agent", _userAgent);
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
+            var httpResponse = await client.SendAsync(httpRequest);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+
+            var response = new GetUserResponse
+            {
+                StatusCode = (int)httpResponse.StatusCode,
+                ContentType = contentType,
+                RawResponse = httpResponse
+            };
+
+            if((response.StatusCode == 200))
+            {
+                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+                {
+                    response.User = JsonConvert.DeserializeObject<User>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
 
                 return response;

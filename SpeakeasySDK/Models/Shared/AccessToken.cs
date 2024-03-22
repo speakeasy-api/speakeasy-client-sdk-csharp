@@ -27,7 +27,7 @@ namespace SpeakeasySDK.Models.Shared
         public Claims Claims { get; set; } = default!;
 
         [JsonProperty("user")]
-        public User User { get; set; } = default!;
+        public AccessTokenUser User { get; set; } = default!;
 
         [JsonProperty("workspaces")]
         public List<Workspaces>? Workspaces { get; set; }
