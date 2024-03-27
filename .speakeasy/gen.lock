@@ -3,10 +3,10 @@ id: f73d2126-985b-4d69-88ee-b7c69254d8bf
 management:
   docChecksum: 17e2e733dfd588a7103c3c70e91b24b5
   docVersion: 0.4.0
-  speakeasyVersion: 1.219.2
-  generationVersion: 2.286.7
-  releaseVersion: 5.1.2
-  configChecksum: f458212f2aaa0c23c6fc4a78851096f7
+  speakeasyVersion: 1.227.0
+  generationVersion: 2.291.0
+  releaseVersion: 5.2.0
+  configChecksum: 59f3e199781cb1777c44786ac85637b0
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
@@ -16,7 +16,7 @@ features:
     examples: 2.81.3
     globalSecurity: 2.83.4
     globalServerURLs: 2.82.3
-    globals: 2.81.2
+    globals: 2.82.0
     inputOutputModels: 2.83.0
     serverIDs: 2.82.1
 generatedFiles:
@@ -31,9 +31,10 @@ generatedFiles:
   - SpeakeasySDK/Events.cs
   - SpeakeasySDK/Speakeasy.cs
   - global.json
-  - SpeakeasySDK/Utils/BigIntSerializer.cs
-  - SpeakeasySDK/Utils/DecimalSerializer.cs
-  - SpeakeasySDK/Utils/EnumSerializer.cs
+  - SpeakeasySDK/Utils/AnyDeserializer.cs
+  - SpeakeasySDK/Utils/BigIntStrConverter.cs
+  - SpeakeasySDK/Utils/DecimalStrConverter.cs
+  - SpeakeasySDK/Utils/EnumConverter.cs
   - SpeakeasySDK/Utils/FlexibleObjectDeserializer.cs
   - SpeakeasySDK/Utils/HeaderSerializer.cs
   - SpeakeasySDK/Utils/IsoDateTimeSerializer.cs
