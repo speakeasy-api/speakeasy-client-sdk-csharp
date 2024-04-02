@@ -10,7 +10,6 @@
 #nullable enable
 namespace SpeakeasySDK.Models.Operations
 {
-    using SpeakeasySDK.Models.Shared;
     using System.Net.Http;
     using System;
     
@@ -21,8 +20,6 @@ namespace SpeakeasySDK.Models.Operations
         /// HTTP response content type for this operation
         /// </summary>
         public string? ContentType { get; set; } = default!;
-
-        public Error? Error { get; set; }
 
         /// <summary>
         /// HTTP response status code for this operation

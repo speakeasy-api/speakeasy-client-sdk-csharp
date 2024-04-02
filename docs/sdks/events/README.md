@@ -45,7 +45,12 @@ var res = await sdk.Events.GetWorkspaceEventsAsync(req);
 ### Response
 
 **[GetWorkspaceEventsResponse](../../Models/Operations/GetWorkspaceEventsResponse.md)**
+### Errors
 
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.Error        | 5XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## GetWorkspaceTargets
 
@@ -81,7 +86,12 @@ var res = await sdk.Events.GetWorkspaceTargetsAsync(req);
 ### Response
 
 **[GetWorkspaceTargetsResponse](../../Models/Operations/GetWorkspaceTargetsResponse.md)**
+### Errors
 
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.Error        | 5XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## PostWorkspaceEvents
 
@@ -132,4 +142,9 @@ var res = await sdk.Events.PostWorkspaceEventsAsync(req);
 ### Response
 
 **[PostWorkspaceEventsResponse](../../Models/Operations/PostWorkspaceEventsResponse.md)**
+### Errors
 
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.Error        | 5XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |

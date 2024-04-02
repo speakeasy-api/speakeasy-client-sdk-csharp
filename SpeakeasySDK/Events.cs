@@ -11,6 +11,7 @@
 namespace SpeakeasySDK
 {
     using Newtonsoft.Json;
+    using SpeakeasySDK.Models.Errors;
     using SpeakeasySDK.Models.Operations;
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
@@ -53,10 +54,10 @@ namespace SpeakeasySDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.2.0";
-        private const string _sdkGenVersion = "2.291.0";
+        private const string _sdkVersion = "5.3.0";
+        private const string _sdkGenVersion = "2.295.1";
         private const string _openapiDocVersion = "0.4.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.2.0 2.291.0 0.4.0 SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.3.0 2.295.1 0.4.0 SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private Func<Security>? _securitySource;
@@ -92,32 +93,46 @@ namespace SpeakeasySDK
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-
             var response = new GetWorkspaceEventsResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-
-            if((response.StatusCode == 200))
+            if (response.StatusCode == 200)
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+                {                    
+                    var obj = ResponseBodyDeserializer.Deserialize<List<CliEvent>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    response.CliEventBatch = obj;
+                }
+                else
                 {
-                    response.CliEventBatch = JsonConvert.DeserializeObject<List<CliEvent>>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumConverter(), new AnyDeserializer() }});
+                throw new SDKException("API error occurred", (int)httpResponse.StatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
                 }
 
-                return response;
             }
+            else if (response.StatusCode >= 400 && response.StatusCode < 500)
+            {
+                throw new SDKException("API error occurred", (int)httpResponse.StatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
 
-            if((response.StatusCode >= 500 && response.StatusCode < 600))
+            }
+            else if (response.StatusCode >= 500 && response.StatusCode < 600)
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+                {                    
+                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+                else
                 {
-                    response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumConverter(), new AnyDeserializer() }});
+                throw new SDKException("API error occurred", (int)httpResponse.StatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
                 }
 
-                return response;
+            }
+            else
+            {
+                throw new SDKException("unknown status code received", (int)httpResponse.StatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             return response;
         }
@@ -146,32 +161,46 @@ namespace SpeakeasySDK
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-
             var response = new GetWorkspaceTargetsResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-
-            if((response.StatusCode == 200))
+            if (response.StatusCode == 200)
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+                {                    
+                    var obj = ResponseBodyDeserializer.Deserialize<List<TargetSDK>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    response.TargetSDKList = obj;
+                }
+                else
                 {
-                    response.TargetSDKList = JsonConvert.DeserializeObject<List<TargetSDK>>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumConverter(), new AnyDeserializer() }});
+                throw new SDKException("API error occurred", (int)httpResponse.StatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
                 }
 
-                return response;
             }
+            else if (response.StatusCode >= 400 && response.StatusCode < 500)
+            {
+                throw new SDKException("API error occurred", (int)httpResponse.StatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
 
-            if((response.StatusCode >= 500 && response.StatusCode < 600))
+            }
+            else if (response.StatusCode >= 500 && response.StatusCode < 600)
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+                {                    
+                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+                else
                 {
-                    response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumConverter(), new AnyDeserializer() }});
+                throw new SDKException("API error occurred", (int)httpResponse.StatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
                 }
 
-                return response;
+            }
+            else
+            {
+                throw new SDKException("unknown status code received", (int)httpResponse.StatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             return response;
         }
@@ -206,28 +235,37 @@ namespace SpeakeasySDK
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-
             var response = new PostWorkspaceEventsResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-
-            if((response.StatusCode >= 200 && response.StatusCode < 300))
+            if (response.StatusCode >= 200 && response.StatusCode < 300)
             {
 
-                return response;
             }
+            else if (response.StatusCode >= 400 && response.StatusCode < 500)
+            {
+                throw new SDKException("API error occurred", (int)httpResponse.StatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
 
-            if((response.StatusCode >= 500 && response.StatusCode < 600))
+            }
+            else if (response.StatusCode >= 500 && response.StatusCode < 600)
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+                {                    
+                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+                else
                 {
-                    response.Error = JsonConvert.DeserializeObject<Error>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumConverter(), new AnyDeserializer() }});
+                throw new SDKException("API error occurred", (int)httpResponse.StatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
                 }
 
-                return response;
+            }
+            else
+            {
+                throw new SDKException("unknown status code received", (int)httpResponse.StatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             return response;
         }

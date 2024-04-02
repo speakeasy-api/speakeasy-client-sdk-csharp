@@ -8,21 +8,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 #nullable enable
-namespace SpeakeasySDK.Models.Shared
+namespace SpeakeasySDK.Models.Errors
 {
     using Newtonsoft.Json;
+    using System;
     
     /// <summary>
     /// The `Status` type defines a logical error model
     /// </summary>
-    public class Error
+    public class Error : Exception
     {
 
         /// <summary>
         /// A developer-facing error message.
         /// </summary>
         [JsonProperty("message")]
-        public string Message { get; set; } = default!;
+        private string? _message { get; set; }
+        public override string Message { get {return _message ?? "";} }
 
         /// <summary>
         /// The HTTP status code

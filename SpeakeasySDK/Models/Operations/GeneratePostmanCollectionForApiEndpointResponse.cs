@@ -10,7 +10,7 @@
 #nullable enable
 namespace SpeakeasySDK.Models.Operations
 {
-    using SpeakeasySDK.Models.Shared;
+    using SpeakeasySDK.Models.Errors;
     using System.Net.Http;
     using System;
     

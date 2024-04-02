@@ -110,8 +110,6 @@ var res = await sdk.Apis.GetApisAsync(req);
 <!-- Start Server Selection [server] -->
 ## Server Selection
 
-## Server Selection
-
 ### Select Server by Name
 
 You can override the default server globally by passing a server name to the `server: string` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the names associated with the available servers:
@@ -201,6 +199,53 @@ var res = await sdk.Events.GetWorkspaceEventsAsync(req);
 // handle response
 ```
 <!-- End Global Parameters [global-parameters] -->
+
+<!-- Start Error Handling [errors] -->
+## Error Handling
+
+Handling errors in this SDK should largely match your expectations.  All operations return a response object or thow an exception.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate type.
+
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.Error        | 5XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+
+### Example
+
+```csharp
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using System;
+using SpeakeasySDK.Models.Errors;
+using SpeakeasySDK.Models.Operations;
+
+var sdk = new Speakeasy(
+    security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    },
+    workspaceID: "<value>");
+
+GetWorkspaceEventsRequest req = new GetWorkspaceEventsRequest() {};
+
+try
+{
+    var res = await sdk.Events.GetWorkspaceEventsAsync(req);
+    // handle response
+}
+catch (Exception ex)
+{
+    if (ex is Error)
+    {
+        // handle exception
+    }
+    else if (ex is SpeakeasySDK.Models.Errors.SDKException)
+    {
+        // handle exception
+    }
+}
+
+```
+<!-- End Error Handling [errors] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

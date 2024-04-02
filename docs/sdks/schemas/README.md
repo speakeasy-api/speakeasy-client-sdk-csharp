@@ -54,7 +54,11 @@ var res = await sdk.Schemas.DeleteSchemaAsync(req);
 ### Response
 
 **[DeleteSchemaResponse](../../Models/Operations/DeleteSchemaResponse.md)**
+### Errors
 
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## DownloadSchema
 
@@ -93,7 +97,11 @@ var res = await sdk.Schemas.DownloadSchemaAsync(req);
 ### Response
 
 **[DownloadSchemaResponse](../../Models/Operations/DownloadSchemaResponse.md)**
+### Errors
 
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## DownloadSchemaRevision
 
@@ -133,7 +141,11 @@ var res = await sdk.Schemas.DownloadSchemaRevisionAsync(req);
 ### Response
 
 **[DownloadSchemaRevisionResponse](../../Models/Operations/DownloadSchemaRevisionResponse.md)**
+### Errors
 
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## GetSchema
 
@@ -173,7 +185,11 @@ var res = await sdk.Schemas.GetSchemaAsync(req);
 ### Response
 
 **[GetSchemaResponse](../../Models/Operations/GetSchemaResponse.md)**
+### Errors
 
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## GetSchemaDiff
 
@@ -214,7 +230,11 @@ var res = await sdk.Schemas.GetSchemaDiffAsync(req);
 ### Response
 
 **[GetSchemaDiffResponse](../../Models/Operations/GetSchemaDiffResponse.md)**
+### Errors
 
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## GetSchemaRevision
 
@@ -255,7 +275,11 @@ var res = await sdk.Schemas.GetSchemaRevisionAsync(req);
 ### Response
 
 **[GetSchemaRevisionResponse](../../Models/Operations/GetSchemaRevisionResponse.md)**
+### Errors
 
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## GetSchemas
 
@@ -295,7 +319,11 @@ var res = await sdk.Schemas.GetSchemasAsync(req);
 ### Response
 
 **[GetSchemasResponse](../../Models/Operations/GetSchemasResponse.md)**
+### Errors
 
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## RegisterSchema
 
@@ -341,4 +369,8 @@ var res = await sdk.Schemas.RegisterSchemaAsync(req);
 ### Response
 
 **[RegisterSchemaResponse](../../Models/Operations/RegisterSchemaResponse.md)**
+### Errors
 
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |

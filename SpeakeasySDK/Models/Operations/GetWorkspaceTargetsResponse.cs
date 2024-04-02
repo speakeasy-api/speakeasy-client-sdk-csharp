@@ -23,8 +23,6 @@ namespace SpeakeasySDK.Models.Operations
         /// </summary>
         public string? ContentType { get; set; } = default!;
 
-        public Error? Error { get; set; }
-
         /// <summary>
         /// HTTP response status code for this operation
         /// </summary>

@@ -30,4 +30,8 @@ var res = await sdk.Organizations.GetOrganizationsAsync();
 ### Response
 
 **[GetOrganizationsResponse](../../Models/Operations/GetOrganizationsResponse.md)**
+### Errors
 
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |

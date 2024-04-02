@@ -54,7 +54,11 @@ var res = await sdk.ApiEndpoints.DeleteApiEndpointAsync(req);
 ### Response
 
 **[DeleteApiEndpointResponse](../../Models/Operations/DeleteApiEndpointResponse.md)**
+### Errors
 
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## FindApiEndpoint
 
@@ -95,7 +99,11 @@ var res = await sdk.ApiEndpoints.FindApiEndpointAsync(req);
 ### Response
 
 **[FindApiEndpointResponse](../../Models/Operations/FindApiEndpointResponse.md)**
+### Errors
 
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## GenerateOpenApiSpecForApiEndpoint
 
@@ -136,7 +144,11 @@ var res = await sdk.ApiEndpoints.GenerateOpenApiSpecForApiEndpointAsync(req);
 ### Response
 
 **[GenerateOpenApiSpecForApiEndpointResponse](../../Models/Operations/GenerateOpenApiSpecForApiEndpointResponse.md)**
+### Errors
 
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## GeneratePostmanCollectionForApiEndpoint
 
@@ -176,7 +188,11 @@ var res = await sdk.ApiEndpoints.GeneratePostmanCollectionForApiEndpointAsync(re
 ### Response
 
 **[GeneratePostmanCollectionForApiEndpointResponse](../../Models/Operations/GeneratePostmanCollectionForApiEndpointResponse.md)**
+### Errors
 
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## GetAllApiEndpoints
 
@@ -214,7 +230,11 @@ var res = await sdk.ApiEndpoints.GetAllApiEndpointsAsync(req);
 ### Response
 
 **[GetAllApiEndpointsResponse](../../Models/Operations/GetAllApiEndpointsResponse.md)**
+### Errors
 
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## GetAllForVersionApiEndpoints
 
@@ -253,7 +273,11 @@ var res = await sdk.ApiEndpoints.GetAllForVersionApiEndpointsAsync(req);
 ### Response
 
 **[GetAllForVersionApiEndpointsResponse](../../Models/Operations/GetAllForVersionApiEndpointsResponse.md)**
+### Errors
 
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## GetApiEndpoint
 
@@ -293,7 +317,11 @@ var res = await sdk.ApiEndpoints.GetApiEndpointAsync(req);
 ### Response
 
 **[GetApiEndpointResponse](../../Models/Operations/GetApiEndpointResponse.md)**
+### Errors
 
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## UpsertApiEndpoint
 
@@ -341,4 +369,8 @@ var res = await sdk.ApiEndpoints.UpsertApiEndpointAsync(req);
 ### Response
 
 **[UpsertApiEndpointResponse](../../Models/Operations/UpsertApiEndpointResponse.md)**
+### Errors
 
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |

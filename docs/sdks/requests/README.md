@@ -48,7 +48,11 @@ var res = await sdk.Requests.GenerateRequestPostmanCollectionAsync(req);
 ### Response
 
 **[GenerateRequestPostmanCollectionResponse](../../Models/Operations/GenerateRequestPostmanCollectionResponse.md)**
+### Errors
 
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## GetRequestFromEventLog
 
@@ -86,7 +90,11 @@ var res = await sdk.Requests.GetRequestFromEventLogAsync(req);
 ### Response
 
 **[GetRequestFromEventLogResponse](../../Models/Operations/GetRequestFromEventLogResponse.md)**
+### Errors
 
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## QueryEventLog
 
@@ -124,4 +132,8 @@ var res = await sdk.Requests.QueryEventLogAsync(req);
 ### Response
 
 **[QueryEventLogResponse](../../Models/Operations/QueryEventLogResponse.md)**
+### Errors
 
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |

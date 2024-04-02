@@ -3,20 +3,20 @@ id: f73d2126-985b-4d69-88ee-b7c69254d8bf
 management:
   docChecksum: 17e2e733dfd588a7103c3c70e91b24b5
   docVersion: 0.4.0
-  speakeasyVersion: 1.227.0
-  generationVersion: 2.291.0
-  releaseVersion: 5.2.0
-  configChecksum: 59f3e199781cb1777c44786ac85637b0
+  speakeasyVersion: 1.231.1
+  generationVersion: 2.295.1
+  releaseVersion: 5.3.0
+  configChecksum: 1425c39d2e4c4dccb363cc440de60bb9
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
 features:
   csharp:
-    core: 3.4.3
+    core: 3.6.0
     examples: 2.81.3
     globalSecurity: 2.83.4
     globalServerURLs: 2.82.3
-    globals: 2.82.0
+    globals: 2.82.1
     inputOutputModels: 2.83.0
     serverIDs: 2.82.1
 generatedFiles:
@@ -31,6 +31,7 @@ generatedFiles:
   - SpeakeasySDK/Events.cs
   - SpeakeasySDK/Speakeasy.cs
   - global.json
+  - SpeakeasySDK.sln
   - SpeakeasySDK/Utils/AnyDeserializer.cs
   - SpeakeasySDK/Utils/BigIntStrConverter.cs
   - SpeakeasySDK/Utils/DecimalStrConverter.cs
@@ -39,13 +40,14 @@ generatedFiles:
   - SpeakeasySDK/Utils/HeaderSerializer.cs
   - SpeakeasySDK/Utils/IsoDateTimeSerializer.cs
   - SpeakeasySDK/Utils/RequestBodySerializer.cs
+  - SpeakeasySDK/Utils/ResponseBodyDeserializer.cs
   - SpeakeasySDK/Utils/SecuritySerializer.cs
   - SpeakeasySDK/Utils/SpeakeasyHttpClient.cs
   - SpeakeasySDK/Utils/SpeakeasyMetadata.cs
   - SpeakeasySDK/Utils/URLBuilder.cs
   - SpeakeasySDK/Utils/Utilities.cs
   - SpeakeasySDK/SpeakeasySDK.csproj
-  - SpeakeasySDK.sln
+  - SpeakeasySDK/Models/Errors/SDKException.cs
   - SpeakeasySDK/Models/Operations/DeleteApiRequest.cs
   - SpeakeasySDK/Models/Operations/DeleteApiResponse.cs
   - SpeakeasySDK/Models/Operations/GenerateOpenApiSpecRequest.cs
@@ -124,7 +126,7 @@ generatedFiles:
   - SpeakeasySDK/Models/Operations/GetWorkspaceTargetsResponse.cs
   - SpeakeasySDK/Models/Operations/PostWorkspaceEventsRequest.cs
   - SpeakeasySDK/Models/Operations/PostWorkspaceEventsResponse.cs
-  - SpeakeasySDK/Models/Shared/Error.cs
+  - SpeakeasySDK/Models/Errors/Error.cs
   - SpeakeasySDK/Models/Shared/GenerateOpenApiSpecDiff.cs
   - SpeakeasySDK/Models/Shared/Api.cs
   - SpeakeasySDK/Models/Shared/ApiInput.cs
@@ -236,7 +238,7 @@ generatedFiles:
   - docs/Models/Operations/GetWorkspaceTargetsResponse.md
   - docs/Models/Operations/PostWorkspaceEventsRequest.md
   - docs/Models/Operations/PostWorkspaceEventsResponse.md
-  - docs/Models/Shared/Error.md
+  - docs/Models/Errors/Error.md
   - docs/Models/Shared/GenerateOpenApiSpecDiff.md
   - docs/Models/Shared/Api.md
   - docs/Models/Shared/ApiInput.md

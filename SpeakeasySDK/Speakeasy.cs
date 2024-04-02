@@ -11,6 +11,7 @@
 namespace SpeakeasySDK
 {
     using Newtonsoft.Json;
+    using SpeakeasySDK.Models.Errors;
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System.Collections.Generic;
@@ -120,10 +121,10 @@ namespace SpeakeasySDK
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.2.0";
-        private const string _sdkGenVersion = "2.291.0";
+        private const string _sdkVersion = "5.3.0";
+        private const string _sdkGenVersion = "2.295.1";
         private const string _openapiDocVersion = "0.4.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.2.0 2.291.0 0.4.0 SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.3.0 2.295.1 0.4.0 SpeakeasySDK";
         private string _serverUrl = "";
         private SDKConfig.Server? _server = null;
         private ISpeakeasyHttpClient _defaultClient;

@@ -44,7 +44,11 @@ var res = await sdk.Auth.GetAccessTokenAsync(req);
 ### Response
 
 **[GetAccessTokenResponse](../../Models/Operations/GetAccessTokenResponse.md)**
+### Errors
 
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## GetUser
 
@@ -71,7 +75,11 @@ var res = await sdk.Auth.GetUserAsync();
 ### Response
 
 **[GetUserResponse](../../Models/Operations/GetUserResponse.md)**
+### Errors
 
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## GetWorkspaceAccess
 
@@ -107,7 +115,11 @@ var res = await sdk.Auth.GetWorkspaceAccessAsync(req);
 ### Response
 
 **[GetWorkspaceAccessResponse](../../Models/Operations/GetWorkspaceAccessResponse.md)**
+### Errors
 
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## ValidateApiKey
 
@@ -134,4 +146,8 @@ var res = await sdk.Auth.ValidateApiKeyAsync();
 ### Response
 
 **[ValidateApiKeyResponse](../../Models/Operations/ValidateApiKeyResponse.md)**
+### Errors
 
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |

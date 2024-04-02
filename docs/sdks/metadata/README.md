@@ -50,7 +50,11 @@ var res = await sdk.Metadata.DeleteVersionMetadataAsync(req);
 ### Response
 
 **[DeleteVersionMetadataResponse](../../Models/Operations/DeleteVersionMetadataResponse.md)**
+### Errors
 
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## GetVersionMetadata
 
@@ -89,7 +93,11 @@ var res = await sdk.Metadata.GetVersionMetadataAsync(req);
 ### Response
 
 **[GetVersionMetadataResponse](../../Models/Operations/GetVersionMetadataResponse.md)**
+### Errors
 
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## InsertVersionMetadata
 
@@ -132,4 +140,8 @@ var res = await sdk.Metadata.InsertVersionMetadataAsync(req);
 ### Response
 
 **[InsertVersionMetadataResponse](../../Models/Operations/InsertVersionMetadataResponse.md)**
+### Errors
 
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
