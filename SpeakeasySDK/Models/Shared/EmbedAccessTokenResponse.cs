@@ -11,6 +11,7 @@
 namespace SpeakeasySDK.Models.Shared
 {
     using Newtonsoft.Json;
+    using SpeakeasySDK.Utils;
     
     /// <summary>
     /// An EmbedAccessTokenResponse contains a token that can be used to embed a Speakeasy dashboard.

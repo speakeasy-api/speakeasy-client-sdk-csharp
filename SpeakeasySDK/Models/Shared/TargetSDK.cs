@@ -12,6 +12,7 @@ namespace SpeakeasySDK.Models.Shared
 {
     using Newtonsoft.Json;
     using SpeakeasySDK.Models.Shared;
+    using SpeakeasySDK.Utils;
     using System;
     
     public class TargetSDK

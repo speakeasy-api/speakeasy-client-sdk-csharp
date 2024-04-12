@@ -11,6 +11,7 @@
 namespace SpeakeasySDK.Models.Errors
 {
     using Newtonsoft.Json;
+    using SpeakeasySDK.Utils;
     using System;
     
     /// <summary>

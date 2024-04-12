@@ -11,6 +11,7 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Models.Errors;
+    using SpeakeasySDK.Utils;
     using System.Net.Http;
     using System;
     

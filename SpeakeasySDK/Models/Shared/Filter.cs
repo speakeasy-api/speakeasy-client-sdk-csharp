@@ -11,6 +11,7 @@
 namespace SpeakeasySDK.Models.Shared
 {
     using Newtonsoft.Json;
+    using SpeakeasySDK.Utils;
     
     /// <summary>
     /// A filter is a key-value pair that can be used to filter a list of requests.

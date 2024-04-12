@@ -75,6 +75,12 @@ var res = await sdk.Apis.GetApisAsync(req);
 * [GetSchemas](docs/sdks/schemas/README.md#getschemas) - Get information about all schemas associated with a particular apiID.
 * [RegisterSchema](docs/sdks/schemas/README.md#registerschema) - Register a schema.
 
+### [Artifacts](docs/sdks/artifacts/README.md)
+
+* [GetNamespaces](docs/sdks/artifacts/README.md#getnamespaces) - Each namespace contains many revisions.
+* [GetRevisions](docs/sdks/artifacts/README.md#getrevisions)
+* [Preflight](docs/sdks/artifacts/README.md#preflight) - Get access token for communicating with OCI distribution endpoints
+
 ### [Auth](docs/sdks/auth/README.md)
 
 * [GetAccessToken](docs/sdks/auth/README.md#getaccesstoken) - Get or refresh an access token for the current workspace.

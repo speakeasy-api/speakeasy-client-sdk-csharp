@@ -1,29 +1,31 @@
 lockVersion: 2.0.0
 id: f73d2126-985b-4d69-88ee-b7c69254d8bf
 management:
-  docChecksum: 17e2e733dfd588a7103c3c70e91b24b5
+  docChecksum: 5cec61dd888a82ca19ee8faa021b6fcf
   docVersion: 0.4.0
-  speakeasyVersion: 1.231.1
-  generationVersion: 2.295.1
-  releaseVersion: 5.3.0
-  configChecksum: 1425c39d2e4c4dccb363cc440de60bb9
+  speakeasyVersion: 1.250.0
+  generationVersion: 2.304.1
+  releaseVersion: 5.4.0
+  configChecksum: 0775e6933286f76de6b266b474d16a22
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
 features:
   csharp:
-    core: 3.6.0
+    core: 3.7.0
     examples: 2.81.3
     globalSecurity: 2.83.4
     globalServerURLs: 2.82.3
     globals: 2.82.1
     inputOutputModels: 2.83.0
+    responseFormat: 0.0.1
     serverIDs: 2.82.1
 generatedFiles:
   - SpeakeasySDK/Apis.cs
   - SpeakeasySDK/ApiEndpoints.cs
   - SpeakeasySDK/Metadata.cs
   - SpeakeasySDK/Schemas.cs
+  - SpeakeasySDK/Artifacts.cs
   - SpeakeasySDK/Auth.cs
   - SpeakeasySDK/Requests.cs
   - SpeakeasySDK/Organizations.cs
@@ -102,6 +104,10 @@ generatedFiles:
   - SpeakeasySDK/Models/Operations/RegisterSchemaRequestBody.cs
   - SpeakeasySDK/Models/Operations/RegisterSchemaRequest.cs
   - SpeakeasySDK/Models/Operations/RegisterSchemaResponse.cs
+  - SpeakeasySDK/Models/Operations/GetNamespacesResponse.cs
+  - SpeakeasySDK/Models/Operations/GetRevisionsRequest.cs
+  - SpeakeasySDK/Models/Operations/GetRevisionsResponse.cs
+  - SpeakeasySDK/Models/Operations/PreflightResponse.cs
   - SpeakeasySDK/Models/Operations/GetAccessTokenRequest.cs
   - SpeakeasySDK/Models/Operations/GetAccessTokenResponse.cs
   - SpeakeasySDK/Models/Operations/GetUserResponse.cs
@@ -137,6 +143,11 @@ generatedFiles:
   - SpeakeasySDK/Models/Shared/Schema.cs
   - SpeakeasySDK/Models/Shared/ValueChange.cs
   - SpeakeasySDK/Models/Shared/SchemaDiff.cs
+  - SpeakeasySDK/Models/Shared/GetNamespacesResponse.cs
+  - SpeakeasySDK/Models/Shared/Namespace.cs
+  - SpeakeasySDK/Models/Shared/GetRevisionsResponse.cs
+  - SpeakeasySDK/Models/Shared/Revision.cs
+  - SpeakeasySDK/Models/Shared/PreflightToken.cs
   - SpeakeasySDK/Models/Shared/Claims.cs
   - SpeakeasySDK/Models/Shared/AccessTokenUser.cs
   - SpeakeasySDK/Models/Shared/Workspaces.cs
@@ -214,6 +225,10 @@ generatedFiles:
   - docs/Models/Operations/RegisterSchemaRequestBody.md
   - docs/Models/Operations/RegisterSchemaRequest.md
   - docs/Models/Operations/RegisterSchemaResponse.md
+  - docs/Models/Operations/GetNamespacesResponse.md
+  - docs/Models/Operations/GetRevisionsRequest.md
+  - docs/Models/Operations/GetRevisionsResponse.md
+  - docs/Models/Operations/PreflightResponse.md
   - docs/Models/Operations/GetAccessTokenRequest.md
   - docs/Models/Operations/GetAccessTokenResponse.md
   - docs/Models/Operations/GetUserResponse.md
@@ -249,6 +264,11 @@ generatedFiles:
   - docs/Models/Shared/Schema.md
   - docs/Models/Shared/ValueChange.md
   - docs/Models/Shared/SchemaDiff.md
+  - docs/Models/Shared/GetNamespacesResponse.md
+  - docs/Models/Shared/Namespace.md
+  - docs/Models/Shared/GetRevisionsResponse.md
+  - docs/Models/Shared/Revision.md
+  - docs/Models/Shared/PreflightToken.md
   - docs/Models/Shared/Claims.md
   - docs/Models/Shared/AccessTokenUser.md
   - docs/Models/Shared/Workspaces.md
@@ -277,6 +297,7 @@ generatedFiles:
   - docs/sdks/apiendpoints/README.md
   - docs/sdks/metadata/README.md
   - docs/sdks/schemas/README.md
+  - docs/sdks/artifacts/README.md
   - docs/sdks/auth/README.md
   - docs/sdks/requests/README.md
   - docs/sdks/organizations/README.md

@@ -46,6 +46,7 @@ namespace SpeakeasySDK
         /// REST APIs for managing Schema entities
         /// </summary>
         public ISchemas Schemas { get; }
+        public IArtifacts Artifacts { get; }
 
         /// <summary>
         /// REST APIs for managing Authentication
@@ -121,10 +122,10 @@ namespace SpeakeasySDK
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.3.0";
-        private const string _sdkGenVersion = "2.295.1";
+        private const string _sdkVersion = "5.4.0";
+        private const string _sdkGenVersion = "2.304.1";
         private const string _openapiDocVersion = "0.4.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.3.0 2.295.1 0.4.0 SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.4.0 2.304.1 0.4.0 SpeakeasySDK";
         private string _serverUrl = "";
         private SDKConfig.Server? _server = null;
         private ISpeakeasyHttpClient _defaultClient;
@@ -133,6 +134,7 @@ namespace SpeakeasySDK
         public IApiEndpoints ApiEndpoints { get; private set; }
         public IMetadata Metadata { get; private set; }
         public ISchemas Schemas { get; private set; }
+        public IArtifacts Artifacts { get; private set; }
         public IAuth Auth { get; private set; }
         public IRequests Requests { get; private set; }
         public IOrganizations Organizations { get; private set; }
@@ -177,6 +179,7 @@ namespace SpeakeasySDK
             ApiEndpoints = new ApiEndpoints(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
             Metadata = new Metadata(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
             Schemas = new Schemas(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+            Artifacts = new Artifacts(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
             Auth = new Auth(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
             Requests = new Requests(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
             Organizations = new Organizations(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);

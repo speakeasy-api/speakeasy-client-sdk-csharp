@@ -11,6 +11,7 @@
 namespace SpeakeasySDK.Models.Shared
 {
     using Newtonsoft.Json;
+    using SpeakeasySDK.Utils;
     
     /// <summary>
     /// A set of keys and associated values, attached to a particular version of an Api.

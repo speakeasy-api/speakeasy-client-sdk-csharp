@@ -11,6 +11,7 @@
 namespace SpeakeasySDK.Models.Shared
 {
     using Newtonsoft.Json;
+    using SpeakeasySDK.Utils;
     
     /// <summary>
     /// An ApiEndpoint is a description of an Endpoint for an API.
