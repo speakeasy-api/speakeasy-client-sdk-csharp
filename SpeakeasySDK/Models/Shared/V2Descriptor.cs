@@ -11,31 +11,37 @@
 namespace SpeakeasySDK.Models.Shared
 {
     using Newtonsoft.Json;
+    using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
-    using System;
     
     /// <summary>
-    /// A namespace contains many revisions.
+    /// V2 descriptor
     /// </summary>
-    public class Namespace
+    public class V2Descriptor
     {
 
-        [JsonProperty("created_at")]
-        public DateTime CreatedAt { get; set; } = default!;
+        /// <summary>
+        /// Annotations
+        /// </summary>
+        [JsonProperty("annotations")]
+        public Annotations? Annotations { get; set; }
 
         /// <summary>
-        /// {organization_slug}/{workspace_slug}/{namespace_name}
+        /// Digest
         /// </summary>
-        [JsonProperty("id")]
-        public string Id { get; set; } = default!;
+        [JsonProperty("digest")]
+        public string? Digest { get; set; }
 
         /// <summary>
-        /// A human-readable name for the namespace.
+        /// Media type
         /// </summary>
-        [JsonProperty("name")]
-        public string Name { get; set; } = default!;
+        [JsonProperty("mediaType")]
+        public string? MediaType { get; set; }
 
-        [JsonProperty("updated_at")]
-        public DateTime UpdatedAt { get; set; } = default!;
+        /// <summary>
+        /// Size
+        /// </summary>
+        [JsonProperty("size")]
+        public long? Size { get; set; }
     }
 }

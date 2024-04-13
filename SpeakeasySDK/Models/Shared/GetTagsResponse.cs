@@ -11,15 +11,14 @@
 namespace SpeakeasySDK.Models.Shared
 {
     using Newtonsoft.Json;
+    using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
+    using System.Collections.Generic;
     
-    /// <summary>
-    /// A PreflightToken is a token that allows access to the OCI distribution endpoints.
-    /// </summary>
-    public class PreflightToken
+    public class GetTagsResponse
     {
 
-        [JsonProperty("auth_token")]
-        public string? AuthToken { get; set; }
+        [JsonProperty("items")]
+        public List<Tag> Items { get; set; } = default!;
     }
 }

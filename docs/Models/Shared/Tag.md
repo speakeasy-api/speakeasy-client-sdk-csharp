@@ -1,6 +1,4 @@
-# Namespace
-
-A namespace contains many revisions.
+# Tag
 
 
 ## Fields
@@ -8,6 +6,7 @@ A namespace contains many revisions.
 | Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
 | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | `CreatedAt`                                                                           | [DateTime](https://learn.microsoft.com/en-us/dotnet/api/system.datetime?view=net-5.0) | :heavy_check_mark:                                                                    | N/A                                                                                   |
-| `Id`                                                                                  | *string*                                                                              | :heavy_check_mark:                                                                    | {organization_slug}/{workspace_slug}/{namespace_name}                                 |
-| `Name`                                                                                | *string*                                                                              | :heavy_check_mark:                                                                    | A human-readable name for the namespace.                                              |
+| `Id`                                                                                  | *string*                                                                              | :heavy_check_mark:                                                                    | Human readable tag name                                                               |
+| `NamespaceName`                                                                       | *string*                                                                              | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `RevisionId`                                                                          | *string*                                                                              | :heavy_check_mark:                                                                    | N/A                                                                                   |
 | `UpdatedAt`                                                                           | [DateTime](https://learn.microsoft.com/en-us/dotnet/api/system.datetime?view=net-5.0) | :heavy_check_mark:                                                                    | N/A                                                                                   |

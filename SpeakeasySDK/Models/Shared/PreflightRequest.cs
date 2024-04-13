@@ -12,28 +12,11 @@ namespace SpeakeasySDK.Models.Shared
 {
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
-    using System.Collections.Generic;
-    using System;
     
-    public class Revision
+    public class PreflightRequest
     {
-
-        [JsonProperty("created_at")]
-        public DateTime CreatedAt { get; set; } = default!;
-
-        /// <summary>
-        /// aka digest
-        /// </summary>
-        [JsonProperty("id")]
-        public string Id { get; set; } = default!;
 
         [JsonProperty("namespace_name")]
         public string NamespaceName { get; set; } = default!;
-
-        [JsonProperty("tags")]
-        public List<string> Tags { get; set; } = default!;
-
-        [JsonProperty("updated_at")]
-        public DateTime UpdatedAt { get; set; } = default!;
     }
 }

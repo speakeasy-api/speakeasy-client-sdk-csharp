@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f73d2126-985b-4d69-88ee-b7c69254d8bf
 management:
-  docChecksum: 5cec61dd888a82ca19ee8faa021b6fcf
+  docChecksum: 1867bd7891d65aa46bdee0032e33c25a
   docVersion: 0.4.0
-  speakeasyVersion: 1.250.0
-  generationVersion: 2.304.1
-  releaseVersion: 5.4.0
-  configChecksum: 0775e6933286f76de6b266b474d16a22
+  speakeasyVersion: 1.252.0
+  generationVersion: 2.306.0
+  releaseVersion: 5.4.1
+  configChecksum: 97d6953611a64e1a83f4dc6b56d3b652
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
@@ -104,9 +104,15 @@ generatedFiles:
   - SpeakeasySDK/Models/Operations/RegisterSchemaRequestBody.cs
   - SpeakeasySDK/Models/Operations/RegisterSchemaRequest.cs
   - SpeakeasySDK/Models/Operations/RegisterSchemaResponse.cs
+  - SpeakeasySDK/Models/Operations/GetBlobRequest.cs
+  - SpeakeasySDK/Models/Operations/GetBlobResponse.cs
+  - SpeakeasySDK/Models/Operations/GetManifestRequest.cs
+  - SpeakeasySDK/Models/Operations/GetManifestResponse.cs
   - SpeakeasySDK/Models/Operations/GetNamespacesResponse.cs
   - SpeakeasySDK/Models/Operations/GetRevisionsRequest.cs
   - SpeakeasySDK/Models/Operations/GetRevisionsResponse.cs
+  - SpeakeasySDK/Models/Operations/GetTagsRequest.cs
+  - SpeakeasySDK/Models/Operations/GetTagsResponse.cs
   - SpeakeasySDK/Models/Operations/PreflightResponse.cs
   - SpeakeasySDK/Models/Operations/GetAccessTokenRequest.cs
   - SpeakeasySDK/Models/Operations/GetAccessTokenResponse.cs
@@ -143,11 +149,17 @@ generatedFiles:
   - SpeakeasySDK/Models/Shared/Schema.cs
   - SpeakeasySDK/Models/Shared/ValueChange.cs
   - SpeakeasySDK/Models/Shared/SchemaDiff.cs
+  - SpeakeasySDK/Models/Shared/Manifest.cs
+  - SpeakeasySDK/Models/Shared/V2Descriptor.cs
+  - SpeakeasySDK/Models/Shared/Annotations.cs
   - SpeakeasySDK/Models/Shared/GetNamespacesResponse.cs
   - SpeakeasySDK/Models/Shared/Namespace.cs
   - SpeakeasySDK/Models/Shared/GetRevisionsResponse.cs
   - SpeakeasySDK/Models/Shared/Revision.cs
+  - SpeakeasySDK/Models/Shared/GetTagsResponse.cs
+  - SpeakeasySDK/Models/Shared/Tag.cs
   - SpeakeasySDK/Models/Shared/PreflightToken.cs
+  - SpeakeasySDK/Models/Shared/PreflightRequest.cs
   - SpeakeasySDK/Models/Shared/Claims.cs
   - SpeakeasySDK/Models/Shared/AccessTokenUser.cs
   - SpeakeasySDK/Models/Shared/Workspaces.cs
@@ -225,9 +237,15 @@ generatedFiles:
   - docs/Models/Operations/RegisterSchemaRequestBody.md
   - docs/Models/Operations/RegisterSchemaRequest.md
   - docs/Models/Operations/RegisterSchemaResponse.md
+  - docs/Models/Operations/GetBlobRequest.md
+  - docs/Models/Operations/GetBlobResponse.md
+  - docs/Models/Operations/GetManifestRequest.md
+  - docs/Models/Operations/GetManifestResponse.md
   - docs/Models/Operations/GetNamespacesResponse.md
   - docs/Models/Operations/GetRevisionsRequest.md
   - docs/Models/Operations/GetRevisionsResponse.md
+  - docs/Models/Operations/GetTagsRequest.md
+  - docs/Models/Operations/GetTagsResponse.md
   - docs/Models/Operations/PreflightResponse.md
   - docs/Models/Operations/GetAccessTokenRequest.md
   - docs/Models/Operations/GetAccessTokenResponse.md
@@ -264,11 +282,17 @@ generatedFiles:
   - docs/Models/Shared/Schema.md
   - docs/Models/Shared/ValueChange.md
   - docs/Models/Shared/SchemaDiff.md
+  - docs/Models/Shared/Manifest.md
+  - docs/Models/Shared/V2Descriptor.md
+  - docs/Models/Shared/Annotations.md
   - docs/Models/Shared/GetNamespacesResponse.md
   - docs/Models/Shared/Namespace.md
   - docs/Models/Shared/GetRevisionsResponse.md
   - docs/Models/Shared/Revision.md
+  - docs/Models/Shared/GetTagsResponse.md
+  - docs/Models/Shared/Tag.md
   - docs/Models/Shared/PreflightToken.md
+  - docs/Models/Shared/PreflightRequest.md
   - docs/Models/Shared/Claims.md
   - docs/Models/Shared/AccessTokenUser.md
   - docs/Models/Shared/Workspaces.md

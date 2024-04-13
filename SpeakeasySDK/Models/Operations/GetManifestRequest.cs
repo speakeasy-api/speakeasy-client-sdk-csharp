@@ -12,16 +12,19 @@ namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Utils;
     
-    public class GetRevisionsRequest
+    public class GetManifestRequest
     {
 
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=namespace_name")]
         public string NamespaceName { get; set; } = default!;
 
-        /// <summary>
-        /// Token to retrieve the next page of results
-        /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=next_page_token")]
-        public string? NextPageToken { get; set; }
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=organization_slug")]
+        public string OrganizationSlug { get; set; } = default!;
+
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=revision_reference")]
+        public string RevisionReference { get; set; } = default!;
+
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=workspace_slug")]
+        public string WorkspaceSlug { get; set; } = default!;
     }
 }
