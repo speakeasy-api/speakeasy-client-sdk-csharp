@@ -10,16 +10,15 @@
 #nullable enable
 namespace SpeakeasySDK.Models.Operations
 {
-    using SpeakeasySDK.Models.Operations;
     using SpeakeasySDK.Utils;
     
-    /// <summary>
-    /// The schema file to upload provided as a multipart/form-data file segment.
-    /// </summary>
-    public class RegisterSchemaRequestBody
+    public class RegisterSchemaFile
     {
 
-        [SpeakeasyMetadata("multipartForm:file")]
-        public RegisterSchemaFile File { get; set; } = default!;
+        [SpeakeasyMetadata("multipartForm:content")]
+        public byte[] Content { get; set; } = default!;
+
+        [SpeakeasyMetadata("multipartForm:name=file")]
+        public string FileName { get; set; } = default!;
     }
 }

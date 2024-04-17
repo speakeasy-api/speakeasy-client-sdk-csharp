@@ -21,8 +21,11 @@ namespace SpeakeasySDK.Models.Shared
         [JsonProperty("created_at")]
         public DateTime CreatedAt { get; set; } = default!;
 
+        [JsonProperty("digest")]
+        public string Digest { get; set; } = default!;
+
         /// <summary>
-        /// aka digest
+        /// Format {namespace_id}/{revision_digest}
         /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; } = default!;

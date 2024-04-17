@@ -1,10 +1,8 @@
-# RegisterSchemaRequestBody
-
-The schema file to upload provided as a multipart/form-data file segment.
+# GetLintingReportSignedUrlRequest
 
 
 ## Fields
 
 | Field                                                               | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `File`                                                              | [RegisterSchemaFile](../../Models/Operations/RegisterSchemaFile.md) | :heavy_check_mark:                                                  | N/A                                                                 |
+| `DocumentChecksum`                                                  | *string*                                                            | :heavy_check_mark:                                                  | The checksum of the document to retrieve the signed access url for. |

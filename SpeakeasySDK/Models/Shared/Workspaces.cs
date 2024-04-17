@@ -10,9 +10,24 @@
 #nullable enable
 namespace SpeakeasySDK.Models.Shared
 {
+    using Newtonsoft.Json;
+    using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
+    using System;
     
     public class Workspaces
     {
+
+        [JsonProperty("account_type")]
+        public AccessTokenAccountType? AccountType { get; set; }
+
+        [JsonProperty("id")]
+        public string? Id { get; set; }
+
+        [JsonProperty("name")]
+        public string? Name { get; set; }
+
+        [JsonProperty("updated_at")]
+        public DateTime? UpdatedAt { get; set; }
     }
 }

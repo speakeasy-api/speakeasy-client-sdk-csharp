@@ -12,27 +12,26 @@ namespace SpeakeasySDK.Models.Shared
 {
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
-    using System;
     
     public class Tag
     {
 
-        [JsonProperty("created_at")]
-        public DateTime CreatedAt { get; set; } = default!;
-
         /// <summary>
-        /// Human readable tag name
+        /// Format {namespace_id}/{tag}
         /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; } = default!;
 
+        /// <summary>
+        /// Human readable tag name
+        /// </summary>
+        [JsonProperty("name")]
+        public string Name { get; set; } = default!;
+
         [JsonProperty("namespace_name")]
         public string NamespaceName { get; set; } = default!;
 
-        [JsonProperty("revision_id")]
-        public string RevisionId { get; set; } = default!;
-
-        [JsonProperty("updated_at")]
-        public DateTime UpdatedAt { get; set; } = default!;
+        [JsonProperty("revision_digest")]
+        public string RevisionDigest { get; set; } = default!;
     }
 }

@@ -345,7 +345,7 @@ var sdk = new Speakeasy(
 
 RegisterSchemaRequest req = new RegisterSchemaRequest() {
     RequestBody = new RegisterSchemaRequestBody() {
-        File = new File() {
+        File = new RegisterSchemaFile() {
             Content = "0xCAFCA03e0e as bytes <<<>>>",
             FileName = "bronze_table_blues.m2a",
         },

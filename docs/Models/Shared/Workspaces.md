@@ -3,5 +3,9 @@
 
 ## Fields
 
-| Field       | Type        | Required    | Description |
-| ----------- | ----------- | ----------- | ----------- |
+| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `AccountType`                                                                         | [AccessTokenAccountType](../../Models/Shared/AccessTokenAccountType.md)               | :heavy_minus_sign:                                                                    | N/A                                                                                   |
+| `Id`                                                                                  | *string*                                                                              | :heavy_minus_sign:                                                                    | N/A                                                                                   |
+| `Name`                                                                                | *string*                                                                              | :heavy_minus_sign:                                                                    | N/A                                                                                   |
+| `UpdatedAt`                                                                           | [DateTime](https://learn.microsoft.com/en-us/dotnet/api/system.datetime?view=net-5.0) | :heavy_minus_sign:                                                                    | N/A                                                                                   |

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f73d2126-985b-4d69-88ee-b7c69254d8bf
 management:
-  docChecksum: 1867bd7891d65aa46bdee0032e33c25a
+  docChecksum: fb8d80dde775dc830ade2c3c3fe88d18
   docVersion: 0.4.0
-  speakeasyVersion: 1.252.0
-  generationVersion: 2.306.0
-  releaseVersion: 5.4.1
-  configChecksum: 97d6953611a64e1a83f4dc6b56d3b652
+  speakeasyVersion: 1.253.3
+  generationVersion: 2.306.3
+  releaseVersion: 5.4.2
+  configChecksum: e50f3bc009fa22423cfa73a14a4b53ee
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
@@ -29,6 +29,7 @@ generatedFiles:
   - SpeakeasySDK/Auth.cs
   - SpeakeasySDK/Requests.cs
   - SpeakeasySDK/Organizations.cs
+  - SpeakeasySDK/Reports.cs
   - SpeakeasySDK/Embeds.cs
   - SpeakeasySDK/Events.cs
   - SpeakeasySDK/Speakeasy.cs
@@ -100,7 +101,7 @@ generatedFiles:
   - SpeakeasySDK/Models/Operations/GetSchemaRevisionResponse.cs
   - SpeakeasySDK/Models/Operations/GetSchemasRequest.cs
   - SpeakeasySDK/Models/Operations/GetSchemasResponse.cs
-  - SpeakeasySDK/Models/Operations/File.cs
+  - SpeakeasySDK/Models/Operations/RegisterSchemaFile.cs
   - SpeakeasySDK/Models/Operations/RegisterSchemaRequestBody.cs
   - SpeakeasySDK/Models/Operations/RegisterSchemaRequest.cs
   - SpeakeasySDK/Models/Operations/RegisterSchemaResponse.cs
@@ -127,6 +128,13 @@ generatedFiles:
   - SpeakeasySDK/Models/Operations/QueryEventLogRequest.cs
   - SpeakeasySDK/Models/Operations/QueryEventLogResponse.cs
   - SpeakeasySDK/Models/Operations/GetOrganizationsResponse.cs
+  - SpeakeasySDK/Models/Operations/GetLintingReportSignedUrlRequest.cs
+  - SpeakeasySDK/Models/Operations/GetLintingReportSignedUrlSignedAccess.cs
+  - SpeakeasySDK/Models/Operations/GetLintingReportSignedUrlResponse.cs
+  - SpeakeasySDK/Models/Operations/File.cs
+  - SpeakeasySDK/Models/Operations/UploadReportRequestBody.cs
+  - SpeakeasySDK/Models/Operations/UploadReportUploadedReport.cs
+  - SpeakeasySDK/Models/Operations/UploadReportResponse.cs
   - SpeakeasySDK/Models/Operations/GetEmbedAccessTokenRequest.cs
   - SpeakeasySDK/Models/Operations/GetEmbedAccessTokenResponse.cs
   - SpeakeasySDK/Models/Operations/GetValidEmbedAccessTokensResponse.cs
@@ -162,12 +170,14 @@ generatedFiles:
   - SpeakeasySDK/Models/Shared/PreflightRequest.cs
   - SpeakeasySDK/Models/Shared/Claims.cs
   - SpeakeasySDK/Models/Shared/AccessTokenUser.cs
+  - SpeakeasySDK/Models/Shared/AccessTokenAccountType.cs
   - SpeakeasySDK/Models/Shared/Workspaces.cs
   - SpeakeasySDK/Models/Shared/AccessToken.cs
   - SpeakeasySDK/Models/Shared/User.cs
   - SpeakeasySDK/Models/Shared/Level.cs
   - SpeakeasySDK/Models/Shared/AccessDetails.cs
   - SpeakeasySDK/Models/Shared/AccountType.cs
+  - SpeakeasySDK/Models/Shared/FeatureFlags.cs
   - SpeakeasySDK/Models/Shared/ApiKeyDetails.cs
   - SpeakeasySDK/Models/Shared/UnboundedRequest.cs
   - SpeakeasySDK/Models/Shared/BoundedRequest.cs
@@ -176,6 +186,8 @@ generatedFiles:
   - SpeakeasySDK/Models/Shared/Filter.cs
   - SpeakeasySDK/Models/Shared/OrganizationAccountType.cs
   - SpeakeasySDK/Models/Shared/Organization.cs
+  - SpeakeasySDK/Models/Shared/Type.cs
+  - SpeakeasySDK/Models/Shared/Report.cs
   - SpeakeasySDK/Models/Shared/EmbedAccessTokenResponse.cs
   - SpeakeasySDK/Models/Shared/EmbedToken.cs
   - SpeakeasySDK/Models/Shared/GenerateBumpType.cs
@@ -233,7 +245,7 @@ generatedFiles:
   - docs/Models/Operations/GetSchemaRevisionResponse.md
   - docs/Models/Operations/GetSchemasRequest.md
   - docs/Models/Operations/GetSchemasResponse.md
-  - docs/Models/Operations/File.md
+  - docs/Models/Operations/RegisterSchemaFile.md
   - docs/Models/Operations/RegisterSchemaRequestBody.md
   - docs/Models/Operations/RegisterSchemaRequest.md
   - docs/Models/Operations/RegisterSchemaResponse.md
@@ -260,6 +272,13 @@ generatedFiles:
   - docs/Models/Operations/QueryEventLogRequest.md
   - docs/Models/Operations/QueryEventLogResponse.md
   - docs/Models/Operations/GetOrganizationsResponse.md
+  - docs/Models/Operations/GetLintingReportSignedUrlRequest.md
+  - docs/Models/Operations/GetLintingReportSignedUrlSignedAccess.md
+  - docs/Models/Operations/GetLintingReportSignedUrlResponse.md
+  - docs/Models/Operations/File.md
+  - docs/Models/Operations/UploadReportRequestBody.md
+  - docs/Models/Operations/UploadReportUploadedReport.md
+  - docs/Models/Operations/UploadReportResponse.md
   - docs/Models/Operations/GetEmbedAccessTokenRequest.md
   - docs/Models/Operations/GetEmbedAccessTokenResponse.md
   - docs/Models/Operations/GetValidEmbedAccessTokensResponse.md
@@ -295,12 +314,14 @@ generatedFiles:
   - docs/Models/Shared/PreflightRequest.md
   - docs/Models/Shared/Claims.md
   - docs/Models/Shared/AccessTokenUser.md
+  - docs/Models/Shared/AccessTokenAccountType.md
   - docs/Models/Shared/Workspaces.md
   - docs/Models/Shared/AccessToken.md
   - docs/Models/Shared/User.md
   - docs/Models/Shared/Level.md
   - docs/Models/Shared/AccessDetails.md
   - docs/Models/Shared/AccountType.md
+  - docs/Models/Shared/FeatureFlags.md
   - docs/Models/Shared/ApiKeyDetails.md
   - docs/Models/Shared/UnboundedRequest.md
   - docs/Models/Shared/BoundedRequest.md
@@ -309,6 +330,8 @@ generatedFiles:
   - docs/Models/Shared/Filter.md
   - docs/Models/Shared/OrganizationAccountType.md
   - docs/Models/Shared/Organization.md
+  - docs/Models/Shared/Type.md
+  - docs/Models/Shared/Report.md
   - docs/Models/Shared/EmbedAccessTokenResponse.md
   - docs/Models/Shared/EmbedToken.md
   - docs/Models/Shared/GenerateBumpType.md
@@ -325,6 +348,7 @@ generatedFiles:
   - docs/sdks/auth/README.md
   - docs/sdks/requests/README.md
   - docs/sdks/organizations/README.md
+  - docs/sdks/reports/README.md
   - docs/sdks/embeds/README.md
   - docs/sdks/events/README.md
   - USAGE.md

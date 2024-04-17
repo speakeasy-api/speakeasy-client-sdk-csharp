@@ -8,18 +8,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 #nullable enable
-namespace SpeakeasySDK.Models.Operations
+namespace SpeakeasySDK.Models.Shared
 {
-    using SpeakeasySDK.Models.Operations;
+    using Newtonsoft.Json;
+    using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     
-    /// <summary>
-    /// The schema file to upload provided as a multipart/form-data file segment.
-    /// </summary>
-    public class RegisterSchemaRequestBody
+    public class Report
     {
 
-        [SpeakeasyMetadata("multipartForm:file")]
-        public RegisterSchemaFile File { get; set; } = default!;
+        [JsonProperty("type")]
+        public Type? Type { get; set; }
     }
 }

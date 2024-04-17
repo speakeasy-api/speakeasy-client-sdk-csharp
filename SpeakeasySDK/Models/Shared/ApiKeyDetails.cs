@@ -13,12 +13,16 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
+    using System.Collections.Generic;
     
     public class ApiKeyDetails
     {
 
         [JsonProperty("account_type")]
         public AccountType AccountType { get; set; } = default!;
+
+        [JsonProperty("feature_flags")]
+        public List<FeatureFlags> FeatureFlags { get; set; } = default!;
 
         [JsonProperty("generation_access_unlimited")]
         public bool? GenerationAccessUnlimited { get; set; }

@@ -21,6 +21,9 @@ namespace SpeakeasySDK.Models.Operations
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=organization_slug")]
         public string OrganizationSlug { get; set; } = default!;
 
+        /// <summary>
+        /// Tag or digest
+        /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=revision_reference")]
         public string RevisionReference { get; set; } = default!;
 

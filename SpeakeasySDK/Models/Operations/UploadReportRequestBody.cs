@@ -11,15 +11,19 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Models.Operations;
+    using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     
     /// <summary>
-    /// The schema file to upload provided as a multipart/form-data file segment.
+    /// The report file to upload provided as a multipart/form-data file segment.
     /// </summary>
-    public class RegisterSchemaRequestBody
+    public class UploadReportRequestBody
     {
 
+        [SpeakeasyMetadata("multipartForm:name=data,json")]
+        public Report Data { get; set; } = default!;
+
         [SpeakeasyMetadata("multipartForm:file")]
-        public RegisterSchemaFile File { get; set; } = default!;
+        public File File { get; set; } = default!;
     }
 }

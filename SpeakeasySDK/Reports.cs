@@ -16,24 +16,32 @@ namespace SpeakeasySDK
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System.Collections.Generic;
+    using System.Net.Http.Headers;
     using System.Net.Http;
     using System.Threading.Tasks;
     using System;
 
-    public interface IOrganizations
+    /// <summary>
+    /// REST APIs for managing reports
+    /// </summary>
+    public interface IReports
     {
 
         /// <summary>
-        /// Get organizations for a user
-        /// 
-        /// <remarks>
-        /// Returns a list of organizations a user has access too
-        /// </remarks>
+        /// Get the signed access url for the linting reports for a particular document.
         /// </summary>
-        Task<GetOrganizationsResponse> GetOrganizationsAsync();
+        Task<GetLintingReportSignedUrlResponse> GetLintingReportSignedUrlAsync(GetLintingReportSignedUrlRequest request);
+
+        /// <summary>
+        /// Upload a report.
+        /// </summary>
+        Task<UploadReportResponse> UploadReportAsync(UploadReportRequestBody request);
     }
 
-    public class Organizations: IOrganizations
+    /// <summary>
+    /// REST APIs for managing reports
+    /// </summary>
+    public class Reports: IReports
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
@@ -45,7 +53,7 @@ namespace SpeakeasySDK
         private ISpeakeasyHttpClient _defaultClient;
         private Func<Security>? _securitySource;
 
-        public Organizations(ISpeakeasyHttpClient defaultClient, Func<Security>? securitySource, string serverUrl, SDKConfig config)
+        public Reports(ISpeakeasyHttpClient defaultClient, Func<Security>? securitySource, string serverUrl, SDKConfig config)
         {
             _defaultClient = defaultClient;
             _securitySource = securitySource;
@@ -53,11 +61,10 @@ namespace SpeakeasySDK
             SDKConfiguration = config;
         }
 
-        public async Task<GetOrganizationsResponse> GetOrganizationsAsync()
+        public async Task<GetLintingReportSignedUrlResponse> GetLintingReportSignedUrlAsync(GetLintingReportSignedUrlRequest request)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
-
-            var urlString = baseUrl + "/v1/organization";
+            var urlString = URLBuilder.Build(baseUrl, "/v1/reports/linting/{documentChecksum}", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
@@ -76,14 +83,14 @@ namespace SpeakeasySDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<List<Organization>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetOrganizationsResponse()
+                    var obj = ResponseBodyDeserializer.Deserialize<GetLintingReportSignedUrlSignedAccess>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new GetLintingReportSignedUrlResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,
                         RawResponse = httpResponse
                     };
-                    response.Organizations = obj;
+                    response.SignedAccess = obj;
                     return response;
                 }
                 else
@@ -97,22 +104,61 @@ namespace SpeakeasySDK
             }
             else
             {
+                throw new SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            }
+        }
+
+        public async Task<UploadReportResponse> UploadReportAsync(UploadReportRequestBody request)
+        {
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
+
+            var urlString = baseUrl + "/v1/reports";
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
+            httpRequest.Headers.Add("user-agent", _userAgent);
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "Request", "multipart", false, false);
+            if (serializedBody != null)
+            {
+                httpRequest.Content = serializedBody;
+            }
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
+            var httpResponse = await client.SendAsync(httpRequest);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetOrganizationsResponse()
+                    var obj = ResponseBodyDeserializer.Deserialize<UploadReportUploadedReport>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new UploadReportResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,
                         RawResponse = httpResponse
                     };
-                    response.Error = obj;
+                    response.UploadedReport = obj;
                     return response;
                 }
                 else
                 {
                     throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
                 }
+            }
+            else if(responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            }
+            else
+            {
+                throw new SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
         }
     }
