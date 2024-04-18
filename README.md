@@ -103,6 +103,7 @@ var res = await sdk.Apis.GetApisAsync(req);
 
 ### [Reports](docs/sdks/reports/README.md)
 
+* [GetChangesReportSignedUrl](docs/sdks/reports/README.md#getchangesreportsignedurl) - Get the signed access url for the change reports for a particular document.
 * [GetLintingReportSignedUrl](docs/sdks/reports/README.md#getlintingreportsignedurl) - Get the signed access url for the linting reports for a particular document.
 * [UploadReport](docs/sdks/reports/README.md#uploadreport) - Upload a report.
 

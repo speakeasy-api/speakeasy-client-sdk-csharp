@@ -28,6 +28,11 @@ namespace SpeakeasySDK
     {
 
         /// <summary>
+        /// Get the signed access url for the change reports for a particular document.
+        /// </summary>
+        Task<GetChangesReportSignedUrlResponse> GetChangesReportSignedUrlAsync(GetChangesReportSignedUrlRequest request);
+
+        /// <summary>
         /// Get the signed access url for the linting reports for a particular document.
         /// </summary>
         Task<GetLintingReportSignedUrlResponse> GetLintingReportSignedUrlAsync(GetLintingReportSignedUrlRequest request);
@@ -45,10 +50,10 @@ namespace SpeakeasySDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.4.2";
-        private const string _sdkGenVersion = "2.306.3";
+        private const string _sdkVersion = "5.4.3";
+        private const string _sdkGenVersion = "2.308.2";
         private const string _openapiDocVersion = "0.4.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.4.2 2.306.3 0.4.0 SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.4.3 2.308.2 0.4.0 SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private Func<Security>? _securitySource;
@@ -59,6 +64,53 @@ namespace SpeakeasySDK
             _securitySource = securitySource;
             _serverUrl = serverUrl;
             SDKConfiguration = config;
+        }
+
+        public async Task<GetChangesReportSignedUrlResponse> GetChangesReportSignedUrlAsync(GetChangesReportSignedUrlRequest request)
+        {
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
+            var urlString = URLBuilder.Build(baseUrl, "/v1/reports/changes/{documentChecksum}", request);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("user-agent", _userAgent);
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
+            var httpResponse = await client.SendAsync(httpRequest);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<GetChangesReportSignedUrlSignedAccess>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new GetChangesReportSignedUrlResponse()
+                    {
+                        StatusCode = responseStatusCode,
+                        ContentType = contentType,
+                        RawResponse = httpResponse
+                    };
+                    response.SignedAccess = obj;
+                    return response;
+                }
+                else
+                {
+                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                }
+            }
+            else if(responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            }
+            else
+            {
+                throw new SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            }
         }
 
         public async Task<GetLintingReportSignedUrlResponse> GetLintingReportSignedUrlAsync(GetLintingReportSignedUrlRequest request)

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f73d2126-985b-4d69-88ee-b7c69254d8bf
 management:
-  docChecksum: fb8d80dde775dc830ade2c3c3fe88d18
+  docChecksum: 2b280a7f12ab57c144a654766cc34af2
   docVersion: 0.4.0
-  speakeasyVersion: 1.253.3
-  generationVersion: 2.306.3
-  releaseVersion: 5.4.2
-  configChecksum: e50f3bc009fa22423cfa73a14a4b53ee
+  speakeasyVersion: 1.257.1
+  generationVersion: 2.308.2
+  releaseVersion: 5.4.3
+  configChecksum: b7f280ce0cb3739a15dbb4151e70dc7d
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
@@ -128,6 +128,9 @@ generatedFiles:
   - SpeakeasySDK/Models/Operations/QueryEventLogRequest.cs
   - SpeakeasySDK/Models/Operations/QueryEventLogResponse.cs
   - SpeakeasySDK/Models/Operations/GetOrganizationsResponse.cs
+  - SpeakeasySDK/Models/Operations/GetChangesReportSignedUrlRequest.cs
+  - SpeakeasySDK/Models/Operations/GetChangesReportSignedUrlSignedAccess.cs
+  - SpeakeasySDK/Models/Operations/GetChangesReportSignedUrlResponse.cs
   - SpeakeasySDK/Models/Operations/GetLintingReportSignedUrlRequest.cs
   - SpeakeasySDK/Models/Operations/GetLintingReportSignedUrlSignedAccess.cs
   - SpeakeasySDK/Models/Operations/GetLintingReportSignedUrlResponse.cs
@@ -272,6 +275,9 @@ generatedFiles:
   - docs/Models/Operations/QueryEventLogRequest.md
   - docs/Models/Operations/QueryEventLogResponse.md
   - docs/Models/Operations/GetOrganizationsResponse.md
+  - docs/Models/Operations/GetChangesReportSignedUrlRequest.md
+  - docs/Models/Operations/GetChangesReportSignedUrlSignedAccess.md
+  - docs/Models/Operations/GetChangesReportSignedUrlResponse.md
   - docs/Models/Operations/GetLintingReportSignedUrlRequest.md
   - docs/Models/Operations/GetLintingReportSignedUrlSignedAccess.md
   - docs/Models/Operations/GetLintingReportSignedUrlResponse.md
