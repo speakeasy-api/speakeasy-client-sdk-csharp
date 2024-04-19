@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f73d2126-985b-4d69-88ee-b7c69254d8bf
 management:
-  docChecksum: 2b280a7f12ab57c144a654766cc34af2
+  docChecksum: 95815a9501527c69c4aab613380685a5
   docVersion: 0.4.0
-  speakeasyVersion: 1.257.1
-  generationVersion: 2.308.2
-  releaseVersion: 5.4.3
-  configChecksum: b7f280ce0cb3739a15dbb4151e70dc7d
+  speakeasyVersion: 1.260.6
+  generationVersion: 2.311.1
+  releaseVersion: 5.4.4
+  configChecksum: 4a374149f9c34c8981c518324bd89667
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
@@ -194,6 +194,7 @@ generatedFiles:
   - SpeakeasySDK/Models/Shared/EmbedAccessTokenResponse.cs
   - SpeakeasySDK/Models/Shared/EmbedToken.cs
   - SpeakeasySDK/Models/Shared/GenerateBumpType.cs
+  - SpeakeasySDK/Models/Shared/OpenapiDiffBumpType.cs
   - SpeakeasySDK/Models/Shared/CliEvent.cs
   - SpeakeasySDK/Models/Shared/InteractionType.cs
   - SpeakeasySDK/Models/Shared/TargetSDK.cs
@@ -341,6 +342,7 @@ generatedFiles:
   - docs/Models/Shared/EmbedAccessTokenResponse.md
   - docs/Models/Shared/EmbedToken.md
   - docs/Models/Shared/GenerateBumpType.md
+  - docs/Models/Shared/OpenapiDiffBumpType.md
   - docs/Models/Shared/CliEvent.md
   - docs/Models/Shared/InteractionType.md
   - docs/Models/Shared/TargetSDK.md

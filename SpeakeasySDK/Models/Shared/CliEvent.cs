@@ -103,6 +103,12 @@ namespace SpeakeasySDK.Models.Shared
         public string? GenerateGenLockPostFeatures { get; set; }
 
         /// <summary>
+        /// Blob digest of the Previous Generation
+        /// </summary>
+        [JsonProperty("generate_gen_lock_pre_blob_digest")]
+        public string? GenerateGenLockPreBlobDigest { get; set; }
+
+        /// <summary>
         /// Checksum of the Previous Rendered OpenAPI document (prior to generation, via gen lock)
         /// </summary>
         [JsonProperty("generate_gen_lock_pre_doc_checksum")]
@@ -119,6 +125,18 @@ namespace SpeakeasySDK.Models.Shared
         /// </summary>
         [JsonProperty("generate_gen_lock_pre_features")]
         public string? GenerateGenLockPreFeatures { get; set; }
+
+        /// <summary>
+        /// Namespace name of the Previous Generation
+        /// </summary>
+        [JsonProperty("generate_gen_lock_pre_namespace_name")]
+        public string? GenerateGenLockPreNamespaceName { get; set; }
+
+        /// <summary>
+        /// Revision digest of the Previous Generation
+        /// </summary>
+        [JsonProperty("generate_gen_lock_pre_revision_digest")]
+        public string? GenerateGenLockPreRevisionDigest { get; set; }
 
         /// <summary>
         /// Artifact version for the Previous Generation
@@ -235,6 +253,30 @@ namespace SpeakeasySDK.Models.Shared
         public InteractionType InteractionType { get; set; } = default!;
 
         /// <summary>
+        /// The checksum of the lint report.
+        /// </summary>
+        [JsonProperty("lint_report_digest")]
+        public string? LintReportDigest { get; set; }
+
+        /// <summary>
+        /// The number of errors in the lint report.
+        /// </summary>
+        [JsonProperty("lint_report_error_count")]
+        public long? LintReportErrorCount { get; set; }
+
+        /// <summary>
+        /// The number of info messages in the lint report.
+        /// </summary>
+        [JsonProperty("lint_report_info_count")]
+        public long? LintReportInfoCount { get; set; }
+
+        /// <summary>
+        /// The number of warnings in the lint report.
+        /// </summary>
+        [JsonProperty("lint_report_warning_count")]
+        public long? LintReportWarningCount { get; set; }
+
+        /// <summary>
         /// Timestamp when the event completed, in local time.
         /// </summary>
         [JsonProperty("local_completed_at")]
@@ -257,6 +299,42 @@ namespace SpeakeasySDK.Models.Shared
         /// </summary>
         [JsonProperty("management_doc_version")]
         public string? ManagementDocVersion { get; set; }
+
+        /// <summary>
+        /// The blob digest of the base source.
+        /// </summary>
+        [JsonProperty("openapi_diff_base_source_blob_digest")]
+        public string? OpenapiDiffBaseSourceBlobDigest { get; set; }
+
+        /// <summary>
+        /// The namespace name of the base source.
+        /// </summary>
+        [JsonProperty("openapi_diff_base_source_namespace_name")]
+        public string? OpenapiDiffBaseSourceNamespaceName { get; set; }
+
+        /// <summary>
+        /// The revision digest of the base source.
+        /// </summary>
+        [JsonProperty("openapi_diff_base_source_revision_digest")]
+        public string? OpenapiDiffBaseSourceRevisionDigest { get; set; }
+
+        /// <summary>
+        /// The number of breaking changes in the openapi diff report.
+        /// </summary>
+        [JsonProperty("openapi_diff_breaking_changes_count")]
+        public long? OpenapiDiffBreakingChangesCount { get; set; }
+
+        /// <summary>
+        /// Bump type of the lock file (calculated semver delta, or a custom change (manual release))
+        /// </summary>
+        [JsonProperty("openapi_diff_bump_type")]
+        public OpenapiDiffBumpType? OpenapiDiffBumpType { get; set; }
+
+        /// <summary>
+        /// The checksum of the openapi diff report.
+        /// </summary>
+        [JsonProperty("openapi_diff_report_digest")]
+        public string? OpenapiDiffReportDigest { get; set; }
 
         /// <summary>
         /// Name of the published package.
@@ -293,6 +371,24 @@ namespace SpeakeasySDK.Models.Shared
         /// </summary>
         [JsonProperty("repo_label")]
         public string? RepoLabel { get; set; }
+
+        /// <summary>
+        /// The blob digest of the source.
+        /// </summary>
+        [JsonProperty("source_blob_digest")]
+        public string? SourceBlobDigest { get; set; }
+
+        /// <summary>
+        /// The namespace name of the source.
+        /// </summary>
+        [JsonProperty("source_namespace_name")]
+        public string? SourceNamespaceName { get; set; }
+
+        /// <summary>
+        /// The revision digest of the source.
+        /// </summary>
+        [JsonProperty("source_revision_digest")]
+        public string? SourceRevisionDigest { get; set; }
 
         /// <summary>
         /// Identifier of the Speakeasy API key.
