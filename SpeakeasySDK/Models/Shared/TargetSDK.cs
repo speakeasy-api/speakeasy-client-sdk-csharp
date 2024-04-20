@@ -169,6 +169,24 @@ namespace SpeakeasySDK.Models.Shared
         public string? RepoLabel { get; set; }
 
         /// <summary>
+        /// The blob digest of the source.
+        /// </summary>
+        [JsonProperty("source_blob_digest")]
+        public string? SourceBlobDigest { get; set; }
+
+        /// <summary>
+        /// The namespace name of the source.
+        /// </summary>
+        [JsonProperty("source_namespace_name")]
+        public string? SourceNamespaceName { get; set; }
+
+        /// <summary>
+        /// The revision digest of the source.
+        /// </summary>
+        [JsonProperty("source_revision_digest")]
+        public string? SourceRevisionDigest { get; set; }
+
+        /// <summary>
         /// Indicates whether the event was successful.
         /// </summary>
         [JsonProperty("success")]
