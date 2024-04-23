@@ -27,7 +27,13 @@ namespace SpeakeasySDK.Models.Shared
         [JsonProperty("generation_access_unlimited")]
         public bool? GenerationAccessUnlimited { get; set; }
 
+        [JsonProperty("org_slug")]
+        public string OrgSlug { get; set; } = default!;
+
         [JsonProperty("workspace_id")]
         public string WorkspaceId { get; set; } = default!;
+
+        [JsonProperty("workspace_slug")]
+        public string WorkspaceSlug { get; set; } = default!;
     }
 }

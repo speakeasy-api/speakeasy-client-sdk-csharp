@@ -19,45 +19,72 @@ namespace SpeakeasySDK.Models.Shared
     public class Annotations
     {
 
+        /// <summary>
+        /// The authors of the image
+        /// </summary>
         [JsonProperty("org.opencontainers.image.authors")]
         public string? OrgOpencontainersImageAuthors { get; set; }
 
-        [JsonProperty("org.opencontainers.image.base.digest")]
-        public string? OrgOpencontainersImageBaseDigest { get; set; }
-
-        [JsonProperty("org.opencontainers.image.base.name")]
-        public string? OrgOpencontainersImageBaseName { get; set; }
-
+        /// <summary>
+        /// The time the image was created
+        /// </summary>
         [JsonProperty("org.opencontainers.image.created")]
         public string? OrgOpencontainersImageCreated { get; set; }
 
+        /// <summary>
+        /// Human-readable description of the software packaged in the image
+        /// </summary>
         [JsonProperty("org.opencontainers.image.description")]
         public string? OrgOpencontainersImageDescription { get; set; }
 
+        /// <summary>
+        /// The documentation URL of the image
+        /// </summary>
         [JsonProperty("org.opencontainers.image.documentation")]
         public string? OrgOpencontainersImageDocumentation { get; set; }
 
         [JsonProperty("org.opencontainers.image.licenses")]
         public string? OrgOpencontainersImageLicenses { get; set; }
 
+        /// <summary>
+        /// Name of the reference for a target
+        /// </summary>
         [JsonProperty("org.opencontainers.image.ref.name")]
         public string? OrgOpencontainersImageRefName { get; set; }
 
+        /// <summary>
+        /// Source control revision identifier
+        /// </summary>
         [JsonProperty("org.opencontainers.image.revision")]
         public string? OrgOpencontainersImageRevision { get; set; }
 
+        /// <summary>
+        /// The URL to get source code for building the image
+        /// </summary>
         [JsonProperty("org.opencontainers.image.source")]
         public string? OrgOpencontainersImageSource { get; set; }
 
+        /// <summary>
+        /// Human-readable title of the image
+        /// </summary>
         [JsonProperty("org.opencontainers.image.title")]
         public string? OrgOpencontainersImageTitle { get; set; }
 
+        /// <summary>
+        /// The URL of the image
+        /// </summary>
         [JsonProperty("org.opencontainers.image.url")]
         public string? OrgOpencontainersImageUrl { get; set; }
 
+        /// <summary>
+        /// Name of the distributing entity, organization or individual.
+        /// </summary>
         [JsonProperty("org.opencontainers.image.vendor")]
         public string? OrgOpencontainersImageVendor { get; set; }
 
+        /// <summary>
+        /// The version of the packaged software
+        /// </summary>
         [JsonProperty("org.opencontainers.image.version")]
         public string? OrgOpencontainersImageVersion { get; set; }
     }

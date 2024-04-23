@@ -116,6 +116,7 @@ var res = await sdk.Apis.GetApisAsync(req);
 ### [Events](docs/sdks/events/README.md)
 
 * [GetWorkspaceEvents](docs/sdks/events/README.md#getworkspaceevents) - Load recent events for a particular workspace
+* [GetWorkspaceEventsBySourceRevisionDigest](docs/sdks/events/README.md#getworkspaceeventsbysourcerevisiondigest) - Load events for a particular workspace and source revision digest
 * [GetWorkspaceTargets](docs/sdks/events/README.md#getworkspacetargets) - Load targets for a particular workspace
 * [PostWorkspaceEvents](docs/sdks/events/README.md#postworkspaceevents) - Post events for a specific workspace
 <!-- End Available Resources and Operations [operations] -->

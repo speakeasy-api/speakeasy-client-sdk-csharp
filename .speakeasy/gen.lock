@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f73d2126-985b-4d69-88ee-b7c69254d8bf
 management:
-  docChecksum: 141a9989778e09b7c6bb43e496b49905
-  docVersion: 0.4.0
-  speakeasyVersion: 1.267.0
-  generationVersion: 2.312.0
-  releaseVersion: 5.4.5
-  configChecksum: c312adcab0e9184fcb2e1a993f3a69cc
+  docChecksum: 0df832386c1fcd5f74fb87fea6d0e2b7
+  docVersion: 0.4.0 .
+  speakeasyVersion: 1.269.1
+  generationVersion: 2.312.1
+  releaseVersion: 5.4.6
+  configChecksum: 4da831e5e99086b6dabc40b3e72a17bf
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
@@ -145,6 +145,8 @@ generatedFiles:
   - SpeakeasySDK/Models/Operations/RevokeEmbedAccessTokenResponse.cs
   - SpeakeasySDK/Models/Operations/GetWorkspaceEventsRequest.cs
   - SpeakeasySDK/Models/Operations/GetWorkspaceEventsResponse.cs
+  - SpeakeasySDK/Models/Operations/GetWorkspaceEventsBySourceRevisionDigestRequest.cs
+  - SpeakeasySDK/Models/Operations/GetWorkspaceEventsBySourceRevisionDigestResponse.cs
   - SpeakeasySDK/Models/Operations/GetWorkspaceTargetsRequest.cs
   - SpeakeasySDK/Models/Operations/GetWorkspaceTargetsResponse.cs
   - SpeakeasySDK/Models/Operations/PostWorkspaceEventsRequest.cs
@@ -293,6 +295,8 @@ generatedFiles:
   - docs/Models/Operations/RevokeEmbedAccessTokenResponse.md
   - docs/Models/Operations/GetWorkspaceEventsRequest.md
   - docs/Models/Operations/GetWorkspaceEventsResponse.md
+  - docs/Models/Operations/GetWorkspaceEventsBySourceRevisionDigestRequest.md
+  - docs/Models/Operations/GetWorkspaceEventsBySourceRevisionDigestResponse.md
   - docs/Models/Operations/GetWorkspaceTargetsRequest.md
   - docs/Models/Operations/GetWorkspaceTargetsResponse.md
   - docs/Models/Operations/PostWorkspaceEventsRequest.md

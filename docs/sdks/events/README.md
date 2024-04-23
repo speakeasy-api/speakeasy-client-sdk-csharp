@@ -8,6 +8,7 @@ REST APIs for capturing event data
 ### Available Operations
 
 * [GetWorkspaceEvents](#getworkspaceevents) - Load recent events for a particular workspace
+* [GetWorkspaceEventsBySourceRevisionDigest](#getworkspaceeventsbysourcerevisiondigest) - Load events for a particular workspace and source revision digest
 * [GetWorkspaceTargets](#getworkspacetargets) - Load targets for a particular workspace
 * [PostWorkspaceEvents](#postworkspaceevents) - Post events for a specific workspace
 
@@ -45,6 +46,49 @@ var res = await sdk.Events.GetWorkspaceEventsAsync(req);
 ### Response
 
 **[GetWorkspaceEventsResponse](../../Models/Operations/GetWorkspaceEventsResponse.md)**
+### Errors
+
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.Error        | 5XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+
+## GetWorkspaceEventsBySourceRevisionDigest
+
+Load events for a particular workspace and source revision digest
+
+### Example Usage
+
+```csharp
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
+
+var sdk = new Speakeasy(
+    security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    },
+    workspaceID: "<value>");
+
+GetWorkspaceEventsBySourceRevisionDigestRequest req = new GetWorkspaceEventsBySourceRevisionDigestRequest() {
+    SourceRevisionDigest = "<value>",
+};
+
+var res = await sdk.Events.GetWorkspaceEventsBySourceRevisionDigestAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                                                     | Type                                                                                                                          | Required                                                                                                                      | Description                                                                                                                   |
+| ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                     | [GetWorkspaceEventsBySourceRevisionDigestRequest](../../Models/Operations/GetWorkspaceEventsBySourceRevisionDigestRequest.md) | :heavy_check_mark:                                                                                                            | The request object to use for the request.                                                                                    |
+
+
+### Response
+
+**[GetWorkspaceEventsBySourceRevisionDigestResponse](../../Models/Operations/GetWorkspaceEventsBySourceRevisionDigestResponse.md)**
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |

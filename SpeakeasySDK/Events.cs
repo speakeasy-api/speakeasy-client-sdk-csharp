@@ -33,6 +33,11 @@ namespace SpeakeasySDK
         Task<GetWorkspaceEventsResponse> GetWorkspaceEventsAsync(GetWorkspaceEventsRequest request);
 
         /// <summary>
+        /// Load events for a particular workspace and source revision digest
+        /// </summary>
+        Task<GetWorkspaceEventsBySourceRevisionDigestResponse> GetWorkspaceEventsBySourceRevisionDigestAsync(GetWorkspaceEventsBySourceRevisionDigestRequest request);
+
+        /// <summary>
         /// Load targets for a particular workspace
         /// </summary>
         Task<GetWorkspaceTargetsResponse> GetWorkspaceTargetsAsync(GetWorkspaceTargetsRequest request);
@@ -54,10 +59,10 @@ namespace SpeakeasySDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.4.5";
-        private const string _sdkGenVersion = "2.312.0";
-        private const string _openapiDocVersion = "0.4.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.4.5 2.312.0 0.4.0 SpeakeasySDK";
+        private const string _sdkVersion = "5.4.6";
+        private const string _sdkGenVersion = "2.312.1";
+        private const string _openapiDocVersion = "0.4.0 .";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.4.6 2.312.1 0.4.0 . SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private Func<Security>? _securitySource;
@@ -100,6 +105,71 @@ namespace SpeakeasySDK
                 {
                     var obj = ResponseBodyDeserializer.Deserialize<List<CliEvent>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     var response = new GetWorkspaceEventsResponse()
+                    {
+                        StatusCode = responseStatusCode,
+                        ContentType = contentType,
+                        RawResponse = httpResponse
+                    };
+                    response.CliEventBatch = obj;
+                    return response;
+                }
+                else
+                {
+                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                }
+            }
+            else if(responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                throw new SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+                else
+                {
+                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                }
+            }
+            else
+            {
+                throw new SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            }
+        }
+
+        public async Task<GetWorkspaceEventsBySourceRevisionDigestResponse> GetWorkspaceEventsBySourceRevisionDigestAsync(GetWorkspaceEventsBySourceRevisionDigestRequest request)
+        {
+            if (request == null)
+            {
+                request = new GetWorkspaceEventsBySourceRevisionDigestRequest();
+            }
+            request.WorkspaceID ??= SDKConfiguration.WorkspaceID;
+            
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
+            var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/{workspaceID}/events/source_revision_digest/{sourceRevisionDigest}", request);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("user-agent", _userAgent);
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
+            var httpResponse = await client.SendAsync(httpRequest);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<List<CliEvent>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new GetWorkspaceEventsBySourceRevisionDigestResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,
