@@ -1,24 +1,24 @@
 lockVersion: 2.0.0
 id: f73d2126-985b-4d69-88ee-b7c69254d8bf
 management:
-  docChecksum: 0df832386c1fcd5f74fb87fea6d0e2b7
+  docChecksum: e87f7661ef116d09df25c842b1032981
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.269.1
-  generationVersion: 2.312.1
-  releaseVersion: 5.4.6
-  configChecksum: 4da831e5e99086b6dabc40b3e72a17bf
+  speakeasyVersion: 1.277.0
+  generationVersion: 2.317.0
+  releaseVersion: 5.5.0
+  configChecksum: 4daefaf3e0bb29a0fc91e9bbded59249
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
 features:
   csharp:
-    core: 3.7.0
+    core: 3.8.0
     examples: 2.81.3
     globalSecurity: 2.83.4
     globalServerURLs: 2.82.3
     globals: 2.82.1
     inputOutputModels: 2.83.0
-    responseFormat: 0.0.1
+    responseFormat: 0.0.2
     serverIDs: 2.82.1
 generatedFiles:
   - SpeakeasySDK/Apis.cs
@@ -44,7 +44,7 @@ generatedFiles:
   - SpeakeasySDK/Utils/IsoDateTimeSerializer.cs
   - SpeakeasySDK/Utils/RequestBodySerializer.cs
   - SpeakeasySDK/Utils/ResponseBodyDeserializer.cs
-  - SpeakeasySDK/Utils/SecuritySerializer.cs
+  - SpeakeasySDK/Utils/SecurityMetadata.cs
   - SpeakeasySDK/Utils/SpeakeasyHttpClient.cs
   - SpeakeasySDK/Utils/SpeakeasyMetadata.cs
   - SpeakeasySDK/Utils/URLBuilder.cs
@@ -143,14 +143,14 @@ generatedFiles:
   - SpeakeasySDK/Models/Operations/GetValidEmbedAccessTokensResponse.cs
   - SpeakeasySDK/Models/Operations/RevokeEmbedAccessTokenRequest.cs
   - SpeakeasySDK/Models/Operations/RevokeEmbedAccessTokenResponse.cs
-  - SpeakeasySDK/Models/Operations/GetWorkspaceEventsRequest.cs
-  - SpeakeasySDK/Models/Operations/GetWorkspaceEventsResponse.cs
-  - SpeakeasySDK/Models/Operations/GetWorkspaceEventsBySourceRevisionDigestRequest.cs
-  - SpeakeasySDK/Models/Operations/GetWorkspaceEventsBySourceRevisionDigestResponse.cs
+  - SpeakeasySDK/Models/Operations/GetWorkspaceEventsByTargetRequest.cs
+  - SpeakeasySDK/Models/Operations/GetWorkspaceEventsByTargetResponse.cs
   - SpeakeasySDK/Models/Operations/GetWorkspaceTargetsRequest.cs
   - SpeakeasySDK/Models/Operations/GetWorkspaceTargetsResponse.cs
   - SpeakeasySDK/Models/Operations/PostWorkspaceEventsRequest.cs
   - SpeakeasySDK/Models/Operations/PostWorkspaceEventsResponse.cs
+  - SpeakeasySDK/Models/Operations/SearchWorkspaceEventsRequest.cs
+  - SpeakeasySDK/Models/Operations/SearchWorkspaceEventsResponse.cs
   - SpeakeasySDK/Models/Errors/Error.cs
   - SpeakeasySDK/Models/Shared/GenerateOpenApiSpecDiff.cs
   - SpeakeasySDK/Models/Shared/Api.cs
@@ -293,14 +293,14 @@ generatedFiles:
   - docs/Models/Operations/GetValidEmbedAccessTokensResponse.md
   - docs/Models/Operations/RevokeEmbedAccessTokenRequest.md
   - docs/Models/Operations/RevokeEmbedAccessTokenResponse.md
-  - docs/Models/Operations/GetWorkspaceEventsRequest.md
-  - docs/Models/Operations/GetWorkspaceEventsResponse.md
-  - docs/Models/Operations/GetWorkspaceEventsBySourceRevisionDigestRequest.md
-  - docs/Models/Operations/GetWorkspaceEventsBySourceRevisionDigestResponse.md
+  - docs/Models/Operations/GetWorkspaceEventsByTargetRequest.md
+  - docs/Models/Operations/GetWorkspaceEventsByTargetResponse.md
   - docs/Models/Operations/GetWorkspaceTargetsRequest.md
   - docs/Models/Operations/GetWorkspaceTargetsResponse.md
   - docs/Models/Operations/PostWorkspaceEventsRequest.md
   - docs/Models/Operations/PostWorkspaceEventsResponse.md
+  - docs/Models/Operations/SearchWorkspaceEventsRequest.md
+  - docs/Models/Operations/SearchWorkspaceEventsResponse.md
   - docs/Models/Errors/Error.md
   - docs/Models/Shared/GenerateOpenApiSpecDiff.md
   - docs/Models/Shared/Api.md
@@ -365,3 +365,5 @@ generatedFiles:
   - docs/sdks/events/README.md
   - USAGE.md
   - .gitattributes
+  - SpeakeasySDK/Hooks/SDKHooks.cs
+  - SpeakeasySDK/Hooks/HookTypes.cs

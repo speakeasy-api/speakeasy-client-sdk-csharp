@@ -16,7 +16,7 @@ namespace SpeakeasySDK.Models.Operations
     using System.Net.Http;
     using System;
     
-    public class GetWorkspaceEventsBySourceRevisionDigestResponse
+    public class SearchWorkspaceEventsResponse
     {
 
         /// <summary>

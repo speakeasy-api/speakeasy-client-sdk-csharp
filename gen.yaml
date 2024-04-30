@@ -10,7 +10,8 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 csharp:
-  version: 5.4.6
+  version: 5.5.0
+  additionalDependencies: []
   author: Speakeasy
   clientServerStatusCodesAsErrors: true
   disableNamespacePascalCasingApr2024: false

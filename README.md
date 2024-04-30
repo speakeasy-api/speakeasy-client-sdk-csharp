@@ -115,10 +115,10 @@ var res = await sdk.Apis.GetApisAsync(req);
 
 ### [Events](docs/sdks/events/README.md)
 
-* [GetWorkspaceEvents](docs/sdks/events/README.md#getworkspaceevents) - Load recent events for a particular workspace
-* [GetWorkspaceEventsBySourceRevisionDigest](docs/sdks/events/README.md#getworkspaceeventsbysourcerevisiondigest) - Load events for a particular workspace and source revision digest
+* [GetWorkspaceEventsByTarget](docs/sdks/events/README.md#getworkspaceeventsbytarget) - Load recent events for a particular workspace
 * [GetWorkspaceTargets](docs/sdks/events/README.md#getworkspacetargets) - Load targets for a particular workspace
 * [PostWorkspaceEvents](docs/sdks/events/README.md#postworkspaceevents) - Post events for a specific workspace
+* [SearchWorkspaceEvents](docs/sdks/events/README.md#searchworkspaceevents) - Search events for a particular workspace by any field
 <!-- End Available Resources and Operations [operations] -->
 
 
@@ -183,7 +183,7 @@ var res = await sdk.Apis.DeleteApiAsync(req);
 
 A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
 
-For example, you can set `workspaceID` to `"<value>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `GetWorkspaceEvents`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+For example, you can set `workspaceID` to `"<value>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `GetWorkspaceEventsByTarget`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
 ### Available Globals
@@ -208,9 +208,11 @@ var sdk = new Speakeasy(
     },
     workspaceID: "<value>");
 
-GetWorkspaceEventsRequest req = new GetWorkspaceEventsRequest() {};
+GetWorkspaceEventsByTargetRequest req = new GetWorkspaceEventsByTargetRequest() {
+    TargetID = "<value>",
+};
 
-var res = await sdk.Events.GetWorkspaceEventsAsync(req);
+var res = await sdk.Events.GetWorkspaceEventsByTargetAsync(req);
 
 // handle response
 ```
@@ -241,11 +243,13 @@ var sdk = new Speakeasy(
     },
     workspaceID: "<value>");
 
-GetWorkspaceEventsRequest req = new GetWorkspaceEventsRequest() {};
+GetWorkspaceEventsByTargetRequest req = new GetWorkspaceEventsByTargetRequest() {
+    TargetID = "<value>",
+};
 
 try
 {
-    var res = await sdk.Events.GetWorkspaceEventsAsync(req);
+    var res = await sdk.Events.GetWorkspaceEventsByTargetAsync(req);
     // handle response
 }
 catch (Exception ex)

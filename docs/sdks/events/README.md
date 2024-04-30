@@ -7,12 +7,12 @@ REST APIs for capturing event data
 
 ### Available Operations
 
-* [GetWorkspaceEvents](#getworkspaceevents) - Load recent events for a particular workspace
-* [GetWorkspaceEventsBySourceRevisionDigest](#getworkspaceeventsbysourcerevisiondigest) - Load events for a particular workspace and source revision digest
+* [GetWorkspaceEventsByTarget](#getworkspaceeventsbytarget) - Load recent events for a particular workspace
 * [GetWorkspaceTargets](#getworkspacetargets) - Load targets for a particular workspace
 * [PostWorkspaceEvents](#postworkspaceevents) - Post events for a specific workspace
+* [SearchWorkspaceEvents](#searchworkspaceevents) - Search events for a particular workspace by any field
 
-## GetWorkspaceEvents
+## GetWorkspaceEventsByTarget
 
 Load recent events for a particular workspace
 
@@ -29,66 +29,25 @@ var sdk = new Speakeasy(
     },
     workspaceID: "<value>");
 
-GetWorkspaceEventsRequest req = new GetWorkspaceEventsRequest() {};
-
-var res = await sdk.Events.GetWorkspaceEventsAsync(req);
-
-// handle response
-```
-
-### Parameters
-
-| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `request`                                                                         | [GetWorkspaceEventsRequest](../../Models/Operations/GetWorkspaceEventsRequest.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
-
-
-### Response
-
-**[GetWorkspaceEventsResponse](../../Models/Operations/GetWorkspaceEventsResponse.md)**
-### Errors
-
-| Error Object                            | Status Code                             | Content Type                            |
-| --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.Error        | 5XX                                     | application/json                        |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
-
-## GetWorkspaceEventsBySourceRevisionDigest
-
-Load events for a particular workspace and source revision digest
-
-### Example Usage
-
-```csharp
-using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
-using SpeakeasySDK.Models.Operations;
-
-var sdk = new Speakeasy(
-    security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    },
-    workspaceID: "<value>");
-
-GetWorkspaceEventsBySourceRevisionDigestRequest req = new GetWorkspaceEventsBySourceRevisionDigestRequest() {
-    SourceRevisionDigest = "<value>",
+GetWorkspaceEventsByTargetRequest req = new GetWorkspaceEventsByTargetRequest() {
+    TargetID = "<value>",
 };
 
-var res = await sdk.Events.GetWorkspaceEventsBySourceRevisionDigestAsync(req);
+var res = await sdk.Events.GetWorkspaceEventsByTargetAsync(req);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                     | Type                                                                                                                          | Required                                                                                                                      | Description                                                                                                                   |
-| ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                     | [GetWorkspaceEventsBySourceRevisionDigestRequest](../../Models/Operations/GetWorkspaceEventsBySourceRevisionDigestRequest.md) | :heavy_check_mark:                                                                                                            | The request object to use for the request.                                                                                    |
+| Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `request`                                                                                         | [GetWorkspaceEventsByTargetRequest](../../Models/Operations/GetWorkspaceEventsByTargetRequest.md) | :heavy_check_mark:                                                                                | The request object to use for the request.                                                        |
 
 
 ### Response
 
-**[GetWorkspaceEventsBySourceRevisionDigestResponse](../../Models/Operations/GetWorkspaceEventsBySourceRevisionDigestResponse.md)**
+**[GetWorkspaceEventsByTargetResponse](../../Models/Operations/GetWorkspaceEventsByTargetResponse.md)**
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |
@@ -186,6 +145,47 @@ var res = await sdk.Events.PostWorkspaceEventsAsync(req);
 ### Response
 
 **[PostWorkspaceEventsResponse](../../Models/Operations/PostWorkspaceEventsResponse.md)**
+### Errors
+
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.Error        | 5XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+
+## SearchWorkspaceEvents
+
+Search events for a particular workspace by any field
+
+### Example Usage
+
+```csharp
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
+
+var sdk = new Speakeasy(
+    security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    },
+    workspaceID: "<value>");
+
+SearchWorkspaceEventsRequest req = new SearchWorkspaceEventsRequest() {};
+
+var res = await sdk.Events.SearchWorkspaceEventsAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `request`                                                                               | [SearchWorkspaceEventsRequest](../../Models/Operations/SearchWorkspaceEventsRequest.md) | :heavy_check_mark:                                                                      | The request object to use for the request.                                              |
+
+
+### Response
+
+**[SearchWorkspaceEventsResponse](../../Models/Operations/SearchWorkspaceEventsResponse.md)**
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |

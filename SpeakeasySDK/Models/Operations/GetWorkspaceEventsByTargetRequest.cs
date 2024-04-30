@@ -11,15 +11,22 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Utils;
+    using System;
     
-    public class GetWorkspaceEventsBySourceRevisionDigestRequest
+    public class GetWorkspaceEventsByTargetRequest
     {
 
         /// <summary>
-        /// Unique identifier of the source revision digest.
+        /// Filter to only return events corresponding to a particular gen_lock_id (gen_lock_id uniquely identifies a target)
         /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=sourceRevisionDigest")]
-        public string SourceRevisionDigest { get; set; } = default!;
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=targetID")]
+        public string TargetID { get; set; } = default!;
+
+        /// <summary>
+        /// Filter to only return events created after this timestamp
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=after_created_at")]
+        public DateTime? AfterCreatedAt { get; set; }
 
         /// <summary>
         /// Unique identifier of the workspace.

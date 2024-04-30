@@ -11,6 +11,7 @@
 namespace SpeakeasySDK
 {
     using Newtonsoft.Json;
+    using SpeakeasySDK.Hooks;
     using SpeakeasySDK.Models.Errors;
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
@@ -92,28 +93,40 @@ namespace SpeakeasySDK
             { Server.Prod, "https://api.prod.speakeasyapi.dev" },
         };
 
-        public string serverUrl = "";
-        public Server? server = null;
+        public string ServerUrl = "";
+        public Server? ServerName = null;
         public string? WorkspaceID;
+        public SDKHooks hooks = new SDKHooks();
 
-        public string GetTemplatedServerDetails()
+        public string GetTemplatedServerUrl()
         {
-            if (!String.IsNullOrEmpty(this.serverUrl))
+            if (!String.IsNullOrEmpty(this.ServerUrl))
             {
-                return Utilities.TemplateUrl(Utilities.RemoveSuffix(this.serverUrl, "/"), new Dictionary<string, string>());
+                return Utilities.TemplateUrl(Utilities.RemoveSuffix(this.ServerUrl, "/"), new Dictionary<string, string>());
             }
-            if (this.server is null)
+            if (this.ServerName is null)
             {
-                this.server = SDKConfig.Server.Prod;
+                this.ServerName = SDKConfig.Server.Prod;
             }
-            else if (!SDKConfig.ServerMap.ContainsKey(this.server.Value))
+            else if (!SDKConfig.ServerMap.ContainsKey(this.ServerName.Value))
             {
-                throw new Exception($"Invalid server \"{this.server.Value}\"");
+                throw new Exception($"Invalid server \"{this.ServerName.Value}\"");
             }
 
             Dictionary<string, string> serverDefault = new Dictionary<string, string>();
 
-            return Utilities.TemplateUrl(SDKConfig.ServerMap[this.server.Value], serverDefault);
+            return Utilities.TemplateUrl(SDKConfig.ServerMap[this.ServerName.Value], serverDefault);
+        }
+
+        public ISpeakeasyHttpClient InitHooks(ISpeakeasyHttpClient client)
+        {
+            string preHooksUrl = GetTemplatedServerUrl();
+            var (postHooksUrl, postHooksClient) = this.hooks.SDKInit(preHooksUrl, client);
+            if (preHooksUrl != postHooksUrl)
+            {
+                this.ServerUrl = postHooksUrl;
+            }
+            return postHooksClient;
         }
     }
 
@@ -127,10 +140,10 @@ namespace SpeakeasySDK
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.4.6";
-        private const string _sdkGenVersion = "2.312.1";
+        private const string _sdkVersion = "5.5.0";
+        private const string _sdkGenVersion = "2.317.0";
         private const string _openapiDocVersion = "0.4.0 .";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.4.6 2.312.1 0.4.0 . SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.5.0 2.317.0 0.4.0 . SpeakeasySDK";
         private string _serverUrl = "";
         private SDKConfig.Server? _server = null;
         private ISpeakeasyHttpClient _defaultClient;
@@ -177,20 +190,43 @@ namespace SpeakeasySDK
             SDKConfiguration = new SDKConfig()
             {
                 WorkspaceID = workspaceID,
-                server = _server,
-                serverUrl = _serverUrl
+                ServerName = _server,
+                ServerUrl = _serverUrl
             };
 
+            _defaultClient = SDKConfiguration.InitHooks(_defaultClient);
+
+
             Apis = new Apis(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+
+
             ApiEndpoints = new ApiEndpoints(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+
+
             Metadata = new Metadata(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+
+
             Schemas = new Schemas(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+
+
             Artifacts = new Artifacts(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+
+
             Auth = new Auth(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+
+
             Requests = new Requests(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+
+
             Organizations = new Organizations(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+
+
             Reports = new Reports(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+
+
             Embeds = new Embeds(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+
+
             Events = new Events(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
         }
     }

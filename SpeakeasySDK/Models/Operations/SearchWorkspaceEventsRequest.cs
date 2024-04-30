@@ -11,22 +11,27 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Utils;
-    using System;
     
-    public class GetWorkspaceEventsRequest
+    public class SearchWorkspaceEventsRequest
     {
 
         /// <summary>
-        /// Filter to only return events created after this timestamp
+        /// Unique identifier of the lint report digest.
         /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=after_created_at")]
-        public DateTime? AfterCreatedAt { get; set; }
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=lint_report_digest")]
+        public string? LintReportDigest { get; set; }
 
         /// <summary>
-        /// Filter to only return events corresponding to a particular gen_lock_id (gen_lock_id uniquely identifies a target)
+        /// Unique identifier of the openapi diff report digest.
         /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=generate_gen_lock_id")]
-        public string? GenerateGenLockId { get; set; }
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=openapi_diff_report_digest")]
+        public string? OpenapiDiffReportDigest { get; set; }
+
+        /// <summary>
+        /// Unique identifier of the source revision digest.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=source_revision_digest")]
+        public string? SourceRevisionDigest { get; set; }
 
         /// <summary>
         /// Unique identifier of the workspace.
