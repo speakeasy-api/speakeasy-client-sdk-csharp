@@ -1,18 +1,18 @@
 lockVersion: 2.0.0
 id: f73d2126-985b-4d69-88ee-b7c69254d8bf
 management:
-  docChecksum: e87f7661ef116d09df25c842b1032981
+  docChecksum: 1710218668d467d8f56c88d745bfdf80
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.277.0
-  generationVersion: 2.317.0
-  releaseVersion: 5.5.0
-  configChecksum: 4daefaf3e0bb29a0fc91e9bbded59249
+  speakeasyVersion: 1.277.8
+  generationVersion: 2.319.10
+  releaseVersion: 5.5.1
+  configChecksum: 95a2d0255e4222e8fcba33b5f5d4cb1a
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
 features:
   csharp:
-    core: 3.8.0
+    core: 3.8.3
     examples: 2.81.3
     globalSecurity: 2.83.4
     globalServerURLs: 2.82.3
@@ -114,6 +114,8 @@ generatedFiles:
   - SpeakeasySDK/Models/Operations/GetRevisionsResponse.cs
   - SpeakeasySDK/Models/Operations/GetTagsRequest.cs
   - SpeakeasySDK/Models/Operations/GetTagsResponse.cs
+  - SpeakeasySDK/Models/Operations/PostTagsRequest.cs
+  - SpeakeasySDK/Models/Operations/PostTagsResponse.cs
   - SpeakeasySDK/Models/Operations/PreflightResponse.cs
   - SpeakeasySDK/Models/Operations/GetAccessTokenRequest.cs
   - SpeakeasySDK/Models/Operations/GetAccessTokenResponse.cs
@@ -171,6 +173,7 @@ generatedFiles:
   - SpeakeasySDK/Models/Shared/Revision.cs
   - SpeakeasySDK/Models/Shared/GetTagsResponse.cs
   - SpeakeasySDK/Models/Shared/Tag.cs
+  - SpeakeasySDK/Models/Shared/AddTags.cs
   - SpeakeasySDK/Models/Shared/PreflightToken.cs
   - SpeakeasySDK/Models/Shared/PreflightRequest.cs
   - SpeakeasySDK/Models/Shared/Claims.cs
@@ -264,6 +267,8 @@ generatedFiles:
   - docs/Models/Operations/GetRevisionsResponse.md
   - docs/Models/Operations/GetTagsRequest.md
   - docs/Models/Operations/GetTagsResponse.md
+  - docs/Models/Operations/PostTagsRequest.md
+  - docs/Models/Operations/PostTagsResponse.md
   - docs/Models/Operations/PreflightResponse.md
   - docs/Models/Operations/GetAccessTokenRequest.md
   - docs/Models/Operations/GetAccessTokenResponse.md
@@ -321,6 +326,7 @@ generatedFiles:
   - docs/Models/Shared/Revision.md
   - docs/Models/Shared/GetTagsResponse.md
   - docs/Models/Shared/Tag.md
+  - docs/Models/Shared/AddTags.md
   - docs/Models/Shared/PreflightToken.md
   - docs/Models/Shared/PreflightRequest.md
   - docs/Models/Shared/Claims.md

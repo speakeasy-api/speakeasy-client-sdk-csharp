@@ -8,6 +8,7 @@
 * [GetNamespaces](#getnamespaces) - Each namespace contains many revisions.
 * [GetRevisions](#getrevisions)
 * [GetTags](#gettags)
+* [PostTags](#posttags) - Add tags to an existing revision
 * [Preflight](#preflight) - Get access token for communicating with OCI distribution endpoints
 
 ## GetBlob
@@ -205,6 +206,49 @@ var res = await sdk.Artifacts.GetTagsAsync(req);
 ### Response
 
 **[Models.Operations.GetTagsResponse](../../Models/Operations/GetTagsResponse.md)**
+### Errors
+
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+
+## PostTags
+
+Add tags to an existing revision
+
+### Example Usage
+
+```csharp
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
+using System.Collections.Generic;
+
+var sdk = new Speakeasy(
+    security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    },
+    workspaceID: "<value>");
+
+PostTagsRequest req = new PostTagsRequest() {
+    NamespaceName = "<value>",
+};
+
+var res = await sdk.Artifacts.PostTagsAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| `request`                                                     | [PostTagsRequest](../../Models/Operations/PostTagsRequest.md) | :heavy_check_mark:                                            | The request object to use for the request.                    |
+
+
+### Response
+
+**[PostTagsResponse](../../Models/Operations/PostTagsResponse.md)**
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |
