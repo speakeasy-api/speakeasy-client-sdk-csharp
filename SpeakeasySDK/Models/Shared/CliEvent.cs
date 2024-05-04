@@ -43,6 +43,12 @@ namespace SpeakeasySDK.Models.Shared
         public long? DurationMs { get; set; }
 
         /// <summary>
+        /// Error message if the event was not successful.
+        /// </summary>
+        [JsonProperty("error")]
+        public string? Error { get; set; }
+
+        /// <summary>
         /// Unique identifier for each execution of the CLI.
         /// </summary>
         [JsonProperty("execution_id")]
@@ -253,6 +259,12 @@ namespace SpeakeasySDK.Models.Shared
         public InteractionType InteractionType { get; set; } = default!;
 
         /// <summary>
+        /// The last step of the event.
+        /// </summary>
+        [JsonProperty("last_step")]
+        public string? LastStep { get; set; }
+
+        /// <summary>
         /// The checksum of the lint report.
         /// </summary>
         [JsonProperty("lint_report_digest")]
@@ -299,6 +311,12 @@ namespace SpeakeasySDK.Models.Shared
         /// </summary>
         [JsonProperty("management_doc_version")]
         public string? ManagementDocVersion { get; set; }
+
+        /// <summary>
+        /// Mermaid diagram
+        /// </summary>
+        [JsonProperty("mermaid_diagram")]
+        public string? MermaidDiagram { get; set; }
 
         /// <summary>
         /// The blob digest of the base source.
@@ -407,6 +425,30 @@ namespace SpeakeasySDK.Models.Shared
         /// </summary>
         [JsonProperty("success")]
         public bool Success { get; set; } = default!;
+
+        /// <summary>
+        /// Workflow lock file (post execution)
+        /// </summary>
+        [JsonProperty("workflow_lock_post_raw")]
+        public string? WorkflowLockPostRaw { get; set; }
+
+        /// <summary>
+        /// Workflow lock file (prior to execution)
+        /// </summary>
+        [JsonProperty("workflow_lock_pre_raw")]
+        public string? WorkflowLockPreRaw { get; set; }
+
+        /// <summary>
+        /// Workflow file (post execution)
+        /// </summary>
+        [JsonProperty("workflow_post_raw")]
+        public string? WorkflowPostRaw { get; set; }
+
+        /// <summary>
+        /// Workflow file (prior to execution)
+        /// </summary>
+        [JsonProperty("workflow_pre_raw")]
+        public string? WorkflowPreRaw { get; set; }
 
         /// <summary>
         /// Identifier of the workspace.

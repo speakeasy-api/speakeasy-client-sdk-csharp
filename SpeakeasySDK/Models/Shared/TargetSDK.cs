@@ -31,6 +31,12 @@ namespace SpeakeasySDK.Models.Shared
         public string? ContinuousIntegrationEnvironment { get; set; }
 
         /// <summary>
+        /// Error message if the last event was not successful.
+        /// </summary>
+        [JsonProperty("error")]
+        public string? Error { get; set; }
+
+        /// <summary>
         /// Version of the generated target (post generation)
         /// </summary>
         [JsonProperty("generate_config_post_version")]
