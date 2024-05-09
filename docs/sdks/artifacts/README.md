@@ -22,11 +22,9 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 
-var sdk = new Speakeasy(
-    security: new Security() {
+var sdk = new Speakeasy(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    },
-    workspaceID: "<value>");
+    });
 
 GetBlobRequest req = new GetBlobRequest() {
     Digest = "<value>",
@@ -67,11 +65,9 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 
-var sdk = new Speakeasy(
-    security: new Security() {
+var sdk = new Speakeasy(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    },
-    workspaceID: "<value>");
+    });
 
 GetManifestRequest req = new GetManifestRequest() {
     NamespaceName = "<value>",
@@ -111,11 +107,9 @@ Each namespace contains many revisions.
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 
-var sdk = new Speakeasy(
-    security: new Security() {
+var sdk = new Speakeasy(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    },
-    workspaceID: "<value>");
+    });
 
 var res = await sdk.Artifacts.GetNamespacesAsync();
 
@@ -141,11 +135,9 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 
-var sdk = new Speakeasy(
-    security: new Security() {
+var sdk = new Speakeasy(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    },
-    workspaceID: "<value>");
+    });
 
 GetRevisionsRequest req = new GetRevisionsRequest() {
     NamespaceName = "<value>",
@@ -181,11 +173,9 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 
-var sdk = new Speakeasy(
-    security: new Security() {
+var sdk = new Speakeasy(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    },
-    workspaceID: "<value>");
+    });
 
 GetTagsRequest req = new GetTagsRequest() {
     NamespaceName = "<value>",
@@ -224,11 +214,9 @@ using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 using System.Collections.Generic;
 
-var sdk = new Speakeasy(
-    security: new Security() {
+var sdk = new Speakeasy(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    },
-    workspaceID: "<value>");
+    });
 
 PostTagsRequest req = new PostTagsRequest() {
     NamespaceName = "<value>",
@@ -265,11 +253,9 @@ Get access token for communicating with OCI distribution endpoints
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 
-var sdk = new Speakeasy(
-    security: new Security() {
+var sdk = new Speakeasy(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    },
-    workspaceID: "<value>");
+    });
 
 PreflightRequest req = new PreflightRequest() {
     NamespaceName = "<value>",

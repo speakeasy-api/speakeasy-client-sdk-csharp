@@ -25,11 +25,9 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 
-var sdk = new Speakeasy(
-    security: new Security() {
+var sdk = new Speakeasy(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    },
-    workspaceID: "<value>");
+    });
 
 DeleteApiRequest req = new DeleteApiRequest() {
     ApiID = "<value>",
@@ -69,11 +67,9 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 
-var sdk = new Speakeasy(
-    security: new Security() {
+var sdk = new Speakeasy(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    },
-    workspaceID: "<value>");
+    });
 
 GenerateOpenApiSpecRequest req = new GenerateOpenApiSpecRequest() {
     ApiID = "<value>",
@@ -112,11 +108,9 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 
-var sdk = new Speakeasy(
-    security: new Security() {
+var sdk = new Speakeasy(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    },
-    workspaceID: "<value>");
+    });
 
 GeneratePostmanCollectionRequest req = new GeneratePostmanCollectionRequest() {
     ApiID = "<value>",
@@ -157,11 +151,9 @@ using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 using System.Collections.Generic;
 
-var sdk = new Speakeasy(
-    security: new Security() {
+var sdk = new Speakeasy(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    },
-    workspaceID: "<value>");
+    });
 
 GetAllApiVersionsRequest req = new GetAllApiVersionsRequest() {
     ApiID = "<value>",
@@ -201,11 +193,9 @@ using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 using System.Collections.Generic;
 
-var sdk = new Speakeasy(
-    security: new Security() {
+var sdk = new Speakeasy(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    },
-    workspaceID: "<value>");
+    });
 
 GetApisRequest req = new GetApisRequest() {};
 
@@ -243,11 +233,9 @@ using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 using System.Collections.Generic;
 
-var sdk = new Speakeasy(
-    security: new Security() {
+var sdk = new Speakeasy(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    },
-    workspaceID: "<value>");
+    });
 
 UpsertApiRequest req = new UpsertApiRequest() {
     Api = new ApiInput() {

@@ -22,11 +22,9 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 
-var sdk = new Speakeasy(
-    security: new Security() {
+var sdk = new Speakeasy(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    },
-    workspaceID: "<value>");
+    });
 
 GetChangesReportSignedUrlRequest req = new GetChangesReportSignedUrlRequest() {
     DocumentChecksum = "<value>",
@@ -64,11 +62,9 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 
-var sdk = new Speakeasy(
-    security: new Security() {
+var sdk = new Speakeasy(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    },
-    workspaceID: "<value>");
+    });
 
 GetLintingReportSignedUrlRequest req = new GetLintingReportSignedUrlRequest() {
     DocumentChecksum = "<value>",
@@ -106,11 +102,9 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 
-var sdk = new Speakeasy(
-    security: new Security() {
+var sdk = new Speakeasy(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    },
-    workspaceID: "<value>");
+    });
 
 UploadReportRequestBody req = new UploadReportRequestBody() {
     Data = new Report() {},

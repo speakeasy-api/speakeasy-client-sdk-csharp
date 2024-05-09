@@ -24,11 +24,9 @@ using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 using System.Collections.Generic;
 
-var sdk = new Speakeasy(
-    security: new Security() {
+var sdk = new Speakeasy(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    },
-    workspaceID: "<value>");
+    });
 
 GetEmbedAccessTokenRequest req = new GetEmbedAccessTokenRequest() {};
 
@@ -63,11 +61,9 @@ Get all valid embed access tokens for the current workspace.
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 
-var sdk = new Speakeasy(
-    security: new Security() {
+var sdk = new Speakeasy(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    },
-    workspaceID: "<value>");
+    });
 
 var res = await sdk.Embeds.GetValidEmbedAccessTokensAsync();
 
@@ -95,11 +91,9 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 
-var sdk = new Speakeasy(
-    security: new Security() {
+var sdk = new Speakeasy(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    },
-    workspaceID: "<value>");
+    });
 
 RevokeEmbedAccessTokenRequest req = new RevokeEmbedAccessTokenRequest() {
     TokenID = "<value>",

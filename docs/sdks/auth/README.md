@@ -23,7 +23,7 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 
-var sdk = new Speakeasy(workspaceID: "<value>");
+var sdk = new Speakeasy();
 
 GetAccessTokenRequest req = new GetAccessTokenRequest() {
     WorkspaceId = "<value>",
@@ -60,11 +60,9 @@ Get information about the current user.
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 
-var sdk = new Speakeasy(
-    security: new Security() {
+var sdk = new Speakeasy(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    },
-    workspaceID: "<value>");
+    });
 
 var res = await sdk.Auth.GetUserAsync();
 
@@ -92,11 +90,9 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
 
-var sdk = new Speakeasy(
-    security: new Security() {
+var sdk = new Speakeasy(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    },
-    workspaceID: "<value>");
+    });
 
 GetWorkspaceAccessRequest req = new GetWorkspaceAccessRequest() {};
 
@@ -131,11 +127,9 @@ Validate the current api key.
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 
-var sdk = new Speakeasy(
-    security: new Security() {
+var sdk = new Speakeasy(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    },
-    workspaceID: "<value>");
+    });
 
 var res = await sdk.Auth.ValidateApiKeyAsync();
 

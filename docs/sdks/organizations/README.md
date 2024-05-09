@@ -15,11 +15,9 @@ Returns a list of organizations a user has access too
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 
-var sdk = new Speakeasy(
-    security: new Security() {
+var sdk = new Speakeasy(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    },
-    workspaceID: "<value>");
+    });
 
 var res = await sdk.Organizations.GetOrganizationsAsync();
 

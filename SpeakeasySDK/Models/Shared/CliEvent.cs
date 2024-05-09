@@ -97,6 +97,12 @@ namespace SpeakeasySDK.Models.Shared
         public string? GenerateConfigPreVersion { get; set; }
 
         /// <summary>
+        /// Eligible feature set during generation
+        /// </summary>
+        [JsonProperty("generate_eligible_features")]
+        public string? GenerateEligibleFeatures { get; set; }
+
+        /// <summary>
         /// gen.lock ID (expected to be a uuid).
         /// </summary>
         [JsonProperty("generate_gen_lock_id")]
@@ -151,6 +157,18 @@ namespace SpeakeasySDK.Models.Shared
         public string? GenerateGenLockPreVersion { get; set; }
 
         /// <summary>
+        /// The number of operations ignored in generation.
+        /// </summary>
+        [JsonProperty("generate_number_of_operations_ignored")]
+        public long? GenerateNumberOfOperationsIgnored { get; set; }
+
+        /// <summary>
+        /// The number of operations used in generation.
+        /// </summary>
+        [JsonProperty("generate_number_of_operations_used")]
+        public long? GenerateNumberOfOperationsUsed { get; set; }
+
+        /// <summary>
         /// Indicates whether tests were output.
         /// </summary>
         [JsonProperty("generate_output_tests")]
@@ -191,6 +209,12 @@ namespace SpeakeasySDK.Models.Shared
         /// </summary>
         [JsonProperty("gh_action_organization")]
         public string? GhActionOrganization { get; set; }
+
+        /// <summary>
+        /// GitHub Action ref value.
+        /// </summary>
+        [JsonProperty("gh_action_ref")]
+        public string? GhActionRef { get; set; }
 
         /// <summary>
         /// GitHub repository of the action.
