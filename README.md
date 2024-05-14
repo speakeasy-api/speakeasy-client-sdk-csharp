@@ -260,6 +260,67 @@ catch (Exception ex)
 ```
 <!-- End Error Handling [errors] -->
 
+<!-- Start Retries [retries] -->
+## Retries
+
+Some of the endpoints in this SDK support retries. If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API. However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
+
+To change the default retry strategy for a single API call, simply pass a `RetryConfig` to the call:
+```csharp
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
+
+var sdk = new Speakeasy(security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    });
+
+GetWorkspaceAccessRequest req = new GetWorkspaceAccessRequest() {};
+
+var res = await sdk.Auth.GetWorkspaceAccessAsync(req,
+    retryConfig: new RetryConfig(
+        strategy: RetryConfig.RetryStrategy.BACKOFF,
+        backoff: new BackoffStrategy(
+            initialIntervalMs: 1L,
+            maxIntervalMs: 50L,
+            maxElapsedTimeMs: 100L,
+            exponent: 1.1
+        ),
+        retryConnectionErrors: false
+));
+
+// handle response
+```
+
+If you'd like to override the default retry strategy for all operations that support retries, you can use the `RetryConfig` optional parameter when intitializing the SDK:
+```csharp
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
+
+var sdk = new Speakeasy(
+    retryConfig: new RetryConfig(
+        strategy: RetryConfig.RetryStrategy.BACKOFF,
+        backoff: new BackoffStrategy(
+            initialIntervalMs: 1L,
+            maxIntervalMs: 50L,
+            maxElapsedTimeMs: 100L,
+            exponent: 1.1
+        ),
+        retryConnectionErrors: false
+),
+    security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    });
+
+GetWorkspaceAccessRequest req = new GetWorkspaceAccessRequest() {};
+
+var res = await sdk.Auth.GetWorkspaceAccessAsync(req);
+
+// handle response
+```
+<!-- End Retries [retries] -->
+
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
 

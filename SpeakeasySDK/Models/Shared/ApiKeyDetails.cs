@@ -21,8 +21,8 @@ namespace SpeakeasySDK.Models.Shared
         [JsonProperty("account_type")]
         public AccountType AccountType { get; set; } = default!;
 
-        [JsonProperty("feature_flags")]
-        public List<FeatureFlags> FeatureFlags { get; set; } = default!;
+        [JsonProperty("enabled_features")]
+        public List<string> EnabledFeatures { get; set; } = default!;
 
         [JsonProperty("generation_access_unlimited")]
         public bool? GenerationAccessUnlimited { get; set; }

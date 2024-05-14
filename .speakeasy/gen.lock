@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f73d2126-985b-4d69-88ee-b7c69254d8bf
 management:
-  docChecksum: 781d670121afeffb63b7a5292c609f7f
+  docChecksum: 7a88ff5ef4ad3289ab4aec22a110bb64
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.285.1
-  generationVersion: 2.326.3
-  releaseVersion: 5.6.0
-  configChecksum: bca938a533e889d139a794a3b1389da8
+  speakeasyVersion: 1.286.3
+  generationVersion: 2.329.0
+  releaseVersion: 5.7.0
+  configChecksum: bd52dabb4b58e835612aec162b721b7c
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
@@ -22,6 +22,7 @@ features:
     inputOutputModels: 2.83.0
     intellisenseMarkdownSupport: 0.1.0
     responseFormat: 0.0.3
+    retries: 0.0.1
     sdkHooks: 0.1.0
     serverIDs: 2.82.1
 generatedFiles:
@@ -48,6 +49,9 @@ generatedFiles:
   - SpeakeasySDK/Utils/IsoDateTimeSerializer.cs
   - SpeakeasySDK/Utils/RequestBodySerializer.cs
   - SpeakeasySDK/Utils/ResponseBodyDeserializer.cs
+  - SpeakeasySDK/Utils/Retries/BackoffStrategy.cs
+  - SpeakeasySDK/Utils/Retries/Retries.cs
+  - SpeakeasySDK/Utils/Retries/RetryConfig.cs
   - SpeakeasySDK/Utils/SecurityMetadata.cs
   - SpeakeasySDK/Utils/SpeakeasyHttpClient.cs
   - SpeakeasySDK/Utils/SpeakeasyMetadata.cs
@@ -189,7 +193,6 @@ generatedFiles:
   - SpeakeasySDK/Models/Shared/Level.cs
   - SpeakeasySDK/Models/Shared/AccessDetails.cs
   - SpeakeasySDK/Models/Shared/AccountType.cs
-  - SpeakeasySDK/Models/Shared/FeatureFlags.cs
   - SpeakeasySDK/Models/Shared/ApiKeyDetails.cs
   - SpeakeasySDK/Models/Shared/UnboundedRequest.cs
   - SpeakeasySDK/Models/Shared/BoundedRequest.cs
@@ -342,7 +345,6 @@ generatedFiles:
   - docs/Models/Shared/Level.md
   - docs/Models/Shared/AccessDetails.md
   - docs/Models/Shared/AccountType.md
-  - docs/Models/Shared/FeatureFlags.md
   - docs/Models/Shared/ApiKeyDetails.md
   - docs/Models/Shared/UnboundedRequest.md
   - docs/Models/Shared/BoundedRequest.md

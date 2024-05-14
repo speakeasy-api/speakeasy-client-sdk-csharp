@@ -14,6 +14,7 @@ namespace SpeakeasySDK
     using SpeakeasySDK.Hooks;
     using SpeakeasySDK.Models.Errors;
     using SpeakeasySDK.Models.Shared;
+    using SpeakeasySDK.Utils.Retries;
     using SpeakeasySDK.Utils;
     using System.Collections.Generic;
     using System.Net.Http;
@@ -96,7 +97,8 @@ namespace SpeakeasySDK
         public string ServerUrl = "";
         public Server? ServerName = null;
         public string? WorkspaceID;
-        public SDKHooks hooks = new SDKHooks();
+        public SDKHooks Hooks = new SDKHooks();
+        public RetryConfig? RetryConfig = null;
 
         public string GetTemplatedServerUrl()
         {
@@ -121,7 +123,7 @@ namespace SpeakeasySDK
         public ISpeakeasyHttpClient InitHooks(ISpeakeasyHttpClient client)
         {
             string preHooksUrl = GetTemplatedServerUrl();
-            var (postHooksUrl, postHooksClient) = this.hooks.SDKInit(preHooksUrl, client);
+            var (postHooksUrl, postHooksClient) = this.Hooks.SDKInit(preHooksUrl, client);
             if (preHooksUrl != postHooksUrl)
             {
                 this.ServerUrl = postHooksUrl;
@@ -140,10 +142,10 @@ namespace SpeakeasySDK
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.6.0";
-        private const string _sdkGenVersion = "2.326.3";
+        private const string _sdkVersion = "5.7.0";
+        private const string _sdkGenVersion = "2.329.0";
         private const string _openapiDocVersion = "0.4.0 .";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.6.0 2.326.3 0.4.0 . SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.7.0 2.329.0 0.4.0 . SpeakeasySDK";
         private string _serverUrl = "";
         private SDKConfig.Server? _server = null;
         private ISpeakeasyHttpClient _defaultClient;
@@ -160,7 +162,7 @@ namespace SpeakeasySDK
         public IEmbeds Embeds { get; private set; }
         public IEvents Events { get; private set; }
 
-        public Speakeasy(Security? security = null, Func<Security>? securitySource = null, string? workspaceID = null, SDKConfig.Server? server = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null)
+        public Speakeasy(Security? security = null, Func<Security>? securitySource = null, string? workspaceID = null, SDKConfig.Server? server = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
         {
             if (server != null)
             {
@@ -191,7 +193,8 @@ namespace SpeakeasySDK
             {
                 WorkspaceID = workspaceID,
                 ServerName = _server,
-                ServerUrl = _serverUrl
+                ServerUrl = _serverUrl,
+                RetryConfig = retryConfig
             };
 
             _defaultClient = SDKConfiguration.InitHooks(_defaultClient);
