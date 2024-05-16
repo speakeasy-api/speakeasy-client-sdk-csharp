@@ -125,7 +125,7 @@ namespace SpeakeasySDK.Utils.Retries
                 }
                 catch (PermanentException ex)
                 {
-                    throw ex.InnerException;
+                    throw ex.InnerException!;
                 }
                 catch (RetryableException ex)
                 {

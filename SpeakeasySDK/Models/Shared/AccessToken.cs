@@ -27,6 +27,9 @@ namespace SpeakeasySDK.Models.Shared
         [JsonProperty("claims")]
         public Claims Claims { get; set; } = default!;
 
+        [JsonProperty("feature_flags")]
+        public List<FeatureFlag>? FeatureFlags { get; set; }
+
         [JsonProperty("user")]
         public AccessTokenUser User { get; set; } = default!;
 

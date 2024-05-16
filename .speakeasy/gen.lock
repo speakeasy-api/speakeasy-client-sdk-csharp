@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f73d2126-985b-4d69-88ee-b7c69254d8bf
 management:
-  docChecksum: 7a88ff5ef4ad3289ab4aec22a110bb64
+  docChecksum: f3ee86ef6f2ca4b47599522e63754f76
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.286.3
-  generationVersion: 2.329.0
-  releaseVersion: 5.7.0
-  configChecksum: bd52dabb4b58e835612aec162b721b7c
+  speakeasyVersion: 1.291.0
+  generationVersion: 2.332.4
+  releaseVersion: 5.8.0
+  configChecksum: 9191c6c0cc9b8187ddbdfd4881e82b76
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
@@ -14,6 +14,7 @@ features:
   csharp:
     additionalDependencies: 0.1.0
     core: 3.8.3
+    deprecations: 2.81.2
     examples: 2.81.3
     globalSecurity: 2.83.4
     globalSecurityCallbacks: 0.1.0
@@ -21,6 +22,7 @@ features:
     globals: 2.82.1
     inputOutputModels: 2.83.0
     intellisenseMarkdownSupport: 0.1.0
+    nullables: 0.1.0
     responseFormat: 0.0.3
     retries: 0.0.1
     sdkHooks: 0.1.0
@@ -189,6 +191,7 @@ generatedFiles:
   - SpeakeasySDK/Models/Shared/AccessTokenAccountType.cs
   - SpeakeasySDK/Models/Shared/Workspaces.cs
   - SpeakeasySDK/Models/Shared/AccessToken.cs
+  - SpeakeasySDK/Models/Shared/FeatureFlag.cs
   - SpeakeasySDK/Models/Shared/User.cs
   - SpeakeasySDK/Models/Shared/Level.cs
   - SpeakeasySDK/Models/Shared/AccessDetails.cs
@@ -341,6 +344,7 @@ generatedFiles:
   - docs/Models/Shared/AccessTokenAccountType.md
   - docs/Models/Shared/Workspaces.md
   - docs/Models/Shared/AccessToken.md
+  - docs/Models/Shared/FeatureFlag.md
   - docs/Models/Shared/User.md
   - docs/Models/Shared/Level.md
   - docs/Models/Shared/AccessDetails.md

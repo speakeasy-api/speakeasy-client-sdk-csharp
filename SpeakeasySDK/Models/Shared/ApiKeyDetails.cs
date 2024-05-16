@@ -14,6 +14,7 @@ namespace SpeakeasySDK.Models.Shared
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System.Collections.Generic;
+    using System;
     
     public class ApiKeyDetails
     {
@@ -22,7 +23,11 @@ namespace SpeakeasySDK.Models.Shared
         public AccountType AccountType { get; set; } = default!;
 
         [JsonProperty("enabled_features")]
-        public List<string> EnabledFeatures { get; set; } = default!;
+        public List<FeatureFlag> EnabledFeatures { get; set; } = default!;
+
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
+        [JsonProperty("feature_flags")]
+        public List<string>? FeatureFlags { get; set; }
 
         [JsonProperty("generation_access_unlimited")]
         public bool? GenerationAccessUnlimited { get; set; }

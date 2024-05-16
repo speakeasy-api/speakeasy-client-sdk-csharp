@@ -109,7 +109,7 @@ var sdk = new Speakeasy(security: new Security() {
 UploadReportRequestBody req = new UploadReportRequestBody() {
     Data = new Report() {},
     File = new File() {
-        Content = "0xA329C0ad85 as bytes <<<>>>",
+        Content = System.Text.Encoding.UTF8.GetBytes("0xA329C0ad85"),
         FileName = "sausages.m3a",
     },
 };

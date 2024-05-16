@@ -330,7 +330,7 @@ var sdk = new Speakeasy(security: new Security() {
 RegisterSchemaRequest req = new RegisterSchemaRequest() {
     RequestBody = new RegisterSchemaRequestBody() {
         File = new RegisterSchemaFile() {
-            Content = "0xCAFCA03e0e as bytes <<<>>>",
+            Content = System.Text.Encoding.UTF8.GetBytes("0xCAFCA03e0e"),
             FileName = "bronze_table_blues.m2a",
         },
     },
