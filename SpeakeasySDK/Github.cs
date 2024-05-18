@@ -23,41 +23,14 @@ namespace SpeakeasySDK
     using System.Threading.Tasks;
     using System;
 
-    /// <summary>
-    /// REST APIs for managing Authentication
-    /// </summary>
-    public interface IAuth
+    public interface IGithub
     {
-
-        /// <summary>
-        /// Get or refresh an access token for the current workspace.
-        /// </summary>
-        Task<GetAccessTokenResponse> GetAccessTokenAsync(GetAccessTokenRequest request);
-
-        /// <summary>
-        /// Get information about the current user.
-        /// </summary>
-        Task<GetUserResponse> GetUserAsync();
-
-        /// <summary>
-        /// Get access allowances for a particular workspace
-        /// 
-        /// <remarks>
-        /// Checks if generation is permitted for a particular run of the CLI
-        /// </remarks>
-        /// </summary>
-        Task<GetWorkspaceAccessResponse> GetWorkspaceAccessAsync(GetWorkspaceAccessRequest request, RetryConfig? retryConfig = null);
-
-        /// <summary>
-        /// Validate the current api key.
-        /// </summary>
-        Task<ValidateApiKeyResponse> ValidateApiKeyAsync();
+        Task<GithubCheckAccessResponse> GithubCheckAccessAsync(GithubCheckAccessRequest request);
+        Task<GithubConfigureTargetResponse> GithubConfigureTargetAsync(GithubConfigureTargetRequest request);
+        Task<GithubTriggerActionResponse> GithubTriggerActionAsync(GithubTriggerActionRequest request);
     }
 
-    /// <summary>
-    /// REST APIs for managing Authentication
-    /// </summary>
-    public class Auth: IAuth
+    public class Github: IGithub
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
@@ -69,7 +42,7 @@ namespace SpeakeasySDK
         private ISpeakeasyHttpClient _defaultClient;
         private Func<Security>? _securitySource;
 
-        public Auth(ISpeakeasyHttpClient defaultClient, Func<Security>? securitySource, string serverUrl, SDKConfig config)
+        public Github(ISpeakeasyHttpClient defaultClient, Func<Security>? securitySource, string serverUrl, SDKConfig config)
         {
             _defaultClient = defaultClient;
             _securitySource = securitySource;
@@ -77,15 +50,20 @@ namespace SpeakeasySDK
             SDKConfiguration = config;
         }
 
-        public async Task<GetAccessTokenResponse> GetAccessTokenAsync(GetAccessTokenRequest request)
+        public async Task<GithubCheckAccessResponse> GithubCheckAccessAsync(GithubCheckAccessRequest request)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/auth/access_token", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v1/github/check_access", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
 
-            var hookCtx = new HookContext("getAccessToken", null, null);
+            if (_securitySource != null)
+            {
+                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext("githubCheckAccess", null, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -122,23 +100,13 @@ namespace SpeakeasySDK
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
             int responseStatusCode = (int)httpResponse.StatusCode;
             if(responseStatusCode == 200)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
+            {                
+                return new GithubCheckAccessResponse()
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<AccessToken>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetAccessTokenResponse()
-                    {
-                        StatusCode = responseStatusCode,
-                        ContentType = contentType,
-                        RawResponse = httpResponse
-                    };
-                    response.AccessToken = obj;
-                    return response;
-                }
-                else
-                {
-                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-                }
+                    StatusCode = responseStatusCode,
+                    ContentType = contentType,
+                    RawResponse = httpResponse
+                };;
             }
             else if(responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
             {
@@ -149,7 +117,7 @@ namespace SpeakeasySDK
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetAccessTokenResponse()
+                    var response = new GithubCheckAccessResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,
@@ -165,21 +133,27 @@ namespace SpeakeasySDK
             }
         }
 
-        public async Task<GetUserResponse> GetUserAsync()
+        public async Task<GithubConfigureTargetResponse> GithubConfigureTargetAsync(GithubConfigureTargetRequest request)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
 
-            var urlString = baseUrl + "/v1/user";
+            var urlString = baseUrl + "/v1/github/configure_target";
 
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json", false, false);
+            if (serializedBody != null)
+            {
+                httpRequest.Content = serializedBody;
+            }
 
             if (_securitySource != null)
             {
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("getUser", null, _securitySource);
+            var hookCtx = new HookContext("githubConfigureTarget", null, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -216,23 +190,13 @@ namespace SpeakeasySDK
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
             int responseStatusCode = (int)httpResponse.StatusCode;
             if(responseStatusCode == 200)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
+            {                
+                return new GithubConfigureTargetResponse()
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<User>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetUserResponse()
-                    {
-                        StatusCode = responseStatusCode,
-                        ContentType = contentType,
-                        RawResponse = httpResponse
-                    };
-                    response.User = obj;
-                    return response;
-                }
-                else
-                {
-                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-                }
+                    StatusCode = responseStatusCode,
+                    ContentType = contentType,
+                    RawResponse = httpResponse
+                };;
             }
             else if(responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
             {
@@ -243,7 +207,7 @@ namespace SpeakeasySDK
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetUserResponse()
+                    var response = new GithubConfigureTargetResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,
@@ -259,134 +223,27 @@ namespace SpeakeasySDK
             }
         }
 
-        public async Task<GetWorkspaceAccessResponse> GetWorkspaceAccessAsync(GetWorkspaceAccessRequest request, RetryConfig? retryConfig = null)
+        public async Task<GithubTriggerActionResponse> GithubTriggerActionAsync(GithubTriggerActionRequest request)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/access", request);
 
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            var urlString = baseUrl + "/v1/github/trigger_action";
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json", false, false);
+            if (serializedBody != null)
+            {
+                httpRequest.Content = serializedBody;
+            }
 
             if (_securitySource != null)
             {
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("getWorkspaceAccess", null, _securitySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-            if (retryConfig == null)
-            {
-                if (this.SDKConfiguration.RetryConfig != null)
-                {
-                    retryConfig = this.SDKConfiguration.RetryConfig;
-                }
-                else
-                {
-                    var backoff = new BackoffStrategy(
-                        initialIntervalMs: 100L,
-                        maxIntervalMs: 2000L,
-                        maxElapsedTimeMs: 30000L,
-                        exponent: 1.5
-                    );
-                    retryConfig = new RetryConfig(
-                        strategy: RetryConfig.RetryStrategy.BACKOFF,
-                        backoff: backoff,
-                        retryConnectionErrors: true);
-                }
-            }
-
-            List<string> statusCodes = new List<string>
-            {
-                "408",
-                "500",
-                "502",
-                "503",
-            };
-
-            Func<Task<HttpResponseMessage>> retrySend = async () =>
-            {
-                var _httpRequest = await _defaultClient.CloneAsync(httpRequest);
-                return await _defaultClient.SendAsync(_httpRequest);
-            };
-            var retries = new SpeakeasySDK.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await retries.Run();
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<AccessDetails>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetWorkspaceAccessResponse()
-                    {
-                        StatusCode = responseStatusCode,
-                        ContentType = contentType,
-                        RawResponse = httpResponse
-                    };
-                    response.AccessDetails = obj;
-                    return response;
-                }
-                else
-                {
-                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-                }
-            }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-            }
-            else
-            {
-                throw new SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-            }
-        }
-
-        public async Task<ValidateApiKeyResponse> ValidateApiKeyAsync()
-        {
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
-            var urlString = baseUrl + "/v1/auth/validate";
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
-
-            if (_securitySource != null)
-            {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext("validateApiKey", null, _securitySource);
+            var hookCtx = new HookContext("githubTriggerAction", null, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -423,23 +280,13 @@ namespace SpeakeasySDK
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
             int responseStatusCode = (int)httpResponse.StatusCode;
             if(responseStatusCode == 200)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
+            {                
+                return new GithubTriggerActionResponse()
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<ApiKeyDetails>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new ValidateApiKeyResponse()
-                    {
-                        StatusCode = responseStatusCode,
-                        ContentType = contentType,
-                        RawResponse = httpResponse
-                    };
-                    response.ApiKeyDetails = obj;
-                    return response;
-                }
-                else
-                {
-                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-                }
+                    StatusCode = responseStatusCode,
+                    ContentType = contentType,
+                    RawResponse = httpResponse
+                };;
             }
             else if(responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
             {
@@ -450,7 +297,7 @@ namespace SpeakeasySDK
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new ValidateApiKeyResponse()
+                    var response = new GithubTriggerActionResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,

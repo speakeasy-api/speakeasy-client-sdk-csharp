@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f73d2126-985b-4d69-88ee-b7c69254d8bf
 management:
-  docChecksum: f3ee86ef6f2ca4b47599522e63754f76
+  docChecksum: 5dd84d4ef84bb4a4426881954f176d08
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.291.0
-  generationVersion: 2.332.4
-  releaseVersion: 5.8.0
-  configChecksum: 9191c6c0cc9b8187ddbdfd4881e82b76
+  speakeasyVersion: 1.293.1
+  generationVersion: 2.333.3
+  releaseVersion: 5.8.1
+  configChecksum: 0cfd7d89602331c1a4791a02bd562f8b
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
@@ -35,6 +35,7 @@ generatedFiles:
   - SpeakeasySDK/Artifacts.cs
   - SpeakeasySDK/Auth.cs
   - SpeakeasySDK/Requests.cs
+  - SpeakeasySDK/Github.cs
   - SpeakeasySDK/Organizations.cs
   - SpeakeasySDK/Reports.cs
   - SpeakeasySDK/Embeds.cs
@@ -139,6 +140,11 @@ generatedFiles:
   - SpeakeasySDK/Models/Operations/GetRequestFromEventLogResponse.cs
   - SpeakeasySDK/Models/Operations/QueryEventLogRequest.cs
   - SpeakeasySDK/Models/Operations/QueryEventLogResponse.cs
+  - SpeakeasySDK/Models/Operations/GithubCheckAccessRequest.cs
+  - SpeakeasySDK/Models/Operations/GithubCheckAccessResponse.cs
+  - SpeakeasySDK/Models/Operations/GithubConfigureTargetResponse.cs
+  - SpeakeasySDK/Models/Operations/GithubTriggerActionResponse.cs
+  - SpeakeasySDK/Models/Operations/GetOrganizationUsageResponse.cs
   - SpeakeasySDK/Models/Operations/GetOrganizationsResponse.cs
   - SpeakeasySDK/Models/Operations/GetChangesReportSignedUrlRequest.cs
   - SpeakeasySDK/Models/Operations/GetChangesReportSignedUrlSignedAccess.cs
@@ -202,6 +208,10 @@ generatedFiles:
   - SpeakeasySDK/Models/Shared/RequestMetadata.cs
   - SpeakeasySDK/Models/Shared/Filters.cs
   - SpeakeasySDK/Models/Shared/Filter.cs
+  - SpeakeasySDK/Models/Shared/GithubConfigureTargetRequest.cs
+  - SpeakeasySDK/Models/Shared/GithubTriggerActionRequest.cs
+  - SpeakeasySDK/Models/Shared/OrganizationUsageResponse.cs
+  - SpeakeasySDK/Models/Shared/OrganizationUsage.cs
   - SpeakeasySDK/Models/Shared/OrganizationAccountType.cs
   - SpeakeasySDK/Models/Shared/Organization.cs
   - SpeakeasySDK/Models/Shared/Type.cs
@@ -292,6 +302,11 @@ generatedFiles:
   - docs/Models/Operations/GetRequestFromEventLogResponse.md
   - docs/Models/Operations/QueryEventLogRequest.md
   - docs/Models/Operations/QueryEventLogResponse.md
+  - docs/Models/Operations/GithubCheckAccessRequest.md
+  - docs/Models/Operations/GithubCheckAccessResponse.md
+  - docs/Models/Operations/GithubConfigureTargetResponse.md
+  - docs/Models/Operations/GithubTriggerActionResponse.md
+  - docs/Models/Operations/GetOrganizationUsageResponse.md
   - docs/Models/Operations/GetOrganizationsResponse.md
   - docs/Models/Operations/GetChangesReportSignedUrlRequest.md
   - docs/Models/Operations/GetChangesReportSignedUrlSignedAccess.md
@@ -355,6 +370,10 @@ generatedFiles:
   - docs/Models/Shared/RequestMetadata.md
   - docs/Models/Shared/Filters.md
   - docs/Models/Shared/Filter.md
+  - docs/Models/Shared/GithubConfigureTargetRequest.md
+  - docs/Models/Shared/GithubTriggerActionRequest.md
+  - docs/Models/Shared/OrganizationUsageResponse.md
+  - docs/Models/Shared/OrganizationUsage.md
   - docs/Models/Shared/OrganizationAccountType.md
   - docs/Models/Shared/Organization.md
   - docs/Models/Shared/Type.md
@@ -375,6 +394,7 @@ generatedFiles:
   - docs/sdks/artifacts/README.md
   - docs/sdks/auth/README.md
   - docs/sdks/requests/README.md
+  - docs/sdks/github/README.md
   - docs/sdks/organizations/README.md
   - docs/sdks/reports/README.md
   - docs/sdks/embeds/README.md

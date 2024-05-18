@@ -59,6 +59,7 @@ namespace SpeakeasySDK
         /// REST APIs for retrieving request information
         /// </summary>
         public IRequests Requests { get; }
+        public IGithub Github { get; }
         public IOrganizations Organizations { get; }
 
         /// <summary>
@@ -142,10 +143,10 @@ namespace SpeakeasySDK
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.8.0";
-        private const string _sdkGenVersion = "2.332.4";
+        private const string _sdkVersion = "5.8.1";
+        private const string _sdkGenVersion = "2.333.3";
         private const string _openapiDocVersion = "0.4.0 .";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.8.0 2.332.4 0.4.0 . SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.8.1 2.333.3 0.4.0 . SpeakeasySDK";
         private string _serverUrl = "";
         private SDKConfig.Server? _server = null;
         private ISpeakeasyHttpClient _defaultClient;
@@ -157,6 +158,7 @@ namespace SpeakeasySDK
         public IArtifacts Artifacts { get; private set; }
         public IAuth Auth { get; private set; }
         public IRequests Requests { get; private set; }
+        public IGithub Github { get; private set; }
         public IOrganizations Organizations { get; private set; }
         public IReports Reports { get; private set; }
         public IEmbeds Embeds { get; private set; }
@@ -219,6 +221,9 @@ namespace SpeakeasySDK
 
 
             Requests = new Requests(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+
+
+            Github = new Github(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
 
 
             Organizations = new Organizations(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);

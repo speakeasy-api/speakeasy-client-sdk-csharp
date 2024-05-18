@@ -96,8 +96,15 @@ var res = await sdk.Apis.GetApisAsync(req);
 * [GetRequestFromEventLog](docs/sdks/requests/README.md#getrequestfromeventlog) - Get information about a particular request.
 * [QueryEventLog](docs/sdks/requests/README.md#queryeventlog) - Query the event log to retrieve a list of requests.
 
+### [Github](docs/sdks/github/README.md)
+
+* [GithubCheckAccess](docs/sdks/github/README.md#githubcheckaccess)
+* [GithubConfigureTarget](docs/sdks/github/README.md#githubconfiguretarget)
+* [GithubTriggerAction](docs/sdks/github/README.md#githubtriggeraction)
+
 ### [Organizations](docs/sdks/organizations/README.md)
 
+* [GetOrganizationUsage](docs/sdks/organizations/README.md#getorganizationusage) - Get billing usage summary for a particular organization
 * [GetOrganizations](docs/sdks/organizations/README.md#getorganizations) - Get organizations for a user
 
 ### [Reports](docs/sdks/reports/README.md)
