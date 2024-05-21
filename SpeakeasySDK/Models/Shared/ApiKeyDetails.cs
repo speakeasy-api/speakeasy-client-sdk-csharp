@@ -23,7 +23,7 @@ namespace SpeakeasySDK.Models.Shared
         public AccountType AccountType { get; set; } = default!;
 
         [JsonProperty("enabled_features")]
-        public List<FeatureFlag> EnabledFeatures { get; set; } = default!;
+        public List<string> EnabledFeatures { get; set; } = default!;
 
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
         [JsonProperty("feature_flags")]

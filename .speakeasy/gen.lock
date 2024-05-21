@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f73d2126-985b-4d69-88ee-b7c69254d8bf
 management:
-  docChecksum: 5dd84d4ef84bb4a4426881954f176d08
+  docChecksum: f85cf38fea71c78f79ca43b23b176863
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.293.1
+  speakeasyVersion: 1.294.0
   generationVersion: 2.333.3
-  releaseVersion: 5.8.1
-  configChecksum: 0cfd7d89602331c1a4791a02bd562f8b
+  releaseVersion: 5.8.2
+  configChecksum: b7a48a304c9b3af0077803cbbc3169db
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
