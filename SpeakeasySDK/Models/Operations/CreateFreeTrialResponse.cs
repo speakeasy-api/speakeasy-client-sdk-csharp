@@ -10,24 +10,17 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Models.Errors;
-    using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
-    using System.Collections.Generic;
     using System.Net.Http;
     using System;
     
-    public class GetValidEmbedAccessTokensResponse
+    public class CreateFreeTrialResponse
     {
 
         /// <summary>
         /// HTTP response content type for this operation
         /// </summary>
         public string? ContentType { get; set; } = default!;
-
-        /// <summary>
-        /// OK
-        /// </summary>
-        public List<EmbedToken>? EmbedTokens { get; set; }
 
         /// <summary>
         /// Default error response

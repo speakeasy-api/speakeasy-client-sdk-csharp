@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f73d2126-985b-4d69-88ee-b7c69254d8bf
 management:
-  docChecksum: f85cf38fea71c78f79ca43b23b176863
+  docChecksum: c1d828d0e8ecf8fac6bec9e95f0ca086
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.294.0
-  generationVersion: 2.333.3
-  releaseVersion: 5.8.2
-  configChecksum: b7a48a304c9b3af0077803cbbc3169db
+  speakeasyVersion: 1.295.2
+  generationVersion: 2.335.5
+  releaseVersion: 5.8.3
+  configChecksum: 2e537590c08d279cd427da9026778633
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
@@ -23,7 +23,7 @@ features:
     inputOutputModels: 2.83.0
     intellisenseMarkdownSupport: 0.1.0
     nullables: 0.1.0
-    responseFormat: 0.0.3
+    responseFormat: 0.0.4
     retries: 0.0.1
     sdkHooks: 0.1.0
     serverIDs: 2.82.1
@@ -144,6 +144,7 @@ generatedFiles:
   - SpeakeasySDK/Models/Operations/GithubCheckAccessResponse.cs
   - SpeakeasySDK/Models/Operations/GithubConfigureTargetResponse.cs
   - SpeakeasySDK/Models/Operations/GithubTriggerActionResponse.cs
+  - SpeakeasySDK/Models/Operations/CreateFreeTrialResponse.cs
   - SpeakeasySDK/Models/Operations/GetOrganizationUsageResponse.cs
   - SpeakeasySDK/Models/Operations/GetOrganizationsResponse.cs
   - SpeakeasySDK/Models/Operations/GetChangesReportSignedUrlRequest.cs
@@ -306,6 +307,7 @@ generatedFiles:
   - docs/Models/Operations/GithubCheckAccessResponse.md
   - docs/Models/Operations/GithubConfigureTargetResponse.md
   - docs/Models/Operations/GithubTriggerActionResponse.md
+  - docs/Models/Operations/CreateFreeTrialResponse.md
   - docs/Models/Operations/GetOrganizationUsageResponse.md
   - docs/Models/Operations/GetOrganizationsResponse.md
   - docs/Models/Operations/GetChangesReportSignedUrlRequest.md
