@@ -9,29 +9,18 @@
 #nullable enable
 namespace SpeakeasySDK.Models.Operations
 {
-    using SpeakeasySDK.Models.Errors;
-    using SpeakeasySDK.Models.Shared;
+    using SpeakeasySDK.Models.Operations;
     using SpeakeasySDK.Utils;
     using System.Net.Http;
     using System;
     
-    public class GetSchemaRevisionResponse
+    public class SuggestOperationIDsResponse
     {
 
         /// <summary>
         /// HTTP response content type for this operation
         /// </summary>
         public string? ContentType { get; set; } = default!;
-
-        /// <summary>
-        /// Default error response
-        /// </summary>
-        public Error? Error { get; set; }
-
-        /// <summary>
-        /// OK
-        /// </summary>
-        public Models.Shared.Schema? Schema { get; set; }
 
         /// <summary>
         /// HTTP response status code for this operation
@@ -42,5 +31,10 @@ namespace SpeakeasySDK.Models.Operations
         /// Raw HTTP response; suitable for custom response parsing
         /// </summary>
         public HttpResponseMessage RawResponse { get; set; } = default!;
+
+        /// <summary>
+        /// OK
+        /// </summary>
+        public SuggestOperationIDsSuggestion? Suggestion { get; set; }
     }
 }

@@ -331,7 +331,7 @@ RegisterSchemaRequest req = new RegisterSchemaRequest() {
     RequestBody = new RegisterSchemaRequestBody() {
         File = new RegisterSchemaFile() {
             Content = System.Text.Encoding.UTF8.GetBytes("0xCAFCA03e0e"),
-            FileName = "bronze_table_blues.m2a",
+            FileName = "your_file_here",
         },
     },
     ApiID = "<value>",

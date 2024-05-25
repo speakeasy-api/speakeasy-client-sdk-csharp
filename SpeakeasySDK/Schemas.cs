@@ -96,10 +96,10 @@ namespace SpeakeasySDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.8.3";
-        private const string _sdkGenVersion = "2.335.5";
+        private const string _sdkVersion = "5.9.0";
+        private const string _sdkGenVersion = "2.338.1";
         private const string _openapiDocVersion = "0.4.0 .";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.8.3 2.335.5 0.4.0 . SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.9.0 2.338.1 0.4.0 . SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private Func<Security>? _securitySource;
@@ -458,7 +458,7 @@ namespace SpeakeasySDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Schema>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Shared.Schema>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     var response = new GetSchemaResponse()
                     {
                         StatusCode = responseStatusCode,
@@ -644,7 +644,7 @@ namespace SpeakeasySDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Schema>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Shared.Schema>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     var response = new GetSchemaRevisionResponse()
                     {
                         StatusCode = responseStatusCode,
@@ -737,7 +737,7 @@ namespace SpeakeasySDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<List<Schema>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<List<Models.Shared.Schema>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     var response = new GetSchemasResponse()
                     {
                         StatusCode = responseStatusCode,

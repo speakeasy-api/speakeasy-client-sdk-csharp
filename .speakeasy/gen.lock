@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f73d2126-985b-4d69-88ee-b7c69254d8bf
 management:
-  docChecksum: c1d828d0e8ecf8fac6bec9e95f0ca086
+  docChecksum: 8a861fbcf601580459816dcab1973d85
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.295.2
-  generationVersion: 2.335.5
-  releaseVersion: 5.8.3
-  configChecksum: 2e537590c08d279cd427da9026778633
+  speakeasyVersion: 1.296.1
+  generationVersion: 2.338.1
+  releaseVersion: 5.9.0
+  configChecksum: 355a7b6702f0a14375ea76ec8a7d0dfb
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
 features:
   csharp:
     additionalDependencies: 0.1.0
-    core: 3.8.3
+    core: 3.9.0
     deprecations: 2.81.2
     examples: 2.81.3
     globalSecurity: 2.83.4
@@ -38,6 +38,7 @@ generatedFiles:
   - SpeakeasySDK/Github.cs
   - SpeakeasySDK/Organizations.cs
   - SpeakeasySDK/Reports.cs
+  - SpeakeasySDK/Suggest.cs
   - SpeakeasySDK/Embeds.cs
   - SpeakeasySDK/Events.cs
   - SpeakeasySDK/Speakeasy.cs
@@ -157,6 +158,13 @@ generatedFiles:
   - SpeakeasySDK/Models/Operations/UploadReportRequestBody.cs
   - SpeakeasySDK/Models/Operations/UploadReportUploadedReport.cs
   - SpeakeasySDK/Models/Operations/UploadReportResponse.cs
+  - SpeakeasySDK/Models/Operations/DepthStyle.cs
+  - SpeakeasySDK/Models/Operations/Style.cs
+  - SpeakeasySDK/Models/Operations/Opts.cs
+  - SpeakeasySDK/Models/Operations/Schema.cs
+  - SpeakeasySDK/Models/Operations/SuggestOperationIDsRequestBody.cs
+  - SpeakeasySDK/Models/Operations/SuggestOperationIDsSuggestion.cs
+  - SpeakeasySDK/Models/Operations/SuggestOperationIDsResponse.cs
   - SpeakeasySDK/Models/Operations/GetEmbedAccessTokenRequest.cs
   - SpeakeasySDK/Models/Operations/GetEmbedAccessTokenResponse.cs
   - SpeakeasySDK/Models/Operations/GetValidEmbedAccessTokensResponse.cs
@@ -320,6 +328,13 @@ generatedFiles:
   - docs/Models/Operations/UploadReportRequestBody.md
   - docs/Models/Operations/UploadReportUploadedReport.md
   - docs/Models/Operations/UploadReportResponse.md
+  - docs/Models/Operations/DepthStyle.md
+  - docs/Models/Operations/Style.md
+  - docs/Models/Operations/Opts.md
+  - docs/Models/Operations/Schema.md
+  - docs/Models/Operations/SuggestOperationIDsRequestBody.md
+  - docs/Models/Operations/SuggestOperationIDsSuggestion.md
+  - docs/Models/Operations/SuggestOperationIDsResponse.md
   - docs/Models/Operations/GetEmbedAccessTokenRequest.md
   - docs/Models/Operations/GetEmbedAccessTokenResponse.md
   - docs/Models/Operations/GetValidEmbedAccessTokensResponse.md
@@ -399,6 +414,7 @@ generatedFiles:
   - docs/sdks/github/README.md
   - docs/sdks/organizations/README.md
   - docs/sdks/reports/README.md
+  - docs/sdks/suggest/README.md
   - docs/sdks/embeds/README.md
   - docs/sdks/events/README.md
   - USAGE.md

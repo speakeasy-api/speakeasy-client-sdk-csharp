@@ -42,6 +42,6 @@ namespace SpeakeasySDK.Models.Operations
         /// <summary>
         /// OK
         /// </summary>
-        public List<Schema>? Classes { get; set; }
+        public List<Models.Shared.Schema>? Classes { get; set; }
     }
 }

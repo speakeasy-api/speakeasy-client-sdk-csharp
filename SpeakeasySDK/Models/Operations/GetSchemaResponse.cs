@@ -31,7 +31,7 @@ namespace SpeakeasySDK.Models.Operations
         /// <summary>
         /// OK
         /// </summary>
-        public Schema? Schema { get; set; }
+        public Models.Shared.Schema? Schema { get; set; }
 
         /// <summary>
         /// HTTP response status code for this operation

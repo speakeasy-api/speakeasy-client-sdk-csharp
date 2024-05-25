@@ -110,7 +110,7 @@ UploadReportRequestBody req = new UploadReportRequestBody() {
     Data = new Report() {},
     File = new File() {
         Content = System.Text.Encoding.UTF8.GetBytes("0xA329C0ad85"),
-        FileName = "sausages.m3a",
+        FileName = "your_file_here",
     },
 };
 
