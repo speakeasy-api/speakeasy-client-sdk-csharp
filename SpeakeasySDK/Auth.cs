@@ -60,17 +60,17 @@ namespace SpeakeasySDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.9.0";
-        private const string _sdkGenVersion = "2.338.1";
+        private const string _sdkVersion = "5.9.1";
+        private const string _sdkGenVersion = "2.338.5";
         private const string _openapiDocVersion = "0.4.0 .";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.9.0 2.338.1 0.4.0 . SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.9.1 2.338.5 0.4.0 . SpeakeasySDK";
         private string _serverUrl = "";
-        private ISpeakeasyHttpClient _defaultClient;
+        private ISpeakeasyHttpClient _client;
         private Func<Security>? _securitySource;
 
-        public Auth(ISpeakeasyHttpClient defaultClient, Func<Security>? securitySource, string serverUrl, SDKConfig config)
+        public Auth(ISpeakeasyHttpClient client, Func<Security>? securitySource, string serverUrl, SDKConfig config)
         {
-            _defaultClient = defaultClient;
+            _client = client;
             _securitySource = securitySource;
             _serverUrl = serverUrl;
             SDKConfiguration = config;
@@ -91,7 +91,7 @@ namespace SpeakeasySDK
             HttpResponseMessage httpResponse;
             try
             {
-                httpResponse = await _defaultClient.SendAsync(httpRequest);
+                httpResponse = await _client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
                 if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
@@ -185,7 +185,7 @@ namespace SpeakeasySDK
             HttpResponseMessage httpResponse;
             try
             {
-                httpResponse = await _defaultClient.SendAsync(httpRequest);
+                httpResponse = await _client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
                 if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
@@ -285,7 +285,7 @@ namespace SpeakeasySDK
                     var backoff = new BackoffStrategy(
                         initialIntervalMs: 100L,
                         maxIntervalMs: 2000L,
-                        maxElapsedTimeMs: 30000L,
+                        maxElapsedTimeMs: 60000L,
                         exponent: 1.5
                     );
                     retryConfig = new RetryConfig(
@@ -305,8 +305,8 @@ namespace SpeakeasySDK
 
             Func<Task<HttpResponseMessage>> retrySend = async () =>
             {
-                var _httpRequest = await _defaultClient.CloneAsync(httpRequest);
-                return await _defaultClient.SendAsync(_httpRequest);
+                var _httpRequest = await _client.CloneAsync(httpRequest);
+                return await _client.SendAsync(_httpRequest);
             };
             var retries = new SpeakeasySDK.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
 
@@ -392,7 +392,7 @@ namespace SpeakeasySDK
             HttpResponseMessage httpResponse;
             try
             {
-                httpResponse = await _defaultClient.SendAsync(httpRequest);
+                httpResponse = await _client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
                 if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
