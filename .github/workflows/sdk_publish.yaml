@@ -4,6 +4,8 @@ permissions:
   contents: write
   pull-requests: write
   statuses: write
+on:
+  workflow_dispatch:
 jobs:
   publish:
     uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@v15
