@@ -15,7 +15,7 @@ csharp:
   author: Speakeasy
   clientServerStatusCodesAsErrors: true
   disableNamespacePascalCasingApr2024: true
-  dotnetVersion: net6.0
+  dotnetVersion: net5.0
   flattenGlobalSecurity: false
   imports:
     option: openapi
