@@ -5,8 +5,8 @@ management:
   docVersion: 0.4.0 .
   speakeasyVersion: 1.300.1
   generationVersion: 2.339.1
-  releaseVersion: 5.9.3
-  configChecksum: f4b55564817d04155699f9166432d2a5
+  releaseVersion: 5.9.4
+  configChecksum: c04f5403d0014003ffb7251e63fc8b38
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
