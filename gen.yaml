@@ -14,7 +14,7 @@ csharp:
   additionalDependencies: []
   author: Speakeasy
   clientServerStatusCodesAsErrors: true
-  disableNamespacePascalCasingApr2024: true
+  disableNamespacePascalCasingApr2024: false
   dotnetVersion: net5.0
   flattenGlobalSecurity: false
   imports:
