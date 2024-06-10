@@ -1,6 +1,6 @@
 configVersion: 2.0.0
 generation:
-  sdkClassName: Speakeasy
+  sdkClassName: SpeakeasySDK
   usageSnippets:
     optionalPropertyRendering: withExample
   fixes:
@@ -14,8 +14,8 @@ csharp:
   additionalDependencies: []
   author: Speakeasy
   clientServerStatusCodesAsErrors: true
-  disableNamespacePascalCasingApr2024: true
-  dotnetVersion: net8.0
+  disableNamespacePascalCasingApr2024: false
+  dotnetVersion: net6.0
   flattenGlobalSecurity: false
   imports:
     option: openapi
