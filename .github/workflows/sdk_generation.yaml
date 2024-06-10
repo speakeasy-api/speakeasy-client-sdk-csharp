@@ -1,5 +1,5 @@
 name: Generate
-on:
+"on":
   workflow_dispatch:
     inputs:
       force:

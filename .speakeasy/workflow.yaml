@@ -1,12 +1,12 @@
 workflowVersion: 1.0.0
-speakeasyVersion: latest
 sources:
     speakeasy:
         inputs:
             - location: https://docs.speakeasyapi.dev/openapi.yaml
-        registry:
-            location: registry.speakeasyapi.dev/speakeasy-self/speakeasy-self/speakeasy
 targets:
     speakeasy-client-sdk-csharp:
         target: csharp
         source: speakeasy
+        publish:
+            nuget:
+                apiKey: $nuget_api_key
