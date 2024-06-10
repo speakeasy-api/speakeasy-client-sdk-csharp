@@ -1,0 +1,29 @@
+speakeasyVersion: 1.300.1
+sources:
+    speakeasy:
+        sourceNamespace: speakeasy
+        sourceRevisionDigest: sha256:7a512505598c101feeb47f4df2312135393560fb070ca1b9e70db9da256ba355
+        sourceBlobDigest: sha256:db9a84a04b8bcfa591baffa9d62d797f1f0965495d5dc5599c2b80667badca00
+        tags:
+            - latest
+            - main
+targets:
+    speakeasy-client-sdk-csharp:
+        source: speakeasy
+        sourceNamespace: speakeasy
+        sourceRevisionDigest: sha256:7a512505598c101feeb47f4df2312135393560fb070ca1b9e70db9da256ba355
+        sourceBlobDigest: sha256:db9a84a04b8bcfa591baffa9d62d797f1f0965495d5dc5599c2b80667badca00
+        outLocation: /github/workspace/repo
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        speakeasy:
+            inputs:
+                - location: https://docs.speakeasyapi.dev/openapi.yaml
+            registry:
+                location: registry.speakeasyapi.dev/speakeasy-self/speakeasy-self/speakeasy
+    targets:
+        speakeasy-client-sdk-csharp:
+            target: csharp
+            source: speakeasy
