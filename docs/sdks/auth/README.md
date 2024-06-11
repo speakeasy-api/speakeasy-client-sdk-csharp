@@ -19,11 +19,11 @@ Get or refresh an access token for the current workspace.
 ### Example Usage
 
 ```csharp
-using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
-using SpeakeasySDK.Models.Operations;
+using Speakeasy.Client.SDK;
+using Speakeasy.Client.SDK.Models.Shared;
+using Speakeasy.Client.SDK.Models.Operations;
 
-var sdk = new Speakeasy();
+var sdk = new SpeakeasySDK();
 
 GetAccessTokenRequest req = new GetAccessTokenRequest() {
     WorkspaceId = "<value>",
@@ -46,9 +46,9 @@ var res = await sdk.Auth.GetAccessTokenAsync(req);
 **[GetAccessTokenResponse](../../Models/Operations/GetAccessTokenResponse.md)**
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
-| --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+| Error Object                                    | Status Code                                     | Content Type                                    |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |
 
 ## GetUser
 
@@ -57,10 +57,10 @@ Get information about the current user.
 ### Example Usage
 
 ```csharp
-using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
+using Speakeasy.Client.SDK;
+using Speakeasy.Client.SDK.Models.Shared;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new SpeakeasySDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -75,9 +75,9 @@ var res = await sdk.Auth.GetUserAsync();
 **[GetUserResponse](../../Models/Operations/GetUserResponse.md)**
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
-| --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+| Error Object                                    | Status Code                                     | Content Type                                    |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |
 
 ## GetWorkspaceAccess
 
@@ -86,11 +86,11 @@ Checks if generation is permitted for a particular run of the CLI
 ### Example Usage
 
 ```csharp
-using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
-using SpeakeasySDK.Models.Operations;
+using Speakeasy.Client.SDK;
+using Speakeasy.Client.SDK.Models.Shared;
+using Speakeasy.Client.SDK.Models.Operations;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new SpeakeasySDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -113,9 +113,9 @@ var res = await sdk.Auth.GetWorkspaceAccessAsync(req);
 **[GetWorkspaceAccessResponse](../../Models/Operations/GetWorkspaceAccessResponse.md)**
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
-| --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+| Error Object                                    | Status Code                                     | Content Type                                    |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |
 
 ## ValidateApiKey
 
@@ -124,10 +124,10 @@ Validate the current api key.
 ### Example Usage
 
 ```csharp
-using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
+using Speakeasy.Client.SDK;
+using Speakeasy.Client.SDK.Models.Shared;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new SpeakeasySDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -142,6 +142,6 @@ var res = await sdk.Auth.ValidateApiKeyAsync();
 **[ValidateApiKeyResponse](../../Models/Operations/ValidateApiKeyResponse.md)**
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
-| --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+| Error Object                                    | Status Code                                     | Content Type                                    |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |

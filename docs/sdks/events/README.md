@@ -19,11 +19,11 @@ Load recent events for a particular workspace
 ### Example Usage
 
 ```csharp
-using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
-using SpeakeasySDK.Models.Operations;
+using Speakeasy.Client.SDK;
+using Speakeasy.Client.SDK.Models.Shared;
+using Speakeasy.Client.SDK.Models.Operations;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new SpeakeasySDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -48,10 +48,10 @@ var res = await sdk.Events.GetWorkspaceEventsByTargetAsync(req);
 **[GetWorkspaceEventsByTargetResponse](../../Models/Operations/GetWorkspaceEventsByTargetResponse.md)**
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
-| --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.Error        | 5XX                                     | application/json                        |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+| Error Object                                    | Status Code                                     | Content Type                                    |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| Speakeasy.Client.SDK.Models.Errors.Error        | 5XX                                             | application/json                                |
+| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |
 
 ## GetWorkspaceTargets
 
@@ -60,11 +60,11 @@ Load targets for a particular workspace
 ### Example Usage
 
 ```csharp
-using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
-using SpeakeasySDK.Models.Operations;
+using Speakeasy.Client.SDK;
+using Speakeasy.Client.SDK.Models.Shared;
+using Speakeasy.Client.SDK.Models.Operations;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new SpeakeasySDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -87,10 +87,10 @@ var res = await sdk.Events.GetWorkspaceTargetsAsync(req);
 **[GetWorkspaceTargetsResponse](../../Models/Operations/GetWorkspaceTargetsResponse.md)**
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
-| --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.Error        | 5XX                                     | application/json                        |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+| Error Object                                    | Status Code                                     | Content Type                                    |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| Speakeasy.Client.SDK.Models.Errors.Error        | 5XX                                             | application/json                                |
+| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |
 
 ## PostWorkspaceEvents
 
@@ -99,12 +99,12 @@ Sends an array of events to be stored for a particular workspace.
 ### Example Usage
 
 ```csharp
-using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
-using SpeakeasySDK.Models.Operations;
+using Speakeasy.Client.SDK;
+using Speakeasy.Client.SDK.Models.Shared;
+using Speakeasy.Client.SDK.Models.Operations;
 using System.Collections.Generic;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new SpeakeasySDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -114,7 +114,7 @@ PostWorkspaceEventsRequest req = new PostWorkspaceEventsRequest() {
             CreatedAt = System.DateTime.Parse("2024-11-21T06:58:42.120Z"),
             ExecutionId = "<value>",
             Id = "<id>",
-            InteractionType = SpeakeasySDK.Models.Shared.InteractionType.CliExec,
+            InteractionType = Speakeasy.Client.SDK.Models.Shared.InteractionType.CliExec,
             LocalStartedAt = System.DateTime.Parse("2024-05-07T12:35:47.182Z"),
             SpeakeasyApiKeyName = "<value>",
             SpeakeasyVersion = "<value>",
@@ -141,10 +141,10 @@ var res = await sdk.Events.PostWorkspaceEventsAsync(req);
 **[PostWorkspaceEventsResponse](../../Models/Operations/PostWorkspaceEventsResponse.md)**
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
-| --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.Error        | 5XX                                     | application/json                        |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+| Error Object                                    | Status Code                                     | Content Type                                    |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| Speakeasy.Client.SDK.Models.Errors.Error        | 5XX                                             | application/json                                |
+| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |
 
 ## SearchWorkspaceEvents
 
@@ -153,11 +153,11 @@ Search events for a particular workspace by any field
 ### Example Usage
 
 ```csharp
-using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
-using SpeakeasySDK.Models.Operations;
+using Speakeasy.Client.SDK;
+using Speakeasy.Client.SDK.Models.Shared;
+using Speakeasy.Client.SDK.Models.Operations;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new SpeakeasySDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -180,7 +180,7 @@ var res = await sdk.Events.SearchWorkspaceEventsAsync(req);
 **[SearchWorkspaceEventsResponse](../../Models/Operations/SearchWorkspaceEventsResponse.md)**
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
-| --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.Error        | 5XX                                     | application/json                        |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+| Error Object                                    | Status Code                                     | Content Type                                    |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| Speakeasy.Client.SDK.Models.Errors.Error        | 5XX                                             | application/json                                |
+| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |
