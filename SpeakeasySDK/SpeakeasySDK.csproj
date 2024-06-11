@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\README.md" Pack="true" PackagePath="\"/>
+    <None Include="..\NUGET_README.md" Pack="true" PackagePath="README.md"/>
     <None Include="..\docs\**\*" Pack="true" PackagePath="\docs"  CopyToOutputDirectory="PreserveNewest"/>
 
     <PackageReference Include="newtonsoft.json" Version="13.0.3" />
