@@ -1,6 +1,6 @@
 configVersion: 2.0.0
 generation:
-  sdkClassName: SpeakeasySDK
+  sdkClassName: SDK
   usageSnippets:
     optionalPropertyRendering: withExample
   fixes:
@@ -28,5 +28,5 @@ csharp:
   inputModelSuffix: input
   maxMethodParams: 0
   outputModelSuffix: output
-  packageName: Speakeasy.Client.SDK
+  packageName: SpeakeasySDK
   responseFormat: envelope
