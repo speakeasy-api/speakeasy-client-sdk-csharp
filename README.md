@@ -6,7 +6,7 @@
 ### Nuget
 
 ```bash
-dotnet add package SpeakeasySDK
+dotnet add package Speakeasy.Client.SDK
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -16,12 +16,12 @@ dotnet add package SpeakeasySDK
 ### Example
 
 ```csharp
-using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
-using SpeakeasySDK.Models.Operations;
+using Speakeasy.Client.SDK;
+using Speakeasy.Client.SDK.Models.Shared;
+using Speakeasy.Client.SDK.Models.Operations;
 using System.Collections.Generic;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new SpeakeasySDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -166,11 +166,11 @@ This SDK supports the following security schemes globally:
 
 You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
 ```csharp
-using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
-using SpeakeasySDK.Models.Operations;
+using Speakeasy.Client.SDK;
+using Speakeasy.Client.SDK.Models.Shared;
+using Speakeasy.Client.SDK.Models.Operations;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new SpeakeasySDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -207,11 +207,11 @@ The following global parameter is available.
 ### Example
 
 ```csharp
-using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
-using SpeakeasySDK.Models.Operations;
+using Speakeasy.Client.SDK;
+using Speakeasy.Client.SDK.Models.Shared;
+using Speakeasy.Client.SDK.Models.Operations;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new SpeakeasySDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -230,21 +230,21 @@ var res = await sdk.Events.GetWorkspaceEventsByTargetAsync(req);
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or thow an exception.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate type.
 
-| Error Object                            | Status Code                             | Content Type                            |
-| --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.Error        | 5XX                                     | application/json                        |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+| Error Object                                    | Status Code                                     | Content Type                                    |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| Speakeasy.Client.SDK.Models.Errors.Error        | 5XX                                             | application/json                                |
+| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |
 
 ### Example
 
 ```csharp
-using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
+using Speakeasy.Client.SDK;
+using Speakeasy.Client.SDK.Models.Shared;
 using System;
-using SpeakeasySDK.Models.Errors;
-using SpeakeasySDK.Models.Operations;
+using Speakeasy.Client.SDK.Models.Errors;
+using Speakeasy.Client.SDK.Models.Operations;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new SpeakeasySDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -263,7 +263,7 @@ catch (Exception ex)
     {
         // handle exception
     }
-    else if (ex is SpeakeasySDK.Models.Errors.SDKException)
+    else if (ex is Speakeasy.Client.SDK.Models.Errors.SDKException)
     {
         // handle exception
     }
@@ -279,11 +279,11 @@ Some of the endpoints in this SDK support retries. If you use the SDK without an
 
 To change the default retry strategy for a single API call, simply pass a `RetryConfig` to the call:
 ```csharp
-using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
-using SpeakeasySDK.Models.Operations;
+using Speakeasy.Client.SDK;
+using Speakeasy.Client.SDK.Models.Shared;
+using Speakeasy.Client.SDK.Models.Operations;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new SpeakeasySDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -306,11 +306,11 @@ var res = await sdk.Auth.GetWorkspaceAccessAsync(req,
 
 If you'd like to override the default retry strategy for all operations that support retries, you can use the `RetryConfig` optional parameter when intitializing the SDK:
 ```csharp
-using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
-using SpeakeasySDK.Models.Operations;
+using Speakeasy.Client.SDK;
+using Speakeasy.Client.SDK.Models.Shared;
+using Speakeasy.Client.SDK.Models.Operations;
 
-var sdk = new Speakeasy(
+var sdk = new SpeakeasySDK(
     retryConfig: new RetryConfig(
         strategy: RetryConfig.RetryStrategy.BACKOFF,
         backoff: new BackoffStrategy(

@@ -19,11 +19,11 @@ Allowing it to be replayed with the same inputs that were captured by the SDK.
 ### Example Usage
 
 ```csharp
-using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
-using SpeakeasySDK.Models.Operations;
+using Speakeasy.Client.SDK;
+using Speakeasy.Client.SDK.Models.Shared;
+using Speakeasy.Client.SDK.Models.Operations;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new SpeakeasySDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -48,9 +48,9 @@ var res = await sdk.Requests.GenerateRequestPostmanCollectionAsync(req);
 **[GenerateRequestPostmanCollectionResponse](../../Models/Operations/GenerateRequestPostmanCollectionResponse.md)**
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
-| --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+| Error Object                                    | Status Code                                     | Content Type                                    |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |
 
 ## GetRequestFromEventLog
 
@@ -59,11 +59,11 @@ Get information about a particular request.
 ### Example Usage
 
 ```csharp
-using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
-using SpeakeasySDK.Models.Operations;
+using Speakeasy.Client.SDK;
+using Speakeasy.Client.SDK.Models.Shared;
+using Speakeasy.Client.SDK.Models.Operations;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new SpeakeasySDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -88,9 +88,9 @@ var res = await sdk.Requests.GetRequestFromEventLogAsync(req);
 **[GetRequestFromEventLogResponse](../../Models/Operations/GetRequestFromEventLogResponse.md)**
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
-| --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+| Error Object                                    | Status Code                                     | Content Type                                    |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |
 
 ## QueryEventLog
 
@@ -100,12 +100,12 @@ Allows the filtering of requests on a number of criteria such as ApiID, VersionI
 ### Example Usage
 
 ```csharp
-using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
-using SpeakeasySDK.Models.Operations;
+using Speakeasy.Client.SDK;
+using Speakeasy.Client.SDK.Models.Shared;
+using Speakeasy.Client.SDK.Models.Operations;
 using System.Collections.Generic;
 
-var sdk = new Speakeasy(security: new Security() {
+var sdk = new SpeakeasySDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -128,6 +128,6 @@ var res = await sdk.Requests.QueryEventLogAsync(req);
 **[QueryEventLogResponse](../../Models/Operations/QueryEventLogResponse.md)**
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
-| --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+| Error Object                                    | Status Code                                     | Content Type                                    |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |
