@@ -23,11 +23,11 @@ Delete a particular schema revision for an Api.
 ### Example Usage
 
 ```csharp
-using Speakeasy.Client.SDK;
-using Speakeasy.Client.SDK.Models.Shared;
-using Speakeasy.Client.SDK.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 
-var sdk = new SpeakeasySDK(security: new Security() {
+var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -54,9 +54,9 @@ var res = await sdk.Schemas.DeleteSchemaAsync(req);
 **[DeleteSchemaResponse](../../Models/Operations/DeleteSchemaResponse.md)**
 ### Errors
 
-| Error Object                                    | Status Code                                     | Content Type                                    |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## DownloadSchema
 
@@ -65,11 +65,11 @@ Download the latest schema for a particular apiID.
 ### Example Usage
 
 ```csharp
-using Speakeasy.Client.SDK;
-using Speakeasy.Client.SDK.Models.Shared;
-using Speakeasy.Client.SDK.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 
-var sdk = new SpeakeasySDK(security: new Security() {
+var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -95,9 +95,9 @@ var res = await sdk.Schemas.DownloadSchemaAsync(req);
 **[DownloadSchemaResponse](../../Models/Operations/DownloadSchemaResponse.md)**
 ### Errors
 
-| Error Object                                    | Status Code                                     | Content Type                                    |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## DownloadSchemaRevision
 
@@ -106,11 +106,11 @@ Download a particular schema revision for an Api.
 ### Example Usage
 
 ```csharp
-using Speakeasy.Client.SDK;
-using Speakeasy.Client.SDK.Models.Shared;
-using Speakeasy.Client.SDK.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 
-var sdk = new SpeakeasySDK(security: new Security() {
+var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -137,9 +137,9 @@ var res = await sdk.Schemas.DownloadSchemaRevisionAsync(req);
 **[DownloadSchemaRevisionResponse](../../Models/Operations/DownloadSchemaRevisionResponse.md)**
 ### Errors
 
-| Error Object                                    | Status Code                                     | Content Type                                    |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## GetSchema
 
@@ -149,11 +149,11 @@ This won't include the schema itself, that can be retrieved via the downloadSche
 ### Example Usage
 
 ```csharp
-using Speakeasy.Client.SDK;
-using Speakeasy.Client.SDK.Models.Shared;
-using Speakeasy.Client.SDK.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 
-var sdk = new SpeakeasySDK(security: new Security() {
+var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -179,9 +179,9 @@ var res = await sdk.Schemas.GetSchemaAsync(req);
 **[GetSchemaResponse](../../Models/Operations/GetSchemaResponse.md)**
 ### Errors
 
-| Error Object                                    | Status Code                                     | Content Type                                    |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## GetSchemaDiff
 
@@ -190,11 +190,11 @@ Get a diff of two schema revisions for an Api.
 ### Example Usage
 
 ```csharp
-using Speakeasy.Client.SDK;
-using Speakeasy.Client.SDK.Models.Shared;
-using Speakeasy.Client.SDK.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 
-var sdk = new SpeakeasySDK(security: new Security() {
+var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -222,9 +222,9 @@ var res = await sdk.Schemas.GetSchemaDiffAsync(req);
 **[GetSchemaDiffResponse](../../Models/Operations/GetSchemaDiffResponse.md)**
 ### Errors
 
-| Error Object                                    | Status Code                                     | Content Type                                    |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## GetSchemaRevision
 
@@ -234,11 +234,11 @@ This won't include the schema itself, that can be retrieved via the downloadSche
 ### Example Usage
 
 ```csharp
-using Speakeasy.Client.SDK;
-using Speakeasy.Client.SDK.Models.Shared;
-using Speakeasy.Client.SDK.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 
-var sdk = new SpeakeasySDK(security: new Security() {
+var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -265,9 +265,9 @@ var res = await sdk.Schemas.GetSchemaRevisionAsync(req);
 **[GetSchemaRevisionResponse](../../Models/Operations/GetSchemaRevisionResponse.md)**
 ### Errors
 
-| Error Object                                    | Status Code                                     | Content Type                                    |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## GetSchemas
 
@@ -277,11 +277,11 @@ This won't include the schemas themselves, they can be retrieved via the downloa
 ### Example Usage
 
 ```csharp
-using Speakeasy.Client.SDK;
-using Speakeasy.Client.SDK.Models.Shared;
-using Speakeasy.Client.SDK.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 
-var sdk = new SpeakeasySDK(security: new Security() {
+var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -307,9 +307,9 @@ var res = await sdk.Schemas.GetSchemasAsync(req);
 **[GetSchemasResponse](../../Models/Operations/GetSchemasResponse.md)**
 ### Errors
 
-| Error Object                                    | Status Code                                     | Content Type                                    |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## RegisterSchema
 
@@ -319,11 +319,11 @@ This will be used to populate ApiEndpoints and used as a base for any schema gen
 ### Example Usage
 
 ```csharp
-using Speakeasy.Client.SDK;
-using Speakeasy.Client.SDK.Models.Shared;
-using Speakeasy.Client.SDK.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 
-var sdk = new SpeakeasySDK(security: new Security() {
+var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -355,6 +355,6 @@ var res = await sdk.Schemas.RegisterSchemaAsync(req);
 **[RegisterSchemaResponse](../../Models/Operations/RegisterSchemaResponse.md)**
 ### Errors
 
-| Error Object                                    | Status Code                                     | Content Type                                    |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |

@@ -19,12 +19,12 @@ Filters can be applied allowing views to be filtered to things like particular c
 ### Example Usage
 
 ```csharp
-using Speakeasy.Client.SDK;
-using Speakeasy.Client.SDK.Models.Shared;
-using Speakeasy.Client.SDK.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 using System.Collections.Generic;
 
-var sdk = new SpeakeasySDK(security: new Security() {
+var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -47,9 +47,9 @@ var res = await sdk.Embeds.GetEmbedAccessTokenAsync(req);
 **[GetEmbedAccessTokenResponse](../../Models/Operations/GetEmbedAccessTokenResponse.md)**
 ### Errors
 
-| Error Object                                    | Status Code                                     | Content Type                                    |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## GetValidEmbedAccessTokens
 
@@ -58,10 +58,10 @@ Get all valid embed access tokens for the current workspace.
 ### Example Usage
 
 ```csharp
-using Speakeasy.Client.SDK;
-using Speakeasy.Client.SDK.Models.Shared;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
 
-var sdk = new SpeakeasySDK(security: new Security() {
+var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -76,9 +76,9 @@ var res = await sdk.Embeds.GetValidEmbedAccessTokensAsync();
 **[GetValidEmbedAccessTokensResponse](../../Models/Operations/GetValidEmbedAccessTokensResponse.md)**
 ### Errors
 
-| Error Object                                    | Status Code                                     | Content Type                                    |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## RevokeEmbedAccessToken
 
@@ -87,11 +87,11 @@ Revoke an embed access EmbedToken.
 ### Example Usage
 
 ```csharp
-using Speakeasy.Client.SDK;
-using Speakeasy.Client.SDK.Models.Shared;
-using Speakeasy.Client.SDK.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 
-var sdk = new SpeakeasySDK(security: new Security() {
+var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -116,6 +116,6 @@ var res = await sdk.Embeds.RevokeEmbedAccessTokenAsync(req);
 **[RevokeEmbedAccessTokenResponse](../../Models/Operations/RevokeEmbedAccessTokenResponse.md)**
 ### Errors
 
-| Error Object                                    | Status Code                                     | Content Type                                    |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |

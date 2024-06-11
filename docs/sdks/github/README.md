@@ -12,11 +12,11 @@
 ### Example Usage
 
 ```csharp
-using Speakeasy.Client.SDK;
-using Speakeasy.Client.SDK.Models.Shared;
-using Speakeasy.Client.SDK.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 
-var sdk = new SpeakeasySDK(security: new Security() {
+var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -42,19 +42,19 @@ var res = await sdk.Github.GithubCheckAccessAsync(req);
 **[GithubCheckAccessResponse](../../Models/Operations/GithubCheckAccessResponse.md)**
 ### Errors
 
-| Error Object                                    | Status Code                                     | Content Type                                    |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## GithubConfigureTarget
 
 ### Example Usage
 
 ```csharp
-using Speakeasy.Client.SDK;
-using Speakeasy.Client.SDK.Models.Shared;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
 
-var sdk = new SpeakeasySDK(security: new Security() {
+var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -80,19 +80,19 @@ var res = await sdk.Github.GithubConfigureTargetAsync(req);
 **[GithubConfigureTargetResponse](../../Models/Operations/GithubConfigureTargetResponse.md)**
 ### Errors
 
-| Error Object                                    | Status Code                                     | Content Type                                    |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## GithubTriggerAction
 
 ### Example Usage
 
 ```csharp
-using Speakeasy.Client.SDK;
-using Speakeasy.Client.SDK.Models.Shared;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
 
-var sdk = new SpeakeasySDK(security: new Security() {
+var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -119,6 +119,6 @@ var res = await sdk.Github.GithubTriggerActionAsync(req);
 **[GithubTriggerActionResponse](../../Models/Operations/GithubTriggerActionResponse.md)**
 ### Errors
 
-| Error Object                                    | Status Code                                     | Content Type                                    |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
