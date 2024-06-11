@@ -21,11 +21,11 @@ Delete a particular version of an Api. The will also delete all associated ApiEn
 ### Example Usage
 
 ```csharp
-using Speakeasy.Client.SDK;
-using Speakeasy.Client.SDK.Models.Shared;
-using Speakeasy.Client.SDK.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 
-var sdk = new SpeakeasySDK(security: new Security() {
+var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -51,9 +51,9 @@ var res = await sdk.Apis.DeleteApiAsync(req);
 **[DeleteApiResponse](../../Models/Operations/DeleteApiResponse.md)**
 ### Errors
 
-| Error Object                                    | Status Code                                     | Content Type                                    |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## GenerateOpenApiSpec
 
@@ -63,11 +63,11 @@ Returns the original document and the newly generated document allowing a diff t
 ### Example Usage
 
 ```csharp
-using Speakeasy.Client.SDK;
-using Speakeasy.Client.SDK.Models.Shared;
-using Speakeasy.Client.SDK.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 
-var sdk = new SpeakeasySDK(security: new Security() {
+var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -93,9 +93,9 @@ var res = await sdk.Apis.GenerateOpenApiSpecAsync(req);
 **[GenerateOpenApiSpecResponse](../../Models/Operations/GenerateOpenApiSpecResponse.md)**
 ### Errors
 
-| Error Object                                    | Status Code                                     | Content Type                                    |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## GeneratePostmanCollection
 
@@ -104,11 +104,11 @@ Generates a postman collection containing all endpoints for a particular API. In
 ### Example Usage
 
 ```csharp
-using Speakeasy.Client.SDK;
-using Speakeasy.Client.SDK.Models.Shared;
-using Speakeasy.Client.SDK.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 
-var sdk = new SpeakeasySDK(security: new Security() {
+var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -134,9 +134,9 @@ var res = await sdk.Apis.GeneratePostmanCollectionAsync(req);
 **[GeneratePostmanCollectionResponse](../../Models/Operations/GeneratePostmanCollectionResponse.md)**
 ### Errors
 
-| Error Object                                    | Status Code                                     | Content Type                                    |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## GetAllApiVersions
 
@@ -146,12 +146,12 @@ Supports filtering the versions based on metadata attributes.
 ### Example Usage
 
 ```csharp
-using Speakeasy.Client.SDK;
-using Speakeasy.Client.SDK.Models.Shared;
-using Speakeasy.Client.SDK.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 using System.Collections.Generic;
 
-var sdk = new SpeakeasySDK(security: new Security() {
+var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -176,9 +176,9 @@ var res = await sdk.Apis.GetAllApiVersionsAsync(req);
 **[GetAllApiVersionsResponse](../../Models/Operations/GetAllApiVersionsResponse.md)**
 ### Errors
 
-| Error Object                                    | Status Code                                     | Content Type                                    |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## GetApis
 
@@ -188,12 +188,12 @@ Supports filtering the APIs based on metadata attributes.
 ### Example Usage
 
 ```csharp
-using Speakeasy.Client.SDK;
-using Speakeasy.Client.SDK.Models.Shared;
-using Speakeasy.Client.SDK.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 using System.Collections.Generic;
 
-var sdk = new SpeakeasySDK(security: new Security() {
+var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -216,9 +216,9 @@ var res = await sdk.Apis.GetApisAsync(req);
 **[GetApisResponse](../../Models/Operations/GetApisResponse.md)**
 ### Errors
 
-| Error Object                                    | Status Code                                     | Content Type                                    |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## UpsertApi
 
@@ -228,12 +228,12 @@ If the Api exists, it will be updated.
 ### Example Usage
 
 ```csharp
-using Speakeasy.Client.SDK;
-using Speakeasy.Client.SDK.Models.Shared;
-using Speakeasy.Client.SDK.Models.Operations;
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
 using System.Collections.Generic;
 
-var sdk = new SpeakeasySDK(security: new Security() {
+var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
@@ -263,6 +263,6 @@ var res = await sdk.Apis.UpsertApiAsync(req);
 **[UpsertApiResponse](../../Models/Operations/UpsertApiResponse.md)**
 ### Errors
 
-| Error Object                                    | Status Code                                     | Content Type                                    |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| Speakeasy.Client.SDK.Models.Errors.SDKException | 4xx-5xx                                         | */*                                             |
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
