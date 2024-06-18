@@ -9,10 +9,23 @@
 #nullable enable
 namespace SpeakeasySDK.Models.Operations
 {
+    using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     
     public class SearchWorkspaceEventsRequest
     {
+
+        /// <summary>
+        /// A specific gen lock ID for the events.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=generate_gen_lock_id")]
+        public string? GenerateGenLockId { get; set; }
+
+        /// <summary>
+        /// Specified interaction type for events.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=interaction_type")]
+        public InteractionType? InteractionType { get; set; }
 
         /// <summary>
         /// Unique identifier of the lint report digest.

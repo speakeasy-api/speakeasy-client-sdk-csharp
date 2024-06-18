@@ -34,6 +34,9 @@ namespace SpeakeasySDK.Models.Shared
         [JsonProperty("org_slug")]
         public string OrgSlug { get; set; } = default!;
 
+        [JsonProperty("telemetry_disabled")]
+        public bool TelemetryDisabled { get; set; } = default!;
+
         [JsonProperty("workspace_id")]
         public string WorkspaceId { get; set; } = default!;
 
