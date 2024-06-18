@@ -35,6 +35,9 @@ namespace SpeakeasySDK.Models.Shared
         [JsonProperty("slug")]
         public string? Slug { get; set; }
 
+        [JsonProperty("telemetry_disabled")]
+        public bool TelemetryDisabled { get; set; } = default!;
+
         [JsonProperty("updated_at")]
         public DateTime? UpdatedAt { get; set; }
     }

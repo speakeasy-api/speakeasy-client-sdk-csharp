@@ -2,7 +2,7 @@
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <PackageId>SpeakeasySDK</PackageId>
-    <Version>5.9.9</Version>
+    <Version>5.9.10</Version>
     <Authors>Speakeasy</Authors>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\NUGET_README.md" Pack="true" PackagePath="README.md"/>
+    <None Include="..\README.md" Pack="true" PackagePath="\"/>
     <None Include="..\docs\**\*" Pack="true" PackagePath="\docs"  CopyToOutputDirectory="PreserveNewest"/>
 
     <PackageReference Include="newtonsoft.json" Version="13.0.3" />
