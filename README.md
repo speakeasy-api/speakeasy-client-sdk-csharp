@@ -3,10 +3,16 @@
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
-### Nuget
+### NuGet
 
 ```bash
 dotnet add package SpeakeasySDK
+```
+
+### Locally
+
+```bash
+dotnet add reference path/to/SpeakeasySDK.csproj
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -98,8 +104,11 @@ var res = await sdk.Apis.GetApisAsync(req);
 
 ### [Github](docs/sdks/github/README.md)
 
+* [FetchPublishingPRs](docs/sdks/github/README.md#fetchpublishingprs)
 * [GithubCheckAccess](docs/sdks/github/README.md#githubcheckaccess)
+* [GithubCheckPublishingSecrets](docs/sdks/github/README.md#githubcheckpublishingsecrets)
 * [GithubConfigureTarget](docs/sdks/github/README.md#githubconfiguretarget)
+* [GithubStorePublishingSecrets](docs/sdks/github/README.md#githubstorepublishingsecrets)
 * [GithubTriggerAction](docs/sdks/github/README.md#githubtriggeraction)
 
 ### [Organizations](docs/sdks/organizations/README.md)
