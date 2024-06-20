@@ -1,11 +1,6 @@
 # SpeakeasySDK
 
-<div align="left">
-    <a href="https://speakeasyapi.dev/"><img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454" /></a>
-    <a href="https://opensource.org/licenses/MIT">
-        <img src="https://img.shields.io/badge/License-MIT-blue.svg" style="width: 100px; height: 28px;" />
-    </a>
-</div>
+![speakeasy-logo](https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454)
 
 
 <!-- Start Installation [installation] -->
@@ -42,7 +37,7 @@ var res = await sdk.Apis.GetApisAsync(req);
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
-- [SDK](https:/github.com/speakeasy-api/speakeasy-client-sdk-csharp/blob/main/github/workspace/repo/docs/sdks/sdk/README.md#available-operations)
+- [SDK](https:/github.com/speakeasy-api/speakeasy-client-sdk-csharp/blob/main/docs/sdks/sdk/README.md#available-operations)
 - [Apis](https:/github.com/speakeasy-api/speakeasy-client-sdk-csharp/blob/main/github/workspace/repo/docs/sdks/apis/README.md#available-operations)
 - [ApiEndpoints](https:/github.com/speakeasy-api/speakeasy-client-sdk-csharp/blob/main/github/workspace/repo/docs/sdks/apiendpoints/README.md#available-operations)
 - [Metadata](https:/github.com/speakeasy-api/speakeasy-client-sdk-csharp/blob/main/github/workspace/repo/docs/sdks/metadata/README.md#available-operations)
