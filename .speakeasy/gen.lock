@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f73d2126-985b-4d69-88ee-b7c69254d8bf
 management:
-  docChecksum: 48caee63217cf42b334122c89dc04004
+  docChecksum: eb530f662240663b5cb067995daf351c
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.308.1
-  generationVersion: 2.342.6
-  releaseVersion: 5.9.10
-  configChecksum: ac1bf5eae4bb768acfc687db28521067
+  speakeasyVersion: 1.310.0
+  generationVersion: 2.347.4
+  releaseVersion: 5.9.11
+  configChecksum: 1fe92dec81ad68d374c6099ee42d0b1c
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
@@ -141,9 +141,14 @@ generatedFiles:
   - SpeakeasySDK/Models/Operations/GetRequestFromEventLogResponse.cs
   - SpeakeasySDK/Models/Operations/QueryEventLogRequest.cs
   - SpeakeasySDK/Models/Operations/QueryEventLogResponse.cs
+  - SpeakeasySDK/Models/Operations/FetchPublishingPRsRequest.cs
+  - SpeakeasySDK/Models/Operations/FetchPublishingPRsResponse.cs
   - SpeakeasySDK/Models/Operations/GithubCheckAccessRequest.cs
   - SpeakeasySDK/Models/Operations/GithubCheckAccessResponse.cs
+  - SpeakeasySDK/Models/Operations/GithubCheckPublishingSecretsRequest.cs
+  - SpeakeasySDK/Models/Operations/GithubCheckPublishingSecretsResponse.cs
   - SpeakeasySDK/Models/Operations/GithubConfigureTargetResponse.cs
+  - SpeakeasySDK/Models/Operations/GithubStorePublishingSecretsResponse.cs
   - SpeakeasySDK/Models/Operations/GithubTriggerActionResponse.cs
   - SpeakeasySDK/Models/Operations/CreateFreeTrialResponse.cs
   - SpeakeasySDK/Models/Operations/GetOrganizationUsageResponse.cs
@@ -217,7 +222,10 @@ generatedFiles:
   - SpeakeasySDK/Models/Shared/RequestMetadata.cs
   - SpeakeasySDK/Models/Shared/Filters.cs
   - SpeakeasySDK/Models/Shared/Filter.cs
+  - SpeakeasySDK/Models/Shared/GithubPublishingPRResponse.cs
+  - SpeakeasySDK/Models/Shared/GithubMissingPublishingSecretsResponse.cs
   - SpeakeasySDK/Models/Shared/GithubConfigureTargetRequest.cs
+  - SpeakeasySDK/Models/Shared/GithubStorePublishingSecretsRequest.cs
   - SpeakeasySDK/Models/Shared/GithubTriggerActionRequest.cs
   - SpeakeasySDK/Models/Shared/OrganizationUsageResponse.cs
   - SpeakeasySDK/Models/Shared/OrganizationUsage.cs
@@ -311,9 +319,14 @@ generatedFiles:
   - docs/Models/Operations/GetRequestFromEventLogResponse.md
   - docs/Models/Operations/QueryEventLogRequest.md
   - docs/Models/Operations/QueryEventLogResponse.md
+  - docs/Models/Operations/FetchPublishingPRsRequest.md
+  - docs/Models/Operations/FetchPublishingPRsResponse.md
   - docs/Models/Operations/GithubCheckAccessRequest.md
   - docs/Models/Operations/GithubCheckAccessResponse.md
+  - docs/Models/Operations/GithubCheckPublishingSecretsRequest.md
+  - docs/Models/Operations/GithubCheckPublishingSecretsResponse.md
   - docs/Models/Operations/GithubConfigureTargetResponse.md
+  - docs/Models/Operations/GithubStorePublishingSecretsResponse.md
   - docs/Models/Operations/GithubTriggerActionResponse.md
   - docs/Models/Operations/CreateFreeTrialResponse.md
   - docs/Models/Operations/GetOrganizationUsageResponse.md
@@ -387,7 +400,10 @@ generatedFiles:
   - docs/Models/Shared/RequestMetadata.md
   - docs/Models/Shared/Filters.md
   - docs/Models/Shared/Filter.md
+  - docs/Models/Shared/GithubPublishingPRResponse.md
+  - docs/Models/Shared/GithubMissingPublishingSecretsResponse.md
   - docs/Models/Shared/GithubConfigureTargetRequest.md
+  - docs/Models/Shared/GithubStorePublishingSecretsRequest.md
   - docs/Models/Shared/GithubTriggerActionRequest.md
   - docs/Models/Shared/OrganizationUsageResponse.md
   - docs/Models/Shared/OrganizationUsage.md
@@ -417,6 +433,7 @@ generatedFiles:
   - docs/sdks/suggest/README.md
   - docs/sdks/embeds/README.md
   - docs/sdks/events/README.md
+  - NUGET.md
   - USAGE.md
   - .gitattributes
   - SpeakeasySDK/Hooks/SDKHooks.cs

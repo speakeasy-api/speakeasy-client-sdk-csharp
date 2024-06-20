@@ -2,18 +2,20 @@
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <PackageId>SpeakeasySDK</PackageId>
-    <Version>5.9.10</Version>
+    <Version>5.9.11</Version>
     <Authors>Speakeasy</Authors>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>1591</NoWarn>
     <RepositoryUrl>https://github.com/speakeasy-api/speakeasy-client-sdk-csharp</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\README.md" Pack="true" PackagePath="\"/>
+    <None Include="..\NUGET.md" Pack="true" PackagePath="\README.md"/>
+    <None Include="..\LICENSE" Pack="true" PackagePath="\LICENSE.txt"/>
     <None Include="..\docs\**\*" Pack="true" PackagePath="\docs"  CopyToOutputDirectory="PreserveNewest"/>
 
     <PackageReference Include="newtonsoft.json" Version="13.0.3" />
