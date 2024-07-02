@@ -11,7 +11,7 @@ namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Utils;
     
-    public class GithubCheckAccessRequest
+    public class GetActionRequest
     {
 
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=org")]
@@ -19,5 +19,11 @@ namespace SpeakeasySDK.Models.Operations
 
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=repo")]
         public string Repo { get; set; } = default!;
+
+        /// <summary>
+        /// The targetName of the workflow target.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=targetName")]
+        public string? TargetName { get; set; }
     }
 }

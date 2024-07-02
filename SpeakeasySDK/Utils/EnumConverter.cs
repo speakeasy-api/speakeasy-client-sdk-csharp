@@ -34,7 +34,7 @@ namespace SpeakeasySDK.Utils
         {
             if (reader.Value == null)
             {
-                throw new ArgumentNullException(nameof(reader.Value));
+                return null;
             }
 
             var extensionType = System.Type.GetType(objectType.FullName + "Extension");

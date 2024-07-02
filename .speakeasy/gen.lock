@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f73d2126-985b-4d69-88ee-b7c69254d8bf
 management:
-  docChecksum: eb530f662240663b5cb067995daf351c
+  docChecksum: e4cb9ecada8b35163db080ecaaf60fe3
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.310.0
-  generationVersion: 2.347.4
-  releaseVersion: 5.9.13
-  configChecksum: 190b9d6323fbdac07c22dc3791a29f09
+  speakeasyVersion: 1.326.0
+  generationVersion: 2.359.0
+  releaseVersion: 5.9.17
+  configChecksum: 62c553205966650360abf9e55d158e1d
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
 features:
   csharp:
     additionalDependencies: 0.1.0
-    core: 3.9.6
+    core: 3.9.8
     deprecations: 2.81.2
     examples: 2.81.3
     globalSecurity: 2.83.4
@@ -122,6 +122,8 @@ generatedFiles:
   - SpeakeasySDK/Models/Operations/GetManifestRequest.cs
   - SpeakeasySDK/Models/Operations/GetManifestResponse.cs
   - SpeakeasySDK/Models/Operations/GetNamespacesResponse.cs
+  - SpeakeasySDK/Models/Operations/GetOASSummaryRequest.cs
+  - SpeakeasySDK/Models/Operations/GetOASSummaryResponse.cs
   - SpeakeasySDK/Models/Operations/GetRevisionsRequest.cs
   - SpeakeasySDK/Models/Operations/GetRevisionsResponse.cs
   - SpeakeasySDK/Models/Operations/GetTagsRequest.cs
@@ -141,15 +143,19 @@ generatedFiles:
   - SpeakeasySDK/Models/Operations/GetRequestFromEventLogResponse.cs
   - SpeakeasySDK/Models/Operations/QueryEventLogRequest.cs
   - SpeakeasySDK/Models/Operations/QueryEventLogResponse.cs
+  - SpeakeasySDK/Models/Operations/CheckAccessRequest.cs
+  - SpeakeasySDK/Models/Operations/CheckAccessResponse.cs
+  - SpeakeasySDK/Models/Operations/ConfigureCodeSamplesResponse.cs
+  - SpeakeasySDK/Models/Operations/ConfigureMintlifyRepoResponse.cs
+  - SpeakeasySDK/Models/Operations/ConfigureTargetResponse.cs
   - SpeakeasySDK/Models/Operations/FetchPublishingPRsRequest.cs
   - SpeakeasySDK/Models/Operations/FetchPublishingPRsResponse.cs
-  - SpeakeasySDK/Models/Operations/GithubCheckAccessRequest.cs
-  - SpeakeasySDK/Models/Operations/GithubCheckAccessResponse.cs
+  - SpeakeasySDK/Models/Operations/GetActionRequest.cs
+  - SpeakeasySDK/Models/Operations/GetActionResponse.cs
   - SpeakeasySDK/Models/Operations/GithubCheckPublishingSecretsRequest.cs
   - SpeakeasySDK/Models/Operations/GithubCheckPublishingSecretsResponse.cs
-  - SpeakeasySDK/Models/Operations/GithubConfigureTargetResponse.cs
   - SpeakeasySDK/Models/Operations/GithubStorePublishingSecretsResponse.cs
-  - SpeakeasySDK/Models/Operations/GithubTriggerActionResponse.cs
+  - SpeakeasySDK/Models/Operations/TriggerActionResponse.cs
   - SpeakeasySDK/Models/Operations/CreateFreeTrialResponse.cs
   - SpeakeasySDK/Models/Operations/GetOrganizationUsageResponse.cs
   - SpeakeasySDK/Models/Operations/GetOrganizationsResponse.cs
@@ -163,13 +169,15 @@ generatedFiles:
   - SpeakeasySDK/Models/Operations/UploadReportRequestBody.cs
   - SpeakeasySDK/Models/Operations/UploadReportUploadedReport.cs
   - SpeakeasySDK/Models/Operations/UploadReportResponse.cs
-  - SpeakeasySDK/Models/Operations/DepthStyle.cs
-  - SpeakeasySDK/Models/Operations/Style.cs
-  - SpeakeasySDK/Models/Operations/Opts.cs
+  - SpeakeasySDK/Models/Operations/ApplyOperationIDsRequestBody.cs
+  - SpeakeasySDK/Models/Operations/ApplyOperationIDsRequest.cs
+  - SpeakeasySDK/Models/Operations/ApplyOperationIDsResponse.cs
   - SpeakeasySDK/Models/Operations/Schema.cs
   - SpeakeasySDK/Models/Operations/SuggestOperationIDsRequestBody.cs
-  - SpeakeasySDK/Models/Operations/SuggestOperationIDsSuggestion.cs
+  - SpeakeasySDK/Models/Operations/SuggestOperationIDsRequest.cs
   - SpeakeasySDK/Models/Operations/SuggestOperationIDsResponse.cs
+  - SpeakeasySDK/Models/Operations/SuggestOperationIDsRegistryRequest.cs
+  - SpeakeasySDK/Models/Operations/SuggestOperationIDsRegistryResponse.cs
   - SpeakeasySDK/Models/Operations/GetEmbedAccessTokenRequest.cs
   - SpeakeasySDK/Models/Operations/GetEmbedAccessTokenResponse.cs
   - SpeakeasySDK/Models/Operations/GetValidEmbedAccessTokensResponse.cs
@@ -199,6 +207,10 @@ generatedFiles:
   - SpeakeasySDK/Models/Shared/Annotations.cs
   - SpeakeasySDK/Models/Shared/GetNamespacesResponse.cs
   - SpeakeasySDK/Models/Shared/Namespace.cs
+  - SpeakeasySDK/Models/Shared/OASSummary.cs
+  - SpeakeasySDK/Models/Shared/OASOperation.cs
+  - SpeakeasySDK/Models/Shared/License.cs
+  - SpeakeasySDK/Models/Shared/OASInfo.cs
   - SpeakeasySDK/Models/Shared/GetRevisionsResponse.cs
   - SpeakeasySDK/Models/Shared/Revision.cs
   - SpeakeasySDK/Models/Shared/GetTagsResponse.cs
@@ -222,9 +234,15 @@ generatedFiles:
   - SpeakeasySDK/Models/Shared/RequestMetadata.cs
   - SpeakeasySDK/Models/Shared/Filters.cs
   - SpeakeasySDK/Models/Shared/Filter.cs
-  - SpeakeasySDK/Models/Shared/GithubPublishingPRResponse.cs
-  - SpeakeasySDK/Models/Shared/GithubMissingPublishingSecretsResponse.cs
+  - SpeakeasySDK/Models/Shared/GithubConfigureCodeSamplesResponse.cs
+  - SpeakeasySDK/Models/Shared/Auth.cs
+  - SpeakeasySDK/Models/Shared/WorkflowDocument.cs
+  - SpeakeasySDK/Models/Shared/GithubConfigureCodeSamplesRequest.cs
+  - SpeakeasySDK/Models/Shared/GithubConfigureMintlifyRepoRequest.cs
   - SpeakeasySDK/Models/Shared/GithubConfigureTargetRequest.cs
+  - SpeakeasySDK/Models/Shared/GithubPublishingPRResponse.cs
+  - SpeakeasySDK/Models/Shared/GithubGetActionResponse.cs
+  - SpeakeasySDK/Models/Shared/GithubMissingPublishingSecretsResponse.cs
   - SpeakeasySDK/Models/Shared/GithubStorePublishingSecretsRequest.cs
   - SpeakeasySDK/Models/Shared/GithubTriggerActionRequest.cs
   - SpeakeasySDK/Models/Shared/OrganizationUsageResponse.cs
@@ -233,6 +251,10 @@ generatedFiles:
   - SpeakeasySDK/Models/Shared/Organization.cs
   - SpeakeasySDK/Models/Shared/Type.cs
   - SpeakeasySDK/Models/Shared/Report.cs
+  - SpeakeasySDK/Models/Shared/SuggestedOperationIDs.cs
+  - SpeakeasySDK/Models/Shared/DepthStyle.cs
+  - SpeakeasySDK/Models/Shared/Style.cs
+  - SpeakeasySDK/Models/Shared/SuggestOperationIDsOpts.cs
   - SpeakeasySDK/Models/Shared/EmbedAccessTokenResponse.cs
   - SpeakeasySDK/Models/Shared/EmbedToken.cs
   - SpeakeasySDK/Models/Shared/GenerateBumpType.cs
@@ -300,6 +322,8 @@ generatedFiles:
   - docs/Models/Operations/GetManifestRequest.md
   - docs/Models/Operations/GetManifestResponse.md
   - docs/Models/Operations/GetNamespacesResponse.md
+  - docs/Models/Operations/GetOASSummaryRequest.md
+  - docs/Models/Operations/GetOASSummaryResponse.md
   - docs/Models/Operations/GetRevisionsRequest.md
   - docs/Models/Operations/GetRevisionsResponse.md
   - docs/Models/Operations/GetTagsRequest.md
@@ -319,15 +343,19 @@ generatedFiles:
   - docs/Models/Operations/GetRequestFromEventLogResponse.md
   - docs/Models/Operations/QueryEventLogRequest.md
   - docs/Models/Operations/QueryEventLogResponse.md
+  - docs/Models/Operations/CheckAccessRequest.md
+  - docs/Models/Operations/CheckAccessResponse.md
+  - docs/Models/Operations/ConfigureCodeSamplesResponse.md
+  - docs/Models/Operations/ConfigureMintlifyRepoResponse.md
+  - docs/Models/Operations/ConfigureTargetResponse.md
   - docs/Models/Operations/FetchPublishingPRsRequest.md
   - docs/Models/Operations/FetchPublishingPRsResponse.md
-  - docs/Models/Operations/GithubCheckAccessRequest.md
-  - docs/Models/Operations/GithubCheckAccessResponse.md
+  - docs/Models/Operations/GetActionRequest.md
+  - docs/Models/Operations/GetActionResponse.md
   - docs/Models/Operations/GithubCheckPublishingSecretsRequest.md
   - docs/Models/Operations/GithubCheckPublishingSecretsResponse.md
-  - docs/Models/Operations/GithubConfigureTargetResponse.md
   - docs/Models/Operations/GithubStorePublishingSecretsResponse.md
-  - docs/Models/Operations/GithubTriggerActionResponse.md
+  - docs/Models/Operations/TriggerActionResponse.md
   - docs/Models/Operations/CreateFreeTrialResponse.md
   - docs/Models/Operations/GetOrganizationUsageResponse.md
   - docs/Models/Operations/GetOrganizationsResponse.md
@@ -341,13 +369,15 @@ generatedFiles:
   - docs/Models/Operations/UploadReportRequestBody.md
   - docs/Models/Operations/UploadReportUploadedReport.md
   - docs/Models/Operations/UploadReportResponse.md
-  - docs/Models/Operations/DepthStyle.md
-  - docs/Models/Operations/Style.md
-  - docs/Models/Operations/Opts.md
+  - docs/Models/Operations/ApplyOperationIDsRequestBody.md
+  - docs/Models/Operations/ApplyOperationIDsRequest.md
+  - docs/Models/Operations/ApplyOperationIDsResponse.md
   - docs/Models/Operations/Schema.md
   - docs/Models/Operations/SuggestOperationIDsRequestBody.md
-  - docs/Models/Operations/SuggestOperationIDsSuggestion.md
+  - docs/Models/Operations/SuggestOperationIDsRequest.md
   - docs/Models/Operations/SuggestOperationIDsResponse.md
+  - docs/Models/Operations/SuggestOperationIDsRegistryRequest.md
+  - docs/Models/Operations/SuggestOperationIDsRegistryResponse.md
   - docs/Models/Operations/GetEmbedAccessTokenRequest.md
   - docs/Models/Operations/GetEmbedAccessTokenResponse.md
   - docs/Models/Operations/GetValidEmbedAccessTokensResponse.md
@@ -377,6 +407,10 @@ generatedFiles:
   - docs/Models/Shared/Annotations.md
   - docs/Models/Shared/GetNamespacesResponse.md
   - docs/Models/Shared/Namespace.md
+  - docs/Models/Shared/OASSummary.md
+  - docs/Models/Shared/OASOperation.md
+  - docs/Models/Shared/License.md
+  - docs/Models/Shared/OASInfo.md
   - docs/Models/Shared/GetRevisionsResponse.md
   - docs/Models/Shared/Revision.md
   - docs/Models/Shared/GetTagsResponse.md
@@ -400,9 +434,15 @@ generatedFiles:
   - docs/Models/Shared/RequestMetadata.md
   - docs/Models/Shared/Filters.md
   - docs/Models/Shared/Filter.md
-  - docs/Models/Shared/GithubPublishingPRResponse.md
-  - docs/Models/Shared/GithubMissingPublishingSecretsResponse.md
+  - docs/Models/Shared/GithubConfigureCodeSamplesResponse.md
+  - docs/Models/Shared/Auth.md
+  - docs/Models/Shared/WorkflowDocument.md
+  - docs/Models/Shared/GithubConfigureCodeSamplesRequest.md
+  - docs/Models/Shared/GithubConfigureMintlifyRepoRequest.md
   - docs/Models/Shared/GithubConfigureTargetRequest.md
+  - docs/Models/Shared/GithubPublishingPRResponse.md
+  - docs/Models/Shared/GithubGetActionResponse.md
+  - docs/Models/Shared/GithubMissingPublishingSecretsResponse.md
   - docs/Models/Shared/GithubStorePublishingSecretsRequest.md
   - docs/Models/Shared/GithubTriggerActionRequest.md
   - docs/Models/Shared/OrganizationUsageResponse.md
@@ -411,6 +451,10 @@ generatedFiles:
   - docs/Models/Shared/Organization.md
   - docs/Models/Shared/Type.md
   - docs/Models/Shared/Report.md
+  - docs/Models/Shared/SuggestedOperationIDs.md
+  - docs/Models/Shared/DepthStyle.md
+  - docs/Models/Shared/Style.md
+  - docs/Models/Shared/SuggestOperationIDsOpts.md
   - docs/Models/Shared/EmbedAccessTokenResponse.md
   - docs/Models/Shared/EmbedToken.md
   - docs/Models/Shared/GenerateBumpType.md

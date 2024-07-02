@@ -809,3 +809,13 @@ Based on:
 - [csharp v5.9.13] .
 ### Releases
 - [NuGet v5.9.13] https://www.nuget.org/packages/SpeakeasySDK/5.9.13 - .
+
+## 2024-07-02 14:48:04
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.326.0 (2.359.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [csharp v5.9.17] .
+### Releases
+- [NuGet v5.9.17] https://www.nuget.org/packages/SpeakeasySDK/5.9.17 - .

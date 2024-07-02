@@ -90,7 +90,7 @@ namespace SpeakeasySDK.Models.Shared
         public string GenerateTarget { get; set; } = default!;
 
         /// <summary>
-        /// The name of the target as defined by the user.
+        /// The workflow name of the target.
         /// </summary>
         [JsonProperty("generate_target_name")]
         public string? GenerateTargetName { get; set; }
@@ -220,5 +220,17 @@ namespace SpeakeasySDK.Models.Shared
         /// </summary>
         [JsonProperty("success")]
         public bool? Success { get; set; }
+
+        /// <summary>
+        /// Workflow file (post execution)
+        /// </summary>
+        [JsonProperty("workflow_post_raw")]
+        public string? WorkflowPostRaw { get; set; }
+
+        /// <summary>
+        /// Workflow file (prior to execution)
+        /// </summary>
+        [JsonProperty("workflow_pre_raw")]
+        public string? WorkflowPreRaw { get; set; }
     }
 }

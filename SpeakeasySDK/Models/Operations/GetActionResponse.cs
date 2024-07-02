@@ -10,11 +10,12 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Models.Errors;
+    using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System.Net.Http;
     using System;
     
-    public class GithubConfigureTargetResponse
+    public class GetActionResponse
     {
 
         /// <summary>
@@ -26,6 +27,11 @@ namespace SpeakeasySDK.Models.Operations
         /// Default error response
         /// </summary>
         public Error? Error { get; set; }
+
+        /// <summary>
+        /// OK
+        /// </summary>
+        public GithubGetActionResponse? GithubGetActionResponse { get; set; }
 
         /// <summary>
         /// HTTP response status code for this operation

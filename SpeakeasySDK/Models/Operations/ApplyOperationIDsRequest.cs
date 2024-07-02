@@ -9,17 +9,19 @@
 #nullable enable
 namespace SpeakeasySDK.Models.Operations
 {
-    using Newtonsoft.Json;
+    using SpeakeasySDK.Models.Operations;
     using SpeakeasySDK.Utils;
-    using System.Collections.Generic;
     
-    /// <summary>
-    /// OK
-    /// </summary>
-    public class SuggestOperationIDsSuggestion
+    public class ApplyOperationIDsRequest
     {
 
-        [JsonProperty("operation_ids")]
-        public Dictionary<string, List<string>> OperationIds { get; set; } = default!;
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=x-session-id")]
+        public string XSessionId { get; set; } = default!;
+
+        /// <summary>
+        /// Apply options
+        /// </summary>
+        [SpeakeasyMetadata("request:mediaType=application/json")]
+        public ApplyOperationIDsRequestBody? RequestBody { get; set; }
     }
 }

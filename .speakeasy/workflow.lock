@@ -1,9 +1,9 @@
-speakeasyVersion: 1.310.0
+speakeasyVersion: 1.326.0
 sources:
     speakeasy:
         sourceNamespace: speakeasy
-        sourceRevisionDigest: sha256:a9384ea30338a2b485674faa063e3d5adaa57f4d2f4ec5947e855a7716885bfb
-        sourceBlobDigest: sha256:77eb1f2a06136c2a8d5e41f7efa161d852b8f0409898750355294b8b403287a3
+        sourceRevisionDigest: sha256:7378df7a808386b029c618042065e28764b4d516fc3b712716c98defe3454a9e
+        sourceBlobDigest: sha256:79442c5e9dfc890d427a51d8401f50a763f8820770a73c573fcd8268fd2dd362
         tags:
             - latest
             - main
@@ -11,8 +11,10 @@ targets:
     speakeasy-client-sdk-csharp:
         source: speakeasy
         sourceNamespace: speakeasy
-        sourceRevisionDigest: sha256:a9384ea30338a2b485674faa063e3d5adaa57f4d2f4ec5947e855a7716885bfb
-        sourceBlobDigest: sha256:77eb1f2a06136c2a8d5e41f7efa161d852b8f0409898750355294b8b403287a3
+        sourceRevisionDigest: sha256:7378df7a808386b029c618042065e28764b4d516fc3b712716c98defe3454a9e
+        sourceBlobDigest: sha256:79442c5e9dfc890d427a51d8401f50a763f8820770a73c573fcd8268fd2dd362
+        codeSamplesNamespace: code-samples-csharp-speakeasy-client-sdk-csharp
+        codeSamplesRevisionDigest: sha256:d2af4c20c19434a1a06c1138ba42f31b0caf0417e52d2894f307c28bc597a997
         outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0
@@ -30,3 +32,7 @@ workflow:
             publish:
                 nuget:
                     apiKey: $nuget_api_key
+            codeSamples:
+                output: codeSamples.yaml
+                registry:
+                    location: registry.speakeasyapi.dev/speakeasy-self/speakeasy-self/code-samples-csharp-speakeasy-client-sdk-csharp

@@ -47,6 +47,10 @@ namespace SpeakeasySDK
         /// REST APIs for managing Schema entities
         /// </summary>
         public ISchemas Schemas { get; }
+
+        /// <summary>
+        /// REST APIs for working with Registry artifacts
+        /// </summary>
         public IArtifacts Artifacts { get; }
 
         /// <summary>
@@ -147,10 +151,10 @@ namespace SpeakeasySDK
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.9.13";
-        private const string _sdkGenVersion = "2.347.4";
+        private const string _sdkVersion = "5.9.17";
+        private const string _sdkGenVersion = "2.359.0";
         private const string _openapiDocVersion = "0.4.0 .";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.9.13 2.347.4 0.4.0 . SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.9.17 2.359.0 0.4.0 . SpeakeasySDK";
         private string _serverUrl = "";
         private SDKConfig.Server? _server = null;
         private ISpeakeasyHttpClient _client;

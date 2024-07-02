@@ -7,19 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 #nullable enable
-namespace SpeakeasySDK.Models.Operations
+namespace SpeakeasySDK.Models.Shared
 {
     using Newtonsoft.Json;
-    using SpeakeasySDK.Models.Operations;
+    using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     
-    public class Opts
+    /// <summary>
+    /// A document referenced by a workflow
+    /// </summary>
+    public class WorkflowDocument
     {
 
-        [JsonProperty("depth_style")]
-        public DepthStyle? DepthStyle { get; set; }
+        [JsonProperty("auth")]
+        public Models.Shared.Auth? Auth { get; set; }
 
-        [JsonProperty("style")]
-        public Style? Style { get; set; }
+        [JsonProperty("location")]
+        public string Location { get; set; } = default!;
     }
 }

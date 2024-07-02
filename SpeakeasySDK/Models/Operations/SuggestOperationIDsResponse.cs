@@ -9,7 +9,7 @@
 #nullable enable
 namespace SpeakeasySDK.Models.Operations
 {
-    using SpeakeasySDK.Models.Operations;
+    using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System.Net.Http;
     using System;
@@ -35,6 +35,6 @@ namespace SpeakeasySDK.Models.Operations
         /// <summary>
         /// OK
         /// </summary>
-        public SuggestOperationIDsSuggestion? Suggestion { get; set; }
+        public SuggestedOperationIDs? SuggestedOperationIDs { get; set; }
     }
 }

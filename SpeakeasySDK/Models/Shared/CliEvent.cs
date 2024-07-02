@@ -192,6 +192,12 @@ namespace SpeakeasySDK.Models.Shared
         public string? GenerateTarget { get; set; }
 
         /// <summary>
+        /// The workflow name of the target.
+        /// </summary>
+        [JsonProperty("generate_target_name")]
+        public string? GenerateTargetName { get; set; }
+
+        /// <summary>
         /// The version of the target.
         /// </summary>
         [JsonProperty("generate_target_version")]
