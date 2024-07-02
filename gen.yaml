@@ -10,7 +10,7 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 csharp:
-  version: 5.9.13
+  version: 5.9.16
   additionalDependencies: []
   author: Speakeasy
   clientServerStatusCodesAsErrors: true
