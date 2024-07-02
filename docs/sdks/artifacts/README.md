@@ -1,11 +1,16 @@
 # Artifacts
 (*Artifacts*)
 
+## Overview
+
+REST APIs for working with Registry artifacts
+
 ### Available Operations
 
 * [GetBlob](#getblob) - Get blob for a particular digest
 * [GetManifest](#getmanifest) - Get manifest for a particular reference
 * [GetNamespaces](#getnamespaces) - Each namespace contains many revisions.
+* [GetOASSummary](#getoassummary)
 * [GetRevisions](#getrevisions)
 * [GetTags](#gettags)
 * [PostTags](#posttags) - Add tags to an existing revision
@@ -120,6 +125,45 @@ var res = await sdk.Artifacts.GetNamespacesAsync();
 ### Response
 
 **[Models.Operations.GetNamespacesResponse](../../Models/Operations/GetNamespacesResponse.md)**
+### Errors
+
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+
+## GetOASSummary
+
+### Example Usage
+
+```csharp
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
+
+var sdk = new SDK(security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    });
+
+GetOASSummaryRequest req = new GetOASSummaryRequest() {
+    NamespaceName = "<value>",
+    RevisionReference = "<value>",
+};
+
+var res = await sdk.Artifacts.GetOASSummaryAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `request`                                                               | [GetOASSummaryRequest](../../Models/Operations/GetOASSummaryRequest.md) | :heavy_check_mark:                                                      | The request object to use for the request.                              |
+
+
+### Response
+
+**[GetOASSummaryResponse](../../Models/Operations/GetOASSummaryResponse.md)**
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |

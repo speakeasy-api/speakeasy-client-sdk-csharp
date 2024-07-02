@@ -10,6 +10,7 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Models.Operations;
+    using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     
     /// <summary>
@@ -18,10 +19,10 @@ namespace SpeakeasySDK.Models.Operations
     public class SuggestOperationIDsRequestBody
     {
 
+        [SpeakeasyMetadata("multipartForm:name=opts,json")]
+        public SuggestOperationIDsOpts? Opts { get; set; }
+
         [SpeakeasyMetadata("multipartForm:file")]
         public Models.Operations.Schema Schema { get; set; } = default!;
-
-        [SpeakeasyMetadata("multipartForm:name=opts,json")]
-        public Opts? Opts { get; set; }
     }
 }

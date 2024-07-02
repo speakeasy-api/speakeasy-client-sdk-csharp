@@ -3,12 +3,174 @@
 
 ### Available Operations
 
+* [CheckAccess](#checkaccess)
+* [ConfigureCodeSamples](#configurecodesamples)
+* [ConfigureMintlifyRepo](#configuremintlifyrepo)
+* [ConfigureTarget](#configuretarget)
 * [FetchPublishingPRs](#fetchpublishingprs)
-* [GithubCheckAccess](#githubcheckaccess)
+* [GetAction](#getaction)
 * [GithubCheckPublishingSecrets](#githubcheckpublishingsecrets)
-* [GithubConfigureTarget](#githubconfiguretarget)
 * [GithubStorePublishingSecrets](#githubstorepublishingsecrets)
-* [GithubTriggerAction](#githubtriggeraction)
+* [TriggerAction](#triggeraction)
+
+## CheckAccess
+
+### Example Usage
+
+```csharp
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using SpeakeasySDK.Models.Operations;
+
+var sdk = new SDK(security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    });
+
+CheckAccessRequest req = new CheckAccessRequest() {
+    Org = "<value>",
+    Repo = "<value>",
+};
+
+var res = await sdk.Github.CheckAccessAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `request`                                                           | [CheckAccessRequest](../../Models/Operations/CheckAccessRequest.md) | :heavy_check_mark:                                                  | The request object to use for the request.                          |
+
+
+### Response
+
+**[CheckAccessResponse](../../Models/Operations/CheckAccessResponse.md)**
+### Errors
+
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+
+## ConfigureCodeSamples
+
+### Example Usage
+
+```csharp
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+
+var sdk = new SDK(security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    });
+
+GithubConfigureCodeSamplesRequest req = new GithubConfigureCodeSamplesRequest() {
+    Org = "<value>",
+    Repo = "<value>",
+    TargetName = "<value>",
+};
+
+var res = await sdk.Github.ConfigureCodeSamplesAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `request`                                                                                     | [GithubConfigureCodeSamplesRequest](../../Models/Shared/GithubConfigureCodeSamplesRequest.md) | :heavy_check_mark:                                                                            | The request object to use for the request.                                                    |
+
+
+### Response
+
+**[ConfigureCodeSamplesResponse](../../Models/Operations/ConfigureCodeSamplesResponse.md)**
+### Errors
+
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+
+## ConfigureMintlifyRepo
+
+### Example Usage
+
+```csharp
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using System.Collections.Generic;
+
+var sdk = new SDK(security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    });
+
+GithubConfigureMintlifyRepoRequest req = new GithubConfigureMintlifyRepoRequest() {
+    Input = "<value>",
+    Org = "<value>",
+    Overlays = new List<string>() {
+        "<value>",
+    },
+    Repo = "<value>",
+};
+
+var res = await sdk.Github.ConfigureMintlifyRepoAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `request`                                                                                       | [GithubConfigureMintlifyRepoRequest](../../Models/Shared/GithubConfigureMintlifyRepoRequest.md) | :heavy_check_mark:                                                                              | The request object to use for the request.                                                      |
+
+
+### Response
+
+**[ConfigureMintlifyRepoResponse](../../Models/Operations/ConfigureMintlifyRepoResponse.md)**
+### Errors
+
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+
+## ConfigureTarget
+
+### Example Usage
+
+```csharp
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+
+var sdk = new SDK(security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    });
+
+GithubConfigureTargetRequest req = new GithubConfigureTargetRequest() {
+    Org = "<value>",
+    RepoName = "<value>",
+};
+
+var res = await sdk.Github.ConfigureTargetAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `request`                                                                           | [GithubConfigureTargetRequest](../../Models/Shared/GithubConfigureTargetRequest.md) | :heavy_check_mark:                                                                  | The request object to use for the request.                                          |
+
+
+### Response
+
+**[ConfigureTargetResponse](../../Models/Operations/ConfigureTargetResponse.md)**
+### Errors
+
+| Error Object                            | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
 ## FetchPublishingPRs
 
@@ -50,7 +212,7 @@ var res = await sdk.Github.FetchPublishingPRsAsync(req);
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
-## GithubCheckAccess
+## GetAction
 
 ### Example Usage
 
@@ -63,26 +225,26 @@ var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
     });
 
-GithubCheckAccessRequest req = new GithubCheckAccessRequest() {
+GetActionRequest req = new GetActionRequest() {
     Org = "<value>",
     Repo = "<value>",
 };
 
-var res = await sdk.Github.GithubCheckAccessAsync(req);
+var res = await sdk.Github.GetActionAsync(req);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `request`                                                                       | [GithubCheckAccessRequest](../../Models/Operations/GithubCheckAccessRequest.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
+| Parameter                                                       | Type                                                            | Required                                                        | Description                                                     |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| `request`                                                       | [GetActionRequest](../../Models/Operations/GetActionRequest.md) | :heavy_check_mark:                                              | The request object to use for the request.                      |
 
 
 ### Response
 
-**[GithubCheckAccessResponse](../../Models/Operations/GithubCheckAccessResponse.md)**
+**[GetActionResponse](../../Models/Operations/GetActionResponse.md)**
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |
@@ -127,44 +289,6 @@ var res = await sdk.Github.GithubCheckPublishingSecretsAsync(req);
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
-## GithubConfigureTarget
-
-### Example Usage
-
-```csharp
-using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
-
-var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
-
-GithubConfigureTargetRequest req = new GithubConfigureTargetRequest() {
-    Org = "<value>",
-    RepoName = "<value>",
-};
-
-var res = await sdk.Github.GithubConfigureTargetAsync(req);
-
-// handle response
-```
-
-### Parameters
-
-| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
-| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `request`                                                                           | [GithubConfigureTargetRequest](../../Models/Shared/GithubConfigureTargetRequest.md) | :heavy_check_mark:                                                                  | The request object to use for the request.                                          |
-
-
-### Response
-
-**[GithubConfigureTargetResponse](../../Models/Operations/GithubConfigureTargetResponse.md)**
-### Errors
-
-| Error Object                            | Status Code                             | Content Type                            |
-| --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
-
 ## GithubStorePublishingSecrets
 
 ### Example Usage
@@ -203,7 +327,7 @@ var res = await sdk.Github.GithubStorePublishingSecretsAsync(req);
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
-## GithubTriggerAction
+## TriggerAction
 
 ### Example Usage
 
@@ -221,7 +345,7 @@ GithubTriggerActionRequest req = new GithubTriggerActionRequest() {
     RepoName = "<value>",
 };
 
-var res = await sdk.Github.GithubTriggerActionAsync(req);
+var res = await sdk.Github.TriggerActionAsync(req);
 
 // handle response
 ```
@@ -235,7 +359,7 @@ var res = await sdk.Github.GithubTriggerActionAsync(req);
 
 ### Response
 
-**[GithubTriggerActionResponse](../../Models/Operations/GithubTriggerActionResponse.md)**
+**[TriggerActionResponse](../../Models/Operations/TriggerActionResponse.md)**
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |

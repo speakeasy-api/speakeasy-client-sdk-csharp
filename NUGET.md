@@ -1,15 +1,5 @@
 # SpeakeasySDK
 
-![speakeasy-logo](https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454)
-
-
-<!-- Start Installation [installation] -->
-## Installation
-
-```bash
-dotnet add package SpeakeasySDK
-```
-<!-- End Installation [installation] -->
 
 <!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
@@ -33,25 +23,6 @@ var res = await sdk.Apis.GetApisAsync(req);
 // handle response
 ```
 <!-- End SDK Example Usage [usage] -->
-
-<!-- Start Available Resources and Operations [operations] -->
-## Available Resources and Operations
-
-- [SDK](https:/github.com/speakeasy-api/speakeasy-client-sdk-csharp/blob/main/docs/sdks/sdk/README.md#available-operations)
-- [Apis](https:/github.com/speakeasy-api/speakeasy-client-sdk-csharp/blob/main/github/workspace/repo/docs/sdks/apis/README.md#available-operations)
-- [ApiEndpoints](https:/github.com/speakeasy-api/speakeasy-client-sdk-csharp/blob/main/github/workspace/repo/docs/sdks/apiendpoints/README.md#available-operations)
-- [Metadata](https:/github.com/speakeasy-api/speakeasy-client-sdk-csharp/blob/main/github/workspace/repo/docs/sdks/metadata/README.md#available-operations)
-- [Schemas](https:/github.com/speakeasy-api/speakeasy-client-sdk-csharp/blob/main/github/workspace/repo/docs/sdks/schemas/README.md#available-operations)
-- [Artifacts](https:/github.com/speakeasy-api/speakeasy-client-sdk-csharp/blob/main/github/workspace/repo/docs/sdks/artifacts/README.md#available-operations)
-- [Auth](https:/github.com/speakeasy-api/speakeasy-client-sdk-csharp/blob/main/github/workspace/repo/docs/sdks/auth/README.md#available-operations)
-- [Requests](https:/github.com/speakeasy-api/speakeasy-client-sdk-csharp/blob/main/github/workspace/repo/docs/sdks/requests/README.md#available-operations)
-- [Github](https:/github.com/speakeasy-api/speakeasy-client-sdk-csharp/blob/main/github/workspace/repo/docs/sdks/github/README.md#available-operations)
-- [Organizations](https:/github.com/speakeasy-api/speakeasy-client-sdk-csharp/blob/main/github/workspace/repo/docs/sdks/organizations/README.md#available-operations)
-- [Reports](https:/github.com/speakeasy-api/speakeasy-client-sdk-csharp/blob/main/github/workspace/repo/docs/sdks/reports/README.md#available-operations)
-- [Suggest](https:/github.com/speakeasy-api/speakeasy-client-sdk-csharp/blob/main/github/workspace/repo/docs/sdks/suggest/README.md#available-operations)
-- [Embeds](https:/github.com/speakeasy-api/speakeasy-client-sdk-csharp/blob/main/github/workspace/repo/docs/sdks/embeds/README.md#available-operations)
-- [Events](https:/github.com/speakeasy-api/speakeasy-client-sdk-csharp/blob/main/github/workspace/repo/docs/sdks/events/README.md#available-operations)
-<!-- End Available Resources and Operations [operations] -->
 
 <!-- Start Global Parameters [global-parameters] -->
 ## Global Parameters

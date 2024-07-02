@@ -14,7 +14,7 @@ namespace SpeakeasySDK.Models.Operations
     using System.Net.Http;
     using System;
     
-    public class GithubCheckAccessResponse
+    public class CheckAccessResponse
     {
 
         /// <summary>

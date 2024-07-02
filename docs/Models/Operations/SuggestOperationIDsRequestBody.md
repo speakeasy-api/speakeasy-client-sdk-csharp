@@ -5,7 +5,7 @@ The schema file to upload provided as a multipart/form-data file segment.
 
 ## Fields
 
-| Field                                                         | Type                                                          | Required                                                      | Description                                                   |
-| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| `Schema`                                                      | [Models.Operations.Schema](../../Models/Operations/Schema.md) | :heavy_check_mark:                                            | N/A                                                           |
-| `Opts`                                                        | [Opts](../../Models/Operations/Opts.md)                       | :heavy_minus_sign:                                            | N/A                                                           |
+| Field                                                                     | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `Opts`                                                                    | [SuggestOperationIDsOpts](../../Models/Shared/SuggestOperationIDsOpts.md) | :heavy_minus_sign:                                                        | N/A                                                                       |
+| `Schema`                                                                  | [Models.Operations.Schema](../../Models/Operations/Schema.md)             | :heavy_check_mark:                                                        | N/A                                                                       |
