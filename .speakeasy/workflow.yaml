@@ -13,3 +13,7 @@ targets:
         publish:
             nuget:
                 apiKey: $nuget_api_key
+        codeSamples:
+            output: codeSamples.yaml
+            registry:
+                location: registry.speakeasyapi.dev/speakeasy-self/speakeasy-self/code-samples-csharp-speakeasy-client-sdk-csharp
