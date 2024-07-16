@@ -42,5 +42,11 @@ namespace SpeakeasySDK.Models.Shared
         /// </summary>
         [JsonProperty("repo")]
         public string Repo { get; set; } = default!;
+
+        /// <summary>
+        /// The subdirectory (location of mint.json)
+        /// </summary>
+        [JsonProperty("subdirectory")]
+        public string? Subdirectory { get; set; }
     }
 }

@@ -20,8 +20,8 @@ Get or refresh an access token for the current workspace.
 
 ```csharp
 using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
+using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK();
 
@@ -87,8 +87,8 @@ Checks if generation is permitted for a particular run of the CLI
 
 ```csharp
 using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
+using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",

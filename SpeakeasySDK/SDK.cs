@@ -71,6 +71,11 @@ namespace SpeakeasySDK
         public IReports Reports { get; }
 
         /// <summary>
+        /// REST APIs for managing short URLs
+        /// </summary>
+        public IShortURLs ShortURLs { get; }
+
+        /// <summary>
         /// REST APIs for managing LLM OAS suggestions
         /// </summary>
         public ISuggest Suggest { get; }
@@ -151,10 +156,10 @@ namespace SpeakeasySDK
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.9.17";
-        private const string _sdkGenVersion = "2.359.0";
+        private const string _sdkVersion = "5.9.18";
+        private const string _sdkGenVersion = "2.373.2";
         private const string _openapiDocVersion = "0.4.0 .";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.9.17 2.359.0 0.4.0 . SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.9.18 2.373.2 0.4.0 . SpeakeasySDK";
         private string _serverUrl = "";
         private SDKConfig.Server? _server = null;
         private ISpeakeasyHttpClient _client;
@@ -169,6 +174,7 @@ namespace SpeakeasySDK
         public IGithub Github { get; private set; }
         public IOrganizations Organizations { get; private set; }
         public IReports Reports { get; private set; }
+        public IShortURLs ShortURLs { get; private set; }
         public ISuggest Suggest { get; private set; }
         public IEmbeds Embeds { get; private set; }
         public IEvents Events { get; private set; }
@@ -239,6 +245,9 @@ namespace SpeakeasySDK
 
 
             Reports = new Reports(_client, _securitySource, _serverUrl, SDKConfiguration);
+
+
+            ShortURLs = new ShortURLs(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
             Suggest = new Suggest(_client, _securitySource, _serverUrl, SDKConfiguration);

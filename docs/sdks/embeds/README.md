@@ -20,8 +20,8 @@ Filters can be applied allowing views to be filtered to things like particular c
 
 ```csharp
 using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
+using SpeakeasySDK.Models.Shared;
 using System.Collections.Generic;
 
 var sdk = new SDK(security: new Security() {
@@ -88,8 +88,8 @@ Revoke an embed access EmbedToken.
 
 ```csharp
 using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
+using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",

@@ -19,8 +19,8 @@ Delete metadata for a particular apiID and versionID.
 
 ```csharp
 using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
+using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
@@ -62,8 +62,8 @@ Get all metadata for a particular apiID and versionID.
 
 ```csharp
 using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
+using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
@@ -103,8 +103,8 @@ Insert metadata for a particular apiID and versionID.
 
 ```csharp
 using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
+using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",

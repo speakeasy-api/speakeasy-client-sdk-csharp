@@ -24,8 +24,8 @@ Get blob for a particular digest
 
 ```csharp
 using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
+using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
@@ -67,8 +67,8 @@ Get manifest for a particular reference
 
 ```csharp
 using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
+using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
@@ -137,8 +137,8 @@ var res = await sdk.Artifacts.GetNamespacesAsync();
 
 ```csharp
 using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
+using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
@@ -176,8 +176,8 @@ var res = await sdk.Artifacts.GetOASSummaryAsync(req);
 
 ```csharp
 using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
+using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
@@ -214,8 +214,8 @@ var res = await sdk.Artifacts.GetRevisionsAsync(req);
 
 ```csharp
 using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
+using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
@@ -254,8 +254,8 @@ Add tags to an existing revision
 
 ```csharp
 using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
+using SpeakeasySDK.Models.Shared;
 using System.Collections.Generic;
 
 var sdk = new SDK(security: new Security() {

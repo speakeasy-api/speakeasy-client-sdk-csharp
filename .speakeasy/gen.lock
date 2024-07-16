@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f73d2126-985b-4d69-88ee-b7c69254d8bf
 management:
-  docChecksum: e4cb9ecada8b35163db080ecaaf60fe3
+  docChecksum: 638dbecd668cc1d7818c3b5aefd2d3e1
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.326.0
-  generationVersion: 2.359.0
-  releaseVersion: 5.9.17
-  configChecksum: 62c553205966650360abf9e55d158e1d
+  speakeasyVersion: 1.337.1
+  generationVersion: 2.373.2
+  releaseVersion: 5.9.18
+  configChecksum: e52bf93e62b87d2ad982f5f0a277c81b
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
 features:
   csharp:
     additionalDependencies: 0.1.0
-    core: 3.9.8
+    core: 3.9.10
     deprecations: 2.81.2
     examples: 2.81.3
     globalSecurity: 2.83.4
@@ -38,6 +38,7 @@ generatedFiles:
   - SpeakeasySDK/Github.cs
   - SpeakeasySDK/Organizations.cs
   - SpeakeasySDK/Reports.cs
+  - SpeakeasySDK/ShortURLs.cs
   - SpeakeasySDK/Suggest.cs
   - SpeakeasySDK/Embeds.cs
   - SpeakeasySDK/Events.cs
@@ -169,6 +170,8 @@ generatedFiles:
   - SpeakeasySDK/Models/Operations/UploadReportRequestBody.cs
   - SpeakeasySDK/Models/Operations/UploadReportUploadedReport.cs
   - SpeakeasySDK/Models/Operations/UploadReportResponse.cs
+  - SpeakeasySDK/Models/Operations/CreateRequestBody.cs
+  - SpeakeasySDK/Models/Operations/CreateResponse.cs
   - SpeakeasySDK/Models/Operations/ApplyOperationIDsRequestBody.cs
   - SpeakeasySDK/Models/Operations/ApplyOperationIDsRequest.cs
   - SpeakeasySDK/Models/Operations/ApplyOperationIDsResponse.cs
@@ -251,6 +254,7 @@ generatedFiles:
   - SpeakeasySDK/Models/Shared/Organization.cs
   - SpeakeasySDK/Models/Shared/Type.cs
   - SpeakeasySDK/Models/Shared/Report.cs
+  - SpeakeasySDK/Models/Shared/ShortURL.cs
   - SpeakeasySDK/Models/Shared/SuggestedOperationIDs.cs
   - SpeakeasySDK/Models/Shared/DepthStyle.cs
   - SpeakeasySDK/Models/Shared/Style.cs
@@ -369,6 +373,8 @@ generatedFiles:
   - docs/Models/Operations/UploadReportRequestBody.md
   - docs/Models/Operations/UploadReportUploadedReport.md
   - docs/Models/Operations/UploadReportResponse.md
+  - docs/Models/Operations/CreateRequestBody.md
+  - docs/Models/Operations/CreateResponse.md
   - docs/Models/Operations/ApplyOperationIDsRequestBody.md
   - docs/Models/Operations/ApplyOperationIDsRequest.md
   - docs/Models/Operations/ApplyOperationIDsResponse.md
@@ -451,6 +457,7 @@ generatedFiles:
   - docs/Models/Shared/Organization.md
   - docs/Models/Shared/Type.md
   - docs/Models/Shared/Report.md
+  - docs/Models/Shared/ShortURL.md
   - docs/Models/Shared/SuggestedOperationIDs.md
   - docs/Models/Shared/DepthStyle.md
   - docs/Models/Shared/Style.md
@@ -474,6 +481,7 @@ generatedFiles:
   - docs/sdks/github/README.md
   - docs/sdks/organizations/README.md
   - docs/sdks/reports/README.md
+  - docs/sdks/shorturls/README.md
   - docs/sdks/suggest/README.md
   - docs/sdks/embeds/README.md
   - docs/sdks/events/README.md
@@ -482,3 +490,4 @@ generatedFiles:
   - .gitattributes
   - SpeakeasySDK/Hooks/SDKHooks.cs
   - SpeakeasySDK/Hooks/HookTypes.cs
+  - CONTRIBUTING.md
