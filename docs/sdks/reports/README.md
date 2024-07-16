@@ -19,8 +19,8 @@ Get the signed access url for the change reports for a particular document.
 
 ```csharp
 using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
+using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
@@ -59,8 +59,8 @@ Get the signed access url for the linting reports for a particular document.
 
 ```csharp
 using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
+using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
@@ -99,8 +99,8 @@ Upload a report.
 
 ```csharp
 using SpeakeasySDK;
-using SpeakeasySDK.Models.Shared;
 using SpeakeasySDK.Models.Operations;
+using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",

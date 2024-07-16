@@ -5,9 +5,10 @@ A request to configure a GitHub repository for mintlify
 
 ## Fields
 
-| Field                        | Type                         | Required                     | Description                  |
-| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `Input`                      | *string*                     | :heavy_check_mark:           | The input OpenAPI document   |
-| `Org`                        | *string*                     | :heavy_check_mark:           | The GitHub organization name |
-| `Overlays`                   | List<*string*>               | :heavy_check_mark:           | The overlays to apply        |
-| `Repo`                       | *string*                     | :heavy_check_mark:           | The GitHub repository name   |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `Input`                                  | *string*                                 | :heavy_check_mark:                       | The input OpenAPI document               |
+| `Org`                                    | *string*                                 | :heavy_check_mark:                       | The GitHub organization name             |
+| `Overlays`                               | List<*string*>                           | :heavy_check_mark:                       | The overlays to apply                    |
+| `Repo`                                   | *string*                                 | :heavy_check_mark:                       | The GitHub repository name               |
+| `Subdirectory`                           | *string*                                 | :heavy_minus_sign:                       | The subdirectory (location of mint.json) |
