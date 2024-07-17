@@ -4,14 +4,18 @@
     <IsPackable>true</IsPackable>
     <PackageId>SpeakeasySDK</PackageId>
     <Version>5.9.23</Version>
-    <Authors>Speakeasy</Authors>
     <TargetFramework>net8.0</TargetFramework>
     <Authors>Speakeasy</Authors>
-    <ProjectUrl>https://speakeasyapi.dev</ProjectUrl>
-    <Description>C# Client SDK</Description>
-    <PackageTags>Speakeasy API SDK Generation</PackageTags>
+    <Copyright>Copyright (c) Speakeasy 2024</Copyright>
     <RepositoryUrl>https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://speakeasyapi.dev</PackageProjectUrl>
+    <PackageTags>Speakeasy API SDK-Generation</PackageTags>
+    <Description>
+      This SDK was automatically generated and published by Speakeasy.
+      Speakeasy lets you service your API community with best in class developer experience
+      without having to build it and maintain it yourself.
+    </Description>
   </PropertyGroup>
 
   <PropertyGroup>
