@@ -1,24 +1,50 @@
 <Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <PackageId>SpeakeasySDK</PackageId>
-    <Version>5.9.18</Version>
+    <Version>5.9.19</Version>
     <Authors>Speakeasy</Authors>
     <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <NoWarn>1591</NoWarn>
-    <RepositoryUrl>https://github.com/speakeasy-api/speakeasy-client-sdk-csharp</RepositoryUrl>
+    <Authors>Speakeasy</Authors>
+    <ProjectUrl>https://speakeasyapi.dev</ProjectUrl>
+    <Description>C# Client SDK</Description>
+    <PackageTags>Speakeasy API SDK Generation</PackageTags>
+    <RepositoryUrl>https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageIcon>icon.png</PackageIcon>
+  <PropertyGroup>
 
   <ItemGroup>
     <None Include="..\NUGET.md" Pack="true" PackagePath="README.md"/>
     <None Include="..\LICENSE.md" Pack="true" PackagePath="\"/>
     <None Include="..\docs\**\*" Pack="true" PackagePath="\docs"  CopyToOutputDirectory="PreserveNewest"/>
+  </ItemGroup>
 
+  <PropertyGroup>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <Nullable>enable</Nullable>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
     <PackageReference Include="newtonsoft.json" Version="13.0.3" />
     <PackageReference Include="nodatime" Version="3.1.9" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All"/>
   </ItemGroup>
+
 </Project>
