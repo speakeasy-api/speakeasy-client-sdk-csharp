@@ -9,8 +9,8 @@ namespace SpeakeasySDK.Hooks
     public static class HookRegistration
     {
         /// <summary>
-        /// Add hooks by calling `SpeakeasySDK.Hooks.Register<HookInterface>(myHook);`
-        /// where `I<HookInterface>` is one of the following interfaces defined in HookTypes.cs:
+        /// Add hooks by calling `SpeakeasySDK.Hooks.Register&lt;HookInterface&gt;(myHook);`
+        /// where `I&lt;HookInterface&gt;` is one of the following interfaces defined in HookTypes.cs:
         ///   - ISDKInitHook
         ///   - IBeforeRequestHook
         ///   - IAfterSuccess
