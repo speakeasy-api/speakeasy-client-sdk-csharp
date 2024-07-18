@@ -3,7 +3,7 @@
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <PackageId>SpeakeasySDK</PackageId>
-    <Version>5.9.23</Version>
+    <Version>5.9.25</Version>
     <TargetFramework>net8.0</TargetFramework>
     <Authors>Speakeasy</Authors>
     <Copyright>Copyright (c) Speakeasy 2024</Copyright>
@@ -44,10 +44,10 @@
     <DebugType>portable</DebugType>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'false'">
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <EmbedAllSources>true</EmbedAllSources>
   </PropertyGroup>
 
   <ItemGroup>
