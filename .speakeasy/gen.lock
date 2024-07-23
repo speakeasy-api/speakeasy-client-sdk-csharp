@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f73d2126-985b-4d69-88ee-b7c69254d8bf
 management:
-  docChecksum: 638dbecd668cc1d7818c3b5aefd2d3e1
+  docChecksum: 5b362866a3e7a85c830c6cb1f1cf4896
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.340.0
-  generationVersion: 2.375.5
-  releaseVersion: 5.9.25
-  configChecksum: 3160f3d1c4782c44dbd5c8eeca3678c1
+  speakeasyVersion: 1.345.1
+  generationVersion: 2.378.1
+  releaseVersion: 5.9.26
+  configChecksum: 1bbbd2cdc4b0f56108f08104f21dc5b1
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
 features:
   csharp:
     additionalDependencies: 0.1.0
-    core: 3.9.10
+    core: 3.9.11
     deprecations: 2.81.2
     examples: 2.81.3
     globalSecurity: 2.83.4
@@ -62,6 +62,7 @@ generatedFiles:
   - SpeakeasySDK/Utils/SpeakeasyMetadata.cs
   - SpeakeasySDK/Utils/URLBuilder.cs
   - SpeakeasySDK/Utils/Utilities.cs
+  - SpeakeasySDK/SpeakeasySDK.csproj
   - SpeakeasySDK/Models/Errors/SDKException.cs
   - SpeakeasySDK/Models/Operations/DeleteApiRequest.cs
   - SpeakeasySDK/Models/Operations/DeleteApiResponse.cs

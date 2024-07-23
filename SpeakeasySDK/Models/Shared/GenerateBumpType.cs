@@ -14,7 +14,7 @@ namespace SpeakeasySDK.Models.Shared
     using System;
     
     /// <summary>
-    /// Bump type of the lock file (calculated semver delta, or a custom change (manual release))
+    /// Bump type of the lock file (calculated semver delta, custom change (manual release), or prerelease/graduate)
     /// </summary>
     public enum GenerateBumpType
     {
@@ -26,6 +26,10 @@ namespace SpeakeasySDK.Models.Shared
         Patch,
         [JsonProperty("custom")]
         Custom,
+        [JsonProperty("graduate")]
+        Graduate,
+        [JsonProperty("prerelease")]
+        Prerelease,
         [JsonProperty("none")]
         None,
     }

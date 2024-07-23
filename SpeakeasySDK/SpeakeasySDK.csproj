@@ -3,19 +3,14 @@
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <PackageId>SpeakeasySDK</PackageId>
-    <Version>5.9.25</Version>
+    <Version>5.9.26</Version>
     <TargetFramework>net8.0</TargetFramework>
     <Authors>Speakeasy</Authors>
     <Copyright>Copyright (c) Speakeasy 2024</Copyright>
     <RepositoryUrl>https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageProjectUrl>https://speakeasyapi.dev</PackageProjectUrl>
-    <PackageTags>Speakeasy API SDK-Generation</PackageTags>
-    <Description>
-      This SDK was automatically generated and published by Speakeasy.
-      Speakeasy lets you service your API community with best in class developer experience
-      without having to build it and maintain it yourself.
-    </Description>
+    <PackageProjectUrl>/docs</PackageProjectUrl>
+    <Description>Speakeasy API: The Speakeasy API allows teams to manage common operations with their APIs</Description>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -37,23 +32,9 @@
     <None Include="..\docs\**\*" Pack="true" PackagePath="\docs"  CopyToOutputDirectory="PreserveNewest"/>
   </ItemGroup>
 
-  <PropertyGroup>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>portable</DebugType>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <EmbedAllSources>true</EmbedAllSources>
-  </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="newtonsoft.json" Version="13.0.3" />
     <PackageReference Include="nodatime" Version="3.1.9" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All"/>
   </ItemGroup>
 
 </Project>

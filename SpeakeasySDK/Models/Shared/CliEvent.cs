@@ -54,7 +54,7 @@ namespace SpeakeasySDK.Models.Shared
         public string ExecutionId { get; set; } = default!;
 
         /// <summary>
-        /// Bump type of the lock file (calculated semver delta, or a custom change (manual release))
+        /// Bump type of the lock file (calculated semver delta, custom change (manual release), or prerelease/graduate)
         /// </summary>
         [JsonProperty("generate_bump_type")]
         public GenerateBumpType? GenerateBumpType { get; set; }
