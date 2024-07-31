@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f73d2126-985b-4d69-88ee-b7c69254d8bf
 management:
-  docChecksum: 5b362866a3e7a85c830c6cb1f1cf4896
+  docChecksum: 312822a7ccdbf7c77dbbfeef49fb2053
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.345.1
-  generationVersion: 2.378.1
-  releaseVersion: 5.9.26
-  configChecksum: 1bbbd2cdc4b0f56108f08104f21dc5b1
+  speakeasyVersion: 1.349.0
+  generationVersion: 2.382.0
+  releaseVersion: 5.9.27
+  configChecksum: 250e11ffdedf23732f3127edbe1703dd
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
 features:
   csharp:
     additionalDependencies: 0.1.0
-    core: 3.9.11
+    core: 3.9.13
     deprecations: 2.81.2
     examples: 2.81.3
     globalSecurity: 2.83.4
@@ -41,6 +41,7 @@ generatedFiles:
   - SpeakeasySDK/ShortURLs.cs
   - SpeakeasySDK/Suggest.cs
   - SpeakeasySDK/Embeds.cs
+  - SpeakeasySDK/Workspaces.cs
   - SpeakeasySDK/Events.cs
   - SpeakeasySDK/SDK.cs
   - global.json
@@ -158,6 +159,8 @@ generatedFiles:
   - SpeakeasySDK/Models/Operations/GithubStorePublishingSecretsResponse.cs
   - SpeakeasySDK/Models/Operations/TriggerActionResponse.cs
   - SpeakeasySDK/Models/Operations/CreateFreeTrialResponse.cs
+  - SpeakeasySDK/Models/Operations/GetOrganizationRequest.cs
+  - SpeakeasySDK/Models/Operations/GetOrganizationResponse.cs
   - SpeakeasySDK/Models/Operations/GetOrganizationUsageResponse.cs
   - SpeakeasySDK/Models/Operations/GetOrganizationsResponse.cs
   - SpeakeasySDK/Models/Operations/GetChangesReportSignedUrlRequest.cs
@@ -186,6 +189,8 @@ generatedFiles:
   - SpeakeasySDK/Models/Operations/GetValidEmbedAccessTokensResponse.cs
   - SpeakeasySDK/Models/Operations/RevokeEmbedAccessTokenRequest.cs
   - SpeakeasySDK/Models/Operations/RevokeEmbedAccessTokenResponse.cs
+  - SpeakeasySDK/Models/Operations/GetWorkspaceRequest.cs
+  - SpeakeasySDK/Models/Operations/GetWorkspaceResponse.cs
   - SpeakeasySDK/Models/Operations/GetWorkspaceEventsByTargetRequest.cs
   - SpeakeasySDK/Models/Operations/GetWorkspaceEventsByTargetResponse.cs
   - SpeakeasySDK/Models/Operations/GetWorkspaceTargetsRequest.cs
@@ -248,10 +253,10 @@ generatedFiles:
   - SpeakeasySDK/Models/Shared/GithubMissingPublishingSecretsResponse.cs
   - SpeakeasySDK/Models/Shared/GithubStorePublishingSecretsRequest.cs
   - SpeakeasySDK/Models/Shared/GithubTriggerActionRequest.cs
-  - SpeakeasySDK/Models/Shared/OrganizationUsageResponse.cs
-  - SpeakeasySDK/Models/Shared/OrganizationUsage.cs
   - SpeakeasySDK/Models/Shared/OrganizationAccountType.cs
   - SpeakeasySDK/Models/Shared/Organization.cs
+  - SpeakeasySDK/Models/Shared/OrganizationUsageResponse.cs
+  - SpeakeasySDK/Models/Shared/OrganizationUsage.cs
   - SpeakeasySDK/Models/Shared/Type.cs
   - SpeakeasySDK/Models/Shared/Report.cs
   - SpeakeasySDK/Models/Shared/ShortURL.cs
@@ -261,6 +266,7 @@ generatedFiles:
   - SpeakeasySDK/Models/Shared/SuggestOperationIDsOpts.cs
   - SpeakeasySDK/Models/Shared/EmbedAccessTokenResponse.cs
   - SpeakeasySDK/Models/Shared/EmbedToken.cs
+  - SpeakeasySDK/Models/Shared/Workspace.cs
   - SpeakeasySDK/Models/Shared/GenerateBumpType.cs
   - SpeakeasySDK/Models/Shared/OpenapiDiffBumpType.cs
   - SpeakeasySDK/Models/Shared/CliEvent.cs
@@ -361,6 +367,8 @@ generatedFiles:
   - docs/Models/Operations/GithubStorePublishingSecretsResponse.md
   - docs/Models/Operations/TriggerActionResponse.md
   - docs/Models/Operations/CreateFreeTrialResponse.md
+  - docs/Models/Operations/GetOrganizationRequest.md
+  - docs/Models/Operations/GetOrganizationResponse.md
   - docs/Models/Operations/GetOrganizationUsageResponse.md
   - docs/Models/Operations/GetOrganizationsResponse.md
   - docs/Models/Operations/GetChangesReportSignedUrlRequest.md
@@ -389,6 +397,8 @@ generatedFiles:
   - docs/Models/Operations/GetValidEmbedAccessTokensResponse.md
   - docs/Models/Operations/RevokeEmbedAccessTokenRequest.md
   - docs/Models/Operations/RevokeEmbedAccessTokenResponse.md
+  - docs/Models/Operations/GetWorkspaceRequest.md
+  - docs/Models/Operations/GetWorkspaceResponse.md
   - docs/Models/Operations/GetWorkspaceEventsByTargetRequest.md
   - docs/Models/Operations/GetWorkspaceEventsByTargetResponse.md
   - docs/Models/Operations/GetWorkspaceTargetsRequest.md
@@ -451,10 +461,10 @@ generatedFiles:
   - docs/Models/Shared/GithubMissingPublishingSecretsResponse.md
   - docs/Models/Shared/GithubStorePublishingSecretsRequest.md
   - docs/Models/Shared/GithubTriggerActionRequest.md
-  - docs/Models/Shared/OrganizationUsageResponse.md
-  - docs/Models/Shared/OrganizationUsage.md
   - docs/Models/Shared/OrganizationAccountType.md
   - docs/Models/Shared/Organization.md
+  - docs/Models/Shared/OrganizationUsageResponse.md
+  - docs/Models/Shared/OrganizationUsage.md
   - docs/Models/Shared/Type.md
   - docs/Models/Shared/Report.md
   - docs/Models/Shared/ShortURL.md
@@ -464,6 +474,7 @@ generatedFiles:
   - docs/Models/Shared/SuggestOperationIDsOpts.md
   - docs/Models/Shared/EmbedAccessTokenResponse.md
   - docs/Models/Shared/EmbedToken.md
+  - docs/Models/Shared/Workspace.md
   - docs/Models/Shared/GenerateBumpType.md
   - docs/Models/Shared/OpenapiDiffBumpType.md
   - docs/Models/Shared/CliEvent.md
@@ -484,6 +495,7 @@ generatedFiles:
   - docs/sdks/shorturls/README.md
   - docs/sdks/suggest/README.md
   - docs/sdks/embeds/README.md
+  - docs/sdks/workspaces/README.md
   - docs/sdks/events/README.md
   - NUGET.md
   - USAGE.md
