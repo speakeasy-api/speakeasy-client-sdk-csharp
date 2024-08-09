@@ -18,7 +18,7 @@ namespace SpeakeasySDK.Models.Shared
     {
 
         [JsonProperty("account_type")]
-        public AccessTokenAccountType? AccountType { get; set; }
+        public AccountType? AccountType { get; set; }
 
         [JsonProperty("id")]
         public string? Id { get; set; }

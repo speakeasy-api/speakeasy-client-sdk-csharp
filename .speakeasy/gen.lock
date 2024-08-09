@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f73d2126-985b-4d69-88ee-b7c69254d8bf
 management:
-  docChecksum: 312822a7ccdbf7c77dbbfeef49fb2053
+  docChecksum: 7e5374ccd8317cf07089c151d486221b
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.349.0
-  generationVersion: 2.382.0
-  releaseVersion: 5.9.27
-  configChecksum: 250e11ffdedf23732f3127edbe1703dd
+  speakeasyVersion: 1.358.0
+  generationVersion: 2.390.6
+  releaseVersion: 5.9.28
+  configChecksum: 38944a81ee110108a471219abd72dede
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
@@ -16,7 +16,7 @@ features:
     core: 3.9.13
     deprecations: 2.81.2
     examples: 2.81.3
-    globalSecurity: 2.83.4
+    globalSecurity: 2.83.6
     globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.3
     globals: 2.82.1
@@ -228,14 +228,13 @@ generatedFiles:
   - SpeakeasySDK/Models/Shared/PreflightRequest.cs
   - SpeakeasySDK/Models/Shared/Claims.cs
   - SpeakeasySDK/Models/Shared/AccessTokenUser.cs
-  - SpeakeasySDK/Models/Shared/AccessTokenAccountType.cs
   - SpeakeasySDK/Models/Shared/Workspaces.cs
   - SpeakeasySDK/Models/Shared/AccessToken.cs
+  - SpeakeasySDK/Models/Shared/AccountType.cs
   - SpeakeasySDK/Models/Shared/FeatureFlag.cs
   - SpeakeasySDK/Models/Shared/User.cs
   - SpeakeasySDK/Models/Shared/Level.cs
   - SpeakeasySDK/Models/Shared/AccessDetails.cs
-  - SpeakeasySDK/Models/Shared/AccountType.cs
   - SpeakeasySDK/Models/Shared/ApiKeyDetails.cs
   - SpeakeasySDK/Models/Shared/UnboundedRequest.cs
   - SpeakeasySDK/Models/Shared/BoundedRequest.cs
@@ -253,7 +252,6 @@ generatedFiles:
   - SpeakeasySDK/Models/Shared/GithubMissingPublishingSecretsResponse.cs
   - SpeakeasySDK/Models/Shared/GithubStorePublishingSecretsRequest.cs
   - SpeakeasySDK/Models/Shared/GithubTriggerActionRequest.cs
-  - SpeakeasySDK/Models/Shared/OrganizationAccountType.cs
   - SpeakeasySDK/Models/Shared/Organization.cs
   - SpeakeasySDK/Models/Shared/OrganizationUsageResponse.cs
   - SpeakeasySDK/Models/Shared/OrganizationUsage.cs
@@ -436,14 +434,13 @@ generatedFiles:
   - docs/Models/Shared/PreflightRequest.md
   - docs/Models/Shared/Claims.md
   - docs/Models/Shared/AccessTokenUser.md
-  - docs/Models/Shared/AccessTokenAccountType.md
   - docs/Models/Shared/Workspaces.md
   - docs/Models/Shared/AccessToken.md
+  - docs/Models/Shared/AccountType.md
   - docs/Models/Shared/FeatureFlag.md
   - docs/Models/Shared/User.md
   - docs/Models/Shared/Level.md
   - docs/Models/Shared/AccessDetails.md
-  - docs/Models/Shared/AccountType.md
   - docs/Models/Shared/ApiKeyDetails.md
   - docs/Models/Shared/UnboundedRequest.md
   - docs/Models/Shared/BoundedRequest.md
@@ -461,7 +458,6 @@ generatedFiles:
   - docs/Models/Shared/GithubMissingPublishingSecretsResponse.md
   - docs/Models/Shared/GithubStorePublishingSecretsRequest.md
   - docs/Models/Shared/GithubTriggerActionRequest.md
-  - docs/Models/Shared/OrganizationAccountType.md
   - docs/Models/Shared/Organization.md
   - docs/Models/Shared/OrganizationUsageResponse.md
   - docs/Models/Shared/OrganizationUsage.md
