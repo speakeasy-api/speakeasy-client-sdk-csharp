@@ -18,8 +18,8 @@ namespace SpeakeasySDK.Models.Shared
     public class ApiKeyDetails
     {
 
-        [JsonProperty("account_type")]
-        public AccountType AccountType { get; set; } = default!;
+        [JsonProperty("account_type_v2")]
+        public AccountType AccountTypeV2 { get; set; } = default!;
 
         [JsonProperty("enabled_features")]
         public List<string> EnabledFeatures { get; set; } = default!;
