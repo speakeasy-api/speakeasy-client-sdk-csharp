@@ -28,8 +28,8 @@ using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
 DeleteSchemaRequest req = new DeleteSchemaRequest() {
     ApiID = "<value>",
@@ -48,15 +48,16 @@ var res = await sdk.Schemas.DeleteSchemaAsync(req);
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `request`                                                             | [DeleteSchemaRequest](../../Models/Operations/DeleteSchemaRequest.md) | :heavy_check_mark:                                                    | The request object to use for the request.                            |
 
-
 ### Response
 
 **[DeleteSchemaResponse](../../Models/Operations/DeleteSchemaResponse.md)**
+
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+
 
 ## DownloadSchema
 
@@ -70,8 +71,8 @@ using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
 DownloadSchemaRequest req = new DownloadSchemaRequest() {
     ApiID = "<value>",
@@ -89,15 +90,16 @@ var res = await sdk.Schemas.DownloadSchemaAsync(req);
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | `request`                                                                 | [DownloadSchemaRequest](../../Models/Operations/DownloadSchemaRequest.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
 
-
 ### Response
 
 **[DownloadSchemaResponse](../../Models/Operations/DownloadSchemaResponse.md)**
+
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+
 
 ## DownloadSchemaRevision
 
@@ -111,8 +113,8 @@ using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
 DownloadSchemaRevisionRequest req = new DownloadSchemaRevisionRequest() {
     ApiID = "<value>",
@@ -131,15 +133,16 @@ var res = await sdk.Schemas.DownloadSchemaRevisionAsync(req);
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | `request`                                                                                 | [DownloadSchemaRevisionRequest](../../Models/Operations/DownloadSchemaRevisionRequest.md) | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
 
-
 ### Response
 
 **[DownloadSchemaRevisionResponse](../../Models/Operations/DownloadSchemaRevisionResponse.md)**
+
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+
 
 ## GetSchema
 
@@ -154,8 +157,8 @@ using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
 GetSchemaRequest req = new GetSchemaRequest() {
     ApiID = "<value>",
@@ -173,15 +176,16 @@ var res = await sdk.Schemas.GetSchemaAsync(req);
 | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
 | `request`                                                       | [GetSchemaRequest](../../Models/Operations/GetSchemaRequest.md) | :heavy_check_mark:                                              | The request object to use for the request.                      |
 
-
 ### Response
 
 **[GetSchemaResponse](../../Models/Operations/GetSchemaResponse.md)**
+
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+
 
 ## GetSchemaDiff
 
@@ -195,8 +199,8 @@ using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
 GetSchemaDiffRequest req = new GetSchemaDiffRequest() {
     ApiID = "<value>",
@@ -216,15 +220,16 @@ var res = await sdk.Schemas.GetSchemaDiffAsync(req);
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | `request`                                                               | [GetSchemaDiffRequest](../../Models/Operations/GetSchemaDiffRequest.md) | :heavy_check_mark:                                                      | The request object to use for the request.                              |
 
-
 ### Response
 
 **[GetSchemaDiffResponse](../../Models/Operations/GetSchemaDiffResponse.md)**
+
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+
 
 ## GetSchemaRevision
 
@@ -239,8 +244,8 @@ using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
 GetSchemaRevisionRequest req = new GetSchemaRevisionRequest() {
     ApiID = "<value>",
@@ -259,15 +264,16 @@ var res = await sdk.Schemas.GetSchemaRevisionAsync(req);
 | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
 | `request`                                                                       | [GetSchemaRevisionRequest](../../Models/Operations/GetSchemaRevisionRequest.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
 
-
 ### Response
 
 **[GetSchemaRevisionResponse](../../Models/Operations/GetSchemaRevisionResponse.md)**
+
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+
 
 ## GetSchemas
 
@@ -282,8 +288,8 @@ using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
 GetSchemasRequest req = new GetSchemasRequest() {
     ApiID = "<value>",
@@ -301,15 +307,16 @@ var res = await sdk.Schemas.GetSchemasAsync(req);
 | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
 | `request`                                                         | [GetSchemasRequest](../../Models/Operations/GetSchemasRequest.md) | :heavy_check_mark:                                                | The request object to use for the request.                        |
 
-
 ### Response
 
 **[GetSchemasResponse](../../Models/Operations/GetSchemasResponse.md)**
+
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+
 
 ## RegisterSchema
 
@@ -324,14 +331,14 @@ using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
 RegisterSchemaRequest req = new RegisterSchemaRequest() {
     RequestBody = new RegisterSchemaRequestBody() {
         File = new RegisterSchemaFile() {
             Content = System.Text.Encoding.UTF8.GetBytes("0xCAFCA03e0e"),
-            FileName = "your_file_here",
+            FileName = "example.file",
         },
     },
     ApiID = "<value>",
@@ -349,10 +356,10 @@ var res = await sdk.Schemas.RegisterSchemaAsync(req);
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | `request`                                                                 | [RegisterSchemaRequest](../../Models/Operations/RegisterSchemaRequest.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
 
-
 ### Response
 
 **[RegisterSchemaResponse](../../Models/Operations/RegisterSchemaResponse.md)**
+
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |

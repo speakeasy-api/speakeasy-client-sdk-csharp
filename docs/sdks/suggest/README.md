@@ -7,13 +7,13 @@ REST APIs for managing LLM OAS suggestions
 
 ### Available Operations
 
-* [ApplyOperationIDs](#applyoperationids) - Apply operation ID suggestions and download result.
-* [SuggestOperationIDs](#suggestoperationids) - Generate operation ID suggestions.
-* [SuggestOperationIDsRegistry](#suggestoperationidsregistry) - Generate operation ID suggestions.
+* [Suggest](#suggest) - Generate suggestions for improving an OpenAPI document.
+* [SuggestOpenAPI](#suggestopenapi) - (DEPRECATED) Generate suggestions for improving an OpenAPI document.
+* [SuggestOpenAPIRegistry](#suggestopenapiregistry) - Generate suggestions for improving an OpenAPI document stored in the registry.
 
-## ApplyOperationIDs
+## Suggest
 
-Apply operation ID suggestions and download result.
+Get suggestions from an LLM model for improving an OpenAPI document.
 
 ### Example Usage
 
@@ -21,39 +21,73 @@ Apply operation ID suggestions and download result.
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
+using System.Collections.Generic;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
-ApplyOperationIDsRequest req = new ApplyOperationIDsRequest() {
+SuggestRequest req = new SuggestRequest() {
+    SuggestRequestBody = new SuggestRequestBody() {
+        Diagnostics = new List<Diagnostic>() {
+            new Diagnostic() {
+                Message = "<value>",
+                Path = new List<string>() {
+                    "/rescue",
+                },
+                Type = "<value>",
+            },
+        },
+        OasSummary = new OASSummary() {
+            Info = new OASInfo() {
+                Description = "Object-based multi-state pricing structure",
+                License = new License() {},
+                Summary = "<value>",
+                Title = "<value>",
+                Version = "<value>",
+            },
+            Operations = new List<OASOperation>() {
+                new OASOperation() {
+                    Description = "Innovative tangible hierarchy",
+                    Method = "<value>",
+                    OperationId = "<value>",
+                    Path = "/usr/include",
+                    Tags = new List<string>() {
+                        "<value>",
+                    },
+                },
+            },
+        },
+        SuggestionType = SpeakeasySDK.Models.Shared.SuggestRequestBodySuggestionType.MethodNames,
+    },
     XSessionId = "<value>",
 };
 
-var res = await sdk.Suggest.ApplyOperationIDsAsync(req);
+var res = await sdk.Suggest.SuggestAsync(req);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `request`                                                                       | [ApplyOperationIDsRequest](../../Models/Operations/ApplyOperationIDsRequest.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
-
+| Parameter                                                   | Type                                                        | Required                                                    | Description                                                 |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| `request`                                                   | [SuggestRequest](../../Models/Operations/SuggestRequest.md) | :heavy_check_mark:                                          | The request object to use for the request.                  |
 
 ### Response
 
-**[ApplyOperationIDsResponse](../../Models/Operations/ApplyOperationIDsResponse.md)**
+**[SuggestResponse](../../Models/Operations/SuggestResponse.md)**
+
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
-## SuggestOperationIDs
 
-Get suggestions from an LLM model for improving the operationIDs in the provided schema.
+## SuggestOpenAPI
+
+Get suggestions from an LLM model for improving an OpenAPI document.
 
 ### Example Usage
 
@@ -61,45 +95,47 @@ Get suggestions from an LLM model for improving the operationIDs in the provided
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
+using System.Collections.Generic;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
-SuggestOperationIDsRequest req = new SuggestOperationIDsRequest() {
-    RequestBody = new SuggestOperationIDsRequestBody() {
+SuggestOpenAPIRequest req = new SuggestOpenAPIRequest() {
+    RequestBody = new SuggestOpenAPIRequestBody() {
         Schema = new Models.Operations.Schema() {
-            Content = System.Text.Encoding.UTF8.GetBytes("0xb2de88c98a"),
-            FileName = "your_file_here",
+            Content = System.Text.Encoding.UTF8.GetBytes("0x0FbfeAEcc8"),
+            FileName = "example.file",
         },
     },
     XSessionId = "<value>",
 };
 
-var res = await sdk.Suggest.SuggestOperationIDsAsync(req);
+var res = await sdk.Suggest.SuggestOpenAPIAsync(req);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
-| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `request`                                                                           | [SuggestOperationIDsRequest](../../Models/Operations/SuggestOperationIDsRequest.md) | :heavy_check_mark:                                                                  | The request object to use for the request.                                          |
-
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `request`                                                                 | [SuggestOpenAPIRequest](../../Models/Operations/SuggestOpenAPIRequest.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
 
 ### Response
 
-**[SuggestOperationIDsResponse](../../Models/Operations/SuggestOperationIDsResponse.md)**
+**[SuggestOpenAPIResponse](../../Models/Operations/SuggestOpenAPIResponse.md)**
+
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
 
-## SuggestOperationIDsRegistry
 
-Get suggestions from an LLM model for improving the operationIDs in the provided schema.
+## SuggestOpenAPIRegistry
+
+Get suggestions from an LLM model for improving an OpenAPI document stored in the registry.
 
 ### Example Usage
 
@@ -107,32 +143,33 @@ Get suggestions from an LLM model for improving the operationIDs in the provided
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
+using System.Collections.Generic;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
-SuggestOperationIDsRegistryRequest req = new SuggestOperationIDsRegistryRequest() {
+SuggestOpenAPIRegistryRequest req = new SuggestOpenAPIRegistryRequest() {
     NamespaceName = "<value>",
     RevisionReference = "<value>",
     XSessionId = "<value>",
 };
 
-var res = await sdk.Suggest.SuggestOperationIDsRegistryAsync(req);
+var res = await sdk.Suggest.SuggestOpenAPIRegistryAsync(req);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                                           | Type                                                                                                | Required                                                                                            | Description                                                                                         |
-| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| `request`                                                                                           | [SuggestOperationIDsRegistryRequest](../../Models/Operations/SuggestOperationIDsRegistryRequest.md) | :heavy_check_mark:                                                                                  | The request object to use for the request.                                                          |
-
+| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `request`                                                                                 | [SuggestOpenAPIRegistryRequest](../../Models/Operations/SuggestOpenAPIRegistryRequest.md) | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
 
 ### Response
 
-**[SuggestOperationIDsRegistryResponse](../../Models/Operations/SuggestOperationIDsRegistryResponse.md)**
+**[SuggestOpenAPIRegistryResponse](../../Models/Operations/SuggestOpenAPIRegistryResponse.md)**
+
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |

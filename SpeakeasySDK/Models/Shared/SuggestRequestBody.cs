@@ -7,22 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 #nullable enable
-namespace SpeakeasySDK.Models.Operations
+namespace SpeakeasySDK.Models.Shared
 {
-    using SpeakeasySDK.Models.Operations;
+    using Newtonsoft.Json;
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
+    using System.Collections.Generic;
     
-    /// <summary>
-    /// The schema file to upload provided as a multipart/form-data file segment.
-    /// </summary>
-    public class SuggestOperationIDsRequestBody
+    public class SuggestRequestBody
     {
 
-        [SpeakeasyMetadata("multipartForm:name=opts,json")]
-        public SuggestOperationIDsOpts? Opts { get; set; }
+        [JsonProperty("diagnostics")]
+        public List<Diagnostic> Diagnostics { get; set; } = default!;
 
-        [SpeakeasyMetadata("multipartForm:file")]
-        public Models.Operations.Schema Schema { get; set; } = default!;
+        [JsonProperty("oas_summary")]
+        public OASSummary OasSummary { get; set; } = default!;
+
+        [JsonProperty("suggestion_type")]
+        public SuggestRequestBodySuggestionType SuggestionType { get; set; } = default!;
     }
 }

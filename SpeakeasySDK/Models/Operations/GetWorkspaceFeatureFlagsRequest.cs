@@ -9,19 +9,15 @@
 #nullable enable
 namespace SpeakeasySDK.Models.Operations
 {
-    using SpeakeasySDK.Models.Operations;
     using SpeakeasySDK.Utils;
     
-    public class ApplyOperationIDsRequest
+    public class GetWorkspaceFeatureFlagsRequest
     {
 
-        [SpeakeasyMetadata("header:style=simple,explode=false,name=x-session-id")]
-        public string XSessionId { get; set; } = default!;
-
         /// <summary>
-        /// Apply options
+        /// Unique identifier of the workspace.
         /// </summary>
-        [SpeakeasyMetadata("request:mediaType=application/json")]
-        public ApplyOperationIDsRequestBody? RequestBody { get; set; }
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=workspaceID")]
+        public string? WorkspaceID { get; set; }
     }
 }

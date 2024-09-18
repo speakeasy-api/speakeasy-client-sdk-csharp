@@ -6,8 +6,8 @@ using System.Collections.Generic;
 using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
 GetApisRequest req = new GetApisRequest() {};
 

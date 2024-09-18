@@ -9,18 +9,22 @@
 #nullable enable
 namespace SpeakeasySDK.Models.Operations
 {
-    using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System.Net.Http;
     using System;
     
-    public class SuggestOperationIDsResponse
+    public class SuggestOpenAPIRegistryResponse
     {
 
         /// <summary>
         /// HTTP response content type for this operation
         /// </summary>
         public string? ContentType { get; set; } = default!;
+
+        /// <summary>
+        /// An overlay containing the suggested spec modifications.
+        /// </summary>
+        public byte[]? Schema { get; set; }
 
         /// <summary>
         /// HTTP response status code for this operation
@@ -31,10 +35,5 @@ namespace SpeakeasySDK.Models.Operations
         /// Raw HTTP response; suitable for custom response parsing
         /// </summary>
         public HttpResponseMessage RawResponse { get; set; } = default!;
-
-        /// <summary>
-        /// OK
-        /// </summary>
-        public SuggestedOperationIDs? SuggestedOperationIDs { get; set; }
     }
 }

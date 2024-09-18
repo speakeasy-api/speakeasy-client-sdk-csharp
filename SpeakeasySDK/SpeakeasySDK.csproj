@@ -3,7 +3,7 @@
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <PackageId>SpeakeasySDK</PackageId>
-    <Version>5.9.27</Version>
+    <Version>5.9.28</Version>
     <TargetFramework>net8.0</TargetFramework>
     <Authors>Speakeasy</Authors>
     <Copyright>Copyright (c) Speakeasy 2024</Copyright>

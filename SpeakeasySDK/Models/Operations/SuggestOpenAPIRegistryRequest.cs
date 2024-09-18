@@ -12,7 +12,7 @@ namespace SpeakeasySDK.Models.Operations
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     
-    public class SuggestOperationIDsRegistryRequest
+    public class SuggestOpenAPIRegistryRequest
     {
 
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=namespace_name")]
@@ -28,15 +28,9 @@ namespace SpeakeasySDK.Models.Operations
         public string XSessionId { get; set; } = default!;
 
         /// <summary>
-        /// The schema file to upload provided as a multipart/form-data file segment.
+        /// Suggest options
         /// </summary>
         [SpeakeasyMetadata("request:mediaType=application/json")]
-        public SuggestOperationIDsOpts? SuggestOperationIDsOpts { get; set; }
-
-        /// <summary>
-        /// Max number of suggestions to request
-        /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=limit")]
-        public double? Limit { get; set; }
+        public SuggestRequestBody? SuggestRequestBody { get; set; }
     }
 }

@@ -13,26 +13,24 @@ namespace SpeakeasySDK.Models.Shared
     using SpeakeasySDK.Utils;
     using System;
     
-    public enum OrganizationAccountType
+    public enum SuggestRequestBodySuggestionType
     {
-        [JsonProperty("free")]
-        Free,
-        [JsonProperty("scale-up")]
-        ScaleUp,
-        [JsonProperty("enterprise")]
-        Enterprise,
+        [JsonProperty("method-names")]
+        MethodNames,
+        [JsonProperty("diagnostics-only")]
+        DiagnosticsOnly,
     }
 
-    public static class OrganizationAccountTypeExtension
+    public static class SuggestRequestBodySuggestionTypeExtension
     {
-        public static string Value(this OrganizationAccountType value)
+        public static string Value(this SuggestRequestBodySuggestionType value)
         {
             return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
         }
 
-        public static OrganizationAccountType ToEnum(this string value)
+        public static SuggestRequestBodySuggestionType ToEnum(this string value)
         {
-            foreach(var field in typeof(OrganizationAccountType).GetFields())
+            foreach(var field in typeof(SuggestRequestBodySuggestionType).GetFields())
             {
                 var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
                 if (attributes.Length == 0)
@@ -45,14 +43,14 @@ namespace SpeakeasySDK.Models.Shared
                 {
                     var enumVal = field.GetValue(null);
 
-                    if (enumVal is OrganizationAccountType)
+                    if (enumVal is SuggestRequestBodySuggestionType)
                     {
-                        return (OrganizationAccountType)enumVal;
+                        return (SuggestRequestBodySuggestionType)enumVal;
                     }
                 }
             }
 
-            throw new Exception($"Unknown value {value} for enum OrganizationAccountType");
+            throw new Exception($"Unknown value {value} for enum SuggestRequestBodySuggestionType");
         }
     }
 
