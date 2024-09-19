@@ -17,6 +17,6 @@ namespace SpeakeasySDK.Models.Shared
     {
 
         [JsonProperty("type")]
-        public Type? Type { get; set; }
+        public Models.Shared.Type? Type { get; set; }
     }
 }

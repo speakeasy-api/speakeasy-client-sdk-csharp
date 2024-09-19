@@ -74,7 +74,7 @@ namespace SpeakeasySDK
         /// Supports filtering the APIs based on metadata attributes.
         /// </remarks>
         /// </summary>
-        Task<GetApisResponse> GetApisAsync(GetApisRequest request);
+        Task<GetApisResponse> GetApisAsync(GetApisRequest? request = null);
 
         /// <summary>
         /// Upsert an Api
@@ -94,10 +94,10 @@ namespace SpeakeasySDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.9.27";
-        private const string _sdkGenVersion = "2.382.0";
+        private const string _sdkVersion = "5.9.28";
+        private const string _sdkGenVersion = "2.416.6";
         private const string _openapiDocVersion = "0.4.0 .";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.9.27 2.382.0 0.4.0 . SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.9.28 2.416.6 0.4.0 . SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<SpeakeasySDK.Models.Shared.Security>? _securitySource;
@@ -471,7 +471,7 @@ namespace SpeakeasySDK
             }
         }
 
-        public async Task<GetApisResponse> GetApisAsync(GetApisRequest request)
+        public async Task<GetApisResponse> GetApisAsync(GetApisRequest? request = null)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/apis", request);
@@ -524,7 +524,7 @@ namespace SpeakeasySDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<List<Api>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<List<Api>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
                     var response = new GetApisResponse()
                     {
                         StatusCode = responseStatusCode,
@@ -547,7 +547,7 @@ namespace SpeakeasySDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
                     var response = new GetApisResponse()
                     {
                         StatusCode = responseStatusCode,

@@ -21,7 +21,7 @@ namespace SpeakeasySDK.Models.Shared
     {
 
         [JsonProperty("account_type")]
-        public OrganizationAccountType AccountType { get; set; } = default!;
+        public AccountType AccountType { get; set; } = default!;
 
         [JsonProperty("created_at")]
         public DateTime? CreatedAt { get; set; }

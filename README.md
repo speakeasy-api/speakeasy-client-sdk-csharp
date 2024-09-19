@@ -1,18 +1,41 @@
 # Speakeasy
 
+<!-- Start Summary [summary] -->
+## Summary
+
+Speakeasy API: The Speakeasy API allows teams to manage common operations with their APIs
+
+For more information about the API: [The Speakeasy Platform Documentation](/docs)
+<!-- End Summary [summary] -->
+
+<!-- Start Table of Contents [toc] -->
+## Table of Contents
+
+* [SDK Installation](#sdk-installation)
+* [SDK Example Usage](#sdk-example-usage)
+* [Available Resources and Operations](#available-resources-and-operations)
+* [Global Parameters](#global-parameters)
+* [Retries](#retries)
+* [Error Handling](#error-handling)
+* [Server Selection](#server-selection)
+* [Authentication](#authentication)
+<!-- End Table of Contents [toc] -->
+
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ### NuGet
 
+To add the [NuGet](https://www.nuget.org/) package to a .NET project:
 ```bash
 dotnet add package SpeakeasySDK
 ```
 
 ### Locally
 
+To add a reference to a local instance of the SDK in a .NET project:
 ```bash
-dotnet add reference path/to/SpeakeasySDK.csproj
+dotnet add reference SpeakeasySDK/SpeakeasySDK.csproj
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -28,8 +51,8 @@ using System.Collections.Generic;
 using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
 GetApisRequest req = new GetApisRequest() {};
 
@@ -42,14 +65,8 @@ var res = await sdk.Apis.GetApisAsync(req);
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
-### [Apis](docs/sdks/apis/README.md)
-
-* [DeleteApi](docs/sdks/apis/README.md#deleteapi) - Delete an Api.
-* [GenerateOpenApiSpec](docs/sdks/apis/README.md#generateopenapispec) - Generate an OpenAPI specification for a particular Api.
-* [GeneratePostmanCollection](docs/sdks/apis/README.md#generatepostmancollection) - Generate a Postman collection for a particular Api.
-* [GetAllApiVersions](docs/sdks/apis/README.md#getallapiversions) - Get all Api versions for a particular ApiEndpoint.
-* [GetApis](docs/sdks/apis/README.md#getapis) - Get a list of Apis for a given workspace
-* [UpsertApi](docs/sdks/apis/README.md#upsertapi) - Upsert an Api
+<details open>
+<summary>Available methods</summary>
 
 ### [ApiEndpoints](docs/sdks/apiendpoints/README.md)
 
@@ -62,22 +79,14 @@ var res = await sdk.Apis.GetApisAsync(req);
 * [GetApiEndpoint](docs/sdks/apiendpoints/README.md#getapiendpoint) - Get an ApiEndpoint.
 * [UpsertApiEndpoint](docs/sdks/apiendpoints/README.md#upsertapiendpoint) - Upsert an ApiEndpoint.
 
-### [Metadata](docs/sdks/metadata/README.md)
+### [Apis](docs/sdks/apis/README.md)
 
-* [DeleteVersionMetadata](docs/sdks/metadata/README.md#deleteversionmetadata) - Delete metadata for a particular apiID and versionID.
-* [GetVersionMetadata](docs/sdks/metadata/README.md#getversionmetadata) - Get all metadata for a particular apiID and versionID.
-* [InsertVersionMetadata](docs/sdks/metadata/README.md#insertversionmetadata) - Insert metadata for a particular apiID and versionID.
-
-### [Schemas](docs/sdks/schemas/README.md)
-
-* [DeleteSchema](docs/sdks/schemas/README.md#deleteschema) - Delete a particular schema revision for an Api.
-* [DownloadSchema](docs/sdks/schemas/README.md#downloadschema) - Download the latest schema for a particular apiID.
-* [DownloadSchemaRevision](docs/sdks/schemas/README.md#downloadschemarevision) - Download a particular schema revision for an Api.
-* [GetSchema](docs/sdks/schemas/README.md#getschema) - Get information about the latest schema.
-* [GetSchemaDiff](docs/sdks/schemas/README.md#getschemadiff) - Get a diff of two schema revisions for an Api.
-* [GetSchemaRevision](docs/sdks/schemas/README.md#getschemarevision) - Get information about a particular schema revision for an Api.
-* [GetSchemas](docs/sdks/schemas/README.md#getschemas) - Get information about all schemas associated with a particular apiID.
-* [RegisterSchema](docs/sdks/schemas/README.md#registerschema) - Register a schema.
+* [DeleteApi](docs/sdks/apis/README.md#deleteapi) - Delete an Api.
+* [GenerateOpenApiSpec](docs/sdks/apis/README.md#generateopenapispec) - Generate an OpenAPI specification for a particular Api.
+* [GeneratePostmanCollection](docs/sdks/apis/README.md#generatepostmancollection) - Generate a Postman collection for a particular Api.
+* [GetAllApiVersions](docs/sdks/apis/README.md#getallapiversions) - Get all Api versions for a particular ApiEndpoint.
+* [GetApis](docs/sdks/apis/README.md#getapis) - Get a list of Apis for a given workspace
+* [UpsertApi](docs/sdks/apis/README.md#upsertapi) - Upsert an Api
 
 ### [Artifacts](docs/sdks/artifacts/README.md)
 
@@ -97,11 +106,18 @@ var res = await sdk.Apis.GetApisAsync(req);
 * [GetWorkspaceAccess](docs/sdks/auth/README.md#getworkspaceaccess) - Get access allowances for a particular workspace
 * [ValidateApiKey](docs/sdks/auth/README.md#validateapikey) - Validate the current api key.
 
-### [Requests](docs/sdks/requests/README.md)
+### [Embeds](docs/sdks/embeds/README.md)
 
-* [GenerateRequestPostmanCollection](docs/sdks/requests/README.md#generaterequestpostmancollection) - Generate a Postman collection for a particular request.
-* [GetRequestFromEventLog](docs/sdks/requests/README.md#getrequestfromeventlog) - Get information about a particular request.
-* [QueryEventLog](docs/sdks/requests/README.md#queryeventlog) - Query the event log to retrieve a list of requests.
+* [GetEmbedAccessToken](docs/sdks/embeds/README.md#getembedaccesstoken) - Get an embed access token for the current workspace.
+* [GetValidEmbedAccessTokens](docs/sdks/embeds/README.md#getvalidembedaccesstokens) - Get all valid embed access tokens for the current workspace.
+* [RevokeEmbedAccessToken](docs/sdks/embeds/README.md#revokeembedaccesstoken) - Revoke an embed access EmbedToken.
+
+### [Events](docs/sdks/events/README.md)
+
+* [GetWorkspaceEventsByTarget](docs/sdks/events/README.md#getworkspaceeventsbytarget) - Load recent events for a particular workspace
+* [GetWorkspaceTargets](docs/sdks/events/README.md#getworkspacetargets) - Load targets for a particular workspace
+* [PostWorkspaceEvents](docs/sdks/events/README.md#postworkspaceevents) - Post events for a specific workspace
+* [SearchWorkspaceEvents](docs/sdks/events/README.md#searchworkspaceevents) - Search events for a particular workspace by any field
 
 ### [Github](docs/sdks/github/README.md)
 
@@ -114,6 +130,12 @@ var res = await sdk.Apis.GetApisAsync(req);
 * [GithubCheckPublishingSecrets](docs/sdks/github/README.md#githubcheckpublishingsecrets)
 * [GithubStorePublishingSecrets](docs/sdks/github/README.md#githubstorepublishingsecrets)
 * [TriggerAction](docs/sdks/github/README.md#triggeraction)
+
+### [Metadata](docs/sdks/metadata/README.md)
+
+* [DeleteVersionMetadata](docs/sdks/metadata/README.md#deleteversionmetadata) - Delete metadata for a particular apiID and versionID.
+* [GetVersionMetadata](docs/sdks/metadata/README.md#getversionmetadata) - Get all metadata for a particular apiID and versionID.
+* [InsertVersionMetadata](docs/sdks/metadata/README.md#insertversionmetadata) - Insert metadata for a particular apiID and versionID.
 
 ### [Organizations](docs/sdks/organizations/README.md)
 
@@ -128,32 +150,40 @@ var res = await sdk.Apis.GetApisAsync(req);
 * [GetLintingReportSignedUrl](docs/sdks/reports/README.md#getlintingreportsignedurl) - Get the signed access url for the linting reports for a particular document.
 * [UploadReport](docs/sdks/reports/README.md#uploadreport) - Upload a report.
 
+### [Requests](docs/sdks/requests/README.md)
+
+* [GenerateRequestPostmanCollection](docs/sdks/requests/README.md#generaterequestpostmancollection) - Generate a Postman collection for a particular request.
+* [GetRequestFromEventLog](docs/sdks/requests/README.md#getrequestfromeventlog) - Get information about a particular request.
+* [QueryEventLog](docs/sdks/requests/README.md#queryeventlog) - Query the event log to retrieve a list of requests.
+
+### [Schemas](docs/sdks/schemas/README.md)
+
+* [DeleteSchema](docs/sdks/schemas/README.md#deleteschema) - Delete a particular schema revision for an Api.
+* [DownloadSchema](docs/sdks/schemas/README.md#downloadschema) - Download the latest schema for a particular apiID.
+* [DownloadSchemaRevision](docs/sdks/schemas/README.md#downloadschemarevision) - Download a particular schema revision for an Api.
+* [GetSchema](docs/sdks/schemas/README.md#getschema) - Get information about the latest schema.
+* [GetSchemaDiff](docs/sdks/schemas/README.md#getschemadiff) - Get a diff of two schema revisions for an Api.
+* [GetSchemaRevision](docs/sdks/schemas/README.md#getschemarevision) - Get information about a particular schema revision for an Api.
+* [GetSchemas](docs/sdks/schemas/README.md#getschemas) - Get information about all schemas associated with a particular apiID.
+* [RegisterSchema](docs/sdks/schemas/README.md#registerschema) - Register a schema.
+
+
 ### [ShortURLs](docs/sdks/shorturls/README.md)
 
 * [Create](docs/sdks/shorturls/README.md#create) - Shorten a URL.
 
 ### [Suggest](docs/sdks/suggest/README.md)
 
-* [ApplyOperationIDs](docs/sdks/suggest/README.md#applyoperationids) - Apply operation ID suggestions and download result.
-* [SuggestOperationIDs](docs/sdks/suggest/README.md#suggestoperationids) - Generate operation ID suggestions.
-* [SuggestOperationIDsRegistry](docs/sdks/suggest/README.md#suggestoperationidsregistry) - Generate operation ID suggestions.
-
-### [Embeds](docs/sdks/embeds/README.md)
-
-* [GetEmbedAccessToken](docs/sdks/embeds/README.md#getembedaccesstoken) - Get an embed access token for the current workspace.
-* [GetValidEmbedAccessTokens](docs/sdks/embeds/README.md#getvalidembedaccesstokens) - Get all valid embed access tokens for the current workspace.
-* [RevokeEmbedAccessToken](docs/sdks/embeds/README.md#revokeembedaccesstoken) - Revoke an embed access EmbedToken.
+* [Suggest](docs/sdks/suggest/README.md#suggest) - Generate suggestions for improving an OpenAPI document.
+* [SuggestOpenAPI](docs/sdks/suggest/README.md#suggestopenapi) - (DEPRECATED) Generate suggestions for improving an OpenAPI document.
+* [SuggestOpenAPIRegistry](docs/sdks/suggest/README.md#suggestopenapiregistry) - Generate suggestions for improving an OpenAPI document stored in the registry.
 
 ### [Workspaces](docs/sdks/workspaces/README.md)
 
 * [GetWorkspace](docs/sdks/workspaces/README.md#getworkspace) - Get workspace
+* [GetWorkspaceFeatureFlags](docs/sdks/workspaces/README.md#getworkspacefeatureflags) - Get workspace feature flags
 
-### [Events](docs/sdks/events/README.md)
-
-* [GetWorkspaceEventsByTarget](docs/sdks/events/README.md#getworkspaceeventsbytarget) - Load recent events for a particular workspace
-* [GetWorkspaceTargets](docs/sdks/events/README.md#getworkspacetargets) - Load targets for a particular workspace
-* [PostWorkspaceEvents](docs/sdks/events/README.md#postworkspaceevents) - Post events for a specific workspace
-* [SearchWorkspaceEvents](docs/sdks/events/README.md#searchworkspaceevents) - Search events for a particular workspace by any field
+</details>
 <!-- End Available Resources and Operations [operations] -->
 
 
@@ -195,8 +225,8 @@ using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
 DeleteApiRequest req = new DeleteApiRequest() {
     ApiID = "<value>",
@@ -236,8 +266,8 @@ using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
 GetWorkspaceRequest req = new GetWorkspaceRequest() {};
 
@@ -267,16 +297,15 @@ using System;
 using SpeakeasySDK.Models.Errors;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
-
-GetWorkspaceEventsByTargetRequest req = new GetWorkspaceEventsByTargetRequest() {
-    TargetID = "<value>",
-};
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
 try
 {
-    var res = await sdk.Events.GetWorkspaceEventsByTargetAsync(req);
+    GetWorkspaceFeatureFlagsRequest req = new GetWorkspaceFeatureFlagsRequest() {};
+
+    var res = await sdk.Workspaces.GetWorkspaceFeatureFlagsAsync(req);
+
     // handle response
 }
 catch (Exception ex)
@@ -290,7 +319,6 @@ catch (Exception ex)
         // handle exception
     }
 }
-
 ```
 <!-- End Error Handling [errors] -->
 
@@ -306,12 +334,12 @@ using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
 GetWorkspaceAccessRequest req = new GetWorkspaceAccessRequest() {};
 
-var res = await sdk.Auth.GetWorkspaceAccessAsync(req,
+var res = await sdk.Auth.GetWorkspaceAccessAsync(
     retryConfig: new RetryConfig(
         strategy: RetryConfig.RetryStrategy.BACKOFF,
         backoff: new BackoffStrategy(
@@ -321,7 +349,7 @@ var res = await sdk.Auth.GetWorkspaceAccessAsync(req,
             exponent: 1.1
         ),
         retryConnectionErrors: false
-));
+    ),req);
 
 // handle response
 ```
@@ -342,10 +370,11 @@ var sdk = new SDK(
             exponent: 1.1
         ),
         retryConnectionErrors: false
-),
+    ),
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    }
+);
 
 GetWorkspaceAccessRequest req = new GetWorkspaceAccessRequest() {};
 

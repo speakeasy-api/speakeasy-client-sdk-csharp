@@ -1,6 +1,8 @@
 # Organizations
 (*Organizations*)
 
+## Overview
+
 ### Available Operations
 
 * [CreateFreeTrial](#createfreetrial) - Create a free trial for an organization
@@ -19,23 +21,24 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
 var res = await sdk.Organizations.CreateFreeTrialAsync();
 
 // handle response
 ```
 
-
 ### Response
 
 **[CreateFreeTrialResponse](../../Models/Operations/CreateFreeTrialResponse.md)**
+
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+
 
 ## GetOrganization
 
@@ -49,8 +52,8 @@ using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
 GetOrganizationRequest req = new GetOrganizationRequest() {
     OrganizationID = "<value>",
@@ -67,15 +70,16 @@ var res = await sdk.Organizations.GetOrganizationAsync(req);
 | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
 | `request`                                                                   | [GetOrganizationRequest](../../Models/Operations/GetOrganizationRequest.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
 
-
 ### Response
 
 **[GetOrganizationResponse](../../Models/Operations/GetOrganizationResponse.md)**
+
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+
 
 ## GetOrganizationUsage
 
@@ -88,23 +92,24 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
 var res = await sdk.Organizations.GetOrganizationUsageAsync();
 
 // handle response
 ```
 
-
 ### Response
 
 **[GetOrganizationUsageResponse](../../Models/Operations/GetOrganizationUsageResponse.md)**
+
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+
 
 ## GetOrganizations
 
@@ -117,18 +122,18 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
 var res = await sdk.Organizations.GetOrganizationsAsync();
 
 // handle response
 ```
 
-
 ### Response
 
 **[GetOrganizationsResponse](../../Models/Operations/GetOrganizationsResponse.md)**
+
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |

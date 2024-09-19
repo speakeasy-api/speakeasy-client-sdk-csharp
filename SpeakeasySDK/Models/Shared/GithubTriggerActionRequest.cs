@@ -37,6 +37,12 @@ namespace SpeakeasySDK.Models.Shared
         public string RepoName { get; set; } = default!;
 
         /// <summary>
+        /// Force an SDK generation
+        /// </summary>
+        [JsonProperty("force")]
+        public bool? Force { get; set; }
+
+        /// <summary>
         /// A version to override the SDK too in workflow dispatch
         /// </summary>
         [JsonProperty("set_version")]

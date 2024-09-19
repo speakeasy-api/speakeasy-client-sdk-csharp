@@ -12,21 +12,15 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
-    using System;
+    using System.Collections.Generic;
     
-    public class Workspaces
+    public class SuggestOptsOld
     {
 
-        [JsonProperty("account_type")]
-        public AccountType? AccountType { get; set; }
+        [JsonProperty("diagnostics")]
+        public List<Diagnostic>? Diagnostics { get; set; }
 
-        [JsonProperty("id")]
-        public string? Id { get; set; }
-
-        [JsonProperty("name")]
-        public string? Name { get; set; }
-
-        [JsonProperty("updated_at")]
-        public DateTime? UpdatedAt { get; set; }
+        [JsonProperty("suggestion_type")]
+        public SuggestionType SuggestionType { get; set; } = default!;
     }
 }

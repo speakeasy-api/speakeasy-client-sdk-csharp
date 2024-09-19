@@ -36,7 +36,7 @@ namespace SpeakeasySDK
         /// <summary>
         /// Load targets for a particular workspace
         /// </summary>
-        Task<GetWorkspaceTargetsResponse> GetWorkspaceTargetsAsync(GetWorkspaceTargetsRequest request);
+        Task<GetWorkspaceTargetsResponse> GetWorkspaceTargetsAsync(GetWorkspaceTargetsRequest? request = null);
 
         /// <summary>
         /// Post events for a specific workspace
@@ -50,7 +50,7 @@ namespace SpeakeasySDK
         /// <summary>
         /// Search events for a particular workspace by any field
         /// </summary>
-        Task<SearchWorkspaceEventsResponse> SearchWorkspaceEventsAsync(SearchWorkspaceEventsRequest request);
+        Task<SearchWorkspaceEventsResponse> SearchWorkspaceEventsAsync(SearchWorkspaceEventsRequest? request = null);
     }
 
     /// <summary>
@@ -60,10 +60,10 @@ namespace SpeakeasySDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.9.27";
-        private const string _sdkGenVersion = "2.382.0";
+        private const string _sdkVersion = "5.9.28";
+        private const string _sdkGenVersion = "2.416.6";
         private const string _openapiDocVersion = "0.4.0 .";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.9.27 2.382.0 0.4.0 . SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.9.28 2.416.6 0.4.0 . SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<SpeakeasySDK.Models.Shared.Security>? _securitySource;
@@ -172,12 +172,8 @@ namespace SpeakeasySDK
             }
         }
 
-        public async Task<GetWorkspaceTargetsResponse> GetWorkspaceTargetsAsync(GetWorkspaceTargetsRequest request)
+        public async Task<GetWorkspaceTargetsResponse> GetWorkspaceTargetsAsync(GetWorkspaceTargetsRequest? request = null)
         {
-            if (request == null)
-            {
-                request = new GetWorkspaceTargetsRequest();
-            }
             request.WorkspaceID ??= SDKConfiguration.WorkspaceID;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
@@ -231,7 +227,7 @@ namespace SpeakeasySDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<List<TargetSDK>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<List<TargetSDK>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
                     var response = new GetWorkspaceTargetsResponse()
                     {
                         StatusCode = responseStatusCode,
@@ -254,7 +250,7 @@ namespace SpeakeasySDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
                     throw obj!;
                 }
                 else
@@ -396,12 +392,8 @@ namespace SpeakeasySDK
             }
         }
 
-        public async Task<SearchWorkspaceEventsResponse> SearchWorkspaceEventsAsync(SearchWorkspaceEventsRequest request)
+        public async Task<SearchWorkspaceEventsResponse> SearchWorkspaceEventsAsync(SearchWorkspaceEventsRequest? request = null)
         {
-            if (request == null)
-            {
-                request = new SearchWorkspaceEventsRequest();
-            }
             request.WorkspaceID ??= SDKConfiguration.WorkspaceID;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
@@ -455,7 +447,7 @@ namespace SpeakeasySDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<List<CliEvent>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<List<CliEvent>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
                     var response = new SearchWorkspaceEventsResponse()
                     {
                         StatusCode = responseStatusCode,
@@ -478,7 +470,7 @@ namespace SpeakeasySDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
                     throw obj!;
                 }
                 else
