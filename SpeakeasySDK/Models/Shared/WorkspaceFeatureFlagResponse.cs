@@ -10,13 +10,17 @@
 namespace SpeakeasySDK.Models.Shared
 {
     using Newtonsoft.Json;
+    using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System.Collections.Generic;
     
-    public class SuggestedOperationIDs
+    /// <summary>
+    /// Workspace feature flag response
+    /// </summary>
+    public class WorkspaceFeatureFlagResponse
     {
 
-        [JsonProperty("operation_ids")]
-        public Dictionary<string, List<string>> OperationIds { get; set; } = default!;
+        [JsonProperty("feature_flags")]
+        public List<FeatureFlag>? FeatureFlags { get; set; }
     }
 }

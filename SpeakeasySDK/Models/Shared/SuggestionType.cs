@@ -13,26 +13,24 @@ namespace SpeakeasySDK.Models.Shared
     using SpeakeasySDK.Utils;
     using System;
     
-    public enum AccessTokenAccountType
+    public enum SuggestionType
     {
-        [JsonProperty("free")]
-        Free,
-        [JsonProperty("scale-up")]
-        ScaleUp,
-        [JsonProperty("enterprise")]
-        Enterprise,
+        [JsonProperty("method-names")]
+        MethodNames,
+        [JsonProperty("diagnostics-only")]
+        DiagnosticsOnly,
     }
 
-    public static class AccessTokenAccountTypeExtension
+    public static class SuggestionTypeExtension
     {
-        public static string Value(this AccessTokenAccountType value)
+        public static string Value(this SuggestionType value)
         {
             return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
         }
 
-        public static AccessTokenAccountType ToEnum(this string value)
+        public static SuggestionType ToEnum(this string value)
         {
-            foreach(var field in typeof(AccessTokenAccountType).GetFields())
+            foreach(var field in typeof(SuggestionType).GetFields())
             {
                 var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
                 if (attributes.Length == 0)
@@ -45,14 +43,14 @@ namespace SpeakeasySDK.Models.Shared
                 {
                     var enumVal = field.GetValue(null);
 
-                    if (enumVal is AccessTokenAccountType)
+                    if (enumVal is SuggestionType)
                     {
-                        return (AccessTokenAccountType)enumVal;
+                        return (SuggestionType)enumVal;
                     }
                 }
             }
 
-            throw new Exception($"Unknown value {value} for enum AccessTokenAccountType");
+            throw new Exception($"Unknown value {value} for enum SuggestionType");
         }
     }
 

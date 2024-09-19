@@ -19,8 +19,14 @@ namespace SpeakeasySDK.Models.Shared
         [JsonProperty("description")]
         public string Description { get; set; } = default!;
 
+        [JsonProperty("group_override")]
+        public string? GroupOverride { get; set; }
+
         [JsonProperty("method")]
         public string Method { get; set; } = default!;
+
+        [JsonProperty("method_name_override")]
+        public string? MethodNameOverride { get; set; }
 
         [JsonProperty("operation_id")]
         public string OperationId { get; set; } = default!;

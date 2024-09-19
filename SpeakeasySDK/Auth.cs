@@ -45,7 +45,7 @@ namespace SpeakeasySDK
         /// Checks if generation is permitted for a particular run of the CLI
         /// </remarks>
         /// </summary>
-        Task<GetWorkspaceAccessResponse> GetWorkspaceAccessAsync(GetWorkspaceAccessRequest request, RetryConfig? retryConfig = null);
+        Task<GetWorkspaceAccessResponse> GetWorkspaceAccessAsync(GetWorkspaceAccessRequest? request = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Validate the current api key.
@@ -60,10 +60,10 @@ namespace SpeakeasySDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.9.27";
-        private const string _sdkGenVersion = "2.382.0";
+        private const string _sdkVersion = "5.9.28";
+        private const string _sdkGenVersion = "2.416.6";
         private const string _openapiDocVersion = "0.4.0 .";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.9.27 2.382.0 0.4.0 . SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.9.28 2.416.6 0.4.0 . SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<SpeakeasySDK.Models.Shared.Security>? _securitySource;
@@ -258,7 +258,7 @@ namespace SpeakeasySDK
             }
         }
 
-        public async Task<GetWorkspaceAccessResponse> GetWorkspaceAccessAsync(GetWorkspaceAccessRequest request, RetryConfig? retryConfig = null)
+        public async Task<GetWorkspaceAccessResponse> GetWorkspaceAccessAsync(GetWorkspaceAccessRequest? request = null, RetryConfig? retryConfig = null)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/access", request);
@@ -347,7 +347,7 @@ namespace SpeakeasySDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<AccessDetails>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<AccessDetails>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
                     var response = new GetWorkspaceAccessResponse()
                     {
                         StatusCode = responseStatusCode,

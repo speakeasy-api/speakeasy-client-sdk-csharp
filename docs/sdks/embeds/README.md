@@ -25,8 +25,8 @@ using SpeakeasySDK.Models.Shared;
 using System.Collections.Generic;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
 GetEmbedAccessTokenRequest req = new GetEmbedAccessTokenRequest() {};
 
@@ -41,15 +41,16 @@ var res = await sdk.Embeds.GetEmbedAccessTokenAsync(req);
 | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | `request`                                                                           | [GetEmbedAccessTokenRequest](../../Models/Operations/GetEmbedAccessTokenRequest.md) | :heavy_check_mark:                                                                  | The request object to use for the request.                                          |
 
-
 ### Response
 
 **[GetEmbedAccessTokenResponse](../../Models/Operations/GetEmbedAccessTokenResponse.md)**
+
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+
 
 ## GetValidEmbedAccessTokens
 
@@ -62,23 +63,24 @@ using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
 var res = await sdk.Embeds.GetValidEmbedAccessTokensAsync();
 
 // handle response
 ```
 
-
 ### Response
 
 **[GetValidEmbedAccessTokensResponse](../../Models/Operations/GetValidEmbedAccessTokensResponse.md)**
+
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+
 
 ## RevokeEmbedAccessToken
 
@@ -92,8 +94,8 @@ using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
 RevokeEmbedAccessTokenRequest req = new RevokeEmbedAccessTokenRequest() {
     TokenID = "<value>",
@@ -110,10 +112,10 @@ var res = await sdk.Embeds.RevokeEmbedAccessTokenAsync(req);
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | `request`                                                                                 | [RevokeEmbedAccessTokenRequest](../../Models/Operations/RevokeEmbedAccessTokenRequest.md) | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
 
-
 ### Response
 
 **[RevokeEmbedAccessTokenResponse](../../Models/Operations/RevokeEmbedAccessTokenResponse.md)**
+
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |

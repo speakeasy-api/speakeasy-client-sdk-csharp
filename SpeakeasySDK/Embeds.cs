@@ -36,7 +36,7 @@ namespace SpeakeasySDK
         /// Filters can be applied allowing views to be filtered to things like particular customerIds.
         /// </remarks>
         /// </summary>
-        Task<GetEmbedAccessTokenResponse> GetEmbedAccessTokenAsync(GetEmbedAccessTokenRequest request);
+        Task<GetEmbedAccessTokenResponse> GetEmbedAccessTokenAsync(GetEmbedAccessTokenRequest? request = null);
 
         /// <summary>
         /// Get all valid embed access tokens for the current workspace.
@@ -56,10 +56,10 @@ namespace SpeakeasySDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.9.27";
-        private const string _sdkGenVersion = "2.382.0";
+        private const string _sdkVersion = "5.9.28";
+        private const string _sdkGenVersion = "2.416.6";
         private const string _openapiDocVersion = "0.4.0 .";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.9.27 2.382.0 0.4.0 . SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.9.28 2.416.6 0.4.0 . SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<SpeakeasySDK.Models.Shared.Security>? _securitySource;
@@ -72,7 +72,7 @@ namespace SpeakeasySDK
             SDKConfiguration = config;
         }
 
-        public async Task<GetEmbedAccessTokenResponse> GetEmbedAccessTokenAsync(GetEmbedAccessTokenRequest request)
+        public async Task<GetEmbedAccessTokenResponse> GetEmbedAccessTokenAsync(GetEmbedAccessTokenRequest? request = null)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/embed-access-token", request);
@@ -125,7 +125,7 @@ namespace SpeakeasySDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<EmbedAccessTokenResponse>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<EmbedAccessTokenResponse>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
                     var response = new GetEmbedAccessTokenResponse()
                     {
                         StatusCode = responseStatusCode,
@@ -148,7 +148,7 @@ namespace SpeakeasySDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
                     var response = new GetEmbedAccessTokenResponse()
                     {
                         StatusCode = responseStatusCode,

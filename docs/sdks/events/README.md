@@ -24,8 +24,8 @@ using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
 GetWorkspaceEventsByTargetRequest req = new GetWorkspaceEventsByTargetRequest() {
     TargetID = "<value>",
@@ -42,16 +42,17 @@ var res = await sdk.Events.GetWorkspaceEventsByTargetAsync(req);
 | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
 | `request`                                                                                         | [GetWorkspaceEventsByTargetRequest](../../Models/Operations/GetWorkspaceEventsByTargetRequest.md) | :heavy_check_mark:                                                                                | The request object to use for the request.                                                        |
 
-
 ### Response
 
 **[GetWorkspaceEventsByTargetResponse](../../Models/Operations/GetWorkspaceEventsByTargetResponse.md)**
+
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | SpeakeasySDK.Models.Errors.Error        | 5XX                                     | application/json                        |
 | SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+
 
 ## GetWorkspaceTargets
 
@@ -65,8 +66,8 @@ using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
 GetWorkspaceTargetsRequest req = new GetWorkspaceTargetsRequest() {};
 
@@ -81,16 +82,17 @@ var res = await sdk.Events.GetWorkspaceTargetsAsync(req);
 | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | `request`                                                                           | [GetWorkspaceTargetsRequest](../../Models/Operations/GetWorkspaceTargetsRequest.md) | :heavy_check_mark:                                                                  | The request object to use for the request.                                          |
 
-
 ### Response
 
 **[GetWorkspaceTargetsResponse](../../Models/Operations/GetWorkspaceTargetsResponse.md)**
+
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | SpeakeasySDK.Models.Errors.Error        | 5XX                                     | application/json                        |
 | SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+
 
 ## PostWorkspaceEvents
 
@@ -105,8 +107,8 @@ using System.Collections.Generic;
 using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
 PostWorkspaceEventsRequest req = new PostWorkspaceEventsRequest() {
     RequestBody = new List<CliEvent>() {
@@ -135,16 +137,17 @@ var res = await sdk.Events.PostWorkspaceEventsAsync(req);
 | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | `request`                                                                           | [PostWorkspaceEventsRequest](../../Models/Operations/PostWorkspaceEventsRequest.md) | :heavy_check_mark:                                                                  | The request object to use for the request.                                          |
 
-
 ### Response
 
 **[PostWorkspaceEventsResponse](../../Models/Operations/PostWorkspaceEventsResponse.md)**
+
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | SpeakeasySDK.Models.Errors.Error        | 5XX                                     | application/json                        |
 | SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+
 
 ## SearchWorkspaceEvents
 
@@ -158,8 +161,8 @@ using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
 SearchWorkspaceEventsRequest req = new SearchWorkspaceEventsRequest() {};
 
@@ -174,10 +177,10 @@ var res = await sdk.Events.SearchWorkspaceEventsAsync(req);
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | `request`                                                                               | [SearchWorkspaceEventsRequest](../../Models/Operations/SearchWorkspaceEventsRequest.md) | :heavy_check_mark:                                                                      | The request object to use for the request.                                              |
 
-
 ### Response
 
 **[SearchWorkspaceEventsResponse](../../Models/Operations/SearchWorkspaceEventsResponse.md)**
+
 ### Errors
 
 | Error Object                            | Status Code                             | Content Type                            |

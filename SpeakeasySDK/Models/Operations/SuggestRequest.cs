@@ -9,19 +9,19 @@
 #nullable enable
 namespace SpeakeasySDK.Models.Operations
 {
-    using Newtonsoft.Json;
+    using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     
-    /// <summary>
-    /// Apply options
-    /// </summary>
-    public class ApplyOperationIDsRequestBody
+    public class SuggestRequest
     {
 
         /// <summary>
-        /// Whether to apply the suggestions as an overlay or replace the existing operationIDs. Default: false
+        /// The OAS summary and diagnostics to use for the suggestion.
         /// </summary>
-        [JsonProperty("as_overlay")]
-        public bool? AsOverlay { get; set; }
+        [SpeakeasyMetadata("request:mediaType=application/json")]
+        public SuggestRequestBody SuggestRequestBody { get; set; } = default!;
+
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=x-session-id")]
+        public string XSessionId { get; set; } = default!;
     }
 }

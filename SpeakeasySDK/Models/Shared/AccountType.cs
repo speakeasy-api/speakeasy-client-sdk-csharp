@@ -19,6 +19,8 @@ namespace SpeakeasySDK.Models.Shared
         Free,
         [JsonProperty("scale-up")]
         ScaleUp,
+        [JsonProperty("business")]
+        Business,
         [JsonProperty("enterprise")]
         Enterprise,
     }

@@ -13,8 +13,8 @@ using System.Collections.Generic;
 using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
 GetApisRequest req = new GetApisRequest() {};
 
@@ -51,8 +51,8 @@ using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
 GetWorkspaceRequest req = new GetWorkspaceRequest() {};
 
@@ -74,12 +74,12 @@ using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
 GetWorkspaceAccessRequest req = new GetWorkspaceAccessRequest() {};
 
-var res = await sdk.Auth.GetWorkspaceAccessAsync(req,
+var res = await sdk.Auth.GetWorkspaceAccessAsync(
     retryConfig: new RetryConfig(
         strategy: RetryConfig.RetryStrategy.BACKOFF,
         backoff: new BackoffStrategy(
@@ -89,7 +89,7 @@ var res = await sdk.Auth.GetWorkspaceAccessAsync(req,
             exponent: 1.1
         ),
         retryConnectionErrors: false
-));
+    ),req);
 
 // handle response
 ```
@@ -110,10 +110,11 @@ var sdk = new SDK(
             exponent: 1.1
         ),
         retryConnectionErrors: false
-),
+    ),
     security: new Security() {
         APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    }
+);
 
 GetWorkspaceAccessRequest req = new GetWorkspaceAccessRequest() {};
 
@@ -143,16 +144,15 @@ using System;
 using SpeakeasySDK.Models.Errors;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
-
-GetWorkspaceEventsByTargetRequest req = new GetWorkspaceEventsByTargetRequest() {
-    TargetID = "<value>",
-};
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
 try
 {
-    var res = await sdk.Events.GetWorkspaceEventsByTargetAsync(req);
+    GetWorkspaceFeatureFlagsRequest req = new GetWorkspaceFeatureFlagsRequest() {};
+
+    var res = await sdk.Workspaces.GetWorkspaceFeatureFlagsAsync(req);
+
     // handle response
 }
 catch (Exception ex)
@@ -166,7 +166,6 @@ catch (Exception ex)
         // handle exception
     }
 }
-
 ```
 <!-- End Error Handling [errors] -->
 
@@ -207,8 +206,8 @@ using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK(security: new Security() {
-        APIKey = "<YOUR_API_KEY_HERE>",
-    });
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
 
 DeleteApiRequest req = new DeleteApiRequest() {
     ApiID = "<value>",
