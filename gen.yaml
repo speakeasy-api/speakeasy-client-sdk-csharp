@@ -30,6 +30,7 @@ csharp:
   inputModelSuffix: input
   maxMethodParams: 0
   outputModelSuffix: output
+  sourceDirectory: src
   packageName: SpeakeasySDK
   packageTags: Speakeasy SDK Generation
   responseFormat: envelope
