@@ -22,59 +22,44 @@ namespace SpeakeasySDK
     using System.Threading.Tasks;
     using System;
 
-    public interface IOrganizations
+    /// <summary>
+    /// REST APIs for managing Version Metadata entities
+    /// </summary>
+    public interface IMetadata
     {
 
         /// <summary>
-        /// Create a free trial for an organization
-        /// 
-        /// <remarks>
-        /// Creates a free trial for an organization
-        /// </remarks>
+        /// Delete metadata for a particular apiID and versionID.
         /// </summary>
-        Task<CreateFreeTrialResponse> CreateFreeTrialAsync();
+        Task<DeleteVersionMetadataResponse> DeleteVersionMetadataAsync(DeleteVersionMetadataRequest request);
 
         /// <summary>
-        /// Get organization
-        /// 
-        /// <remarks>
-        /// Get information about a particular organization.
-        /// </remarks>
+        /// Get all metadata for a particular apiID and versionID.
         /// </summary>
-        Task<GetOrganizationResponse> GetOrganizationAsync(GetOrganizationRequest request);
+        Task<GetVersionMetadataResponse> GetVersionMetadataAsync(GetVersionMetadataRequest request);
 
         /// <summary>
-        /// Get billing usage summary for a particular organization
-        /// 
-        /// <remarks>
-        /// Returns a billing usage summary by target languages for a particular organization
-        /// </remarks>
+        /// Insert metadata for a particular apiID and versionID.
         /// </summary>
-        Task<GetOrganizationUsageResponse> GetOrganizationUsageAsync();
-
-        /// <summary>
-        /// Get organizations for a user
-        /// 
-        /// <remarks>
-        /// Returns a list of organizations a user has access too
-        /// </remarks>
-        /// </summary>
-        Task<GetOrganizationsResponse> GetOrganizationsAsync();
+        Task<InsertVersionMetadataResponse> InsertVersionMetadataAsync(InsertVersionMetadataRequest request);
     }
 
-    public class Organizations: IOrganizations
+    /// <summary>
+    /// REST APIs for managing Version Metadata entities
+    /// </summary>
+    public class Metadata: IMetadata
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.9.28";
-        private const string _sdkGenVersion = "2.416.6";
+        private const string _sdkVersion = "5.10.0";
+        private const string _sdkGenVersion = "2.420.2";
         private const string _openapiDocVersion = "0.4.0 .";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.9.28 2.416.6 0.4.0 . SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.10.0 2.420.2 0.4.0 . SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<SpeakeasySDK.Models.Shared.Security>? _securitySource;
 
-        public Organizations(ISpeakeasyHttpClient client, Func<SpeakeasySDK.Models.Shared.Security>? securitySource, string serverUrl, SDKConfig config)
+        public Metadata(ISpeakeasyHttpClient client, Func<SpeakeasySDK.Models.Shared.Security>? securitySource, string serverUrl, SDKConfig config)
         {
             _client = client;
             _securitySource = securitySource;
@@ -82,13 +67,12 @@ namespace SpeakeasySDK
             SDKConfiguration = config;
         }
 
-        public async Task<CreateFreeTrialResponse> CreateFreeTrialAsync()
+        public async Task<DeleteVersionMetadataResponse> DeleteVersionMetadataAsync(DeleteVersionMetadataRequest request)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = URLBuilder.Build(baseUrl, "/v1/apis/{apiID}/version/{versionID}/metadata/{metaKey}/{metaValue}", request);
 
-            var urlString = baseUrl + "/v1/organization/free_trial";
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
+            var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
 
             if (_securitySource != null)
@@ -96,7 +80,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("createFreeTrial", null, _securitySource);
+            var hookCtx = new HookContext("deleteVersionMetadata", null, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -134,7 +118,7 @@ namespace SpeakeasySDK
             int responseStatusCode = (int)httpResponse.StatusCode;
             if(responseStatusCode == 200)
             {                
-                return new CreateFreeTrialResponse()
+                return new DeleteVersionMetadataResponse()
                 {
                     StatusCode = responseStatusCode,
                     ContentType = contentType,
@@ -150,7 +134,7 @@ namespace SpeakeasySDK
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new CreateFreeTrialResponse()
+                    var response = new DeleteVersionMetadataResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,
@@ -166,10 +150,10 @@ namespace SpeakeasySDK
             }
         }
 
-        public async Task<GetOrganizationResponse> GetOrganizationAsync(GetOrganizationRequest request)
+        public async Task<GetVersionMetadataResponse> GetVersionMetadataAsync(GetVersionMetadataRequest request)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/organization/{organizationID}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v1/apis/{apiID}/version/{versionID}/metadata", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
@@ -179,7 +163,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("getOrganization", null, _securitySource);
+            var hookCtx = new HookContext("getVersionMetadata", null, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -219,14 +203,14 @@ namespace SpeakeasySDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Organization>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetOrganizationResponse()
+                    var obj = ResponseBodyDeserializer.Deserialize<List<VersionMetadata>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new GetVersionMetadataResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,
                         RawResponse = httpResponse
                     };
-                    response.Organization = obj;
+                    response.VersionMetadata = obj;
                     return response;
                 }
                 else
@@ -243,7 +227,7 @@ namespace SpeakeasySDK
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetOrganizationResponse()
+                    var response = new GetVersionMetadataResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,
@@ -259,21 +243,26 @@ namespace SpeakeasySDK
             }
         }
 
-        public async Task<GetOrganizationUsageResponse> GetOrganizationUsageAsync()
+        public async Task<InsertVersionMetadataResponse> InsertVersionMetadataAsync(InsertVersionMetadataRequest request)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = URLBuilder.Build(baseUrl, "/v1/apis/{apiID}/version/{versionID}/metadata", request);
 
-            var urlString = baseUrl + "/v1/organization/usage";
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "VersionMetadata", "json", false, false);
+            if (serializedBody != null)
+            {
+                httpRequest.Content = serializedBody;
+            }
 
             if (_securitySource != null)
             {
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("getOrganizationUsage", null, _securitySource);
+            var hookCtx = new HookContext("insertVersionMetadata", null, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -313,14 +302,14 @@ namespace SpeakeasySDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<OrganizationUsageResponse>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetOrganizationUsageResponse()
+                    var obj = ResponseBodyDeserializer.Deserialize<VersionMetadata>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new InsertVersionMetadataResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,
                         RawResponse = httpResponse
                     };
-                    response.OrganizationUsageResponse = obj;
+                    response.VersionMetadata = obj;
                     return response;
                 }
                 else
@@ -337,101 +326,7 @@ namespace SpeakeasySDK
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetOrganizationUsageResponse()
-                    {
-                        StatusCode = responseStatusCode,
-                        ContentType = contentType,
-                        RawResponse = httpResponse
-                    };
-                    response.Error = obj;
-                    return response;
-                }
-                else
-                {
-                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-                }
-            }
-        }
-
-        public async Task<GetOrganizationsResponse> GetOrganizationsAsync()
-        {
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
-            var urlString = baseUrl + "/v1/organization";
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
-
-            if (_securitySource != null)
-            {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext("getOrganizations", null, _securitySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await _client.SendAsync(httpRequest);
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<List<Organization>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetOrganizationsResponse()
-                    {
-                        StatusCode = responseStatusCode,
-                        ContentType = contentType,
-                        RawResponse = httpResponse
-                    };
-                    response.Organizations = obj;
-                    return response;
-                }
-                else
-                {
-                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-                }
-            }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-            }
-            else
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetOrganizationsResponse()
+                    var response = new InsertVersionMetadataResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,

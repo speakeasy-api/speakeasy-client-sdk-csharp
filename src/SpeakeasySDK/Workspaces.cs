@@ -9,6 +9,7 @@
 #nullable enable
 namespace SpeakeasySDK
 {
+    using Newtonsoft.Json;
     using SpeakeasySDK.Hooks;
     using SpeakeasySDK.Models.Errors;
     using SpeakeasySDK.Models.Operations;
@@ -21,56 +22,37 @@ namespace SpeakeasySDK
     using System.Threading.Tasks;
     using System;
 
-    /// <summary>
-    /// REST APIs for managing LLM OAS suggestions
-    /// </summary>
-    public interface ISuggest
+    public interface IWorkspaces
     {
 
         /// <summary>
-        /// Generate suggestions for improving an OpenAPI document.
+        /// Get workspace
         /// 
         /// <remarks>
-        /// Get suggestions from an LLM model for improving an OpenAPI document.
+        /// Get information about a particular workspace.
         /// </remarks>
         /// </summary>
-        Task<SuggestResponse> SuggestAsync(SuggestRequest request);
+        Task<GetWorkspaceResponse> GetWorkspaceAsync(GetWorkspaceRequest? request = null);
 
         /// <summary>
-        /// (DEPRECATED) Generate suggestions for improving an OpenAPI document.
-        /// 
-        /// <remarks>
-        /// Get suggestions from an LLM model for improving an OpenAPI document.
-        /// </remarks>
+        /// Get workspace feature flags
         /// </summary>
-        Task<SuggestOpenAPIResponse> SuggestOpenAPIAsync(SuggestOpenAPIRequest request);
-
-        /// <summary>
-        /// Generate suggestions for improving an OpenAPI document stored in the registry.
-        /// 
-        /// <remarks>
-        /// Get suggestions from an LLM model for improving an OpenAPI document stored in the registry.
-        /// </remarks>
-        /// </summary>
-        Task<SuggestOpenAPIRegistryResponse> SuggestOpenAPIRegistryAsync(SuggestOpenAPIRegistryRequest request);
+        Task<GetWorkspaceFeatureFlagsResponse> GetWorkspaceFeatureFlagsAsync(GetWorkspaceFeatureFlagsRequest? request = null);
     }
 
-    /// <summary>
-    /// REST APIs for managing LLM OAS suggestions
-    /// </summary>
-    public class Suggest: ISuggest
+    public class Workspaces: IWorkspaces
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.9.28";
-        private const string _sdkGenVersion = "2.416.6";
+        private const string _sdkVersion = "5.10.0";
+        private const string _sdkGenVersion = "2.420.2";
         private const string _openapiDocVersion = "0.4.0 .";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.9.28 2.416.6 0.4.0 . SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.10.0 2.420.2 0.4.0 . SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<SpeakeasySDK.Models.Shared.Security>? _securitySource;
 
-        public Suggest(ISpeakeasyHttpClient client, Func<SpeakeasySDK.Models.Shared.Security>? securitySource, string serverUrl, SDKConfig config)
+        public Workspaces(ISpeakeasyHttpClient client, Func<SpeakeasySDK.Models.Shared.Security>? securitySource, string serverUrl, SDKConfig config)
         {
             _client = client;
             _securitySource = securitySource;
@@ -78,28 +60,22 @@ namespace SpeakeasySDK
             SDKConfiguration = config;
         }
 
-        public async Task<SuggestResponse> SuggestAsync(SuggestRequest request)
+        public async Task<GetWorkspaceResponse> GetWorkspaceAsync(GetWorkspaceRequest? request = null)
         {
+            request.WorkspaceID ??= SDKConfiguration.WorkspaceID;
+            
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/{workspaceID}", request);
 
-            var urlString = baseUrl + "/v1/suggest/openapi_from_summary";
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
-
-            var serializedBody = RequestBodySerializer.Serialize(request, "SuggestRequestBody", "json", false, false);
-            if (serializedBody != null)
-            {
-                httpRequest.Content = serializedBody;
-            }
 
             if (_securitySource != null)
             {
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("suggest", null, _securitySource);
+            var hookCtx = new HookContext("getWorkspace", null, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -139,13 +115,14 @@ namespace SpeakeasySDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var response = new SuggestResponse()
+                    var obj = ResponseBodyDeserializer.Deserialize<Workspace>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    var response = new GetWorkspaceResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,
                         RawResponse = httpResponse
                     };
-                    response.Schema = await httpResponse.Content.ReadAsByteArrayAsync();
+                    response.Workspace = obj;
                     return response;
                 }
                 else
@@ -159,32 +136,41 @@ namespace SpeakeasySDK
             }
             else
             {
-                throw new SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    var response = new GetWorkspaceResponse()
+                    {
+                        StatusCode = responseStatusCode,
+                        ContentType = contentType,
+                        RawResponse = httpResponse
+                    };
+                    response.Error = obj;
+                    return response;
+                }
+                else
+                {
+                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                }
             }
         }
 
-        public async Task<SuggestOpenAPIResponse> SuggestOpenAPIAsync(SuggestOpenAPIRequest request)
+        public async Task<GetWorkspaceFeatureFlagsResponse> GetWorkspaceFeatureFlagsAsync(GetWorkspaceFeatureFlagsRequest? request = null)
         {
+            request.WorkspaceID ??= SDKConfiguration.WorkspaceID;
+            
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/{workspaceID}/feature_flags", request);
 
-            var urlString = baseUrl + "/v1/suggest/openapi";
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
-
-            var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "multipart", false, false);
-            if (serializedBody != null)
-            {
-                httpRequest.Content = serializedBody;
-            }
 
             if (_securitySource != null)
             {
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("suggestOpenAPI", null, _securitySource);
+            var hookCtx = new HookContext("getWorkspaceFeatureFlags", null, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -224,13 +210,14 @@ namespace SpeakeasySDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var response = new SuggestOpenAPIResponse()
+                    var obj = ResponseBodyDeserializer.Deserialize<WorkspaceFeatureFlagResponse>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    var response = new GetWorkspaceFeatureFlagsResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,
                         RawResponse = httpResponse
                     };
-                    response.Schema = await httpResponse.Content.ReadAsByteArrayAsync();
+                    response.WorkspaceFeatureFlagResponse = obj;
                     return response;
                 }
                 else
@@ -238,93 +225,21 @@ namespace SpeakeasySDK
                     throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
                 }
             }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
+            else if(responseStatusCode >= 400 && responseStatusCode < 500)
             {
                 throw new SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
-            else
-            {
-                throw new SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-            }
-        }
-
-        public async Task<SuggestOpenAPIRegistryResponse> SuggestOpenAPIRegistryAsync(SuggestOpenAPIRegistryRequest request)
-        {
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/suggest/openapi/{namespace_name}/{revision_reference}", request);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
-            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
-
-            var serializedBody = RequestBodySerializer.Serialize(request, "SuggestRequestBody", "json", false, true);
-            if (serializedBody != null)
-            {
-                httpRequest.Content = serializedBody;
-            }
-
-            if (_securitySource != null)
-            {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext("suggestOpenAPIRegistry", null, _securitySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await _client.SendAsync(httpRequest);
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var response = new SuggestOpenAPIRegistryResponse()
-                    {
-                        StatusCode = responseStatusCode,
-                        ContentType = contentType,
-                        RawResponse = httpResponse
-                    };
-                    response.Schema = await httpResponse.Content.ReadAsByteArrayAsync();
-                    return response;
+                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    throw obj!;
                 }
                 else
                 {
                     throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
                 }
-            }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else
             {

@@ -23,53 +23,52 @@ namespace SpeakeasySDK
     using System;
 
     /// <summary>
-    /// REST APIs for retrieving request information
+    /// REST APIs for managing Authentication
     /// </summary>
-    public interface IRequests
+    public interface IAuth
     {
 
         /// <summary>
-        /// Generate a Postman collection for a particular request.
-        /// 
-        /// <remarks>
-        /// Generates a Postman collection for a particular request. <br/>
-        /// Allowing it to be replayed with the same inputs that were captured by the SDK.
-        /// </remarks>
+        /// Get or refresh an access token for the current workspace.
         /// </summary>
-        Task<GenerateRequestPostmanCollectionResponse> GenerateRequestPostmanCollectionAsync(GenerateRequestPostmanCollectionRequest request);
+        Task<GetAccessTokenResponse> GetAccessTokenAsync(GetAccessTokenRequest request);
 
         /// <summary>
-        /// Get information about a particular request.
+        /// Get information about the current user.
         /// </summary>
-        Task<GetRequestFromEventLogResponse> GetRequestFromEventLogAsync(GetRequestFromEventLogRequest request);
+        Task<GetUserResponse> GetUserAsync();
 
         /// <summary>
-        /// Query the event log to retrieve a list of requests.
+        /// Get access allowances for a particular workspace
         /// 
         /// <remarks>
-        /// Supports retrieving a list of request captured by the SDK for this workspace.<br/>
-        /// Allows the filtering of requests on a number of criteria such as ApiID, VersionID, Path, Method, etc.
+        /// Checks if generation is permitted for a particular run of the CLI
         /// </remarks>
         /// </summary>
-        Task<QueryEventLogResponse> QueryEventLogAsync(QueryEventLogRequest? request = null);
+        Task<GetWorkspaceAccessResponse> GetWorkspaceAccessAsync(GetWorkspaceAccessRequest? request = null, RetryConfig? retryConfig = null);
+
+        /// <summary>
+        /// Validate the current api key.
+        /// </summary>
+        Task<ValidateApiKeyResponse> ValidateApiKeyAsync();
     }
 
     /// <summary>
-    /// REST APIs for retrieving request information
+    /// REST APIs for managing Authentication
     /// </summary>
-    public class Requests: IRequests
+    public class Auth: IAuth
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.9.28";
-        private const string _sdkGenVersion = "2.416.6";
+        private const string _sdkVersion = "5.10.0";
+        private const string _sdkGenVersion = "2.420.2";
         private const string _openapiDocVersion = "0.4.0 .";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.9.28 2.416.6 0.4.0 . SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.10.0 2.420.2 0.4.0 . SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<SpeakeasySDK.Models.Shared.Security>? _securitySource;
 
-        public Requests(ISpeakeasyHttpClient client, Func<SpeakeasySDK.Models.Shared.Security>? securitySource, string serverUrl, SDKConfig config)
+        public Auth(ISpeakeasyHttpClient client, Func<SpeakeasySDK.Models.Shared.Security>? securitySource, string serverUrl, SDKConfig config)
         {
             _client = client;
             _securitySource = securitySource;
@@ -77,20 +76,15 @@ namespace SpeakeasySDK
             SDKConfiguration = config;
         }
 
-        public async Task<GenerateRequestPostmanCollectionResponse> GenerateRequestPostmanCollectionAsync(GenerateRequestPostmanCollectionRequest request)
+        public async Task<GetAccessTokenResponse> GetAccessTokenAsync(GetAccessTokenRequest request)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/eventlog/{requestID}/generate/postman", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v1/auth/access_token", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
 
-            if (_securitySource != null)
-            {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext("generateRequestPostmanCollection", null, _securitySource);
+            var hookCtx = new HookContext("getAccessToken", null, null);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -128,15 +122,16 @@ namespace SpeakeasySDK
             int responseStatusCode = (int)httpResponse.StatusCode;
             if(responseStatusCode == 200)
             {
-                if(Utilities.IsContentTypeMatch("application/octet-stream", contentType))
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var response = new GenerateRequestPostmanCollectionResponse()
+                    var obj = ResponseBodyDeserializer.Deserialize<AccessToken>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new GetAccessTokenResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,
                         RawResponse = httpResponse
                     };
-                    response.PostmanCollection = await httpResponse.Content.ReadAsByteArrayAsync();
+                    response.AccessToken = obj;
                     return response;
                 }
                 else
@@ -153,7 +148,7 @@ namespace SpeakeasySDK
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GenerateRequestPostmanCollectionResponse()
+                    var response = new GetAccessTokenResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,
@@ -169,10 +164,11 @@ namespace SpeakeasySDK
             }
         }
 
-        public async Task<GetRequestFromEventLogResponse> GetRequestFromEventLogAsync(GetRequestFromEventLogRequest request)
+        public async Task<GetUserResponse> GetUserAsync()
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/eventlog/{requestID}", request);
+
+            var urlString = baseUrl + "/v1/user";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
@@ -182,7 +178,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("getRequestFromEventLog", null, _securitySource);
+            var hookCtx = new HookContext("getUser", null, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -222,14 +218,14 @@ namespace SpeakeasySDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<UnboundedRequest>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetRequestFromEventLogResponse()
+                    var obj = ResponseBodyDeserializer.Deserialize<User>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new GetUserResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,
                         RawResponse = httpResponse
                     };
-                    response.UnboundedRequest = obj;
+                    response.User = obj;
                     return response;
                 }
                 else
@@ -246,7 +242,7 @@ namespace SpeakeasySDK
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetRequestFromEventLogResponse()
+                    var response = new GetUserResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,
@@ -262,10 +258,10 @@ namespace SpeakeasySDK
             }
         }
 
-        public async Task<QueryEventLogResponse> QueryEventLogAsync(QueryEventLogRequest? request = null)
+        public async Task<GetWorkspaceAccessResponse> GetWorkspaceAccessAsync(GetWorkspaceAccessRequest? request = null, RetryConfig? retryConfig = null)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/eventlog/query", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/access", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
@@ -275,7 +271,122 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("queryEventLog", null, _securitySource);
+            var hookCtx = new HookContext("getWorkspaceAccess", null, _securitySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+            if (retryConfig == null)
+            {
+                if (this.SDKConfiguration.RetryConfig != null)
+                {
+                    retryConfig = this.SDKConfiguration.RetryConfig;
+                }
+                else
+                {
+                    var backoff = new BackoffStrategy(
+                        initialIntervalMs: 100L,
+                        maxIntervalMs: 2000L,
+                        maxElapsedTimeMs: 60000L,
+                        exponent: 1.5
+                    );
+                    retryConfig = new RetryConfig(
+                        strategy: RetryConfig.RetryStrategy.BACKOFF,
+                        backoff: backoff,
+                        retryConnectionErrors: true
+                    );
+                }
+            }
+
+            List<string> statusCodes = new List<string>
+            {
+                "408",
+                "500",
+                "502",
+                "503",
+            };
+
+            Func<Task<HttpResponseMessage>> retrySend = async () =>
+            {
+                var _httpRequest = await _client.CloneAsync(httpRequest);
+                return await _client.SendAsync(_httpRequest);
+            };
+            var retries = new SpeakeasySDK.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await retries.Run();
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<AccessDetails>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    var response = new GetWorkspaceAccessResponse()
+                    {
+                        StatusCode = responseStatusCode,
+                        ContentType = contentType,
+                        RawResponse = httpResponse
+                    };
+                    response.AccessDetails = obj;
+                    return response;
+                }
+                else
+                {
+                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                }
+            }
+            else if(responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            }
+            else
+            {
+                throw new SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            }
+        }
+
+        public async Task<ValidateApiKeyResponse> ValidateApiKeyAsync()
+        {
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+
+            var urlString = baseUrl + "/v1/auth/validate";
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("user-agent", _userAgent);
+
+            if (_securitySource != null)
+            {
+                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext("validateApiKey", null, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -315,14 +426,14 @@ namespace SpeakeasySDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<List<BoundedRequest>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    var response = new QueryEventLogResponse()
+                    var obj = ResponseBodyDeserializer.Deserialize<ApiKeyDetails>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new ValidateApiKeyResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,
                         RawResponse = httpResponse
                     };
-                    response.BoundedRequests = obj;
+                    response.ApiKeyDetails = obj;
                     return response;
                 }
                 else
@@ -338,8 +449,8 @@ namespace SpeakeasySDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    var response = new QueryEventLogResponse()
+                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new ValidateApiKeyResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,

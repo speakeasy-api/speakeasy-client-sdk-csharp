@@ -23,52 +23,52 @@ namespace SpeakeasySDK
     using System;
 
     /// <summary>
-    /// REST APIs for managing Authentication
+    /// REST APIs for capturing event data
     /// </summary>
-    public interface IAuth
+    public interface IEvents
     {
 
         /// <summary>
-        /// Get or refresh an access token for the current workspace.
+        /// Load recent events for a particular workspace
         /// </summary>
-        Task<GetAccessTokenResponse> GetAccessTokenAsync(GetAccessTokenRequest request);
+        Task<GetWorkspaceEventsByTargetResponse> GetWorkspaceEventsByTargetAsync(GetWorkspaceEventsByTargetRequest request);
 
         /// <summary>
-        /// Get information about the current user.
+        /// Load targets for a particular workspace
         /// </summary>
-        Task<GetUserResponse> GetUserAsync();
+        Task<GetWorkspaceTargetsResponse> GetWorkspaceTargetsAsync(GetWorkspaceTargetsRequest? request = null);
 
         /// <summary>
-        /// Get access allowances for a particular workspace
+        /// Post events for a specific workspace
         /// 
         /// <remarks>
-        /// Checks if generation is permitted for a particular run of the CLI
+        /// Sends an array of events to be stored for a particular workspace.
         /// </remarks>
         /// </summary>
-        Task<GetWorkspaceAccessResponse> GetWorkspaceAccessAsync(GetWorkspaceAccessRequest? request = null, RetryConfig? retryConfig = null);
+        Task<PostWorkspaceEventsResponse> PostWorkspaceEventsAsync(PostWorkspaceEventsRequest request, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Validate the current api key.
+        /// Search events for a particular workspace by any field
         /// </summary>
-        Task<ValidateApiKeyResponse> ValidateApiKeyAsync();
+        Task<SearchWorkspaceEventsResponse> SearchWorkspaceEventsAsync(SearchWorkspaceEventsRequest? request = null);
     }
 
     /// <summary>
-    /// REST APIs for managing Authentication
+    /// REST APIs for capturing event data
     /// </summary>
-    public class Auth: IAuth
+    public class Events: IEvents
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.9.28";
-        private const string _sdkGenVersion = "2.416.6";
+        private const string _sdkVersion = "5.10.0";
+        private const string _sdkGenVersion = "2.420.2";
         private const string _openapiDocVersion = "0.4.0 .";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.9.28 2.416.6 0.4.0 . SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.10.0 2.420.2 0.4.0 . SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<SpeakeasySDK.Models.Shared.Security>? _securitySource;
 
-        public Auth(ISpeakeasyHttpClient client, Func<SpeakeasySDK.Models.Shared.Security>? securitySource, string serverUrl, SDKConfig config)
+        public Events(ISpeakeasyHttpClient client, Func<SpeakeasySDK.Models.Shared.Security>? securitySource, string serverUrl, SDKConfig config)
         {
             _client = client;
             _securitySource = securitySource;
@@ -76,15 +76,26 @@ namespace SpeakeasySDK
             SDKConfiguration = config;
         }
 
-        public async Task<GetAccessTokenResponse> GetAccessTokenAsync(GetAccessTokenRequest request)
+        public async Task<GetWorkspaceEventsByTargetResponse> GetWorkspaceEventsByTargetAsync(GetWorkspaceEventsByTargetRequest request)
         {
+            if (request == null)
+            {
+                request = new GetWorkspaceEventsByTargetRequest();
+            }
+            request.WorkspaceID ??= SDKConfiguration.WorkspaceID;
+            
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/auth/access_token", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/{workspaceID}/events/targets/{targetID}/events", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
 
-            var hookCtx = new HookContext("getAccessToken", null, null);
+            if (_securitySource != null)
+            {
+                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext("getWorkspaceEventsByTarget", null, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -124,14 +135,14 @@ namespace SpeakeasySDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<AccessToken>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetAccessTokenResponse()
+                    var obj = ResponseBodyDeserializer.Deserialize<List<CliEvent>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new GetWorkspaceEventsByTargetResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,
                         RawResponse = httpResponse
                     };
-                    response.AccessToken = obj;
+                    response.CliEventBatch = obj;
                     return response;
                 }
                 else
@@ -139,36 +150,34 @@ namespace SpeakeasySDK
                     throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
                 }
             }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
+            else if(responseStatusCode >= 400 && responseStatusCode < 500)
             {
                 throw new SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
-            else
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetAccessTokenResponse()
-                    {
-                        StatusCode = responseStatusCode,
-                        ContentType = contentType,
-                        RawResponse = httpResponse
-                    };
-                    response.Error = obj;
-                    return response;
+                    throw obj!;
                 }
                 else
                 {
                     throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
                 }
             }
+            else
+            {
+                throw new SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            }
         }
 
-        public async Task<GetUserResponse> GetUserAsync()
+        public async Task<GetWorkspaceTargetsResponse> GetWorkspaceTargetsAsync(GetWorkspaceTargetsRequest? request = null)
         {
+            request.WorkspaceID ??= SDKConfiguration.WorkspaceID;
+            
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
-            var urlString = baseUrl + "/v1/user";
+            var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/{workspaceID}/events/targets", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
@@ -178,7 +187,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("getUser", null, _securitySource);
+            var hookCtx = new HookContext("getWorkspaceTargets", null, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -218,14 +227,14 @@ namespace SpeakeasySDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<User>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetUserResponse()
+                    var obj = ResponseBodyDeserializer.Deserialize<List<TargetSDK>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    var response = new GetWorkspaceTargetsResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,
                         RawResponse = httpResponse
                     };
-                    response.User = obj;
+                    response.TargetSDKList = obj;
                     return response;
                 }
                 else
@@ -233,45 +242,54 @@ namespace SpeakeasySDK
                     throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
                 }
             }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
+            else if(responseStatusCode >= 400 && responseStatusCode < 500)
             {
                 throw new SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
-            else
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetUserResponse()
-                    {
-                        StatusCode = responseStatusCode,
-                        ContentType = contentType,
-                        RawResponse = httpResponse
-                    };
-                    response.Error = obj;
-                    return response;
+                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    throw obj!;
                 }
                 else
                 {
                     throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
                 }
             }
+            else
+            {
+                throw new SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            }
         }
 
-        public async Task<GetWorkspaceAccessResponse> GetWorkspaceAccessAsync(GetWorkspaceAccessRequest? request = null, RetryConfig? retryConfig = null)
+        public async Task<PostWorkspaceEventsResponse> PostWorkspaceEventsAsync(PostWorkspaceEventsRequest request, RetryConfig? retryConfig = null)
         {
+            if (request == null)
+            {
+                request = new PostWorkspaceEventsRequest();
+            }
+            request.WorkspaceID ??= SDKConfiguration.WorkspaceID;
+            
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/access", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/{workspaceID}/events", request);
 
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "json", false, false);
+            if (serializedBody != null)
+            {
+                httpRequest.Content = serializedBody;
+            }
 
             if (_securitySource != null)
             {
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("getWorkspaceAccess", null, _securitySource);
+            var hookCtx = new HookContext("postWorkspaceEvents", null, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -343,28 +361,30 @@ namespace SpeakeasySDK
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
             int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
+            if(responseStatusCode >= 200 && responseStatusCode < 300)
+            {                
+                return new PostWorkspaceEventsResponse()
+                {
+                    StatusCode = responseStatusCode,
+                    ContentType = contentType,
+                    RawResponse = httpResponse
+                };
+            }
+            else if(responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                throw new SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<AccessDetails>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    var response = new GetWorkspaceAccessResponse()
-                    {
-                        StatusCode = responseStatusCode,
-                        ContentType = contentType,
-                        RawResponse = httpResponse
-                    };
-                    response.AccessDetails = obj;
-                    return response;
+                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
                 }
                 else
                 {
                     throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
                 }
-            }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else
             {
@@ -372,11 +392,12 @@ namespace SpeakeasySDK
             }
         }
 
-        public async Task<ValidateApiKeyResponse> ValidateApiKeyAsync()
+        public async Task<SearchWorkspaceEventsResponse> SearchWorkspaceEventsAsync(SearchWorkspaceEventsRequest? request = null)
         {
+            request.WorkspaceID ??= SDKConfiguration.WorkspaceID;
+            
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
-            var urlString = baseUrl + "/v1/auth/validate";
+            var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/{workspaceID}/events", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
@@ -386,7 +407,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("validateApiKey", null, _securitySource);
+            var hookCtx = new HookContext("searchWorkspaceEvents", null, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -426,14 +447,14 @@ namespace SpeakeasySDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<ApiKeyDetails>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new ValidateApiKeyResponse()
+                    var obj = ResponseBodyDeserializer.Deserialize<List<CliEvent>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    var response = new SearchWorkspaceEventsResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,
                         RawResponse = httpResponse
                     };
-                    response.ApiKeyDetails = obj;
+                    response.CliEventBatch = obj;
                     return response;
                 }
                 else
@@ -441,28 +462,25 @@ namespace SpeakeasySDK
                     throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
                 }
             }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
+            else if(responseStatusCode >= 400 && responseStatusCode < 500)
             {
                 throw new SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
-            else
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new ValidateApiKeyResponse()
-                    {
-                        StatusCode = responseStatusCode,
-                        ContentType = contentType,
-                        RawResponse = httpResponse
-                    };
-                    response.Error = obj;
-                    return response;
+                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    throw obj!;
                 }
                 else
                 {
                     throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
                 }
+            }
+            else
+            {
+                throw new SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
         }
     }

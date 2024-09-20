@@ -35,7 +35,7 @@ dotnet add package SpeakeasySDK
 
 To add a reference to a local instance of the SDK in a .NET project:
 ```bash
-dotnet add reference SpeakeasySDK/SpeakeasySDK.csproj
+dotnet add reference src/SpeakeasySDK/SpeakeasySDK.csproj
 ```
 <!-- End SDK Installation [installation] -->
 
