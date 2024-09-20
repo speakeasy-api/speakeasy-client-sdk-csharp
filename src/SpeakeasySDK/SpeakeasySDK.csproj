@@ -3,7 +3,7 @@
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <PackageId>SpeakeasySDK</PackageId>
-    <Version>5.9.28</Version>
+    <Version>5.10.0</Version>
     <TargetFramework>net8.0</TargetFramework>
     <Authors>Speakeasy</Authors>
     <Copyright>Copyright (c) Speakeasy 2024</Copyright>
@@ -26,10 +26,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\NUGET.md" Pack="true" PackagePath="README.md"/>
-    <None Include="..\LICENSE.md" Pack="true" PackagePath="\"/>
-    <None Include="..\icon.png" Pack="true" PackagePath="\"/>
-    <None Include="..\docs\**\*" Pack="true" PackagePath="\docs"  CopyToOutputDirectory="PreserveNewest"/>
+    <None Include="..\..\NUGET.md" Pack="true" PackagePath="README.md"/>
+    <None Include="..\..\LICENSE.md" Pack="true" PackagePath="\"/>
+    <None Include="..\..\icon.png" Pack="true" PackagePath="\"/>
+    <None Include="..\..\docs\**\*" Pack="true" PackagePath="\docs"  CopyToOutputDirectory="PreserveNewest"/>
   </ItemGroup>
 
   <PropertyGroup>

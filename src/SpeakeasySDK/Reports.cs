@@ -23,48 +23,43 @@ namespace SpeakeasySDK
     using System;
 
     /// <summary>
-    /// REST APIs for managing embeds
+    /// REST APIs for managing reports
     /// </summary>
-    public interface IEmbeds
+    public interface IReports
     {
 
         /// <summary>
-        /// Get an embed access token for the current workspace.
-        /// 
-        /// <remarks>
-        /// Returns an embed access token for the current workspace. This can be used to authenticate access to externally embedded content.<br/>
-        /// Filters can be applied allowing views to be filtered to things like particular customerIds.
-        /// </remarks>
+        /// Get the signed access url for the change reports for a particular document.
         /// </summary>
-        Task<GetEmbedAccessTokenResponse> GetEmbedAccessTokenAsync(GetEmbedAccessTokenRequest? request = null);
+        Task<GetChangesReportSignedUrlResponse> GetChangesReportSignedUrlAsync(GetChangesReportSignedUrlRequest request);
 
         /// <summary>
-        /// Get all valid embed access tokens for the current workspace.
+        /// Get the signed access url for the linting reports for a particular document.
         /// </summary>
-        Task<GetValidEmbedAccessTokensResponse> GetValidEmbedAccessTokensAsync();
+        Task<GetLintingReportSignedUrlResponse> GetLintingReportSignedUrlAsync(GetLintingReportSignedUrlRequest request);
 
         /// <summary>
-        /// Revoke an embed access EmbedToken.
+        /// Upload a report.
         /// </summary>
-        Task<RevokeEmbedAccessTokenResponse> RevokeEmbedAccessTokenAsync(RevokeEmbedAccessTokenRequest request);
+        Task<UploadReportResponse> UploadReportAsync(UploadReportRequestBody request);
     }
 
     /// <summary>
-    /// REST APIs for managing embeds
+    /// REST APIs for managing reports
     /// </summary>
-    public class Embeds: IEmbeds
+    public class Reports: IReports
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.9.28";
-        private const string _sdkGenVersion = "2.416.6";
+        private const string _sdkVersion = "5.10.0";
+        private const string _sdkGenVersion = "2.420.2";
         private const string _openapiDocVersion = "0.4.0 .";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.9.28 2.416.6 0.4.0 . SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.10.0 2.420.2 0.4.0 . SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<SpeakeasySDK.Models.Shared.Security>? _securitySource;
 
-        public Embeds(ISpeakeasyHttpClient client, Func<SpeakeasySDK.Models.Shared.Security>? securitySource, string serverUrl, SDKConfig config)
+        public Reports(ISpeakeasyHttpClient client, Func<SpeakeasySDK.Models.Shared.Security>? securitySource, string serverUrl, SDKConfig config)
         {
             _client = client;
             _securitySource = securitySource;
@@ -72,10 +67,10 @@ namespace SpeakeasySDK
             SDKConfiguration = config;
         }
 
-        public async Task<GetEmbedAccessTokenResponse> GetEmbedAccessTokenAsync(GetEmbedAccessTokenRequest? request = null)
+        public async Task<GetChangesReportSignedUrlResponse> GetChangesReportSignedUrlAsync(GetChangesReportSignedUrlRequest request)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/embed-access-token", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v1/reports/changes/{documentChecksum}", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
@@ -85,7 +80,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("getEmbedAccessToken", null, _securitySource);
+            var hookCtx = new HookContext("getChangesReportSignedUrl", null, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -125,14 +120,14 @@ namespace SpeakeasySDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<EmbedAccessTokenResponse>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    var response = new GetEmbedAccessTokenResponse()
+                    var obj = ResponseBodyDeserializer.Deserialize<GetChangesReportSignedUrlSignedAccess>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new GetChangesReportSignedUrlResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,
                         RawResponse = httpResponse
                     };
-                    response.EmbedAccessTokenResponse = obj;
+                    response.SignedAccess = obj;
                     return response;
                 }
                 else
@@ -146,30 +141,14 @@ namespace SpeakeasySDK
             }
             else
             {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    var response = new GetEmbedAccessTokenResponse()
-                    {
-                        StatusCode = responseStatusCode,
-                        ContentType = contentType,
-                        RawResponse = httpResponse
-                    };
-                    response.Error = obj;
-                    return response;
-                }
-                else
-                {
-                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-                }
+                throw new SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
         }
 
-        public async Task<GetValidEmbedAccessTokensResponse> GetValidEmbedAccessTokensAsync()
+        public async Task<GetLintingReportSignedUrlResponse> GetLintingReportSignedUrlAsync(GetLintingReportSignedUrlRequest request)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
-            var urlString = baseUrl + "/v1/workspace/embed-access-tokens/valid";
+            var urlString = URLBuilder.Build(baseUrl, "/v1/reports/linting/{documentChecksum}", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
@@ -179,7 +158,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("getValidEmbedAccessTokens", null, _securitySource);
+            var hookCtx = new HookContext("getLintingReportSignedUrl", null, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -219,14 +198,14 @@ namespace SpeakeasySDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<List<EmbedToken>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetValidEmbedAccessTokensResponse()
+                    var obj = ResponseBodyDeserializer.Deserialize<GetLintingReportSignedUrlSignedAccess>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new GetLintingReportSignedUrlResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,
                         RawResponse = httpResponse
                     };
-                    response.EmbedTokens = obj;
+                    response.SignedAccess = obj;
                     return response;
                 }
                 else
@@ -240,39 +219,31 @@ namespace SpeakeasySDK
             }
             else
             {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetValidEmbedAccessTokensResponse()
-                    {
-                        StatusCode = responseStatusCode,
-                        ContentType = contentType,
-                        RawResponse = httpResponse
-                    };
-                    response.Error = obj;
-                    return response;
-                }
-                else
-                {
-                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-                }
+                throw new SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
         }
 
-        public async Task<RevokeEmbedAccessTokenResponse> RevokeEmbedAccessTokenAsync(RevokeEmbedAccessTokenRequest request)
+        public async Task<UploadReportResponse> UploadReportAsync(UploadReportRequestBody request)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/embed-access-tokens/{tokenID}", request);
 
-            var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
+            var urlString = baseUrl + "/v1/reports";
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "Request", "multipart", false, false);
+            if (serializedBody != null)
+            {
+                httpRequest.Content = serializedBody;
+            }
 
             if (_securitySource != null)
             {
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("revokeEmbedAccessToken", null, _securitySource);
+            var hookCtx = new HookContext("uploadReport", null, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -309,13 +280,23 @@ namespace SpeakeasySDK
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
             int responseStatusCode = (int)httpResponse.StatusCode;
             if(responseStatusCode == 200)
-            {                
-                return new RevokeEmbedAccessTokenResponse()
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    StatusCode = responseStatusCode,
-                    ContentType = contentType,
-                    RawResponse = httpResponse
-                };
+                    var obj = ResponseBodyDeserializer.Deserialize<UploadReportUploadedReport>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new UploadReportResponse()
+                    {
+                        StatusCode = responseStatusCode,
+                        ContentType = contentType,
+                        RawResponse = httpResponse
+                    };
+                    response.UploadedReport = obj;
+                    return response;
+                }
+                else
+                {
+                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                }
             }
             else if(responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
             {
@@ -323,22 +304,7 @@ namespace SpeakeasySDK
             }
             else
             {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new RevokeEmbedAccessTokenResponse()
-                    {
-                        StatusCode = responseStatusCode,
-                        ContentType = contentType,
-                        RawResponse = httpResponse
-                    };
-                    response.Error = obj;
-                    return response;
-                }
-                else
-                {
-                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-                }
+                throw new SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
         }
     }

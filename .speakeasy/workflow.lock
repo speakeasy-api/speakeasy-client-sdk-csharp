@@ -1,8 +1,8 @@
-speakeasyVersion: 1.399.2
+speakeasyVersion: 1.400.0
 sources:
     speakeasy:
         sourceNamespace: speakeasy
-        sourceRevisionDigest: sha256:c3f47f9740aebf3b24e24c0df0e12a713f3b0e53814878b5683ed4a36707b052
+        sourceRevisionDigest: sha256:780f67279a06564bd229dec0bc85843b7304309e58668de26325742aa8c7b921
         sourceBlobDigest: sha256:88704527b94e0f552679a1b9305054543883de59097a5102e669d5f049d7929e
         tags:
             - latest
@@ -11,10 +11,10 @@ targets:
     speakeasy-client-sdk-csharp:
         source: speakeasy
         sourceNamespace: speakeasy
-        sourceRevisionDigest: sha256:c3f47f9740aebf3b24e24c0df0e12a713f3b0e53814878b5683ed4a36707b052
+        sourceRevisionDigest: sha256:780f67279a06564bd229dec0bc85843b7304309e58668de26325742aa8c7b921
         sourceBlobDigest: sha256:88704527b94e0f552679a1b9305054543883de59097a5102e669d5f049d7929e
         codeSamplesNamespace: code-samples-csharp-speakeasy-client-sdk-csharp
-        codeSamplesRevisionDigest: sha256:4654b6467fa525870f9523de86c710be302bbaa9e945d25108cbb097b4e6145c
+        codeSamplesRevisionDigest: sha256:f4c81795d8921b1fc5c4ada4b7c29196d1435a034ec4c259d2c889209884384e
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

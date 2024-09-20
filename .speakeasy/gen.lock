@@ -3,17 +3,17 @@ id: f73d2126-985b-4d69-88ee-b7c69254d8bf
 management:
   docChecksum: 40626f73138958b2117c67a0ddff344f
   docVersion: 0.4.0 .
-  speakeasyVersion: 1.399.2
-  generationVersion: 2.416.6
-  releaseVersion: 5.9.28
-  configChecksum: 38944a81ee110108a471219abd72dede
+  speakeasyVersion: 1.400.0
+  generationVersion: 2.420.2
+  releaseVersion: 5.10.0
+  configChecksum: f3ada6a9f429b9cc251b45306c168a16
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
 features:
   csharp:
     additionalDependencies: 0.1.0
-    core: 3.9.19
+    core: 3.10.0
     deprecations: 2.81.2
     examples: 2.81.3
     globalSecurity: 2.83.6
@@ -32,252 +32,6 @@ generatedFiles:
   - CONTRIBUTING.md
   - NUGET.md
   - SpeakeasySDK.sln
-  - SpeakeasySDK/ApiEndpoints.cs
-  - SpeakeasySDK/Apis.cs
-  - SpeakeasySDK/Artifacts.cs
-  - SpeakeasySDK/Auth.cs
-  - SpeakeasySDK/Embeds.cs
-  - SpeakeasySDK/Events.cs
-  - SpeakeasySDK/Github.cs
-  - SpeakeasySDK/Hooks/HookTypes.cs
-  - SpeakeasySDK/Hooks/SDKHooks.cs
-  - SpeakeasySDK/Metadata.cs
-  - SpeakeasySDK/Models/Errors/Error.cs
-  - SpeakeasySDK/Models/Errors/SDKException.cs
-  - SpeakeasySDK/Models/Operations/CheckAccessRequest.cs
-  - SpeakeasySDK/Models/Operations/CheckAccessResponse.cs
-  - SpeakeasySDK/Models/Operations/ConfigureCodeSamplesResponse.cs
-  - SpeakeasySDK/Models/Operations/ConfigureMintlifyRepoResponse.cs
-  - SpeakeasySDK/Models/Operations/ConfigureTargetResponse.cs
-  - SpeakeasySDK/Models/Operations/CreateFreeTrialResponse.cs
-  - SpeakeasySDK/Models/Operations/CreateRequestBody.cs
-  - SpeakeasySDK/Models/Operations/CreateResponse.cs
-  - SpeakeasySDK/Models/Operations/DeleteApiEndpointRequest.cs
-  - SpeakeasySDK/Models/Operations/DeleteApiEndpointResponse.cs
-  - SpeakeasySDK/Models/Operations/DeleteApiRequest.cs
-  - SpeakeasySDK/Models/Operations/DeleteApiResponse.cs
-  - SpeakeasySDK/Models/Operations/DeleteSchemaRequest.cs
-  - SpeakeasySDK/Models/Operations/DeleteSchemaResponse.cs
-  - SpeakeasySDK/Models/Operations/DeleteVersionMetadataRequest.cs
-  - SpeakeasySDK/Models/Operations/DeleteVersionMetadataResponse.cs
-  - SpeakeasySDK/Models/Operations/DownloadSchemaRequest.cs
-  - SpeakeasySDK/Models/Operations/DownloadSchemaResponse.cs
-  - SpeakeasySDK/Models/Operations/DownloadSchemaRevisionRequest.cs
-  - SpeakeasySDK/Models/Operations/DownloadSchemaRevisionResponse.cs
-  - SpeakeasySDK/Models/Operations/FetchPublishingPRsRequest.cs
-  - SpeakeasySDK/Models/Operations/FetchPublishingPRsResponse.cs
-  - SpeakeasySDK/Models/Operations/File.cs
-  - SpeakeasySDK/Models/Operations/FindApiEndpointRequest.cs
-  - SpeakeasySDK/Models/Operations/FindApiEndpointResponse.cs
-  - SpeakeasySDK/Models/Operations/GenerateOpenApiSpecForApiEndpointRequest.cs
-  - SpeakeasySDK/Models/Operations/GenerateOpenApiSpecForApiEndpointResponse.cs
-  - SpeakeasySDK/Models/Operations/GenerateOpenApiSpecRequest.cs
-  - SpeakeasySDK/Models/Operations/GenerateOpenApiSpecResponse.cs
-  - SpeakeasySDK/Models/Operations/GeneratePostmanCollectionForApiEndpointRequest.cs
-  - SpeakeasySDK/Models/Operations/GeneratePostmanCollectionForApiEndpointResponse.cs
-  - SpeakeasySDK/Models/Operations/GeneratePostmanCollectionRequest.cs
-  - SpeakeasySDK/Models/Operations/GeneratePostmanCollectionResponse.cs
-  - SpeakeasySDK/Models/Operations/GenerateRequestPostmanCollectionRequest.cs
-  - SpeakeasySDK/Models/Operations/GenerateRequestPostmanCollectionResponse.cs
-  - SpeakeasySDK/Models/Operations/GetAccessTokenRequest.cs
-  - SpeakeasySDK/Models/Operations/GetAccessTokenResponse.cs
-  - SpeakeasySDK/Models/Operations/GetActionRequest.cs
-  - SpeakeasySDK/Models/Operations/GetActionResponse.cs
-  - SpeakeasySDK/Models/Operations/GetAllApiEndpointsRequest.cs
-  - SpeakeasySDK/Models/Operations/GetAllApiEndpointsResponse.cs
-  - SpeakeasySDK/Models/Operations/GetAllApiVersionsRequest.cs
-  - SpeakeasySDK/Models/Operations/GetAllApiVersionsResponse.cs
-  - SpeakeasySDK/Models/Operations/GetAllForVersionApiEndpointsRequest.cs
-  - SpeakeasySDK/Models/Operations/GetAllForVersionApiEndpointsResponse.cs
-  - SpeakeasySDK/Models/Operations/GetApiEndpointRequest.cs
-  - SpeakeasySDK/Models/Operations/GetApiEndpointResponse.cs
-  - SpeakeasySDK/Models/Operations/GetApisRequest.cs
-  - SpeakeasySDK/Models/Operations/GetApisResponse.cs
-  - SpeakeasySDK/Models/Operations/GetBlobRequest.cs
-  - SpeakeasySDK/Models/Operations/GetBlobResponse.cs
-  - SpeakeasySDK/Models/Operations/GetChangesReportSignedUrlRequest.cs
-  - SpeakeasySDK/Models/Operations/GetChangesReportSignedUrlResponse.cs
-  - SpeakeasySDK/Models/Operations/GetChangesReportSignedUrlSignedAccess.cs
-  - SpeakeasySDK/Models/Operations/GetEmbedAccessTokenRequest.cs
-  - SpeakeasySDK/Models/Operations/GetEmbedAccessTokenResponse.cs
-  - SpeakeasySDK/Models/Operations/GetLintingReportSignedUrlRequest.cs
-  - SpeakeasySDK/Models/Operations/GetLintingReportSignedUrlResponse.cs
-  - SpeakeasySDK/Models/Operations/GetLintingReportSignedUrlSignedAccess.cs
-  - SpeakeasySDK/Models/Operations/GetManifestRequest.cs
-  - SpeakeasySDK/Models/Operations/GetManifestResponse.cs
-  - SpeakeasySDK/Models/Operations/GetNamespacesResponse.cs
-  - SpeakeasySDK/Models/Operations/GetOASSummaryRequest.cs
-  - SpeakeasySDK/Models/Operations/GetOASSummaryResponse.cs
-  - SpeakeasySDK/Models/Operations/GetOrganizationRequest.cs
-  - SpeakeasySDK/Models/Operations/GetOrganizationResponse.cs
-  - SpeakeasySDK/Models/Operations/GetOrganizationUsageResponse.cs
-  - SpeakeasySDK/Models/Operations/GetOrganizationsResponse.cs
-  - SpeakeasySDK/Models/Operations/GetRequestFromEventLogRequest.cs
-  - SpeakeasySDK/Models/Operations/GetRequestFromEventLogResponse.cs
-  - SpeakeasySDK/Models/Operations/GetRevisionsRequest.cs
-  - SpeakeasySDK/Models/Operations/GetRevisionsResponse.cs
-  - SpeakeasySDK/Models/Operations/GetSchemaDiffRequest.cs
-  - SpeakeasySDK/Models/Operations/GetSchemaDiffResponse.cs
-  - SpeakeasySDK/Models/Operations/GetSchemaRequest.cs
-  - SpeakeasySDK/Models/Operations/GetSchemaResponse.cs
-  - SpeakeasySDK/Models/Operations/GetSchemaRevisionRequest.cs
-  - SpeakeasySDK/Models/Operations/GetSchemaRevisionResponse.cs
-  - SpeakeasySDK/Models/Operations/GetSchemasRequest.cs
-  - SpeakeasySDK/Models/Operations/GetSchemasResponse.cs
-  - SpeakeasySDK/Models/Operations/GetTagsRequest.cs
-  - SpeakeasySDK/Models/Operations/GetTagsResponse.cs
-  - SpeakeasySDK/Models/Operations/GetUserResponse.cs
-  - SpeakeasySDK/Models/Operations/GetValidEmbedAccessTokensResponse.cs
-  - SpeakeasySDK/Models/Operations/GetVersionMetadataRequest.cs
-  - SpeakeasySDK/Models/Operations/GetVersionMetadataResponse.cs
-  - SpeakeasySDK/Models/Operations/GetWorkspaceAccessRequest.cs
-  - SpeakeasySDK/Models/Operations/GetWorkspaceAccessResponse.cs
-  - SpeakeasySDK/Models/Operations/GetWorkspaceEventsByTargetRequest.cs
-  - SpeakeasySDK/Models/Operations/GetWorkspaceEventsByTargetResponse.cs
-  - SpeakeasySDK/Models/Operations/GetWorkspaceFeatureFlagsRequest.cs
-  - SpeakeasySDK/Models/Operations/GetWorkspaceFeatureFlagsResponse.cs
-  - SpeakeasySDK/Models/Operations/GetWorkspaceRequest.cs
-  - SpeakeasySDK/Models/Operations/GetWorkspaceResponse.cs
-  - SpeakeasySDK/Models/Operations/GetWorkspaceTargetsRequest.cs
-  - SpeakeasySDK/Models/Operations/GetWorkspaceTargetsResponse.cs
-  - SpeakeasySDK/Models/Operations/GithubCheckPublishingSecretsRequest.cs
-  - SpeakeasySDK/Models/Operations/GithubCheckPublishingSecretsResponse.cs
-  - SpeakeasySDK/Models/Operations/GithubStorePublishingSecretsResponse.cs
-  - SpeakeasySDK/Models/Operations/InsertVersionMetadataRequest.cs
-  - SpeakeasySDK/Models/Operations/InsertVersionMetadataResponse.cs
-  - SpeakeasySDK/Models/Operations/Op.cs
-  - SpeakeasySDK/Models/Operations/PostTagsRequest.cs
-  - SpeakeasySDK/Models/Operations/PostTagsResponse.cs
-  - SpeakeasySDK/Models/Operations/PostWorkspaceEventsRequest.cs
-  - SpeakeasySDK/Models/Operations/PostWorkspaceEventsResponse.cs
-  - SpeakeasySDK/Models/Operations/PreflightResponse.cs
-  - SpeakeasySDK/Models/Operations/QueryEventLogRequest.cs
-  - SpeakeasySDK/Models/Operations/QueryEventLogResponse.cs
-  - SpeakeasySDK/Models/Operations/QueryParamOp.cs
-  - SpeakeasySDK/Models/Operations/RegisterSchemaFile.cs
-  - SpeakeasySDK/Models/Operations/RegisterSchemaRequest.cs
-  - SpeakeasySDK/Models/Operations/RegisterSchemaRequestBody.cs
-  - SpeakeasySDK/Models/Operations/RegisterSchemaResponse.cs
-  - SpeakeasySDK/Models/Operations/RevokeEmbedAccessTokenRequest.cs
-  - SpeakeasySDK/Models/Operations/RevokeEmbedAccessTokenResponse.cs
-  - SpeakeasySDK/Models/Operations/Schema.cs
-  - SpeakeasySDK/Models/Operations/SearchWorkspaceEventsRequest.cs
-  - SpeakeasySDK/Models/Operations/SearchWorkspaceEventsResponse.cs
-  - SpeakeasySDK/Models/Operations/SuggestOpenAPIRegistryRequest.cs
-  - SpeakeasySDK/Models/Operations/SuggestOpenAPIRegistryResponse.cs
-  - SpeakeasySDK/Models/Operations/SuggestOpenAPIRequest.cs
-  - SpeakeasySDK/Models/Operations/SuggestOpenAPIRequestBody.cs
-  - SpeakeasySDK/Models/Operations/SuggestOpenAPIResponse.cs
-  - SpeakeasySDK/Models/Operations/SuggestRequest.cs
-  - SpeakeasySDK/Models/Operations/SuggestResponse.cs
-  - SpeakeasySDK/Models/Operations/TriggerActionResponse.cs
-  - SpeakeasySDK/Models/Operations/UploadReportRequestBody.cs
-  - SpeakeasySDK/Models/Operations/UploadReportResponse.cs
-  - SpeakeasySDK/Models/Operations/UploadReportUploadedReport.cs
-  - SpeakeasySDK/Models/Operations/UpsertApiEndpointRequest.cs
-  - SpeakeasySDK/Models/Operations/UpsertApiEndpointResponse.cs
-  - SpeakeasySDK/Models/Operations/UpsertApiRequest.cs
-  - SpeakeasySDK/Models/Operations/UpsertApiResponse.cs
-  - SpeakeasySDK/Models/Operations/ValidateApiKeyResponse.cs
-  - SpeakeasySDK/Models/Shared/AccessDetails.cs
-  - SpeakeasySDK/Models/Shared/AccessToken.cs
-  - SpeakeasySDK/Models/Shared/AccessTokenUser.cs
-  - SpeakeasySDK/Models/Shared/AccountType.cs
-  - SpeakeasySDK/Models/Shared/AddTags.cs
-  - SpeakeasySDK/Models/Shared/Annotations.cs
-  - SpeakeasySDK/Models/Shared/Api.cs
-  - SpeakeasySDK/Models/Shared/ApiEndpoint.cs
-  - SpeakeasySDK/Models/Shared/ApiEndpointInput.cs
-  - SpeakeasySDK/Models/Shared/ApiInput.cs
-  - SpeakeasySDK/Models/Shared/ApiKeyDetails.cs
-  - SpeakeasySDK/Models/Shared/Auth.cs
-  - SpeakeasySDK/Models/Shared/BoundedRequest.cs
-  - SpeakeasySDK/Models/Shared/Claims.cs
-  - SpeakeasySDK/Models/Shared/CliEvent.cs
-  - SpeakeasySDK/Models/Shared/Diagnostic.cs
-  - SpeakeasySDK/Models/Shared/EmbedAccessTokenResponse.cs
-  - SpeakeasySDK/Models/Shared/EmbedToken.cs
-  - SpeakeasySDK/Models/Shared/FeatureFlag.cs
-  - SpeakeasySDK/Models/Shared/Filter.cs
-  - SpeakeasySDK/Models/Shared/Filters.cs
-  - SpeakeasySDK/Models/Shared/GenerateBumpType.cs
-  - SpeakeasySDK/Models/Shared/GenerateOpenApiSpecDiff.cs
-  - SpeakeasySDK/Models/Shared/GetNamespacesResponse.cs
-  - SpeakeasySDK/Models/Shared/GetRevisionsResponse.cs
-  - SpeakeasySDK/Models/Shared/GetTagsResponse.cs
-  - SpeakeasySDK/Models/Shared/GithubConfigureCodeSamplesRequest.cs
-  - SpeakeasySDK/Models/Shared/GithubConfigureCodeSamplesResponse.cs
-  - SpeakeasySDK/Models/Shared/GithubConfigureMintlifyRepoRequest.cs
-  - SpeakeasySDK/Models/Shared/GithubConfigureTargetRequest.cs
-  - SpeakeasySDK/Models/Shared/GithubGetActionResponse.cs
-  - SpeakeasySDK/Models/Shared/GithubMissingPublishingSecretsResponse.cs
-  - SpeakeasySDK/Models/Shared/GithubPublishingPRResponse.cs
-  - SpeakeasySDK/Models/Shared/GithubStorePublishingSecretsRequest.cs
-  - SpeakeasySDK/Models/Shared/GithubTriggerActionRequest.cs
-  - SpeakeasySDK/Models/Shared/InteractionType.cs
-  - SpeakeasySDK/Models/Shared/Level.cs
-  - SpeakeasySDK/Models/Shared/License.cs
-  - SpeakeasySDK/Models/Shared/Manifest.cs
-  - SpeakeasySDK/Models/Shared/Namespace.cs
-  - SpeakeasySDK/Models/Shared/OASInfo.cs
-  - SpeakeasySDK/Models/Shared/OASOperation.cs
-  - SpeakeasySDK/Models/Shared/OASSummary.cs
-  - SpeakeasySDK/Models/Shared/OpenapiDiffBumpType.cs
-  - SpeakeasySDK/Models/Shared/Organization.cs
-  - SpeakeasySDK/Models/Shared/OrganizationUsage.cs
-  - SpeakeasySDK/Models/Shared/OrganizationUsageResponse.cs
-  - SpeakeasySDK/Models/Shared/PreflightRequest.cs
-  - SpeakeasySDK/Models/Shared/PreflightToken.cs
-  - SpeakeasySDK/Models/Shared/Report.cs
-  - SpeakeasySDK/Models/Shared/RequestMetadata.cs
-  - SpeakeasySDK/Models/Shared/Revision.cs
-  - SpeakeasySDK/Models/Shared/Schema.cs
-  - SpeakeasySDK/Models/Shared/SchemaDiff.cs
-  - SpeakeasySDK/Models/Shared/Security.cs
-  - SpeakeasySDK/Models/Shared/ShortURL.cs
-  - SpeakeasySDK/Models/Shared/SuggestOptsOld.cs
-  - SpeakeasySDK/Models/Shared/SuggestRequestBody.cs
-  - SpeakeasySDK/Models/Shared/SuggestRequestBodySuggestionType.cs
-  - SpeakeasySDK/Models/Shared/SuggestionType.cs
-  - SpeakeasySDK/Models/Shared/Tag.cs
-  - SpeakeasySDK/Models/Shared/TargetSDK.cs
-  - SpeakeasySDK/Models/Shared/Type.cs
-  - SpeakeasySDK/Models/Shared/UnboundedRequest.cs
-  - SpeakeasySDK/Models/Shared/User.cs
-  - SpeakeasySDK/Models/Shared/V2Descriptor.cs
-  - SpeakeasySDK/Models/Shared/ValueChange.cs
-  - SpeakeasySDK/Models/Shared/VersionMetadata.cs
-  - SpeakeasySDK/Models/Shared/VersionMetadataInput.cs
-  - SpeakeasySDK/Models/Shared/WorkflowDocument.cs
-  - SpeakeasySDK/Models/Shared/Workspace.cs
-  - SpeakeasySDK/Models/Shared/WorkspaceFeatureFlagResponse.cs
-  - SpeakeasySDK/Models/Shared/Workspaces.cs
-  - SpeakeasySDK/Organizations.cs
-  - SpeakeasySDK/Reports.cs
-  - SpeakeasySDK/Requests.cs
-  - SpeakeasySDK/SDK.cs
-  - SpeakeasySDK/Schemas.cs
-  - SpeakeasySDK/ShortURLs.cs
-  - SpeakeasySDK/SpeakeasySDK.csproj
-  - SpeakeasySDK/Suggest.cs
-  - SpeakeasySDK/Utils/AnyDeserializer.cs
-  - SpeakeasySDK/Utils/BigIntStrConverter.cs
-  - SpeakeasySDK/Utils/DecimalStrConverter.cs
-  - SpeakeasySDK/Utils/EnumConverter.cs
-  - SpeakeasySDK/Utils/FlexibleObjectDeserializer.cs
-  - SpeakeasySDK/Utils/HeaderSerializer.cs
-  - SpeakeasySDK/Utils/IsoDateTimeSerializer.cs
-  - SpeakeasySDK/Utils/RequestBodySerializer.cs
-  - SpeakeasySDK/Utils/ResponseBodyDeserializer.cs
-  - SpeakeasySDK/Utils/Retries/BackoffStrategy.cs
-  - SpeakeasySDK/Utils/Retries/Retries.cs
-  - SpeakeasySDK/Utils/Retries/RetryConfig.cs
-  - SpeakeasySDK/Utils/SecurityMetadata.cs
-  - SpeakeasySDK/Utils/SpeakeasyHttpClient.cs
-  - SpeakeasySDK/Utils/SpeakeasyMetadata.cs
-  - SpeakeasySDK/Utils/URLBuilder.cs
-  - SpeakeasySDK/Utils/Utilities.cs
-  - SpeakeasySDK/Workspaces.cs
   - USAGE.md
   - docs/Models/Errors/Error.md
   - docs/Models/Operations/CheckAccessRequest.md
@@ -502,6 +256,252 @@ generatedFiles:
   - docs/sdks/suggest/README.md
   - docs/sdks/workspaces/README.md
   - global.json
+  - src/SpeakeasySDK/ApiEndpoints.cs
+  - src/SpeakeasySDK/Apis.cs
+  - src/SpeakeasySDK/Artifacts.cs
+  - src/SpeakeasySDK/Auth.cs
+  - src/SpeakeasySDK/Embeds.cs
+  - src/SpeakeasySDK/Events.cs
+  - src/SpeakeasySDK/Github.cs
+  - src/SpeakeasySDK/Hooks/HookTypes.cs
+  - src/SpeakeasySDK/Hooks/SDKHooks.cs
+  - src/SpeakeasySDK/Metadata.cs
+  - src/SpeakeasySDK/Models/Errors/Error.cs
+  - src/SpeakeasySDK/Models/Errors/SDKException.cs
+  - src/SpeakeasySDK/Models/Operations/CheckAccessRequest.cs
+  - src/SpeakeasySDK/Models/Operations/CheckAccessResponse.cs
+  - src/SpeakeasySDK/Models/Operations/ConfigureCodeSamplesResponse.cs
+  - src/SpeakeasySDK/Models/Operations/ConfigureMintlifyRepoResponse.cs
+  - src/SpeakeasySDK/Models/Operations/ConfigureTargetResponse.cs
+  - src/SpeakeasySDK/Models/Operations/CreateFreeTrialResponse.cs
+  - src/SpeakeasySDK/Models/Operations/CreateRequestBody.cs
+  - src/SpeakeasySDK/Models/Operations/CreateResponse.cs
+  - src/SpeakeasySDK/Models/Operations/DeleteApiEndpointRequest.cs
+  - src/SpeakeasySDK/Models/Operations/DeleteApiEndpointResponse.cs
+  - src/SpeakeasySDK/Models/Operations/DeleteApiRequest.cs
+  - src/SpeakeasySDK/Models/Operations/DeleteApiResponse.cs
+  - src/SpeakeasySDK/Models/Operations/DeleteSchemaRequest.cs
+  - src/SpeakeasySDK/Models/Operations/DeleteSchemaResponse.cs
+  - src/SpeakeasySDK/Models/Operations/DeleteVersionMetadataRequest.cs
+  - src/SpeakeasySDK/Models/Operations/DeleteVersionMetadataResponse.cs
+  - src/SpeakeasySDK/Models/Operations/DownloadSchemaRequest.cs
+  - src/SpeakeasySDK/Models/Operations/DownloadSchemaResponse.cs
+  - src/SpeakeasySDK/Models/Operations/DownloadSchemaRevisionRequest.cs
+  - src/SpeakeasySDK/Models/Operations/DownloadSchemaRevisionResponse.cs
+  - src/SpeakeasySDK/Models/Operations/FetchPublishingPRsRequest.cs
+  - src/SpeakeasySDK/Models/Operations/FetchPublishingPRsResponse.cs
+  - src/SpeakeasySDK/Models/Operations/File.cs
+  - src/SpeakeasySDK/Models/Operations/FindApiEndpointRequest.cs
+  - src/SpeakeasySDK/Models/Operations/FindApiEndpointResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GenerateOpenApiSpecForApiEndpointRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GenerateOpenApiSpecForApiEndpointResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GenerateOpenApiSpecRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GenerateOpenApiSpecResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GeneratePostmanCollectionForApiEndpointRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GeneratePostmanCollectionForApiEndpointResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GeneratePostmanCollectionRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GeneratePostmanCollectionResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GenerateRequestPostmanCollectionRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GenerateRequestPostmanCollectionResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetAccessTokenRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetAccessTokenResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetActionRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetActionResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetAllApiEndpointsRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetAllApiEndpointsResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetAllApiVersionsRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetAllApiVersionsResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetAllForVersionApiEndpointsRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetAllForVersionApiEndpointsResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetApiEndpointRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetApiEndpointResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetApisRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetApisResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetBlobRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetBlobResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetChangesReportSignedUrlRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetChangesReportSignedUrlResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetChangesReportSignedUrlSignedAccess.cs
+  - src/SpeakeasySDK/Models/Operations/GetEmbedAccessTokenRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetEmbedAccessTokenResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetLintingReportSignedUrlRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetLintingReportSignedUrlResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetLintingReportSignedUrlSignedAccess.cs
+  - src/SpeakeasySDK/Models/Operations/GetManifestRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetManifestResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetNamespacesResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetOASSummaryRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetOASSummaryResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetOrganizationRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetOrganizationResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetOrganizationUsageResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetOrganizationsResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetRequestFromEventLogRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetRequestFromEventLogResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetRevisionsRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetRevisionsResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetSchemaDiffRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetSchemaDiffResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetSchemaRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetSchemaResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetSchemaRevisionRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetSchemaRevisionResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetSchemasRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetSchemasResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetTagsRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetTagsResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetUserResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetValidEmbedAccessTokensResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetVersionMetadataRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetVersionMetadataResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetWorkspaceAccessRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetWorkspaceAccessResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetWorkspaceEventsByTargetRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetWorkspaceEventsByTargetResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetWorkspaceFeatureFlagsRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetWorkspaceFeatureFlagsResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetWorkspaceRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetWorkspaceResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetWorkspaceTargetsRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetWorkspaceTargetsResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GithubCheckPublishingSecretsRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GithubCheckPublishingSecretsResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GithubStorePublishingSecretsResponse.cs
+  - src/SpeakeasySDK/Models/Operations/InsertVersionMetadataRequest.cs
+  - src/SpeakeasySDK/Models/Operations/InsertVersionMetadataResponse.cs
+  - src/SpeakeasySDK/Models/Operations/Op.cs
+  - src/SpeakeasySDK/Models/Operations/PostTagsRequest.cs
+  - src/SpeakeasySDK/Models/Operations/PostTagsResponse.cs
+  - src/SpeakeasySDK/Models/Operations/PostWorkspaceEventsRequest.cs
+  - src/SpeakeasySDK/Models/Operations/PostWorkspaceEventsResponse.cs
+  - src/SpeakeasySDK/Models/Operations/PreflightResponse.cs
+  - src/SpeakeasySDK/Models/Operations/QueryEventLogRequest.cs
+  - src/SpeakeasySDK/Models/Operations/QueryEventLogResponse.cs
+  - src/SpeakeasySDK/Models/Operations/QueryParamOp.cs
+  - src/SpeakeasySDK/Models/Operations/RegisterSchemaFile.cs
+  - src/SpeakeasySDK/Models/Operations/RegisterSchemaRequest.cs
+  - src/SpeakeasySDK/Models/Operations/RegisterSchemaRequestBody.cs
+  - src/SpeakeasySDK/Models/Operations/RegisterSchemaResponse.cs
+  - src/SpeakeasySDK/Models/Operations/RevokeEmbedAccessTokenRequest.cs
+  - src/SpeakeasySDK/Models/Operations/RevokeEmbedAccessTokenResponse.cs
+  - src/SpeakeasySDK/Models/Operations/Schema.cs
+  - src/SpeakeasySDK/Models/Operations/SearchWorkspaceEventsRequest.cs
+  - src/SpeakeasySDK/Models/Operations/SearchWorkspaceEventsResponse.cs
+  - src/SpeakeasySDK/Models/Operations/SuggestOpenAPIRegistryRequest.cs
+  - src/SpeakeasySDK/Models/Operations/SuggestOpenAPIRegistryResponse.cs
+  - src/SpeakeasySDK/Models/Operations/SuggestOpenAPIRequest.cs
+  - src/SpeakeasySDK/Models/Operations/SuggestOpenAPIRequestBody.cs
+  - src/SpeakeasySDK/Models/Operations/SuggestOpenAPIResponse.cs
+  - src/SpeakeasySDK/Models/Operations/SuggestRequest.cs
+  - src/SpeakeasySDK/Models/Operations/SuggestResponse.cs
+  - src/SpeakeasySDK/Models/Operations/TriggerActionResponse.cs
+  - src/SpeakeasySDK/Models/Operations/UploadReportRequestBody.cs
+  - src/SpeakeasySDK/Models/Operations/UploadReportResponse.cs
+  - src/SpeakeasySDK/Models/Operations/UploadReportUploadedReport.cs
+  - src/SpeakeasySDK/Models/Operations/UpsertApiEndpointRequest.cs
+  - src/SpeakeasySDK/Models/Operations/UpsertApiEndpointResponse.cs
+  - src/SpeakeasySDK/Models/Operations/UpsertApiRequest.cs
+  - src/SpeakeasySDK/Models/Operations/UpsertApiResponse.cs
+  - src/SpeakeasySDK/Models/Operations/ValidateApiKeyResponse.cs
+  - src/SpeakeasySDK/Models/Shared/AccessDetails.cs
+  - src/SpeakeasySDK/Models/Shared/AccessToken.cs
+  - src/SpeakeasySDK/Models/Shared/AccessTokenUser.cs
+  - src/SpeakeasySDK/Models/Shared/AccountType.cs
+  - src/SpeakeasySDK/Models/Shared/AddTags.cs
+  - src/SpeakeasySDK/Models/Shared/Annotations.cs
+  - src/SpeakeasySDK/Models/Shared/Api.cs
+  - src/SpeakeasySDK/Models/Shared/ApiEndpoint.cs
+  - src/SpeakeasySDK/Models/Shared/ApiEndpointInput.cs
+  - src/SpeakeasySDK/Models/Shared/ApiInput.cs
+  - src/SpeakeasySDK/Models/Shared/ApiKeyDetails.cs
+  - src/SpeakeasySDK/Models/Shared/Auth.cs
+  - src/SpeakeasySDK/Models/Shared/BoundedRequest.cs
+  - src/SpeakeasySDK/Models/Shared/Claims.cs
+  - src/SpeakeasySDK/Models/Shared/CliEvent.cs
+  - src/SpeakeasySDK/Models/Shared/Diagnostic.cs
+  - src/SpeakeasySDK/Models/Shared/EmbedAccessTokenResponse.cs
+  - src/SpeakeasySDK/Models/Shared/EmbedToken.cs
+  - src/SpeakeasySDK/Models/Shared/FeatureFlag.cs
+  - src/SpeakeasySDK/Models/Shared/Filter.cs
+  - src/SpeakeasySDK/Models/Shared/Filters.cs
+  - src/SpeakeasySDK/Models/Shared/GenerateBumpType.cs
+  - src/SpeakeasySDK/Models/Shared/GenerateOpenApiSpecDiff.cs
+  - src/SpeakeasySDK/Models/Shared/GetNamespacesResponse.cs
+  - src/SpeakeasySDK/Models/Shared/GetRevisionsResponse.cs
+  - src/SpeakeasySDK/Models/Shared/GetTagsResponse.cs
+  - src/SpeakeasySDK/Models/Shared/GithubConfigureCodeSamplesRequest.cs
+  - src/SpeakeasySDK/Models/Shared/GithubConfigureCodeSamplesResponse.cs
+  - src/SpeakeasySDK/Models/Shared/GithubConfigureMintlifyRepoRequest.cs
+  - src/SpeakeasySDK/Models/Shared/GithubConfigureTargetRequest.cs
+  - src/SpeakeasySDK/Models/Shared/GithubGetActionResponse.cs
+  - src/SpeakeasySDK/Models/Shared/GithubMissingPublishingSecretsResponse.cs
+  - src/SpeakeasySDK/Models/Shared/GithubPublishingPRResponse.cs
+  - src/SpeakeasySDK/Models/Shared/GithubStorePublishingSecretsRequest.cs
+  - src/SpeakeasySDK/Models/Shared/GithubTriggerActionRequest.cs
+  - src/SpeakeasySDK/Models/Shared/InteractionType.cs
+  - src/SpeakeasySDK/Models/Shared/Level.cs
+  - src/SpeakeasySDK/Models/Shared/License.cs
+  - src/SpeakeasySDK/Models/Shared/Manifest.cs
+  - src/SpeakeasySDK/Models/Shared/Namespace.cs
+  - src/SpeakeasySDK/Models/Shared/OASInfo.cs
+  - src/SpeakeasySDK/Models/Shared/OASOperation.cs
+  - src/SpeakeasySDK/Models/Shared/OASSummary.cs
+  - src/SpeakeasySDK/Models/Shared/OpenapiDiffBumpType.cs
+  - src/SpeakeasySDK/Models/Shared/Organization.cs
+  - src/SpeakeasySDK/Models/Shared/OrganizationUsage.cs
+  - src/SpeakeasySDK/Models/Shared/OrganizationUsageResponse.cs
+  - src/SpeakeasySDK/Models/Shared/PreflightRequest.cs
+  - src/SpeakeasySDK/Models/Shared/PreflightToken.cs
+  - src/SpeakeasySDK/Models/Shared/Report.cs
+  - src/SpeakeasySDK/Models/Shared/RequestMetadata.cs
+  - src/SpeakeasySDK/Models/Shared/Revision.cs
+  - src/SpeakeasySDK/Models/Shared/Schema.cs
+  - src/SpeakeasySDK/Models/Shared/SchemaDiff.cs
+  - src/SpeakeasySDK/Models/Shared/Security.cs
+  - src/SpeakeasySDK/Models/Shared/ShortURL.cs
+  - src/SpeakeasySDK/Models/Shared/SuggestOptsOld.cs
+  - src/SpeakeasySDK/Models/Shared/SuggestRequestBody.cs
+  - src/SpeakeasySDK/Models/Shared/SuggestRequestBodySuggestionType.cs
+  - src/SpeakeasySDK/Models/Shared/SuggestionType.cs
+  - src/SpeakeasySDK/Models/Shared/Tag.cs
+  - src/SpeakeasySDK/Models/Shared/TargetSDK.cs
+  - src/SpeakeasySDK/Models/Shared/Type.cs
+  - src/SpeakeasySDK/Models/Shared/UnboundedRequest.cs
+  - src/SpeakeasySDK/Models/Shared/User.cs
+  - src/SpeakeasySDK/Models/Shared/V2Descriptor.cs
+  - src/SpeakeasySDK/Models/Shared/ValueChange.cs
+  - src/SpeakeasySDK/Models/Shared/VersionMetadata.cs
+  - src/SpeakeasySDK/Models/Shared/VersionMetadataInput.cs
+  - src/SpeakeasySDK/Models/Shared/WorkflowDocument.cs
+  - src/SpeakeasySDK/Models/Shared/Workspace.cs
+  - src/SpeakeasySDK/Models/Shared/WorkspaceFeatureFlagResponse.cs
+  - src/SpeakeasySDK/Models/Shared/Workspaces.cs
+  - src/SpeakeasySDK/Organizations.cs
+  - src/SpeakeasySDK/Reports.cs
+  - src/SpeakeasySDK/Requests.cs
+  - src/SpeakeasySDK/SDK.cs
+  - src/SpeakeasySDK/Schemas.cs
+  - src/SpeakeasySDK/ShortURLs.cs
+  - src/SpeakeasySDK/SpeakeasySDK.csproj
+  - src/SpeakeasySDK/Suggest.cs
+  - src/SpeakeasySDK/Utils/AnyDeserializer.cs
+  - src/SpeakeasySDK/Utils/BigIntStrConverter.cs
+  - src/SpeakeasySDK/Utils/DecimalStrConverter.cs
+  - src/SpeakeasySDK/Utils/EnumConverter.cs
+  - src/SpeakeasySDK/Utils/FlexibleObjectDeserializer.cs
+  - src/SpeakeasySDK/Utils/HeaderSerializer.cs
+  - src/SpeakeasySDK/Utils/IsoDateTimeSerializer.cs
+  - src/SpeakeasySDK/Utils/RequestBodySerializer.cs
+  - src/SpeakeasySDK/Utils/ResponseBodyDeserializer.cs
+  - src/SpeakeasySDK/Utils/Retries/BackoffStrategy.cs
+  - src/SpeakeasySDK/Utils/Retries/Retries.cs
+  - src/SpeakeasySDK/Utils/Retries/RetryConfig.cs
+  - src/SpeakeasySDK/Utils/SecurityMetadata.cs
+  - src/SpeakeasySDK/Utils/SpeakeasyHttpClient.cs
+  - src/SpeakeasySDK/Utils/SpeakeasyMetadata.cs
+  - src/SpeakeasySDK/Utils/URLBuilder.cs
+  - src/SpeakeasySDK/Utils/Utilities.cs
+  - src/SpeakeasySDK/Workspaces.cs
 examples:
   deleteApi:
     speakeasy-default-delete-api:
@@ -863,6 +863,7 @@ examples:
       responses:
         default:
           application/json: {"message": "<value>", "status_code": 820828}
+        "200": {}
   getAccessToken:
     speakeasy-default-get-access-token:
       parameters:
@@ -961,6 +962,7 @@ examples:
       responses:
         default:
           application/json: {"message": "<value>", "status_code": 192607}
+        "200": {}
   getAction:
     speakeasy-default-get-action:
       parameters:
@@ -970,6 +972,7 @@ examples:
       responses:
         default:
           application/json: {"message": "<value>", "status_code": 252330}
+        "200": {}
   githubCheckPublishingSecrets:
     speakeasy-default-github-check-publishing-secrets:
       parameters:
@@ -978,6 +981,7 @@ examples:
       responses:
         default:
           application/json: {"message": "<value>", "status_code": 445560}
+        "200": {}
   githubStorePublishingSecrets:
     speakeasy-default-github-store-publishing-secrets:
       requestBody:
@@ -1116,6 +1120,7 @@ examples:
       responses:
         5XX:
           application/json: {"message": "<value>", "status_code": 365854}
+        "200": {}
   getWorkspaceEventsByTarget:
     speakeasy-default-get-workspace-events-by-target:
       parameters:
