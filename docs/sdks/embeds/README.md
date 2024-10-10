@@ -47,10 +47,10 @@ var res = await sdk.Embeds.GetEmbedAccessTokenAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
-
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
 
 ## GetValidEmbedAccessTokens
 
@@ -77,10 +77,10 @@ var res = await sdk.Embeds.GetValidEmbedAccessTokensAsync();
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
-
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
 
 ## RevokeEmbedAccessToken
 
@@ -98,7 +98,7 @@ var sdk = new SDK(security: new Security() {
 });
 
 RevokeEmbedAccessTokenRequest req = new RevokeEmbedAccessTokenRequest() {
-    TokenID = "<value>",
+    TokenID = "<id>",
 };
 
 var res = await sdk.Embeds.RevokeEmbedAccessTokenAsync(req);
@@ -118,6 +118,7 @@ var res = await sdk.Embeds.RevokeEmbedAccessTokenAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |

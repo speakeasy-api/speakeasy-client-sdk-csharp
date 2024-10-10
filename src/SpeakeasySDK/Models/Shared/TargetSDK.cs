@@ -192,6 +192,30 @@ namespace SpeakeasySDK.Models.Shared
         public InteractionType LastEventInteractionType { get; set; } = default!;
 
         /// <summary>
+        /// Name of the published package.
+        /// </summary>
+        [JsonProperty("publish_package_name")]
+        public string? PublishPackageName { get; set; }
+
+        /// <summary>
+        /// Name of the registry where the package was published.
+        /// </summary>
+        [JsonProperty("publish_package_registry_name")]
+        public string? PublishPackageRegistryName { get; set; }
+
+        /// <summary>
+        /// URL of the published package.
+        /// </summary>
+        [JsonProperty("publish_package_url")]
+        public string? PublishPackageUrl { get; set; }
+
+        /// <summary>
+        /// Version of the published package.
+        /// </summary>
+        [JsonProperty("publish_package_version")]
+        public string? PublishPackageVersion { get; set; }
+
+        /// <summary>
         /// Label of the git repository.
         /// </summary>
         [JsonProperty("repo_label")]

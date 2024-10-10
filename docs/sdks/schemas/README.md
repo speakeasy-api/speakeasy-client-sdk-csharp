@@ -32,9 +32,9 @@ var sdk = new SDK(security: new Security() {
 });
 
 DeleteSchemaRequest req = new DeleteSchemaRequest() {
-    ApiID = "<value>",
-    RevisionID = "<value>",
-    VersionID = "<value>",
+    ApiID = "<id>",
+    RevisionID = "<id>",
+    VersionID = "<id>",
 };
 
 var res = await sdk.Schemas.DeleteSchemaAsync(req);
@@ -54,10 +54,10 @@ var res = await sdk.Schemas.DeleteSchemaAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
-
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
 
 ## DownloadSchema
 
@@ -75,8 +75,8 @@ var sdk = new SDK(security: new Security() {
 });
 
 DownloadSchemaRequest req = new DownloadSchemaRequest() {
-    ApiID = "<value>",
-    VersionID = "<value>",
+    ApiID = "<id>",
+    VersionID = "<id>",
 };
 
 var res = await sdk.Schemas.DownloadSchemaAsync(req);
@@ -96,10 +96,10 @@ var res = await sdk.Schemas.DownloadSchemaAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
-
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
 
 ## DownloadSchemaRevision
 
@@ -117,9 +117,9 @@ var sdk = new SDK(security: new Security() {
 });
 
 DownloadSchemaRevisionRequest req = new DownloadSchemaRevisionRequest() {
-    ApiID = "<value>",
-    RevisionID = "<value>",
-    VersionID = "<value>",
+    ApiID = "<id>",
+    RevisionID = "<id>",
+    VersionID = "<id>",
 };
 
 var res = await sdk.Schemas.DownloadSchemaRevisionAsync(req);
@@ -139,14 +139,14 @@ var res = await sdk.Schemas.DownloadSchemaRevisionAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
-
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
 
 ## GetSchema
 
-Returns information about the last uploaded schema for a particular API version. 
+Returns information about the last uploaded schema for a particular API version.
 This won't include the schema itself, that can be retrieved via the downloadSchema operation.
 
 ### Example Usage
@@ -161,8 +161,8 @@ var sdk = new SDK(security: new Security() {
 });
 
 GetSchemaRequest req = new GetSchemaRequest() {
-    ApiID = "<value>",
-    VersionID = "<value>",
+    ApiID = "<id>",
+    VersionID = "<id>",
 };
 
 var res = await sdk.Schemas.GetSchemaAsync(req);
@@ -182,10 +182,10 @@ var res = await sdk.Schemas.GetSchemaAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
-
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
 
 ## GetSchemaDiff
 
@@ -203,10 +203,10 @@ var sdk = new SDK(security: new Security() {
 });
 
 GetSchemaDiffRequest req = new GetSchemaDiffRequest() {
-    ApiID = "<value>",
-    BaseRevisionID = "<value>",
-    TargetRevisionID = "<value>",
-    VersionID = "<value>",
+    ApiID = "<id>",
+    BaseRevisionID = "<id>",
+    TargetRevisionID = "<id>",
+    VersionID = "<id>",
 };
 
 var res = await sdk.Schemas.GetSchemaDiffAsync(req);
@@ -226,14 +226,14 @@ var res = await sdk.Schemas.GetSchemaDiffAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
-
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
 
 ## GetSchemaRevision
 
-Returns information about the last uploaded schema for a particular schema revision. 
+Returns information about the last uploaded schema for a particular schema revision.
 This won't include the schema itself, that can be retrieved via the downloadSchema operation.
 
 ### Example Usage
@@ -248,9 +248,9 @@ var sdk = new SDK(security: new Security() {
 });
 
 GetSchemaRevisionRequest req = new GetSchemaRevisionRequest() {
-    ApiID = "<value>",
-    RevisionID = "<value>",
-    VersionID = "<value>",
+    ApiID = "<id>",
+    RevisionID = "<id>",
+    VersionID = "<id>",
 };
 
 var res = await sdk.Schemas.GetSchemaRevisionAsync(req);
@@ -270,14 +270,14 @@ var res = await sdk.Schemas.GetSchemaRevisionAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
-
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
 
 ## GetSchemas
 
-Returns information the schemas associated with a particular apiID. 
+Returns information the schemas associated with a particular apiID.
 This won't include the schemas themselves, they can be retrieved via the downloadSchema operation.
 
 ### Example Usage
@@ -292,8 +292,8 @@ var sdk = new SDK(security: new Security() {
 });
 
 GetSchemasRequest req = new GetSchemasRequest() {
-    ApiID = "<value>",
-    VersionID = "<value>",
+    ApiID = "<id>",
+    VersionID = "<id>",
 };
 
 var res = await sdk.Schemas.GetSchemasAsync(req);
@@ -313,10 +313,10 @@ var res = await sdk.Schemas.GetSchemasAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
-
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
 
 ## RegisterSchema
 
@@ -337,12 +337,12 @@ var sdk = new SDK(security: new Security() {
 RegisterSchemaRequest req = new RegisterSchemaRequest() {
     RequestBody = new RegisterSchemaRequestBody() {
         File = new RegisterSchemaFile() {
-            Content = System.Text.Encoding.UTF8.GetBytes("0xCAFCA03e0e"),
+            Content = System.Text.Encoding.UTF8.GetBytes("0xCFA30D144c"),
             FileName = "example.file",
         },
     },
-    ApiID = "<value>",
-    VersionID = "<value>",
+    ApiID = "<id>",
+    VersionID = "<id>",
 };
 
 var res = await sdk.Schemas.RegisterSchemaAsync(req);
@@ -362,6 +362,7 @@ var res = await sdk.Schemas.RegisterSchemaAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |

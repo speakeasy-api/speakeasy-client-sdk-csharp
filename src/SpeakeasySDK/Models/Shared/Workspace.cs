@@ -28,12 +28,6 @@ namespace SpeakeasySDK.Models.Shared
         [JsonProperty("name")]
         public string Name { get; set; } = default!;
 
-        [JsonProperty("oci_repo")]
-        public string? OciRepo { get; set; }
-
-        [JsonProperty("oci_repo_created_at")]
-        public DateTime? OciRepoCreatedAt { get; set; }
-
         [JsonProperty("organization_id")]
         public string OrganizationId { get; set; } = default!;
 
@@ -48,5 +42,11 @@ namespace SpeakeasySDK.Models.Shared
 
         [JsonProperty("verified")]
         public bool Verified { get; set; } = default!;
+
+        [JsonProperty("oci_repo")]
+        public string? OciRepo { get; set; } = null;
+
+        [JsonProperty("oci_repo_created_at")]
+        public DateTime? OciRepoCreatedAt { get; set; } = null;
     }
 }

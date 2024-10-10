@@ -240,6 +240,12 @@ namespace SpeakeasySDK.Models.Shared
         public string? GhActionVersion { get; set; }
 
         /// <summary>
+        /// The reference to a created pull request.
+        /// </summary>
+        [JsonProperty("gh_pull_request")]
+        public string? GhPullRequest { get; set; }
+
+        /// <summary>
         /// Current working directory relative to the git root.
         /// </summary>
         [JsonProperty("git_relative_cwd")]

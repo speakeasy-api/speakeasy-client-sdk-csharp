@@ -13,7 +13,7 @@ REST APIs for retrieving request information
 
 ## GenerateRequestPostmanCollection
 
-Generates a Postman collection for a particular request. 
+Generates a Postman collection for a particular request.
 Allowing it to be replayed with the same inputs that were captured by the SDK.
 
 ### Example Usage
@@ -28,7 +28,7 @@ var sdk = new SDK(security: new Security() {
 });
 
 GenerateRequestPostmanCollectionRequest req = new GenerateRequestPostmanCollectionRequest() {
-    RequestID = "<value>",
+    RequestID = "<id>",
 };
 
 var res = await sdk.Requests.GenerateRequestPostmanCollectionAsync(req);
@@ -48,10 +48,10 @@ var res = await sdk.Requests.GenerateRequestPostmanCollectionAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
-
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
 
 ## GetRequestFromEventLog
 
@@ -69,7 +69,7 @@ var sdk = new SDK(security: new Security() {
 });
 
 GetRequestFromEventLogRequest req = new GetRequestFromEventLogRequest() {
-    RequestID = "<value>",
+    RequestID = "<id>",
 };
 
 var res = await sdk.Requests.GetRequestFromEventLogAsync(req);
@@ -89,10 +89,10 @@ var res = await sdk.Requests.GetRequestFromEventLogAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
-
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
 
 ## QueryEventLog
 
@@ -130,6 +130,7 @@ var res = await sdk.Requests.QueryEventLogAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |

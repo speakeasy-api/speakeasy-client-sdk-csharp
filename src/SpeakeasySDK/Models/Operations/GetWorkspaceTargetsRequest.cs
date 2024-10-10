@@ -20,11 +20,5 @@ namespace SpeakeasySDK.Models.Operations
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=after_last_event_created_at")]
         public DateTime? AfterLastEventCreatedAt { get; set; }
-
-        /// <summary>
-        /// Unique identifier of the workspace.
-        /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=workspaceID")]
-        public string? WorkspaceID { get; set; }
     }
 }
