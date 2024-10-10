@@ -24,44 +24,6 @@ var res = await sdk.Apis.GetApisAsync(req);
 ```
 <!-- End SDK Example Usage [usage] -->
 
-<!-- Start Global Parameters [global-parameters] -->
-## Global Parameters
-
-## Global Parameters
-
-A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
-
-For example, you can set `workspaceID` to `"<value>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `GetWorkspace`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
-
-
-### Available Globals
-
-The following global parameter is available.
-
-| Name | Type | Required | Description |
-| ---- | ---- |:--------:| ----------- |
-| workspaceID | string |  | The WorkspaceID parameter. |
-
-
-### Example
-
-```csharp
-using SpeakeasySDK;
-using SpeakeasySDK.Models.Operations;
-using SpeakeasySDK.Models.Shared;
-
-var sdk = new SDK(security: new Security() {
-    APIKey = "<YOUR_API_KEY_HERE>",
-});
-
-GetWorkspaceRequest req = new GetWorkspaceRequest() {};
-
-var res = await sdk.Workspaces.GetWorkspaceAsync(req);
-
-// handle response
-```
-<!-- End Global Parameters [global-parameters] -->
-
 <!-- Start Retries [retries] -->
 ## Retries
 
@@ -79,7 +41,7 @@ var sdk = new SDK(security: new Security() {
 
 GetWorkspaceAccessRequest req = new GetWorkspaceAccessRequest() {};
 
-var res = await sdk.Auth.GetWorkspaceAccessAsync(
+var res = await sdk.Auth.GetAccessAsync(
     retryConfig: new RetryConfig(
         strategy: RetryConfig.RetryStrategy.BACKOFF,
         backoff: new BackoffStrategy(
@@ -89,7 +51,9 @@ var res = await sdk.Auth.GetWorkspaceAccessAsync(
             exponent: 1.1
         ),
         retryConnectionErrors: false
-    ),req);
+    ),
+    req
+);
 
 // handle response
 ```
@@ -118,7 +82,7 @@ var sdk = new SDK(
 
 GetWorkspaceAccessRequest req = new GetWorkspaceAccessRequest() {};
 
-var res = await sdk.Auth.GetWorkspaceAccessAsync(req);
+var res = await sdk.Auth.GetAccessAsync(req);
 
 // handle response
 ```
@@ -127,12 +91,23 @@ var res = await sdk.Auth.GetWorkspaceAccessAsync(req);
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-Handling errors in this SDK should largely match your expectations.  All operations return a response object or thow an exception.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate type.
+Handling errors in this SDK should largely match your expectations. All operations return a response object or throw an exception.
 
-| Error Object                            | Status Code                             | Content Type                            |
+By default, an API error will raise a `SpeakeasySDK.Models.Errors.SDKException` exception, which has the following properties:
+
+| Property      | Type                  | Description           |
+|---------------|-----------------------|-----------------------|
+| `Message`     | *string*              | The error message     |
+| `StatusCode`  | *int*                 | The HTTP status code  |
+| `RawResponse` | *HttpResponseMessage* | The raw HTTP response |
+| `Body`        | *string*              | The response content  |
+
+When custom error responses are specified for an operation, the SDK may also throw their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `DeleteApiAsync` method throws the following exceptions:
+
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.Error        | 5XX                                     | application/json                        |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
 
 ### Example
 
@@ -149,9 +124,12 @@ var sdk = new SDK(security: new Security() {
 
 try
 {
-    GetWorkspaceFeatureFlagsRequest req = new GetWorkspaceFeatureFlagsRequest() {};
+    DeleteApiRequest req = new DeleteApiRequest() {
+        ApiID = "<id>",
+        VersionID = "<id>",
+    };
 
-    var res = await sdk.Workspaces.GetWorkspaceFeatureFlagsAsync(req);
+    var res = await sdk.Apis.DeleteApiAsync(req);
 
     // handle response
 }
@@ -159,11 +137,13 @@ catch (Exception ex)
 {
     if (ex is Error)
     {
-        // handle exception
+        // Handle exception data
+        throw;
     }
     else if (ex is SpeakeasySDK.Models.Errors.SDKException)
     {
-        // handle exception
+        // Handle default exception
+        throw;
     }
 }
 ```
@@ -194,10 +174,11 @@ The default server can also be overridden globally by passing a URL to the `serv
 
 This SDK supports the following security schemes globally:
 
-| Name        | Type        | Scheme      |
-| ----------- | ----------- | ----------- |
-| `APIKey`    | apiKey      | API key     |
-| `Bearer`    | http        | HTTP Bearer |
+| Name                  | Type                  | Scheme                |
+| --------------------- | --------------------- | --------------------- |
+| `APIKey`              | apiKey                | API key               |
+| `Bearer`              | http                  | HTTP Bearer           |
+| `WorkspaceIdentifier` | apiKey                | API key               |
 
 You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
 ```csharp
@@ -210,8 +191,8 @@ var sdk = new SDK(security: new Security() {
 });
 
 DeleteApiRequest req = new DeleteApiRequest() {
-    ApiID = "<value>",
-    VersionID = "<value>",
+    ApiID = "<id>",
+    VersionID = "<id>",
 };
 
 var res = await sdk.Apis.DeleteApiAsync(req);

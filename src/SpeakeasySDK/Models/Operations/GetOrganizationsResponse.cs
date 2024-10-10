@@ -9,7 +9,6 @@
 #nullable enable
 namespace SpeakeasySDK.Models.Operations
 {
-    using SpeakeasySDK.Models.Errors;
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System.Collections.Generic;
@@ -23,11 +22,6 @@ namespace SpeakeasySDK.Models.Operations
         /// HTTP response content type for this operation
         /// </summary>
         public string? ContentType { get; set; } = default!;
-
-        /// <summary>
-        /// Default error response
-        /// </summary>
-        public Error? Error { get; set; }
 
         /// <summary>
         /// OK

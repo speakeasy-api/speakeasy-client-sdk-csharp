@@ -79,12 +79,12 @@ namespace SpeakeasySDK
         /// REST APIs for managing LLM OAS suggestions
         /// </summary>
         public ISuggest Suggest { get; }
+        public IWorkspaces Workspaces { get; }
 
         /// <summary>
         /// REST APIs for managing embeds
         /// </summary>
         public IEmbeds Embeds { get; }
-        public IWorkspaces Workspaces { get; }
 
         /// <summary>
         /// REST APIs for capturing event data
@@ -157,10 +157,10 @@ namespace SpeakeasySDK
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.10.0";
-        private const string _sdkGenVersion = "2.420.2";
+        private const string _sdkVersion = "5.11.0";
+        private const string _sdkGenVersion = "2.437.1";
         private const string _openapiDocVersion = "0.4.0 .";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.10.0 2.420.2 0.4.0 . SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.11.0 2.437.1 0.4.0 . SpeakeasySDK";
         private string _serverUrl = "";
         private SDKConfig.Server? _server = null;
         private ISpeakeasyHttpClient _client;
@@ -177,8 +177,8 @@ namespace SpeakeasySDK
         public IReports Reports { get; private set; }
         public IShortURLs ShortURLs { get; private set; }
         public ISuggest Suggest { get; private set; }
-        public IEmbeds Embeds { get; private set; }
         public IWorkspaces Workspaces { get; private set; }
+        public IEmbeds Embeds { get; private set; }
         public IEvents Events { get; private set; }
 
         public SDK(SpeakeasySDK.Models.Shared.Security? security = null, Func<SpeakeasySDK.Models.Shared.Security>? securitySource = null, string? workspaceID = null, SDKConfig.Server? server = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
@@ -255,10 +255,10 @@ namespace SpeakeasySDK
             Suggest = new Suggest(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
-            Embeds = new Embeds(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
             Workspaces = new Workspaces(_client, _securitySource, _serverUrl, SDKConfiguration);
+
+
+            Embeds = new Embeds(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
             Events = new Events(_client, _securitySource, _serverUrl, SDKConfiguration);

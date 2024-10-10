@@ -9,7 +9,6 @@
 #nullable enable
 namespace SpeakeasySDK.Models.Operations
 {
-    using SpeakeasySDK.Models.Errors;
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System.Collections.Generic;
@@ -28,11 +27,6 @@ namespace SpeakeasySDK.Models.Operations
         /// OK
         /// </summary>
         public List<EmbedToken>? EmbedTokens { get; set; }
-
-        /// <summary>
-        /// Default error response
-        /// </summary>
-        public Error? Error { get; set; }
 
         /// <summary>
         /// HTTP response status code for this operation

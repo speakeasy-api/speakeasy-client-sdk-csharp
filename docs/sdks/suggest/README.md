@@ -40,7 +40,7 @@ SuggestRequest req = new SuggestRequest() {
         },
         OasSummary = new OASSummary() {
             Info = new OASInfo() {
-                Description = "Object-based multi-state pricing structure",
+                Description = "kielbasa psst stitcher cannon devoted blindly apropos low",
                 License = new License() {},
                 Summary = "<value>",
                 Title = "<value>",
@@ -48,10 +48,10 @@ SuggestRequest req = new SuggestRequest() {
             },
             Operations = new List<OASOperation>() {
                 new OASOperation() {
-                    Description = "Innovative tangible hierarchy",
+                    Description = "via apparatus gray whether opposite what",
                     Method = "<value>",
-                    OperationId = "<value>",
-                    Path = "/usr/include",
+                    OperationId = "<id>",
+                    Path = "/sys",
                     Tags = new List<string>() {
                         "<value>",
                     },
@@ -60,7 +60,7 @@ SuggestRequest req = new SuggestRequest() {
         },
         SuggestionType = SpeakeasySDK.Models.Shared.SuggestRequestBodySuggestionType.MethodNames,
     },
-    XSessionId = "<value>",
+    XSessionId = "<id>",
 };
 
 var res = await sdk.Suggest.SuggestAsync(req);
@@ -80,10 +80,9 @@ var res = await sdk.Suggest.SuggestAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
-
+| SpeakeasySDK.Models.Errors.SDKException | 4XX, 5XX                                | \*/\*                                   |
 
 ## SuggestOpenAPI
 
@@ -104,11 +103,11 @@ var sdk = new SDK(security: new Security() {
 SuggestOpenAPIRequest req = new SuggestOpenAPIRequest() {
     RequestBody = new SuggestOpenAPIRequestBody() {
         Schema = new Models.Operations.Schema() {
-            Content = System.Text.Encoding.UTF8.GetBytes("0x0FbfeAEcc8"),
+            Content = System.Text.Encoding.UTF8.GetBytes("0x0beEcB7cF6"),
             FileName = "example.file",
         },
     },
-    XSessionId = "<value>",
+    XSessionId = "<id>",
 };
 
 var res = await sdk.Suggest.SuggestOpenAPIAsync(req);
@@ -128,10 +127,9 @@ var res = await sdk.Suggest.SuggestOpenAPIAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
-
+| SpeakeasySDK.Models.Errors.SDKException | 4XX, 5XX                                | \*/\*                                   |
 
 ## SuggestOpenAPIRegistry
 
@@ -152,7 +150,7 @@ var sdk = new SDK(security: new Security() {
 SuggestOpenAPIRegistryRequest req = new SuggestOpenAPIRegistryRequest() {
     NamespaceName = "<value>",
     RevisionReference = "<value>",
-    XSessionId = "<value>",
+    XSessionId = "<id>",
 };
 
 var res = await sdk.Suggest.SuggestOpenAPIRegistryAsync(req);
@@ -172,6 +170,6 @@ var res = await sdk.Suggest.SuggestOpenAPIRegistryAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+| SpeakeasySDK.Models.Errors.SDKException | 4XX, 5XX                                | \*/\*                                   |

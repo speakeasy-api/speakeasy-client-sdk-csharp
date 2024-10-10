@@ -47,10 +47,9 @@ var res = await sdk.Reports.GetChangesReportSignedUrlAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
-
+| SpeakeasySDK.Models.Errors.SDKException | 4XX, 5XX                                | \*/\*                                   |
 
 ## GetLintingReportSignedUrl
 
@@ -88,10 +87,9 @@ var res = await sdk.Reports.GetLintingReportSignedUrlAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
-
+| SpeakeasySDK.Models.Errors.SDKException | 4XX, 5XX                                | \*/\*                                   |
 
 ## UploadReport
 
@@ -111,7 +109,7 @@ var sdk = new SDK(security: new Security() {
 UploadReportRequestBody req = new UploadReportRequestBody() {
     Data = new Report() {},
     File = new File() {
-        Content = System.Text.Encoding.UTF8.GetBytes("0xA329C0ad85"),
+        Content = System.Text.Encoding.UTF8.GetBytes("0xA2Ca85EFA5"),
         FileName = "example.file",
     },
 };
@@ -133,6 +131,6 @@ var res = await sdk.Reports.UploadReportAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+| SpeakeasySDK.Models.Errors.SDKException | 4XX, 5XX                                | \*/\*                                   |

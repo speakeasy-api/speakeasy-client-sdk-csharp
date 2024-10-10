@@ -27,10 +27,10 @@ var sdk = new SDK(security: new Security() {
 });
 
 DeleteVersionMetadataRequest req = new DeleteVersionMetadataRequest() {
-    ApiID = "<value>",
+    ApiID = "<id>",
     MetaKey = "<value>",
     MetaValue = "<value>",
-    VersionID = "<value>",
+    VersionID = "<id>",
 };
 
 var res = await sdk.Metadata.DeleteVersionMetadataAsync(req);
@@ -50,10 +50,10 @@ var res = await sdk.Metadata.DeleteVersionMetadataAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
-
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
 
 ## GetVersionMetadata
 
@@ -71,8 +71,8 @@ var sdk = new SDK(security: new Security() {
 });
 
 GetVersionMetadataRequest req = new GetVersionMetadataRequest() {
-    ApiID = "<value>",
-    VersionID = "<value>",
+    ApiID = "<id>",
+    VersionID = "<id>",
 };
 
 var res = await sdk.Metadata.GetVersionMetadataAsync(req);
@@ -92,10 +92,10 @@ var res = await sdk.Metadata.GetVersionMetadataAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
-
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
 
 ## InsertVersionMetadata
 
@@ -117,8 +117,8 @@ InsertVersionMetadataRequest req = new InsertVersionMetadataRequest() {
         MetaKey = "<value>",
         MetaValue = "<value>",
     },
-    ApiID = "<value>",
-    VersionID = "<value>",
+    ApiID = "<id>",
+    VersionID = "<id>",
 };
 
 var res = await sdk.Metadata.InsertVersionMetadataAsync(req);
@@ -138,6 +138,7 @@ var res = await sdk.Metadata.InsertVersionMetadataAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
