@@ -3,22 +3,24 @@
 <!-- Start Summary [summary] -->
 ## Summary
 
-Speakeasy API: The Speakeasy API allows teams to manage common operations with their APIs
+Speakeasy API: The Subscriptions API manages subscriptions for CLI and registry events
 
 For more information about the API: [The Speakeasy Platform Documentation](/docs)
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
+<!-- $toc-max-depth=2 -->
+* [Speakeasy](#speakeasy)
+  * [SDK Installation](#sdk-installation)
+  * [SDK Example Usage](#sdk-example-usage)
+  * [Available Resources and Operations](#available-resources-and-operations)
+  * [Server Selection](#server-selection)
+  * [Authentication](#authentication)
+  * [Global Parameters](#global-parameters)
+  * [Error Handling](#error-handling)
+  * [Retries](#retries)
 
-* [SDK Installation](#sdk-installation)
-* [SDK Example Usage](#sdk-example-usage)
-* [Available Resources and Operations](#available-resources-and-operations)
-* [Global Parameters](#global-parameters)
-* [Retries](#retries)
-* [Error Handling](#error-handling)
-* [Server Selection](#server-selection)
-* [Authentication](#authentication)
 <!-- End Table of Contents [toc] -->
 
 <!-- Start SDK Installation [installation] -->
@@ -46,17 +48,25 @@ dotnet add reference src/SpeakeasySDK/SpeakeasySDK.csproj
 
 ```csharp
 using SpeakeasySDK;
-using SpeakeasySDK.Models.Operations;
-using System.Collections.Generic;
 using SpeakeasySDK.Models.Shared;
+using System;
+using System.Collections.Generic;
 
 var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
 });
 
-GetApisRequest req = new GetApisRequest() {};
+CodeSampleSchemaInput req = new CodeSampleSchemaInput() {
+    Languages = new List<string>() {
+        "<value>",
+    },
+    SchemaFile = new SchemaFile() {
+        Content = System.Text.Encoding.UTF8.GetBytes("0xc3dD8BfBef"),
+        FileName = "example.file",
+    },
+};
 
-var res = await sdk.Apis.GetApisAsync(req);
+var res = await sdk.GenerateCodeSamplePreviewAsync(req);
 
 // handle response
 ```
@@ -68,81 +78,55 @@ var res = await sdk.Apis.GetApisAsync(req);
 <details open>
 <summary>Available methods</summary>
 
-### [ApiEndpoints](docs/sdks/apiendpoints/README.md)
-
-* [DeleteApiEndpoint](docs/sdks/apiendpoints/README.md#deleteapiendpoint) - Delete an ApiEndpoint.
-* [FindApiEndpoint](docs/sdks/apiendpoints/README.md#findapiendpoint) - Find an ApiEndpoint via its displayName.
-* [GenerateOpenApiSpecForApiEndpoint](docs/sdks/apiendpoints/README.md#generateopenapispecforapiendpoint) - Generate an OpenAPI specification for a particular ApiEndpoint.
-* [GeneratePostmanCollectionForApiEndpoint](docs/sdks/apiendpoints/README.md#generatepostmancollectionforapiendpoint) - Generate a Postman collection for a particular ApiEndpoint.
-* [GetAllApiEndpoints](docs/sdks/apiendpoints/README.md#getallapiendpoints) - Get all Api endpoints for a particular apiID.
-* [GetAllForVersionApiEndpoints](docs/sdks/apiendpoints/README.md#getallforversionapiendpoints) - Get all ApiEndpoints for a particular apiID and versionID.
-* [GetApiEndpoint](docs/sdks/apiendpoints/README.md#getapiendpoint) - Get an ApiEndpoint.
-* [UpsertApiEndpoint](docs/sdks/apiendpoints/README.md#upsertapiendpoint) - Upsert an ApiEndpoint.
-
-### [Apis](docs/sdks/apis/README.md)
-
-* [DeleteApi](docs/sdks/apis/README.md#deleteapi) - Delete an Api.
-* [GenerateOpenApiSpec](docs/sdks/apis/README.md#generateopenapispec) - Generate an OpenAPI specification for a particular Api.
-* [GeneratePostmanCollection](docs/sdks/apis/README.md#generatepostmancollection) - Generate a Postman collection for a particular Api.
-* [GetAllApiVersions](docs/sdks/apis/README.md#getallapiversions) - Get all Api versions for a particular ApiEndpoint.
-* [GetApis](docs/sdks/apis/README.md#getapis) - Get a list of Apis for a given workspace
-* [UpsertApi](docs/sdks/apis/README.md#upsertapi) - Upsert an Api
-
 ### [Artifacts](docs/sdks/artifacts/README.md)
 
+* [CreateRemoteSource](docs/sdks/artifacts/README.md#createremotesource) - Configure a new remote source
 * [GetBlob](docs/sdks/artifacts/README.md#getblob) - Get blob for a particular digest
 * [GetManifest](docs/sdks/artifacts/README.md#getmanifest) - Get manifest for a particular reference
 * [GetNamespaces](docs/sdks/artifacts/README.md#getnamespaces) - Each namespace contains many revisions.
-* [GetOASSummary](docs/sdks/artifacts/README.md#getoassummary)
 * [GetRevisions](docs/sdks/artifacts/README.md#getrevisions)
 * [GetTags](docs/sdks/artifacts/README.md#gettags)
+* [ListRemoteSources](docs/sdks/artifacts/README.md#listremotesources) - Get remote sources attached to a particular namespace
 * [PostTags](docs/sdks/artifacts/README.md#posttags) - Add tags to an existing revision
 * [Preflight](docs/sdks/artifacts/README.md#preflight) - Get access token for communicating with OCI distribution endpoints
+* [SetVisibility](docs/sdks/artifacts/README.md#setvisibility) - Set visibility of a namespace with an existing metadata entry
 
 ### [Auth](docs/sdks/auth/README.md)
 
+* [GetAccess](docs/sdks/auth/README.md#getaccess) - Get access allowances for a particular workspace
 * [GetAccessToken](docs/sdks/auth/README.md#getaccesstoken) - Get or refresh an access token for the current workspace.
 * [GetUser](docs/sdks/auth/README.md#getuser) - Get information about the current user.
-* [GetWorkspaceAccess](docs/sdks/auth/README.md#getworkspaceaccess) - Get access allowances for a particular workspace
 * [ValidateApiKey](docs/sdks/auth/README.md#validateapikey) - Validate the current api key.
-
-### [Embeds](docs/sdks/embeds/README.md)
-
-* [GetEmbedAccessToken](docs/sdks/embeds/README.md#getembedaccesstoken) - Get an embed access token for the current workspace.
-* [GetValidEmbedAccessTokens](docs/sdks/embeds/README.md#getvalidembedaccesstokens) - Get all valid embed access tokens for the current workspace.
-* [RevokeEmbedAccessToken](docs/sdks/embeds/README.md#revokeembedaccesstoken) - Revoke an embed access EmbedToken.
 
 ### [Events](docs/sdks/events/README.md)
 
-* [GetWorkspaceEventsByTarget](docs/sdks/events/README.md#getworkspaceeventsbytarget) - Load recent events for a particular workspace
-* [GetWorkspaceTargets](docs/sdks/events/README.md#getworkspacetargets) - Load targets for a particular workspace
-* [PostWorkspaceEvents](docs/sdks/events/README.md#postworkspaceevents) - Post events for a specific workspace
-* [SearchWorkspaceEvents](docs/sdks/events/README.md#searchworkspaceevents) - Search events for a particular workspace by any field
+* [GetEventsByTarget](docs/sdks/events/README.md#geteventsbytarget) - Load recent events for a particular workspace
+* [GetTargets](docs/sdks/events/README.md#gettargets) - Load targets for a particular workspace
+* [GetTargetsDeprecated](docs/sdks/events/README.md#gettargetsdeprecated) - Load targets for a particular workspace
+* [Post](docs/sdks/events/README.md#post) - Post events for a specific workspace
+* [Search](docs/sdks/events/README.md#search) - Search events for a particular workspace by any field
 
 ### [Github](docs/sdks/github/README.md)
 
 * [CheckAccess](docs/sdks/github/README.md#checkaccess)
+* [CheckPublishingPRs](docs/sdks/github/README.md#checkpublishingprs)
+* [CheckPublishingSecrets](docs/sdks/github/README.md#checkpublishingsecrets)
 * [ConfigureCodeSamples](docs/sdks/github/README.md#configurecodesamples)
 * [ConfigureMintlifyRepo](docs/sdks/github/README.md#configuremintlifyrepo)
 * [ConfigureTarget](docs/sdks/github/README.md#configuretarget)
-* [FetchPublishingPRs](docs/sdks/github/README.md#fetchpublishingprs)
 * [GetAction](docs/sdks/github/README.md#getaction)
-* [GithubCheckPublishingSecrets](docs/sdks/github/README.md#githubcheckpublishingsecrets)
-* [GithubStorePublishingSecrets](docs/sdks/github/README.md#githubstorepublishingsecrets)
+* [GetSetup](docs/sdks/github/README.md#getsetup)
+* [LinkGithub](docs/sdks/github/README.md#linkgithub)
+* [StorePublishingSecrets](docs/sdks/github/README.md#storepublishingsecrets)
 * [TriggerAction](docs/sdks/github/README.md#triggeraction)
-
-### [Metadata](docs/sdks/metadata/README.md)
-
-* [DeleteVersionMetadata](docs/sdks/metadata/README.md#deleteversionmetadata) - Delete metadata for a particular apiID and versionID.
-* [GetVersionMetadata](docs/sdks/metadata/README.md#getversionmetadata) - Get all metadata for a particular apiID and versionID.
-* [InsertVersionMetadata](docs/sdks/metadata/README.md#insertversionmetadata) - Insert metadata for a particular apiID and versionID.
 
 ### [Organizations](docs/sdks/organizations/README.md)
 
+* [Create](docs/sdks/organizations/README.md#create) - Create an organization
 * [CreateFreeTrial](docs/sdks/organizations/README.md#createfreetrial) - Create a free trial for an organization
-* [GetOrganization](docs/sdks/organizations/README.md#getorganization) - Get organization
-* [GetOrganizationUsage](docs/sdks/organizations/README.md#getorganizationusage) - Get billing usage summary for a particular organization
-* [GetOrganizations](docs/sdks/organizations/README.md#getorganizations) - Get organizations for a user
+* [Get](docs/sdks/organizations/README.md#get) - Get organization
+* [GetAll](docs/sdks/organizations/README.md#getall) - Get organizations for a user
+* [GetUsage](docs/sdks/organizations/README.md#getusage) - Get billing usage summary for a particular organization
 
 ### [Reports](docs/sdks/reports/README.md)
 
@@ -150,38 +134,44 @@ var res = await sdk.Apis.GetApisAsync(req);
 * [GetLintingReportSignedUrl](docs/sdks/reports/README.md#getlintingreportsignedurl) - Get the signed access url for the linting reports for a particular document.
 * [UploadReport](docs/sdks/reports/README.md#uploadreport) - Upload a report.
 
-### [Requests](docs/sdks/requests/README.md)
+### [SDK](docs/sdks/sdk/README.md)
 
-* [GenerateRequestPostmanCollection](docs/sdks/requests/README.md#generaterequestpostmancollection) - Generate a Postman collection for a particular request.
-* [GetRequestFromEventLog](docs/sdks/requests/README.md#getrequestfromeventlog) - Get information about a particular request.
-* [QueryEventLog](docs/sdks/requests/README.md#queryeventlog) - Query the event log to retrieve a list of requests.
-
-### [Schemas](docs/sdks/schemas/README.md)
-
-* [DeleteSchema](docs/sdks/schemas/README.md#deleteschema) - Delete a particular schema revision for an Api.
-* [DownloadSchema](docs/sdks/schemas/README.md#downloadschema) - Download the latest schema for a particular apiID.
-* [DownloadSchemaRevision](docs/sdks/schemas/README.md#downloadschemarevision) - Download a particular schema revision for an Api.
-* [GetSchema](docs/sdks/schemas/README.md#getschema) - Get information about the latest schema.
-* [GetSchemaDiff](docs/sdks/schemas/README.md#getschemadiff) - Get a diff of two schema revisions for an Api.
-* [GetSchemaRevision](docs/sdks/schemas/README.md#getschemarevision) - Get information about a particular schema revision for an Api.
-* [GetSchemas](docs/sdks/schemas/README.md#getschemas) - Get information about all schemas associated with a particular apiID.
-* [RegisterSchema](docs/sdks/schemas/README.md#registerschema) - Register a schema.
-
+* [GenerateCodeSamplePreview](docs/sdks/sdk/README.md#generatecodesamplepreview) - Generate Code Sample previews from a file and configuration parameters.
+* [GenerateCodeSamplePreviewAsync](docs/sdks/sdk/README.md#generatecodesamplepreviewasync) - Initiate asynchronous Code Sample preview generation from a file and configuration parameters, receiving an async JobID response for polling.
+* [GetCodeSamplePreviewAsync](docs/sdks/sdk/README.md#getcodesamplepreviewasync) - Poll for the result of an asynchronous Code Sample preview generation.
 
 ### [ShortURLs](docs/sdks/shorturls/README.md)
 
 * [Create](docs/sdks/shorturls/README.md#create) - Shorten a URL.
 
+### [Subscriptions](docs/sdks/subscriptions/README.md)
+
+* [ActivateSubscriptionNamespace](docs/sdks/subscriptions/README.md#activatesubscriptionnamespace) - Activate an ignored namespace for a subscription
+* [IgnoreSubscriptionNamespace](docs/sdks/subscriptions/README.md#ignoresubscriptionnamespace) - Ignored a namespace for a subscription
+
 ### [Suggest](docs/sdks/suggest/README.md)
 
 * [Suggest](docs/sdks/suggest/README.md#suggest) - Generate suggestions for improving an OpenAPI document.
+* [SuggestItems](docs/sdks/suggest/README.md#suggestitems) - Generate generic suggestions for a list of items.
 * [SuggestOpenAPI](docs/sdks/suggest/README.md#suggestopenapi) - (DEPRECATED) Generate suggestions for improving an OpenAPI document.
 * [SuggestOpenAPIRegistry](docs/sdks/suggest/README.md#suggestopenapiregistry) - Generate suggestions for improving an OpenAPI document stored in the registry.
 
 ### [Workspaces](docs/sdks/workspaces/README.md)
 
-* [GetWorkspace](docs/sdks/workspaces/README.md#getworkspace) - Get workspace
-* [GetWorkspaceFeatureFlags](docs/sdks/workspaces/README.md#getworkspacefeatureflags) - Get workspace feature flags
+* [Create](docs/sdks/workspaces/README.md#create) - Create a workspace
+* [CreateToken](docs/sdks/workspaces/README.md#createtoken) - Create a token for a particular workspace
+* [DeleteToken](docs/sdks/workspaces/README.md#deletetoken) - Delete a token for a particular workspace
+* [Get](docs/sdks/workspaces/README.md#get) - Get workspace by context
+* [GetAll](docs/sdks/workspaces/README.md#getall) - Get workspaces for a user
+* [GetByID](docs/sdks/workspaces/README.md#getbyid) - Get workspace
+* [GetFeatureFlags](docs/sdks/workspaces/README.md#getfeatureflags) - Get workspace feature flags
+* [GetSettings](docs/sdks/workspaces/README.md#getsettings) - Get workspace settings
+* [GetTeam](docs/sdks/workspaces/README.md#getteam) - Get team members for a particular workspace
+* [GetTokens](docs/sdks/workspaces/README.md#gettokens) - Get tokens for a particular workspace
+* [GrantAccess](docs/sdks/workspaces/README.md#grantaccess) - Grant a user access to a particular workspace
+* [RevokeAccess](docs/sdks/workspaces/README.md#revokeaccess) - Revoke a user's access to a particular workspace
+* [Update](docs/sdks/workspaces/README.md#update) - Update workspace details
+* [UpdateSettings](docs/sdks/workspaces/README.md#updatesettings) - Update workspace settings
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -195,15 +185,70 @@ var res = await sdk.Apis.GetApisAsync(req);
 
 You can override the default server globally by passing a server name to the `server: string` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the names associated with the available servers:
 
-| Name | Server | Variables |
-| ----- | ------ | --------- |
-| `prod` | `https://api.prod.speakeasyapi.dev` | None |
+| Name   | Server                              |
+| ------ | ----------------------------------- |
+| `prod` | `https://api.prod.speakeasyapi.dev` |
 
+#### Example
 
+```csharp
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using System;
+using System.Collections.Generic;
+
+var sdk = new SDK(
+    server: "prod",
+    security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    }
+);
+
+CodeSampleSchemaInput req = new CodeSampleSchemaInput() {
+    Languages = new List<string>() {
+        "<value>",
+    },
+    SchemaFile = new SchemaFile() {
+        Content = System.Text.Encoding.UTF8.GetBytes("0xc3dD8BfBef"),
+        FileName = "example.file",
+    },
+};
+
+var res = await sdk.GenerateCodeSamplePreviewAsync(req);
+
+// handle response
+```
 
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally by passing a URL to the `serverUrl: str` optional parameter when initializing the SDK client instance. For example:
+The default server can also be overridden globally by passing a URL to the `serverUrl: string` optional parameter when initializing the SDK client instance. For example:
+```csharp
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using System;
+using System.Collections.Generic;
+
+var sdk = new SDK(
+    serverUrl: "https://api.prod.speakeasyapi.dev",
+    security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    }
+);
+
+CodeSampleSchemaInput req = new CodeSampleSchemaInput() {
+    Languages = new List<string>() {
+        "<value>",
+    },
+    SchemaFile = new SchemaFile() {
+        Content = System.Text.Encoding.UTF8.GetBytes("0xc3dD8BfBef"),
+        FileName = "example.file",
+    },
+};
+
+var res = await sdk.GenerateCodeSamplePreviewAsync(req);
+
+// handle response
+```
 <!-- End Server Selection [server] -->
 
 <!-- Start Authentication [security] -->
@@ -213,27 +258,34 @@ The default server can also be overridden globally by passing a URL to the `serv
 
 This SDK supports the following security schemes globally:
 
-| Name        | Type        | Scheme      |
-| ----------- | ----------- | ----------- |
-| `APIKey`    | apiKey      | API key     |
-| `Bearer`    | http        | HTTP Bearer |
+| Name                  | Type   | Scheme      |
+| --------------------- | ------ | ----------- |
+| `APIKey`              | apiKey | API key     |
+| `Bearer`              | http   | HTTP Bearer |
+| `WorkspaceIdentifier` | apiKey | API key     |
 
 You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
 ```csharp
 using SpeakeasySDK;
-using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
+using System;
+using System.Collections.Generic;
 
 var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
 });
 
-DeleteApiRequest req = new DeleteApiRequest() {
-    ApiID = "<value>",
-    VersionID = "<value>",
+CodeSampleSchemaInput req = new CodeSampleSchemaInput() {
+    Languages = new List<string>() {
+        "<value>",
+    },
+    SchemaFile = new SchemaFile() {
+        Content = System.Text.Encoding.UTF8.GetBytes("0xc3dD8BfBef"),
+        FileName = "example.file",
+    },
 };
 
-var res = await sdk.Apis.DeleteApiAsync(req);
+var res = await sdk.GenerateCodeSamplePreviewAsync(req);
 
 // handle response
 ```
@@ -242,36 +294,32 @@ var res = await sdk.Apis.DeleteApiAsync(req);
 <!-- Start Global Parameters [global-parameters] -->
 ## Global Parameters
 
-## Global Parameters
-
 A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
 
-For example, you can set `workspaceID` to `"<value>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `GetWorkspace`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+For example, you can set `workspace_id` to `"<id>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `GetAccessToken`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
 ### Available Globals
 
 The following global parameter is available.
 
-| Name | Type | Required | Description |
-| ---- | ---- |:--------:| ----------- |
-| workspaceID | string |  | The WorkspaceID parameter. |
-
+| Name        | Type   | Description                |
+| ----------- | ------ | -------------------------- |
+| workspaceId | string | The WorkspaceId parameter. |
 
 ### Example
 
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
-using SpeakeasySDK.Models.Shared;
 
-var sdk = new SDK(security: new Security() {
-    APIKey = "<YOUR_API_KEY_HERE>",
-});
+var sdk = new SDK();
 
-GetWorkspaceRequest req = new GetWorkspaceRequest() {};
+GetAccessTokenRequest req = new GetAccessTokenRequest() {
+    WorkspaceId = "<id>",
+};
 
-var res = await sdk.Workspaces.GetWorkspaceAsync(req);
+var res = await sdk.Auth.GetAccessTokenAsync(req);
 
 // handle response
 ```
@@ -280,21 +328,31 @@ var res = await sdk.Workspaces.GetWorkspaceAsync(req);
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-Handling errors in this SDK should largely match your expectations.  All operations return a response object or thow an exception.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate type.
+Handling errors in this SDK should largely match your expectations. All operations return a response object or throw an exception.
 
-| Error Object                            | Status Code                             | Content Type                            |
-| --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.Error        | 5XX                                     | application/json                        |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+By default, an API error will raise a `SpeakeasySDK.Models.Errors.SDKException` exception, which has the following properties:
+
+| Property      | Type                  | Description           |
+|---------------|-----------------------|-----------------------|
+| `Message`     | *string*              | The error message     |
+| `StatusCode`  | *int*                 | The HTTP status code  |
+| `RawResponse` | *HttpResponseMessage* | The raw HTTP response |
+| `Body`        | *string*              | The response content  |
+
+When custom error responses are specified for an operation, the SDK may also throw their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `GenerateCodeSamplePreviewAsync` method throws the following exceptions:
+
+| Error Type                       | Status Code | Content Type     |
+| -------------------------------- | ----------- | ---------------- |
+| SpeakeasySDK.Models.Errors.Error | 4XX, 5XX    | application/json |
 
 ### Example
 
 ```csharp
 using SpeakeasySDK;
-using SpeakeasySDK.Models.Operations;
+using SpeakeasySDK.Models.Errors;
 using SpeakeasySDK.Models.Shared;
 using System;
-using SpeakeasySDK.Models.Errors;
+using System.Collections.Generic;
 
 var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
@@ -302,9 +360,17 @@ var sdk = new SDK(security: new Security() {
 
 try
 {
-    GetWorkspaceFeatureFlagsRequest req = new GetWorkspaceFeatureFlagsRequest() {};
+    CodeSampleSchemaInput req = new CodeSampleSchemaInput() {
+        Languages = new List<string>() {
+            "<value>",
+        },
+        SchemaFile = new SchemaFile() {
+            Content = System.Text.Encoding.UTF8.GetBytes("0xc3dD8BfBef"),
+            FileName = "example.file",
+        },
+    };
 
-    var res = await sdk.Workspaces.GetWorkspaceFeatureFlagsAsync(req);
+    var res = await sdk.GenerateCodeSamplePreviewAsync(req);
 
     // handle response
 }
@@ -312,11 +378,13 @@ catch (Exception ex)
 {
     if (ex is Error)
     {
-        // handle exception
+        // Handle exception data
+        throw;
     }
     else if (ex is SpeakeasySDK.Models.Errors.SDKException)
     {
-        // handle exception
+        // Handle default exception
+        throw;
     }
 }
 ```
@@ -339,7 +407,7 @@ var sdk = new SDK(security: new Security() {
 
 GetWorkspaceAccessRequest req = new GetWorkspaceAccessRequest() {};
 
-var res = await sdk.Auth.GetWorkspaceAccessAsync(
+var res = await sdk.Auth.GetAccessAsync(
     retryConfig: new RetryConfig(
         strategy: RetryConfig.RetryStrategy.BACKOFF,
         backoff: new BackoffStrategy(
@@ -349,7 +417,9 @@ var res = await sdk.Auth.GetWorkspaceAccessAsync(
             exponent: 1.1
         ),
         retryConnectionErrors: false
-    ),req);
+    ),
+    request: req
+);
 
 // handle response
 ```
@@ -378,7 +448,7 @@ var sdk = new SDK(
 
 GetWorkspaceAccessRequest req = new GetWorkspaceAccessRequest() {};
 
-var res = await sdk.Auth.GetWorkspaceAccessAsync(req);
+var res = await sdk.Auth.GetAccessAsync(req);
 
 // handle response
 ```

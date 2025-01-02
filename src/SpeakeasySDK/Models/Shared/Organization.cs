@@ -24,10 +24,7 @@ namespace SpeakeasySDK.Models.Shared
         public AccountType AccountType { get; set; } = default!;
 
         [JsonProperty("created_at")]
-        public DateTime? CreatedAt { get; set; }
-
-        [JsonProperty("free_trial_expiry")]
-        public DateTime? FreeTrialExpiry { get; set; }
+        public DateTime CreatedAt { get; set; } = default!;
 
         [JsonProperty("id")]
         public string Id { get; set; } = default!;
@@ -36,12 +33,24 @@ namespace SpeakeasySDK.Models.Shared
         public string Name { get; set; } = default!;
 
         [JsonProperty("slug")]
-        public string? Slug { get; set; }
+        public string Slug { get; set; } = default!;
+
+        [JsonProperty("sso_activated")]
+        public bool SsoActivated { get; set; } = default!;
 
         [JsonProperty("telemetry_disabled")]
         public bool TelemetryDisabled { get; set; } = default!;
 
         [JsonProperty("updated_at")]
-        public DateTime? UpdatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; } = default!;
+
+        [JsonProperty("free_trial_expiry")]
+        public DateTime? FreeTrialExpiry { get; set; } = null;
+
+        [JsonProperty("internal")]
+        public bool? Internal { get; set; }
+
+        [JsonProperty("sso_connection_id")]
+        public string? SsoConnectionId { get; set; } = null;
     }
 }

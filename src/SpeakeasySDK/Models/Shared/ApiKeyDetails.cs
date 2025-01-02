@@ -12,8 +12,8 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
-    using System.Collections.Generic;
     using System;
+    using System.Collections.Generic;
     
     public class ApiKeyDetails
     {
@@ -36,6 +36,12 @@ namespace SpeakeasySDK.Models.Shared
 
         [JsonProperty("telemetry_disabled")]
         public bool TelemetryDisabled { get; set; } = default!;
+
+        /// <summary>
+        /// Workspace creation timestamp.
+        /// </summary>
+        [JsonProperty("workspace_created_at")]
+        public DateTime WorkspaceCreatedAt { get; set; } = default!;
 
         [JsonProperty("workspace_id")]
         public string WorkspaceId { get; set; } = default!;

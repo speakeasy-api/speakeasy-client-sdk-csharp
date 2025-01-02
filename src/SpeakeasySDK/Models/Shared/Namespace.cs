@@ -10,6 +10,7 @@
 namespace SpeakeasySDK.Models.Shared
 {
     using Newtonsoft.Json;
+    using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System;
     
@@ -18,6 +19,9 @@ namespace SpeakeasySDK.Models.Shared
     /// </summary>
     public class Namespace
     {
+
+        [JsonProperty("composite_spec_metadata")]
+        public CompositeSpecMetadata? CompositeSpecMetadata { get; set; }
 
         [JsonProperty("created_at")]
         public DateTime CreatedAt { get; set; } = default!;
@@ -33,6 +37,12 @@ namespace SpeakeasySDK.Models.Shared
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; } = default!;
+
+        /// <summary>
+        /// Indicates whether the namespace is publicly accessible
+        /// </summary>
+        [JsonProperty("public")]
+        public bool? Public { get; set; }
 
         [JsonProperty("updated_at")]
         public DateTime UpdatedAt { get; set; } = default!;

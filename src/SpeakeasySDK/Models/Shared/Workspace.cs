@@ -28,25 +28,26 @@ namespace SpeakeasySDK.Models.Shared
         [JsonProperty("name")]
         public string Name { get; set; } = default!;
 
-        [JsonProperty("oci_repo")]
-        public string? OciRepo { get; set; }
-
-        [JsonProperty("oci_repo_created_at")]
-        public DateTime? OciRepoCreatedAt { get; set; }
-
         [JsonProperty("organization_id")]
         public string OrganizationId { get; set; } = default!;
 
         [JsonProperty("slug")]
         public string Slug { get; set; } = default!;
 
-        [JsonProperty("telemetry_disabled")]
-        public bool TelemetryDisabled { get; set; } = default!;
-
         [JsonProperty("updated_at")]
         public DateTime UpdatedAt { get; set; } = default!;
 
         [JsonProperty("verified")]
         public bool Verified { get; set; } = default!;
+
+        [JsonProperty("inactive")]
+        public bool? Inactive { get; set; }
+
+        /// <summary>
+        /// Deprecated. Use organization.telemetry_disabled instead.
+        /// </summary>
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
+        [JsonProperty("telemetry_disabled")]
+        public bool? TelemetryDisabled { get; set; }
     }
 }

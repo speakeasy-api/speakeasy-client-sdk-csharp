@@ -10,8 +10,8 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Utils;
-    using System.Net.Http;
     using System;
+    using System.Net.Http;
     
     public class SuggestResponse
     {

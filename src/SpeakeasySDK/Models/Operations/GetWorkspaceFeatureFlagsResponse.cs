@@ -11,8 +11,8 @@ namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
-    using System.Net.Http;
     using System;
+    using System.Net.Http;
     
     public class GetWorkspaceFeatureFlagsResponse
     {

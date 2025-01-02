@@ -17,7 +17,7 @@ namespace SpeakeasySDK.Models.Operations
         [SpeakeasyMetadata("multipartForm:content")]
         public byte[] Content { get; set; } = default!;
 
-        [SpeakeasyMetadata("multipartForm:name=file")]
+        [SpeakeasyMetadata("multipartForm:name=fileName")]
         public string FileName { get; set; } = default!;
     }
 }

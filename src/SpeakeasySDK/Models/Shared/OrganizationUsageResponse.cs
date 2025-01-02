@@ -12,8 +12,8 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
-    using System.Collections.Generic;
     using System;
+    using System.Collections.Generic;
     
     /// <summary>
     /// A billing summary of organization usage

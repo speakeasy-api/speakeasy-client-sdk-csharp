@@ -18,8 +18,8 @@ namespace SpeakeasySDK.Models.Operations
         /// <summary>
         /// Filter to only return events corresponding to a particular gen_lock_id (gen_lock_id uniquely identifies a target)
         /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=targetID")]
-        public string TargetID { get; set; } = default!;
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=target_id")]
+        public string TargetId { get; set; } = default!;
 
         /// <summary>
         /// Filter to only return events created after this timestamp
@@ -30,7 +30,7 @@ namespace SpeakeasySDK.Models.Operations
         /// <summary>
         /// Unique identifier of the workspace.
         /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=workspaceID")]
-        public string? WorkspaceID { get; set; }
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=workspace_id")]
+        public string? WorkspaceId { get; set; }
     }
 }

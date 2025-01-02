@@ -3,16 +3,17 @@
 
 ## Overview
 
-REST APIs for capturing event data
+REST APIs for managing events captured by a speakeasy binary (CLI, GitHub Action etc)
 
 ### Available Operations
 
-* [GetWorkspaceEventsByTarget](#getworkspaceeventsbytarget) - Load recent events for a particular workspace
-* [GetWorkspaceTargets](#getworkspacetargets) - Load targets for a particular workspace
-* [PostWorkspaceEvents](#postworkspaceevents) - Post events for a specific workspace
-* [SearchWorkspaceEvents](#searchworkspaceevents) - Search events for a particular workspace by any field
+* [GetEventsByTarget](#geteventsbytarget) - Load recent events for a particular workspace
+* [GetTargets](#gettargets) - Load targets for a particular workspace
+* [GetTargetsDeprecated](#gettargetsdeprecated) - Load targets for a particular workspace
+* [Post](#post) - Post events for a specific workspace
+* [Search](#search) - Search events for a particular workspace by any field
 
-## GetWorkspaceEventsByTarget
+## GetEventsByTarget
 
 Load recent events for a particular workspace
 
@@ -28,10 +29,10 @@ var sdk = new SDK(security: new Security() {
 });
 
 GetWorkspaceEventsByTargetRequest req = new GetWorkspaceEventsByTargetRequest() {
-    TargetID = "<value>",
+    TargetId = "<id>",
 };
 
-var res = await sdk.Events.GetWorkspaceEventsByTargetAsync(req);
+var res = await sdk.Events.GetEventsByTargetAsync(req);
 
 // handle response
 ```
@@ -48,13 +49,12 @@ var res = await sdk.Events.GetWorkspaceEventsByTargetAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | SpeakeasySDK.Models.Errors.Error        | 5XX                                     | application/json                        |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+| SpeakeasySDK.Models.Errors.SDKException | 4XX                                     | \*/\*                                   |
 
-
-## GetWorkspaceTargets
+## GetTargets
 
 Load targets for a particular workspace
 
@@ -71,7 +71,7 @@ var sdk = new SDK(security: new Security() {
 
 GetWorkspaceTargetsRequest req = new GetWorkspaceTargetsRequest() {};
 
-var res = await sdk.Events.GetWorkspaceTargetsAsync(req);
+var res = await sdk.Events.GetTargetsAsync(req);
 
 // handle response
 ```
@@ -88,13 +88,51 @@ var res = await sdk.Events.GetWorkspaceTargetsAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | SpeakeasySDK.Models.Errors.Error        | 5XX                                     | application/json                        |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+| SpeakeasySDK.Models.Errors.SDKException | 4XX                                     | \*/\*                                   |
 
+## GetTargetsDeprecated
 
-## PostWorkspaceEvents
+Load targets for a particular workspace
+
+### Example Usage
+
+```csharp
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Operations;
+using SpeakeasySDK.Models.Shared;
+
+var sdk = new SDK(security: new Security() {
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
+
+GetWorkspaceTargetsDeprecatedRequest req = new GetWorkspaceTargetsDeprecatedRequest() {};
+
+var res = await sdk.Events.GetTargetsDeprecatedAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                               | [GetWorkspaceTargetsDeprecatedRequest](../../Models/Operations/GetWorkspaceTargetsDeprecatedRequest.md) | :heavy_check_mark:                                                                                      | The request object to use for the request.                                                              |
+
+### Response
+
+**[GetWorkspaceTargetsDeprecatedResponse](../../Models/Operations/GetWorkspaceTargetsDeprecatedResponse.md)**
+
+### Errors
+
+| Error Type                              | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.Error        | 5XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 4XX                                     | \*/\*                                   |
+
+## Post
 
 Sends an array of events to be stored for a particular workspace.
 
@@ -103,8 +141,9 @@ Sends an array of events to be stored for a particular workspace.
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
-using System.Collections.Generic;
 using SpeakeasySDK.Models.Shared;
+using System;
+using System.Collections.Generic;
 
 var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
@@ -113,20 +152,20 @@ var sdk = new SDK(security: new Security() {
 PostWorkspaceEventsRequest req = new PostWorkspaceEventsRequest() {
     RequestBody = new List<CliEvent>() {
         new CliEvent() {
-            CreatedAt = System.DateTime.Parse("2024-11-21T06:58:42.120Z"),
-            ExecutionId = "<value>",
+            CreatedAt = System.DateTime.Parse("2024-05-07T03:24:39.583Z"),
+            ExecutionId = "<id>",
             Id = "<id>",
-            InteractionType = SpeakeasySDK.Models.Shared.InteractionType.CliExec,
-            LocalStartedAt = System.DateTime.Parse("2024-05-07T12:35:47.182Z"),
+            InteractionType = InteractionType.Quickstart,
+            LocalStartedAt = System.DateTime.Parse("2024-09-08T05:59:33.876Z"),
             SpeakeasyApiKeyName = "<value>",
             SpeakeasyVersion = "<value>",
             Success = false,
-            WorkspaceId = "<value>",
+            WorkspaceId = "<id>",
         },
     },
 };
 
-var res = await sdk.Events.PostWorkspaceEventsAsync(req);
+var res = await sdk.Events.PostAsync(req);
 
 // handle response
 ```
@@ -143,13 +182,12 @@ var res = await sdk.Events.PostWorkspaceEventsAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | SpeakeasySDK.Models.Errors.Error        | 5XX                                     | application/json                        |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+| SpeakeasySDK.Models.Errors.SDKException | 4XX                                     | \*/\*                                   |
 
-
-## SearchWorkspaceEvents
+## Search
 
 Search events for a particular workspace by any field
 
@@ -166,7 +204,7 @@ var sdk = new SDK(security: new Security() {
 
 SearchWorkspaceEventsRequest req = new SearchWorkspaceEventsRequest() {};
 
-var res = await sdk.Events.SearchWorkspaceEventsAsync(req);
+var res = await sdk.Events.SearchAsync(req);
 
 // handle response
 ```
@@ -183,7 +221,7 @@ var res = await sdk.Events.SearchWorkspaceEventsAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | SpeakeasySDK.Models.Errors.Error        | 5XX                                     | application/json                        |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+| SpeakeasySDK.Models.Errors.SDKException | 4XX                                     | \*/\*                                   |

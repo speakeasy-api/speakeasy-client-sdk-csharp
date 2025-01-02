@@ -8,6 +8,7 @@ REST APIs for managing LLM OAS suggestions
 ### Available Operations
 
 * [Suggest](#suggest) - Generate suggestions for improving an OpenAPI document.
+* [SuggestItems](#suggestitems) - Generate generic suggestions for a list of items.
 * [SuggestOpenAPI](#suggestopenapi) - (DEPRECATED) Generate suggestions for improving an OpenAPI document.
 * [SuggestOpenAPIRegistry](#suggestopenapiregistry) - Generate suggestions for improving an OpenAPI document stored in the registry.
 
@@ -40,7 +41,7 @@ SuggestRequest req = new SuggestRequest() {
         },
         OasSummary = new OASSummary() {
             Info = new OASInfo() {
-                Description = "Object-based multi-state pricing structure",
+                Description = "kielbasa psst stitcher cannon devoted blindly apropos low",
                 License = new License() {},
                 Summary = "<value>",
                 Title = "<value>",
@@ -48,19 +49,19 @@ SuggestRequest req = new SuggestRequest() {
             },
             Operations = new List<OASOperation>() {
                 new OASOperation() {
-                    Description = "Innovative tangible hierarchy",
+                    Description = "via apparatus gray whether opposite what",
                     Method = "<value>",
-                    OperationId = "<value>",
-                    Path = "/usr/include",
+                    OperationId = "<id>",
+                    Path = "/sys",
                     Tags = new List<string>() {
                         "<value>",
                     },
                 },
             },
         },
-        SuggestionType = SpeakeasySDK.Models.Shared.SuggestRequestBodySuggestionType.MethodNames,
+        SuggestionType = SuggestRequestBodySuggestionType.MethodNames,
     },
-    XSessionId = "<value>",
+    XSessionId = "<id>",
 };
 
 var res = await sdk.Suggest.SuggestAsync(req);
@@ -80,10 +81,52 @@ var res = await sdk.Suggest.SuggestAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+| SpeakeasySDK.Models.Errors.SDKException | 4XX, 5XX                                | \*/\*                                   |
 
+## SuggestItems
+
+Generate generic suggestions for a list of items.
+
+### Example Usage
+
+```csharp
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using System.Collections.Generic;
+
+var sdk = new SDK(security: new Security() {
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
+
+SuggestItemsRequestBody req = new SuggestItemsRequestBody() {
+    Items = new List<string>() {
+        "<value>",
+    },
+    Prompt = "<value>",
+};
+
+var res = await sdk.Suggest.SuggestItemsAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `request`                                                                 | [SuggestItemsRequestBody](../../Models/Shared/SuggestItemsRequestBody.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
+
+### Response
+
+**[SuggestItemsResponse](../../Models/Operations/SuggestItemsResponse.md)**
+
+### Errors
+
+| Error Type                              | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4XX, 5XX                                | \*/\*                                   |
 
 ## SuggestOpenAPI
 
@@ -95,7 +138,7 @@ Get suggestions from an LLM model for improving an OpenAPI document.
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
-using System.Collections.Generic;
+using System;
 
 var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
@@ -103,12 +146,12 @@ var sdk = new SDK(security: new Security() {
 
 SuggestOpenAPIRequest req = new SuggestOpenAPIRequest() {
     RequestBody = new SuggestOpenAPIRequestBody() {
-        Schema = new Models.Operations.Schema() {
-            Content = System.Text.Encoding.UTF8.GetBytes("0x0FbfeAEcc8"),
+        Schema = new Schema() {
+            Content = System.Text.Encoding.UTF8.GetBytes("0x0beEcB7cF6"),
             FileName = "example.file",
         },
     },
-    XSessionId = "<value>",
+    XSessionId = "<id>",
 };
 
 var res = await sdk.Suggest.SuggestOpenAPIAsync(req);
@@ -128,10 +171,9 @@ var res = await sdk.Suggest.SuggestOpenAPIAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
-
+| SpeakeasySDK.Models.Errors.SDKException | 4XX, 5XX                                | \*/\*                                   |
 
 ## SuggestOpenAPIRegistry
 
@@ -143,7 +185,6 @@ Get suggestions from an LLM model for improving an OpenAPI document stored in th
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
-using System.Collections.Generic;
 
 var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
@@ -152,7 +193,7 @@ var sdk = new SDK(security: new Security() {
 SuggestOpenAPIRegistryRequest req = new SuggestOpenAPIRegistryRequest() {
     NamespaceName = "<value>",
     RevisionReference = "<value>",
-    XSessionId = "<value>",
+    XSessionId = "<id>",
 };
 
 var res = await sdk.Suggest.SuggestOpenAPIRegistryAsync(req);
@@ -172,6 +213,6 @@ var res = await sdk.Suggest.SuggestOpenAPIRegistryAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+| SpeakeasySDK.Models.Errors.SDKException | 4XX, 5XX                                | \*/\*                                   |

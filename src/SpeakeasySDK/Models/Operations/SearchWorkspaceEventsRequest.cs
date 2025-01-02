@@ -16,6 +16,12 @@ namespace SpeakeasySDK.Models.Operations
     {
 
         /// <summary>
+        /// Shared execution ID for cli events across a single action.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=execution_id")]
+        public string? ExecutionId { get; set; }
+
+        /// <summary>
         /// A specific gen lock ID for the events.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=generate_gen_lock_id")]
@@ -26,6 +32,12 @@ namespace SpeakeasySDK.Models.Operations
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=interaction_type")]
         public InteractionType? InteractionType { get; set; }
+
+        /// <summary>
+        /// Number of results to return.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=limit")]
+        public long? Limit { get; set; }
 
         /// <summary>
         /// Unique identifier of the lint report digest.
@@ -46,9 +58,15 @@ namespace SpeakeasySDK.Models.Operations
         public string? SourceRevisionDigest { get; set; }
 
         /// <summary>
+        /// Whether the event was successful or not.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=success")]
+        public bool? Success { get; set; }
+
+        /// <summary>
         /// Unique identifier of the workspace.
         /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=workspaceID")]
-        public string? WorkspaceID { get; set; }
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=workspace_id")]
+        public string? WorkspaceId { get; set; }
     }
 }
