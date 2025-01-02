@@ -930,7 +930,7 @@ Based on:
 ### Releases
 - [NuGet v5.10.0] https://www.nuget.org/packages/SpeakeasySDK/5.10.0 - .
 
-## 2025-01-02 00:30:00
+## 2025-01-02 00:35:00
 ### Changes
 Based on:
 - OpenAPI Doc  
