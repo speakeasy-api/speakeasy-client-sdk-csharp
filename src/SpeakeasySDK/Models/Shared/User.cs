@@ -38,7 +38,7 @@ namespace SpeakeasySDK.Models.Shared
         /// Identifier of the default workspace.
         /// </summary>
         [JsonProperty("default_workspace_id")]
-        public string? DefaultWorkspaceId { get; set; }
+        public string? DefaultWorkspaceId { get; set; } = null;
 
         /// <summary>
         /// Display name of the user.
@@ -62,7 +62,7 @@ namespace SpeakeasySDK.Models.Shared
         /// GitHub handle of the user.
         /// </summary>
         [JsonProperty("github_handle")]
-        public string? GithubHandle { get; set; }
+        public string? GithubHandle { get; set; } = null;
 
         /// <summary>
         /// Unique identifier for the user.
@@ -71,16 +71,22 @@ namespace SpeakeasySDK.Models.Shared
         public string Id { get; set; } = default!;
 
         /// <summary>
+        /// Indicates whether the user is internal.
+        /// </summary>
+        [JsonProperty("internal")]
+        public bool? Internal { get; set; }
+
+        /// <summary>
         /// Timestamp of the last login.
         /// </summary>
         [JsonProperty("last_login_at")]
-        public DateTime LastLoginAt { get; set; } = default!;
+        public DateTime? LastLoginAt { get; set; } = null;
 
         /// <summary>
         /// URL of the user&apos;s photo.
         /// </summary>
         [JsonProperty("photo_url")]
-        public string? PhotoUrl { get; set; }
+        public string? PhotoUrl { get; set; } = null;
 
         /// <summary>
         /// Timestamp of the user&apos;s last update.

@@ -78,6 +78,12 @@ namespace SpeakeasySDK.Models.Shared
         public long? GenerateNumberOfOperationsUsed { get; set; }
 
         /// <summary>
+        /// The number of terraform resources used in generation.
+        /// </summary>
+        [JsonProperty("generate_number_of_terraform_resources")]
+        public long? GenerateNumberOfTerraformResources { get; set; }
+
+        /// <summary>
         /// Indicates whether the target was considered published.
         /// </summary>
         [JsonProperty("generate_published")]
@@ -192,6 +198,42 @@ namespace SpeakeasySDK.Models.Shared
         public InteractionType LastEventInteractionType { get; set; } = default!;
 
         /// <summary>
+        /// Timestamp when the last publishing event was created.
+        /// </summary>
+        [JsonProperty("last_publish_created_at")]
+        public DateTime? LastPublishCreatedAt { get; set; }
+
+        /// <summary>
+        /// Link to the GitHub action run for the last publishing event.
+        /// </summary>
+        [JsonProperty("last_publish_gh_action_run_link")]
+        public string? LastPublishGhActionRunLink { get; set; }
+
+        /// <summary>
+        /// Name of the published package.
+        /// </summary>
+        [JsonProperty("publish_package_name")]
+        public string? PublishPackageName { get; set; }
+
+        /// <summary>
+        /// Name of the registry where the package was published.
+        /// </summary>
+        [JsonProperty("publish_package_registry_name")]
+        public string? PublishPackageRegistryName { get; set; }
+
+        /// <summary>
+        /// URL of the published package.
+        /// </summary>
+        [JsonProperty("publish_package_url")]
+        public string? PublishPackageUrl { get; set; }
+
+        /// <summary>
+        /// Version of the published package.
+        /// </summary>
+        [JsonProperty("publish_package_version")]
+        public string? PublishPackageVersion { get; set; }
+
+        /// <summary>
         /// Label of the git repository.
         /// </summary>
         [JsonProperty("repo_label")]
@@ -220,6 +262,18 @@ namespace SpeakeasySDK.Models.Shared
         /// </summary>
         [JsonProperty("success")]
         public bool? Success { get; set; }
+
+        /// <summary>
+        /// Workflow lock file (post execution)
+        /// </summary>
+        [JsonProperty("workflow_lock_post_raw")]
+        public string? WorkflowLockPostRaw { get; set; }
+
+        /// <summary>
+        /// Workflow lock file (prior to execution)
+        /// </summary>
+        [JsonProperty("workflow_lock_pre_raw")]
+        public string? WorkflowLockPreRaw { get; set; }
 
         /// <summary>
         /// Workflow file (post execution)

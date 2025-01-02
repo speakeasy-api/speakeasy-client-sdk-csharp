@@ -22,7 +22,7 @@ namespace SpeakeasySDK.Models.Operations
         [SpeakeasyMetadata("multipartForm:name=data,json")]
         public Report Data { get; set; } = default!;
 
-        [SpeakeasyMetadata("multipartForm:file")]
+        [SpeakeasyMetadata("multipartForm:file,name=file")]
         public File File { get; set; } = default!;
     }
 }

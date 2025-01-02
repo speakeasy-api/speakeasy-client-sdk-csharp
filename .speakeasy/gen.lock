@@ -1,27 +1,27 @@
 lockVersion: 2.0.0
 id: f73d2126-985b-4d69-88ee-b7c69254d8bf
 management:
-  docChecksum: 40626f73138958b2117c67a0ddff344f
-  docVersion: 0.4.0 .
-  speakeasyVersion: 1.400.0
-  generationVersion: 2.420.2
-  releaseVersion: 5.10.0
-  configChecksum: f3ada6a9f429b9cc251b45306c168a16
+  docChecksum: 17684e14e65fca2909aaf49de5c6b935
+  docVersion: 0.4.0
+  speakeasyVersion: 1.460.3
+  generationVersion: 2.484.0
+  releaseVersion: 5.11.0
+  configChecksum: ff6b845197ae681d026b0af12cd2d0de
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
 features:
   csharp:
     additionalDependencies: 0.1.0
-    core: 3.10.0
+    core: 3.10.10
     deprecations: 2.81.2
-    examples: 2.81.3
     globalSecurity: 2.83.6
     globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.3
     globals: 2.82.1
-    inputOutputModels: 2.83.0
     intellisenseMarkdownSupport: 0.1.0
+    methodArguments: 0.1.0
+    nameOverrides: 2.81.2
     nullables: 0.1.0
     responseFormat: 0.0.4
     retries: 0.0.1
@@ -34,125 +34,104 @@ generatedFiles:
   - SpeakeasySDK.sln
   - USAGE.md
   - docs/Models/Errors/Error.md
-  - docs/Models/Operations/CheckAccessRequest.md
-  - docs/Models/Operations/CheckAccessResponse.md
-  - docs/Models/Operations/ConfigureCodeSamplesResponse.md
-  - docs/Models/Operations/ConfigureMintlifyRepoResponse.md
-  - docs/Models/Operations/ConfigureTargetResponse.md
+  - docs/Models/Operations/ActivateSubscriptionNamespaceRequest.md
+  - docs/Models/Operations/ActivateSubscriptionNamespaceResponse.md
+  - docs/Models/Operations/CheckGithubAccessRequest.md
+  - docs/Models/Operations/CheckGithubAccessResponse.md
   - docs/Models/Operations/CreateFreeTrialResponse.md
+  - docs/Models/Operations/CreateOrganizationResponse.md
+  - docs/Models/Operations/CreateRemoteSourceResponse.md
   - docs/Models/Operations/CreateRequestBody.md
   - docs/Models/Operations/CreateResponse.md
-  - docs/Models/Operations/DeleteApiEndpointRequest.md
-  - docs/Models/Operations/DeleteApiEndpointResponse.md
-  - docs/Models/Operations/DeleteApiRequest.md
-  - docs/Models/Operations/DeleteApiResponse.md
-  - docs/Models/Operations/DeleteSchemaRequest.md
-  - docs/Models/Operations/DeleteSchemaResponse.md
-  - docs/Models/Operations/DeleteVersionMetadataRequest.md
-  - docs/Models/Operations/DeleteVersionMetadataResponse.md
-  - docs/Models/Operations/DownloadSchemaRequest.md
-  - docs/Models/Operations/DownloadSchemaResponse.md
-  - docs/Models/Operations/DownloadSchemaRevisionRequest.md
-  - docs/Models/Operations/DownloadSchemaRevisionResponse.md
-  - docs/Models/Operations/FetchPublishingPRsRequest.md
-  - docs/Models/Operations/FetchPublishingPRsResponse.md
+  - docs/Models/Operations/CreateWorkspaceResponse.md
+  - docs/Models/Operations/CreateWorkspaceTokenRequest.md
+  - docs/Models/Operations/CreateWorkspaceTokenResponse.md
+  - docs/Models/Operations/DeleteWorkspaceTokenRequest.md
+  - docs/Models/Operations/DeleteWorkspaceTokenResponse.md
   - docs/Models/Operations/File.md
-  - docs/Models/Operations/FindApiEndpointRequest.md
-  - docs/Models/Operations/FindApiEndpointResponse.md
-  - docs/Models/Operations/GenerateOpenApiSpecForApiEndpointRequest.md
-  - docs/Models/Operations/GenerateOpenApiSpecForApiEndpointResponse.md
-  - docs/Models/Operations/GenerateOpenApiSpecRequest.md
-  - docs/Models/Operations/GenerateOpenApiSpecResponse.md
-  - docs/Models/Operations/GeneratePostmanCollectionForApiEndpointRequest.md
-  - docs/Models/Operations/GeneratePostmanCollectionForApiEndpointResponse.md
-  - docs/Models/Operations/GeneratePostmanCollectionRequest.md
-  - docs/Models/Operations/GeneratePostmanCollectionResponse.md
-  - docs/Models/Operations/GenerateRequestPostmanCollectionRequest.md
-  - docs/Models/Operations/GenerateRequestPostmanCollectionResponse.md
+  - docs/Models/Operations/GenerateCodeSamplePreviewAsyncResponse.md
+  - docs/Models/Operations/GenerateCodeSamplePreviewAsyncResponseBody.md
+  - docs/Models/Operations/GenerateCodeSamplePreviewResponse.md
   - docs/Models/Operations/GetAccessTokenRequest.md
   - docs/Models/Operations/GetAccessTokenResponse.md
-  - docs/Models/Operations/GetActionRequest.md
-  - docs/Models/Operations/GetActionResponse.md
-  - docs/Models/Operations/GetAllApiEndpointsRequest.md
-  - docs/Models/Operations/GetAllApiEndpointsResponse.md
-  - docs/Models/Operations/GetAllApiVersionsRequest.md
-  - docs/Models/Operations/GetAllApiVersionsResponse.md
-  - docs/Models/Operations/GetAllForVersionApiEndpointsRequest.md
-  - docs/Models/Operations/GetAllForVersionApiEndpointsResponse.md
-  - docs/Models/Operations/GetApiEndpointRequest.md
-  - docs/Models/Operations/GetApiEndpointResponse.md
-  - docs/Models/Operations/GetApisRequest.md
-  - docs/Models/Operations/GetApisResponse.md
   - docs/Models/Operations/GetBlobRequest.md
   - docs/Models/Operations/GetBlobResponse.md
   - docs/Models/Operations/GetChangesReportSignedUrlRequest.md
   - docs/Models/Operations/GetChangesReportSignedUrlResponse.md
   - docs/Models/Operations/GetChangesReportSignedUrlSignedAccess.md
-  - docs/Models/Operations/GetEmbedAccessTokenRequest.md
-  - docs/Models/Operations/GetEmbedAccessTokenResponse.md
+  - docs/Models/Operations/GetCodeSamplePreviewAsyncRequest.md
+  - docs/Models/Operations/GetCodeSamplePreviewAsyncResponse.md
+  - docs/Models/Operations/GetCodeSamplePreviewAsyncResponseBody.md
+  - docs/Models/Operations/GetGitHubActionRequest.md
+  - docs/Models/Operations/GetGitHubActionResponse.md
+  - docs/Models/Operations/GetGithubSetupStateRequest.md
+  - docs/Models/Operations/GetGithubSetupStateResponse.md
   - docs/Models/Operations/GetLintingReportSignedUrlRequest.md
   - docs/Models/Operations/GetLintingReportSignedUrlResponse.md
   - docs/Models/Operations/GetLintingReportSignedUrlSignedAccess.md
   - docs/Models/Operations/GetManifestRequest.md
   - docs/Models/Operations/GetManifestResponse.md
   - docs/Models/Operations/GetNamespacesResponse.md
-  - docs/Models/Operations/GetOASSummaryRequest.md
-  - docs/Models/Operations/GetOASSummaryResponse.md
   - docs/Models/Operations/GetOrganizationRequest.md
   - docs/Models/Operations/GetOrganizationResponse.md
   - docs/Models/Operations/GetOrganizationUsageResponse.md
   - docs/Models/Operations/GetOrganizationsResponse.md
-  - docs/Models/Operations/GetRequestFromEventLogRequest.md
-  - docs/Models/Operations/GetRequestFromEventLogResponse.md
   - docs/Models/Operations/GetRevisionsRequest.md
   - docs/Models/Operations/GetRevisionsResponse.md
-  - docs/Models/Operations/GetSchemaDiffRequest.md
-  - docs/Models/Operations/GetSchemaDiffResponse.md
-  - docs/Models/Operations/GetSchemaRequest.md
-  - docs/Models/Operations/GetSchemaResponse.md
-  - docs/Models/Operations/GetSchemaRevisionRequest.md
-  - docs/Models/Operations/GetSchemaRevisionResponse.md
-  - docs/Models/Operations/GetSchemasRequest.md
-  - docs/Models/Operations/GetSchemasResponse.md
   - docs/Models/Operations/GetTagsRequest.md
   - docs/Models/Operations/GetTagsResponse.md
   - docs/Models/Operations/GetUserResponse.md
-  - docs/Models/Operations/GetValidEmbedAccessTokensResponse.md
-  - docs/Models/Operations/GetVersionMetadataRequest.md
-  - docs/Models/Operations/GetVersionMetadataResponse.md
   - docs/Models/Operations/GetWorkspaceAccessRequest.md
   - docs/Models/Operations/GetWorkspaceAccessResponse.md
+  - docs/Models/Operations/GetWorkspaceByContextResponse.md
   - docs/Models/Operations/GetWorkspaceEventsByTargetRequest.md
   - docs/Models/Operations/GetWorkspaceEventsByTargetResponse.md
   - docs/Models/Operations/GetWorkspaceFeatureFlagsRequest.md
   - docs/Models/Operations/GetWorkspaceFeatureFlagsResponse.md
   - docs/Models/Operations/GetWorkspaceRequest.md
   - docs/Models/Operations/GetWorkspaceResponse.md
+  - docs/Models/Operations/GetWorkspaceSettingsRequest.md
+  - docs/Models/Operations/GetWorkspaceSettingsResponse.md
+  - docs/Models/Operations/GetWorkspaceTargetsDeprecatedRequest.md
+  - docs/Models/Operations/GetWorkspaceTargetsDeprecatedResponse.md
   - docs/Models/Operations/GetWorkspaceTargetsRequest.md
   - docs/Models/Operations/GetWorkspaceTargetsResponse.md
+  - docs/Models/Operations/GetWorkspaceTeamRequest.md
+  - docs/Models/Operations/GetWorkspaceTeamResponse.md
+  - docs/Models/Operations/GetWorkspaceTokensRequest.md
+  - docs/Models/Operations/GetWorkspaceTokensResponse.md
+  - docs/Models/Operations/GetWorkspacesResponse.md
+  - docs/Models/Operations/GithubCheckPublishingPRsRequest.md
+  - docs/Models/Operations/GithubCheckPublishingPRsResponse.md
   - docs/Models/Operations/GithubCheckPublishingSecretsRequest.md
   - docs/Models/Operations/GithubCheckPublishingSecretsResponse.md
+  - docs/Models/Operations/GithubConfigureCodeSamplesResponse.md
+  - docs/Models/Operations/GithubConfigureMintlifyRepoResponse.md
+  - docs/Models/Operations/GithubConfigureTargetResponse.md
   - docs/Models/Operations/GithubStorePublishingSecretsResponse.md
-  - docs/Models/Operations/InsertVersionMetadataRequest.md
-  - docs/Models/Operations/InsertVersionMetadataResponse.md
-  - docs/Models/Operations/Op.md
+  - docs/Models/Operations/GithubTriggerActionResponse.md
+  - docs/Models/Operations/GrantUserAccessToWorkspaceRequest.md
+  - docs/Models/Operations/GrantUserAccessToWorkspaceResponse.md
+  - docs/Models/Operations/IgnoreSubscriptionNamespaceRequest.md
+  - docs/Models/Operations/IgnoreSubscriptionNamespaceResponse.md
+  - docs/Models/Operations/LinkGithubAccessRequest.md
+  - docs/Models/Operations/LinkGithubAccessResponse.md
+  - docs/Models/Operations/ListRemoteSourcesRequest.md
+  - docs/Models/Operations/ListRemoteSourcesResponse.md
   - docs/Models/Operations/PostTagsRequest.md
   - docs/Models/Operations/PostTagsResponse.md
   - docs/Models/Operations/PostWorkspaceEventsRequest.md
   - docs/Models/Operations/PostWorkspaceEventsResponse.md
   - docs/Models/Operations/PreflightResponse.md
-  - docs/Models/Operations/QueryEventLogRequest.md
-  - docs/Models/Operations/QueryEventLogResponse.md
-  - docs/Models/Operations/QueryParamOp.md
-  - docs/Models/Operations/RegisterSchemaFile.md
-  - docs/Models/Operations/RegisterSchemaRequest.md
-  - docs/Models/Operations/RegisterSchemaRequestBody.md
-  - docs/Models/Operations/RegisterSchemaResponse.md
-  - docs/Models/Operations/RevokeEmbedAccessTokenRequest.md
-  - docs/Models/Operations/RevokeEmbedAccessTokenResponse.md
+  - docs/Models/Operations/RevokeUserAccessToWorkspaceRequest.md
+  - docs/Models/Operations/RevokeUserAccessToWorkspaceResponse.md
   - docs/Models/Operations/Schema.md
   - docs/Models/Operations/SearchWorkspaceEventsRequest.md
   - docs/Models/Operations/SearchWorkspaceEventsResponse.md
+  - docs/Models/Operations/SetVisibilityRequest.md
+  - docs/Models/Operations/SetVisibilityRequestBody.md
+  - docs/Models/Operations/SetVisibilityResponse.md
+  - docs/Models/Operations/SuggestItemsResponse.md
   - docs/Models/Operations/SuggestOpenAPIRegistryRequest.md
   - docs/Models/Operations/SuggestOpenAPIRegistryResponse.md
   - docs/Models/Operations/SuggestOpenAPIRequest.md
@@ -160,36 +139,31 @@ generatedFiles:
   - docs/Models/Operations/SuggestOpenAPIResponse.md
   - docs/Models/Operations/SuggestRequest.md
   - docs/Models/Operations/SuggestResponse.md
-  - docs/Models/Operations/TriggerActionResponse.md
+  - docs/Models/Operations/UpdateWorkspaceDetailsRequest.md
+  - docs/Models/Operations/UpdateWorkspaceDetailsResponse.md
+  - docs/Models/Operations/UpdateWorkspaceSettingsRequest.md
+  - docs/Models/Operations/UpdateWorkspaceSettingsResponse.md
   - docs/Models/Operations/UploadReportRequestBody.md
   - docs/Models/Operations/UploadReportResponse.md
   - docs/Models/Operations/UploadReportUploadedReport.md
-  - docs/Models/Operations/UpsertApiEndpointRequest.md
-  - docs/Models/Operations/UpsertApiEndpointResponse.md
-  - docs/Models/Operations/UpsertApiRequest.md
-  - docs/Models/Operations/UpsertApiResponse.md
   - docs/Models/Operations/ValidateApiKeyResponse.md
   - docs/Models/Shared/AccessDetails.md
   - docs/Models/Shared/AccessToken.md
   - docs/Models/Shared/AccessTokenUser.md
   - docs/Models/Shared/AccountType.md
+  - docs/Models/Shared/Actions.md
   - docs/Models/Shared/AddTags.md
   - docs/Models/Shared/Annotations.md
-  - docs/Models/Shared/Api.md
-  - docs/Models/Shared/ApiEndpoint.md
   - docs/Models/Shared/ApiKeyDetails.md
   - docs/Models/Shared/Auth.md
-  - docs/Models/Shared/BoundedRequest.md
   - docs/Models/Shared/Claims.md
   - docs/Models/Shared/CliEvent.md
+  - docs/Models/Shared/CodeSampleSchemaInput.md
+  - docs/Models/Shared/CodeSamplesJobStatus.md
+  - docs/Models/Shared/CompositeSpecMetadata.md
   - docs/Models/Shared/Diagnostic.md
-  - docs/Models/Shared/EmbedAccessTokenResponse.md
-  - docs/Models/Shared/EmbedToken.md
   - docs/Models/Shared/FeatureFlag.md
-  - docs/Models/Shared/Filter.md
-  - docs/Models/Shared/Filters.md
   - docs/Models/Shared/GenerateBumpType.md
-  - docs/Models/Shared/GenerateOpenApiSpecDiff.md
   - docs/Models/Shared/GetNamespacesResponse.md
   - docs/Models/Shared/GetRevisionsResponse.md
   - docs/Models/Shared/GetTagsResponse.md
@@ -200,6 +174,7 @@ generatedFiles:
   - docs/Models/Shared/GithubGetActionResponse.md
   - docs/Models/Shared/GithubMissingPublishingSecretsResponse.md
   - docs/Models/Shared/GithubPublishingPRResponse.md
+  - docs/Models/Shared/GithubSetupStateResponse.md
   - docs/Models/Shared/GithubStorePublishingSecretsRequest.md
   - docs/Models/Shared/GithubTriggerActionRequest.md
   - docs/Models/Shared/InteractionType.md
@@ -216,13 +191,18 @@ generatedFiles:
   - docs/Models/Shared/OrganizationUsageResponse.md
   - docs/Models/Shared/PreflightRequest.md
   - docs/Models/Shared/PreflightToken.md
+  - docs/Models/Shared/Relationship.md
+  - docs/Models/Shared/RemoteDocument.md
+  - docs/Models/Shared/RemoteSource.md
+  - docs/Models/Shared/RemoteSourceSubscriptionSettings.md
   - docs/Models/Shared/Report.md
-  - docs/Models/Shared/RequestMetadata.md
   - docs/Models/Shared/Revision.md
-  - docs/Models/Shared/Schema.md
-  - docs/Models/Shared/SchemaDiff.md
+  - docs/Models/Shared/SSOMetadata.md
+  - docs/Models/Shared/SchemaFile.md
+  - docs/Models/Shared/Secrets.md
   - docs/Models/Shared/Security.md
   - docs/Models/Shared/ShortURL.md
+  - docs/Models/Shared/SuggestItemsRequestBody.md
   - docs/Models/Shared/SuggestOptsOld.md
   - docs/Models/Shared/SuggestRequestBody.md
   - docs/Models/Shared/SuggestRequestBodySuggestionType.md
@@ -230,163 +210,135 @@ generatedFiles:
   - docs/Models/Shared/Tag.md
   - docs/Models/Shared/TargetSDK.md
   - docs/Models/Shared/Type.md
-  - docs/Models/Shared/UnboundedRequest.md
   - docs/Models/Shared/User.md
   - docs/Models/Shared/V2Descriptor.md
-  - docs/Models/Shared/ValueChange.md
-  - docs/Models/Shared/VersionMetadata.md
   - docs/Models/Shared/WorkflowDocument.md
   - docs/Models/Shared/Workspace.md
+  - docs/Models/Shared/WorkspaceAndOrganization.md
   - docs/Models/Shared/WorkspaceFeatureFlagResponse.md
+  - docs/Models/Shared/WorkspaceInviteResponse.md
+  - docs/Models/Shared/WorkspaceSettings.md
+  - docs/Models/Shared/WorkspaceTeamResponse.md
+  - docs/Models/Shared/WorkspaceToken.md
   - docs/Models/Shared/Workspaces.md
-  - docs/sdks/apiendpoints/README.md
-  - docs/sdks/apis/README.md
   - docs/sdks/artifacts/README.md
   - docs/sdks/auth/README.md
-  - docs/sdks/embeds/README.md
   - docs/sdks/events/README.md
   - docs/sdks/github/README.md
-  - docs/sdks/metadata/README.md
   - docs/sdks/organizations/README.md
   - docs/sdks/reports/README.md
-  - docs/sdks/requests/README.md
-  - docs/sdks/schemas/README.md
   - docs/sdks/sdk/README.md
   - docs/sdks/shorturls/README.md
+  - docs/sdks/subscriptions/README.md
   - docs/sdks/suggest/README.md
   - docs/sdks/workspaces/README.md
   - global.json
-  - src/SpeakeasySDK/ApiEndpoints.cs
-  - src/SpeakeasySDK/Apis.cs
   - src/SpeakeasySDK/Artifacts.cs
   - src/SpeakeasySDK/Auth.cs
-  - src/SpeakeasySDK/Embeds.cs
   - src/SpeakeasySDK/Events.cs
   - src/SpeakeasySDK/Github.cs
   - src/SpeakeasySDK/Hooks/HookTypes.cs
   - src/SpeakeasySDK/Hooks/SDKHooks.cs
-  - src/SpeakeasySDK/Metadata.cs
   - src/SpeakeasySDK/Models/Errors/Error.cs
   - src/SpeakeasySDK/Models/Errors/SDKException.cs
-  - src/SpeakeasySDK/Models/Operations/CheckAccessRequest.cs
-  - src/SpeakeasySDK/Models/Operations/CheckAccessResponse.cs
-  - src/SpeakeasySDK/Models/Operations/ConfigureCodeSamplesResponse.cs
-  - src/SpeakeasySDK/Models/Operations/ConfigureMintlifyRepoResponse.cs
-  - src/SpeakeasySDK/Models/Operations/ConfigureTargetResponse.cs
+  - src/SpeakeasySDK/Models/Operations/ActivateSubscriptionNamespaceRequest.cs
+  - src/SpeakeasySDK/Models/Operations/ActivateSubscriptionNamespaceResponse.cs
+  - src/SpeakeasySDK/Models/Operations/CheckGithubAccessRequest.cs
+  - src/SpeakeasySDK/Models/Operations/CheckGithubAccessResponse.cs
   - src/SpeakeasySDK/Models/Operations/CreateFreeTrialResponse.cs
+  - src/SpeakeasySDK/Models/Operations/CreateOrganizationResponse.cs
+  - src/SpeakeasySDK/Models/Operations/CreateRemoteSourceResponse.cs
   - src/SpeakeasySDK/Models/Operations/CreateRequestBody.cs
   - src/SpeakeasySDK/Models/Operations/CreateResponse.cs
-  - src/SpeakeasySDK/Models/Operations/DeleteApiEndpointRequest.cs
-  - src/SpeakeasySDK/Models/Operations/DeleteApiEndpointResponse.cs
-  - src/SpeakeasySDK/Models/Operations/DeleteApiRequest.cs
-  - src/SpeakeasySDK/Models/Operations/DeleteApiResponse.cs
-  - src/SpeakeasySDK/Models/Operations/DeleteSchemaRequest.cs
-  - src/SpeakeasySDK/Models/Operations/DeleteSchemaResponse.cs
-  - src/SpeakeasySDK/Models/Operations/DeleteVersionMetadataRequest.cs
-  - src/SpeakeasySDK/Models/Operations/DeleteVersionMetadataResponse.cs
-  - src/SpeakeasySDK/Models/Operations/DownloadSchemaRequest.cs
-  - src/SpeakeasySDK/Models/Operations/DownloadSchemaResponse.cs
-  - src/SpeakeasySDK/Models/Operations/DownloadSchemaRevisionRequest.cs
-  - src/SpeakeasySDK/Models/Operations/DownloadSchemaRevisionResponse.cs
-  - src/SpeakeasySDK/Models/Operations/FetchPublishingPRsRequest.cs
-  - src/SpeakeasySDK/Models/Operations/FetchPublishingPRsResponse.cs
+  - src/SpeakeasySDK/Models/Operations/CreateWorkspaceResponse.cs
+  - src/SpeakeasySDK/Models/Operations/CreateWorkspaceTokenRequest.cs
+  - src/SpeakeasySDK/Models/Operations/CreateWorkspaceTokenResponse.cs
+  - src/SpeakeasySDK/Models/Operations/DeleteWorkspaceTokenRequest.cs
+  - src/SpeakeasySDK/Models/Operations/DeleteWorkspaceTokenResponse.cs
   - src/SpeakeasySDK/Models/Operations/File.cs
-  - src/SpeakeasySDK/Models/Operations/FindApiEndpointRequest.cs
-  - src/SpeakeasySDK/Models/Operations/FindApiEndpointResponse.cs
-  - src/SpeakeasySDK/Models/Operations/GenerateOpenApiSpecForApiEndpointRequest.cs
-  - src/SpeakeasySDK/Models/Operations/GenerateOpenApiSpecForApiEndpointResponse.cs
-  - src/SpeakeasySDK/Models/Operations/GenerateOpenApiSpecRequest.cs
-  - src/SpeakeasySDK/Models/Operations/GenerateOpenApiSpecResponse.cs
-  - src/SpeakeasySDK/Models/Operations/GeneratePostmanCollectionForApiEndpointRequest.cs
-  - src/SpeakeasySDK/Models/Operations/GeneratePostmanCollectionForApiEndpointResponse.cs
-  - src/SpeakeasySDK/Models/Operations/GeneratePostmanCollectionRequest.cs
-  - src/SpeakeasySDK/Models/Operations/GeneratePostmanCollectionResponse.cs
-  - src/SpeakeasySDK/Models/Operations/GenerateRequestPostmanCollectionRequest.cs
-  - src/SpeakeasySDK/Models/Operations/GenerateRequestPostmanCollectionResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GenerateCodeSamplePreviewAsyncResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GenerateCodeSamplePreviewAsyncResponseBody.cs
+  - src/SpeakeasySDK/Models/Operations/GenerateCodeSamplePreviewResponse.cs
   - src/SpeakeasySDK/Models/Operations/GetAccessTokenRequest.cs
   - src/SpeakeasySDK/Models/Operations/GetAccessTokenResponse.cs
-  - src/SpeakeasySDK/Models/Operations/GetActionRequest.cs
-  - src/SpeakeasySDK/Models/Operations/GetActionResponse.cs
-  - src/SpeakeasySDK/Models/Operations/GetAllApiEndpointsRequest.cs
-  - src/SpeakeasySDK/Models/Operations/GetAllApiEndpointsResponse.cs
-  - src/SpeakeasySDK/Models/Operations/GetAllApiVersionsRequest.cs
-  - src/SpeakeasySDK/Models/Operations/GetAllApiVersionsResponse.cs
-  - src/SpeakeasySDK/Models/Operations/GetAllForVersionApiEndpointsRequest.cs
-  - src/SpeakeasySDK/Models/Operations/GetAllForVersionApiEndpointsResponse.cs
-  - src/SpeakeasySDK/Models/Operations/GetApiEndpointRequest.cs
-  - src/SpeakeasySDK/Models/Operations/GetApiEndpointResponse.cs
-  - src/SpeakeasySDK/Models/Operations/GetApisRequest.cs
-  - src/SpeakeasySDK/Models/Operations/GetApisResponse.cs
   - src/SpeakeasySDK/Models/Operations/GetBlobRequest.cs
   - src/SpeakeasySDK/Models/Operations/GetBlobResponse.cs
   - src/SpeakeasySDK/Models/Operations/GetChangesReportSignedUrlRequest.cs
   - src/SpeakeasySDK/Models/Operations/GetChangesReportSignedUrlResponse.cs
   - src/SpeakeasySDK/Models/Operations/GetChangesReportSignedUrlSignedAccess.cs
-  - src/SpeakeasySDK/Models/Operations/GetEmbedAccessTokenRequest.cs
-  - src/SpeakeasySDK/Models/Operations/GetEmbedAccessTokenResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetCodeSamplePreviewAsyncRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetCodeSamplePreviewAsyncResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetCodeSamplePreviewAsyncResponseBody.cs
+  - src/SpeakeasySDK/Models/Operations/GetGitHubActionRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetGitHubActionResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetGithubSetupStateRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetGithubSetupStateResponse.cs
   - src/SpeakeasySDK/Models/Operations/GetLintingReportSignedUrlRequest.cs
   - src/SpeakeasySDK/Models/Operations/GetLintingReportSignedUrlResponse.cs
   - src/SpeakeasySDK/Models/Operations/GetLintingReportSignedUrlSignedAccess.cs
   - src/SpeakeasySDK/Models/Operations/GetManifestRequest.cs
   - src/SpeakeasySDK/Models/Operations/GetManifestResponse.cs
   - src/SpeakeasySDK/Models/Operations/GetNamespacesResponse.cs
-  - src/SpeakeasySDK/Models/Operations/GetOASSummaryRequest.cs
-  - src/SpeakeasySDK/Models/Operations/GetOASSummaryResponse.cs
   - src/SpeakeasySDK/Models/Operations/GetOrganizationRequest.cs
   - src/SpeakeasySDK/Models/Operations/GetOrganizationResponse.cs
   - src/SpeakeasySDK/Models/Operations/GetOrganizationUsageResponse.cs
   - src/SpeakeasySDK/Models/Operations/GetOrganizationsResponse.cs
-  - src/SpeakeasySDK/Models/Operations/GetRequestFromEventLogRequest.cs
-  - src/SpeakeasySDK/Models/Operations/GetRequestFromEventLogResponse.cs
   - src/SpeakeasySDK/Models/Operations/GetRevisionsRequest.cs
   - src/SpeakeasySDK/Models/Operations/GetRevisionsResponse.cs
-  - src/SpeakeasySDK/Models/Operations/GetSchemaDiffRequest.cs
-  - src/SpeakeasySDK/Models/Operations/GetSchemaDiffResponse.cs
-  - src/SpeakeasySDK/Models/Operations/GetSchemaRequest.cs
-  - src/SpeakeasySDK/Models/Operations/GetSchemaResponse.cs
-  - src/SpeakeasySDK/Models/Operations/GetSchemaRevisionRequest.cs
-  - src/SpeakeasySDK/Models/Operations/GetSchemaRevisionResponse.cs
-  - src/SpeakeasySDK/Models/Operations/GetSchemasRequest.cs
-  - src/SpeakeasySDK/Models/Operations/GetSchemasResponse.cs
   - src/SpeakeasySDK/Models/Operations/GetTagsRequest.cs
   - src/SpeakeasySDK/Models/Operations/GetTagsResponse.cs
   - src/SpeakeasySDK/Models/Operations/GetUserResponse.cs
-  - src/SpeakeasySDK/Models/Operations/GetValidEmbedAccessTokensResponse.cs
-  - src/SpeakeasySDK/Models/Operations/GetVersionMetadataRequest.cs
-  - src/SpeakeasySDK/Models/Operations/GetVersionMetadataResponse.cs
   - src/SpeakeasySDK/Models/Operations/GetWorkspaceAccessRequest.cs
   - src/SpeakeasySDK/Models/Operations/GetWorkspaceAccessResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetWorkspaceByContextResponse.cs
   - src/SpeakeasySDK/Models/Operations/GetWorkspaceEventsByTargetRequest.cs
   - src/SpeakeasySDK/Models/Operations/GetWorkspaceEventsByTargetResponse.cs
   - src/SpeakeasySDK/Models/Operations/GetWorkspaceFeatureFlagsRequest.cs
   - src/SpeakeasySDK/Models/Operations/GetWorkspaceFeatureFlagsResponse.cs
   - src/SpeakeasySDK/Models/Operations/GetWorkspaceRequest.cs
   - src/SpeakeasySDK/Models/Operations/GetWorkspaceResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetWorkspaceSettingsRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetWorkspaceSettingsResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetWorkspaceTargetsDeprecatedRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetWorkspaceTargetsDeprecatedResponse.cs
   - src/SpeakeasySDK/Models/Operations/GetWorkspaceTargetsRequest.cs
   - src/SpeakeasySDK/Models/Operations/GetWorkspaceTargetsResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetWorkspaceTeamRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetWorkspaceTeamResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetWorkspaceTokensRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetWorkspaceTokensResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GetWorkspacesResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GithubCheckPublishingPRsRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GithubCheckPublishingPRsResponse.cs
   - src/SpeakeasySDK/Models/Operations/GithubCheckPublishingSecretsRequest.cs
   - src/SpeakeasySDK/Models/Operations/GithubCheckPublishingSecretsResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GithubConfigureCodeSamplesResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GithubConfigureMintlifyRepoResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GithubConfigureTargetResponse.cs
   - src/SpeakeasySDK/Models/Operations/GithubStorePublishingSecretsResponse.cs
-  - src/SpeakeasySDK/Models/Operations/InsertVersionMetadataRequest.cs
-  - src/SpeakeasySDK/Models/Operations/InsertVersionMetadataResponse.cs
-  - src/SpeakeasySDK/Models/Operations/Op.cs
+  - src/SpeakeasySDK/Models/Operations/GithubTriggerActionResponse.cs
+  - src/SpeakeasySDK/Models/Operations/GrantUserAccessToWorkspaceRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GrantUserAccessToWorkspaceResponse.cs
+  - src/SpeakeasySDK/Models/Operations/IgnoreSubscriptionNamespaceRequest.cs
+  - src/SpeakeasySDK/Models/Operations/IgnoreSubscriptionNamespaceResponse.cs
+  - src/SpeakeasySDK/Models/Operations/LinkGithubAccessRequest.cs
+  - src/SpeakeasySDK/Models/Operations/LinkGithubAccessResponse.cs
+  - src/SpeakeasySDK/Models/Operations/ListRemoteSourcesRequest.cs
+  - src/SpeakeasySDK/Models/Operations/ListRemoteSourcesResponse.cs
   - src/SpeakeasySDK/Models/Operations/PostTagsRequest.cs
   - src/SpeakeasySDK/Models/Operations/PostTagsResponse.cs
   - src/SpeakeasySDK/Models/Operations/PostWorkspaceEventsRequest.cs
   - src/SpeakeasySDK/Models/Operations/PostWorkspaceEventsResponse.cs
   - src/SpeakeasySDK/Models/Operations/PreflightResponse.cs
-  - src/SpeakeasySDK/Models/Operations/QueryEventLogRequest.cs
-  - src/SpeakeasySDK/Models/Operations/QueryEventLogResponse.cs
-  - src/SpeakeasySDK/Models/Operations/QueryParamOp.cs
-  - src/SpeakeasySDK/Models/Operations/RegisterSchemaFile.cs
-  - src/SpeakeasySDK/Models/Operations/RegisterSchemaRequest.cs
-  - src/SpeakeasySDK/Models/Operations/RegisterSchemaRequestBody.cs
-  - src/SpeakeasySDK/Models/Operations/RegisterSchemaResponse.cs
-  - src/SpeakeasySDK/Models/Operations/RevokeEmbedAccessTokenRequest.cs
-  - src/SpeakeasySDK/Models/Operations/RevokeEmbedAccessTokenResponse.cs
+  - src/SpeakeasySDK/Models/Operations/RevokeUserAccessToWorkspaceRequest.cs
+  - src/SpeakeasySDK/Models/Operations/RevokeUserAccessToWorkspaceResponse.cs
   - src/SpeakeasySDK/Models/Operations/Schema.cs
   - src/SpeakeasySDK/Models/Operations/SearchWorkspaceEventsRequest.cs
   - src/SpeakeasySDK/Models/Operations/SearchWorkspaceEventsResponse.cs
+  - src/SpeakeasySDK/Models/Operations/SetVisibilityRequest.cs
+  - src/SpeakeasySDK/Models/Operations/SetVisibilityRequestBody.cs
+  - src/SpeakeasySDK/Models/Operations/SetVisibilityResponse.cs
+  - src/SpeakeasySDK/Models/Operations/SuggestItemsResponse.cs
   - src/SpeakeasySDK/Models/Operations/SuggestOpenAPIRegistryRequest.cs
   - src/SpeakeasySDK/Models/Operations/SuggestOpenAPIRegistryResponse.cs
   - src/SpeakeasySDK/Models/Operations/SuggestOpenAPIRequest.cs
@@ -394,38 +346,31 @@ generatedFiles:
   - src/SpeakeasySDK/Models/Operations/SuggestOpenAPIResponse.cs
   - src/SpeakeasySDK/Models/Operations/SuggestRequest.cs
   - src/SpeakeasySDK/Models/Operations/SuggestResponse.cs
-  - src/SpeakeasySDK/Models/Operations/TriggerActionResponse.cs
+  - src/SpeakeasySDK/Models/Operations/UpdateWorkspaceDetailsRequest.cs
+  - src/SpeakeasySDK/Models/Operations/UpdateWorkspaceDetailsResponse.cs
+  - src/SpeakeasySDK/Models/Operations/UpdateWorkspaceSettingsRequest.cs
+  - src/SpeakeasySDK/Models/Operations/UpdateWorkspaceSettingsResponse.cs
   - src/SpeakeasySDK/Models/Operations/UploadReportRequestBody.cs
   - src/SpeakeasySDK/Models/Operations/UploadReportResponse.cs
   - src/SpeakeasySDK/Models/Operations/UploadReportUploadedReport.cs
-  - src/SpeakeasySDK/Models/Operations/UpsertApiEndpointRequest.cs
-  - src/SpeakeasySDK/Models/Operations/UpsertApiEndpointResponse.cs
-  - src/SpeakeasySDK/Models/Operations/UpsertApiRequest.cs
-  - src/SpeakeasySDK/Models/Operations/UpsertApiResponse.cs
   - src/SpeakeasySDK/Models/Operations/ValidateApiKeyResponse.cs
   - src/SpeakeasySDK/Models/Shared/AccessDetails.cs
   - src/SpeakeasySDK/Models/Shared/AccessToken.cs
   - src/SpeakeasySDK/Models/Shared/AccessTokenUser.cs
   - src/SpeakeasySDK/Models/Shared/AccountType.cs
+  - src/SpeakeasySDK/Models/Shared/Actions.cs
   - src/SpeakeasySDK/Models/Shared/AddTags.cs
   - src/SpeakeasySDK/Models/Shared/Annotations.cs
-  - src/SpeakeasySDK/Models/Shared/Api.cs
-  - src/SpeakeasySDK/Models/Shared/ApiEndpoint.cs
-  - src/SpeakeasySDK/Models/Shared/ApiEndpointInput.cs
-  - src/SpeakeasySDK/Models/Shared/ApiInput.cs
   - src/SpeakeasySDK/Models/Shared/ApiKeyDetails.cs
   - src/SpeakeasySDK/Models/Shared/Auth.cs
-  - src/SpeakeasySDK/Models/Shared/BoundedRequest.cs
   - src/SpeakeasySDK/Models/Shared/Claims.cs
   - src/SpeakeasySDK/Models/Shared/CliEvent.cs
+  - src/SpeakeasySDK/Models/Shared/CodeSampleSchemaInput.cs
+  - src/SpeakeasySDK/Models/Shared/CodeSamplesJobStatus.cs
+  - src/SpeakeasySDK/Models/Shared/CompositeSpecMetadata.cs
   - src/SpeakeasySDK/Models/Shared/Diagnostic.cs
-  - src/SpeakeasySDK/Models/Shared/EmbedAccessTokenResponse.cs
-  - src/SpeakeasySDK/Models/Shared/EmbedToken.cs
   - src/SpeakeasySDK/Models/Shared/FeatureFlag.cs
-  - src/SpeakeasySDK/Models/Shared/Filter.cs
-  - src/SpeakeasySDK/Models/Shared/Filters.cs
   - src/SpeakeasySDK/Models/Shared/GenerateBumpType.cs
-  - src/SpeakeasySDK/Models/Shared/GenerateOpenApiSpecDiff.cs
   - src/SpeakeasySDK/Models/Shared/GetNamespacesResponse.cs
   - src/SpeakeasySDK/Models/Shared/GetRevisionsResponse.cs
   - src/SpeakeasySDK/Models/Shared/GetTagsResponse.cs
@@ -436,6 +381,7 @@ generatedFiles:
   - src/SpeakeasySDK/Models/Shared/GithubGetActionResponse.cs
   - src/SpeakeasySDK/Models/Shared/GithubMissingPublishingSecretsResponse.cs
   - src/SpeakeasySDK/Models/Shared/GithubPublishingPRResponse.cs
+  - src/SpeakeasySDK/Models/Shared/GithubSetupStateResponse.cs
   - src/SpeakeasySDK/Models/Shared/GithubStorePublishingSecretsRequest.cs
   - src/SpeakeasySDK/Models/Shared/GithubTriggerActionRequest.cs
   - src/SpeakeasySDK/Models/Shared/InteractionType.cs
@@ -452,13 +398,18 @@ generatedFiles:
   - src/SpeakeasySDK/Models/Shared/OrganizationUsageResponse.cs
   - src/SpeakeasySDK/Models/Shared/PreflightRequest.cs
   - src/SpeakeasySDK/Models/Shared/PreflightToken.cs
+  - src/SpeakeasySDK/Models/Shared/Relationship.cs
+  - src/SpeakeasySDK/Models/Shared/RemoteDocument.cs
+  - src/SpeakeasySDK/Models/Shared/RemoteSource.cs
+  - src/SpeakeasySDK/Models/Shared/RemoteSourceSubscriptionSettings.cs
   - src/SpeakeasySDK/Models/Shared/Report.cs
-  - src/SpeakeasySDK/Models/Shared/RequestMetadata.cs
   - src/SpeakeasySDK/Models/Shared/Revision.cs
-  - src/SpeakeasySDK/Models/Shared/Schema.cs
-  - src/SpeakeasySDK/Models/Shared/SchemaDiff.cs
+  - src/SpeakeasySDK/Models/Shared/SSOMetadata.cs
+  - src/SpeakeasySDK/Models/Shared/SchemaFile.cs
+  - src/SpeakeasySDK/Models/Shared/Secrets.cs
   - src/SpeakeasySDK/Models/Shared/Security.cs
   - src/SpeakeasySDK/Models/Shared/ShortURL.cs
+  - src/SpeakeasySDK/Models/Shared/SuggestItemsRequestBody.cs
   - src/SpeakeasySDK/Models/Shared/SuggestOptsOld.cs
   - src/SpeakeasySDK/Models/Shared/SuggestRequestBody.cs
   - src/SpeakeasySDK/Models/Shared/SuggestRequestBodySuggestionType.cs
@@ -466,23 +417,23 @@ generatedFiles:
   - src/SpeakeasySDK/Models/Shared/Tag.cs
   - src/SpeakeasySDK/Models/Shared/TargetSDK.cs
   - src/SpeakeasySDK/Models/Shared/Type.cs
-  - src/SpeakeasySDK/Models/Shared/UnboundedRequest.cs
   - src/SpeakeasySDK/Models/Shared/User.cs
   - src/SpeakeasySDK/Models/Shared/V2Descriptor.cs
-  - src/SpeakeasySDK/Models/Shared/ValueChange.cs
-  - src/SpeakeasySDK/Models/Shared/VersionMetadata.cs
-  - src/SpeakeasySDK/Models/Shared/VersionMetadataInput.cs
   - src/SpeakeasySDK/Models/Shared/WorkflowDocument.cs
   - src/SpeakeasySDK/Models/Shared/Workspace.cs
+  - src/SpeakeasySDK/Models/Shared/WorkspaceAndOrganization.cs
   - src/SpeakeasySDK/Models/Shared/WorkspaceFeatureFlagResponse.cs
+  - src/SpeakeasySDK/Models/Shared/WorkspaceInviteResponse.cs
+  - src/SpeakeasySDK/Models/Shared/WorkspaceSettings.cs
+  - src/SpeakeasySDK/Models/Shared/WorkspaceTeamResponse.cs
+  - src/SpeakeasySDK/Models/Shared/WorkspaceToken.cs
   - src/SpeakeasySDK/Models/Shared/Workspaces.cs
   - src/SpeakeasySDK/Organizations.cs
   - src/SpeakeasySDK/Reports.cs
-  - src/SpeakeasySDK/Requests.cs
   - src/SpeakeasySDK/SDK.cs
-  - src/SpeakeasySDK/Schemas.cs
   - src/SpeakeasySDK/ShortURLs.cs
   - src/SpeakeasySDK/SpeakeasySDK.csproj
+  - src/SpeakeasySDK/Subscriptions.cs
   - src/SpeakeasySDK/Suggest.cs
   - src/SpeakeasySDK/Utils/AnyDeserializer.cs
   - src/SpeakeasySDK/Utils/BigIntStrConverter.cs
@@ -798,6 +749,10 @@ examples:
           application/octet-stream: "0x211ECBAE5E"
         default:
           application/json: {"message": "<value>", "status_code": 279725}
+        2XX:
+          application/octet-stream: "0x21CA56a82d"
+        4XX:
+          application/json: {"message": "<value>", "status_code": 940661}
   getManifest:
     speakeasy-default-get-manifest:
       parameters:
@@ -811,6 +766,10 @@ examples:
           application/vnd.oci.image.manifest.v1+json: {"layers": [{"digest": "sha256:5d20c808ce198565ff70b3ed23a991dd49afac45dece63474b27ce6ed036adc6", "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip", "size": 2107098}], "mediaType": "application/vnd.docker.distribution.manifest.v2+json", "schemaVersion": 2}
         default:
           application/json: {"message": "<value>", "status_code": 707258}
+        2XX:
+          application/vnd.oci.image.manifest.v1+json: {"layers": [{"digest": "sha256:5d20c808ce198565ff70b3ed23a991dd49afac45dece63474b27ce6ed036adc6", "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip", "size": 2107098}], "mediaType": "application/vnd.docker.distribution.manifest.v2+json", "schemaVersion": 2}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 707258}
   getNamespaces:
     speakeasy-default-get-namespaces:
       responses:
@@ -818,6 +777,10 @@ examples:
           application/json: {"items": []}
         default:
           application/json: {"message": "<value>", "status_code": 917991}
+        2XX:
+          application/json: {"items": [{"created_at": "2025-01-19T10:11:46.428Z", "id": "<id>", "name": "<value>", "updated_at": "2023-01-07T04:43:36.873Z"}, {"created_at": "2024-07-05T07:26:30.970Z", "id": "<id>", "name": "<value>", "updated_at": "2025-01-30T11:34:19.590Z"}, {"created_at": "2023-08-10T13:43:30.983Z", "id": "<id>", "name": "<value>", "updated_at": "2023-07-15T08:41:36.371Z"}]}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 305198}
   getOASSummary:
     speakeasy-default-get-OAS-summary:
       parameters:
@@ -840,6 +803,10 @@ examples:
           application/json: {"items": [], "next_page_token": "<value>"}
         default:
           application/json: {"message": "<value>", "status_code": 284614}
+        2XX:
+          application/json: {"items": [{"created_at": "2025-09-16T19:17:04.361Z", "digest": "sha256:6d1ef012b5674ad8a127ecfa9b5e6f5178d171b90ee462846974177fd9bdd39f", "id": "<id>", "namespace_name": "<value>", "tags": ["<value>"], "updated_at": "2024-12-05T05:58:38.953Z"}], "next_page_token": "<value>"}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 414389}
   getTags:
     speakeasy-default-get-tags:
       parameters:
@@ -850,6 +817,10 @@ examples:
           application/json: {"items": []}
         default:
           application/json: {"message": "<value>", "status_code": 136548}
+        2XX:
+          application/json: {"items": []}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 50428}
   postTags:
     speakeasy-default-post-tags:
       parameters:
@@ -858,12 +829,18 @@ examples:
       responses:
         default:
           application/json: {"message": "<value>", "status_code": 581484}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 581484}
   preflight:
     speakeasy-default-preflight:
       responses:
         default:
           application/json: {"message": "<value>", "status_code": 820828}
         "200": {}
+        2XX:
+          application/json: {}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 820828}
   getAccessToken:
     speakeasy-default-get-access-token:
       parameters:
@@ -874,6 +851,10 @@ examples:
           application/json: {"access_token": "<value>"}
         default:
           application/json: {"message": "<value>", "status_code": 299050}
+        2XX:
+          application/json: {"access_token": "<value>"}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 299050}
   getUser:
     speakeasy-default-get-user:
       responses:
@@ -881,11 +862,17 @@ examples:
           application/json: {"admin": true, "confirmed": false, "created_at": "2022-06-27T09:27:02.992Z", "display_name": "Kendrick92", "email": "Kirstin.Kautzer61@yahoo.com", "email_verified": false, "id": "<id>", "last_login_at": "2023-04-23T00:14:06.093Z", "updated_at": "2023-07-11T14:17:50.684Z", "whitelisted": false}
         default:
           application/json: {"message": "<value>", "status_code": 502060}
+        2XX:
+          application/json: {"admin": false, "confirmed": true, "created_at": "2025-09-05T08:59:40.988Z", "display_name": "Tianna_Prohaska", "email": "Morton82@gmail.com", "email_verified": false, "id": "<id>", "updated_at": "2023-08-28T03:26:52.335Z", "whitelisted": true}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 237845}
   getWorkspaceAccess:
     speakeasy-default-get-workspace-access:
       responses:
         "200":
           application/json: {"generation_allowed": false, "message": "<value>"}
+        2XX:
+          application/json: {"generation_allowed": true, "message": "<value>"}
   validateApiKey:
     speakeasy-default-validate-api-key:
       responses:
@@ -893,6 +880,10 @@ examples:
           application/json: {"account_type_v2": "enterprise", "enabled_features": [], "org_slug": "<value>", "telemetry_disabled": true, "workspace_id": "<value>", "workspace_slug": "<value>"}
         default:
           application/json: {"message": "<value>", "status_code": 858745}
+        2XX:
+          application/json: {"account_type_v2": "enterprise", "enabled_features": ["<value>", "<value>", "<value>"], "org_slug": "<value>", "telemetry_disabled": true, "workspace_created_at": "2024-02-05T22:57:49.657Z", "workspace_id": "<id>", "workspace_slug": "<value>"}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 150892}
   generateRequestPostmanCollection:
     speakeasy-default-generate-request-postman-collection:
       parameters:
@@ -982,6 +973,10 @@ examples:
         default:
           application/json: {"message": "<value>", "status_code": 445560}
         "200": {}
+        2XX:
+          application/json: {}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 749379}
   githubStorePublishingSecrets:
     speakeasy-default-github-store-publishing-secrets:
       requestBody:
@@ -989,6 +984,8 @@ examples:
       responses:
         default:
           application/json: {"message": "<value>", "status_code": 802162}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 444361}
   triggerAction:
     speakeasy-default-trigger-action:
       requestBody:
@@ -1001,6 +998,8 @@ examples:
       responses:
         default:
           application/json: {"message": "<value>", "status_code": 728627}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 728627}
   getOrganization:
     speakeasy-default-get-organization:
       parameters:
@@ -1011,6 +1010,10 @@ examples:
           application/json: {"account_type": "scale-up", "id": "<id>", "name": "<value>", "telemetry_disabled": true}
         default:
           application/json: {"message": "<value>", "status_code": 492205}
+        2XX:
+          application/json: {"account_type": "business", "created_at": "2024-09-04T11:33:52.011Z", "id": "<id>", "name": "<value>", "slug": "<value>", "sso_activated": false, "telemetry_disabled": false, "updated_at": "2025-11-29T01:50:48.954Z"}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 458049}
   getOrganizationUsage:
     speakeasy-default-get-organization-usage:
       responses:
@@ -1018,6 +1021,10 @@ examples:
           application/json: {"allowed_languages": [], "total_allowed_languages": 85188, "usage": []}
         default:
           application/json: {"message": "<value>", "status_code": 689787}
+        2XX:
+          application/json: {"allowed_languages": [], "total_allowed_languages": 863126, "usage": [{"accessible": false, "accessible_features": ["<value>"], "gen_lock_ids": ["<value>", "<value>", "<value>"], "language": "<value>", "max_operations": 939867, "number_of_operations": 881790, "used_features": ["<value>"], "workspaces": ["<value>", "<value>"]}, {"accessible": true, "accessible_features": ["<value>", "<value>", "<value>"], "gen_lock_ids": ["<value>"], "language": "<value>", "max_operations": 593645, "number_of_operations": 369818, "used_features": ["<value>"], "workspaces": []}]}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 804495}
   getOrganizations:
     speakeasy-default-get-organizations:
       responses:
@@ -1025,6 +1032,10 @@ examples:
           application/json: []
         default:
           application/json: {"message": "<value>", "status_code": 952344}
+        2XX:
+          application/json: [{"account_type": "free", "created_at": "2024-10-17T22:25:06.537Z", "id": "<id>", "name": "<value>", "slug": "<value>", "sso_activated": false, "telemetry_disabled": true, "updated_at": "2024-05-22T13:01:16.115Z"}]
+        4XX:
+          application/json: {"message": "<value>", "status_code": 621425}
   getChangesReportSignedUrl:
     speakeasy-default-get-changes-report-signed-url:
       parameters:
@@ -1033,6 +1044,8 @@ examples:
       responses:
         "200":
           application/json: {"url": "http://precious-pressure.biz"}
+        2XX:
+          application/json: {"url": "https://rosy-masterpiece.biz/"}
   getLintingReportSignedUrl:
     speakeasy-default-get-linting-report-signed-url:
       parameters:
@@ -1041,6 +1054,8 @@ examples:
       responses:
         "200":
           application/json: {"url": "https://overdue-maybe.net"}
+        2XX:
+          application/json: {"url": "https://negligible-merit.info"}
   uploadReport:
     speakeasy-default-upload-report:
       requestBody:
@@ -1048,6 +1063,8 @@ examples:
       responses:
         "200":
           application/json: {"url": "http://earnest-upgrade.com"}
+        2XX:
+          application/json: {"url": "https://cluttered-stall.info"}
   create:
     speakeasy-default-create:
       requestBody:
@@ -1055,6 +1072,8 @@ examples:
       responses:
         "200":
           application/json: {"full_url": "<value>", "short_url": "<value>"}
+        2XX:
+          application/json: {"full_url": "https://probable-heating.com/", "short_url": "https://standard-utilization.com/"}
   suggest:
     speakeasy-default-suggest:
       parameters:
@@ -1065,6 +1084,8 @@ examples:
       responses:
         "200":
           application/json: "0x8D9A3DCDEa"
+        2XX:
+          application/json: "0xbe893CEca6"
   suggestOpenAPI:
     speakeasy-default-suggest-open-API:
       parameters:
@@ -1075,6 +1096,8 @@ examples:
       responses:
         "200":
           application/json: "0xB470c0FE6E"
+        2XX:
+          application/json: "0x0beEcB7cF6"
   suggestOpenAPIRegistry:
     speakeasy-default-suggest-open-API-registry:
       parameters:
@@ -1086,6 +1109,8 @@ examples:
       responses:
         "200":
           application/json: "0x94DFDbB4df"
+        2XX:
+          application/json: "0x9DDBdD905F"
   getEmbedAccessToken:
     speakeasy-default-get-embed-access-token:
       responses:
@@ -1115,17 +1140,23 @@ examples:
           application/json: {"created_at": "2024-06-17T21:39:51.489Z", "id": "<id>", "name": "<value>", "organization_id": "<value>", "slug": "<value>", "telemetry_disabled": true, "updated_at": "2022-01-05T09:55:04.665Z", "verified": false}
         default:
           application/json: {"message": "<value>", "status_code": 488095}
+        2XX:
+          application/json: {"created_at": "2025-11-17T10:14:22.985Z", "id": "<id>", "name": "<value>", "organization_id": "<id>", "slug": "<value>", "updated_at": "2025-07-28T15:04:25.117Z", "verified": false}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 868924}
   getWorkspaceFeatureFlags:
     speakeasy-default-get-workspace-feature-flags:
       responses:
         5XX:
           application/json: {"message": "<value>", "status_code": 365854}
-        "200": {}
+        "200":
+          application/json: {}
   getWorkspaceEventsByTarget:
     speakeasy-default-get-workspace-events-by-target:
       parameters:
         path:
           targetID: "<value>"
+          target_id: "<id>"
         query: {}
       responses:
         "200":
@@ -1153,3 +1184,270 @@ examples:
           application/json: []
         5XX:
           application/json: {"message": "<value>", "status_code": 750032}
+  generateCodeSamplePreview:
+    speakeasy-default-generate-code-sample-preview:
+      requestBody:
+        multipart/form-data: {"languages": ["<value>", "<value>"], "schema_file": {"": "example.file"}}
+      responses:
+        "200":
+          application/json: "0x28e0E3f5d1"
+          application/x-yaml: "0xfA011e0be4"
+        4XX:
+          application/json: {"message": "<value>", "status_code": 396101}
+  generateCodeSamplePreviewAsync:
+    speakeasy-default-generate-code-sample-preview-async:
+      requestBody:
+        multipart/form-data: {"languages": ["<value>", "<value>", "<value>"], "schema_file": {"": "example.file"}}
+      responses:
+        "202":
+          application/json: {"job_id": "<id>", "status": "pending"}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 394086}
+  getCodeSamplePreviewAsync:
+    speakeasy-default-get-code-sample-preview-async:
+      parameters:
+        path:
+          jobID: "<id>"
+      responses:
+        "200":
+          application/json: "0x2090d4E1A7"
+          application/x-yaml: "0x14456CbEbA"
+        "202":
+          application/json: {"status": "running"}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 462062}
+  createRemoteSource:
+    speakeasy-default-create-remote-source:
+      responses:
+        4XX:
+          application/json: {"message": "<value>", "status_code": 580557}
+  listRemoteSources:
+    speakeasy-default-list-remote-sources:
+      parameters:
+        query:
+          namespace_name: "<value>"
+      responses:
+        2XX:
+          application/json: {"inputs": [{"registry_url": "https://well-lit-cap.net"}, {"registry_url": "https://vibrant-labourer.net"}], "output": {"registry_url": "https://unfit-minor.biz"}}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 754391}
+  setVisibility:
+    speakeasy-default-set-visibility:
+      parameters:
+        path:
+          namespace_name: "<value>"
+      responses:
+        4XX:
+          application/json: {"message": "<value>", "status_code": 651364}
+  checkGithubAccess:
+    speakeasy-default-check-github-access:
+      parameters:
+        query:
+          org: "<value>"
+          repo: "<value>"
+      responses:
+        4XX:
+          application/json: {"message": "<value>", "status_code": 74604}
+  githubCheckPublishingPRs:
+    speakeasy-default-github-check-publishing-P-rs:
+      parameters:
+        query:
+          generate_gen_lock_id: "<id>"
+          org: "<value>"
+          repo: "<value>"
+      responses:
+        2XX:
+          application/json: {}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 670562}
+  githubConfigureCodeSamples:
+    speakeasy-default-github-configure-code-samples:
+      requestBody:
+        application/json: {"org": "<value>", "repo": "<value>", "targetName": "<value>"}
+      responses:
+        2XX:
+          application/json: {"codeSampleOverlayRegistryURL": "https://giving-handover.net", "source": {"location": "<value>"}}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 628169}
+  githubConfigureMintlifyRepo:
+    speakeasy-default-github-configure-mintlify-repo:
+      requestBody:
+        application/json: {"input": "<value>", "org": "<value>", "overlays": ["<value>"], "repo": "<value>"}
+      responses:
+        4XX:
+          application/json: {"message": "<value>", "status_code": 529873}
+  githubConfigureTarget:
+    speakeasy-default-github-configure-target:
+      requestBody:
+        application/json: {"org": "<value>", "repo_name": "<value>"}
+      responses:
+        4XX:
+          application/json: {"message": "<value>", "status_code": 210299}
+  getGitHubAction:
+    speakeasy-default-get-git-hub-action:
+      parameters:
+        query:
+          org: "<value>"
+          repo: "<value>"
+      responses:
+        2XX:
+          application/json: {}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 252330}
+  getGithubSetupState:
+    speakeasy-default-get-github-setup-state:
+      parameters:
+        query:
+          org: "<value>"
+          repo: "<value>"
+          generate_gen_lock_id: "<id>"
+      responses:
+        2XX:
+          application/json: {"actions": {"generation_action_configured": false, "publish_action_configured": false}, "app_installed": false, "secrets": {"api_key_configured": true, "publishing_secrets_configured": true}}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 743106}
+  linkGithubAccess:
+    speakeasy-default-link-github-access:
+      responses:
+        4XX:
+          application/json: {"message": "<value>", "status_code": 774553}
+  githubTriggerAction:
+    speakeasy-default-github-trigger-action:
+      requestBody:
+        application/json: {"gen_lock_id": "<id>", "org": "<value>", "repo_name": "<value>"}
+      responses:
+        4XX:
+          application/json: {"message": "<value>", "status_code": 689611}
+  createOrganization:
+    speakeasy-default-create-organization:
+      requestBody:
+        application/json: {"account_type": "scale-up", "created_at": "2024-11-30T17:06:07.804Z", "id": "<id>", "name": "<value>", "slug": "<value>", "sso_activated": true, "telemetry_disabled": true, "updated_at": "2023-03-17T15:39:20.911Z"}
+      responses:
+        2XX:
+          application/json: {"account_type": "enterprise", "created_at": "2025-11-08T08:43:39.394Z", "id": "<id>", "name": "<value>", "slug": "<value>", "sso_activated": true, "telemetry_disabled": true, "updated_at": "2023-04-09T14:25:29.356Z"}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 792620}
+  activateSubscriptionNamespace:
+    speakeasy-default-activate-subscription-namespace:
+      parameters:
+        path:
+          subscriptionID: "<id>"
+          namespaceName: "<value>"
+      responses:
+        4XX:
+          application/json: {"message": "<value>", "status_code": 566510}
+  ignoreSubscriptionNamespace:
+    speakeasy-default-ignore-subscription-namespace:
+      parameters:
+        path:
+          subscriptionID: "<id>"
+          namespaceName: "<value>"
+      responses:
+        4XX:
+          application/json: {"message": "<value>", "status_code": 844164}
+  suggestItems:
+    speakeasy-default-suggest-items:
+      requestBody:
+        application/json: {"items": [], "prompt": "<value>"}
+      responses:
+        2XX:
+          application/json: ["<value>", "<value>"]
+  createWorkspace:
+    speakeasy-default-create-workspace:
+      requestBody:
+        application/json: {"created_at": "2024-06-17T07:14:55.338Z", "id": "<id>", "name": "<value>", "organization_id": "<id>", "slug": "<value>", "updated_at": "2024-11-30T17:06:07.804Z", "verified": true}
+      responses:
+        2XX:
+          application/json: {"created_at": "2023-05-28T06:20:22.766Z", "id": "<id>", "name": "<value>", "organization_id": "<id>", "slug": "<value>", "updated_at": "2023-03-17T15:39:20.911Z", "verified": false}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 951062}
+  createWorkspaceToken:
+    speakeasy-default-create-workspace-token:
+      requestBody:
+        application/json: {"alg": "<value>", "created_at": "2023-08-16T02:33:00.784Z", "id": "<id>", "key": "<key>", "name": "<value>", "workspace_id": "<id>"}
+      responses:
+        4XX:
+          application/json: {"message": "<value>", "status_code": 966454}
+  deleteWorkspaceToken:
+    speakeasy-default-delete-workspace-token:
+      parameters:
+        path:
+          tokenID: "<id>"
+      responses:
+        4XX:
+          application/json: {"message": "<value>", "status_code": 120260}
+  getWorkspaceByContext:
+    speakeasy-default-get-workspace-by-context:
+      responses:
+        2XX:
+          application/json: {"organization": {"account_type": "business", "created_at": "2024-09-04T11:33:52.011Z", "id": "<id>", "name": "<value>", "slug": "<value>", "sso_activated": false, "telemetry_disabled": false, "updated_at": "2025-11-29T01:50:48.954Z"}, "workspace": {"created_at": "2024-05-17T00:32:02.244Z", "id": "<id>", "name": "<value>", "organization_id": "<id>", "slug": "<value>", "updated_at": "2024-05-09T02:28:23.533Z", "verified": true}}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 213457}
+  getWorkspaces:
+    speakeasy-default-get-workspaces:
+      responses:
+        2XX:
+          application/json: [{"created_at": "2023-03-06T21:36:22.528Z", "id": "<id>", "name": "<value>", "organization_id": "<id>", "slug": "<value>", "updated_at": "2024-10-17T22:25:06.537Z", "verified": false}]
+        4XX:
+          application/json: {"message": "<value>", "status_code": 16308}
+  getWorkspaceSettings:
+    speakeasy-default-get-workspace-settings:
+      responses:
+        2XX:
+          application/json: {"created_at": "2025-05-29T22:34:47.605Z", "updated_at": "2024-02-24T21:50:01.663Z", "webhook_url": "https://different-amendment.com/", "workspace_id": "<id>"}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 864485}
+  getWorkspaceTeam:
+    speakeasy-default-get-workspace-team:
+      responses:
+        2XX:
+          application/json: {"users": []}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 194974}
+  getWorkspaceTokens:
+    speakeasy-default-get-workspace-tokens:
+      responses:
+        2XX:
+          application/json: [{"alg": "<value>", "created_at": "2024-06-30T03:05:24.969Z", "id": "<id>", "key": "<key>", "name": "<value>", "workspace_id": "<id>"}, {"alg": "<value>", "created_at": "2024-11-09T11:33:52.654Z", "id": "<id>", "key": "<key>", "name": "<value>", "workspace_id": "<id>"}, {"alg": "<value>", "created_at": "2024-11-05T09:03:46.133Z", "id": "<id>", "key": "<key>", "name": "<value>", "workspace_id": "<id>"}]
+        4XX:
+          application/json: {"message": "<value>", "status_code": 858647}
+  grantUserAccessToWorkspace:
+    speakeasy-default-grant-user-access-to-workspace:
+      parameters:
+        path:
+          email: "Lucinda.Batz8@hotmail.com"
+      responses:
+        "200":
+          application/json: {"relationship": {"user_id": "<id>", "workspace_id": "<id>"}}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 621540}
+  revokeUserAccessToWorkspace:
+    speakeasy-default-revoke-user-access-to-workspace:
+      parameters:
+        path:
+          userId: "<id>"
+      responses:
+        4XX:
+          application/json: {"message": "<value>", "status_code": 243814}
+  updateWorkspaceDetails:
+    speakeasy-default-update-workspace-details:
+      requestBody:
+        application/json: {"created_at": "2025-07-28T19:04:48.565Z", "id": "<id>", "name": "<value>", "organization_id": "<id>", "slug": "<value>", "updated_at": "2024-10-16T10:52:42.015Z", "verified": true}
+      responses:
+        4XX:
+          application/json: {"message": "<value>", "status_code": 991464}
+  updateWorkspaceSettings:
+    speakeasy-default-update-workspace-settings:
+      requestBody:
+        application/json: {"created_at": "2023-07-05T11:43:28.305Z", "updated_at": "2024-05-14T05:39:21.874Z", "webhook_url": "https://grown-pharmacopoeia.net", "workspace_id": "<id>"}
+      responses:
+        4XX:
+          application/json: {"message": "<value>", "status_code": 54657}
+  getWorkspaceTargetsDeprecated:
+    speakeasy-default-get-workspace-targets-deprecated:
+      responses:
+        "200":
+          application/json: []
+        5XX:
+          application/json: {"message": "<value>", "status_code": 255923}
+generatedTests: {}

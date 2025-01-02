@@ -12,41 +12,23 @@ namespace SpeakeasySDK
     using Newtonsoft.Json;
     using SpeakeasySDK.Hooks;
     using SpeakeasySDK.Models.Errors;
+    using SpeakeasySDK.Models.Operations;
     using SpeakeasySDK.Models.Shared;
-    using SpeakeasySDK.Utils.Retries;
     using SpeakeasySDK.Utils;
+    using SpeakeasySDK.Utils.Retries;
+    using System;
     using System.Collections.Generic;
     using System.Net.Http;
+    using System.Net.Http.Headers;
     using System.Threading.Tasks;
-    using System;
 
     /// <summary>
-    /// Speakeasy API: The Speakeasy API allows teams to manage common operations with their APIs
+    /// Speakeasy API: The Subscriptions API manages subscriptions for CLI and registry events
     /// 
     /// <see>/docs} - The Speakeasy Platform Documentation</see>
     /// </summary>
     public interface ISDK
     {
-
-        /// <summary>
-        /// REST APIs for managing Api entities
-        /// </summary>
-        public IApis Apis { get; }
-
-        /// <summary>
-        /// REST APIs for managing ApiEndpoint entities
-        /// </summary>
-        public IApiEndpoints ApiEndpoints { get; }
-
-        /// <summary>
-        /// REST APIs for managing Version Metadata entities
-        /// </summary>
-        public IMetadata Metadata { get; }
-
-        /// <summary>
-        /// REST APIs for managing Schema entities
-        /// </summary>
-        public ISchemas Schemas { get; }
 
         /// <summary>
         /// REST APIs for working with Registry artifacts
@@ -59,14 +41,17 @@ namespace SpeakeasySDK
         public IAuth Auth { get; }
 
         /// <summary>
-        /// REST APIs for retrieving request information
+        /// REST APIs for managing the github integration
         /// </summary>
-        public IRequests Requests { get; }
         public IGithub Github { get; }
+
+        /// <summary>
+        /// REST APIs for managing Organizations (speakeasy L1 Tenancy construct)
+        /// </summary>
         public IOrganizations Organizations { get; }
 
         /// <summary>
-        /// REST APIs for managing reports
+        /// REST APIs for managing reports (lint reports, change reports, etc)
         /// </summary>
         public IReports Reports { get; }
 
@@ -76,20 +61,51 @@ namespace SpeakeasySDK
         public IShortURLs ShortURLs { get; }
 
         /// <summary>
+        /// REST APIs for managing subscriptions
+        /// </summary>
+        public ISubscriptions Subscriptions { get; }
+
+        /// <summary>
         /// REST APIs for managing LLM OAS suggestions
         /// </summary>
         public ISuggest Suggest { get; }
 
         /// <summary>
-        /// REST APIs for managing embeds
+        /// REST APIs for managing Workspaces (speakeasy tenancy)
         /// </summary>
-        public IEmbeds Embeds { get; }
         public IWorkspaces Workspaces { get; }
 
         /// <summary>
-        /// REST APIs for capturing event data
+        /// REST APIs for managing events captured by a speakeasy binary (CLI, GitHub Action etc)
         /// </summary>
         public IEvents Events { get; }
+
+        /// <summary>
+        /// Generate Code Sample previews from a file and configuration parameters.
+        /// 
+        /// <remarks>
+        /// This endpoint generates Code Sample previews from a file and configuration parameters.
+        /// </remarks>
+        /// </summary>
+        Task<GenerateCodeSamplePreviewResponse> GenerateCodeSamplePreviewAsync(CodeSampleSchemaInput request);
+
+        /// <summary>
+        /// Initiate asynchronous Code Sample preview generation from a file and configuration parameters, receiving an async JobID response for polling.
+        /// 
+        /// <remarks>
+        /// This endpoint generates Code Sample previews from a file and configuration parameters, receiving an async JobID response for polling.
+        /// </remarks>
+        /// </summary>
+        Task<GenerateCodeSamplePreviewAsyncResponse> GenerateCodeSamplePreviewAsyncAsync(CodeSampleSchemaInput request);
+
+        /// <summary>
+        /// Poll for the result of an asynchronous Code Sample preview generation.
+        /// 
+        /// <remarks>
+        /// Poll for the result of an asynchronous Code Sample preview generation.
+        /// </remarks>
+        /// </summary>
+        Task<GetCodeSamplePreviewAsyncResponse> GetCodeSamplePreviewAsyncAsync(GetCodeSamplePreviewAsyncRequest request);
     }
 
     public class SDKConfig
@@ -111,7 +127,7 @@ namespace SpeakeasySDK
 
         public string ServerUrl = "";
         public Server? ServerName = null;
-        public string? WorkspaceID;
+        public string? WorkspaceId;
         public SDKHooks Hooks = new SDKHooks();
         public RetryConfig? RetryConfig = null;
 
@@ -148,7 +164,7 @@ namespace SpeakeasySDK
     }
 
     /// <summary>
-    /// Speakeasy API: The Speakeasy API allows teams to manage common operations with their APIs
+    /// Speakeasy API: The Subscriptions API manages subscriptions for CLI and registry events
     /// 
     /// <see>/docs} - The Speakeasy Platform Documentation</see>
     /// </summary>
@@ -157,31 +173,26 @@ namespace SpeakeasySDK
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.10.0";
-        private const string _sdkGenVersion = "2.420.2";
-        private const string _openapiDocVersion = "0.4.0 .";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.10.0 2.420.2 0.4.0 . SpeakeasySDK";
+        private const string _sdkVersion = "5.11.0";
+        private const string _sdkGenVersion = "2.484.0";
+        private const string _openapiDocVersion = "0.4.0";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.11.0 2.484.0 0.4.0 SpeakeasySDK";
         private string _serverUrl = "";
         private SDKConfig.Server? _server = null;
         private ISpeakeasyHttpClient _client;
         private Func<SpeakeasySDK.Models.Shared.Security>? _securitySource;
-        public IApis Apis { get; private set; }
-        public IApiEndpoints ApiEndpoints { get; private set; }
-        public IMetadata Metadata { get; private set; }
-        public ISchemas Schemas { get; private set; }
         public IArtifacts Artifacts { get; private set; }
         public IAuth Auth { get; private set; }
-        public IRequests Requests { get; private set; }
         public IGithub Github { get; private set; }
         public IOrganizations Organizations { get; private set; }
         public IReports Reports { get; private set; }
         public IShortURLs ShortURLs { get; private set; }
+        public ISubscriptions Subscriptions { get; private set; }
         public ISuggest Suggest { get; private set; }
-        public IEmbeds Embeds { get; private set; }
         public IWorkspaces Workspaces { get; private set; }
         public IEvents Events { get; private set; }
 
-        public SDK(SpeakeasySDK.Models.Shared.Security? security = null, Func<SpeakeasySDK.Models.Shared.Security>? securitySource = null, string? workspaceID = null, SDKConfig.Server? server = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
+        public SDK(SpeakeasySDK.Models.Shared.Security? security = null, Func<SpeakeasySDK.Models.Shared.Security>? securitySource = null, string? workspaceId = null, SDKConfig.Server? server = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
         {
             if (server != null)
             {
@@ -210,7 +221,7 @@ namespace SpeakeasySDK
 
             SDKConfiguration = new SDKConfig()
             {
-                WorkspaceID = workspaceID,
+                WorkspaceId = workspaceId,
                 ServerName = _server,
                 ServerUrl = _serverUrl,
                 RetryConfig = retryConfig
@@ -219,25 +230,10 @@ namespace SpeakeasySDK
             _client = SDKConfiguration.InitHooks(_client);
 
 
-            Apis = new Apis(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            ApiEndpoints = new ApiEndpoints(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            Metadata = new Metadata(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            Schemas = new Schemas(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
             Artifacts = new Artifacts(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
             Auth = new Auth(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            Requests = new Requests(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
             Github = new Github(_client, _securitySource, _serverUrl, SDKConfiguration);
@@ -252,16 +248,307 @@ namespace SpeakeasySDK
             ShortURLs = new ShortURLs(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
+            Subscriptions = new Subscriptions(_client, _securitySource, _serverUrl, SDKConfiguration);
+
+
             Suggest = new Suggest(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            Embeds = new Embeds(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
             Workspaces = new Workspaces(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
             Events = new Events(_client, _securitySource, _serverUrl, SDKConfiguration);
+        }
+
+        public async Task<GenerateCodeSamplePreviewResponse> GenerateCodeSamplePreviewAsync(CodeSampleSchemaInput request)
+        {
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+
+            var urlString = baseUrl + "/v1/code_sample/preview";
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
+            httpRequest.Headers.Add("user-agent", _userAgent);
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "Request", "multipart", false, false);
+            if (serializedBody != null)
+            {
+                httpRequest.Content = serializedBody;
+            }
+
+            if (_securitySource != null)
+            {
+                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext("generateCodeSamplePreview", null, _securitySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await _client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var response = new GenerateCodeSamplePreviewResponse()
+                    {
+                        StatusCode = responseStatusCode,
+                        ContentType = contentType,
+                        RawResponse = httpResponse
+                    };
+                    response.TwoHundredApplicationJsonBytes = await httpResponse.Content.ReadAsByteArrayAsync();
+                    return response;
+                }
+                else if(Utilities.IsContentTypeMatch("application/x-yaml", contentType))
+                {
+                    var response = new GenerateCodeSamplePreviewResponse()
+                    {
+                        StatusCode = responseStatusCode,
+                        ContentType = contentType,
+                        RawResponse = httpResponse
+                    };
+                    response.TwoHundredApplicationXYamlBytes = await httpResponse.Content.ReadAsByteArrayAsync();
+                    return response;
+                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            }
+            else if(responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            }
+
+            throw new Models.Errors.SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+        }
+
+        public async Task<GenerateCodeSamplePreviewAsyncResponse> GenerateCodeSamplePreviewAsyncAsync(CodeSampleSchemaInput request)
+        {
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+
+            var urlString = baseUrl + "/v1/code_sample/preview/async";
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
+            httpRequest.Headers.Add("user-agent", _userAgent);
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "Request", "multipart", false, false);
+            if (serializedBody != null)
+            {
+                httpRequest.Content = serializedBody;
+            }
+
+            if (_securitySource != null)
+            {
+                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext("generateCodeSamplePreviewAsync", null, _securitySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await _client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 202)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<GenerateCodeSamplePreviewAsyncResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new GenerateCodeSamplePreviewAsyncResponse()
+                    {
+                        StatusCode = responseStatusCode,
+                        ContentType = contentType,
+                        RawResponse = httpResponse
+                    };
+                    response.Object = obj;
+                    return response;
+                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            }
+            else if(responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            }
+
+            throw new Models.Errors.SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+        }
+
+        public async Task<GetCodeSamplePreviewAsyncResponse> GetCodeSamplePreviewAsyncAsync(GetCodeSamplePreviewAsyncRequest request)
+        {
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = URLBuilder.Build(baseUrl, "/v1/code_sample/preview/async/{jobID}", request);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("user-agent", _userAgent);
+
+            if (_securitySource != null)
+            {
+                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext("getCodeSamplePreviewAsync", null, _securitySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await _client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var response = new GetCodeSamplePreviewAsyncResponse()
+                    {
+                        StatusCode = responseStatusCode,
+                        ContentType = contentType,
+                        RawResponse = httpResponse
+                    };
+                    response.TwoHundredApplicationJsonBytes = await httpResponse.Content.ReadAsByteArrayAsync();
+                    return response;
+                }
+                else if(Utilities.IsContentTypeMatch("application/x-yaml", contentType))
+                {
+                    var response = new GetCodeSamplePreviewAsyncResponse()
+                    {
+                        StatusCode = responseStatusCode,
+                        ContentType = contentType,
+                        RawResponse = httpResponse
+                    };
+                    response.TwoHundredApplicationXYamlBytes = await httpResponse.Content.ReadAsByteArrayAsync();
+                    return response;
+                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            }
+            else if(responseStatusCode == 202)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<GetCodeSamplePreviewAsyncResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new GetCodeSamplePreviewAsyncResponse()
+                    {
+                        StatusCode = responseStatusCode,
+                        ContentType = contentType,
+                        RawResponse = httpResponse
+                    };
+                    response.TwoHundredAndTwoApplicationJsonObject = obj;
+                    return response;
+                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            }
+            else if(responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            }
+
+            throw new Models.Errors.SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
     }
 }

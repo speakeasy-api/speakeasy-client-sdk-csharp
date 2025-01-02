@@ -11,8 +11,8 @@ namespace SpeakeasySDK.Models.Shared
 {
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
-    using System.Collections.Generic;
     using System;
+    using System.Collections.Generic;
     
     public class Revision
     {

@@ -19,5 +19,8 @@ namespace SpeakeasySDK.Models.Shared
 
         [SpeakeasyMetadata("security:scheme=true,type=http,subType=bearer,name=Authorization")]
         public string? Bearer { get; set; }
+
+        [SpeakeasyMetadata("security:scheme=true,type=apiKey,subType=header,name=x-workspace-identifier")]
+        public string? WorkspaceIdentifier { get; set; }
     }
 }

@@ -25,7 +25,7 @@ var sdk = new SDK(security: new Security() {
 });
 
 CreateRequestBody req = new CreateRequestBody() {
-    Url = "http://limp-pastry.org",
+    Url = "https://probable-heating.com/",
 };
 
 var res = await sdk.ShortURLs.CreateAsync(req);
@@ -45,6 +45,6 @@ var res = await sdk.ShortURLs.CreateAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+| SpeakeasySDK.Models.Errors.SDKException | 4XX, 5XX                                | \*/\*                                   |

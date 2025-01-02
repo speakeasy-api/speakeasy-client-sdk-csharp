@@ -22,7 +22,7 @@ namespace SpeakeasySDK.Models.Operations
         [SpeakeasyMetadata("multipartForm:name=opts,json")]
         public SuggestOptsOld? Opts { get; set; }
 
-        [SpeakeasyMetadata("multipartForm:file")]
-        public Models.Operations.Schema Schema { get; set; } = default!;
+        [SpeakeasyMetadata("multipartForm:file,name=schema")]
+        public Schema Schema { get; set; } = default!;
     }
 }

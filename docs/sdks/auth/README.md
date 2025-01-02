@@ -7,10 +7,48 @@ REST APIs for managing Authentication
 
 ### Available Operations
 
+* [GetAccess](#getaccess) - Get access allowances for a particular workspace
 * [GetAccessToken](#getaccesstoken) - Get or refresh an access token for the current workspace.
 * [GetUser](#getuser) - Get information about the current user.
-* [GetWorkspaceAccess](#getworkspaceaccess) - Get access allowances for a particular workspace
 * [ValidateApiKey](#validateapikey) - Validate the current api key.
+
+## GetAccess
+
+Checks if generation is permitted for a particular run of the CLI
+
+### Example Usage
+
+```csharp
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Operations;
+using SpeakeasySDK.Models.Shared;
+
+var sdk = new SDK(security: new Security() {
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
+
+GetWorkspaceAccessRequest req = new GetWorkspaceAccessRequest() {};
+
+var res = await sdk.Auth.GetAccessAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `request`                                                                         | [GetWorkspaceAccessRequest](../../Models/Operations/GetWorkspaceAccessRequest.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
+
+### Response
+
+**[GetWorkspaceAccessResponse](../../Models/Operations/GetWorkspaceAccessResponse.md)**
+
+### Errors
+
+| Error Type                              | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.SDKException | 4XX, 5XX                                | \*/\*                                   |
 
 ## GetAccessToken
 
@@ -21,12 +59,11 @@ Get or refresh an access token for the current workspace.
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
-using SpeakeasySDK.Models.Shared;
 
 var sdk = new SDK();
 
 GetAccessTokenRequest req = new GetAccessTokenRequest() {
-    WorkspaceId = "<value>",
+    WorkspaceId = "<id>",
 };
 
 var res = await sdk.Auth.GetAccessTokenAsync(req);
@@ -46,10 +83,10 @@ var res = await sdk.Auth.GetAccessTokenAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
-
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
 
 ## GetUser
 
@@ -76,49 +113,10 @@ var res = await sdk.Auth.GetUserAsync();
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
-
-
-## GetWorkspaceAccess
-
-Checks if generation is permitted for a particular run of the CLI
-
-### Example Usage
-
-```csharp
-using SpeakeasySDK;
-using SpeakeasySDK.Models.Operations;
-using SpeakeasySDK.Models.Shared;
-
-var sdk = new SDK(security: new Security() {
-    APIKey = "<YOUR_API_KEY_HERE>",
-});
-
-GetWorkspaceAccessRequest req = new GetWorkspaceAccessRequest() {};
-
-var res = await sdk.Auth.GetWorkspaceAccessAsync(req);
-
-// handle response
-```
-
-### Parameters
-
-| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `request`                                                                         | [GetWorkspaceAccessRequest](../../Models/Operations/GetWorkspaceAccessRequest.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
-
-### Response
-
-**[GetWorkspaceAccessResponse](../../Models/Operations/GetWorkspaceAccessResponse.md)**
-
-### Errors
-
-| Error Object                            | Status Code                             | Content Type                            |
-| --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
-
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
 
 ## ValidateApiKey
 
@@ -145,6 +143,7 @@ var res = await sdk.Auth.ValidateApiKeyAsync();
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |

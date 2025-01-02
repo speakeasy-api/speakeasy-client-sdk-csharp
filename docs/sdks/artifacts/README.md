@@ -7,14 +7,64 @@ REST APIs for working with Registry artifacts
 
 ### Available Operations
 
+* [CreateRemoteSource](#createremotesource) - Configure a new remote source
 * [GetBlob](#getblob) - Get blob for a particular digest
 * [GetManifest](#getmanifest) - Get manifest for a particular reference
 * [GetNamespaces](#getnamespaces) - Each namespace contains many revisions.
-* [GetOASSummary](#getoassummary)
 * [GetRevisions](#getrevisions)
 * [GetTags](#gettags)
+* [ListRemoteSources](#listremotesources) - Get remote sources attached to a particular namespace
 * [PostTags](#posttags) - Add tags to an existing revision
 * [Preflight](#preflight) - Get access token for communicating with OCI distribution endpoints
+* [SetVisibility](#setvisibility) - Set visibility of a namespace with an existing metadata entry
+
+## CreateRemoteSource
+
+Configure a new remote source
+
+### Example Usage
+
+```csharp
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using System.Collections.Generic;
+
+var sdk = new SDK(security: new Security() {
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
+
+RemoteSource req = new RemoteSource() {
+    Inputs = new List<RemoteDocument>() {
+        new RemoteDocument() {
+            RegistryUrl = "https://productive-swine.net",
+        },
+    },
+    Output = new RemoteDocument() {
+        RegistryUrl = "https://spiteful-apricot.info",
+    },
+};
+
+var res = await sdk.Artifacts.CreateRemoteSourceAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                           | Type                                                | Required                                            | Description                                         |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| `request`                                           | [RemoteSource](../../Models/Shared/RemoteSource.md) | :heavy_check_mark:                                  | The request object to use for the request.          |
+
+### Response
+
+**[CreateRemoteSourceResponse](../../Models/Operations/CreateRemoteSourceResponse.md)**
+
+### Errors
+
+| Error Type                              | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
 
 ## GetBlob
 
@@ -55,10 +105,10 @@ var res = await sdk.Artifacts.GetBlobAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
-
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
 
 ## GetManifest
 
@@ -99,10 +149,10 @@ var res = await sdk.Artifacts.GetManifestAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
-
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
 
 ## GetNamespaces
 
@@ -129,50 +179,10 @@ var res = await sdk.Artifacts.GetNamespacesAsync();
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
-
-
-## GetOASSummary
-
-### Example Usage
-
-```csharp
-using SpeakeasySDK;
-using SpeakeasySDK.Models.Operations;
-using SpeakeasySDK.Models.Shared;
-
-var sdk = new SDK(security: new Security() {
-    APIKey = "<YOUR_API_KEY_HERE>",
-});
-
-GetOASSummaryRequest req = new GetOASSummaryRequest() {
-    NamespaceName = "<value>",
-    RevisionReference = "<value>",
-};
-
-var res = await sdk.Artifacts.GetOASSummaryAsync(req);
-
-// handle response
-```
-
-### Parameters
-
-| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `request`                                                               | [GetOASSummaryRequest](../../Models/Operations/GetOASSummaryRequest.md) | :heavy_check_mark:                                                      | The request object to use for the request.                              |
-
-### Response
-
-**[GetOASSummaryResponse](../../Models/Operations/GetOASSummaryResponse.md)**
-
-### Errors
-
-| Error Object                            | Status Code                             | Content Type                            |
-| --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
-
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
 
 ## GetRevisions
 
@@ -208,10 +218,10 @@ var res = await sdk.Artifacts.GetRevisionsAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
-
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
 
 ## GetTags
 
@@ -247,10 +257,51 @@ var res = await sdk.Artifacts.GetTagsAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
 
+## ListRemoteSources
+
+Get remote sources attached to a particular namespace
+
+### Example Usage
+
+```csharp
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Operations;
+using SpeakeasySDK.Models.Shared;
+
+var sdk = new SDK(security: new Security() {
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
+
+ListRemoteSourcesRequest req = new ListRemoteSourcesRequest() {
+    NamespaceName = "<value>",
+};
+
+var res = await sdk.Artifacts.ListRemoteSourcesAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `request`                                                                       | [ListRemoteSourcesRequest](../../Models/Operations/ListRemoteSourcesRequest.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
+
+### Response
+
+**[ListRemoteSourcesResponse](../../Models/Operations/ListRemoteSourcesResponse.md)**
+
+### Errors
+
+| Error Type                              | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
 
 ## PostTags
 
@@ -262,7 +313,6 @@ Add tags to an existing revision
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
-using System.Collections.Generic;
 
 var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
@@ -289,10 +339,10 @@ var res = await sdk.Artifacts.PostTagsAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
-
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
 
 ## Preflight
 
@@ -329,6 +379,48 @@ var res = await sdk.Artifacts.PreflightAsync(req);
 
 ### Errors
 
-| Error Object                            | Status Code                             | Content Type                            |
+| Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
+
+## SetVisibility
+
+Set visibility of a namespace with an existing metadata entry
+
+### Example Usage
+
+```csharp
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Operations;
+using SpeakeasySDK.Models.Shared;
+
+var sdk = new SDK(security: new Security() {
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
+
+SetVisibilityRequest req = new SetVisibilityRequest() {
+    NamespaceName = "<value>",
+};
+
+var res = await sdk.Artifacts.SetVisibilityAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `request`                                                               | [SetVisibilityRequest](../../Models/Operations/SetVisibilityRequest.md) | :heavy_check_mark:                                                      | The request object to use for the request.                              |
+
+### Response
+
+**[SetVisibilityResponse](../../Models/Operations/SetVisibilityResponse.md)**
+
+### Errors
+
+| Error Type                              | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |

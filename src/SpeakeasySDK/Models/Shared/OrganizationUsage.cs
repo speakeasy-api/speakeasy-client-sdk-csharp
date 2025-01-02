@@ -41,6 +41,12 @@ namespace SpeakeasySDK.Models.Shared
         public string Language { get; set; } = default!;
 
         /// <summary>
+        /// Maximum Number of operations per SDK specific in contract
+        /// </summary>
+        [JsonProperty("max_operations")]
+        public long MaxOperations { get; set; } = default!;
+
+        /// <summary>
         /// Number of operations performed
         /// </summary>
         [JsonProperty("number_of_operations")]

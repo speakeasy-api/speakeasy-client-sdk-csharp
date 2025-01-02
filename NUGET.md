@@ -8,55 +8,99 @@
 
 ```csharp
 using SpeakeasySDK;
-using SpeakeasySDK.Models.Operations;
-using System.Collections.Generic;
 using SpeakeasySDK.Models.Shared;
+using System;
+using System.Collections.Generic;
 
 var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
 });
 
-GetApisRequest req = new GetApisRequest() {};
+CodeSampleSchemaInput req = new CodeSampleSchemaInput() {
+    Languages = new List<string>() {
+        "<value>",
+    },
+    SchemaFile = new SchemaFile() {
+        Content = System.Text.Encoding.UTF8.GetBytes("0xc3dD8BfBef"),
+        FileName = "example.file",
+    },
+};
 
-var res = await sdk.Apis.GetApisAsync(req);
+var res = await sdk.GenerateCodeSamplePreviewAsync(req);
 
 // handle response
 ```
 <!-- End SDK Example Usage [usage] -->
 
-<!-- Start Global Parameters [global-parameters] -->
-## Global Parameters
+<!-- Start Authentication [security] -->
+## Authentication
 
+### Per-Client Security Schemes
+
+This SDK supports the following security schemes globally:
+
+| Name                  | Type   | Scheme      |
+| --------------------- | ------ | ----------- |
+| `APIKey`              | apiKey | API key     |
+| `Bearer`              | http   | HTTP Bearer |
+| `WorkspaceIdentifier` | apiKey | API key     |
+
+You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
+```csharp
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using System;
+using System.Collections.Generic;
+
+var sdk = new SDK(security: new Security() {
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
+
+CodeSampleSchemaInput req = new CodeSampleSchemaInput() {
+    Languages = new List<string>() {
+        "<value>",
+    },
+    SchemaFile = new SchemaFile() {
+        Content = System.Text.Encoding.UTF8.GetBytes("0xc3dD8BfBef"),
+        FileName = "example.file",
+    },
+};
+
+var res = await sdk.GenerateCodeSamplePreviewAsync(req);
+
+// handle response
+```
+<!-- End Authentication [security] -->
+
+<!-- Start Global Parameters [global-parameters] -->
 ## Global Parameters
 
 A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
 
-For example, you can set `workspaceID` to `"<value>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `GetWorkspace`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+For example, you can set `workspace_id` to `"<id>"` at SDK initialization and then you do not have to pass the same value on calls to operations like `GetAccessToken`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
 ### Available Globals
 
 The following global parameter is available.
 
-| Name | Type | Required | Description |
-| ---- | ---- |:--------:| ----------- |
-| workspaceID | string |  | The WorkspaceID parameter. |
-
+| Name        | Type   | Description                |
+| ----------- | ------ | -------------------------- |
+| workspaceId | string | The WorkspaceId parameter. |
 
 ### Example
 
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
-using SpeakeasySDK.Models.Shared;
 
-var sdk = new SDK(security: new Security() {
-    APIKey = "<YOUR_API_KEY_HERE>",
-});
+var sdk = new SDK();
 
-GetWorkspaceRequest req = new GetWorkspaceRequest() {};
+GetAccessTokenRequest req = new GetAccessTokenRequest() {
+    WorkspaceId = "<id>",
+};
 
-var res = await sdk.Workspaces.GetWorkspaceAsync(req);
+var res = await sdk.Auth.GetAccessTokenAsync(req);
 
 // handle response
 ```
@@ -79,7 +123,7 @@ var sdk = new SDK(security: new Security() {
 
 GetWorkspaceAccessRequest req = new GetWorkspaceAccessRequest() {};
 
-var res = await sdk.Auth.GetWorkspaceAccessAsync(
+var res = await sdk.Auth.GetAccessAsync(
     retryConfig: new RetryConfig(
         strategy: RetryConfig.RetryStrategy.BACKOFF,
         backoff: new BackoffStrategy(
@@ -89,7 +133,9 @@ var res = await sdk.Auth.GetWorkspaceAccessAsync(
             exponent: 1.1
         ),
         retryConnectionErrors: false
-    ),req);
+    ),
+    request: req
+);
 
 // handle response
 ```
@@ -118,7 +164,7 @@ var sdk = new SDK(
 
 GetWorkspaceAccessRequest req = new GetWorkspaceAccessRequest() {};
 
-var res = await sdk.Auth.GetWorkspaceAccessAsync(req);
+var res = await sdk.Auth.GetAccessAsync(req);
 
 // handle response
 ```
@@ -127,21 +173,31 @@ var res = await sdk.Auth.GetWorkspaceAccessAsync(req);
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-Handling errors in this SDK should largely match your expectations.  All operations return a response object or thow an exception.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate type.
+Handling errors in this SDK should largely match your expectations. All operations return a response object or throw an exception.
 
-| Error Object                            | Status Code                             | Content Type                            |
-| --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.Error        | 5XX                                     | application/json                        |
-| SpeakeasySDK.Models.Errors.SDKException | 4xx-5xx                                 | */*                                     |
+By default, an API error will raise a `SpeakeasySDK.Models.Errors.SDKException` exception, which has the following properties:
+
+| Property      | Type                  | Description           |
+|---------------|-----------------------|-----------------------|
+| `Message`     | *string*              | The error message     |
+| `StatusCode`  | *int*                 | The HTTP status code  |
+| `RawResponse` | *HttpResponseMessage* | The raw HTTP response |
+| `Body`        | *string*              | The response content  |
+
+When custom error responses are specified for an operation, the SDK may also throw their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `GenerateCodeSamplePreviewAsync` method throws the following exceptions:
+
+| Error Type                       | Status Code | Content Type     |
+| -------------------------------- | ----------- | ---------------- |
+| SpeakeasySDK.Models.Errors.Error | 4XX, 5XX    | application/json |
 
 ### Example
 
 ```csharp
 using SpeakeasySDK;
-using SpeakeasySDK.Models.Operations;
+using SpeakeasySDK.Models.Errors;
 using SpeakeasySDK.Models.Shared;
 using System;
-using SpeakeasySDK.Models.Errors;
+using System.Collections.Generic;
 
 var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
@@ -149,9 +205,17 @@ var sdk = new SDK(security: new Security() {
 
 try
 {
-    GetWorkspaceFeatureFlagsRequest req = new GetWorkspaceFeatureFlagsRequest() {};
+    CodeSampleSchemaInput req = new CodeSampleSchemaInput() {
+        Languages = new List<string>() {
+            "<value>",
+        },
+        SchemaFile = new SchemaFile() {
+            Content = System.Text.Encoding.UTF8.GetBytes("0xc3dD8BfBef"),
+            FileName = "example.file",
+        },
+    };
 
-    var res = await sdk.Workspaces.GetWorkspaceFeatureFlagsAsync(req);
+    var res = await sdk.GenerateCodeSamplePreviewAsync(req);
 
     // handle response
 }
@@ -159,11 +223,13 @@ catch (Exception ex)
 {
     if (ex is Error)
     {
-        // handle exception
+        // Handle exception data
+        throw;
     }
     else if (ex is SpeakeasySDK.Models.Errors.SDKException)
     {
-        // handle exception
+        // Handle default exception
+        throw;
     }
 }
 ```
@@ -176,48 +242,70 @@ catch (Exception ex)
 
 You can override the default server globally by passing a server name to the `server: string` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the names associated with the available servers:
 
-| Name | Server | Variables |
-| ----- | ------ | --------- |
-| `prod` | `https://api.prod.speakeasyapi.dev` | None |
+| Name   | Server                              |
+| ------ | ----------------------------------- |
+| `prod` | `https://api.prod.speakeasyapi.dev` |
 
+#### Example
 
-
-### Override Server URL Per-Client
-
-The default server can also be overridden globally by passing a URL to the `serverUrl: str` optional parameter when initializing the SDK client instance. For example:
-<!-- End Server Selection [server] -->
-
-<!-- Start Authentication [security] -->
-## Authentication
-
-### Per-Client Security Schemes
-
-This SDK supports the following security schemes globally:
-
-| Name        | Type        | Scheme      |
-| ----------- | ----------- | ----------- |
-| `APIKey`    | apiKey      | API key     |
-| `Bearer`    | http        | HTTP Bearer |
-
-You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
 ```csharp
 using SpeakeasySDK;
-using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
+using System;
+using System.Collections.Generic;
 
-var sdk = new SDK(security: new Security() {
-    APIKey = "<YOUR_API_KEY_HERE>",
-});
+var sdk = new SDK(
+    server: "prod",
+    security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    }
+);
 
-DeleteApiRequest req = new DeleteApiRequest() {
-    ApiID = "<value>",
-    VersionID = "<value>",
+CodeSampleSchemaInput req = new CodeSampleSchemaInput() {
+    Languages = new List<string>() {
+        "<value>",
+    },
+    SchemaFile = new SchemaFile() {
+        Content = System.Text.Encoding.UTF8.GetBytes("0xc3dD8BfBef"),
+        FileName = "example.file",
+    },
 };
 
-var res = await sdk.Apis.DeleteApiAsync(req);
+var res = await sdk.GenerateCodeSamplePreviewAsync(req);
 
 // handle response
 ```
-<!-- End Authentication [security] -->
+
+### Override Server URL Per-Client
+
+The default server can also be overridden globally by passing a URL to the `serverUrl: string` optional parameter when initializing the SDK client instance. For example:
+```csharp
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using System;
+using System.Collections.Generic;
+
+var sdk = new SDK(
+    serverUrl: "https://api.prod.speakeasyapi.dev",
+    security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    }
+);
+
+CodeSampleSchemaInput req = new CodeSampleSchemaInput() {
+    Languages = new List<string>() {
+        "<value>",
+    },
+    SchemaFile = new SchemaFile() {
+        Content = System.Text.Encoding.UTF8.GetBytes("0xc3dD8BfBef"),
+        FileName = "example.file",
+    },
+};
+
+var res = await sdk.GenerateCodeSamplePreviewAsync(req);
+
+// handle response
+```
+<!-- End Server Selection [server] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->

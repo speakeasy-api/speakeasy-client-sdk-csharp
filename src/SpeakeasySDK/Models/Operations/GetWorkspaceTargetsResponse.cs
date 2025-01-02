@@ -11,9 +11,9 @@ namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
+    using System;
     using System.Collections.Generic;
     using System.Net.Http;
-    using System;
     
     public class GetWorkspaceTargetsResponse
     {

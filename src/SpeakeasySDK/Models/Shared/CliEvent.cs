@@ -168,6 +168,12 @@ namespace SpeakeasySDK.Models.Shared
         public long? GenerateNumberOfOperationsUsed { get; set; }
 
         /// <summary>
+        /// The number of terraform resources used in generation.
+        /// </summary>
+        [JsonProperty("generate_number_of_terraform_resources")]
+        public long? GenerateNumberOfTerraformResources { get; set; }
+
+        /// <summary>
         /// Indicates whether tests were output.
         /// </summary>
         [JsonProperty("generate_output_tests")]
@@ -238,6 +244,18 @@ namespace SpeakeasySDK.Models.Shared
         /// </summary>
         [JsonProperty("gh_action_version")]
         public string? GhActionVersion { get; set; }
+
+        /// <summary>
+        /// Whether or not changes were committed from generation in the Github Action.
+        /// </summary>
+        [JsonProperty("gh_changes_committed")]
+        public bool? GhChangesCommitted { get; set; }
+
+        /// <summary>
+        /// The reference to a created pull request URL.
+        /// </summary>
+        [JsonProperty("gh_pull_request")]
+        public string? GhPullRequest { get; set; }
 
         /// <summary>
         /// Current working directory relative to the git root.
