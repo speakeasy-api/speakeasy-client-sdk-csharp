@@ -206,6 +206,27 @@ actions:
             var res = await sdk.Auth.ValidateApiKeyAsync();
 
             // handle response
+  - target: $["paths"]["/v1/code_sample"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getCodeSamples
+          source: |-
+            using SpeakeasySDK;
+            using SpeakeasySDK.Models.Operations;
+            using SpeakeasySDK.Models.Shared;
+
+            var sdk = new SDK(security: new Security() {
+                APIKey = "<YOUR_API_KEY_HERE>",
+            });
+
+            GetCodeSamplesRequest req = new GetCodeSamplesRequest() {
+                RegistryUrl = "https://normal-making.name",
+            };
+
+            var res = await sdk.CodeSamples.GetAsync(req);
+
+            // handle response
   - target: $["paths"]["/v1/code_sample/preview"]["post"]
     update:
       x-codeSamples:
@@ -231,7 +252,7 @@ actions:
                 },
             };
 
-            var res = await sdk.GenerateCodeSamplePreviewAsync(req);
+            var res = await sdk.CodeSamples.GenerateCodeSamplePreviewAsync(req);
 
             // handle response
   - target: $["paths"]["/v1/code_sample/preview/async"]["post"]
@@ -259,7 +280,7 @@ actions:
                 },
             };
 
-            var res = await sdk.GenerateCodeSamplePreviewAsyncAsync(req);
+            var res = await sdk.CodeSamples.GenerateCodeSamplePreviewAsyncAsync(req);
 
             // handle response
   - target: $["paths"]["/v1/code_sample/preview/async/{jobID}"]["get"]
@@ -280,7 +301,7 @@ actions:
                 JobID = "<id>",
             };
 
-            var res = await sdk.GetCodeSamplePreviewAsyncAsync(req);
+            var res = await sdk.CodeSamples.GetCodeSamplePreviewAsyncAsync(req);
 
             // handle response
   - target: $["paths"]["/v1/github/action"]["get"]
@@ -1042,7 +1063,9 @@ actions:
                 APIKey = "<YOUR_API_KEY_HERE>",
             });
 
-            GetWorkspaceRequest req = new GetWorkspaceRequest() {};
+            GetWorkspaceRequest req = new GetWorkspaceRequest() {
+                WorkspaceId = "<id>",
+            };
 
             var res = await sdk.Workspaces.GetByIDAsync(req);
 
@@ -1063,6 +1086,7 @@ actions:
             });
 
             UpdateWorkspaceDetailsRequest req = new UpdateWorkspaceDetailsRequest() {
+                WorkspaceId = "<id>",
                 Workspace = new Workspace() {
                     CreatedAt = System.DateTime.Parse("2025-07-28T19:04:48.565Z"),
                     Id = "<id>",
@@ -1091,7 +1115,9 @@ actions:
                 APIKey = "<YOUR_API_KEY_HERE>",
             });
 
-            SearchWorkspaceEventsRequest req = new SearchWorkspaceEventsRequest() {};
+            SearchWorkspaceEventsRequest req = new SearchWorkspaceEventsRequest() {
+                WorkspaceId = "<id>",
+            };
 
             var res = await sdk.Events.SearchAsync(req);
 
@@ -1113,6 +1139,7 @@ actions:
             });
 
             PostWorkspaceEventsRequest req = new PostWorkspaceEventsRequest() {
+                WorkspaceId = "<id>",
                 RequestBody = new List<CliEvent>() {
                     new CliEvent() {
                         Id = "<id>",
@@ -1145,7 +1172,9 @@ actions:
                 APIKey = "<YOUR_API_KEY_HERE>",
             });
 
-            GetWorkspaceTargetsDeprecatedRequest req = new GetWorkspaceTargetsDeprecatedRequest() {};
+            GetWorkspaceTargetsDeprecatedRequest req = new GetWorkspaceTargetsDeprecatedRequest() {
+                WorkspaceId = "<id>",
+            };
 
             var res = await sdk.Events.GetTargetsDeprecatedAsync(req);
 
@@ -1165,6 +1194,7 @@ actions:
             });
 
             GetWorkspaceEventsByTargetRequest req = new GetWorkspaceEventsByTargetRequest() {
+                WorkspaceId = "<id>",
                 TargetId = "<id>",
             };
 
@@ -1185,7 +1215,9 @@ actions:
                 APIKey = "<YOUR_API_KEY_HERE>",
             });
 
-            GetWorkspaceFeatureFlagsRequest req = new GetWorkspaceFeatureFlagsRequest() {};
+            GetWorkspaceFeatureFlagsRequest req = new GetWorkspaceFeatureFlagsRequest() {
+                WorkspaceId = "<id>",
+            };
 
             var res = await sdk.Workspaces.GetFeatureFlagsAsync(req);
 
@@ -1204,7 +1236,9 @@ actions:
                 APIKey = "<YOUR_API_KEY_HERE>",
             });
 
-            GetWorkspaceSettingsRequest req = new GetWorkspaceSettingsRequest() {};
+            GetWorkspaceSettingsRequest req = new GetWorkspaceSettingsRequest() {
+                WorkspaceId = "<id>",
+            };
 
             var res = await sdk.Workspaces.GetSettingsAsync(req);
 
@@ -1225,6 +1259,7 @@ actions:
             });
 
             UpdateWorkspaceSettingsRequest req = new UpdateWorkspaceSettingsRequest() {
+                WorkspaceId = "<id>",
                 WorkspaceSettings = new WorkspaceSettings() {
                     WorkspaceId = "<id>",
                     WebhookUrl = "https://last-suspension.info/",
@@ -1250,7 +1285,9 @@ actions:
                 APIKey = "<YOUR_API_KEY_HERE>",
             });
 
-            GetWorkspaceTeamRequest req = new GetWorkspaceTeamRequest() {};
+            GetWorkspaceTeamRequest req = new GetWorkspaceTeamRequest() {
+                WorkspaceId = "<id>",
+            };
 
             var res = await sdk.Workspaces.GetTeamAsync(req);
 
@@ -1270,6 +1307,7 @@ actions:
             });
 
             GrantUserAccessToWorkspaceRequest req = new GrantUserAccessToWorkspaceRequest() {
+                WorkspaceId = "<id>",
                 Email = "Lucinda.Batz8@hotmail.com",
             };
 
@@ -1291,6 +1329,7 @@ actions:
             });
 
             RevokeUserAccessToWorkspaceRequest req = new RevokeUserAccessToWorkspaceRequest() {
+                WorkspaceId = "<id>",
                 UserId = "<id>",
             };
 
@@ -1311,7 +1350,9 @@ actions:
                 APIKey = "<YOUR_API_KEY_HERE>",
             });
 
-            GetWorkspaceTokensRequest req = new GetWorkspaceTokensRequest() {};
+            GetWorkspaceTokensRequest req = new GetWorkspaceTokensRequest() {
+                WorkspaceId = "<id>",
+            };
 
             var res = await sdk.Workspaces.GetTokensAsync(req);
 
@@ -1332,6 +1373,7 @@ actions:
             });
 
             CreateWorkspaceTokenRequest req = new CreateWorkspaceTokenRequest() {
+                WorkspaceId = "<id>",
                 WorkspaceToken = new WorkspaceToken() {
                     Id = "<id>",
                     Name = "<value>",
@@ -1360,6 +1402,7 @@ actions:
             });
 
             DeleteWorkspaceTokenRequest req = new DeleteWorkspaceTokenRequest() {
+                WorkspaceId = "<id>",
                 TokenID = "<id>",
             };
 
