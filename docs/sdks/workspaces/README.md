@@ -94,6 +94,7 @@ CreateWorkspaceTokenRequest req = new CreateWorkspaceTokenRequest() {
         Name = "<value>",
         WorkspaceId = "<id>",
     },
+    WorkspaceId = "<id>",
 };
 
 var res = await sdk.Workspaces.CreateTokenAsync(req);
@@ -135,6 +136,7 @@ var sdk = new SDK(security: new Security() {
 
 DeleteWorkspaceTokenRequest req = new DeleteWorkspaceTokenRequest() {
     TokenID = "<id>",
+    WorkspaceId = "<id>",
 };
 
 var res = await sdk.Workspaces.DeleteTokenAsync(req);
@@ -234,7 +236,9 @@ var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
 });
 
-GetWorkspaceRequest req = new GetWorkspaceRequest() {};
+GetWorkspaceRequest req = new GetWorkspaceRequest() {
+    WorkspaceId = "<id>",
+};
 
 var res = await sdk.Workspaces.GetByIDAsync(req);
 
@@ -273,7 +277,9 @@ var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
 });
 
-GetWorkspaceFeatureFlagsRequest req = new GetWorkspaceFeatureFlagsRequest() {};
+GetWorkspaceFeatureFlagsRequest req = new GetWorkspaceFeatureFlagsRequest() {
+    WorkspaceId = "<id>",
+};
 
 var res = await sdk.Workspaces.GetFeatureFlagsAsync(req);
 
@@ -312,7 +318,9 @@ var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
 });
 
-GetWorkspaceSettingsRequest req = new GetWorkspaceSettingsRequest() {};
+GetWorkspaceSettingsRequest req = new GetWorkspaceSettingsRequest() {
+    WorkspaceId = "<id>",
+};
 
 var res = await sdk.Workspaces.GetSettingsAsync(req);
 
@@ -351,7 +359,9 @@ var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
 });
 
-GetWorkspaceTeamRequest req = new GetWorkspaceTeamRequest() {};
+GetWorkspaceTeamRequest req = new GetWorkspaceTeamRequest() {
+    WorkspaceId = "<id>",
+};
 
 var res = await sdk.Workspaces.GetTeamAsync(req);
 
@@ -390,7 +400,9 @@ var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
 });
 
-GetWorkspaceTokensRequest req = new GetWorkspaceTokensRequest() {};
+GetWorkspaceTokensRequest req = new GetWorkspaceTokensRequest() {
+    WorkspaceId = "<id>",
+};
 
 var res = await sdk.Workspaces.GetTokensAsync(req);
 
@@ -431,6 +443,7 @@ var sdk = new SDK(security: new Security() {
 
 GrantUserAccessToWorkspaceRequest req = new GrantUserAccessToWorkspaceRequest() {
     Email = "Lucinda.Batz8@hotmail.com",
+    WorkspaceId = "<id>",
 };
 
 var res = await sdk.Workspaces.GrantAccessAsync(req);
@@ -472,6 +485,7 @@ var sdk = new SDK(security: new Security() {
 
 RevokeUserAccessToWorkspaceRequest req = new RevokeUserAccessToWorkspaceRequest() {
     UserId = "<id>",
+    WorkspaceId = "<id>",
 };
 
 var res = await sdk.Workspaces.RevokeAccessAsync(req);
@@ -522,6 +536,7 @@ UpdateWorkspaceDetailsRequest req = new UpdateWorkspaceDetailsRequest() {
         UpdatedAt = System.DateTime.Parse("2024-10-16T10:52:42.015Z"),
         Verified = false,
     },
+    WorkspaceId = "<id>",
 };
 
 var res = await sdk.Workspaces.UpdateAsync(req);
@@ -569,6 +584,7 @@ UpdateWorkspaceSettingsRequest req = new UpdateWorkspaceSettingsRequest() {
         WebhookUrl = "https://grown-pharmacopoeia.net",
         WorkspaceId = "<id>",
     },
+    WorkspaceId = "<id>",
 };
 
 var res = await sdk.Workspaces.UpdateSettingsAsync(req);
