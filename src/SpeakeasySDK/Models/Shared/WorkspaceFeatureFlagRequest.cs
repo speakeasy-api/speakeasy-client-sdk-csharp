@@ -12,21 +12,15 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
-    using System;
+    using System.Collections.Generic;
     
     /// <summary>
-    /// A feature flag is a key-value pair that can be used to enable or disable features.
+    /// A request to add workspace feature flags
     /// </summary>
-    public class FeatureFlag
+    public class WorkspaceFeatureFlagRequest
     {
 
-        /// <summary>
-        /// enum value workspace feature flag
-        /// </summary>
-        [JsonProperty("feature_flag")]
-        public WorkspaceFeatureFlag FeatureFlagValue { get; set; } = default!;
-
-        [JsonProperty("trial_ends_at")]
-        public DateTime? TrialEndsAt { get; set; } = null;
+        [JsonProperty("feature_flags")]
+        public List<WorkspaceFeatureFlag> FeatureFlags { get; set; } = default!;
     }
 }

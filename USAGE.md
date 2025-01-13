@@ -2,24 +2,24 @@
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
-using System;
 using System.Collections.Generic;
 
 var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
 });
 
-CodeSampleSchemaInput req = new CodeSampleSchemaInput() {
-    Languages = new List<string>() {
-        "<value>",
+RemoteSource req = new RemoteSource() {
+    Inputs = new List<RemoteDocument>() {
+        new RemoteDocument() {
+            RegistryUrl = "https://productive-swine.net",
+        },
     },
-    SchemaFile = new SchemaFile() {
-        Content = System.Text.Encoding.UTF8.GetBytes("0xc3dD8BfBef"),
-        FileName = "example.file",
+    Output = new RemoteDocument() {
+        RegistryUrl = "https://spiteful-apricot.info",
     },
 };
 
-var res = await sdk.GenerateCodeSamplePreviewAsync(req);
+var res = await sdk.Artifacts.CreateRemoteSourceAsync(req);
 
 // handle response
 ```

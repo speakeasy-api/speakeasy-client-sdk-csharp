@@ -10,6 +10,7 @@
 namespace SpeakeasySDK.Models.Shared
 {
     using Newtonsoft.Json;
+    using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     
     /// <summary>
@@ -18,10 +19,16 @@ namespace SpeakeasySDK.Models.Shared
     public class GithubPublishingPRResponse
     {
 
-        [JsonProperty("generation_pull_request")]
-        public string? GenerationPullRequest { get; set; }
-
         [JsonProperty("pending_version")]
         public string? PendingVersion { get; set; }
+
+        [JsonProperty("pull_request")]
+        public string? PullRequest { get; set; }
+
+        /// <summary>
+        /// This can only be populated when the github app is installed for a repo
+        /// </summary>
+        [JsonProperty("pull_request_metadata")]
+        public PullRequestMetadata? PullRequestMetadata { get; set; }
     }
 }

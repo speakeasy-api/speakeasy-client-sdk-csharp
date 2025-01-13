@@ -49,24 +49,24 @@ dotnet add reference src/SpeakeasySDK/SpeakeasySDK.csproj
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
-using System;
 using System.Collections.Generic;
 
 var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
 });
 
-CodeSampleSchemaInput req = new CodeSampleSchemaInput() {
-    Languages = new List<string>() {
-        "<value>",
+RemoteSource req = new RemoteSource() {
+    Inputs = new List<RemoteDocument>() {
+        new RemoteDocument() {
+            RegistryUrl = "https://productive-swine.net",
+        },
     },
-    SchemaFile = new SchemaFile() {
-        Content = System.Text.Encoding.UTF8.GetBytes("0xc3dD8BfBef"),
-        FileName = "example.file",
+    Output = new RemoteDocument() {
+        RegistryUrl = "https://spiteful-apricot.info",
     },
 };
 
-var res = await sdk.GenerateCodeSamplePreviewAsync(req);
+var res = await sdk.Artifacts.CreateRemoteSourceAsync(req);
 
 // handle response
 ```
@@ -97,6 +97,13 @@ var res = await sdk.GenerateCodeSamplePreviewAsync(req);
 * [GetAccessToken](docs/sdks/auth/README.md#getaccesstoken) - Get or refresh an access token for the current workspace.
 * [GetUser](docs/sdks/auth/README.md#getuser) - Get information about the current user.
 * [ValidateApiKey](docs/sdks/auth/README.md#validateapikey) - Validate the current api key.
+
+### [CodeSamples](docs/sdks/codesamples/README.md)
+
+* [GenerateCodeSamplePreview](docs/sdks/codesamples/README.md#generatecodesamplepreview) - Generate Code Sample previews from a file and configuration parameters.
+* [GenerateCodeSamplePreviewAsync](docs/sdks/codesamples/README.md#generatecodesamplepreviewasync) - Initiate asynchronous Code Sample preview generation from a file and configuration parameters, receiving an async JobID response for polling.
+* [Get](docs/sdks/codesamples/README.md#get) - Retrieve usage snippets from document stored in the registry
+* [GetCodeSamplePreviewAsync](docs/sdks/codesamples/README.md#getcodesamplepreviewasync) - Poll for the result of an asynchronous Code Sample preview generation.
 
 ### [Events](docs/sdks/events/README.md)
 
@@ -134,11 +141,6 @@ var res = await sdk.GenerateCodeSamplePreviewAsync(req);
 * [GetLintingReportSignedUrl](docs/sdks/reports/README.md#getlintingreportsignedurl) - Get the signed access url for the linting reports for a particular document.
 * [UploadReport](docs/sdks/reports/README.md#uploadreport) - Upload a report.
 
-### [SDK](docs/sdks/sdk/README.md)
-
-* [GenerateCodeSamplePreview](docs/sdks/sdk/README.md#generatecodesamplepreview) - Generate Code Sample previews from a file and configuration parameters.
-* [GenerateCodeSamplePreviewAsync](docs/sdks/sdk/README.md#generatecodesamplepreviewasync) - Initiate asynchronous Code Sample preview generation from a file and configuration parameters, receiving an async JobID response for polling.
-* [GetCodeSamplePreviewAsync](docs/sdks/sdk/README.md#getcodesamplepreviewasync) - Poll for the result of an asynchronous Code Sample preview generation.
 
 ### [ShortURLs](docs/sdks/shorturls/README.md)
 
@@ -170,6 +172,7 @@ var res = await sdk.GenerateCodeSamplePreviewAsync(req);
 * [GetTokens](docs/sdks/workspaces/README.md#gettokens) - Get tokens for a particular workspace
 * [GrantAccess](docs/sdks/workspaces/README.md#grantaccess) - Grant a user access to a particular workspace
 * [RevokeAccess](docs/sdks/workspaces/README.md#revokeaccess) - Revoke a user's access to a particular workspace
+* [SetFeatureFlags](docs/sdks/workspaces/README.md#setfeatureflags) - Set workspace feature flags
 * [Update](docs/sdks/workspaces/README.md#update) - Update workspace details
 * [UpdateSettings](docs/sdks/workspaces/README.md#updatesettings) - Update workspace settings
 
@@ -194,7 +197,6 @@ You can override the default server globally by passing a server name to the `se
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
-using System;
 using System.Collections.Generic;
 
 var sdk = new SDK(
@@ -204,17 +206,18 @@ var sdk = new SDK(
     }
 );
 
-CodeSampleSchemaInput req = new CodeSampleSchemaInput() {
-    Languages = new List<string>() {
-        "<value>",
+RemoteSource req = new RemoteSource() {
+    Inputs = new List<RemoteDocument>() {
+        new RemoteDocument() {
+            RegistryUrl = "https://productive-swine.net",
+        },
     },
-    SchemaFile = new SchemaFile() {
-        Content = System.Text.Encoding.UTF8.GetBytes("0xc3dD8BfBef"),
-        FileName = "example.file",
+    Output = new RemoteDocument() {
+        RegistryUrl = "https://spiteful-apricot.info",
     },
 };
 
-var res = await sdk.GenerateCodeSamplePreviewAsync(req);
+var res = await sdk.Artifacts.CreateRemoteSourceAsync(req);
 
 // handle response
 ```
@@ -225,7 +228,6 @@ The default server can also be overridden globally by passing a URL to the `serv
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
-using System;
 using System.Collections.Generic;
 
 var sdk = new SDK(
@@ -235,17 +237,18 @@ var sdk = new SDK(
     }
 );
 
-CodeSampleSchemaInput req = new CodeSampleSchemaInput() {
-    Languages = new List<string>() {
-        "<value>",
+RemoteSource req = new RemoteSource() {
+    Inputs = new List<RemoteDocument>() {
+        new RemoteDocument() {
+            RegistryUrl = "https://productive-swine.net",
+        },
     },
-    SchemaFile = new SchemaFile() {
-        Content = System.Text.Encoding.UTF8.GetBytes("0xc3dD8BfBef"),
-        FileName = "example.file",
+    Output = new RemoteDocument() {
+        RegistryUrl = "https://spiteful-apricot.info",
     },
 };
 
-var res = await sdk.GenerateCodeSamplePreviewAsync(req);
+var res = await sdk.Artifacts.CreateRemoteSourceAsync(req);
 
 // handle response
 ```
@@ -268,24 +271,24 @@ You can set the security parameters through the `security` optional parameter wh
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
-using System;
 using System.Collections.Generic;
 
 var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
 });
 
-CodeSampleSchemaInput req = new CodeSampleSchemaInput() {
-    Languages = new List<string>() {
-        "<value>",
+RemoteSource req = new RemoteSource() {
+    Inputs = new List<RemoteDocument>() {
+        new RemoteDocument() {
+            RegistryUrl = "https://productive-swine.net",
+        },
     },
-    SchemaFile = new SchemaFile() {
-        Content = System.Text.Encoding.UTF8.GetBytes("0xc3dD8BfBef"),
-        FileName = "example.file",
+    Output = new RemoteDocument() {
+        RegistryUrl = "https://spiteful-apricot.info",
     },
 };
 
-var res = await sdk.GenerateCodeSamplePreviewAsync(req);
+var res = await sdk.Artifacts.CreateRemoteSourceAsync(req);
 
 // handle response
 ```
@@ -339,11 +342,12 @@ By default, an API error will raise a `SpeakeasySDK.Models.Errors.SDKException` 
 | `RawResponse` | *HttpResponseMessage* | The raw HTTP response |
 | `Body`        | *string*              | The response content  |
 
-When custom error responses are specified for an operation, the SDK may also throw their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `GenerateCodeSamplePreviewAsync` method throws the following exceptions:
+When custom error responses are specified for an operation, the SDK may also throw their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `CreateRemoteSourceAsync` method throws the following exceptions:
 
-| Error Type                       | Status Code | Content Type     |
-| -------------------------------- | ----------- | ---------------- |
-| SpeakeasySDK.Models.Errors.Error | 4XX, 5XX    | application/json |
+| Error Type                              | Status Code | Content Type     |
+| --------------------------------------- | ----------- | ---------------- |
+| SpeakeasySDK.Models.Errors.Error        | 4XX         | application/json |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX         | \*/\*            |
 
 ### Example
 
@@ -351,7 +355,6 @@ When custom error responses are specified for an operation, the SDK may also thr
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Errors;
 using SpeakeasySDK.Models.Shared;
-using System;
 using System.Collections.Generic;
 
 var sdk = new SDK(security: new Security() {
@@ -360,17 +363,18 @@ var sdk = new SDK(security: new Security() {
 
 try
 {
-    CodeSampleSchemaInput req = new CodeSampleSchemaInput() {
-        Languages = new List<string>() {
-            "<value>",
+    RemoteSource req = new RemoteSource() {
+        Inputs = new List<RemoteDocument>() {
+            new RemoteDocument() {
+                RegistryUrl = "https://productive-swine.net",
+            },
         },
-        SchemaFile = new SchemaFile() {
-            Content = System.Text.Encoding.UTF8.GetBytes("0xc3dD8BfBef"),
-            FileName = "example.file",
+        Output = new RemoteDocument() {
+            RegistryUrl = "https://spiteful-apricot.info",
         },
     };
 
-    var res = await sdk.GenerateCodeSamplePreviewAsync(req);
+    var res = await sdk.Artifacts.CreateRemoteSourceAsync(req);
 
     // handle response
 }
