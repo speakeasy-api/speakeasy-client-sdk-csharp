@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f73d2126-985b-4d69-88ee-b7c69254d8bf
 management:
-  docChecksum: 17684e14e65fca2909aaf49de5c6b935
+  docChecksum: 52df6f1f34dfe76968f8ed009cc2bfd3
   docVersion: 0.4.0
-  speakeasyVersion: 1.460.3
-  generationVersion: 2.484.0
-  releaseVersion: 5.11.0
-  configChecksum: ff6b845197ae681d026b0af12cd2d0de
+  speakeasyVersion: 1.468.2
+  generationVersion: 2.493.4
+  releaseVersion: 5.12.0
+  configChecksum: 4ac5f7ce74e22b4b8247f447fc0fc3c9
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   published: true
@@ -20,7 +20,7 @@ features:
     globalServerURLs: 2.82.3
     globals: 2.82.1
     intellisenseMarkdownSupport: 0.1.0
-    methodArguments: 0.1.0
+    methodArguments: 0.2.0
     nameOverrides: 2.81.2
     nullables: 0.1.0
     responseFormat: 0.0.4
@@ -29,7 +29,6 @@ features:
     serverIDs: 2.82.1
 generatedFiles:
   - .gitattributes
-  - CONTRIBUTING.md
   - NUGET.md
   - SpeakeasySDK.sln
   - USAGE.md
@@ -62,6 +61,8 @@ generatedFiles:
   - docs/Models/Operations/GetCodeSamplePreviewAsyncRequest.md
   - docs/Models/Operations/GetCodeSamplePreviewAsyncResponse.md
   - docs/Models/Operations/GetCodeSamplePreviewAsyncResponseBody.md
+  - docs/Models/Operations/GetCodeSamplesRequest.md
+  - docs/Models/Operations/GetCodeSamplesResponse.md
   - docs/Models/Operations/GetGitHubActionRequest.md
   - docs/Models/Operations/GetGitHubActionResponse.md
   - docs/Models/Operations/GetGithubSetupStateRequest.md
@@ -131,6 +132,7 @@ generatedFiles:
   - docs/Models/Operations/SetVisibilityRequest.md
   - docs/Models/Operations/SetVisibilityRequestBody.md
   - docs/Models/Operations/SetVisibilityResponse.md
+  - docs/Models/Operations/SetWorkspaceFeatureFlagsResponse.md
   - docs/Models/Operations/SuggestItemsResponse.md
   - docs/Models/Operations/SuggestOpenAPIRegistryRequest.md
   - docs/Models/Operations/SuggestOpenAPIRegistryResponse.md
@@ -191,6 +193,7 @@ generatedFiles:
   - docs/Models/Shared/OrganizationUsageResponse.md
   - docs/Models/Shared/PreflightRequest.md
   - docs/Models/Shared/PreflightToken.md
+  - docs/Models/Shared/PullRequestMetadata.md
   - docs/Models/Shared/Relationship.md
   - docs/Models/Shared/RemoteDocument.md
   - docs/Models/Shared/RemoteSource.md
@@ -210,11 +213,15 @@ generatedFiles:
   - docs/Models/Shared/Tag.md
   - docs/Models/Shared/TargetSDK.md
   - docs/Models/Shared/Type.md
+  - docs/Models/Shared/UsageSnippet.md
+  - docs/Models/Shared/UsageSnippets.md
   - docs/Models/Shared/User.md
   - docs/Models/Shared/V2Descriptor.md
   - docs/Models/Shared/WorkflowDocument.md
   - docs/Models/Shared/Workspace.md
   - docs/Models/Shared/WorkspaceAndOrganization.md
+  - docs/Models/Shared/WorkspaceFeatureFlag.md
+  - docs/Models/Shared/WorkspaceFeatureFlagRequest.md
   - docs/Models/Shared/WorkspaceFeatureFlagResponse.md
   - docs/Models/Shared/WorkspaceInviteResponse.md
   - docs/Models/Shared/WorkspaceSettings.md
@@ -223,6 +230,7 @@ generatedFiles:
   - docs/Models/Shared/Workspaces.md
   - docs/sdks/artifacts/README.md
   - docs/sdks/auth/README.md
+  - docs/sdks/codesamples/README.md
   - docs/sdks/events/README.md
   - docs/sdks/github/README.md
   - docs/sdks/organizations/README.md
@@ -235,6 +243,7 @@ generatedFiles:
   - global.json
   - src/SpeakeasySDK/Artifacts.cs
   - src/SpeakeasySDK/Auth.cs
+  - src/SpeakeasySDK/CodeSamples.cs
   - src/SpeakeasySDK/Events.cs
   - src/SpeakeasySDK/Github.cs
   - src/SpeakeasySDK/Hooks/HookTypes.cs
@@ -269,6 +278,8 @@ generatedFiles:
   - src/SpeakeasySDK/Models/Operations/GetCodeSamplePreviewAsyncRequest.cs
   - src/SpeakeasySDK/Models/Operations/GetCodeSamplePreviewAsyncResponse.cs
   - src/SpeakeasySDK/Models/Operations/GetCodeSamplePreviewAsyncResponseBody.cs
+  - src/SpeakeasySDK/Models/Operations/GetCodeSamplesRequest.cs
+  - src/SpeakeasySDK/Models/Operations/GetCodeSamplesResponse.cs
   - src/SpeakeasySDK/Models/Operations/GetGitHubActionRequest.cs
   - src/SpeakeasySDK/Models/Operations/GetGitHubActionResponse.cs
   - src/SpeakeasySDK/Models/Operations/GetGithubSetupStateRequest.cs
@@ -338,6 +349,7 @@ generatedFiles:
   - src/SpeakeasySDK/Models/Operations/SetVisibilityRequest.cs
   - src/SpeakeasySDK/Models/Operations/SetVisibilityRequestBody.cs
   - src/SpeakeasySDK/Models/Operations/SetVisibilityResponse.cs
+  - src/SpeakeasySDK/Models/Operations/SetWorkspaceFeatureFlagsResponse.cs
   - src/SpeakeasySDK/Models/Operations/SuggestItemsResponse.cs
   - src/SpeakeasySDK/Models/Operations/SuggestOpenAPIRegistryRequest.cs
   - src/SpeakeasySDK/Models/Operations/SuggestOpenAPIRegistryResponse.cs
@@ -398,6 +410,7 @@ generatedFiles:
   - src/SpeakeasySDK/Models/Shared/OrganizationUsageResponse.cs
   - src/SpeakeasySDK/Models/Shared/PreflightRequest.cs
   - src/SpeakeasySDK/Models/Shared/PreflightToken.cs
+  - src/SpeakeasySDK/Models/Shared/PullRequestMetadata.cs
   - src/SpeakeasySDK/Models/Shared/Relationship.cs
   - src/SpeakeasySDK/Models/Shared/RemoteDocument.cs
   - src/SpeakeasySDK/Models/Shared/RemoteSource.cs
@@ -417,11 +430,15 @@ generatedFiles:
   - src/SpeakeasySDK/Models/Shared/Tag.cs
   - src/SpeakeasySDK/Models/Shared/TargetSDK.cs
   - src/SpeakeasySDK/Models/Shared/Type.cs
+  - src/SpeakeasySDK/Models/Shared/UsageSnippet.cs
+  - src/SpeakeasySDK/Models/Shared/UsageSnippets.cs
   - src/SpeakeasySDK/Models/Shared/User.cs
   - src/SpeakeasySDK/Models/Shared/V2Descriptor.cs
   - src/SpeakeasySDK/Models/Shared/WorkflowDocument.cs
   - src/SpeakeasySDK/Models/Shared/Workspace.cs
   - src/SpeakeasySDK/Models/Shared/WorkspaceAndOrganization.cs
+  - src/SpeakeasySDK/Models/Shared/WorkspaceFeatureFlag.cs
+  - src/SpeakeasySDK/Models/Shared/WorkspaceFeatureFlagRequest.cs
   - src/SpeakeasySDK/Models/Shared/WorkspaceFeatureFlagResponse.cs
   - src/SpeakeasySDK/Models/Shared/WorkspaceInviteResponse.cs
   - src/SpeakeasySDK/Models/Shared/WorkspaceSettings.cs
@@ -1135,6 +1152,9 @@ examples:
           application/json: {"message": "<value>", "status_code": 217594}
   getWorkspace:
     speakeasy-default-get-workspace:
+      parameters:
+        path:
+          workspace_id: "<id>"
       responses:
         "200":
           application/json: {"created_at": "2024-06-17T21:39:51.489Z", "id": "<id>", "name": "<value>", "organization_id": "<value>", "slug": "<value>", "telemetry_disabled": true, "updated_at": "2022-01-05T09:55:04.665Z", "verified": false}
@@ -1146,6 +1166,9 @@ examples:
           application/json: {"message": "<value>", "status_code": 868924}
   getWorkspaceFeatureFlags:
     speakeasy-default-get-workspace-feature-flags:
+      parameters:
+        path:
+          workspace_id: "<id>"
       responses:
         5XX:
           application/json: {"message": "<value>", "status_code": 365854}
@@ -1157,6 +1180,7 @@ examples:
         path:
           targetID: "<value>"
           target_id: "<id>"
+          workspace_id: "<id>"
         query: {}
       responses:
         "200":
@@ -1172,6 +1196,9 @@ examples:
           application/json: {"message": "<value>", "status_code": 966013}
   postWorkspaceEvents:
     speakeasy-default-post-workspace-events:
+      parameters:
+        path:
+          workspace_id: "<id>"
       requestBody:
         application/json: []
       responses:
@@ -1179,6 +1206,10 @@ examples:
           application/json: {"message": "<value>", "status_code": 962857}
   searchWorkspaceEvents:
     speakeasy-default-search-workspace-events:
+      parameters:
+        path:
+          workspace_id: "<id>"
+        query: {}
       responses:
         "200":
           application/json: []
@@ -1363,6 +1394,9 @@ examples:
           application/json: {"message": "<value>", "status_code": 951062}
   createWorkspaceToken:
     speakeasy-default-create-workspace-token:
+      parameters:
+        path:
+          workspace_id: "<id>"
       requestBody:
         application/json: {"alg": "<value>", "created_at": "2023-08-16T02:33:00.784Z", "id": "<id>", "key": "<key>", "name": "<value>", "workspace_id": "<id>"}
       responses:
@@ -1373,6 +1407,7 @@ examples:
       parameters:
         path:
           tokenID: "<id>"
+          workspace_id: "<id>"
       responses:
         4XX:
           application/json: {"message": "<value>", "status_code": 120260}
@@ -1392,6 +1427,9 @@ examples:
           application/json: {"message": "<value>", "status_code": 16308}
   getWorkspaceSettings:
     speakeasy-default-get-workspace-settings:
+      parameters:
+        path:
+          workspace_id: "<id>"
       responses:
         2XX:
           application/json: {"created_at": "2025-05-29T22:34:47.605Z", "updated_at": "2024-02-24T21:50:01.663Z", "webhook_url": "https://different-amendment.com/", "workspace_id": "<id>"}
@@ -1399,6 +1437,9 @@ examples:
           application/json: {"message": "<value>", "status_code": 864485}
   getWorkspaceTeam:
     speakeasy-default-get-workspace-team:
+      parameters:
+        path:
+          workspace_id: "<id>"
       responses:
         2XX:
           application/json: {"users": []}
@@ -1406,6 +1447,9 @@ examples:
           application/json: {"message": "<value>", "status_code": 194974}
   getWorkspaceTokens:
     speakeasy-default-get-workspace-tokens:
+      parameters:
+        path:
+          workspace_id: "<id>"
       responses:
         2XX:
           application/json: [{"alg": "<value>", "created_at": "2024-06-30T03:05:24.969Z", "id": "<id>", "key": "<key>", "name": "<value>", "workspace_id": "<id>"}, {"alg": "<value>", "created_at": "2024-11-09T11:33:52.654Z", "id": "<id>", "key": "<key>", "name": "<value>", "workspace_id": "<id>"}, {"alg": "<value>", "created_at": "2024-11-05T09:03:46.133Z", "id": "<id>", "key": "<key>", "name": "<value>", "workspace_id": "<id>"}]
@@ -1416,6 +1460,7 @@ examples:
       parameters:
         path:
           email: "Lucinda.Batz8@hotmail.com"
+          workspace_id: "<id>"
       responses:
         "200":
           application/json: {"relationship": {"user_id": "<id>", "workspace_id": "<id>"}}
@@ -1426,11 +1471,15 @@ examples:
       parameters:
         path:
           userId: "<id>"
+          workspace_id: "<id>"
       responses:
         4XX:
           application/json: {"message": "<value>", "status_code": 243814}
   updateWorkspaceDetails:
     speakeasy-default-update-workspace-details:
+      parameters:
+        path:
+          workspace_id: "<id>"
       requestBody:
         application/json: {"created_at": "2025-07-28T19:04:48.565Z", "id": "<id>", "name": "<value>", "organization_id": "<id>", "slug": "<value>", "updated_at": "2024-10-16T10:52:42.015Z", "verified": true}
       responses:
@@ -1438,6 +1487,9 @@ examples:
           application/json: {"message": "<value>", "status_code": 991464}
   updateWorkspaceSettings:
     speakeasy-default-update-workspace-settings:
+      parameters:
+        path:
+          workspace_id: "<id>"
       requestBody:
         application/json: {"created_at": "2023-07-05T11:43:28.305Z", "updated_at": "2024-05-14T05:39:21.874Z", "webhook_url": "https://grown-pharmacopoeia.net", "workspace_id": "<id>"}
       responses:
@@ -1445,9 +1497,32 @@ examples:
           application/json: {"message": "<value>", "status_code": 54657}
   getWorkspaceTargetsDeprecated:
     speakeasy-default-get-workspace-targets-deprecated:
+      parameters:
+        path:
+          workspace_id: "<id>"
+        query: {}
       responses:
         "200":
           application/json: []
         5XX:
           application/json: {"message": "<value>", "status_code": 255923}
+  getCodeSamples:
+    speakeasy-default-get-code-samples:
+      parameters:
+        query:
+          registry_url: "https://normal-making.name"
+      responses:
+        2XX:
+          application/json: {"snippets": [{"code": "<value>", "language": "<value>", "operationId": "<id>"}, {"code": "<value>", "language": "<value>", "operationId": "<id>"}, {"code": "<value>", "language": "<value>", "operationId": "<id>"}]}
+        4XX:
+          application/json: {"message": "<value>", "status_code": 458049}
+  setWorkspaceFeatureFlags:
+    speakeasy-default-set-workspace-feature-flags:
+      requestBody:
+        application/json: {"feature_flags": ["skip_schema_registry", "webhooks"]}
+      responses:
+        "200":
+          application/json: {}
+        5XX:
+          application/json: {"message": "<value>", "status_code": 264889}
 generatedTests: {}

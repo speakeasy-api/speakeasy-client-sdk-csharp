@@ -30,6 +30,7 @@ var sdk = new SDK(security: new Security() {
 
 GetWorkspaceEventsByTargetRequest req = new GetWorkspaceEventsByTargetRequest() {
     TargetId = "<id>",
+    WorkspaceId = "<id>",
 };
 
 var res = await sdk.Events.GetEventsByTargetAsync(req);
@@ -108,7 +109,9 @@ var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
 });
 
-GetWorkspaceTargetsDeprecatedRequest req = new GetWorkspaceTargetsDeprecatedRequest() {};
+GetWorkspaceTargetsDeprecatedRequest req = new GetWorkspaceTargetsDeprecatedRequest() {
+    WorkspaceId = "<id>",
+};
 
 var res = await sdk.Events.GetTargetsDeprecatedAsync(req);
 
@@ -163,6 +166,7 @@ PostWorkspaceEventsRequest req = new PostWorkspaceEventsRequest() {
             WorkspaceId = "<id>",
         },
     },
+    WorkspaceId = "<id>",
 };
 
 var res = await sdk.Events.PostAsync(req);
@@ -202,7 +206,9 @@ var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
 });
 
-SearchWorkspaceEventsRequest req = new SearchWorkspaceEventsRequest() {};
+SearchWorkspaceEventsRequest req = new SearchWorkspaceEventsRequest() {
+    WorkspaceId = "<id>",
+};
 
 var res = await sdk.Events.SearchAsync(req);
 

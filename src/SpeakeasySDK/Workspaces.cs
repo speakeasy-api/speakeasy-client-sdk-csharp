@@ -109,6 +109,11 @@ namespace SpeakeasySDK
         Task<RevokeUserAccessToWorkspaceResponse> RevokeAccessAsync(RevokeUserAccessToWorkspaceRequest request);
 
         /// <summary>
+        /// Set workspace feature flags
+        /// </summary>
+        Task<SetWorkspaceFeatureFlagsResponse> SetFeatureFlagsAsync(WorkspaceFeatureFlagRequest request);
+
+        /// <summary>
         /// Update workspace details
         /// 
         /// <remarks>
@@ -134,10 +139,10 @@ namespace SpeakeasySDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.11.0";
-        private const string _sdkGenVersion = "2.484.0";
+        private const string _sdkVersion = "5.12.0";
+        private const string _sdkGenVersion = "2.493.4";
         private const string _openapiDocVersion = "0.4.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.11.0 2.484.0 0.4.0 SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.12.0 2.493.4 0.4.0 SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<SpeakeasySDK.Models.Shared.Security>? _securitySource;
@@ -1178,6 +1183,97 @@ namespace SpeakeasySDK
             else if(responseStatusCode >= 500 && responseStatusCode < 600)
             {
                 throw new Models.Errors.SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            }
+
+            throw new Models.Errors.SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+        }
+
+        public async Task<SetWorkspaceFeatureFlagsResponse> SetFeatureFlagsAsync(WorkspaceFeatureFlagRequest request)
+        {
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+
+            var urlString = baseUrl + "/v1/workspace/feature_flags";
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
+            httpRequest.Headers.Add("user-agent", _userAgent);
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json", false, false);
+            if (serializedBody != null)
+            {
+                httpRequest.Content = serializedBody;
+            }
+
+            if (_securitySource != null)
+            {
+                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext("setWorkspaceFeatureFlags", null, _securitySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await _client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<WorkspaceFeatureFlagResponse>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new SetWorkspaceFeatureFlagsResponse()
+                    {
+                        StatusCode = responseStatusCode,
+                        ContentType = contentType,
+                        RawResponse = httpResponse
+                    };
+                    response.WorkspaceFeatureFlagResponse = obj;
+                    return response;
+                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            }
+            else if(responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                throw new Models.Errors.SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
 
             throw new Models.Errors.SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
