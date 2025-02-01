@@ -89,6 +89,7 @@ var res = await sdk.Artifacts.CreateRemoteSourceAsync(req);
 * [ListRemoteSources](docs/sdks/artifacts/README.md#listremotesources) - Get remote sources attached to a particular namespace
 * [PostTags](docs/sdks/artifacts/README.md#posttags) - Add tags to an existing revision
 * [Preflight](docs/sdks/artifacts/README.md#preflight) - Get access token for communicating with OCI distribution endpoints
+* [SetArchived](docs/sdks/artifacts/README.md#setarchived) - Set whether a namespace is archived
 * [SetVisibility](docs/sdks/artifacts/README.md#setvisibility) - Set visibility of a namespace with an existing metadata entry
 
 ### [Auth](docs/sdks/auth/README.md)
@@ -102,7 +103,6 @@ var res = await sdk.Artifacts.CreateRemoteSourceAsync(req);
 
 * [GenerateCodeSamplePreview](docs/sdks/codesamples/README.md#generatecodesamplepreview) - Generate Code Sample previews from a file and configuration parameters.
 * [GenerateCodeSamplePreviewAsync](docs/sdks/codesamples/README.md#generatecodesamplepreviewasync) - Initiate asynchronous Code Sample preview generation from a file and configuration parameters, receiving an async JobID response for polling.
-* [Get](docs/sdks/codesamples/README.md#get) - Retrieve usage snippets from document stored in the registry
 * [GetCodeSamplePreviewAsync](docs/sdks/codesamples/README.md#getcodesamplepreviewasync) - Poll for the result of an asynchronous Code Sample preview generation.
 
 ### [Events](docs/sdks/events/README.md)

@@ -89,6 +89,12 @@ namespace SpeakeasySDK.Models.Shared
         public string? PhotoUrl { get; set; } = null;
 
         /// <summary>
+        /// Hash used for pylon identity verification returned on v1/user.
+        /// </summary>
+        [JsonProperty("pylon_identity_hash")]
+        public string? PylonIdentityHash { get; set; }
+
+        /// <summary>
         /// Timestamp of the user&apos;s last update.
         /// </summary>
         [JsonProperty("updated_at")]
