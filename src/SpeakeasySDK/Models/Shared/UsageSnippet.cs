@@ -28,9 +28,21 @@ namespace SpeakeasySDK.Models.Shared
         public string Language { get; set; } = default!;
 
         /// <summary>
+        /// The HTTP method of the operation
+        /// </summary>
+        [JsonProperty("method")]
+        public object Method { get; set; } = default!;
+
+        /// <summary>
         /// The operation ID for the snippet
         /// </summary>
         [JsonProperty("operationId")]
         public string OperationId { get; set; } = default!;
+
+        /// <summary>
+        /// The path of the operation
+        /// </summary>
+        [JsonProperty("path")]
+        public string Path { get; set; } = default!;
     }
 }
