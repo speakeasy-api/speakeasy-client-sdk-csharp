@@ -20,6 +20,9 @@ namespace SpeakeasySDK.Models.Shared
     public class Namespace
     {
 
+        [JsonProperty("archived_at")]
+        public DateTime? ArchivedAt { get; set; }
+
         [JsonProperty("composite_spec_metadata")]
         public CompositeSpecMetadata? CompositeSpecMetadata { get; set; }
 
@@ -31,6 +34,9 @@ namespace SpeakeasySDK.Models.Shared
         /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; } = default!;
+
+        [JsonProperty("latest_revision_metadata")]
+        public RevisionContentsMetadata? LatestRevisionMetadata { get; set; }
 
         /// <summary>
         /// A human-readable name for the namespace.

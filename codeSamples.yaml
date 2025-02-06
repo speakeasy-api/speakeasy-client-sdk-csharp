@@ -19,6 +19,27 @@ actions:
             var res = await sdk.Artifacts.GetNamespacesAsync();
 
             // handle response
+  - target: $["paths"]["/v1/artifacts/namespaces/{namespace_name}/archive"]["post"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: archiveNamespace
+          source: |-
+            using SpeakeasySDK;
+            using SpeakeasySDK.Models.Operations;
+            using SpeakeasySDK.Models.Shared;
+
+            var sdk = new SDK(security: new Security() {
+                APIKey = "<YOUR_API_KEY_HERE>",
+            });
+
+            ArchiveNamespaceRequest req = new ArchiveNamespaceRequest() {
+                NamespaceName = "<value>",
+            };
+
+            var res = await sdk.Artifacts.SetArchivedAsync(req);
+
+            // handle response
   - target: $["paths"]["/v1/artifacts/namespaces/{namespace_name}/revisions"]["get"]
     update:
       x-codeSamples:
@@ -206,27 +227,6 @@ actions:
             var res = await sdk.Auth.ValidateApiKeyAsync();
 
             // handle response
-  - target: $["paths"]["/v1/code_sample"]["get"]
-    update:
-      x-codeSamples:
-        - lang: csharp
-          label: getCodeSamples
-          source: |-
-            using SpeakeasySDK;
-            using SpeakeasySDK.Models.Operations;
-            using SpeakeasySDK.Models.Shared;
-
-            var sdk = new SDK(security: new Security() {
-                APIKey = "<YOUR_API_KEY_HERE>",
-            });
-
-            GetCodeSamplesRequest req = new GetCodeSamplesRequest() {
-                RegistryUrl = "https://normal-making.name",
-            };
-
-            var res = await sdk.CodeSamples.GetAsync(req);
-
-            // handle response
   - target: $["paths"]["/v1/code_sample/preview"]["post"]
     update:
       x-codeSamples:
@@ -236,16 +236,13 @@ actions:
             using SpeakeasySDK;
             using SpeakeasySDK.Models.Shared;
             using System;
-            using System.Collections.Generic;
 
             var sdk = new SDK(security: new Security() {
                 APIKey = "<YOUR_API_KEY_HERE>",
             });
 
             CodeSampleSchemaInput req = new CodeSampleSchemaInput() {
-                Languages = new List<string>() {
-                    "<value>",
-                },
+                Language = "<value>",
                 SchemaFile = new SchemaFile() {
                     FileName = "example.file",
                     Content = System.Text.Encoding.UTF8.GetBytes("0xc3dD8BfBef"),
@@ -264,16 +261,13 @@ actions:
             using SpeakeasySDK;
             using SpeakeasySDK.Models.Shared;
             using System;
-            using System.Collections.Generic;
 
             var sdk = new SDK(security: new Security() {
                 APIKey = "<YOUR_API_KEY_HERE>",
             });
 
             CodeSampleSchemaInput req = new CodeSampleSchemaInput() {
-                Languages = new List<string>() {
-                    "<value>",
-                },
+                Language = "<value>",
                 SchemaFile = new SchemaFile() {
                     FileName = "example.file",
                     Content = System.Text.Encoding.UTF8.GetBytes("0xED5CDd177E"),
@@ -1169,7 +1163,7 @@ actions:
                         ExecutionId = "<id>",
                         WorkspaceId = "<id>",
                         SpeakeasyApiKeyName = "<value>",
-                        InteractionType = InteractionType.TargetGenerate,
+                        InteractionType = InteractionType.Tombstone,
                         LocalStartedAt = System.DateTime.Parse("2025-03-02T10:07:28.113Z"),
                         CreatedAt = System.DateTime.Parse("2024-09-08T05:59:33.876Z"),
                         SpeakeasyVersion = "<value>",
