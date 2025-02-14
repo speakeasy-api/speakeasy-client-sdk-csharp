@@ -13,47 +13,24 @@ namespace SpeakeasySDK.Models.Shared
     using SpeakeasySDK.Utils;
     using System;
     
-    /// <summary>
-    /// Type of interaction.
-    /// </summary>
-    public enum InteractionType
+    public enum RevisionContentsMetadataType
     {
-        [JsonProperty("CI_EXEC")]
-        CiExec,
-        [JsonProperty("CLI_EXEC")]
-        CliExec,
-        [JsonProperty("LINT")]
-        Lint,
-        [JsonProperty("OPENAPI_DIFF")]
-        OpenapiDiff,
-        [JsonProperty("TARGET_GENERATE")]
-        TargetGenerate,
-        [JsonProperty("TOMBSTONE")]
-        Tombstone,
-        [JsonProperty("AUTHENTICATE")]
-        Authenticate,
-        [JsonProperty("QUICKSTART")]
-        Quickstart,
-        [JsonProperty("RUN")]
-        Run,
-        [JsonProperty("CONFIGURE")]
-        Configure,
-        [JsonProperty("PUBLISH")]
-        Publish,
-        [JsonProperty("TEST")]
-        Test,
+        [JsonProperty("OPENAPI_BUNDLE")]
+        OpenapiBundle,
+        [JsonProperty("OPENAPI_OVERLAY")]
+        OpenapiOverlay,
     }
 
-    public static class InteractionTypeExtension
+    public static class RevisionContentsMetadataTypeExtension
     {
-        public static string Value(this InteractionType value)
+        public static string Value(this RevisionContentsMetadataType value)
         {
             return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
         }
 
-        public static InteractionType ToEnum(this string value)
+        public static RevisionContentsMetadataType ToEnum(this string value)
         {
-            foreach(var field in typeof(InteractionType).GetFields())
+            foreach(var field in typeof(RevisionContentsMetadataType).GetFields())
             {
                 var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
                 if (attributes.Length == 0)
@@ -66,14 +43,14 @@ namespace SpeakeasySDK.Models.Shared
                 {
                     var enumVal = field.GetValue(null);
 
-                    if (enumVal is InteractionType)
+                    if (enumVal is RevisionContentsMetadataType)
                     {
-                        return (InteractionType)enumVal;
+                        return (RevisionContentsMetadataType)enumVal;
                     }
                 }
             }
 
-            throw new Exception($"Unknown value {value} for enum InteractionType");
+            throw new Exception($"Unknown value {value} for enum RevisionContentsMetadataType");
         }
     }
 

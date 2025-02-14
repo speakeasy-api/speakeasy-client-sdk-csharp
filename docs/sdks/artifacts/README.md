@@ -16,6 +16,7 @@ REST APIs for working with Registry artifacts
 * [ListRemoteSources](#listremotesources) - Get remote sources attached to a particular namespace
 * [PostTags](#posttags) - Add tags to an existing revision
 * [Preflight](#preflight) - Get access token for communicating with OCI distribution endpoints
+* [SetArchived](#setarchived) - Set whether a namespace is archived
 * [SetVisibility](#setvisibility) - Set visibility of a namespace with an existing metadata entry
 
 ## CreateRemoteSource
@@ -376,6 +377,47 @@ var res = await sdk.Artifacts.PreflightAsync(req);
 ### Response
 
 **[PreflightResponse](../../Models/Operations/PreflightResponse.md)**
+
+### Errors
+
+| Error Type                              | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
+
+## SetArchived
+
+Set whether a namespace is archived
+
+### Example Usage
+
+```csharp
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Operations;
+using SpeakeasySDK.Models.Shared;
+
+var sdk = new SDK(security: new Security() {
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
+
+ArchiveNamespaceRequest req = new ArchiveNamespaceRequest() {
+    NamespaceName = "<value>",
+};
+
+var res = await sdk.Artifacts.SetArchivedAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `request`                                                                     | [ArchiveNamespaceRequest](../../Models/Operations/ArchiveNamespaceRequest.md) | :heavy_check_mark:                                                            | The request object to use for the request.                                    |
+
+### Response
+
+**[ArchiveNamespaceResponse](../../Models/Operations/ArchiveNamespaceResponse.md)**
 
 ### Errors
 

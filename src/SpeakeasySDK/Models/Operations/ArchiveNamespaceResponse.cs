@@ -9,12 +9,11 @@
 #nullable enable
 namespace SpeakeasySDK.Models.Operations
 {
-    using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System;
     using System.Net.Http;
     
-    public class GetCodeSamplesResponse
+    public class ArchiveNamespaceResponse
     {
 
         /// <summary>
@@ -31,10 +30,5 @@ namespace SpeakeasySDK.Models.Operations
         /// Raw HTTP response; suitable for custom response parsing
         /// </summary>
         public HttpResponseMessage RawResponse { get; set; } = default!;
-
-        /// <summary>
-        /// OK
-        /// </summary>
-        public UsageSnippets? UsageSnippets { get; set; }
     }
 }
