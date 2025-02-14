@@ -474,6 +474,12 @@ namespace SpeakeasySDK.Models.Shared
         public bool Success { get; set; } = default!;
 
         /// <summary>
+        /// The raw test report xml
+        /// </summary>
+        [JsonProperty("test_report_raw")]
+        public string? TestReportRaw { get; set; }
+
+        /// <summary>
         /// Workflow lock file (post execution)
         /// </summary>
         [JsonProperty("workflow_lock_post_raw")]
