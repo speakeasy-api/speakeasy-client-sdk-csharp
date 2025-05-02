@@ -47,15 +47,6 @@ namespace SpeakeasySDK
         Task<GenerateCodeSamplePreviewAsyncResponse> GenerateCodeSamplePreviewAsyncAsync(CodeSampleSchemaInput request);
 
         /// <summary>
-        /// Retrieve usage snippets from document stored in the registry
-        /// 
-        /// <remarks>
-        /// Retrieve usage snippets from document stored in the registry. Supports filtering by language and operation ID.
-        /// </remarks>
-        /// </summary>
-        Task<GetCodeSamplesResponse> GetAsync(GetCodeSamplesRequest request);
-
-        /// <summary>
         /// Poll for the result of an asynchronous Code Sample preview generation.
         /// 
         /// <remarks>
@@ -72,10 +63,10 @@ namespace SpeakeasySDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.12.0";
-        private const string _sdkGenVersion = "2.493.4";
+        private const string _sdkVersion = "5.13.0";
+        private const string _sdkGenVersion = "2.596.2";
         private const string _openapiDocVersion = "0.4.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.12.0 2.493.4 0.4.0 SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.13.0 2.596.2 0.4.0 SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<SpeakeasySDK.Models.Shared.Security>? _securitySource;
@@ -108,7 +99,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("generateCodeSamplePreview", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "generateCodeSamplePreview", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -144,34 +135,34 @@ namespace SpeakeasySDK
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
             int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
+            if(responseStatusCode >= 200 && responseStatusCode < 300)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
+                    var obj = ResponseBodyDeserializer.Deserialize<UsageSnippets>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     var response = new GenerateCodeSamplePreviewResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,
                         RawResponse = httpResponse
                     };
-                    response.TwoHundredApplicationJsonBytes = await httpResponse.Content.ReadAsByteArrayAsync();
-                    return response;
-                }
-                else if(Utilities.IsContentTypeMatch("application/x-yaml", contentType))
-                {
-                    var response = new GenerateCodeSamplePreviewResponse()
-                    {
-                        StatusCode = responseStatusCode,
-                        ContentType = contentType,
-                        RawResponse = httpResponse
-                    };
-                    response.TwoHundredApplicationXYamlBytes = await httpResponse.Content.ReadAsByteArrayAsync();
+                    response.UsageSnippets = obj;
                     return response;
                 }
 
                 throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
+            else if(responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
@@ -205,7 +196,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("generateCodeSamplePreviewAsync", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "generateCodeSamplePreviewAsync", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -258,7 +249,17 @@ namespace SpeakeasySDK
 
                 throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
+            else if(responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
@@ -272,10 +273,10 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<GetCodeSamplesResponse> GetAsync(GetCodeSamplesRequest request)
+        public async Task<GetCodeSamplePreviewAsyncResponse> GetCodeSamplePreviewAsyncAsync(GetCodeSamplePreviewAsyncRequest request)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/code_sample", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v1/code_sample/preview/async/{jobID}", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
@@ -285,7 +286,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("getCodeSamples", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "getCodeSamplePreviewAsync", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -321,12 +322,29 @@ namespace SpeakeasySDK
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
             int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode >= 200 && responseStatusCode < 300)
+            if(responseStatusCode == 202)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<GetCodeSamplePreviewAsyncResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new GetCodeSamplePreviewAsyncResponse()
+                    {
+                        StatusCode = responseStatusCode,
+                        ContentType = contentType,
+                        RawResponse = httpResponse
+                    };
+                    response.Object = obj;
+                    return response;
+                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            }
+            else if(responseStatusCode >= 200 && responseStatusCode < 300)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var obj = ResponseBodyDeserializer.Deserialize<UsageSnippets>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetCodeSamplesResponse()
+                    var response = new GetCodeSamplePreviewAsyncResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,
@@ -349,107 +367,6 @@ namespace SpeakeasySDK
                 throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-            }
-
-            throw new Models.Errors.SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-        }
-
-        public async Task<GetCodeSamplePreviewAsyncResponse> GetCodeSamplePreviewAsyncAsync(GetCodeSamplePreviewAsyncRequest request)
-        {
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/code_sample/preview/async/{jobID}", request);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
-
-            if (_securitySource != null)
-            {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext("getCodeSamplePreviewAsync", null, _securitySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await _client.SendAsync(httpRequest);
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var response = new GetCodeSamplePreviewAsyncResponse()
-                    {
-                        StatusCode = responseStatusCode,
-                        ContentType = contentType,
-                        RawResponse = httpResponse
-                    };
-                    response.TwoHundredApplicationJsonBytes = await httpResponse.Content.ReadAsByteArrayAsync();
-                    return response;
-                }
-                else if(Utilities.IsContentTypeMatch("application/x-yaml", contentType))
-                {
-                    var response = new GetCodeSamplePreviewAsyncResponse()
-                    {
-                        StatusCode = responseStatusCode,
-                        ContentType = contentType,
-                        RawResponse = httpResponse
-                    };
-                    response.TwoHundredApplicationXYamlBytes = await httpResponse.Content.ReadAsByteArrayAsync();
-                    return response;
-                }
-
-                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-            }
-            else if(responseStatusCode == 202)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<GetCodeSamplePreviewAsyncResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetCodeSamplePreviewAsyncResponse()
-                    {
-                        StatusCode = responseStatusCode,
-                        ContentType = contentType,
-                        RawResponse = httpResponse
-                    };
-                    response.TwoHundredAndTwoApplicationJsonObject = obj;
-                    return response;
-                }
-
-                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-            }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {

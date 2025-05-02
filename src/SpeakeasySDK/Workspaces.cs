@@ -139,10 +139,10 @@ namespace SpeakeasySDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.12.0";
-        private const string _sdkGenVersion = "2.493.4";
+        private const string _sdkVersion = "5.13.0";
+        private const string _sdkGenVersion = "2.596.2";
         private const string _openapiDocVersion = "0.4.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.12.0 2.493.4 0.4.0 SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.13.0 2.596.2 0.4.0 SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<SpeakeasySDK.Models.Shared.Security>? _securitySource;
@@ -175,7 +175,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("createWorkspace", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "createWorkspace", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -271,7 +271,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("createWorkspaceToken", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "createWorkspaceToken", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -353,7 +353,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("deleteWorkspaceToken", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "deleteWorkspaceToken", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -430,7 +430,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("getWorkspaceByContext", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "getWorkspaceByContext", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -515,7 +515,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("getWorkspaces", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "getWorkspaces", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -601,7 +601,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("getWorkspace", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "getWorkspace", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -687,7 +687,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("getWorkspaceFeatureFlags", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "getWorkspaceFeatureFlags", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -773,7 +773,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("getWorkspaceSettings", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "getWorkspaceSettings", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -859,7 +859,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("getWorkspaceTeam", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "getWorkspaceTeam", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -945,7 +945,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("getWorkspaceTokens", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "getWorkspaceTokens", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -1035,7 +1035,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("grantUserAccessToWorkspace", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "grantUserAccessToWorkspace", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -1125,7 +1125,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("revokeUserAccessToWorkspace", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "revokeUserAccessToWorkspace", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -1208,7 +1208,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("setWorkspaceFeatureFlags", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "setWorkspaceFeatureFlags", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -1304,7 +1304,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("updateWorkspaceDetails", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "updateWorkspaceDetails", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -1392,7 +1392,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("updateWorkspaceSettings", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "updateWorkspaceSettings", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 

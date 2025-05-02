@@ -52,11 +52,13 @@ namespace SpeakeasySDK
         /// REST APIs for managing Organizations (speakeasy L1 Tenancy construct)
         /// </summary>
         public IOrganizations Organizations { get; }
+        public IPublishingTokens PublishingTokens { get; }
 
         /// <summary>
         /// REST APIs for managing reports (lint reports, change reports, etc)
         /// </summary>
         public IReports Reports { get; }
+        public ISchemaStore SchemaStore { get; }
 
         /// <summary>
         /// REST APIs for managing short URLs
@@ -149,10 +151,10 @@ namespace SpeakeasySDK
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.12.0";
-        private const string _sdkGenVersion = "2.493.4";
+        private const string _sdkVersion = "5.13.0";
+        private const string _sdkGenVersion = "2.596.2";
         private const string _openapiDocVersion = "0.4.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.12.0 2.493.4 0.4.0 SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.13.0 2.596.2 0.4.0 SpeakeasySDK";
         private string _serverUrl = "";
         private SDKConfig.Server? _server = null;
         private ISpeakeasyHttpClient _client;
@@ -162,7 +164,9 @@ namespace SpeakeasySDK
         public ICodeSamples CodeSamples { get; private set; }
         public IGithub Github { get; private set; }
         public IOrganizations Organizations { get; private set; }
+        public IPublishingTokens PublishingTokens { get; private set; }
         public IReports Reports { get; private set; }
+        public ISchemaStore SchemaStore { get; private set; }
         public IShortURLs ShortURLs { get; private set; }
         public ISubscriptions Subscriptions { get; private set; }
         public ISuggest Suggest { get; private set; }
@@ -222,7 +226,13 @@ namespace SpeakeasySDK
             Organizations = new Organizations(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
+            PublishingTokens = new PublishingTokens(_client, _securitySource, _serverUrl, SDKConfiguration);
+
+
             Reports = new Reports(_client, _securitySource, _serverUrl, SDKConfiguration);
+
+
+            SchemaStore = new SchemaStore(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
             ShortURLs = new ShortURLs(_client, _securitySource, _serverUrl, SDKConfiguration);

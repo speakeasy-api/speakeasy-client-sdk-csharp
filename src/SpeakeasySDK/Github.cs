@@ -47,10 +47,10 @@ namespace SpeakeasySDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.12.0";
-        private const string _sdkGenVersion = "2.493.4";
+        private const string _sdkVersion = "5.13.0";
+        private const string _sdkGenVersion = "2.596.2";
         private const string _openapiDocVersion = "0.4.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.12.0 2.493.4 0.4.0 SpeakeasySDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 5.13.0 2.596.2 0.4.0 SpeakeasySDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<SpeakeasySDK.Models.Shared.Security>? _securitySource;
@@ -76,7 +76,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("checkGithubAccess", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "checkGithubAccess", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -152,7 +152,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("githubCheckPublishingPRs", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "githubCheckPublishingPRs", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -236,7 +236,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("githubCheckPublishingSecrets", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "githubCheckPublishingSecrets", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -327,7 +327,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("githubConfigureCodeSamples", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "githubConfigureCodeSamples", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -418,7 +418,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("githubConfigureMintlifyRepo", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "githubConfigureMintlifyRepo", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -501,7 +501,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("githubConfigureTarget", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "githubConfigureTarget", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -577,7 +577,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("getGitHubAction", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "getGitHubAction", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -661,7 +661,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("getGithubSetupState", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "getGithubSetupState", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -745,7 +745,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("linkGithubAccess", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "linkGithubAccess", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -828,7 +828,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("githubStorePublishingSecrets", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "githubStorePublishingSecrets", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -911,7 +911,7 @@ namespace SpeakeasySDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("githubTriggerAction", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "githubTriggerAction", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 

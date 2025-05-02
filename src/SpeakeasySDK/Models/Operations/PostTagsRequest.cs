@@ -15,13 +15,13 @@ namespace SpeakeasySDK.Models.Operations
     public class PostTagsRequest
     {
 
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=namespace_name")]
-        public string NamespaceName { get; set; } = default!;
-
         /// <summary>
         /// A JSON representation of the tags to add
         /// </summary>
         [SpeakeasyMetadata("request:mediaType=application/json")]
         public AddTags? AddTags { get; set; }
+
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=namespace_name")]
+        public string NamespaceName { get; set; } = default!;
     }
 }

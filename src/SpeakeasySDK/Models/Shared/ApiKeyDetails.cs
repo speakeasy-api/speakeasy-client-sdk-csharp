@@ -21,6 +21,9 @@ namespace SpeakeasySDK.Models.Shared
         [JsonProperty("account_type_v2")]
         public AccountType AccountTypeV2 { get; set; } = default!;
 
+        [JsonProperty("billing_add_ons")]
+        public List<BillingAddOn> BillingAddOns { get; set; } = default!;
+
         [JsonProperty("enabled_features")]
         public List<string> EnabledFeatures { get; set; } = default!;
 

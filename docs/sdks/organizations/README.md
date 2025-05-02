@@ -8,9 +8,12 @@ REST APIs for managing Organizations (speakeasy L1 Tenancy construct)
 ### Available Operations
 
 * [Create](#create) - Create an organization
+* [CreateBillingAddOns](#createbillingaddons) - Create billing add ons
 * [CreateFreeTrial](#createfreetrial) - Create a free trial for an organization
+* [DeleteBillingAddOn](#deletebillingaddon) - Delete billing add ons
 * [Get](#get) - Get organization
 * [GetAll](#getall) - Get organizations for a user
+* [GetBillingAddOns](#getbillingaddons) - Get billing add ons
 * [GetUsage](#getusage) - Get billing usage summary for a particular organization
 
 ## Create
@@ -61,6 +64,49 @@ var res = await sdk.Organizations.CreateAsync(req);
 | SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
 | SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
 
+## CreateBillingAddOns
+
+Create billing add ons
+
+### Example Usage
+
+```csharp
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+using System.Collections.Generic;
+
+var sdk = new SDK(security: new Security() {
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
+
+OrganizationBillingAddOnRequest req = new OrganizationBillingAddOnRequest() {
+    AddOns = new List<BillingAddOn>() {
+        BillingAddOn.SnippetAi,
+    },
+};
+
+var res = await sdk.Organizations.CreateBillingAddOnsAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `request`                                                                                 | [OrganizationBillingAddOnRequest](../../Models/Shared/OrganizationBillingAddOnRequest.md) | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
+
+### Response
+
+**[CreateBillingAddOnsResponse](../../Models/Operations/CreateBillingAddOnsResponse.md)**
+
+### Errors
+
+| Error Type                              | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.Error        | 5XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 4XX                                     | \*/\*                                   |
+
 ## CreateFreeTrial
 
 Creates a free trial for an organization
@@ -90,6 +136,47 @@ var res = await sdk.Organizations.CreateFreeTrialAsync();
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
 | SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
+
+## DeleteBillingAddOn
+
+Delete billing add ons
+
+### Example Usage
+
+```csharp
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Operations;
+using SpeakeasySDK.Models.Shared;
+
+var sdk = new SDK(security: new Security() {
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
+
+DeleteBillingAddOnRequest req = new DeleteBillingAddOnRequest() {
+    AddOn = BillingAddOn.SnippetAi,
+};
+
+var res = await sdk.Organizations.DeleteBillingAddOnAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `request`                                                                         | [DeleteBillingAddOnRequest](../../Models/Operations/DeleteBillingAddOnRequest.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
+
+### Response
+
+**[DeleteBillingAddOnResponse](../../Models/Operations/DeleteBillingAddOnResponse.md)**
+
+### Errors
+
+| Error Type                              | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.Error        | 5XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 4XX                                     | \*/\*                                   |
 
 ## Get
 
@@ -161,6 +248,36 @@ var res = await sdk.Organizations.GetAllAsync();
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
 | SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
 | SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
+
+## GetBillingAddOns
+
+Get billing add ons
+
+### Example Usage
+
+```csharp
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Shared;
+
+var sdk = new SDK(security: new Security() {
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
+
+var res = await sdk.Organizations.GetBillingAddOnsAsync();
+
+// handle response
+```
+
+### Response
+
+**[GetBillingAddOnsResponse](../../Models/Operations/GetBillingAddOnsResponse.md)**
+
+### Errors
+
+| Error Type                              | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.Error        | 5XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 4XX                                     | \*/\*                                   |
 
 ## GetUsage
 

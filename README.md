@@ -89,6 +89,7 @@ var res = await sdk.Artifacts.CreateRemoteSourceAsync(req);
 * [ListRemoteSources](docs/sdks/artifacts/README.md#listremotesources) - Get remote sources attached to a particular namespace
 * [PostTags](docs/sdks/artifacts/README.md#posttags) - Add tags to an existing revision
 * [Preflight](docs/sdks/artifacts/README.md#preflight) - Get access token for communicating with OCI distribution endpoints
+* [SetArchived](docs/sdks/artifacts/README.md#setarchived) - Set whether a namespace is archived
 * [SetVisibility](docs/sdks/artifacts/README.md#setvisibility) - Set visibility of a namespace with an existing metadata entry
 
 ### [Auth](docs/sdks/auth/README.md)
@@ -102,7 +103,6 @@ var res = await sdk.Artifacts.CreateRemoteSourceAsync(req);
 
 * [GenerateCodeSamplePreview](docs/sdks/codesamples/README.md#generatecodesamplepreview) - Generate Code Sample previews from a file and configuration parameters.
 * [GenerateCodeSamplePreviewAsync](docs/sdks/codesamples/README.md#generatecodesamplepreviewasync) - Initiate asynchronous Code Sample preview generation from a file and configuration parameters, receiving an async JobID response for polling.
-* [Get](docs/sdks/codesamples/README.md#get) - Retrieve usage snippets from document stored in the registry
 * [GetCodeSamplePreviewAsync](docs/sdks/codesamples/README.md#getcodesamplepreviewasync) - Poll for the result of an asynchronous Code Sample preview generation.
 
 ### [Events](docs/sdks/events/README.md)
@@ -130,16 +130,34 @@ var res = await sdk.Artifacts.CreateRemoteSourceAsync(req);
 ### [Organizations](docs/sdks/organizations/README.md)
 
 * [Create](docs/sdks/organizations/README.md#create) - Create an organization
+* [CreateBillingAddOns](docs/sdks/organizations/README.md#createbillingaddons) - Create billing add ons
 * [CreateFreeTrial](docs/sdks/organizations/README.md#createfreetrial) - Create a free trial for an organization
+* [DeleteBillingAddOn](docs/sdks/organizations/README.md#deletebillingaddon) - Delete billing add ons
 * [Get](docs/sdks/organizations/README.md#get) - Get organization
 * [GetAll](docs/sdks/organizations/README.md#getall) - Get organizations for a user
+* [GetBillingAddOns](docs/sdks/organizations/README.md#getbillingaddons) - Get billing add ons
 * [GetUsage](docs/sdks/organizations/README.md#getusage) - Get billing usage summary for a particular organization
+
+### [PublishingTokens](docs/sdks/publishingtokens/README.md)
+
+* [Create](docs/sdks/publishingtokens/README.md#create) - Create a publishing token for a workspace
+* [Delete](docs/sdks/publishingtokens/README.md#delete) - Delete a specific publishing token
+* [Get](docs/sdks/publishingtokens/README.md#get) - Get a specific publishing token
+* [List](docs/sdks/publishingtokens/README.md#list) - Get publishing tokens for a workspace
+* [ResolveMetadata](docs/sdks/publishingtokens/README.md#resolvemetadata) - Get metadata about the token
+* [ResolveTarget](docs/sdks/publishingtokens/README.md#resolvetarget) - Get a specific publishing token target
+* [Update](docs/sdks/publishingtokens/README.md#update) - Updates the validitity period of a publishing token
 
 ### [Reports](docs/sdks/reports/README.md)
 
 * [GetChangesReportSignedUrl](docs/sdks/reports/README.md#getchangesreportsignedurl) - Get the signed access url for the change reports for a particular document.
 * [GetLintingReportSignedUrl](docs/sdks/reports/README.md#getlintingreportsignedurl) - Get the signed access url for the linting reports for a particular document.
 * [UploadReport](docs/sdks/reports/README.md#uploadreport) - Upload a report.
+
+### [SchemaStore](docs/sdks/schemastore/README.md)
+
+* [CreateSchemaStoreItem](docs/sdks/schemastore/README.md#createschemastoreitem) - Create a schema in the schema store
+* [GetSchemaStoreItem](docs/sdks/schemastore/README.md#getschemastoreitem) - Get a OAS schema from the schema store
 
 
 ### [ShortURLs](docs/sdks/shorturls/README.md)
@@ -188,9 +206,9 @@ var res = await sdk.Artifacts.CreateRemoteSourceAsync(req);
 
 You can override the default server globally by passing a server name to the `server: string` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the names associated with the available servers:
 
-| Name   | Server                              |
-| ------ | ----------------------------------- |
-| `prod` | `https://api.prod.speakeasyapi.dev` |
+| Name   | Server                              | Description |
+| ------ | ----------------------------------- | ----------- |
+| `prod` | `https://api.prod.speakeasyapi.dev` |             |
 
 #### Example
 

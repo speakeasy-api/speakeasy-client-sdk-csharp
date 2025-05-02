@@ -28,6 +28,12 @@ namespace SpeakeasySDK.Models.Shared
         [JsonProperty("created_by")]
         public string? CreatedBy { get; set; } = null;
 
+        [JsonProperty("created_by_name")]
+        public string? CreatedByName { get; set; } = null;
+
+        [JsonProperty("created_by_photo_url")]
+        public string? CreatedByPhotoUrl { get; set; } = null;
+
         [JsonProperty("email")]
         public string? Email { get; set; } = null;
 
