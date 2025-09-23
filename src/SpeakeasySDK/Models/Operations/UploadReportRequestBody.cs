@@ -23,6 +23,6 @@ namespace SpeakeasySDK.Models.Operations
         public Report Data { get; set; } = default!;
 
         [SpeakeasyMetadata("multipartForm:file,name=file")]
-        public File File { get; set; } = default!;
+        public Models.Operations.File File { get; set; } = default!;
     }
 }

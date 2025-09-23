@@ -15,13 +15,13 @@ namespace SpeakeasySDK.Models.Operations
     public class SetVisibilityRequest
     {
 
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=namespace_name")]
-        public string NamespaceName { get; set; } = default!;
-
         /// <summary>
         /// Namespace visibility
         /// </summary>
         [SpeakeasyMetadata("request:mediaType=application/json")]
         public SetVisibilityRequestBody? RequestBody { get; set; }
+
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=namespace_name")]
+        public string NamespaceName { get; set; } = default!;
     }
 }

@@ -13,13 +13,18 @@ namespace SpeakeasySDK.Models.Shared
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
     
     public class ApiKeyDetails
     {
 
         [JsonProperty("account_type_v2")]
         public AccountType AccountTypeV2 { get; set; } = default!;
+
+        [JsonProperty("billing_add_ons")]
+        public List<BillingAddOn> BillingAddOns { get; set; } = default!;
 
         [JsonProperty("enabled_features")]
         public List<string> EnabledFeatures { get; set; } = default!;

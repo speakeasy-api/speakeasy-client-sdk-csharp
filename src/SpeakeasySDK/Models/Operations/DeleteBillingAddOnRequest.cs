@@ -9,22 +9,21 @@
 #nullable enable
 namespace SpeakeasySDK.Models.Operations
 {
+    using Newtonsoft.Json;
+    using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
     
-    public class GetCodeSamplesRequest
+    public class DeleteBillingAddOnRequest
     {
 
         /// <summary>
-        /// The registry URL from which to retrieve the snippets. E.g. https://spec.speakeasy.com/org/ws/my-source
+        /// The specific add-on to delete.
         /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=registry_url")]
-        public string RegistryUrl { get; set; } = default!;
-
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=languages")]
-        public List<string>? Languages { get; set; }
-
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=operation_ids")]
-        public List<string>? OperationIds { get; set; }
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=add_on")]
+        public BillingAddOn AddOn { get; set; } = default!;
     }
 }

@@ -17,6 +17,7 @@ Get the signed access url for the change reports for a particular document.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getChangesReportSignedUrl" method="get" path="/v1/reports/changes/{documentChecksum}" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
@@ -57,6 +58,7 @@ Get the signed access url for the linting reports for a particular document.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getLintingReportSignedUrl" method="get" path="/v1/reports/linting/{documentChecksum}" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
@@ -97,11 +99,11 @@ Upload a report.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="uploadReport" method="post" path="/v1/reports" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
-using System;
 
 var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
@@ -109,8 +111,8 @@ var sdk = new SDK(security: new Security() {
 
 UploadReportRequestBody req = new UploadReportRequestBody() {
     Data = new Report() {},
-    File = new File() {
-        Content = System.Text.Encoding.UTF8.GetBytes("0xA2Ca85EFA5"),
+    File = new SpeakeasySDK.Models.Operations.File() {
+        Content = System.IO.File.ReadAllBytes("example.file"),
         FileName = "example.file",
     },
 };

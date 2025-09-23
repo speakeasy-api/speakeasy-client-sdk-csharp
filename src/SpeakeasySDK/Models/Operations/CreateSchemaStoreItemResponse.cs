@@ -14,13 +14,18 @@ namespace SpeakeasySDK.Models.Operations
     using System;
     using System.Net.Http;
     
-    public class GetCodeSamplesResponse
+    public class CreateSchemaStoreItemResponse
     {
 
         /// <summary>
         /// HTTP response content type for this operation
         /// </summary>
         public string? ContentType { get; set; } = default!;
+
+        /// <summary>
+        /// OK
+        /// </summary>
+        public SchemaStoreItem? SchemaStoreItem { get; set; }
 
         /// <summary>
         /// HTTP response status code for this operation
@@ -31,10 +36,5 @@ namespace SpeakeasySDK.Models.Operations
         /// Raw HTTP response; suitable for custom response parsing
         /// </summary>
         public HttpResponseMessage RawResponse { get; set; } = default!;
-
-        /// <summary>
-        /// OK
-        /// </summary>
-        public UsageSnippets? UsageSnippets { get; set; }
     }
 }

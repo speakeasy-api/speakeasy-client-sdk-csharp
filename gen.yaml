@@ -3,17 +3,26 @@ generation:
   sdkClassName: SDK
   usageSnippets:
     optionalPropertyRendering: withExample
+    sdkInitStyle: constructor
   fixes:
-    nameResolutionDec2023: false
+    nameResolutionFeb2025: false
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
+    securityFeb2025: false
+    sharedErrorComponentsApr2025: false
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
+    hoistGlobalSecurity: true
+  tests:
+    generateTests: true
+    generateNewTests: false
+    skipResponseBodyAssertions: false
 csharp:
-  version: 5.12.0
+  version: 5.13.0
   additionalDependencies: []
   author: Speakeasy
+  baseErrorName: SDKBaseException
   clientServerStatusCodesAsErrors: true
   defaultErrorName: SDKException
   disableNamespacePascalCasingApr2024: false
@@ -21,6 +30,7 @@ csharp:
   enableSourceLink: true
   flattenGlobalSecurity: false
   flatteningOrder: ""
+  httpClientPrefix: Speakeasy
   imports:
     option: openapi
     paths:

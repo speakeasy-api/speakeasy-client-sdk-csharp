@@ -52,11 +52,13 @@ namespace SpeakeasySDK
         /// REST APIs for managing Organizations (speakeasy L1 Tenancy construct)
         /// </summary>
         public IOrganizations Organizations { get; }
+        public IPublishingTokens PublishingTokens { get; }
 
         /// <summary>
         /// REST APIs for managing reports (lint reports, change reports, etc)
         /// </summary>
         public IReports Reports { get; }
+        public ISchemaStore SchemaStore { get; }
 
         /// <summary>
         /// REST APIs for managing short URLs
@@ -84,60 +86,6 @@ namespace SpeakeasySDK
         public IEvents Events { get; }
     }
 
-    public class SDKConfig
-    {
-        /// <summary>
-        /// Server identifiers available to the SDK.
-        /// </summary>
-        public enum Server {
-        Prod,
-        }
-
-        /// <summary>
-        /// Server URLs available to the SDK.
-        /// </summary>
-        public static readonly Dictionary<Server, string> ServerMap = new Dictionary<Server, string>()
-        {
-            { Server.Prod, "https://api.prod.speakeasyapi.dev" },
-        };
-
-        public string ServerUrl = "";
-        public Server? ServerName = null;
-        public string? WorkspaceId;
-        public SDKHooks Hooks = new SDKHooks();
-        public RetryConfig? RetryConfig = null;
-
-        public string GetTemplatedServerUrl()
-        {
-            if (!String.IsNullOrEmpty(this.ServerUrl))
-            {
-                return Utilities.TemplateUrl(Utilities.RemoveSuffix(this.ServerUrl, "/"), new Dictionary<string, string>());
-            }
-            if (this.ServerName is null)
-            {
-                this.ServerName = SDKConfig.Server.Prod;
-            }
-            else if (!SDKConfig.ServerMap.ContainsKey(this.ServerName.Value))
-            {
-                throw new Exception($"Invalid server \"{this.ServerName.Value}\"");
-            }
-
-            Dictionary<string, string> serverDefault = new Dictionary<string, string>();
-
-            return Utilities.TemplateUrl(SDKConfig.ServerMap[this.ServerName.Value], serverDefault);
-        }
-
-        public ISpeakeasyHttpClient InitHooks(ISpeakeasyHttpClient client)
-        {
-            string preHooksUrl = GetTemplatedServerUrl();
-            var (postHooksUrl, postHooksClient) = this.Hooks.SDKInit(preHooksUrl, client);
-            if (preHooksUrl != postHooksUrl)
-            {
-                this.ServerUrl = postHooksUrl;
-            }
-            return postHooksClient;
-        }
-    }
 
     /// <summary>
     /// Speakeasy API: The Subscriptions API manages subscriptions for CLI and registry events
@@ -149,32 +97,57 @@ namespace SpeakeasySDK
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "5.12.0";
-        private const string _sdkGenVersion = "2.493.4";
+        private const string _sdkVersion = "5.13.0";
+        private const string _sdkGenVersion = "2.709.0";
         private const string _openapiDocVersion = "0.4.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.12.0 2.493.4 0.4.0 SpeakeasySDK";
-        private string _serverUrl = "";
-        private SDKConfig.Server? _server = null;
-        private ISpeakeasyHttpClient _client;
-        private Func<SpeakeasySDK.Models.Shared.Security>? _securitySource;
         public IArtifacts Artifacts { get; private set; }
         public IAuth Auth { get; private set; }
         public ICodeSamples CodeSamples { get; private set; }
         public IGithub Github { get; private set; }
         public IOrganizations Organizations { get; private set; }
+        public IPublishingTokens PublishingTokens { get; private set; }
         public IReports Reports { get; private set; }
+        public ISchemaStore SchemaStore { get; private set; }
         public IShortURLs ShortURLs { get; private set; }
         public ISubscriptions Subscriptions { get; private set; }
         public ISuggest Suggest { get; private set; }
         public IWorkspaces Workspaces { get; private set; }
         public IEvents Events { get; private set; }
 
+        public SDK(SDKConfig config)
+        {
+            SDKConfiguration = config;
+            InitHooks();
+
+            Artifacts = new Artifacts(SDKConfiguration);
+
+            Auth = new Auth(SDKConfiguration);
+
+            CodeSamples = new CodeSamples(SDKConfiguration);
+
+            Github = new Github(SDKConfiguration);
+
+            Organizations = new Organizations(SDKConfiguration);
+
+            PublishingTokens = new PublishingTokens(SDKConfiguration);
+
+            Reports = new Reports(SDKConfiguration);
+
+            SchemaStore = new SchemaStore(SDKConfiguration);
+
+            ShortURLs = new ShortURLs(SDKConfiguration);
+
+            Subscriptions = new Subscriptions(SDKConfiguration);
+
+            Suggest = new Suggest(SDKConfiguration);
+
+            Workspaces = new Workspaces(SDKConfiguration);
+
+            Events = new Events(SDKConfiguration);
+        }
+
         public SDK(SpeakeasySDK.Models.Shared.Security? security = null, Func<SpeakeasySDK.Models.Shared.Security>? securitySource = null, string? workspaceId = null, SDKConfig.Server? server = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
         {
-            if (server != null)
-            {
-              _server = server;
-            }
 
             if (serverUrl != null)
             {
@@ -182,10 +155,8 @@ namespace SpeakeasySDK
                 {
                     serverUrl = Utilities.TemplateUrl(serverUrl, urlParams);
                 }
-                _serverUrl = serverUrl;
             }
-
-            _client = client ?? new SpeakeasyHttpClient();
+            Func<SpeakeasySDK.Models.Shared.Security>? _securitySource = null;
 
             if(securitySource != null)
             {
@@ -196,48 +167,116 @@ namespace SpeakeasySDK
                 _securitySource = () => security;
             }
 
-            SDKConfiguration = new SDKConfig()
+            SDKConfiguration = new SDKConfig(client)
             {
                 WorkspaceId = workspaceId,
-                ServerName = _server,
-                ServerUrl = _serverUrl,
+                ServerName = server,
+                ServerUrl = serverUrl == null ? "" : serverUrl,
+                SecuritySource = _securitySource,
                 RetryConfig = retryConfig
             };
 
-            _client = SDKConfiguration.InitHooks(_client);
+            InitHooks();
 
+            Artifacts = new Artifacts(SDKConfiguration);
 
-            Artifacts = new Artifacts(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Auth = new Auth(SDKConfiguration);
 
+            CodeSamples = new CodeSamples(SDKConfiguration);
 
-            Auth = new Auth(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Github = new Github(SDKConfiguration);
 
+            Organizations = new Organizations(SDKConfiguration);
 
-            CodeSamples = new CodeSamples(_client, _securitySource, _serverUrl, SDKConfiguration);
+            PublishingTokens = new PublishingTokens(SDKConfiguration);
 
+            Reports = new Reports(SDKConfiguration);
 
-            Github = new Github(_client, _securitySource, _serverUrl, SDKConfiguration);
+            SchemaStore = new SchemaStore(SDKConfiguration);
 
+            ShortURLs = new ShortURLs(SDKConfiguration);
 
-            Organizations = new Organizations(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Subscriptions = new Subscriptions(SDKConfiguration);
 
+            Suggest = new Suggest(SDKConfiguration);
 
-            Reports = new Reports(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Workspaces = new Workspaces(SDKConfiguration);
 
-
-            ShortURLs = new ShortURLs(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            Subscriptions = new Subscriptions(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            Suggest = new Suggest(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            Workspaces = new Workspaces(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            Events = new Events(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Events = new Events(SDKConfiguration);
         }
+
+        private void InitHooks()
+        {
+            string preHooksUrl = SDKConfiguration.GetTemplatedServerUrl();
+            var (postHooksUrl, postHooksClient) = SDKConfiguration.Hooks.SDKInit(preHooksUrl, SDKConfiguration.Client);
+            var config = SDKConfiguration;
+            if (preHooksUrl != postHooksUrl)
+            {
+                config.ServerUrl = postHooksUrl;
+            }
+            config.Client = postHooksClient;
+            SDKConfiguration = config;
+        }
+
+        public class SDKBuilder
+        {
+            private SDKConfig _sdkConfig = new SDKConfig(client: new SpeakeasyHttpClient());
+
+            public SDKBuilder() { }
+
+            public SDKBuilder WithServer(SDKConfig.Server server)
+            {
+                _sdkConfig.ServerName = server;
+                return this;
+            }
+
+            public SDKBuilder WithServerUrl(string serverUrl, Dictionary<string, string>? serverVariables = null)
+            {
+                if (serverVariables != null)
+                {
+                    serverUrl = Utilities.TemplateUrl(serverUrl, serverVariables);
+                }
+                _sdkConfig.ServerUrl = serverUrl;
+                return this;
+            }
+
+            public SDKBuilder WithWorkspaceId(string workspaceId)
+            {
+                _sdkConfig.WorkspaceId = workspaceId;
+                return this;
+            }
+
+            public SDKBuilder WithSecuritySource(Func<SpeakeasySDK.Models.Shared.Security> securitySource)
+            {
+                _sdkConfig.SecuritySource = securitySource;
+                return this;
+            }
+
+            public SDKBuilder WithSecurity(SpeakeasySDK.Models.Shared.Security security)
+            {
+                _sdkConfig.SecuritySource = () => security;
+                return this;
+            }
+
+            public SDKBuilder WithClient(ISpeakeasyHttpClient client)
+            {
+                _sdkConfig.Client = client;
+                return this;
+            }
+
+            public SDKBuilder WithRetryConfig(RetryConfig retryConfig)
+            {
+                _sdkConfig.RetryConfig = retryConfig;
+                return this;
+            }
+
+            public SDK Build()
+            {
+              return new SDK(_sdkConfig);
+            }
+
+        }
+
+        public static SDKBuilder Builder() => new SDKBuilder();
     }
 }

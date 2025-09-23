@@ -18,6 +18,7 @@ Get suggestions from an LLM model for improving an OpenAPI document.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="suggest" method="post" path="/v1/suggest/openapi_from_summary" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
@@ -34,14 +35,14 @@ SuggestRequest req = new SuggestRequest() {
             new Diagnostic() {
                 Message = "<value>",
                 Path = new List<string>() {
-                    "/rescue",
+                    "/usr/src",
                 },
                 Type = "<value>",
             },
         },
         OasSummary = new OASSummary() {
             Info = new OASInfo() {
-                Description = "kielbasa psst stitcher cannon devoted blindly apropos low",
+                Description = "prioritize bell vainly",
                 License = new License() {},
                 Summary = "<value>",
                 Title = "<value>",
@@ -49,12 +50,13 @@ SuggestRequest req = new SuggestRequest() {
             },
             Operations = new List<OASOperation>() {
                 new OASOperation() {
-                    Description = "via apparatus gray whether opposite what",
+                    Description = "though since instead accurate safe unnaturally charming",
                     Method = "<value>",
                     OperationId = "<id>",
-                    Path = "/sys",
+                    Path = "/usr/local/bin",
                     Tags = new List<string>() {
-                        "<value>",
+                        "<value 1>",
+                        "<value 2>",
                     },
                 },
             },
@@ -91,6 +93,7 @@ Generate generic suggestions for a list of items.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="suggestItems" method="post" path="/v1/suggest/items" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
@@ -102,7 +105,7 @@ var sdk = new SDK(security: new Security() {
 
 SuggestItemsRequestBody req = new SuggestItemsRequestBody() {
     Items = new List<string>() {
-        "<value>",
+        "<value 1>",
     },
     Prompt = "<value>",
 };
@@ -134,11 +137,11 @@ Get suggestions from an LLM model for improving an OpenAPI document.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="suggestOpenAPI" method="post" path="/v1/suggest/openapi" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
-using System;
 
 var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
@@ -147,7 +150,7 @@ var sdk = new SDK(security: new Security() {
 SuggestOpenAPIRequest req = new SuggestOpenAPIRequest() {
     RequestBody = new SuggestOpenAPIRequestBody() {
         Schema = new Schema() {
-            Content = System.Text.Encoding.UTF8.GetBytes("0x0beEcB7cF6"),
+            Content = System.IO.File.ReadAllBytes("example.file"),
             FileName = "example.file",
         },
     },
@@ -181,6 +184,7 @@ Get suggestions from an LLM model for improving an OpenAPI document stored in th
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="suggestOpenAPIRegistry" method="post" path="/v1/suggest/openapi/{namespace_name}/{revision_reference}" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;

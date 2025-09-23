@@ -15,6 +15,7 @@ Shorten a URL.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="create" method="post" path="/v1/short_urls" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
@@ -25,7 +26,7 @@ var sdk = new SDK(security: new Security() {
 });
 
 CreateRequestBody req = new CreateRequestBody() {
-    Url = "https://probable-heating.com/",
+    Url = "https://exalted-heroine.org/",
 };
 
 var res = await sdk.ShortURLs.CreateAsync(req);

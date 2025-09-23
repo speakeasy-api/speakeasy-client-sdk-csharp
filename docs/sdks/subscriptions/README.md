@@ -16,6 +16,7 @@ Activate an ignored namespace for a subscription
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="activateSubscriptionNamespace" method="post" path="/v1/subscriptions/{subscriptionID}/{namespaceName}/activate" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
@@ -58,6 +59,7 @@ Ignored a namespace for a subscription
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="ignoreSubscriptionNamespace" method="post" path="/v1/subscriptions/{subscriptionID}/{namespaceName}/ignore" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;

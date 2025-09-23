@@ -40,6 +40,8 @@ namespace SpeakeasySDK.Models.Shared
         Configure,
         [JsonProperty("PUBLISH")]
         Publish,
+        [JsonProperty("TEST")]
+        Test,
     }
 
     public static class InteractionTypeExtension

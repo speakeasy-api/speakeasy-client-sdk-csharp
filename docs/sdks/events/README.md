@@ -19,18 +19,21 @@ Load recent events for a particular workspace
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getWorkspaceEventsByTarget" method="get" path="/v1/workspace/{workspace_id}/events/targets/{target_id}/events" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 
-var sdk = new SDK(security: new Security() {
-    APIKey = "<YOUR_API_KEY_HERE>",
-});
+var sdk = new SDK(
+    workspaceId: "<id>",
+    security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    }
+);
 
 GetWorkspaceEventsByTargetRequest req = new GetWorkspaceEventsByTargetRequest() {
     TargetId = "<id>",
-    WorkspaceId = "<id>",
 };
 
 var res = await sdk.Events.GetEventsByTargetAsync(req);
@@ -61,6 +64,7 @@ Load targets for a particular workspace
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getWorkspaceTargets" method="get" path="/v1/workspace/events/targets" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
@@ -70,7 +74,7 @@ var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
 });
 
-GetWorkspaceTargetsRequest req = new GetWorkspaceTargetsRequest() {};
+GetWorkspaceTargetsRequest? req = null;
 
 var res = await sdk.Events.GetTargetsAsync(req);
 
@@ -100,18 +104,20 @@ Load targets for a particular workspace
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getWorkspaceTargetsDeprecated" method="get" path="/v1/workspace/{workspace_id}/events/targets" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 
-var sdk = new SDK(security: new Security() {
-    APIKey = "<YOUR_API_KEY_HERE>",
-});
+var sdk = new SDK(
+    workspaceId: "<id>",
+    security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    }
+);
 
-GetWorkspaceTargetsDeprecatedRequest req = new GetWorkspaceTargetsDeprecatedRequest() {
-    WorkspaceId = "<id>",
-};
+GetWorkspaceTargetsDeprecatedRequest req = new GetWorkspaceTargetsDeprecatedRequest() {};
 
 var res = await sdk.Events.GetTargetsDeprecatedAsync(req);
 
@@ -141,6 +147,7 @@ Sends an array of events to be stored for a particular workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="postWorkspaceEvents" method="post" path="/v1/workspace/{workspace_id}/events" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
@@ -148,25 +155,27 @@ using SpeakeasySDK.Models.Shared;
 using System;
 using System.Collections.Generic;
 
-var sdk = new SDK(security: new Security() {
-    APIKey = "<YOUR_API_KEY_HERE>",
-});
+var sdk = new SDK(
+    workspaceId: "<id>",
+    security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    }
+);
 
 PostWorkspaceEventsRequest req = new PostWorkspaceEventsRequest() {
     RequestBody = new List<CliEvent>() {
         new CliEvent() {
-            CreatedAt = System.DateTime.Parse("2024-05-07T03:24:39.583Z"),
+            CreatedAt = System.DateTime.Parse("2023-02-16T09:12:42.397Z"),
             ExecutionId = "<id>",
             Id = "<id>",
             InteractionType = InteractionType.Quickstart,
-            LocalStartedAt = System.DateTime.Parse("2024-09-08T05:59:33.876Z"),
+            LocalStartedAt = System.DateTime.Parse("2024-01-24T01:13:51.002Z"),
             SpeakeasyApiKeyName = "<value>",
             SpeakeasyVersion = "<value>",
-            Success = false,
+            Success = true,
             WorkspaceId = "<id>",
         },
     },
-    WorkspaceId = "<id>",
 };
 
 var res = await sdk.Events.PostAsync(req);
@@ -197,18 +206,20 @@ Search events for a particular workspace by any field
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="searchWorkspaceEvents" method="get" path="/v1/workspace/{workspace_id}/events" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 
-var sdk = new SDK(security: new Security() {
-    APIKey = "<YOUR_API_KEY_HERE>",
-});
+var sdk = new SDK(
+    workspaceId: "<id>",
+    security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    }
+);
 
-SearchWorkspaceEventsRequest req = new SearchWorkspaceEventsRequest() {
-    WorkspaceId = "<id>",
-};
+SearchWorkspaceEventsRequest req = new SearchWorkspaceEventsRequest() {};
 
 var res = await sdk.Events.SearchAsync(req);
 

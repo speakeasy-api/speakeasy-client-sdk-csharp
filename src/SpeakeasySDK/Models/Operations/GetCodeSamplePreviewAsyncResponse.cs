@@ -10,27 +10,13 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Models.Operations;
+    using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System;
     using System.Net.Http;
     
     public class GetCodeSamplePreviewAsyncResponse
     {
-
-        /// <summary>
-        /// Successfully returned codeSample overlay file
-        /// </summary>
-        public byte[]? TwoHundredApplicationJsonBytes { get; set; }
-
-        /// <summary>
-        /// Successfully returned codeSample overlay file
-        /// </summary>
-        public byte[]? TwoHundredApplicationXYamlBytes { get; set; }
-
-        /// <summary>
-        /// Job is still in progress
-        /// </summary>
-        public GetCodeSamplePreviewAsyncResponseBody? TwoHundredAndTwoApplicationJsonObject { get; set; }
 
         /// <summary>
         /// HTTP response content type for this operation
@@ -46,5 +32,15 @@ namespace SpeakeasySDK.Models.Operations
         /// Raw HTTP response; suitable for custom response parsing
         /// </summary>
         public HttpResponseMessage RawResponse { get; set; } = default!;
+
+        /// <summary>
+        /// OK
+        /// </summary>
+        public UsageSnippets? UsageSnippets { get; set; }
+
+        /// <summary>
+        /// Job is still in progress
+        /// </summary>
+        public GetCodeSamplePreviewAsyncResponseBody? Object { get; set; }
     }
 }

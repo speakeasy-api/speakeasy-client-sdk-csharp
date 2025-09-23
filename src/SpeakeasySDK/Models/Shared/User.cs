@@ -65,6 +65,12 @@ namespace SpeakeasySDK.Models.Shared
         public string? GithubHandle { get; set; } = null;
 
         /// <summary>
+        /// Indicates whether the user has created an API key. Not always populated
+        /// </summary>
+        [JsonProperty("has_created_api_key")]
+        public bool? HasCreatedApiKey { get; set; }
+
+        /// <summary>
         /// Unique identifier for the user.
         /// </summary>
         [JsonProperty("id")]
@@ -87,6 +93,12 @@ namespace SpeakeasySDK.Models.Shared
         /// </summary>
         [JsonProperty("photo_url")]
         public string? PhotoUrl { get; set; } = null;
+
+        /// <summary>
+        /// Hash used for pylon identity verification returned on v1/user.
+        /// </summary>
+        [JsonProperty("pylon_identity_hash")]
+        public string? PylonIdentityHash { get; set; }
 
         /// <summary>
         /// Timestamp of the user&apos;s last update.
