@@ -1,0 +1,9 @@
+# UpdatePublishingTokenExpirationRequest
+
+
+## Fields
+
+| Field                                                                                                               | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `RequestBody`                                                                                                       | [UpdatePublishingTokenExpirationRequestBody](../../Models/Operations/UpdatePublishingTokenExpirationRequestBody.md) | :heavy_minus_sign:                                                                                                  | The publishing token to update                                                                                      |
+| `TokenID`                                                                                                           | *string*                                                                                                            | :heavy_check_mark:                                                                                                  | Unique identifier of the publishing token.                                                                          |
