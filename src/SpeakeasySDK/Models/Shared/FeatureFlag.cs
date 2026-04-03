@@ -13,15 +13,17 @@ namespace SpeakeasySDK.Models.Shared
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// A feature flag is a key-value pair that can be used to enable or disable features.
     /// </summary>
     public class FeatureFlag
     {
-
         /// <summary>
-        /// enum value workspace feature flag
+        /// enum value workspace feature flag.
         /// </summary>
         [JsonProperty("feature_flag")]
         public WorkspaceFeatureFlag FeatureFlagValue { get; set; } = default!;

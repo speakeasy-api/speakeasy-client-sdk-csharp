@@ -1,5 +1,4 @@
 # Auth
-(*Auth*)
 
 ## Overview
 
@@ -18,6 +17,7 @@ Checks if generation is permitted for a particular run of the CLI
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getWorkspaceAccess" method="get" path="/v1/workspace/access" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
@@ -27,7 +27,7 @@ var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
 });
 
-GetWorkspaceAccessRequest req = new GetWorkspaceAccessRequest() {};
+GetWorkspaceAccessRequest? req = null;
 
 var res = await sdk.Auth.GetAccessAsync(req);
 
@@ -56,6 +56,7 @@ Get or refresh an access token for the current workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getAccessToken" method="get" path="/v1/auth/access_token" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
@@ -94,6 +95,7 @@ Get information about the current user.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getUser" method="get" path="/v1/user" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
@@ -124,6 +126,7 @@ Validate the current api key.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="validateApiKey" method="get" path="/v1/auth/validate" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;

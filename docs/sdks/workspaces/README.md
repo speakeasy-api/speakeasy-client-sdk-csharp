@@ -1,5 +1,4 @@
 # Workspaces
-(*Workspaces*)
 
 ## Overview
 
@@ -29,6 +28,7 @@ Creates a workspace
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="createWorkspace" method="post" path="/v1/workspace" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
@@ -39,13 +39,13 @@ var sdk = new SDK(security: new Security() {
 });
 
 Workspace req = new Workspace() {
-    CreatedAt = System.DateTime.Parse("2024-06-17T07:14:55.338Z"),
+    CreatedAt = System.DateTime.Parse("2024-11-17T13:41:10.525Z").ToUniversalTime(),
     Id = "<id>",
     Name = "<value>",
     OrganizationId = "<id>",
     Slug = "<value>",
-    UpdatedAt = System.DateTime.Parse("2024-11-30T17:06:07.804Z"),
-    Verified = false,
+    UpdatedAt = System.DateTime.Parse("2025-11-21T08:36:32.740Z").ToUniversalTime(),
+    Verified = true,
 };
 
 var res = await sdk.Workspaces.CreateAsync(req);
@@ -76,26 +76,29 @@ Create a token for a particular workspace
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="createWorkspaceToken" method="post" path="/v1/workspace/{workspace_id}/tokens" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 using System;
 
-var sdk = new SDK(security: new Security() {
-    APIKey = "<YOUR_API_KEY_HERE>",
-});
+var sdk = new SDK(
+    workspaceId: "<id>",
+    security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    }
+);
 
 CreateWorkspaceTokenRequest req = new CreateWorkspaceTokenRequest() {
     WorkspaceToken = new WorkspaceToken() {
         Alg = "<value>",
-        CreatedAt = System.DateTime.Parse("2023-08-16T02:33:00.784Z"),
+        CreatedAt = System.DateTime.Parse("2025-10-04T10:23:04.522Z").ToUniversalTime(),
         Id = "<id>",
         Key = "<key>",
         Name = "<value>",
         WorkspaceId = "<id>",
     },
-    WorkspaceId = "<id>",
 };
 
 var res = await sdk.Workspaces.CreateTokenAsync(req);
@@ -126,18 +129,21 @@ Delete a token for a particular workspace
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="deleteWorkspaceToken" method="delete" path="/v1/workspace/{workspace_id}/tokens/{tokenID}" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 
-var sdk = new SDK(security: new Security() {
-    APIKey = "<YOUR_API_KEY_HERE>",
-});
+var sdk = new SDK(
+    workspaceId: "<id>",
+    security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    }
+);
 
 DeleteWorkspaceTokenRequest req = new DeleteWorkspaceTokenRequest() {
     TokenID = "<id>",
-    WorkspaceId = "<id>",
 };
 
 var res = await sdk.Workspaces.DeleteTokenAsync(req);
@@ -168,6 +174,7 @@ Get information about a particular workspace by context.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getWorkspaceByContext" method="get" path="/v1/workspace" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
@@ -198,6 +205,7 @@ Returns a list of workspaces a user has access too
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getWorkspaces" method="get" path="/v1/workspaces" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
@@ -228,18 +236,20 @@ Get information about a particular workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getWorkspace" method="get" path="/v1/workspace/{workspace_id}" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 
-var sdk = new SDK(security: new Security() {
-    APIKey = "<YOUR_API_KEY_HERE>",
-});
+var sdk = new SDK(
+    workspaceId: "<id>",
+    security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    }
+);
 
-GetWorkspaceRequest req = new GetWorkspaceRequest() {
-    WorkspaceId = "<id>",
-};
+GetWorkspaceRequest req = new GetWorkspaceRequest() {};
 
 var res = await sdk.Workspaces.GetByIDAsync(req);
 
@@ -269,18 +279,20 @@ Get workspace feature flags
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getWorkspaceFeatureFlags" method="get" path="/v1/workspace/{workspace_id}/feature_flags" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 
-var sdk = new SDK(security: new Security() {
-    APIKey = "<YOUR_API_KEY_HERE>",
-});
+var sdk = new SDK(
+    workspaceId: "<id>",
+    security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    }
+);
 
-GetWorkspaceFeatureFlagsRequest req = new GetWorkspaceFeatureFlagsRequest() {
-    WorkspaceId = "<id>",
-};
+GetWorkspaceFeatureFlagsRequest req = new GetWorkspaceFeatureFlagsRequest() {};
 
 var res = await sdk.Workspaces.GetFeatureFlagsAsync(req);
 
@@ -310,18 +322,20 @@ Get settings about a particular workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getWorkspaceSettings" method="get" path="/v1/workspace/{workspace_id}/settings" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 
-var sdk = new SDK(security: new Security() {
-    APIKey = "<YOUR_API_KEY_HERE>",
-});
+var sdk = new SDK(
+    workspaceId: "<id>",
+    security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    }
+);
 
-GetWorkspaceSettingsRequest req = new GetWorkspaceSettingsRequest() {
-    WorkspaceId = "<id>",
-};
+GetWorkspaceSettingsRequest req = new GetWorkspaceSettingsRequest() {};
 
 var res = await sdk.Workspaces.GetSettingsAsync(req);
 
@@ -351,18 +365,20 @@ Get team members for a particular workspace
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getWorkspaceTeam" method="get" path="/v1/workspace/{workspace_id}/team" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 
-var sdk = new SDK(security: new Security() {
-    APIKey = "<YOUR_API_KEY_HERE>",
-});
+var sdk = new SDK(
+    workspaceId: "<id>",
+    security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    }
+);
 
-GetWorkspaceTeamRequest req = new GetWorkspaceTeamRequest() {
-    WorkspaceId = "<id>",
-};
+GetWorkspaceTeamRequest req = new GetWorkspaceTeamRequest() {};
 
 var res = await sdk.Workspaces.GetTeamAsync(req);
 
@@ -392,18 +408,20 @@ Get tokens for a particular workspace
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getWorkspaceTokens" method="get" path="/v1/workspace/{workspace_id}/tokens" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 
-var sdk = new SDK(security: new Security() {
-    APIKey = "<YOUR_API_KEY_HERE>",
-});
+var sdk = new SDK(
+    workspaceId: "<id>",
+    security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    }
+);
 
-GetWorkspaceTokensRequest req = new GetWorkspaceTokensRequest() {
-    WorkspaceId = "<id>",
-};
+GetWorkspaceTokensRequest req = new GetWorkspaceTokensRequest() {};
 
 var res = await sdk.Workspaces.GetTokensAsync(req);
 
@@ -433,18 +451,21 @@ Grant a user access to a particular workspace
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="grantUserAccessToWorkspace" method="put" path="/v1/workspace/{workspace_id}/team/email/{email}" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 
-var sdk = new SDK(security: new Security() {
-    APIKey = "<YOUR_API_KEY_HERE>",
-});
+var sdk = new SDK(
+    workspaceId: "<id>",
+    security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    }
+);
 
 GrantUserAccessToWorkspaceRequest req = new GrantUserAccessToWorkspaceRequest() {
-    Email = "Lucinda.Batz8@hotmail.com",
-    WorkspaceId = "<id>",
+    Email = "Idella24@gmail.com",
 };
 
 var res = await sdk.Workspaces.GrantAccessAsync(req);
@@ -475,18 +496,21 @@ Revoke a user's access to a particular workspace
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="revokeUserAccessToWorkspace" method="delete" path="/v1/workspace/{workspace_id}/team/{userId}" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 
-var sdk = new SDK(security: new Security() {
-    APIKey = "<YOUR_API_KEY_HERE>",
-});
+var sdk = new SDK(
+    workspaceId: "<id>",
+    security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    }
+);
 
 RevokeUserAccessToWorkspaceRequest req = new RevokeUserAccessToWorkspaceRequest() {
     UserId = "<id>",
-    WorkspaceId = "<id>",
 };
 
 var res = await sdk.Workspaces.RevokeAccessAsync(req);
@@ -517,6 +541,7 @@ Set workspace feature flags
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="setWorkspaceFeatureFlags" method="post" path="/v1/workspace/feature_flags" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
@@ -527,9 +552,7 @@ var sdk = new SDK(security: new Security() {
 });
 
 WorkspaceFeatureFlagRequest req = new WorkspaceFeatureFlagRequest() {
-    FeatureFlags = new List<WorkspaceFeatureFlag>() {
-        WorkspaceFeatureFlag.SkipSchemaRegistry,
-    },
+    FeatureFlags = new List<WorkspaceFeatureFlag>() {},
 };
 
 var res = await sdk.Workspaces.SetFeatureFlagsAsync(req);
@@ -560,27 +583,30 @@ Update information about a particular workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="updateWorkspaceDetails" method="post" path="/v1/workspace/{workspace_id}/details" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 using System;
 
-var sdk = new SDK(security: new Security() {
-    APIKey = "<YOUR_API_KEY_HERE>",
-});
+var sdk = new SDK(
+    workspaceId: "<id>",
+    security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    }
+);
 
 UpdateWorkspaceDetailsRequest req = new UpdateWorkspaceDetailsRequest() {
     Workspace = new Workspace() {
-        CreatedAt = System.DateTime.Parse("2025-07-28T19:04:48.565Z"),
+        CreatedAt = System.DateTime.Parse("2024-08-01T22:30:24.264Z").ToUniversalTime(),
         Id = "<id>",
         Name = "<value>",
         OrganizationId = "<id>",
         Slug = "<value>",
-        UpdatedAt = System.DateTime.Parse("2024-10-16T10:52:42.015Z"),
-        Verified = false,
+        UpdatedAt = System.DateTime.Parse("2026-01-24T03:53:13.581Z").ToUniversalTime(),
+        Verified = true,
     },
-    WorkspaceId = "<id>",
 };
 
 var res = await sdk.Workspaces.UpdateAsync(req);
@@ -611,24 +637,27 @@ Update settings about a particular workspace.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="updateWorkspaceSettings" method="put" path="/v1/workspace/{workspace_id}/settings" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
 using SpeakeasySDK.Models.Shared;
 using System;
 
-var sdk = new SDK(security: new Security() {
-    APIKey = "<YOUR_API_KEY_HERE>",
-});
+var sdk = new SDK(
+    workspaceId: "<id>",
+    security: new Security() {
+        APIKey = "<YOUR_API_KEY_HERE>",
+    }
+);
 
 UpdateWorkspaceSettingsRequest req = new UpdateWorkspaceSettingsRequest() {
     WorkspaceSettings = new WorkspaceSettings() {
-        CreatedAt = System.DateTime.Parse("2023-07-05T11:43:28.305Z"),
-        UpdatedAt = System.DateTime.Parse("2024-05-14T05:39:21.874Z"),
-        WebhookUrl = "https://grown-pharmacopoeia.net",
+        CreatedAt = System.DateTime.Parse("2026-03-09T15:48:09.330Z").ToUniversalTime(),
+        UpdatedAt = System.DateTime.Parse("2026-11-24T16:37:53.492Z").ToUniversalTime(),
+        WebhookUrl = "https://wobbly-lid.org",
         WorkspaceId = "<id>",
     },
-    WorkspaceId = "<id>",
 };
 
 var res = await sdk.Workspaces.UpdateSettingsAsync(req);

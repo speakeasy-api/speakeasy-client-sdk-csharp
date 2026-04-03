@@ -11,10 +11,9 @@ namespace SpeakeasySDK.Models.Shared
 {
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
-    
+
     public class ShortURL
     {
-
         [JsonProperty("full_url")]
         public string FullUrl { get; set; } = default!;
 

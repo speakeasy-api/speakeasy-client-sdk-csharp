@@ -12,10 +12,9 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
-    
+
     public class Report
     {
-
         [JsonProperty("type")]
         public Models.Shared.Type? Type { get; set; }
     }

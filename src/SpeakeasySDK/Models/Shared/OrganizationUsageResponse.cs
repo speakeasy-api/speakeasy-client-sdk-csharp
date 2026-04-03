@@ -14,27 +14,26 @@ namespace SpeakeasySDK.Models.Shared
     using SpeakeasySDK.Utils;
     using System;
     using System.Collections.Generic;
-    
+
     /// <summary>
-    /// A billing summary of organization usage
+    /// A billing summary of organization usage.
     /// </summary>
     public class OrganizationUsageResponse
     {
-
         /// <summary>
-        /// List of allowed languages
+        /// List of allowed languages.
         /// </summary>
         [JsonProperty("allowed_languages")]
         public List<string> AllowedLanguages { get; set; } = default!;
 
         /// <summary>
-        /// Expiry date of the free trial, will be null if no trial
+        /// Expiry date of the free trial, will be null if no trial.
         /// </summary>
         [JsonProperty("free_trial_expiry")]
         public DateTime? FreeTrialExpiry { get; set; }
 
         /// <summary>
-        /// Total number of allowed languages, -1 if unlimited
+        /// Total number of allowed languages, -1 if unlimited.
         /// </summary>
         [JsonProperty("total_allowed_languages")]
         public long TotalAllowedLanguages { get; set; } = default!;

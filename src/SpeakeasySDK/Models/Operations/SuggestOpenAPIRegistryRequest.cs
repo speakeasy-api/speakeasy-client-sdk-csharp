@@ -11,26 +11,25 @@ namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
-    
+
     public class SuggestOpenAPIRegistryRequest
     {
+        /// <summary>
+        /// Suggest options.
+        /// </summary>
+        [SpeakeasyMetadata("request:mediaType=application/json")]
+        public SuggestRequestBody? SuggestRequestBody { get; set; }
 
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=namespace_name")]
         public string NamespaceName { get; set; } = default!;
 
         /// <summary>
-        /// Tag or digest
+        /// Tag or digest.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=revision_reference")]
         public string RevisionReference { get; set; } = default!;
 
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-session-id")]
         public string XSessionId { get; set; } = default!;
-
-        /// <summary>
-        /// Suggest options
-        /// </summary>
-        [SpeakeasyMetadata("request:mediaType=application/json")]
-        public SuggestRequestBody? SuggestRequestBody { get; set; }
     }
 }

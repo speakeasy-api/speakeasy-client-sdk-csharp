@@ -12,50 +12,67 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
     using System;
-    
-    public enum AccountType
-    {
-        [JsonProperty("free")]
-        Free,
-        [JsonProperty("scale-up")]
-        ScaleUp,
-        [JsonProperty("business")]
-        Business,
-        [JsonProperty("enterprise")]
-        Enterprise,
-    }
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
-    public static class AccountTypeExtension
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class AccountType : IEquatable<AccountType>
     {
-        public static string Value(this AccountType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
+        public static readonly AccountType Free = new AccountType("free");
+        public static readonly AccountType ScaleUp = new AccountType("scale-up");
+        public static readonly AccountType Business = new AccountType("business");
+        public static readonly AccountType Enterprise = new AccountType("enterprise");
 
-        public static AccountType ToEnum(this string value)
-        {
-            foreach(var field in typeof(AccountType).GetFields())
+        private static readonly Dictionary <string, AccountType> _knownValues =
+            new Dictionary <string, AccountType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["free"] = Free,
+                ["scale-up"] = ScaleUp,
+                ["business"] = Business,
+                ["enterprise"] = Enterprise
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, AccountType> _values =
+            new ConcurrentDictionary<string, AccountType>(_knownValues);
 
-                    if (enumVal is AccountType)
-                    {
-                        return (AccountType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum AccountType");
+        private AccountType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static AccountType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new AccountType(value));
+        }
+
+        public static implicit operator AccountType(string value) => Of(value);
+        public static implicit operator string(AccountType accounttype) => accounttype.Value;
+
+        public static AccountType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as AccountType);
+
+        public bool Equals(AccountType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

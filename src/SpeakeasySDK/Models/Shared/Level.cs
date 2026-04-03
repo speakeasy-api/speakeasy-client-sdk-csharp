@@ -12,7 +12,7 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
     using System;
-    
+
     public enum Level
     {
         [JsonProperty("allowed")]
@@ -55,5 +55,4 @@ namespace SpeakeasySDK.Models.Shared
             throw new Exception($"Unknown value {value} for enum Level");
         }
     }
-
 }

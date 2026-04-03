@@ -13,10 +13,9 @@ namespace SpeakeasySDK.Models.Shared
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System.Collections.Generic;
-    
+
     public class GetNamespacesResponse
     {
-
         [JsonProperty("items")]
         public List<Namespace> Items { get; set; } = default!;
     }

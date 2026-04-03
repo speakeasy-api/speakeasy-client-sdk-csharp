@@ -12,13 +12,12 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
     using System.Collections.Generic;
-    
+
     /// <summary>
-    /// A valid response containing MISSING publishing secret keys for a github target
+    /// A valid response containing MISSING publishing secret keys for a github target.
     /// </summary>
     public class GithubMissingPublishingSecretsResponse
     {
-
         [JsonProperty("missing_secrets")]
         public List<string>? MissingSecrets { get; set; }
     }

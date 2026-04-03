@@ -11,10 +11,9 @@ namespace SpeakeasySDK.Models.Shared
 {
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
-    
+
     public class PreflightRequest
     {
-
         [JsonProperty("namespace_name")]
         public string NamespaceName { get; set; } = default!;
     }

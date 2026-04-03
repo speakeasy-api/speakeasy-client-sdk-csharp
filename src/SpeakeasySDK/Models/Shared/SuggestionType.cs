@@ -12,7 +12,7 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
     using System;
-    
+
     public enum SuggestionType
     {
         [JsonProperty("method-names")]
@@ -53,5 +53,4 @@ namespace SpeakeasySDK.Models.Shared
             throw new Exception($"Unknown value {value} for enum SuggestionType");
         }
     }
-
 }

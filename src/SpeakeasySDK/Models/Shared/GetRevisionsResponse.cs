@@ -13,10 +13,9 @@ namespace SpeakeasySDK.Models.Shared
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System.Collections.Generic;
-    
+
     public class GetRevisionsResponse
     {
-
         [JsonProperty("items")]
         public List<Revision> Items { get; set; } = default!;
 

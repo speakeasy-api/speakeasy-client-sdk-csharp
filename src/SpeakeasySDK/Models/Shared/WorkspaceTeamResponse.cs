@@ -13,15 +13,14 @@ namespace SpeakeasySDK.Models.Shared
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System.Collections.Generic;
-    
+
     /// <summary>
-    /// Workspace team response
+    /// Workspace team response.
     /// </summary>
     public class WorkspaceTeamResponse
     {
-
         /// <summary>
-        /// SSO metadata for a workspace
+        /// SSO metadata for a workspace.
         /// </summary>
         [JsonProperty("sso_metadata")]
         public SSOMetadata? SsoMetadata { get; set; }

@@ -10,10 +10,9 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Utils;
-    
+
     public class GetManifestRequest
     {
-
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=namespace_name")]
         public string NamespaceName { get; set; } = default!;
 
@@ -21,7 +20,7 @@ namespace SpeakeasySDK.Models.Operations
         public string OrganizationSlug { get; set; } = default!;
 
         /// <summary>
-        /// Tag or digest
+        /// Tag or digest.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=revision_reference")]
         public string RevisionReference { get; set; } = default!;

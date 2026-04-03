@@ -11,10 +11,9 @@ namespace SpeakeasySDK.Models.Shared
 {
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
-    
+
     public class License
     {
-
         [JsonProperty("identifier")]
         public string? Identifier { get; set; }
     }

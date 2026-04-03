@@ -19,6 +19,27 @@ actions:
             var res = await sdk.Artifacts.GetNamespacesAsync();
 
             // handle response
+  - target: $["paths"]["/v1/artifacts/namespaces/{namespace_name}/archive"]["post"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: archiveNamespace
+          source: |-
+            using SpeakeasySDK;
+            using SpeakeasySDK.Models.Operations;
+            using SpeakeasySDK.Models.Shared;
+
+            var sdk = new SDK(security: new Security() {
+                APIKey = "<YOUR_API_KEY_HERE>",
+            });
+
+            ArchiveNamespaceRequest req = new ArchiveNamespaceRequest() {
+                NamespaceName = "<value>",
+            };
+
+            var res = await sdk.Artifacts.SetArchivedAsync(req);
+
+            // handle response
   - target: $["paths"]["/v1/artifacts/namespaces/{namespace_name}/revisions"]["get"]
     update:
       x-codeSamples:
@@ -116,9 +137,7 @@ actions:
                 APIKey = "<YOUR_API_KEY_HERE>",
             });
 
-            PreflightRequest req = new PreflightRequest() {
-                NamespaceName = "<value>",
-            };
+            PreflightRequest? req = null;
 
             var res = await sdk.Artifacts.PreflightAsync(req);
 
@@ -152,22 +171,12 @@ actions:
           source: |-
             using SpeakeasySDK;
             using SpeakeasySDK.Models.Shared;
-            using System.Collections.Generic;
 
             var sdk = new SDK(security: new Security() {
                 APIKey = "<YOUR_API_KEY_HERE>",
             });
 
-            RemoteSource req = new RemoteSource() {
-                Inputs = new List<RemoteDocument>() {
-                    new RemoteDocument() {
-                        RegistryUrl = "https://productive-swine.net",
-                    },
-                },
-                Output = new RemoteDocument() {
-                    RegistryUrl = "https://spiteful-apricot.info",
-                },
-            };
+            RemoteSource? req = null;
 
             var res = await sdk.Artifacts.CreateRemoteSourceAsync(req);
 
@@ -206,27 +215,6 @@ actions:
             var res = await sdk.Auth.ValidateApiKeyAsync();
 
             // handle response
-  - target: $["paths"]["/v1/code_sample"]["get"]
-    update:
-      x-codeSamples:
-        - lang: csharp
-          label: getCodeSamples
-          source: |-
-            using SpeakeasySDK;
-            using SpeakeasySDK.Models.Operations;
-            using SpeakeasySDK.Models.Shared;
-
-            var sdk = new SDK(security: new Security() {
-                APIKey = "<YOUR_API_KEY_HERE>",
-            });
-
-            GetCodeSamplesRequest req = new GetCodeSamplesRequest() {
-                RegistryUrl = "https://normal-making.name",
-            };
-
-            var res = await sdk.CodeSamples.GetAsync(req);
-
-            // handle response
   - target: $["paths"]["/v1/code_sample/preview"]["post"]
     update:
       x-codeSamples:
@@ -235,20 +223,16 @@ actions:
           source: |-
             using SpeakeasySDK;
             using SpeakeasySDK.Models.Shared;
-            using System;
-            using System.Collections.Generic;
 
             var sdk = new SDK(security: new Security() {
                 APIKey = "<YOUR_API_KEY_HERE>",
             });
 
             CodeSampleSchemaInput req = new CodeSampleSchemaInput() {
-                Languages = new List<string>() {
-                    "<value>",
-                },
+                Language = "<value>",
                 SchemaFile = new SchemaFile() {
+                    Content = System.IO.File.ReadAllBytes("example.file"),
                     FileName = "example.file",
-                    Content = System.Text.Encoding.UTF8.GetBytes("0xc3dD8BfBef"),
                 },
             };
 
@@ -263,20 +247,16 @@ actions:
           source: |-
             using SpeakeasySDK;
             using SpeakeasySDK.Models.Shared;
-            using System;
-            using System.Collections.Generic;
 
             var sdk = new SDK(security: new Security() {
                 APIKey = "<YOUR_API_KEY_HERE>",
             });
 
             CodeSampleSchemaInput req = new CodeSampleSchemaInput() {
-                Languages = new List<string>() {
-                    "<value>",
-                },
+                Language = "<value>",
                 SchemaFile = new SchemaFile() {
+                    Content = System.IO.File.ReadAllBytes("example.file"),
                     FileName = "example.file",
-                    Content = System.Text.Encoding.UTF8.GetBytes("0xED5CDd177E"),
                 },
             };
 
@@ -385,12 +365,12 @@ actions:
             });
 
             GithubConfigureMintlifyRepoRequest req = new GithubConfigureMintlifyRepoRequest() {
-                Org = "<value>",
-                Repo = "<value>",
                 Input = "<value>",
+                Org = "<value>",
                 Overlays = new List<string>() {
-                    "<value>",
+                    "<value 1>",
                 },
+                Repo = "<value>",
             };
 
             var res = await sdk.Github.ConfigureMintlifyRepoAsync(req);
@@ -431,7 +411,7 @@ actions:
                 APIKey = "<YOUR_API_KEY_HERE>",
             });
 
-            LinkGithubAccessRequest req = new LinkGithubAccessRequest() {};
+            LinkGithubAccessRequest? req = null;
 
             var res = await sdk.Github.LinkGithubAsync(req);
 
@@ -515,9 +495,9 @@ actions:
             });
 
             GetGithubSetupStateRequest req = new GetGithubSetupStateRequest() {
+                GenerateGenLockId = "<id>",
                 Org = "<value>",
                 Repo = "<value>",
-                GenerateGenLockId = "<id>",
             };
 
             var res = await sdk.Github.GetSetupAsync(req);
@@ -537,9 +517,9 @@ actions:
             });
 
             GithubTriggerActionRequest req = new GithubTriggerActionRequest() {
+                GenLockId = "<id>",
                 Org = "<value>",
                 RepoName = "<value>",
-                GenLockId = "<id>",
             };
 
             var res = await sdk.Github.TriggerActionAsync(req);
@@ -560,10 +540,10 @@ actions:
             });
 
             GetBlobRequest req = new GetBlobRequest() {
+                Digest = "<value>",
+                NamespaceName = "<value>",
                 OrganizationSlug = "<value>",
                 WorkspaceSlug = "<value>",
-                NamespaceName = "<value>",
-                Digest = "<value>",
             };
 
             var res = await sdk.Artifacts.GetBlobAsync(req);
@@ -584,10 +564,10 @@ actions:
             });
 
             GetManifestRequest req = new GetManifestRequest() {
-                OrganizationSlug = "<value>",
-                WorkspaceSlug = "<value>",
                 NamespaceName = "<value>",
+                OrganizationSlug = "<value>",
                 RevisionReference = "<value>",
+                WorkspaceSlug = "<value>",
             };
 
             var res = await sdk.Artifacts.GetManifestAsync(req);
@@ -608,17 +588,77 @@ actions:
             });
 
             Organization req = new Organization() {
+                AccountType = AccountType.ScaleUp,
+                CreatedAt = System.DateTime.Parse("2026-10-26T09:05:00.560Z").ToUniversalTime(),
                 Id = "<id>",
                 Name = "<value>",
                 Slug = "<value>",
-                AccountType = AccountType.ScaleUp,
-                TelemetryDisabled = false,
-                CreatedAt = System.DateTime.Parse("2024-11-30T17:06:07.804Z"),
-                UpdatedAt = System.DateTime.Parse("2024-04-02T12:48:32.253Z"),
                 SsoActivated = false,
+                TelemetryDisabled = false,
+                UpdatedAt = System.DateTime.Parse("2024-12-22T08:00:51.380Z").ToUniversalTime(),
             };
 
             var res = await sdk.Organizations.CreateAsync(req);
+
+            // handle response
+  - target: $["paths"]["/v1/organization/add_ons"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getBillingAddOns
+          source: |-
+            using SpeakeasySDK;
+            using SpeakeasySDK.Models.Shared;
+
+            var sdk = new SDK(security: new Security() {
+                APIKey = "<YOUR_API_KEY_HERE>",
+            });
+
+            var res = await sdk.Organizations.GetBillingAddOnsAsync();
+
+            // handle response
+  - target: $["paths"]["/v1/organization/add_ons"]["post"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: createBillingAddOns
+          source: |-
+            using SpeakeasySDK;
+            using SpeakeasySDK.Models.Shared;
+            using System.Collections.Generic;
+
+            var sdk = new SDK(security: new Security() {
+                APIKey = "<YOUR_API_KEY_HERE>",
+            });
+
+            OrganizationBillingAddOnRequest req = new OrganizationBillingAddOnRequest() {
+                AddOns = new List<BillingAddOn>() {
+                    BillingAddOn.CustomCodeRegions,
+                },
+            };
+
+            var res = await sdk.Organizations.CreateBillingAddOnsAsync(req);
+
+            // handle response
+  - target: $["paths"]["/v1/organization/add_ons/{add_on}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: deleteBillingAddOn
+          source: |-
+            using SpeakeasySDK;
+            using SpeakeasySDK.Models.Operations;
+            using SpeakeasySDK.Models.Shared;
+
+            var sdk = new SDK(security: new Security() {
+                APIKey = "<YOUR_API_KEY_HERE>",
+            });
+
+            DeleteBillingAddOnRequest req = new DeleteBillingAddOnRequest() {
+                AddOn = BillingAddOn.SDKTesting,
+            };
+
+            var res = await sdk.Organizations.DeleteBillingAddOnAsync(req);
 
             // handle response
   - target: $["paths"]["/v1/organization/free_trial"]["post"]
@@ -690,6 +730,146 @@ actions:
             var res = await sdk.Organizations.GetAllAsync();
 
             // handle response
+  - target: $["paths"]["/v1/publishing-tokens"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getPublishingToken
+          source: |-
+            using SpeakeasySDK;
+            using SpeakeasySDK.Models.Shared;
+
+            var sdk = new SDK(security: new Security() {
+                APIKey = "<YOUR_API_KEY_HERE>",
+            });
+
+            var res = await sdk.PublishingTokens.ListAsync();
+
+            // handle response
+  - target: $["paths"]["/v1/publishing-tokens"]["post"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: createPublishingToken
+          source: |-
+            using SpeakeasySDK;
+            using SpeakeasySDK.Models.Operations;
+            using SpeakeasySDK.Models.Shared;
+
+            var sdk = new SDK(security: new Security() {
+                APIKey = "<YOUR_API_KEY_HERE>",
+            });
+
+            CreatePublishingTokenRequestBody? req = null;
+
+            var res = await sdk.PublishingTokens.CreateAsync(req);
+
+            // handle response
+  - target: $["paths"]["/v1/publishing-tokens/{tokenID}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: deletePublishingToken
+          source: |-
+            using SpeakeasySDK;
+            using SpeakeasySDK.Models.Operations;
+            using SpeakeasySDK.Models.Shared;
+
+            var sdk = new SDK(security: new Security() {
+                APIKey = "<YOUR_API_KEY_HERE>",
+            });
+
+            DeletePublishingTokenRequest req = new DeletePublishingTokenRequest() {
+                TokenID = "<id>",
+            };
+
+            var res = await sdk.PublishingTokens.DeleteAsync(req);
+
+            // handle response
+  - target: $["paths"]["/v1/publishing-tokens/{tokenID}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getPublishingTokenByID
+          source: |-
+            using SpeakeasySDK;
+            using SpeakeasySDK.Models.Operations;
+            using SpeakeasySDK.Models.Shared;
+
+            var sdk = new SDK(security: new Security() {
+                APIKey = "<YOUR_API_KEY_HERE>",
+            });
+
+            GetPublishingTokenByIDRequest req = new GetPublishingTokenByIDRequest() {
+                TokenID = "<id>",
+            };
+
+            var res = await sdk.PublishingTokens.GetAsync(req);
+
+            // handle response
+  - target: $["paths"]["/v1/publishing-tokens/{tokenID}"]["put"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: updatePublishingTokenExpiration
+          source: |-
+            using SpeakeasySDK;
+            using SpeakeasySDK.Models.Operations;
+            using SpeakeasySDK.Models.Shared;
+
+            var sdk = new SDK(security: new Security() {
+                APIKey = "<YOUR_API_KEY_HERE>",
+            });
+
+            UpdatePublishingTokenExpirationRequest req = new UpdatePublishingTokenExpirationRequest() {
+                TokenID = "<id>",
+            };
+
+            var res = await sdk.PublishingTokens.UpdateAsync(req);
+
+            // handle response
+  - target: $["paths"]["/v1/publishing-tokens/{tokenID}/metadata"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getPublishingTokenPublicMetadata
+          source: |-
+            using SpeakeasySDK;
+            using SpeakeasySDK.Models.Operations;
+            using SpeakeasySDK.Models.Shared;
+
+            var sdk = new SDK(security: new Security() {
+                APIKey = "<YOUR_API_KEY_HERE>",
+            });
+
+            GetPublishingTokenPublicMetadataRequest req = new GetPublishingTokenPublicMetadataRequest() {
+                TokenID = "<id>",
+            };
+
+            var res = await sdk.PublishingTokens.ResolveMetadataAsync(req);
+
+            // handle response
+  - target: $["paths"]["/v1/publishing-tokens/{tokenID}/target"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getPublishingTokenTargetByID
+          source: |-
+            using SpeakeasySDK;
+            using SpeakeasySDK.Models.Operations;
+            using SpeakeasySDK.Models.Shared;
+
+            var sdk = new SDK(security: new Security() {
+                APIKey = "<YOUR_API_KEY_HERE>",
+            });
+
+            GetPublishingTokenTargetByIDRequest req = new GetPublishingTokenTargetByIDRequest() {
+                TokenID = "<id>",
+            };
+
+            var res = await sdk.PublishingTokens.ResolveTargetAsync(req);
+
+            // handle response
   - target: $["paths"]["/v1/reports"]["post"]
     update:
       x-codeSamples:
@@ -699,7 +879,6 @@ actions:
             using SpeakeasySDK;
             using SpeakeasySDK.Models.Operations;
             using SpeakeasySDK.Models.Shared;
-            using System;
 
             var sdk = new SDK(security: new Security() {
                 APIKey = "<YOUR_API_KEY_HERE>",
@@ -707,9 +886,9 @@ actions:
 
             UploadReportRequestBody req = new UploadReportRequestBody() {
                 Data = new Report() {},
-                File = new File() {
+                File = new SpeakeasySDK.Models.Operations.File() {
+                    Content = System.IO.File.ReadAllBytes("example.file"),
                     FileName = "example.file",
-                    Content = System.Text.Encoding.UTF8.GetBytes("0xA2Ca85EFA5"),
                 },
             };
 
@@ -758,6 +937,49 @@ actions:
             var res = await sdk.Reports.GetLintingReportSignedUrlAsync(req);
 
             // handle response
+  - target: $["paths"]["/v1/schema_store"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getSchemaStoreItem
+          source: |-
+            using SpeakeasySDK;
+            using SpeakeasySDK.Models.Operations;
+            using SpeakeasySDK.Models.Shared;
+
+            var sdk = new SDK(security: new Security() {
+                APIKey = "<YOUR_API_KEY_HERE>",
+            });
+
+            GetSchemaStoreItemRequestBody? req = null;
+
+            var res = await sdk.SchemaStore.GetSchemaStoreItemAsync(req);
+
+            // handle response
+  - target: $["paths"]["/v1/schema_store"]["post"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: createSchemaStoreItem
+          source: |-
+            using SpeakeasySDK;
+            using SpeakeasySDK.Models.Operations;
+            using SpeakeasySDK.Models.Shared;
+
+            var sdk = new SDK(security: new Security() {
+                APIKey = "<YOUR_API_KEY_HERE>",
+            });
+
+            CreateSchemaStoreItemRequestBody req = new CreateSchemaStoreItemRequestBody() {
+                Format = SpeakeasySDK.Models.Operations.Format.Yaml,
+                PackageName = "<value>",
+                SDKClassname = "<value>",
+                Spec = "<value>",
+            };
+
+            var res = await sdk.SchemaStore.CreateSchemaStoreItemAsync(req);
+
+            // handle response
   - target: $["paths"]["/v1/short_urls"]["post"]
     update:
       x-codeSamples:
@@ -773,7 +995,7 @@ actions:
             });
 
             CreateRequestBody req = new CreateRequestBody() {
-                Url = "https://probable-heating.com/",
+                Url = "https://exalted-heroine.org/",
             };
 
             var res = await sdk.ShortURLs.CreateAsync(req);
@@ -794,8 +1016,8 @@ actions:
             });
 
             ActivateSubscriptionNamespaceRequest req = new ActivateSubscriptionNamespaceRequest() {
-                SubscriptionID = "<id>",
                 NamespaceName = "<value>",
+                SubscriptionID = "<id>",
             };
 
             var res = await sdk.Subscriptions.ActivateSubscriptionNamespaceAsync(req);
@@ -816,8 +1038,8 @@ actions:
             });
 
             IgnoreSubscriptionNamespaceRequest req = new IgnoreSubscriptionNamespaceRequest() {
-                SubscriptionID = "<id>",
                 NamespaceName = "<value>",
+                SubscriptionID = "<id>",
             };
 
             var res = await sdk.Subscriptions.IgnoreSubscriptionNamespaceAsync(req);
@@ -838,10 +1060,10 @@ actions:
             });
 
             SuggestItemsRequestBody req = new SuggestItemsRequestBody() {
-                Prompt = "<value>",
                 Items = new List<string>() {
-                    "<value>",
+                    "<value 1>",
                 },
+                Prompt = "<value>",
             };
 
             var res = await sdk.Suggest.SuggestItemsAsync(req);
@@ -856,20 +1078,19 @@ actions:
             using SpeakeasySDK;
             using SpeakeasySDK.Models.Operations;
             using SpeakeasySDK.Models.Shared;
-            using System;
 
             var sdk = new SDK(security: new Security() {
                 APIKey = "<YOUR_API_KEY_HERE>",
             });
 
             SuggestOpenAPIRequest req = new SuggestOpenAPIRequest() {
-                XSessionId = "<id>",
                 RequestBody = new SuggestOpenAPIRequestBody() {
                     Schema = new Schema() {
+                        Content = System.IO.File.ReadAllBytes("example.file"),
                         FileName = "example.file",
-                        Content = System.Text.Encoding.UTF8.GetBytes("0x0beEcB7cF6"),
                     },
                 },
+                XSessionId = "<id>",
             };
 
             var res = await sdk.Suggest.SuggestOpenAPIAsync(req);
@@ -914,39 +1135,40 @@ actions:
             });
 
             SuggestRequest req = new SuggestRequest() {
-                XSessionId = "<id>",
                 SuggestRequestBody = new SuggestRequestBody() {
+                    Diagnostics = new List<Diagnostic>() {
+                        new Diagnostic() {
+                            Message = "<value>",
+                            Path = new List<string>() {
+                                "/usr/src",
+                            },
+                            Type = "<value>",
+                        },
+                    },
                     OasSummary = new OASSummary() {
                         Info = new OASInfo() {
-                            Title = "<value>",
-                            Summary = "<value>",
-                            Description = "ugh which garrote ashamed sarong fiddle really",
-                            Version = "<value>",
+                            Description = "prioritize bell vainly",
                             License = new License() {},
+                            Summary = "<value>",
+                            Title = "<value>",
+                            Version = "<value>",
                         },
                         Operations = new List<OASOperation>() {
                             new OASOperation() {
+                                Description = "though since instead accurate safe unnaturally charming",
                                 Method = "<value>",
-                                Path = "/etc/ppp",
                                 OperationId = "<id>",
-                                Description = "meanwhile via apparatus gray whether opposite what down blah",
+                                Path = "/usr/local/bin",
                                 Tags = new List<string>() {
-                                    "<value>",
+                                    "<value 1>",
+                                    "<value 2>",
                                 },
                             },
                         },
                     },
                     SuggestionType = SuggestRequestBodySuggestionType.MethodNames,
-                    Diagnostics = new List<Diagnostic>() {
-                        new Diagnostic() {
-                            Message = "<value>",
-                            Path = new List<string>() {
-                                "/etc/mail",
-                            },
-                            Type = "<value>",
-                        },
-                    },
                 },
+                XSessionId = "<id>",
             };
 
             var res = await sdk.Suggest.SuggestAsync(req);
@@ -999,13 +1221,13 @@ actions:
             });
 
             Workspace req = new Workspace() {
-                CreatedAt = System.DateTime.Parse("2024-06-17T07:14:55.338Z"),
+                CreatedAt = System.DateTime.Parse("2024-11-17T13:41:10.525Z").ToUniversalTime(),
                 Id = "<id>",
                 Name = "<value>",
                 OrganizationId = "<id>",
                 Slug = "<value>",
-                UpdatedAt = System.DateTime.Parse("2024-11-30T17:06:07.804Z"),
-                Verified = false,
+                UpdatedAt = System.DateTime.Parse("2025-11-21T08:36:32.740Z").ToUniversalTime(),
+                Verified = true,
             };
 
             var res = await sdk.Workspaces.CreateAsync(req);
@@ -1025,7 +1247,7 @@ actions:
                 APIKey = "<YOUR_API_KEY_HERE>",
             });
 
-            GetWorkspaceAccessRequest req = new GetWorkspaceAccessRequest() {};
+            GetWorkspaceAccessRequest? req = null;
 
             var res = await sdk.Auth.GetAccessAsync(req);
 
@@ -1044,7 +1266,7 @@ actions:
                 APIKey = "<YOUR_API_KEY_HERE>",
             });
 
-            GetWorkspaceTargetsRequest req = new GetWorkspaceTargetsRequest() {};
+            GetWorkspaceTargetsRequest? req = null;
 
             var res = await sdk.Events.GetTargetsAsync(req);
 
@@ -1064,9 +1286,7 @@ actions:
             });
 
             WorkspaceFeatureFlagRequest req = new WorkspaceFeatureFlagRequest() {
-                FeatureFlags = new List<WorkspaceFeatureFlag>() {
-                    WorkspaceFeatureFlag.SkipSchemaRegistry,
-                },
+                FeatureFlags = new List<WorkspaceFeatureFlag>() {},
             };
 
             var res = await sdk.Workspaces.SetFeatureFlagsAsync(req);
@@ -1082,13 +1302,14 @@ actions:
             using SpeakeasySDK.Models.Operations;
             using SpeakeasySDK.Models.Shared;
 
-            var sdk = new SDK(security: new Security() {
-                APIKey = "<YOUR_API_KEY_HERE>",
-            });
+            var sdk = new SDK(
+                workspaceId: "<id>",
+                security: new Security() {
+                    APIKey = "<YOUR_API_KEY_HERE>",
+                }
+            );
 
-            GetWorkspaceRequest req = new GetWorkspaceRequest() {
-                WorkspaceId = "<id>",
-            };
+            GetWorkspaceRequest req = new GetWorkspaceRequest() {};
 
             var res = await sdk.Workspaces.GetByIDAsync(req);
 
@@ -1104,20 +1325,22 @@ actions:
             using SpeakeasySDK.Models.Shared;
             using System;
 
-            var sdk = new SDK(security: new Security() {
-                APIKey = "<YOUR_API_KEY_HERE>",
-            });
+            var sdk = new SDK(
+                workspaceId: "<id>",
+                security: new Security() {
+                    APIKey = "<YOUR_API_KEY_HERE>",
+                }
+            );
 
             UpdateWorkspaceDetailsRequest req = new UpdateWorkspaceDetailsRequest() {
-                WorkspaceId = "<id>",
                 Workspace = new Workspace() {
-                    CreatedAt = System.DateTime.Parse("2025-07-28T19:04:48.565Z"),
+                    CreatedAt = System.DateTime.Parse("2024-08-01T22:30:24.264Z").ToUniversalTime(),
                     Id = "<id>",
                     Name = "<value>",
                     OrganizationId = "<id>",
                     Slug = "<value>",
-                    UpdatedAt = System.DateTime.Parse("2024-10-16T10:52:42.015Z"),
-                    Verified = false,
+                    UpdatedAt = System.DateTime.Parse("2026-01-24T03:53:13.581Z").ToUniversalTime(),
+                    Verified = true,
                 },
             };
 
@@ -1134,13 +1357,14 @@ actions:
             using SpeakeasySDK.Models.Operations;
             using SpeakeasySDK.Models.Shared;
 
-            var sdk = new SDK(security: new Security() {
-                APIKey = "<YOUR_API_KEY_HERE>",
-            });
+            var sdk = new SDK(
+                workspaceId: "<id>",
+                security: new Security() {
+                    APIKey = "<YOUR_API_KEY_HERE>",
+                }
+            );
 
-            SearchWorkspaceEventsRequest req = new SearchWorkspaceEventsRequest() {
-                WorkspaceId = "<id>",
-            };
+            SearchWorkspaceEventsRequest req = new SearchWorkspaceEventsRequest() {};
 
             var res = await sdk.Events.SearchAsync(req);
 
@@ -1157,23 +1381,25 @@ actions:
             using System;
             using System.Collections.Generic;
 
-            var sdk = new SDK(security: new Security() {
-                APIKey = "<YOUR_API_KEY_HERE>",
-            });
+            var sdk = new SDK(
+                workspaceId: "<id>",
+                security: new Security() {
+                    APIKey = "<YOUR_API_KEY_HERE>",
+                }
+            );
 
             PostWorkspaceEventsRequest req = new PostWorkspaceEventsRequest() {
-                WorkspaceId = "<id>",
                 RequestBody = new List<CliEvent>() {
                     new CliEvent() {
-                        Id = "<id>",
+                        CreatedAt = System.DateTime.Parse("2024-02-16T09:12:42.397Z").ToUniversalTime(),
                         ExecutionId = "<id>",
-                        WorkspaceId = "<id>",
+                        Id = "<id>",
+                        InteractionType = InteractionType.Quickstart,
+                        LocalStartedAt = System.DateTime.Parse("2025-01-23T01:13:51.002Z").ToUniversalTime(),
                         SpeakeasyApiKeyName = "<value>",
-                        InteractionType = InteractionType.TargetGenerate,
-                        LocalStartedAt = System.DateTime.Parse("2025-03-02T10:07:28.113Z"),
-                        CreatedAt = System.DateTime.Parse("2024-09-08T05:59:33.876Z"),
                         SpeakeasyVersion = "<value>",
-                        Success = false,
+                        Success = true,
+                        WorkspaceId = "<id>",
                     },
                 },
             };
@@ -1191,13 +1417,14 @@ actions:
             using SpeakeasySDK.Models.Operations;
             using SpeakeasySDK.Models.Shared;
 
-            var sdk = new SDK(security: new Security() {
-                APIKey = "<YOUR_API_KEY_HERE>",
-            });
+            var sdk = new SDK(
+                workspaceId: "<id>",
+                security: new Security() {
+                    APIKey = "<YOUR_API_KEY_HERE>",
+                }
+            );
 
-            GetWorkspaceTargetsDeprecatedRequest req = new GetWorkspaceTargetsDeprecatedRequest() {
-                WorkspaceId = "<id>",
-            };
+            GetWorkspaceTargetsDeprecatedRequest req = new GetWorkspaceTargetsDeprecatedRequest() {};
 
             var res = await sdk.Events.GetTargetsDeprecatedAsync(req);
 
@@ -1212,12 +1439,14 @@ actions:
             using SpeakeasySDK.Models.Operations;
             using SpeakeasySDK.Models.Shared;
 
-            var sdk = new SDK(security: new Security() {
-                APIKey = "<YOUR_API_KEY_HERE>",
-            });
+            var sdk = new SDK(
+                workspaceId: "<id>",
+                security: new Security() {
+                    APIKey = "<YOUR_API_KEY_HERE>",
+                }
+            );
 
             GetWorkspaceEventsByTargetRequest req = new GetWorkspaceEventsByTargetRequest() {
-                WorkspaceId = "<id>",
                 TargetId = "<id>",
             };
 
@@ -1234,13 +1463,14 @@ actions:
             using SpeakeasySDK.Models.Operations;
             using SpeakeasySDK.Models.Shared;
 
-            var sdk = new SDK(security: new Security() {
-                APIKey = "<YOUR_API_KEY_HERE>",
-            });
+            var sdk = new SDK(
+                workspaceId: "<id>",
+                security: new Security() {
+                    APIKey = "<YOUR_API_KEY_HERE>",
+                }
+            );
 
-            GetWorkspaceFeatureFlagsRequest req = new GetWorkspaceFeatureFlagsRequest() {
-                WorkspaceId = "<id>",
-            };
+            GetWorkspaceFeatureFlagsRequest req = new GetWorkspaceFeatureFlagsRequest() {};
 
             var res = await sdk.Workspaces.GetFeatureFlagsAsync(req);
 
@@ -1255,13 +1485,14 @@ actions:
             using SpeakeasySDK.Models.Operations;
             using SpeakeasySDK.Models.Shared;
 
-            var sdk = new SDK(security: new Security() {
-                APIKey = "<YOUR_API_KEY_HERE>",
-            });
+            var sdk = new SDK(
+                workspaceId: "<id>",
+                security: new Security() {
+                    APIKey = "<YOUR_API_KEY_HERE>",
+                }
+            );
 
-            GetWorkspaceSettingsRequest req = new GetWorkspaceSettingsRequest() {
-                WorkspaceId = "<id>",
-            };
+            GetWorkspaceSettingsRequest req = new GetWorkspaceSettingsRequest() {};
 
             var res = await sdk.Workspaces.GetSettingsAsync(req);
 
@@ -1277,17 +1508,19 @@ actions:
             using SpeakeasySDK.Models.Shared;
             using System;
 
-            var sdk = new SDK(security: new Security() {
-                APIKey = "<YOUR_API_KEY_HERE>",
-            });
+            var sdk = new SDK(
+                workspaceId: "<id>",
+                security: new Security() {
+                    APIKey = "<YOUR_API_KEY_HERE>",
+                }
+            );
 
             UpdateWorkspaceSettingsRequest req = new UpdateWorkspaceSettingsRequest() {
-                WorkspaceId = "<id>",
                 WorkspaceSettings = new WorkspaceSettings() {
+                    CreatedAt = System.DateTime.Parse("2026-03-09T15:48:09.330Z").ToUniversalTime(),
+                    UpdatedAt = System.DateTime.Parse("2026-11-24T16:37:53.492Z").ToUniversalTime(),
+                    WebhookUrl = "https://wobbly-lid.org",
                     WorkspaceId = "<id>",
-                    WebhookUrl = "https://last-suspension.info/",
-                    CreatedAt = System.DateTime.Parse("2024-12-28T06:46:35.807Z"),
-                    UpdatedAt = System.DateTime.Parse("2025-02-03T10:37:56.725Z"),
                 },
             };
 
@@ -1304,13 +1537,14 @@ actions:
             using SpeakeasySDK.Models.Operations;
             using SpeakeasySDK.Models.Shared;
 
-            var sdk = new SDK(security: new Security() {
-                APIKey = "<YOUR_API_KEY_HERE>",
-            });
+            var sdk = new SDK(
+                workspaceId: "<id>",
+                security: new Security() {
+                    APIKey = "<YOUR_API_KEY_HERE>",
+                }
+            );
 
-            GetWorkspaceTeamRequest req = new GetWorkspaceTeamRequest() {
-                WorkspaceId = "<id>",
-            };
+            GetWorkspaceTeamRequest req = new GetWorkspaceTeamRequest() {};
 
             var res = await sdk.Workspaces.GetTeamAsync(req);
 
@@ -1325,13 +1559,15 @@ actions:
             using SpeakeasySDK.Models.Operations;
             using SpeakeasySDK.Models.Shared;
 
-            var sdk = new SDK(security: new Security() {
-                APIKey = "<YOUR_API_KEY_HERE>",
-            });
+            var sdk = new SDK(
+                workspaceId: "<id>",
+                security: new Security() {
+                    APIKey = "<YOUR_API_KEY_HERE>",
+                }
+            );
 
             GrantUserAccessToWorkspaceRequest req = new GrantUserAccessToWorkspaceRequest() {
-                WorkspaceId = "<id>",
-                Email = "Lucinda.Batz8@hotmail.com",
+                Email = "Idella24@gmail.com",
             };
 
             var res = await sdk.Workspaces.GrantAccessAsync(req);
@@ -1347,12 +1583,14 @@ actions:
             using SpeakeasySDK.Models.Operations;
             using SpeakeasySDK.Models.Shared;
 
-            var sdk = new SDK(security: new Security() {
-                APIKey = "<YOUR_API_KEY_HERE>",
-            });
+            var sdk = new SDK(
+                workspaceId: "<id>",
+                security: new Security() {
+                    APIKey = "<YOUR_API_KEY_HERE>",
+                }
+            );
 
             RevokeUserAccessToWorkspaceRequest req = new RevokeUserAccessToWorkspaceRequest() {
-                WorkspaceId = "<id>",
                 UserId = "<id>",
             };
 
@@ -1369,13 +1607,14 @@ actions:
             using SpeakeasySDK.Models.Operations;
             using SpeakeasySDK.Models.Shared;
 
-            var sdk = new SDK(security: new Security() {
-                APIKey = "<YOUR_API_KEY_HERE>",
-            });
+            var sdk = new SDK(
+                workspaceId: "<id>",
+                security: new Security() {
+                    APIKey = "<YOUR_API_KEY_HERE>",
+                }
+            );
 
-            GetWorkspaceTokensRequest req = new GetWorkspaceTokensRequest() {
-                WorkspaceId = "<id>",
-            };
+            GetWorkspaceTokensRequest req = new GetWorkspaceTokensRequest() {};
 
             var res = await sdk.Workspaces.GetTokensAsync(req);
 
@@ -1391,19 +1630,21 @@ actions:
             using SpeakeasySDK.Models.Shared;
             using System;
 
-            var sdk = new SDK(security: new Security() {
-                APIKey = "<YOUR_API_KEY_HERE>",
-            });
+            var sdk = new SDK(
+                workspaceId: "<id>",
+                security: new Security() {
+                    APIKey = "<YOUR_API_KEY_HERE>",
+                }
+            );
 
             CreateWorkspaceTokenRequest req = new CreateWorkspaceTokenRequest() {
-                WorkspaceId = "<id>",
                 WorkspaceToken = new WorkspaceToken() {
+                    Alg = "<value>",
+                    CreatedAt = System.DateTime.Parse("2025-10-04T10:23:04.522Z").ToUniversalTime(),
                     Id = "<id>",
+                    Key = "<key>",
                     Name = "<value>",
                     WorkspaceId = "<id>",
-                    Alg = "<value>",
-                    Key = "<key>",
-                    CreatedAt = System.DateTime.Parse("2023-08-16T02:33:00.784Z"),
                 },
             };
 
@@ -1420,12 +1661,14 @@ actions:
             using SpeakeasySDK.Models.Operations;
             using SpeakeasySDK.Models.Shared;
 
-            var sdk = new SDK(security: new Security() {
-                APIKey = "<YOUR_API_KEY_HERE>",
-            });
+            var sdk = new SDK(
+                workspaceId: "<id>",
+                security: new Security() {
+                    APIKey = "<YOUR_API_KEY_HERE>",
+                }
+            );
 
             DeleteWorkspaceTokenRequest req = new DeleteWorkspaceTokenRequest() {
-                WorkspaceId = "<id>",
                 TokenID = "<id>",
             };
 

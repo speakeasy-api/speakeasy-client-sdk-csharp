@@ -1,5 +1,4 @@
 # Github
-(*Github*)
 
 ## Overview
 
@@ -23,6 +22,7 @@ REST APIs for managing the github integration
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="checkGithubAccess" method="get" path="/v1/github/check_access" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
@@ -63,6 +63,7 @@ var res = await sdk.Github.CheckAccessAsync(req);
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="githubCheckPublishingPRs" method="get" path="/v1/github/publishing_prs" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
@@ -104,6 +105,7 @@ var res = await sdk.Github.CheckPublishingPRsAsync(req);
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="githubCheckPublishingSecrets" method="get" path="/v1/github/publishing_secrets" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
@@ -143,6 +145,7 @@ var res = await sdk.Github.CheckPublishingSecretsAsync(req);
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="githubConfigureCodeSamples" method="post" path="/v1/github/configure_code_samples" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
@@ -183,6 +186,7 @@ var res = await sdk.Github.ConfigureCodeSamplesAsync(req);
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="githubConfigureMintlifyRepo" method="post" path="/v1/github/configure_mintlify_repo" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
@@ -196,7 +200,7 @@ GithubConfigureMintlifyRepoRequest req = new GithubConfigureMintlifyRepoRequest(
     Input = "<value>",
     Org = "<value>",
     Overlays = new List<string>() {
-        "<value>",
+        "<value 1>",
     },
     Repo = "<value>",
 };
@@ -227,6 +231,7 @@ var res = await sdk.Github.ConfigureMintlifyRepoAsync(req);
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="githubConfigureTarget" method="post" path="/v1/github/configure_target" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
@@ -266,6 +271,7 @@ var res = await sdk.Github.ConfigureTargetAsync(req);
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getGitHubAction" method="get" path="/v1/github/action" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
@@ -306,6 +312,7 @@ var res = await sdk.Github.GetActionAsync(req);
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getGithubSetupState" method="get" path="/v1/github/setup" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
@@ -347,6 +354,7 @@ var res = await sdk.Github.GetSetupAsync(req);
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="linkGithubAccess" method="post" path="/v1/github/link" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
@@ -356,7 +364,7 @@ var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
 });
 
-LinkGithubAccessRequest req = new LinkGithubAccessRequest() {};
+LinkGithubAccessRequest? req = null;
 
 var res = await sdk.Github.LinkGithubAsync(req);
 
@@ -384,6 +392,7 @@ var res = await sdk.Github.LinkGithubAsync(req);
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="githubStorePublishingSecrets" method="post" path="/v1/github/publishing_secrets" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
@@ -422,6 +431,7 @@ var res = await sdk.Github.StorePublishingSecretsAsync(req);
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="githubTriggerAction" method="post" path="/v1/github/trigger_action" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;

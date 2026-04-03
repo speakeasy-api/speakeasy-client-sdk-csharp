@@ -2,6 +2,14 @@
 
 Type of interaction.
 
+## Example Usage
+
+```csharp
+using SpeakeasySDK.Models.Shared;
+
+var value = InteractionType.CiExec;
+```
+
 
 ## Values
 
@@ -18,3 +26,4 @@ Type of interaction.
 | `Run`            | RUN              |
 | `Configure`      | CONFIGURE        |
 | `Publish`        | PUBLISH          |
+| `Test`           | TEST             |

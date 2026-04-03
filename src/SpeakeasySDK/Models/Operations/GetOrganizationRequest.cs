@@ -10,10 +10,9 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Utils;
-    
+
     public class GetOrganizationRequest
     {
-
         /// <summary>
         /// Unique identifier of the organization.
         /// </summary>
