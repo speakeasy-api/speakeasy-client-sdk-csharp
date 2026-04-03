@@ -21,13 +21,13 @@ generation:
   requestBodyFieldName: ""
   versioningStrategy: automatic
   persistentEdits:
-    enabled: true
+    enabled: "true"
   tests:
     generateTests: true
     generateNewTests: false
     skipResponseBodyAssertions: false
 csharp:
-  version: 5.13.0
+  version: 5.13.1
   additionalDependencies: []
   author: Speakeasy
   baseErrorName: SDKBaseException
