@@ -14,5 +14,8 @@ namespace SpeakeasySDK.Models.Shared
 
     public class Claims
     {
+        public string? Subject { get; set; }
+        public string? Issuer { get; set; }
+        public string? Audience { get; set; }
     }
 }
