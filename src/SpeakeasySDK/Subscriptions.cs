@@ -23,66 +23,95 @@ namespace SpeakeasySDK
     using System.Threading.Tasks;
 
     /// <summary>
-    /// REST APIs for managing subscriptions
+    /// REST APIs for managing subscriptions.
     /// </summary>
     public interface ISubscriptions
     {
+        /// <summary>
+        /// Activate an ignored namespace for a subscription.
+        /// </summary>
+        /// <param name="request">A <see cref="ActivateSubscriptionNamespaceRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="ActivateSubscriptionNamespaceResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
+        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
+        public  Task<ActivateSubscriptionNamespaceResponse> ActivateSubscriptionNamespaceAsync(
+            ActivateSubscriptionNamespaceRequest request
+        );
 
         /// <summary>
-        /// Activate an ignored namespace for a subscription
+        /// Ignored a namespace for a subscription.
         /// </summary>
-        Task<ActivateSubscriptionNamespaceResponse> ActivateSubscriptionNamespaceAsync(ActivateSubscriptionNamespaceRequest request);
-
-        /// <summary>
-        /// Ignored a namespace for a subscription
-        /// </summary>
-        Task<IgnoreSubscriptionNamespaceResponse> IgnoreSubscriptionNamespaceAsync(IgnoreSubscriptionNamespaceRequest request);
+        /// <param name="request">A <see cref="IgnoreSubscriptionNamespaceRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="IgnoreSubscriptionNamespaceResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
+        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
+        public  Task<IgnoreSubscriptionNamespaceResponse> IgnoreSubscriptionNamespaceAsync(
+            IgnoreSubscriptionNamespaceRequest request
+        );
     }
 
     /// <summary>
-    /// REST APIs for managing subscriptions
+    /// REST APIs for managing subscriptions.
     /// </summary>
     public class Subscriptions: ISubscriptions
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-        private const string _language = "csharp";
-        private const string _sdkVersion = "5.12.0";
-        private const string _sdkGenVersion = "2.493.4";
-        private const string _openapiDocVersion = "0.4.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.12.0 2.493.4 0.4.0 SpeakeasySDK";
-        private string _serverUrl = "";
-        private ISpeakeasyHttpClient _client;
-        private Func<SpeakeasySDK.Models.Shared.Security>? _securitySource;
 
-        public Subscriptions(ISpeakeasyHttpClient client, Func<SpeakeasySDK.Models.Shared.Security>? securitySource, string serverUrl, SDKConfig config)
+        public Subscriptions(SDKConfig config)
         {
-            _client = client;
-            _securitySource = securitySource;
-            _serverUrl = serverUrl;
             SDKConfiguration = config;
         }
 
-        public async Task<ActivateSubscriptionNamespaceResponse> ActivateSubscriptionNamespaceAsync(ActivateSubscriptionNamespaceRequest request)
+        /// <summary>
+        /// Activate an ignored namespace for a subscription.
+        /// </summary>
+        /// <param name="request">A <see cref="ActivateSubscriptionNamespaceRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="ActivateSubscriptionNamespaceResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
+        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
+        public async  Task<ActivateSubscriptionNamespaceResponse> ActivateSubscriptionNamespaceAsync(
+            ActivateSubscriptionNamespaceRequest request
+        )
         {
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/subscriptions/{subscriptionID}/{namespaceName}/activate", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v1/subscriptions/{subscriptionID}/{namespaceName}/activate", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
 
-            if (_securitySource != null)
+            if (!httpRequest.Headers.Contains("Accept"))
             {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+                httpRequest.Headers.Add("Accept", "application/json");
             }
 
-            var hookCtx = new HookContext("activateSubscriptionNamespace", null, _securitySource);
+            if (SDKConfiguration.SecuritySource != null)
+            {
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "activateSubscriptionNamespace", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
             HttpResponseMessage httpResponse;
             try
             {
-                httpResponse = await _client.SendAsync(httpRequest);
+                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
                 if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
@@ -94,9 +123,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception error)
+            catch (Exception _hookError)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -112,7 +141,7 @@ namespace SpeakeasySDK
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
             int responseStatusCode = (int)httpResponse.StatusCode;
             if(responseStatusCode >= 200 && responseStatusCode < 300)
-            {                
+            {
                 return new ActivateSubscriptionNamespaceResponse()
                 {
                     StatusCode = responseStatusCode,
@@ -124,41 +153,71 @@ namespace SpeakeasySDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ErrorPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorPayload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ErrorPayload.", httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error(payload, httpResponse, httpResponseBody);
                 }
 
-                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode >= 500 && responseStatusCode < 600)
             {
-                throw new Models.Errors.SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
 
-            throw new Models.Errors.SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<IgnoreSubscriptionNamespaceResponse> IgnoreSubscriptionNamespaceAsync(IgnoreSubscriptionNamespaceRequest request)
+
+        /// <summary>
+        /// Ignored a namespace for a subscription.
+        /// </summary>
+        /// <param name="request">A <see cref="IgnoreSubscriptionNamespaceRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="IgnoreSubscriptionNamespaceResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
+        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
+        public async  Task<IgnoreSubscriptionNamespaceResponse> IgnoreSubscriptionNamespaceAsync(
+            IgnoreSubscriptionNamespaceRequest request
+        )
         {
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/subscriptions/{subscriptionID}/{namespaceName}/ignore", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v1/subscriptions/{subscriptionID}/{namespaceName}/ignore", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
 
-            if (_securitySource != null)
+            if (!httpRequest.Headers.Contains("Accept"))
             {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+                httpRequest.Headers.Add("Accept", "application/json");
             }
 
-            var hookCtx = new HookContext("ignoreSubscriptionNamespace", null, _securitySource);
+            if (SDKConfiguration.SecuritySource != null)
+            {
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "ignoreSubscriptionNamespace", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
             HttpResponseMessage httpResponse;
             try
             {
-                httpResponse = await _client.SendAsync(httpRequest);
+                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
                 if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
@@ -170,9 +229,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception error)
+            catch (Exception _hookError)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -188,7 +247,7 @@ namespace SpeakeasySDK
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
             int responseStatusCode = (int)httpResponse.StatusCode;
             if(responseStatusCode >= 200 && responseStatusCode < 300)
-            {                
+            {
                 return new IgnoreSubscriptionNamespaceResponse()
                 {
                     StatusCode = responseStatusCode,
@@ -200,18 +259,29 @@ namespace SpeakeasySDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ErrorPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorPayload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ErrorPayload.", httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error(payload, httpResponse, httpResponseBody);
                 }
 
-                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode >= 500 && responseStatusCode < 600)
             {
-                throw new Models.Errors.SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
 
-            throw new Models.Errors.SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
+
     }
 }

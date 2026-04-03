@@ -1,5 +1,4 @@
 # Artifacts
-(*Artifacts*)
 
 ## Overview
 
@@ -16,6 +15,7 @@ REST APIs for working with Registry artifacts
 * [ListRemoteSources](#listremotesources) - Get remote sources attached to a particular namespace
 * [PostTags](#posttags) - Add tags to an existing revision
 * [Preflight](#preflight) - Get access token for communicating with OCI distribution endpoints
+* [SetArchived](#setarchived) - Set whether a namespace is archived
 * [SetVisibility](#setvisibility) - Set visibility of a namespace with an existing metadata entry
 
 ## CreateRemoteSource
@@ -24,25 +24,16 @@ Configure a new remote source
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="createRemoteSource" method="post" path="/v1/artifacts/remote_sources" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
-using System.Collections.Generic;
 
 var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
 });
 
-RemoteSource req = new RemoteSource() {
-    Inputs = new List<RemoteDocument>() {
-        new RemoteDocument() {
-            RegistryUrl = "https://productive-swine.net",
-        },
-    },
-    Output = new RemoteDocument() {
-        RegistryUrl = "https://spiteful-apricot.info",
-    },
-};
+RemoteSource? req = null;
 
 var res = await sdk.Artifacts.CreateRemoteSourceAsync(req);
 
@@ -72,6 +63,7 @@ Get blob for a particular digest
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getBlob" method="get" path="/v1/oci/v2/{organization_slug}/{workspace_slug}/{namespace_name}/blobs/{digest}" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
@@ -116,6 +108,7 @@ Get manifest for a particular reference
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getManifest" method="get" path="/v1/oci/v2/{organization_slug}/{workspace_slug}/{namespace_name}/manifests/{revision_reference}" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
@@ -160,6 +153,7 @@ Each namespace contains many revisions.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getNamespaces" method="get" path="/v1/artifacts/namespaces" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
@@ -188,6 +182,7 @@ var res = await sdk.Artifacts.GetNamespacesAsync();
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getRevisions" method="get" path="/v1/artifacts/namespaces/{namespace_name}/revisions" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
@@ -227,6 +222,7 @@ var res = await sdk.Artifacts.GetRevisionsAsync(req);
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getTags" method="get" path="/v1/artifacts/namespaces/{namespace_name}/tags" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
@@ -268,6 +264,7 @@ Get remote sources attached to a particular namespace
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="listRemoteSources" method="get" path="/v1/artifacts/remote_sources" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
@@ -309,6 +306,7 @@ Add tags to an existing revision
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="postTags" method="post" path="/v1/artifacts/namespaces/{namespace_name}/tags" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
@@ -350,6 +348,7 @@ Get access token for communicating with OCI distribution endpoints
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="preflight" method="post" path="/v1/artifacts/preflight" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
@@ -358,9 +357,7 @@ var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
 });
 
-PreflightRequest req = new PreflightRequest() {
-    NamespaceName = "<value>",
-};
+PreflightRequest? req = null;
 
 var res = await sdk.Artifacts.PreflightAsync(req);
 
@@ -384,12 +381,55 @@ var res = await sdk.Artifacts.PreflightAsync(req);
 | SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
 | SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
 
+## SetArchived
+
+Set whether a namespace is archived
+
+### Example Usage
+
+<!-- UsageSnippet language="csharp" operationID="archiveNamespace" method="post" path="/v1/artifacts/namespaces/{namespace_name}/archive" -->
+```csharp
+using SpeakeasySDK;
+using SpeakeasySDK.Models.Operations;
+using SpeakeasySDK.Models.Shared;
+
+var sdk = new SDK(security: new Security() {
+    APIKey = "<YOUR_API_KEY_HERE>",
+});
+
+ArchiveNamespaceRequest req = new ArchiveNamespaceRequest() {
+    NamespaceName = "<value>",
+};
+
+var res = await sdk.Artifacts.SetArchivedAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `request`                                                                     | [ArchiveNamespaceRequest](../../Models/Operations/ArchiveNamespaceRequest.md) | :heavy_check_mark:                                                            | The request object to use for the request.                                    |
+
+### Response
+
+**[ArchiveNamespaceResponse](../../Models/Operations/ArchiveNamespaceResponse.md)**
+
+### Errors
+
+| Error Type                              | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
+| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
+
 ## SetVisibility
 
 Set visibility of a namespace with an existing metadata entry
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="setVisibility" method="post" path="/v1/artifacts/namespaces/{namespace_name}/visibility" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;

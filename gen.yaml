@@ -3,24 +3,43 @@ generation:
   sdkClassName: SDK
   usageSnippets:
     optionalPropertyRendering: withExample
+    sdkInitStyle: constructor
   fixes:
-    nameResolutionDec2023: false
+    nameResolutionFeb2025: false
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
+    securityFeb2025: false
+    sharedErrorComponentsApr2025: false
+    sharedNestedComponentsJan2026: false
+    nameOverrideFeb2026: false
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
+    hoistGlobalSecurity: true
+  schemas:
+    allOfMergeStrategy: shallowMerge
+  requestBodyFieldName: ""
+  versioningStrategy: automatic
+  persistentEdits: {}
+  tests:
+    generateTests: true
+    generateNewTests: false
+    skipResponseBodyAssertions: false
 csharp:
-  version: 5.12.0
+  version: 5.13.0
   additionalDependencies: []
   author: Speakeasy
+  baseErrorName: SDKBaseException
   clientServerStatusCodesAsErrors: true
   defaultErrorName: SDKException
   disableNamespacePascalCasingApr2024: false
   dotnetVersion: net8.0
+  enableCancellationToken: false
+  enableFormatting: false
   enableSourceLink: true
   flattenGlobalSecurity: false
   flatteningOrder: ""
+  httpClientPrefix: Speakeasy
   imports:
     option: openapi
     paths:
@@ -30,11 +49,15 @@ csharp:
       shared: Models/Shared
       webhooks: Models/Webhooks
   includeDebugSymbols: true
+  inferUnionDiscriminators: false
   inputModelSuffix: input
   maxMethodParams: 0
   methodArguments: infer-optional-args
+  multipartArrayFormat: legacy
   outputModelSuffix: output
   packageName: SpeakeasySDK
   packageTags: Speakeasy SDK Generation
+  respectTitlesForPrimitiveUnionMembers: false
   responseFormat: envelope
   sourceDirectory: src
+  useNodatime: true

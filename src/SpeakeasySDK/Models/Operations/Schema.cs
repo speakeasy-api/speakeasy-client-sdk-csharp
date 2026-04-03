@@ -10,10 +10,9 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Utils;
-    
+
     public class Schema
     {
-
         [SpeakeasyMetadata("multipartForm:content")]
         public byte[] Content { get; set; } = default!;
 

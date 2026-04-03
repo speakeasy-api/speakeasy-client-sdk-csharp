@@ -11,21 +11,20 @@ namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Utils;
     using System;
-    
+
     public class GetWorkspaceEventsByTargetRequest
     {
-
         /// <summary>
-        /// Filter to only return events corresponding to a particular gen_lock_id (gen_lock_id uniquely identifies a target)
-        /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=target_id")]
-        public string TargetId { get; set; } = default!;
-
-        /// <summary>
-        /// Filter to only return events created after this timestamp
+        /// Filter to only return events created after this timestamp.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=after_created_at")]
         public DateTime? AfterCreatedAt { get; set; }
+
+        /// <summary>
+        /// Filter to only return events corresponding to a particular gen_lock_id (gen_lock_id uniquely identifies a target).
+        /// </summary>
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=target_id")]
+        public string TargetId { get; set; } = default!;
 
         /// <summary>
         /// Unique identifier of the workspace.

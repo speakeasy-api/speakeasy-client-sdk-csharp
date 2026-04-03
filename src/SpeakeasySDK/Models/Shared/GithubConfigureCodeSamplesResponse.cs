@@ -12,27 +12,26 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
-    
+
     /// <summary>
-    /// A response to configure GitHub code samples
+    /// A response to configure GitHub code samples.
     /// </summary>
     public class GithubConfigureCodeSamplesResponse
     {
-
         /// <summary>
-        /// The URL of the code sample overlay registry
+        /// The URL of the code sample overlay registry.
         /// </summary>
         [JsonProperty("codeSampleOverlayRegistryURL")]
         public string CodeSampleOverlayRegistryURL { get; set; } = default!;
 
         /// <summary>
-        /// The ID of the GitHub action that was dispatched
+        /// The ID of the GitHub action that was dispatched.
         /// </summary>
         [JsonProperty("ghActionID")]
         public string? GhActionID { get; set; }
 
         /// <summary>
-        /// A document referenced by a workflow
+        /// A document referenced by a workflow.
         /// </summary>
         [JsonProperty("source")]
         public WorkflowDocument Source { get; set; } = default!;

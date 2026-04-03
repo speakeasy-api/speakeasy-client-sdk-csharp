@@ -13,12 +13,14 @@ namespace SpeakeasySDK.Models.Shared
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System;
-    
+
     /// <summary>
     /// A namespace contains many revisions.
     /// </summary>
     public class Namespace
     {
+        [JsonProperty("archived_at")]
+        public DateTime? ArchivedAt { get; set; }
 
         [JsonProperty("composite_spec_metadata")]
         public CompositeSpecMetadata? CompositeSpecMetadata { get; set; }
@@ -32,6 +34,9 @@ namespace SpeakeasySDK.Models.Shared
         [JsonProperty("id")]
         public string Id { get; set; } = default!;
 
+        [JsonProperty("latest_revision_metadata")]
+        public RevisionContentsMetadata? LatestRevisionMetadata { get; set; }
+
         /// <summary>
         /// A human-readable name for the namespace.
         /// </summary>
@@ -39,7 +44,7 @@ namespace SpeakeasySDK.Models.Shared
         public string Name { get; set; } = default!;
 
         /// <summary>
-        /// Indicates whether the namespace is publicly accessible
+        /// Indicates whether the namespace is publicly accessible.
         /// </summary>
         [JsonProperty("public")]
         public bool? Public { get; set; }

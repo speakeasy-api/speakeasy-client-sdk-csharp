@@ -23,91 +23,136 @@ namespace SpeakeasySDK
     using System.Threading.Tasks;
 
     /// <summary>
-    /// REST APIs for managing events captured by a speakeasy binary (CLI, GitHub Action etc)
+    /// REST APIs for managing events captured by a speakeasy binary (CLI, GitHub Action etc).
     /// </summary>
     public interface IEvents
     {
-
         /// <summary>
-        /// Load recent events for a particular workspace
+        /// Load recent events for a particular workspace.
         /// </summary>
-        Task<GetWorkspaceEventsByTargetResponse> GetEventsByTargetAsync(GetWorkspaceEventsByTargetRequest request);
+        /// <param name="request">A <see cref="GetWorkspaceEventsByTargetRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="GetWorkspaceEventsByTargetResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error">Error. Thrown when the API returns a 5XX response.</exception>
+        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX response.</exception>
+        public  Task<GetWorkspaceEventsByTargetResponse> GetEventsByTargetAsync(
+            GetWorkspaceEventsByTargetRequest request
+        );
 
         /// <summary>
-        /// Load targets for a particular workspace
+        /// Load targets for a particular workspace.
         /// </summary>
-        Task<GetWorkspaceTargetsResponse> GetTargetsAsync(GetWorkspaceTargetsRequest? request = null);
+        /// <param name="request">A <see cref="GetWorkspaceTargetsRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="GetWorkspaceTargetsResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error">Error. Thrown when the API returns a 5XX response.</exception>
+        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX response.</exception>
+        public  Task<GetWorkspaceTargetsResponse> GetTargetsAsync(GetWorkspaceTargetsRequest? request = null);
 
         /// <summary>
-        /// Load targets for a particular workspace
+        /// Load targets for a particular workspace.
         /// </summary>
-        Task<GetWorkspaceTargetsDeprecatedResponse> GetTargetsDeprecatedAsync(GetWorkspaceTargetsDeprecatedRequest? request = null);
+        /// <param name="request">A <see cref="GetWorkspaceTargetsDeprecatedRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="GetWorkspaceTargetsDeprecatedResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error">Error. Thrown when the API returns a 5XX response.</exception>
+        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX response.</exception>
+        public  Task<GetWorkspaceTargetsDeprecatedResponse> GetTargetsDeprecatedAsync(
+            GetWorkspaceTargetsDeprecatedRequest? request = null
+        );
 
         /// <summary>
-        /// Post events for a specific workspace
-        /// 
+        /// Post events for a specific workspace.
+        /// </summary>
         /// <remarks>
         /// Sends an array of events to be stored for a particular workspace.
         /// </remarks>
-        /// </summary>
-        Task<PostWorkspaceEventsResponse> PostAsync(PostWorkspaceEventsRequest request, RetryConfig? retryConfig = null);
+        /// <param name="request">A <see cref="PostWorkspaceEventsRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="PostWorkspaceEventsResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error">Error. Thrown when the API returns a 5XX response.</exception>
+        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX response.</exception>
+        public  Task<PostWorkspaceEventsResponse> PostAsync(
+            PostWorkspaceEventsRequest request,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Search events for a particular workspace by any field
+        /// Search events for a particular workspace by any field.
         /// </summary>
-        Task<SearchWorkspaceEventsResponse> SearchAsync(SearchWorkspaceEventsRequest? request = null);
+        /// <param name="request">A <see cref="SearchWorkspaceEventsRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="SearchWorkspaceEventsResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error">Error. Thrown when the API returns a 5XX response.</exception>
+        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX response.</exception>
+        public  Task<SearchWorkspaceEventsResponse> SearchAsync(SearchWorkspaceEventsRequest? request = null);
     }
 
     /// <summary>
-    /// REST APIs for managing events captured by a speakeasy binary (CLI, GitHub Action etc)
+    /// REST APIs for managing events captured by a speakeasy binary (CLI, GitHub Action etc).
     /// </summary>
     public class Events: IEvents
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-        private const string _language = "csharp";
-        private const string _sdkVersion = "5.12.0";
-        private const string _sdkGenVersion = "2.493.4";
-        private const string _openapiDocVersion = "0.4.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 5.12.0 2.493.4 0.4.0 SpeakeasySDK";
-        private string _serverUrl = "";
-        private ISpeakeasyHttpClient _client;
-        private Func<SpeakeasySDK.Models.Shared.Security>? _securitySource;
 
-        public Events(ISpeakeasyHttpClient client, Func<SpeakeasySDK.Models.Shared.Security>? securitySource, string serverUrl, SDKConfig config)
+        public Events(SDKConfig config)
         {
-            _client = client;
-            _securitySource = securitySource;
-            _serverUrl = serverUrl;
             SDKConfiguration = config;
         }
 
-        public async Task<GetWorkspaceEventsByTargetResponse> GetEventsByTargetAsync(GetWorkspaceEventsByTargetRequest request)
+        /// <summary>
+        /// Load recent events for a particular workspace.
+        /// </summary>
+        /// <param name="request">A <see cref="GetWorkspaceEventsByTargetRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="GetWorkspaceEventsByTargetResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error">Error. Thrown when the API returns a 5XX response.</exception>
+        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX response.</exception>
+        public async  Task<GetWorkspaceEventsByTargetResponse> GetEventsByTargetAsync(
+            GetWorkspaceEventsByTargetRequest request
+        )
         {
-            if (request == null)
-            {
-                request = new GetWorkspaceEventsByTargetRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
             request.WorkspaceId ??= SDKConfiguration.WorkspaceId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/{workspace_id}/events/targets/{target_id}/events", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/{workspace_id}/events/targets/{target_id}/events", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
 
-            if (_securitySource != null)
+            if (!httpRequest.Headers.Contains("Accept"))
             {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+                httpRequest.Headers.Add("Accept", "application/json");
             }
 
-            var hookCtx = new HookContext("getWorkspaceEventsByTarget", null, _securitySource);
+            if (SDKConfiguration.SecuritySource != null)
+            {
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "getWorkspaceEventsByTarget", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
             HttpResponseMessage httpResponse;
             try
             {
-                httpResponse = await _client.SendAsync(httpRequest);
+                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
                 if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
@@ -119,9 +164,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception error)
+            catch (Exception _hookError)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -140,7 +185,17 @@ namespace SpeakeasySDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<List<CliEvent>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    List<CliEvent> obj;
+                    try
+                    {
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<List<CliEvent>>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into List<CliEvent>.", httpResponse, httpResponseBody, ex);
+                    }
+
                     var response = new GetWorkspaceEventsByTargetResponse()
                     {
                         StatusCode = responseStatusCode,
@@ -151,47 +206,72 @@ namespace SpeakeasySDK
                     return response;
                 }
 
-                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode >= 400 && responseStatusCode < 500)
             {
-                throw new Models.Errors.SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode >= 500 && responseStatusCode < 600)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ErrorPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorPayload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ErrorPayload.", httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error(payload, httpResponse, httpResponseBody);
                 }
 
-                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
 
-            throw new Models.Errors.SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<GetWorkspaceTargetsResponse> GetTargetsAsync(GetWorkspaceTargetsRequest? request = null)
+
+        /// <summary>
+        /// Load targets for a particular workspace.
+        /// </summary>
+        /// <param name="request">A <see cref="GetWorkspaceTargetsRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="GetWorkspaceTargetsResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error">Error. Thrown when the API returns a 5XX response.</exception>
+        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX response.</exception>
+        public async  Task<GetWorkspaceTargetsResponse> GetTargetsAsync(GetWorkspaceTargetsRequest? request = null)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/events/targets", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/events/targets", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
 
-            if (_securitySource != null)
+            if (!httpRequest.Headers.Contains("Accept"))
             {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+                httpRequest.Headers.Add("Accept", "application/json");
             }
 
-            var hookCtx = new HookContext("getWorkspaceTargets", null, _securitySource);
+            if (SDKConfiguration.SecuritySource != null)
+            {
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "getWorkspaceTargets", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
             HttpResponseMessage httpResponse;
             try
             {
-                httpResponse = await _client.SendAsync(httpRequest);
+                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
                 if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
@@ -203,9 +283,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception error)
+            catch (Exception _hookError)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -224,7 +304,17 @@ namespace SpeakeasySDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<List<TargetSDK>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    List<TargetSDK> obj;
+                    try
+                    {
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<List<TargetSDK>>(httpResponseBody, NullValueHandling.Include);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into List<TargetSDK>.", httpResponse, httpResponseBody, ex);
+                    }
+
                     var response = new GetWorkspaceTargetsResponse()
                     {
                         StatusCode = responseStatusCode,
@@ -235,49 +325,80 @@ namespace SpeakeasySDK
                     return response;
                 }
 
-                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode >= 400 && responseStatusCode < 500)
             {
-                throw new Models.Errors.SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode >= 500 && responseStatusCode < 600)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    throw obj!;
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ErrorPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorPayload>(httpResponseBody, NullValueHandling.Include);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ErrorPayload.", httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error(payload, httpResponse, httpResponseBody);
                 }
 
-                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
 
-            throw new Models.Errors.SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<GetWorkspaceTargetsDeprecatedResponse> GetTargetsDeprecatedAsync(GetWorkspaceTargetsDeprecatedRequest? request = null)
+
+        /// <summary>
+        /// Load targets for a particular workspace.
+        /// </summary>
+        /// <param name="request">A <see cref="GetWorkspaceTargetsDeprecatedRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="GetWorkspaceTargetsDeprecatedResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error">Error. Thrown when the API returns a 5XX response.</exception>
+        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX response.</exception>
+        public async  Task<GetWorkspaceTargetsDeprecatedResponse> GetTargetsDeprecatedAsync(
+            GetWorkspaceTargetsDeprecatedRequest? request = null
+        )
         {
+            if (request == null)
+            {
+                request = new GetWorkspaceTargetsDeprecatedRequest();
+            }
             request.WorkspaceId ??= SDKConfiguration.WorkspaceId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/{workspace_id}/events/targets", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/{workspace_id}/events/targets", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
 
-            if (_securitySource != null)
+            if (!httpRequest.Headers.Contains("Accept"))
             {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+                httpRequest.Headers.Add("Accept", "application/json");
             }
 
-            var hookCtx = new HookContext("getWorkspaceTargetsDeprecated", null, _securitySource);
+            if (SDKConfiguration.SecuritySource != null)
+            {
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "getWorkspaceTargetsDeprecated", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
             HttpResponseMessage httpResponse;
             try
             {
-                httpResponse = await _client.SendAsync(httpRequest);
+                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
                 if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
@@ -289,9 +410,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception error)
+            catch (Exception _hookError)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -310,7 +431,17 @@ namespace SpeakeasySDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<List<TargetSDK>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    List<TargetSDK> obj;
+                    try
+                    {
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<List<TargetSDK>>(httpResponseBody, NullValueHandling.Include);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into List<TargetSDK>.", httpResponse, httpResponseBody, ex);
+                    }
+
                     var response = new GetWorkspaceTargetsDeprecatedResponse()
                     {
                         StatusCode = responseStatusCode,
@@ -321,39 +452,69 @@ namespace SpeakeasySDK
                     return response;
                 }
 
-                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode >= 400 && responseStatusCode < 500)
             {
-                throw new Models.Errors.SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode >= 500 && responseStatusCode < 600)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    throw obj!;
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ErrorPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorPayload>(httpResponseBody, NullValueHandling.Include);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ErrorPayload.", httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error(payload, httpResponse, httpResponseBody);
                 }
 
-                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
 
-            throw new Models.Errors.SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<PostWorkspaceEventsResponse> PostAsync(PostWorkspaceEventsRequest request, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Post events for a specific workspace.
+        /// </summary>
+        /// <remarks>
+        /// Sends an array of events to be stored for a particular workspace.
+        /// </remarks>
+        /// <param name="request">A <see cref="PostWorkspaceEventsRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="PostWorkspaceEventsResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error">Error. Thrown when the API returns a 5XX response.</exception>
+        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX response.</exception>
+        public async  Task<PostWorkspaceEventsResponse> PostAsync(
+            PostWorkspaceEventsRequest request,
+            RetryConfig? retryConfig = null
+        )
         {
-            if (request == null)
-            {
-                request = new PostWorkspaceEventsRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
             request.WorkspaceId ??= SDKConfiguration.WorkspaceId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/{workspace_id}/events", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/{workspace_id}/events", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "json", false, false);
             if (serializedBody != null)
@@ -361,12 +522,12 @@ namespace SpeakeasySDK
                 httpRequest.Content = serializedBody;
             }
 
-            if (_securitySource != null)
+            if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("postWorkspaceEvents", null, _securitySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "postWorkspaceEvents", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -401,8 +562,8 @@ namespace SpeakeasySDK
 
             Func<Task<HttpResponseMessage>> retrySend = async () =>
             {
-                var _httpRequest = await _client.CloneAsync(httpRequest);
-                return await _client.SendAsync(_httpRequest);
+                var _httpRequest = await SDKConfiguration.Client.CloneAsync(httpRequest);
+                return await SDKConfiguration.Client.SendAsync(_httpRequest);
             };
             var retries = new SpeakeasySDK.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
 
@@ -421,9 +582,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception error)
+            catch (Exception _hookError)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -439,7 +600,7 @@ namespace SpeakeasySDK
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
             int responseStatusCode = (int)httpResponse.StatusCode;
             if(responseStatusCode >= 200 && responseStatusCode < 300)
-            {                
+            {
                 return new PostWorkspaceEventsResponse()
                 {
                     StatusCode = responseStatusCode,
@@ -449,45 +610,74 @@ namespace SpeakeasySDK
             }
             else if(responseStatusCode >= 400 && responseStatusCode < 500)
             {
-                throw new Models.Errors.SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode >= 500 && responseStatusCode < 600)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ErrorPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorPayload>(httpResponseBody, NullValueHandling.Ignore);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ErrorPayload.", httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error(payload, httpResponse, httpResponseBody);
                 }
 
-                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
 
-            throw new Models.Errors.SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<SearchWorkspaceEventsResponse> SearchAsync(SearchWorkspaceEventsRequest? request = null)
+
+        /// <summary>
+        /// Search events for a particular workspace by any field.
+        /// </summary>
+        /// <param name="request">A <see cref="SearchWorkspaceEventsRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="SearchWorkspaceEventsResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error">Error. Thrown when the API returns a 5XX response.</exception>
+        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX response.</exception>
+        public async  Task<SearchWorkspaceEventsResponse> SearchAsync(SearchWorkspaceEventsRequest? request = null)
         {
+            if (request == null)
+            {
+                request = new SearchWorkspaceEventsRequest();
+            }
             request.WorkspaceId ??= SDKConfiguration.WorkspaceId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/{workspace_id}/events", request);
+            var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/{workspace_id}/events", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
 
-            if (_securitySource != null)
+            if (!httpRequest.Headers.Contains("Accept"))
             {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+                httpRequest.Headers.Add("Accept", "application/json");
             }
 
-            var hookCtx = new HookContext("searchWorkspaceEvents", null, _securitySource);
+            if (SDKConfiguration.SecuritySource != null)
+            {
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "searchWorkspaceEvents", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
             HttpResponseMessage httpResponse;
             try
             {
-                httpResponse = await _client.SendAsync(httpRequest);
+                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
                 if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
@@ -499,9 +689,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception error)
+            catch (Exception _hookError)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -520,7 +710,17 @@ namespace SpeakeasySDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<List<CliEvent>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    List<CliEvent> obj;
+                    try
+                    {
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<List<CliEvent>>(httpResponseBody, NullValueHandling.Include);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into List<CliEvent>.", httpResponse, httpResponseBody, ex);
+                    }
+
                     var response = new SearchWorkspaceEventsResponse()
                     {
                         StatusCode = responseStatusCode,
@@ -531,24 +731,35 @@ namespace SpeakeasySDK
                     return response;
                 }
 
-                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode >= 400 && responseStatusCode < 500)
             {
-                throw new Models.Errors.SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode >= 500 && responseStatusCode < 600)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    throw obj!;
+                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
+                    ErrorPayload payload;
+                    try
+                    {
+                        payload = ResponseBodyDeserializer.DeserializeNotNull<ErrorPayload>(httpResponseBody, NullValueHandling.Include);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ResponseValidationException("Failed to deserialize response body into ErrorPayload.", httpResponse, httpResponseBody, ex);
+                    }
+
+                    throw new Error(payload, httpResponse, httpResponseBody);
                 }
 
-                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
 
-            throw new Models.Errors.SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
+
     }
 }

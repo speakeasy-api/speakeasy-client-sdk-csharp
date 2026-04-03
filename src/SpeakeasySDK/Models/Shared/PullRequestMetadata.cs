@@ -13,13 +13,12 @@ namespace SpeakeasySDK.Models.Shared
     using SpeakeasySDK.Utils;
     using System;
     using System.Collections.Generic;
-    
+
     /// <summary>
-    /// This can only be populated when the github app is installed for a repo
+    /// This can only be populated when the github app is installed for a repo.
     /// </summary>
     public class PullRequestMetadata
     {
-
         [JsonProperty("base_branch")]
         public string? BaseBranch { get; set; }
 
@@ -30,7 +29,7 @@ namespace SpeakeasySDK.Models.Shared
         public DateTime? CreatedAt { get; set; }
 
         /// <summary>
-        /// truncated to first 1000 characters
+        /// truncated to first 1000 characters.
         /// </summary>
         [JsonProperty("description")]
         public string? Description { get; set; }
@@ -39,13 +38,13 @@ namespace SpeakeasySDK.Models.Shared
         public string? HeadBranch { get; set; }
 
         /// <summary>
-        /// List of github labels
+        /// List of github labels.
         /// </summary>
         [JsonProperty("labels")]
         public List<string>? Labels { get; set; }
 
         /// <summary>
-        /// List of github handles
+        /// List of github handles.
         /// </summary>
         [JsonProperty("requested_reviewers")]
         public List<string>? RequestedReviewers { get; set; }

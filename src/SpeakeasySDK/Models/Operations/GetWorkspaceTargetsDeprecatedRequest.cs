@@ -11,12 +11,11 @@ namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Utils;
     using System;
-    
+
     public class GetWorkspaceTargetsDeprecatedRequest
     {
-
         /// <summary>
-        /// Filter to only return targets with events created after this timestamp
+        /// Filter to only return targets with events created after this timestamp.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=after_last_event_created_at")]
         public DateTime? AfterLastEventCreatedAt { get; set; }

@@ -12,24 +12,58 @@ namespace SpeakeasySDK.Models.Errors
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
     using System;
-    
-    /// <summary>
-    /// The `Status` type defines a logical error model
-    /// </summary>
-    public class Error : Exception
-    {
+    using System.Net.Http;
 
+    public class ErrorPayload
+    {
         /// <summary>
         /// A developer-facing error message.
         /// </summary>
         [JsonProperty("message")]
-        private string? _message { get; set; }
-        public override string Message { get {return _message ?? "";} }
+        public string Message { get; set; } = default!;
 
         /// <summary>
-        /// The HTTP status code
+        /// The HTTP status code.
         /// </summary>
         [JsonProperty("status_code")]
         public int StatusCode { get; set; } = default!;
+    }
+
+    /// <summary>
+    /// The `Status` type defines a logical error model.
+    /// </summary>
+    public class Error : SDKBaseException
+    {
+        /// <summary>
+        ///  The original data that was passed to this exception.
+        /// </summary>
+        public ErrorPayload Payload { get; }
+
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use Error.Payload.Message instead.")]
+        private string? _message { get; set; }
+
+        private static string ErrorMessage(ErrorPayload payload, string body)
+        {
+            string? message = payload.Message;
+            if (!string.IsNullOrEmpty(message))
+            {
+                return message;
+            }
+
+            return "API error occurred";
+        }
+
+        public Error(
+            ErrorPayload payload,
+            HttpResponseMessage rawResponse,
+            string body
+        ): base(ErrorMessage(payload, body), rawResponse, body)
+        {
+           Payload = payload;
+
+           #pragma warning disable CS0618
+           _message = payload.Message;
+           #pragma warning restore CS0618
+        }
     }
 }

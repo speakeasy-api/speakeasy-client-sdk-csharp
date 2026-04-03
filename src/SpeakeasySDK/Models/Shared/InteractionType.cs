@@ -12,7 +12,7 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
     using System;
-    
+
     /// <summary>
     /// Type of interaction.
     /// </summary>
@@ -40,6 +40,8 @@ namespace SpeakeasySDK.Models.Shared
         Configure,
         [JsonProperty("PUBLISH")]
         Publish,
+        [JsonProperty("TEST")]
+        Test,
     }
 
     public static class InteractionTypeExtension
@@ -74,5 +76,4 @@ namespace SpeakeasySDK.Models.Shared
             throw new Exception($"Unknown value {value} for enum InteractionType");
         }
     }
-
 }

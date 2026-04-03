@@ -12,10 +12,9 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
     using System;
-    
+
     public class User
     {
-
         /// <summary>
         /// Indicates whether the user is an admin.
         /// </summary>
@@ -29,7 +28,7 @@ namespace SpeakeasySDK.Models.Shared
         public bool Confirmed { get; set; } = default!;
 
         /// <summary>
-        /// Timestamp of the user&apos;s creation.
+        /// Timestamp of the user's creation.
         /// </summary>
         [JsonProperty("created_at")]
         public DateTime CreatedAt { get; set; } = default!;
@@ -65,6 +64,12 @@ namespace SpeakeasySDK.Models.Shared
         public string? GithubHandle { get; set; } = null;
 
         /// <summary>
+        /// Indicates whether the user has created an API key. Not always populated.
+        /// </summary>
+        [JsonProperty("has_created_api_key")]
+        public bool? HasCreatedApiKey { get; set; }
+
+        /// <summary>
         /// Unique identifier for the user.
         /// </summary>
         [JsonProperty("id")]
@@ -83,13 +88,19 @@ namespace SpeakeasySDK.Models.Shared
         public DateTime? LastLoginAt { get; set; } = null;
 
         /// <summary>
-        /// URL of the user&apos;s photo.
+        /// URL of the user's photo.
         /// </summary>
         [JsonProperty("photo_url")]
         public string? PhotoUrl { get; set; } = null;
 
         /// <summary>
-        /// Timestamp of the user&apos;s last update.
+        /// Hash used for pylon identity verification returned on v1/user.
+        /// </summary>
+        [JsonProperty("pylon_identity_hash")]
+        public string? PylonIdentityHash { get; set; }
+
+        /// <summary>
+        /// Timestamp of the user's last update.
         /// </summary>
         [JsonProperty("updated_at")]
         public DateTime UpdatedAt { get; set; } = default!;

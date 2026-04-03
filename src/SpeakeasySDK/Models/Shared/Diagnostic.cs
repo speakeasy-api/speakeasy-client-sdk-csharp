@@ -12,30 +12,29 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
     using System.Collections.Generic;
-    
+
     public class Diagnostic
     {
-
         /// <summary>
-        /// Help message for how to fix the issue
+        /// Help message for how to fix the issue.
         /// </summary>
         [JsonProperty("helpMessage")]
         public string? HelpMessage { get; set; }
 
         /// <summary>
-        /// Message describing the issue
+        /// Message describing the issue.
         /// </summary>
         [JsonProperty("message")]
         public string Message { get; set; } = default!;
 
         /// <summary>
-        /// Schema path to the issue
+        /// Schema path to the issue.
         /// </summary>
         [JsonProperty("path")]
         public List<string> Path { get; set; } = default!;
 
         /// <summary>
-        /// Issue type
+        /// Issue type.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; } = default!;

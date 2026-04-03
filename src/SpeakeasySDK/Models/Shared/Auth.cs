@@ -11,10 +11,9 @@ namespace SpeakeasySDK.Models.Shared
 {
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
-    
+
     public class Auth
     {
-
         [JsonProperty("header")]
         public string Header { get; set; } = default!;
 

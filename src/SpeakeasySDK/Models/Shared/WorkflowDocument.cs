@@ -12,13 +12,12 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
-    
+
     /// <summary>
-    /// A document referenced by a workflow
+    /// A document referenced by a workflow.
     /// </summary>
     public class WorkflowDocument
     {
-
         [JsonProperty("auth")]
         public Models.Shared.Auth? Auth { get; set; }
 

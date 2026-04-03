@@ -11,10 +11,9 @@ namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
-    
+
     public class UpdateWorkspaceDetailsRequest
     {
-
         /// <summary>
         /// The workspace details to update.
         /// </summary>

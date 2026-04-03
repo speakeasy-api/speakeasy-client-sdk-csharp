@@ -1,5 +1,4 @@
 # CodeSamples
-(*CodeSamples*)
 
 ## Overview
 
@@ -9,7 +8,6 @@ REST APIs for retrieving Code Samples
 
 * [GenerateCodeSamplePreview](#generatecodesamplepreview) - Generate Code Sample previews from a file and configuration parameters.
 * [GenerateCodeSamplePreviewAsync](#generatecodesamplepreviewasync) - Initiate asynchronous Code Sample preview generation from a file and configuration parameters, receiving an async JobID response for polling.
-* [Get](#get) - Retrieve usage snippets from document stored in the registry
 * [GetCodeSamplePreviewAsync](#getcodesamplepreviewasync) - Poll for the result of an asynchronous Code Sample preview generation.
 
 ## GenerateCodeSamplePreview
@@ -18,22 +16,19 @@ This endpoint generates Code Sample previews from a file and configuration param
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="generateCodeSamplePreview" method="post" path="/v1/code_sample/preview" example="default" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
-using System;
-using System.Collections.Generic;
 
 var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
 });
 
 CodeSampleSchemaInput req = new CodeSampleSchemaInput() {
-    Languages = new List<string>() {
-        "<value>",
-    },
+    Language = "<value>",
     SchemaFile = new SchemaFile() {
-        Content = System.Text.Encoding.UTF8.GetBytes("0xc3dD8BfBef"),
+        Content = System.IO.File.ReadAllBytes("example.file"),
         FileName = "example.file",
     },
 };
@@ -57,7 +52,8 @@ var res = await sdk.CodeSamples.GenerateCodeSamplePreviewAsync(req);
 
 | Error Type                       | Status Code                      | Content Type                     |
 | -------------------------------- | -------------------------------- | -------------------------------- |
-| SpeakeasySDK.Models.Errors.Error | 4XX, 5XX                         | application/json                 |
+| SpeakeasySDK.Models.Errors.Error | 4XX                              | application/json                 |
+| SpeakeasySDK.Models.Errors.Error | 5XX                              | application/json                 |
 
 ## GenerateCodeSamplePreviewAsync
 
@@ -65,22 +61,19 @@ This endpoint generates Code Sample previews from a file and configuration param
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="generateCodeSamplePreviewAsync" method="post" path="/v1/code_sample/preview/async" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
-using System;
-using System.Collections.Generic;
 
 var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
 });
 
 CodeSampleSchemaInput req = new CodeSampleSchemaInput() {
-    Languages = new List<string>() {
-        "<value>",
-    },
+    Language = "<value>",
     SchemaFile = new SchemaFile() {
-        Content = System.Text.Encoding.UTF8.GetBytes("0xED5CDd177E"),
+        Content = System.IO.File.ReadAllBytes("example.file"),
         FileName = "example.file",
     },
 };
@@ -104,48 +97,8 @@ var res = await sdk.CodeSamples.GenerateCodeSamplePreviewAsyncAsync(req);
 
 | Error Type                       | Status Code                      | Content Type                     |
 | -------------------------------- | -------------------------------- | -------------------------------- |
-| SpeakeasySDK.Models.Errors.Error | 4XX, 5XX                         | application/json                 |
-
-## Get
-
-Retrieve usage snippets from document stored in the registry. Supports filtering by language and operation ID.
-
-### Example Usage
-
-```csharp
-using SpeakeasySDK;
-using SpeakeasySDK.Models.Operations;
-using SpeakeasySDK.Models.Shared;
-
-var sdk = new SDK(security: new Security() {
-    APIKey = "<YOUR_API_KEY_HERE>",
-});
-
-GetCodeSamplesRequest req = new GetCodeSamplesRequest() {
-    RegistryUrl = "https://normal-making.name",
-};
-
-var res = await sdk.CodeSamples.GetAsync(req);
-
-// handle response
-```
-
-### Parameters
-
-| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `request`                                                                 | [GetCodeSamplesRequest](../../Models/Operations/GetCodeSamplesRequest.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
-
-### Response
-
-**[GetCodeSamplesResponse](../../Models/Operations/GetCodeSamplesResponse.md)**
-
-### Errors
-
-| Error Type                              | Status Code                             | Content Type                            |
-| --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| SpeakeasySDK.Models.Errors.Error        | 4XX                                     | application/json                        |
-| SpeakeasySDK.Models.Errors.SDKException | 5XX                                     | \*/\*                                   |
+| SpeakeasySDK.Models.Errors.Error | 4XX                              | application/json                 |
+| SpeakeasySDK.Models.Errors.Error | 5XX                              | application/json                 |
 
 ## GetCodeSamplePreviewAsync
 
@@ -153,6 +106,7 @@ Poll for the result of an asynchronous Code Sample preview generation.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getCodeSamplePreviewAsync" method="get" path="/v1/code_sample/preview/async/{jobID}" example="default" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;
@@ -185,4 +139,5 @@ var res = await sdk.CodeSamples.GetCodeSamplePreviewAsyncAsync(req);
 
 | Error Type                       | Status Code                      | Content Type                     |
 | -------------------------------- | -------------------------------- | -------------------------------- |
-| SpeakeasySDK.Models.Errors.Error | 4XX, 5XX                         | application/json                 |
+| SpeakeasySDK.Models.Errors.Error | 4XX                              | application/json                 |
+| SpeakeasySDK.Models.Errors.Error | 5XX                              | application/json                 |

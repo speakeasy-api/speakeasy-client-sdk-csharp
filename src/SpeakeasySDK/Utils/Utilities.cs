@@ -130,11 +130,25 @@ namespace SpeakeasySDK.Utils
                 && o.GetType().GetGenericTypeDefinition().IsAssignableFrom(typeof(List<>));
         }
 
+        public static bool IsModelNamespace(string ns)
+        {
+            var modelNamespaces = new[]
+            {
+                "SpeakeasySDK.Models.Operations",
+                "SpeakeasySDK.Models.Errors",
+                "SpeakeasySDK.Models.Shared",
+            };
+
+            return modelNamespaces.Contains(ns);
+        }
+
         public static bool IsClass(object? o)
         {
             if (o == null)
                 return false;
-            return o.GetType().IsClass && (o.GetType().FullName ?? "").StartsWith("SpeakeasySDK.Models");
+            if (!o.GetType().IsClass)
+                return false;
+            return IsModelNamespace(o.GetType().Namespace ?? "");
         }
 
         // TODO: code review polyfilled for IsAssignableTo
@@ -303,6 +317,7 @@ namespace SpeakeasySDK.Utils
 
             return $"Bearer {authHeaderValue}";
         }
+
         public static string RemoveSuffix(string inputString, string suffix)
         {
             if (!String.IsNullOrEmpty(suffix) && inputString.EndsWith(suffix))
@@ -311,6 +326,7 @@ namespace SpeakeasySDK.Utils
             }
             return inputString;
         }
+
         public static string TemplateUrl(string template, Dictionary<string, string> paramDict)
         {
             foreach(KeyValuePair<string, string> entry in paramDict)
@@ -318,6 +334,20 @@ namespace SpeakeasySDK.Utils
                 template = template.Replace('{' + entry.Key + '}', entry.Value);
             }
             return template;
+        }
+
+        public static Dictionary<string, List<string>> CollectHeaders(HttpHeaders headers)
+        {
+            var dict = new Dictionary<string, List<string>>(StringComparer.OrdinalIgnoreCase);
+            foreach (var header in headers)
+            {
+                if (!dict.ContainsKey(header.Key))
+                {
+                    dict[header.Key] = new List<string>();
+                }
+                dict[header.Key].AddRange(header.Value);
+            }
+            return dict;
         }
     }
 }

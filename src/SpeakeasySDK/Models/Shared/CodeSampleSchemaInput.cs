@@ -12,30 +12,35 @@ namespace SpeakeasySDK.Models.Shared
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System.Collections.Generic;
-    
+
     public class CodeSampleSchemaInput
     {
-
         /// <summary>
-        /// A list of languages to generate code samples for
+        /// The language to generate code samples for.
         /// </summary>
-        [SpeakeasyMetadata("multipartForm:name=languages")]
-        public List<string> Languages { get; set; } = default!;
+        [SpeakeasyMetadata("multipartForm:name=language")]
+        public string Language { get; set; } = default!;
 
         /// <summary>
-        /// The OpenAPI file to be uploaded
+        /// A list of operations IDs to generate code samples for.
         /// </summary>
-        [SpeakeasyMetadata("multipartForm:file,name=schema_file")]
-        public SchemaFile SchemaFile { get; set; } = default!;
+        [SpeakeasyMetadata("multipartForm:name=operation_ids")]
+        public List<string>? OperationIds { get; set; }
 
         /// <summary>
-        /// The name of the package
+        /// The name of the package.
         /// </summary>
         [SpeakeasyMetadata("multipartForm:name=package_name")]
         public string? PackageName { get; set; }
 
         /// <summary>
-        /// The SDK class name
+        /// The OpenAPI file to be uploaded.
+        /// </summary>
+        [SpeakeasyMetadata("multipartForm:file,name=schema_file")]
+        public SchemaFile SchemaFile { get; set; } = default!;
+
+        /// <summary>
+        /// The SDK class name.
         /// </summary>
         [SpeakeasyMetadata("multipartForm:name=sdk_class_name")]
         public string? SDKClassName { get; set; }

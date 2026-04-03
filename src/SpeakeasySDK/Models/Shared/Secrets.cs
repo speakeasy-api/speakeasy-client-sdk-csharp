@@ -11,10 +11,9 @@ namespace SpeakeasySDK.Models.Shared
 {
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
-    
+
     public class Secrets
     {
-
         [JsonProperty("api_key_configured")]
         public bool ApiKeyConfigured { get; set; } = default!;
 

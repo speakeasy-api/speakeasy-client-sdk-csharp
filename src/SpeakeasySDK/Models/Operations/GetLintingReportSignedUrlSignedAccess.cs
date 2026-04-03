@@ -11,13 +11,12 @@ namespace SpeakeasySDK.Models.Operations
 {
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
-    
+
     /// <summary>
-    /// OK
+    /// OK.
     /// </summary>
     public class GetLintingReportSignedUrlSignedAccess
     {
-
         [JsonProperty("url")]
         public string Url { get; set; } = default!;
     }

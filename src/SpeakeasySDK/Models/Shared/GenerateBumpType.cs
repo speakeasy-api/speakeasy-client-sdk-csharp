@@ -12,9 +12,9 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
     using System;
-    
+
     /// <summary>
-    /// Bump type of the lock file (calculated semver delta, custom change (manual release), or prerelease/graduate)
+    /// Bump type of the lock file (calculated semver delta, custom change (manual release), or prerelease/graduate).
     /// </summary>
     public enum GenerateBumpType
     {
@@ -66,5 +66,4 @@ namespace SpeakeasySDK.Models.Shared
             throw new Exception($"Unknown value {value} for enum GenerateBumpType");
         }
     }
-
 }

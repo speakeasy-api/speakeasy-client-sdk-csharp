@@ -12,18 +12,20 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
     using System;
-    
+
     /// <summary>
-    /// A speakeasy workspace
+    /// A speakeasy workspace.
     /// </summary>
     public class Workspace
     {
-
         [JsonProperty("created_at")]
         public DateTime CreatedAt { get; set; } = default!;
 
         [JsonProperty("id")]
         public string Id { get; set; } = default!;
+
+        [JsonProperty("inactive")]
+        public bool? Inactive { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; } = default!;
@@ -34,20 +36,17 @@ namespace SpeakeasySDK.Models.Shared
         [JsonProperty("slug")]
         public string Slug { get; set; } = default!;
 
-        [JsonProperty("updated_at")]
-        public DateTime UpdatedAt { get; set; } = default!;
-
-        [JsonProperty("verified")]
-        public bool Verified { get; set; } = default!;
-
-        [JsonProperty("inactive")]
-        public bool? Inactive { get; set; }
-
         /// <summary>
         /// Deprecated. Use organization.telemetry_disabled instead.
         /// </summary>
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
         [JsonProperty("telemetry_disabled")]
         public bool? TelemetryDisabled { get; set; }
+
+        [JsonProperty("updated_at")]
+        public DateTime UpdatedAt { get; set; } = default!;
+
+        [JsonProperty("verified")]
+        public bool Verified { get; set; } = default!;
     }
 }

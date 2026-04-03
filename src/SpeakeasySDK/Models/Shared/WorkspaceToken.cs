@@ -12,13 +12,12 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
     using System;
-    
+
     /// <summary>
-    /// A workspace token
+    /// A workspace token.
     /// </summary>
     public class WorkspaceToken
     {
-
         [JsonProperty("alg")]
         public string Alg { get; set; } = default!;
 
@@ -27,6 +26,12 @@ namespace SpeakeasySDK.Models.Shared
 
         [JsonProperty("created_by")]
         public string? CreatedBy { get; set; } = null;
+
+        [JsonProperty("created_by_name")]
+        public string? CreatedByName { get; set; } = null;
+
+        [JsonProperty("created_by_photo_url")]
+        public string? CreatedByPhotoUrl { get; set; } = null;
 
         [JsonProperty("email")]
         public string? Email { get; set; } = null;

@@ -10,10 +10,9 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Utils;
-    
+
     public class DeleteWorkspaceTokenRequest
     {
-
         /// <summary>
         /// Unique identifier of the token.
         /// </summary>

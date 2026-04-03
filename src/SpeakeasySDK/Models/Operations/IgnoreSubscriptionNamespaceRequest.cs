@@ -10,18 +10,17 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Utils;
-    
+
     public class IgnoreSubscriptionNamespaceRequest
     {
-
         /// <summary>
-        /// The namespace name
+        /// The namespace name.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=namespaceName")]
         public string NamespaceName { get; set; } = default!;
 
         /// <summary>
-        /// The existing subscription ID
+        /// The existing subscription ID.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=subscriptionID")]
         public string SubscriptionID { get; set; } = default!;
