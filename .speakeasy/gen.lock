@@ -5,16 +5,16 @@ management:
   docVersion: 0.4.0
   speakeasyVersion: 1.761.1
   generationVersion: 2.879.6
-  releaseVersion: 5.13.1
-  configChecksum: df51a4d5ad9409bdc8371ab452860514
+  releaseVersion: 5.13.2
+  configChecksum: db1f998aba261f138c5ca94a1dfcc982
   repoURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-api/speakeasy-client-sdk-csharp
   published: true
 persistentEdits:
-  generation_id: e1059bc0-5d5f-44e1-9d35-6f7c0407e11c
-  pristine_commit_hash: 91cf55802e1cd1678a52ce4dc0426355c333a790
-  pristine_tree_hash: 2bc664a16bf3cbe9d7ab49c089790540a9efb62d
+  generation_id: 6fa8b95e-2c5f-4081-8d82-ed1d1b54430a
+  pristine_commit_hash: f01f4b69ce7cc5c6a951cc18baf7aa2664c57fc3
+  pristine_tree_hash: 8ac5faefb286ca33774d3ae286f15848b3f6cfca
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -2006,8 +2006,8 @@ trackedFiles:
     pristine_git_object: 469af7c798510f1c335c6a9c1ca4f896a0b9ed1e
   src/SpeakeasySDK/SDKConfig.cs:
     id: 80b0ffc91d8a
-    last_write_checksum: sha1:aafe3081833db08ed3c918ac25d7028eb5c0a8bc
-    pristine_git_object: 0d7343f325a85d65c38f4737f83dd8d42f92b933
+    last_write_checksum: sha1:1da4ceab1337f248b883ad54924a52e7af296cf9
+    pristine_git_object: 53f13662f0e019cff3b43c74d37535b6c3d6783b
   src/SpeakeasySDK/SchemaStore.cs:
     id: 6d248c4608d2
     last_write_checksum: sha1:7b8c3fa3cf89557942aaf673eeeca49a6ec19afb
@@ -2018,8 +2018,8 @@ trackedFiles:
     pristine_git_object: ea980afdb20f8bec2b4f29ba06b375f6c21da930
   src/SpeakeasySDK/SpeakeasySDK.csproj:
     id: ec9c5c45b6c7
-    last_write_checksum: sha1:2f36b25bf327c372ed037e0226a123d58aba4231
-    pristine_git_object: 81ccdc7b29f332d95a886cc4f639e104b991e24e
+    last_write_checksum: sha1:d2c2f5bcb6e04762139745906a18b6f8db206d04
+    pristine_git_object: 01a2a6c4399b2cba378aae8f927da6051a52a225
   src/SpeakeasySDK/Subscriptions.cs:
     id: 7d5ee114a61a
     last_write_checksum: sha1:5dbd2ec3af43d1db70006760c9341f5e3e91015c
@@ -2038,8 +2038,8 @@ trackedFiles:
     pristine_git_object: ea408dcac879199814dcb0d8fc1d5632c783eb3d
   src/SpeakeasySDK/Utils/Constants.cs:
     id: 54a6e3719531
-    last_write_checksum: sha1:f73d64f3e8013f9dc00fadc6fb7bfe16623dff2a
-    pristine_git_object: 0067b9dca060a34f5af43fdeb1a798de36d9f7df
+    last_write_checksum: sha1:6da0e383361bb7d6ec123ad36106eab829877af6
+    pristine_git_object: 884a24ad5c2663834c078a201edfc78be417014f
   src/SpeakeasySDK/Utils/DecimalStrConverter.cs:
     id: 9bb46fe83952
     last_write_checksum: sha1:a4cf1a174f52dff808bd0973fa8ca0e22b36fa2b

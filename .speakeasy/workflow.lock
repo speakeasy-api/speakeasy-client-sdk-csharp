@@ -14,7 +14,7 @@ targets:
         sourceRevisionDigest: sha256:dac7a3850ebb7d036efa93658b5704753d504595aac9f045ca1b8d9c85b3d2ac
         sourceBlobDigest: sha256:3e59af5accd2bcf1d96389047acb564c33bbda9339229485a8e859ab8bd6d604
         codeSamplesNamespace: code-samples-csharp-speakeasy-client-sdk-csharp
-        codeSamplesRevisionDigest: sha256:d2a48c391e172b2f0447c3ec99ec9a4a67ef2aea4006497af8f9fe477badc9e6
+        codeSamplesRevisionDigest: sha256:bc45ef9b713494df51d0d78a58a26b4e3eda61fa8e1044c0f19d036733c9d92f
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
