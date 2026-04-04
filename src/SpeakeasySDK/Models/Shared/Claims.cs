@@ -11,11 +11,13 @@
 namespace SpeakeasySDK.Models.Shared
 {
     using SpeakeasySDK.Utils;
+    using System;
 
     public class Claims
     {
         public string? Subject { get; set; }
         public string? Issuer { get; set; }
         public string? Audience { get; set; }
+        public DateTime? Expiration { get; set; }
     }
 }
