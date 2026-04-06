@@ -12,12 +12,13 @@ namespace SpeakeasySDK.Models.Operations
 {
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
-
+    
     /// <summary>
-    /// OK.
+    /// OK
     /// </summary>
     public class GetChangesReportSignedUrlSignedAccess
     {
+
         [JsonProperty("url")]
         public string Url { get; set; } = default!;
     }

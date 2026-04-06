@@ -12,11 +12,12 @@ namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
-
+    
     public class PostTagsRequest
     {
+
         /// <summary>
-        /// A JSON representation of the tags to add.
+        /// A JSON representation of the tags to add
         /// </summary>
         [SpeakeasyMetadata("request:mediaType=application/json")]
         public AddTags? AddTags { get; set; }

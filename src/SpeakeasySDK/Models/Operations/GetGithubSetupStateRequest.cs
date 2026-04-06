@@ -11,9 +11,10 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Utils;
-
+    
     public class GetGithubSetupStateRequest
     {
+
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=generate_gen_lock_id")]
         public string GenerateGenLockId { get; set; } = default!;
 

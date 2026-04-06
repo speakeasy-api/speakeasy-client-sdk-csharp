@@ -13,9 +13,9 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
     using System;
-
+    
     /// <summary>
-    /// Bump type of the lock file (calculated semver delta, or a custom change (manual release)).
+    /// Bump type of the lock file (calculated semver delta, or a custom change (manual release))
     /// </summary>
     public enum OpenapiDiffBumpType
     {
@@ -61,4 +61,5 @@ namespace SpeakeasySDK.Models.Shared
             throw new Exception($"Unknown value {value} for enum OpenapiDiffBumpType");
         }
     }
+
 }

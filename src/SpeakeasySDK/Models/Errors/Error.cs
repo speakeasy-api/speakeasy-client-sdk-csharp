@@ -24,14 +24,14 @@ namespace SpeakeasySDK.Models.Errors
         public string Message { get; set; } = default!;
 
         /// <summary>
-        /// The HTTP status code.
+        /// The HTTP status code
         /// </summary>
         [JsonProperty("status_code")]
         public int StatusCode { get; set; } = default!;
     }
 
     /// <summary>
-    /// The `Status` type defines a logical error model.
+    /// The `Status` type defines a logical error model
     /// </summary>
     public class Error : SDKBaseException
     {
@@ -67,4 +67,5 @@ namespace SpeakeasySDK.Models.Errors
            #pragma warning restore CS0618
         }
     }
+
 }

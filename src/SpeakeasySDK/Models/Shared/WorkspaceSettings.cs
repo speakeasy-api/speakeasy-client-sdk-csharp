@@ -13,9 +13,10 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
     using System;
-
+    
     public class WorkspaceSettings
     {
+
         [JsonProperty("created_at")]
         public DateTime CreatedAt { get; set; } = default!;
 

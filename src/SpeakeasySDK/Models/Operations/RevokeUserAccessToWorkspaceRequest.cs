@@ -11,9 +11,10 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Utils;
-
+    
     public class RevokeUserAccessToWorkspaceRequest
     {
+
         /// <summary>
         /// Unique identifier of the user.
         /// </summary>
