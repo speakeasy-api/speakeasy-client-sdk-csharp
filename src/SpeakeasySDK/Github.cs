@@ -24,141 +24,41 @@ namespace SpeakeasySDK
     using System.Threading.Tasks;
 
     /// <summary>
-    /// REST APIs for managing the github integration.
+    /// REST APIs for managing the github integration
     /// </summary>
     public interface IGithub
     {
-        /// <param name="request">A <see cref="CheckGithubAccessRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="CheckGithubAccessResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<CheckGithubAccessResponse> CheckAccessAsync(CheckGithubAccessRequest request);
-
-        /// <param name="request">A <see cref="GithubCheckPublishingPRsRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GithubCheckPublishingPRsResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<GithubCheckPublishingPRsResponse> CheckPublishingPRsAsync(GithubCheckPublishingPRsRequest request);
-
-        /// <param name="request">A <see cref="GithubCheckPublishingSecretsRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GithubCheckPublishingSecretsResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<GithubCheckPublishingSecretsResponse> CheckPublishingSecretsAsync(
-            GithubCheckPublishingSecretsRequest request
-        );
-
-        /// <param name="request">A <see cref="GithubConfigureCodeSamplesRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="Models.Operations.GithubConfigureCodeSamplesResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<Models.Operations.GithubConfigureCodeSamplesResponse> ConfigureCodeSamplesAsync(
-            GithubConfigureCodeSamplesRequest request
-        );
-
-        /// <param name="request">A <see cref="GithubConfigureMintlifyRepoRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GithubConfigureMintlifyRepoResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<GithubConfigureMintlifyRepoResponse> ConfigureMintlifyRepoAsync(
-            GithubConfigureMintlifyRepoRequest request
-        );
-
-        /// <param name="request">A <see cref="GithubConfigureTargetRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GithubConfigureTargetResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<GithubConfigureTargetResponse> ConfigureTargetAsync(GithubConfigureTargetRequest request);
-
-        /// <param name="request">A <see cref="GetGitHubActionRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GetGitHubActionResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<GetGitHubActionResponse> GetActionAsync(GetGitHubActionRequest request);
-
-        /// <param name="request">A <see cref="GetGithubSetupStateRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GetGithubSetupStateResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<GetGithubSetupStateResponse> GetSetupAsync(GetGithubSetupStateRequest request);
-
-        /// <param name="request">A <see cref="LinkGithubAccessRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="LinkGithubAccessResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<LinkGithubAccessResponse> LinkGithubAsync(LinkGithubAccessRequest? request = null);
-
-        /// <param name="request">A <see cref="GithubStorePublishingSecretsRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GithubStorePublishingSecretsResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<GithubStorePublishingSecretsResponse> StorePublishingSecretsAsync(
-            GithubStorePublishingSecretsRequest request
-        );
-
-        /// <param name="request">A <see cref="GithubTriggerActionRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GithubTriggerActionResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<GithubTriggerActionResponse> TriggerActionAsync(GithubTriggerActionRequest request);
+        Task<CheckGithubAccessResponse> CheckAccessAsync(CheckGithubAccessRequest request);
+        Task<GithubCheckPublishingPRsResponse> CheckPublishingPRsAsync(GithubCheckPublishingPRsRequest request);
+        Task<GithubCheckPublishingSecretsResponse> CheckPublishingSecretsAsync(GithubCheckPublishingSecretsRequest request);
+        Task<Models.Operations.GithubConfigureCodeSamplesResponse> ConfigureCodeSamplesAsync(GithubConfigureCodeSamplesRequest request);
+        Task<GithubConfigureMintlifyRepoResponse> ConfigureMintlifyRepoAsync(GithubConfigureMintlifyRepoRequest request);
+        Task<GithubConfigureTargetResponse> ConfigureTargetAsync(GithubConfigureTargetRequest request);
+        Task<GetGitHubActionResponse> GetActionAsync(GetGitHubActionRequest request);
+        Task<GetGithubSetupStateResponse> GetSetupAsync(GetGithubSetupStateRequest request);
+        Task<LinkGithubAccessResponse> LinkGithubAsync(LinkGithubAccessRequest? request = null);
+        Task<GithubStorePublishingSecretsResponse> StorePublishingSecretsAsync(GithubStorePublishingSecretsRequest request);
+        Task<GithubTriggerActionResponse> TriggerActionAsync(GithubTriggerActionRequest request);
     }
 
     /// <summary>
-    /// REST APIs for managing the github integration.
+    /// REST APIs for managing the github integration
     /// </summary>
     public class Github: IGithub
     {
-        /// <summary>
-        /// SDK Configuration.
-        /// <see cref="SDKConfig"/>
-        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
+
+        private const string _language = Constants.Language;
+        private const string _sdkVersion = Constants.SdkVersion;
+        private const string _sdkGenVersion = Constants.SdkGenVersion;
+        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public Github(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        /// <param name="request">A <see cref="CheckGithubAccessRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="CheckGithubAccessResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<CheckGithubAccessResponse> CheckAccessAsync(CheckGithubAccessRequest request)
+        public async Task<CheckGithubAccessResponse> CheckAccessAsync(CheckGithubAccessRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -167,11 +67,6 @@ namespace SpeakeasySDK
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -197,9 +92,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -251,17 +146,7 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <param name="request">A <see cref="GithubCheckPublishingPRsRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GithubCheckPublishingPRsResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<GithubCheckPublishingPRsResponse> CheckPublishingPRsAsync(
-            GithubCheckPublishingPRsRequest request
-        )
+        public async Task<GithubCheckPublishingPRsResponse> CheckPublishingPRsAsync(GithubCheckPublishingPRsRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -270,11 +155,6 @@ namespace SpeakeasySDK
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -300,9 +180,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -372,17 +252,7 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <param name="request">A <see cref="GithubCheckPublishingSecretsRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GithubCheckPublishingSecretsResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<GithubCheckPublishingSecretsResponse> CheckPublishingSecretsAsync(
-            GithubCheckPublishingSecretsRequest request
-        )
+        public async Task<GithubCheckPublishingSecretsResponse> CheckPublishingSecretsAsync(GithubCheckPublishingSecretsRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -391,11 +261,6 @@ namespace SpeakeasySDK
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -421,9 +286,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -493,30 +358,16 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <param name="request">A <see cref="GithubConfigureCodeSamplesRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="Models.Operations.GithubConfigureCodeSamplesResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<Models.Operations.GithubConfigureCodeSamplesResponse> ConfigureCodeSamplesAsync(
-            GithubConfigureCodeSamplesRequest request
-        )
+        public async Task<Models.Operations.GithubConfigureCodeSamplesResponse> ConfigureCodeSamplesAsync(GithubConfigureCodeSamplesRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+
             var urlString = baseUrl + "/v1/github/configure_code_samples";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json", false, false);
             if (serializedBody != null)
@@ -548,9 +399,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -620,30 +471,16 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <param name="request">A <see cref="GithubConfigureMintlifyRepoRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GithubConfigureMintlifyRepoResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<GithubConfigureMintlifyRepoResponse> ConfigureMintlifyRepoAsync(
-            GithubConfigureMintlifyRepoRequest request
-        )
+        public async Task<GithubConfigureMintlifyRepoResponse> ConfigureMintlifyRepoAsync(GithubConfigureMintlifyRepoRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+
             var urlString = baseUrl + "/v1/github/configure_mintlify_repo";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json", false, false);
             if (serializedBody != null)
@@ -675,9 +512,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -729,28 +566,16 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <param name="request">A <see cref="GithubConfigureTargetRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GithubConfigureTargetResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<GithubConfigureTargetResponse> ConfigureTargetAsync(GithubConfigureTargetRequest request)
+        public async Task<GithubConfigureTargetResponse> ConfigureTargetAsync(GithubConfigureTargetRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+
             var urlString = baseUrl + "/v1/github/configure_target";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json", false, false);
             if (serializedBody != null)
@@ -782,9 +607,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -836,15 +661,7 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <param name="request">A <see cref="GetGitHubActionRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GetGitHubActionResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<GetGitHubActionResponse> GetActionAsync(GetGitHubActionRequest request)
+        public async Task<GetGitHubActionResponse> GetActionAsync(GetGitHubActionRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -853,11 +670,6 @@ namespace SpeakeasySDK
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -883,9 +695,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -955,15 +767,7 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <param name="request">A <see cref="GetGithubSetupStateRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GetGithubSetupStateResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<GetGithubSetupStateResponse> GetSetupAsync(GetGithubSetupStateRequest request)
+        public async Task<GetGithubSetupStateResponse> GetSetupAsync(GetGithubSetupStateRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -972,11 +776,6 @@ namespace SpeakeasySDK
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -1002,9 +801,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -1074,25 +873,13 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <param name="request">A <see cref="LinkGithubAccessRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="LinkGithubAccessResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<LinkGithubAccessResponse> LinkGithubAsync(LinkGithubAccessRequest? request = null)
+        public async Task<LinkGithubAccessResponse> LinkGithubAsync(LinkGithubAccessRequest? request = null)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/github/link", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -1118,9 +905,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -1172,30 +959,16 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <param name="request">A <see cref="GithubStorePublishingSecretsRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GithubStorePublishingSecretsResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<GithubStorePublishingSecretsResponse> StorePublishingSecretsAsync(
-            GithubStorePublishingSecretsRequest request
-        )
+        public async Task<GithubStorePublishingSecretsResponse> StorePublishingSecretsAsync(GithubStorePublishingSecretsRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+
             var urlString = baseUrl + "/v1/github/publishing_secrets";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json", false, false);
             if (serializedBody != null)
@@ -1227,9 +1000,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -1281,28 +1054,16 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <param name="request">A <see cref="GithubTriggerActionRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GithubTriggerActionResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<GithubTriggerActionResponse> TriggerActionAsync(GithubTriggerActionRequest request)
+        public async Task<GithubTriggerActionResponse> TriggerActionAsync(GithubTriggerActionRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+
             var urlString = baseUrl + "/v1/github/trigger_action";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json", false, false);
             if (serializedBody != null)
@@ -1334,9 +1095,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -1387,6 +1148,5 @@ namespace SpeakeasySDK
 
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
-
     }
 }

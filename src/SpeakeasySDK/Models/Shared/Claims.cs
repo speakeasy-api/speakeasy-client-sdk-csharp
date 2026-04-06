@@ -11,7 +11,7 @@
 namespace SpeakeasySDK.Models.Shared
 {
     using SpeakeasySDK.Utils;
-
+    
     public class Claims
     {
     }

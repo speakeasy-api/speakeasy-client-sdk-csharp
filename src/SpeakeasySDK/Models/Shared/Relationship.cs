@@ -12,9 +12,10 @@ namespace SpeakeasySDK.Models.Shared
 {
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
-
+    
     public class Relationship
     {
+
         [JsonProperty("user_id")]
         public string UserId { get; set; } = default!;
 

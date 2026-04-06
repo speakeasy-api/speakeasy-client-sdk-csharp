@@ -13,12 +13,13 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
-
+    
     /// <summary>
-    /// Open generation PRs pending publishing.
+    /// Open generation PRs pending publishing
     /// </summary>
     public class GithubPublishingPRResponse
     {
+
         [JsonProperty("pending_version")]
         public string? PendingVersion { get; set; }
 
@@ -26,7 +27,7 @@ namespace SpeakeasySDK.Models.Shared
         public string? PullRequest { get; set; }
 
         /// <summary>
-        /// This can only be populated when the github app is installed for a repo.
+        /// This can only be populated when the github app is installed for a repo
         /// </summary>
         [JsonProperty("pull_request_metadata")]
         public PullRequestMetadata? PullRequestMetadata { get; set; }

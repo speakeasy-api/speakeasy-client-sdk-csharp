@@ -16,9 +16,9 @@ namespace SpeakeasySDK.Models.Shared
     using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Linq;
-
+    
     /// <summary>
-    /// enum value workspace feature flag.
+    /// enum value workspace feature flag
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
     public class WorkspaceFeatureFlag : IEquatable<WorkspaceFeatureFlag>
@@ -79,4 +79,5 @@ namespace SpeakeasySDK.Models.Shared
 
         public override int GetHashCode() => Value.GetHashCode();
     }
+
 }
