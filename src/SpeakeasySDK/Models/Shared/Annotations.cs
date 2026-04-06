@@ -12,32 +12,33 @@ namespace SpeakeasySDK.Models.Shared
 {
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
-
+    
     /// <summary>
-    /// Annotations.
+    /// Annotations
     /// </summary>
     public class Annotations
     {
+
         /// <summary>
-        /// The authors of the image.
+        /// The authors of the image
         /// </summary>
         [JsonProperty("org.opencontainers.image.authors")]
         public string? OrgOpencontainersImageAuthors { get; set; }
 
         /// <summary>
-        /// The time the image was created.
+        /// The time the image was created
         /// </summary>
         [JsonProperty("org.opencontainers.image.created")]
         public string? OrgOpencontainersImageCreated { get; set; }
 
         /// <summary>
-        /// Human-readable description of the software packaged in the image.
+        /// Human-readable description of the software packaged in the image
         /// </summary>
         [JsonProperty("org.opencontainers.image.description")]
         public string? OrgOpencontainersImageDescription { get; set; }
 
         /// <summary>
-        /// The documentation URL of the image.
+        /// The documentation URL of the image
         /// </summary>
         [JsonProperty("org.opencontainers.image.documentation")]
         public string? OrgOpencontainersImageDocumentation { get; set; }
@@ -46,31 +47,31 @@ namespace SpeakeasySDK.Models.Shared
         public string? OrgOpencontainersImageLicenses { get; set; }
 
         /// <summary>
-        /// Name of the reference for a target.
+        /// Name of the reference for a target
         /// </summary>
         [JsonProperty("org.opencontainers.image.ref.name")]
         public string? OrgOpencontainersImageRefName { get; set; }
 
         /// <summary>
-        /// Source control revision identifier.
+        /// Source control revision identifier
         /// </summary>
         [JsonProperty("org.opencontainers.image.revision")]
         public string? OrgOpencontainersImageRevision { get; set; }
 
         /// <summary>
-        /// The URL to get source code for building the image.
+        /// The URL to get source code for building the image
         /// </summary>
         [JsonProperty("org.opencontainers.image.source")]
         public string? OrgOpencontainersImageSource { get; set; }
 
         /// <summary>
-        /// Human-readable title of the image.
+        /// Human-readable title of the image
         /// </summary>
         [JsonProperty("org.opencontainers.image.title")]
         public string? OrgOpencontainersImageTitle { get; set; }
 
         /// <summary>
-        /// The URL of the image.
+        /// The URL of the image
         /// </summary>
         [JsonProperty("org.opencontainers.image.url")]
         public string? OrgOpencontainersImageUrl { get; set; }
@@ -82,7 +83,7 @@ namespace SpeakeasySDK.Models.Shared
         public string? OrgOpencontainersImageVendor { get; set; }
 
         /// <summary>
-        /// The version of the packaged software.
+        /// The version of the packaged software
         /// </summary>
         [JsonProperty("org.opencontainers.image.version")]
         public string? OrgOpencontainersImageVersion { get; set; }

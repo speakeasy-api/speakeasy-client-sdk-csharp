@@ -12,11 +12,12 @@ namespace SpeakeasySDK.Models.Operations
 {
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
-
+    
     public class CreateRequestBody
     {
+
         /// <summary>
-        /// URL to shorten.
+        /// URL to shorten
         /// </summary>
         [JsonProperty("url")]
         public string Url { get; set; } = default!;

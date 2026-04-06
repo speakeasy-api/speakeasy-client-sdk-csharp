@@ -13,12 +13,13 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
     using System.Collections.Generic;
-
+    
     /// <summary>
-    /// SSO metadata for a workspace.
+    /// SSO metadata for a workspace
     /// </summary>
     public class SSOMetadata
     {
+
         [JsonProperty("sso_activated")]
         public bool SsoActivated { get; set; } = default!;
 

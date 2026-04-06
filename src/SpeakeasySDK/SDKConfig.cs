@@ -18,9 +18,6 @@ namespace SpeakeasySDK
     using System.Collections.Generic;
     using System.Linq;
 
-    /// <summary>
-    /// Main configuration for the SDK.
-    /// </summary>
     public struct SDKConfig
     {
         /// <summary>
@@ -56,7 +53,7 @@ namespace SpeakeasySDK
             ServerUrl = "";
             ServerName = null;
             WorkspaceId = null;
-            UserAgent = "speakeasy-sdk/csharp 5.13.2 2.879.6 0.4.0 SpeakeasySDK";
+            UserAgent = "speakeasy-sdk/csharp 5.13.3 2.797.1 0.4.0 SpeakeasySDK";
             SecuritySource = null;
             Hooks = new SDKHooks();
             RetryConfig = null;

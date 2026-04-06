@@ -12,11 +12,12 @@ namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Models.Operations;
     using SpeakeasySDK.Utils;
-
+    
     public class ArchiveNamespaceRequest
     {
+
         /// <summary>
-        /// Archived status.
+        /// Archived status
         /// </summary>
         [SpeakeasyMetadata("request:mediaType=application/json")]
         public ArchiveNamespaceRequestBody? RequestBody { get; set; }

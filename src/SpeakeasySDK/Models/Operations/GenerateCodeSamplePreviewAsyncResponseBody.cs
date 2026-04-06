@@ -13,14 +13,15 @@ namespace SpeakeasySDK.Models.Operations
     using Newtonsoft.Json;
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
-
+    
     /// <summary>
-    /// Job accepted, returns a job ID to poll for status and result.
+    /// Job accepted, returns a job ID to poll for status and result
     /// </summary>
     public class GenerateCodeSamplePreviewAsyncResponseBody
     {
+
         /// <summary>
-        /// The job ID for polling.
+        /// The job ID for polling
         /// </summary>
         [JsonProperty("job_id")]
         public string JobId { get; set; } = default!;
