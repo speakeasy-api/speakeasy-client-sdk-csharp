@@ -23,7 +23,7 @@ namespace SpeakeasySDK.Utils
         /// <summary>
         /// The version of the SDK.
         /// </summary>
-        public const string SdkVersion = "5.13.2";
+        public const string SdkVersion = "5.13.3";
 
         /// <summary>
         /// The version of the SDK generator used to create this SDK.
