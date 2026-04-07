@@ -14,10 +14,9 @@ namespace SpeakeasySDK.Models.Shared
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System.Collections.Generic;
-    
+
     public class UsageSnippets
     {
-
         [JsonProperty("snippets")]
         public List<UsageSnippet> Snippets { get; set; } = default!;
     }

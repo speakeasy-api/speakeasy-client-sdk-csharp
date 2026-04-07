@@ -2,6 +2,14 @@
 
 Type of interaction.
 
+## Example Usage
+
+```csharp
+using SpeakeasySDK.Models.Shared;
+
+var value = InteractionType.CiExec;
+```
+
 
 ## Values
 

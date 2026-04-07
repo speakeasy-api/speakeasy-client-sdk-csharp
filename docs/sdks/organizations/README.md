@@ -33,13 +33,13 @@ var sdk = new SDK(security: new Security() {
 
 Organization req = new Organization() {
     AccountType = AccountType.ScaleUp,
-    CreatedAt = System.DateTime.Parse("2026-10-26T09:05:00.560Z"),
+    CreatedAt = System.DateTime.Parse("2026-10-26T09:05:00.560Z").ToUniversalTime(),
     Id = "<id>",
     Name = "<value>",
     Slug = "<value>",
     SsoActivated = false,
     TelemetryDisabled = false,
-    UpdatedAt = System.DateTime.Parse("2024-12-22T08:00:51.380Z"),
+    UpdatedAt = System.DateTime.Parse("2024-12-22T08:00:51.380Z").ToUniversalTime(),
 };
 
 var res = await sdk.Organizations.CreateAsync(req);

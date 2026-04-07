@@ -14,10 +14,9 @@ namespace SpeakeasySDK.Models.Shared
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System;
-    
+
     public class TargetSDK
     {
-
         /// <summary>
         /// Remote commit ID.
         /// </summary>
@@ -37,13 +36,13 @@ namespace SpeakeasySDK.Models.Shared
         public string? Error { get; set; }
 
         /// <summary>
-        /// Version of the generated target (post generation)
+        /// Version of the generated target (post generation).
         /// </summary>
         [JsonProperty("generate_config_post_version")]
         public string? GenerateConfigPostVersion { get; set; }
 
         /// <summary>
-        /// Eligible feature set during generation
+        /// Eligible feature set during generation.
         /// </summary>
         [JsonProperty("generate_eligible_features")]
         public string? GenerateEligibleFeatures { get; set; }
@@ -55,13 +54,13 @@ namespace SpeakeasySDK.Models.Shared
         public string GenerateGenLockId { get; set; } = default!;
 
         /// <summary>
-        /// Features prior to generation
+        /// Features prior to generation.
         /// </summary>
         [JsonProperty("generate_gen_lock_pre_features")]
         public string? GenerateGenLockPreFeatures { get; set; }
 
         /// <summary>
-        /// Artifact version for the Previous Generation
+        /// Artifact version for the Previous Generation.
         /// </summary>
         [JsonProperty("generate_gen_lock_pre_version")]
         public string? GenerateGenLockPreVersion { get; set; }
@@ -163,7 +162,7 @@ namespace SpeakeasySDK.Models.Shared
         public string? GitUserEmail { get; set; }
 
         /// <summary>
-        /// User&apos;s name from git configuration. (not GitHub username)
+        /// User's name from git configuration. (not GitHub username).
         /// </summary>
         [JsonProperty("git_user_name")]
         public string? GitUserName { get; set; }
@@ -187,7 +186,7 @@ namespace SpeakeasySDK.Models.Shared
         public DateTime LastEventCreatedAt { get; set; } = default!;
 
         /// <summary>
-        /// Unique identifier of the last event for the target
+        /// Unique identifier of the last event for the target.
         /// </summary>
         [JsonProperty("last_event_id")]
         public string LastEventId { get; set; } = default!;
@@ -265,25 +264,25 @@ namespace SpeakeasySDK.Models.Shared
         public bool? Success { get; set; }
 
         /// <summary>
-        /// Workflow lock file (post execution)
+        /// Workflow lock file (post execution).
         /// </summary>
         [JsonProperty("workflow_lock_post_raw")]
         public string? WorkflowLockPostRaw { get; set; }
 
         /// <summary>
-        /// Workflow lock file (prior to execution)
+        /// Workflow lock file (prior to execution).
         /// </summary>
         [JsonProperty("workflow_lock_pre_raw")]
         public string? WorkflowLockPreRaw { get; set; }
 
         /// <summary>
-        /// Workflow file (post execution)
+        /// Workflow file (post execution).
         /// </summary>
         [JsonProperty("workflow_post_raw")]
         public string? WorkflowPostRaw { get; set; }
 
         /// <summary>
-        /// Workflow file (prior to execution)
+        /// Workflow file (prior to execution).
         /// </summary>
         [JsonProperty("workflow_pre_raw")]
         public string? WorkflowPreRaw { get; set; }

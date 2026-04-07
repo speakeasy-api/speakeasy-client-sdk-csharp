@@ -12,12 +12,11 @@ namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Models.Operations;
     using SpeakeasySDK.Utils;
-    
+
     public class SetVisibilityRequest
     {
-
         /// <summary>
-        /// Namespace visibility
+        /// Namespace visibility.
         /// </summary>
         [SpeakeasyMetadata("request:mediaType=application/json")]
         public SetVisibilityRequestBody? RequestBody { get; set; }

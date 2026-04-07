@@ -13,10 +13,9 @@ namespace SpeakeasySDK.Models.Operations
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System.Collections.Generic;
-    
+
     public class PostWorkspaceEventsRequest
     {
-
         [SpeakeasyMetadata("request:mediaType=application/json")]
         public List<CliEvent> RequestBody { get; set; } = default!;
 

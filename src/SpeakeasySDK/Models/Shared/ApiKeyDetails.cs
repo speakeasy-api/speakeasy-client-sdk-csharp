@@ -17,10 +17,9 @@ namespace SpeakeasySDK.Models.Shared
     using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Linq;
-    
+
     public class ApiKeyDetails
     {
-
         [JsonProperty("account_type_v2")]
         public AccountType AccountTypeV2 { get; set; } = default!;
 

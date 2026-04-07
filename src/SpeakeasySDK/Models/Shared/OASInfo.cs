@@ -13,10 +13,9 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
-    
+
     public class OASInfo
     {
-
         [JsonProperty("description")]
         public string Description { get; set; } = default!;
 

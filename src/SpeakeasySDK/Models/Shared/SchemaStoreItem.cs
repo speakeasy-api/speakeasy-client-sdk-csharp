@@ -14,10 +14,9 @@ namespace SpeakeasySDK.Models.Shared
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System;
-    
+
     public class SchemaStoreItem
     {
-
         [JsonProperty("created_at")]
         public DateTime CreatedAt { get; set; } = default!;
 

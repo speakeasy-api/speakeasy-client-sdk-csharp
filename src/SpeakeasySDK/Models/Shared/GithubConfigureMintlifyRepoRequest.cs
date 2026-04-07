@@ -13,39 +13,38 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
     using System.Collections.Generic;
-    
+
     /// <summary>
-    /// A request to configure a GitHub repository for mintlify
+    /// A request to configure a GitHub repository for mintlify.
     /// </summary>
     public class GithubConfigureMintlifyRepoRequest
     {
-
         /// <summary>
-        /// The input OpenAPI document
+        /// The input OpenAPI document.
         /// </summary>
         [JsonProperty("input")]
         public string Input { get; set; } = default!;
 
         /// <summary>
-        /// The GitHub organization name
+        /// The GitHub organization name.
         /// </summary>
         [JsonProperty("org")]
         public string Org { get; set; } = default!;
 
         /// <summary>
-        /// The overlays to apply
+        /// The overlays to apply.
         /// </summary>
         [JsonProperty("overlays")]
         public List<string> Overlays { get; set; } = default!;
 
         /// <summary>
-        /// The GitHub repository name
+        /// The GitHub repository name.
         /// </summary>
         [JsonProperty("repo")]
         public string Repo { get; set; } = default!;
 
         /// <summary>
-        /// The subdirectory (location of mint.json)
+        /// The subdirectory (location of mint.json).
         /// </summary>
         [JsonProperty("subdirectory")]
         public string? Subdirectory { get; set; }

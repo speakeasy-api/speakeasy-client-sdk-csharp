@@ -24,66 +24,105 @@ namespace SpeakeasySDK
     using System.Threading.Tasks;
 
     /// <summary>
-    /// REST APIs for retrieving Code Samples
+    /// REST APIs for retrieving Code Samples.
     /// </summary>
     public interface ICodeSamples
     {
-
         /// <summary>
         /// Generate Code Sample previews from a file and configuration parameters.
-        /// 
+        /// </summary>
         /// <remarks>
         /// This endpoint generates Code Sample previews from a file and configuration parameters.
         /// </remarks>
-        /// </summary>
-        Task<GenerateCodeSamplePreviewResponse> GenerateCodeSamplePreviewAsync(CodeSampleSchemaInput request);
+        /// <param name="request">A <see cref="CodeSampleSchemaInput"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="GenerateCodeSamplePreviewResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error">Error. Thrown when the API returns a 4XX or 5XX response.</exception>
+        /// <exception cref="SDKException">Default API Exception.</exception>
+        public  Task<GenerateCodeSamplePreviewResponse> GenerateCodeSamplePreviewAsync(CodeSampleSchemaInput request);
 
         /// <summary>
         /// Initiate asynchronous Code Sample preview generation from a file and configuration parameters, receiving an async JobID response for polling.
-        /// 
+        /// </summary>
         /// <remarks>
         /// This endpoint generates Code Sample previews from a file and configuration parameters, receiving an async JobID response for polling.
         /// </remarks>
-        /// </summary>
-        Task<GenerateCodeSamplePreviewAsyncResponse> GenerateCodeSamplePreviewAsyncAsync(CodeSampleSchemaInput request);
+        /// <param name="request">A <see cref="CodeSampleSchemaInput"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="GenerateCodeSamplePreviewAsyncResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error">Error. Thrown when the API returns a 4XX or 5XX response.</exception>
+        /// <exception cref="SDKException">Default API Exception.</exception>
+        public  Task<GenerateCodeSamplePreviewAsyncResponse> GenerateCodeSamplePreviewAsyncAsync(
+            CodeSampleSchemaInput request
+        );
 
         /// <summary>
         /// Poll for the result of an asynchronous Code Sample preview generation.
-        /// 
+        /// </summary>
         /// <remarks>
         /// Poll for the result of an asynchronous Code Sample preview generation.
         /// </remarks>
-        /// </summary>
-        Task<GetCodeSamplePreviewAsyncResponse> GetCodeSamplePreviewAsyncAsync(GetCodeSamplePreviewAsyncRequest request);
+        /// <param name="request">A <see cref="GetCodeSamplePreviewAsyncRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="GetCodeSamplePreviewAsyncResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error">Error. Thrown when the API returns a 4XX or 5XX response.</exception>
+        /// <exception cref="SDKException">Default API Exception.</exception>
+        public  Task<GetCodeSamplePreviewAsyncResponse> GetCodeSamplePreviewAsyncAsync(
+            GetCodeSamplePreviewAsyncRequest request
+        );
     }
 
     /// <summary>
-    /// REST APIs for retrieving Code Samples
+    /// REST APIs for retrieving Code Samples.
     /// </summary>
     public class CodeSamples: ICodeSamples
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public CodeSamples(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<GenerateCodeSamplePreviewResponse> GenerateCodeSamplePreviewAsync(CodeSampleSchemaInput request)
+        /// <summary>
+        /// Generate Code Sample previews from a file and configuration parameters.
+        /// </summary>
+        /// <remarks>
+        /// This endpoint generates Code Sample previews from a file and configuration parameters.
+        /// </remarks>
+        /// <param name="request">A <see cref="CodeSampleSchemaInput"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="GenerateCodeSamplePreviewResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error">Error. Thrown when the API returns a 4XX or 5XX response.</exception>
+        /// <exception cref="SDKException">Default API Exception.</exception>
+        public async  Task<GenerateCodeSamplePreviewResponse> GenerateCodeSamplePreviewAsync(
+            CodeSampleSchemaInput request
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
             var urlString = baseUrl + "/v1/code_sample/preview";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "Request", "multipart", false, false);
             if (serializedBody != null)
@@ -115,9 +154,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception error)
+            catch (Exception _hookError)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -203,16 +242,36 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<GenerateCodeSamplePreviewAsyncResponse> GenerateCodeSamplePreviewAsyncAsync(CodeSampleSchemaInput request)
+
+        /// <summary>
+        /// Initiate asynchronous Code Sample preview generation from a file and configuration parameters, receiving an async JobID response for polling.
+        /// </summary>
+        /// <remarks>
+        /// This endpoint generates Code Sample previews from a file and configuration parameters, receiving an async JobID response for polling.
+        /// </remarks>
+        /// <param name="request">A <see cref="CodeSampleSchemaInput"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="GenerateCodeSamplePreviewAsyncResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error">Error. Thrown when the API returns a 4XX or 5XX response.</exception>
+        /// <exception cref="SDKException">Default API Exception.</exception>
+        public async  Task<GenerateCodeSamplePreviewAsyncResponse> GenerateCodeSamplePreviewAsyncAsync(
+            CodeSampleSchemaInput request
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
             var urlString = baseUrl + "/v1/code_sample/preview/async";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "Request", "multipart", false, false);
             if (serializedBody != null)
@@ -244,9 +303,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception error)
+            catch (Exception _hookError)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -332,7 +391,23 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<GetCodeSamplePreviewAsyncResponse> GetCodeSamplePreviewAsyncAsync(GetCodeSamplePreviewAsyncRequest request)
+
+        /// <summary>
+        /// Poll for the result of an asynchronous Code Sample preview generation.
+        /// </summary>
+        /// <remarks>
+        /// Poll for the result of an asynchronous Code Sample preview generation.
+        /// </remarks>
+        /// <param name="request">A <see cref="GetCodeSamplePreviewAsyncRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="GetCodeSamplePreviewAsyncResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error">Error. Thrown when the API returns a 4XX or 5XX response.</exception>
+        /// <exception cref="SDKException">Default API Exception.</exception>
+        public async  Task<GetCodeSamplePreviewAsyncResponse> GetCodeSamplePreviewAsyncAsync(
+            GetCodeSamplePreviewAsyncRequest request
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -341,6 +416,11 @@ namespace SpeakeasySDK
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -366,9 +446,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception error)
+            catch (Exception _hookError)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -480,5 +560,6 @@ namespace SpeakeasySDK
 
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
+
     }
 }

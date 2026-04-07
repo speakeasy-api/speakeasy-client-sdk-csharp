@@ -13,13 +13,12 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
-    
+
     /// <summary>
-    /// The state of a particular SDK targets github setup
+    /// The state of a particular SDK targets github setup.
     /// </summary>
     public class GithubSetupStateResponse
     {
-
         [JsonProperty("actions")]
         public Actions Actions { get; set; } = default!;
 

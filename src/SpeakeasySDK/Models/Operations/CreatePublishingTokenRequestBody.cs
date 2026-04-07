@@ -13,13 +13,12 @@ namespace SpeakeasySDK.Models.Operations
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
     using System;
-    
+
     /// <summary>
-    /// The publishing token to create
+    /// The publishing token to create.
     /// </summary>
     public class CreatePublishingTokenRequestBody
     {
-
         [JsonProperty("target_id")]
         public string TargetId { get; set; } = default!;
 

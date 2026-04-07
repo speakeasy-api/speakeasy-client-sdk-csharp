@@ -13,13 +13,12 @@ namespace SpeakeasySDK.Models.Operations
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
     using System;
-    
+
     /// <summary>
-    /// The publishing token to update
+    /// The publishing token to update.
     /// </summary>
     public class UpdatePublishingTokenExpirationRequestBody
     {
-
         /// <summary>
         /// The new name for the publishing token.
         /// </summary>

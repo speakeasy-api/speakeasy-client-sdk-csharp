@@ -11,10 +11,9 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Utils;
-    
+
     public class GetPublishingTokenPublicMetadataRequest
     {
-
         /// <summary>
         /// Unique identifier of the publishing token.
         /// </summary>
