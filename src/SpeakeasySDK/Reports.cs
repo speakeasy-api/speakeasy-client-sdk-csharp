@@ -24,76 +24,45 @@ namespace SpeakeasySDK
     using System.Threading.Tasks;
 
     /// <summary>
-    /// REST APIs for managing reports (lint reports, change reports, etc).
+    /// REST APIs for managing reports (lint reports, change reports, etc)
     /// </summary>
     public interface IReports
     {
+
         /// <summary>
         /// Get the signed access url for the change reports for a particular document.
         /// </summary>
-        /// <param name="request">A <see cref="GetChangesReportSignedUrlRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GetChangesReportSignedUrlResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<GetChangesReportSignedUrlResponse> GetChangesReportSignedUrlAsync(
-            GetChangesReportSignedUrlRequest request
-        );
+        Task<GetChangesReportSignedUrlResponse> GetChangesReportSignedUrlAsync(GetChangesReportSignedUrlRequest request);
 
         /// <summary>
         /// Get the signed access url for the linting reports for a particular document.
         /// </summary>
-        /// <param name="request">A <see cref="GetLintingReportSignedUrlRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GetLintingReportSignedUrlResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<GetLintingReportSignedUrlResponse> GetLintingReportSignedUrlAsync(
-            GetLintingReportSignedUrlRequest request
-        );
+        Task<GetLintingReportSignedUrlResponse> GetLintingReportSignedUrlAsync(GetLintingReportSignedUrlRequest request);
 
         /// <summary>
         /// Upload a report.
         /// </summary>
-        /// <param name="request">The report file to upload provided as a multipart/form-data file segment.</param>
-        /// <returns>An awaitable task that returns a <see cref="UploadReportResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<UploadReportResponse> UploadReportAsync(UploadReportRequestBody request);
+        Task<UploadReportResponse> UploadReportAsync(UploadReportRequestBody request);
     }
 
     /// <summary>
-    /// REST APIs for managing reports (lint reports, change reports, etc).
+    /// REST APIs for managing reports (lint reports, change reports, etc)
     /// </summary>
     public class Reports: IReports
     {
-        /// <summary>
-        /// SDK Configuration.
-        /// <see cref="SDKConfig"/>
-        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
+
+        private const string _language = Constants.Language;
+        private const string _sdkVersion = Constants.SdkVersion;
+        private const string _sdkGenVersion = Constants.SdkGenVersion;
+        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public Reports(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        /// <summary>
-        /// Get the signed access url for the change reports for a particular document.
-        /// </summary>
-        /// <param name="request">A <see cref="GetChangesReportSignedUrlRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GetChangesReportSignedUrlResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<GetChangesReportSignedUrlResponse> GetChangesReportSignedUrlAsync(
-            GetChangesReportSignedUrlRequest request
-        )
+        public async Task<GetChangesReportSignedUrlResponse> GetChangesReportSignedUrlAsync(GetChangesReportSignedUrlRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -102,11 +71,6 @@ namespace SpeakeasySDK
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -132,9 +96,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -188,19 +152,7 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Get the signed access url for the linting reports for a particular document.
-        /// </summary>
-        /// <param name="request">A <see cref="GetLintingReportSignedUrlRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GetLintingReportSignedUrlResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<GetLintingReportSignedUrlResponse> GetLintingReportSignedUrlAsync(
-            GetLintingReportSignedUrlRequest request
-        )
+        public async Task<GetLintingReportSignedUrlResponse> GetLintingReportSignedUrlAsync(GetLintingReportSignedUrlRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -209,11 +161,6 @@ namespace SpeakeasySDK
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -239,9 +186,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -295,30 +242,16 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Upload a report.
-        /// </summary>
-        /// <param name="request">The report file to upload provided as a multipart/form-data file segment.</param>
-        /// <returns>An awaitable task that returns a <see cref="UploadReportResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<UploadReportResponse> UploadReportAsync(UploadReportRequestBody request)
+        public async Task<UploadReportResponse> UploadReportAsync(UploadReportRequestBody request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+
             var urlString = baseUrl + "/v1/reports";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "Request", "multipart", false, false);
             if (serializedBody != null)
@@ -350,9 +283,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -405,6 +338,5 @@ namespace SpeakeasySDK
 
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
-
     }
 }

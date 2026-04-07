@@ -164,11 +164,11 @@ var sdk = new SDK(
 PostWorkspaceEventsRequest req = new PostWorkspaceEventsRequest() {
     RequestBody = new List<CliEvent>() {
         new CliEvent() {
-            CreatedAt = System.DateTime.Parse("2024-02-16T09:12:42.397Z").ToUniversalTime(),
+            CreatedAt = System.DateTime.Parse("2024-02-16T09:12:42.397Z"),
             ExecutionId = "<id>",
             Id = "<id>",
             InteractionType = InteractionType.Quickstart,
-            LocalStartedAt = System.DateTime.Parse("2025-01-23T01:13:51.002Z").ToUniversalTime(),
+            LocalStartedAt = System.DateTime.Parse("2025-01-23T01:13:51.002Z"),
             SpeakeasyApiKeyName = "<value>",
             SpeakeasyVersion = "<value>",
             Success = true,

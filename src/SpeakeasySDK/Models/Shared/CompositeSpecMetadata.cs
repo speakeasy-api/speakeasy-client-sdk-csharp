@@ -13,9 +13,10 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
-
+    
     public class CompositeSpecMetadata
     {
+
         /// <summary>
         /// The subscription ID for the remote source subscription, if applicable. This indicates that the namespace is created by a remote source and thus is composite.
         /// </summary>

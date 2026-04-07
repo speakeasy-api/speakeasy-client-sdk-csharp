@@ -14,12 +14,13 @@ namespace SpeakeasySDK.Models.Shared
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System.Collections.Generic;
-
+    
     /// <summary>
-    /// Workspace feature flag response.
+    /// Workspace feature flag response
     /// </summary>
     public class WorkspaceFeatureFlagResponse
     {
+
         [JsonProperty("feature_flags")]
         public List<FeatureFlag>? FeatureFlags { get; set; }
     }

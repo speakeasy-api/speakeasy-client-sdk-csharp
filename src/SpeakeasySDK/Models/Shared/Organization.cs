@@ -17,12 +17,13 @@ namespace SpeakeasySDK.Models.Shared
     using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Linq;
-
+    
     /// <summary>
-    /// A speakeasy organization.
+    /// A speakeasy organization
     /// </summary>
     public class Organization
     {
+
         [JsonProperty("account_type")]
         public AccountType AccountType { get; set; } = default!;
 

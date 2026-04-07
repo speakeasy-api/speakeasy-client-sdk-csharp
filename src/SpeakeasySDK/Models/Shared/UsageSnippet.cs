@@ -12,35 +12,36 @@ namespace SpeakeasySDK.Models.Shared
 {
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
-
+    
     public class UsageSnippet
     {
+
         /// <summary>
-        /// The code snippet.
+        /// The code snippet
         /// </summary>
         [JsonProperty("code")]
         public string Code { get; set; } = default!;
 
         /// <summary>
-        /// The language of the snippet.
+        /// The language of the snippet
         /// </summary>
         [JsonProperty("language")]
         public string Language { get; set; } = default!;
 
         /// <summary>
-        /// The HTTP method of the operation.
+        /// The HTTP method of the operation
         /// </summary>
         [JsonProperty("method")]
         public object Method { get; set; } = default!;
 
         /// <summary>
-        /// The operation ID for the snippet.
+        /// The operation ID for the snippet
         /// </summary>
         [JsonProperty("operationId")]
         public string OperationId { get; set; } = default!;
 
         /// <summary>
-        /// The path of the operation.
+        /// The path of the operation
         /// </summary>
         [JsonProperty("path")]
         public string Path { get; set; } = default!;

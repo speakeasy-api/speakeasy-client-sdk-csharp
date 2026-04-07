@@ -11,11 +11,12 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Utils;
-
+    
     public class GetCodeSamplePreviewAsyncRequest
     {
+
         /// <summary>
-        /// The ID of the job to check the status and retrieve results.
+        /// The ID of the job to check the status and retrieve results
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=jobID")]
         public string JobID { get; set; } = default!;

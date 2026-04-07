@@ -13,9 +13,10 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
     using System;
-
+    
     public class AccessTokenUser
     {
+
         [JsonProperty("admin")]
         public bool? Admin { get; set; }
 
