@@ -11,10 +11,9 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Utils;
-    
+
     public class GrantUserAccessToWorkspaceRequest
     {
-
         /// <summary>
         /// Email of the user to grant access to.
         /// </summary>

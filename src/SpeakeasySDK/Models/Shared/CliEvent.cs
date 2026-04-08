@@ -14,10 +14,9 @@ namespace SpeakeasySDK.Models.Shared
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System;
-    
+
     public class CliEvent
     {
-
         /// <summary>
         /// Remote commit ID.
         /// </summary>
@@ -55,49 +54,49 @@ namespace SpeakeasySDK.Models.Shared
         public string ExecutionId { get; set; } = default!;
 
         /// <summary>
-        /// Bump type of the lock file (calculated semver delta, custom change (manual release), or prerelease/graduate)
+        /// Bump type of the lock file (calculated semver delta, custom change (manual release), or prerelease/graduate).
         /// </summary>
         [JsonProperty("generate_bump_type")]
         public GenerateBumpType? GenerateBumpType { get; set; }
 
         /// <summary>
-        /// Checksum of the configuration file (post generation)
+        /// Checksum of the configuration file (post generation).
         /// </summary>
         [JsonProperty("generate_config_post_checksum")]
         public string? GenerateConfigPostChecksum { get; set; }
 
         /// <summary>
-        /// Rendered configuration file (post generation)
+        /// Rendered configuration file (post generation).
         /// </summary>
         [JsonProperty("generate_config_post_raw")]
         public string? GenerateConfigPostRaw { get; set; }
 
         /// <summary>
-        /// The version of the customer&apos;s SDK that we just generated
+        /// The version of the customer's SDK that we just generated.
         /// </summary>
         [JsonProperty("generate_config_post_version")]
         public string? GenerateConfigPostVersion { get; set; }
 
         /// <summary>
-        /// Checksum of the configuration file (prior to generation)
+        /// Checksum of the configuration file (prior to generation).
         /// </summary>
         [JsonProperty("generate_config_pre_checksum")]
         public string? GenerateConfigPreChecksum { get; set; }
 
         /// <summary>
-        /// Rendered configuration file (prior to generation)
+        /// Rendered configuration file (prior to generation).
         /// </summary>
         [JsonProperty("generate_config_pre_raw")]
         public string? GenerateConfigPreRaw { get; set; }
 
         /// <summary>
-        /// The version of the customer&apos;s SDK before we generated
+        /// The version of the customer's SDK before we generated.
         /// </summary>
         [JsonProperty("generate_config_pre_version")]
         public string? GenerateConfigPreVersion { get; set; }
 
         /// <summary>
-        /// Eligible feature set during generation
+        /// Eligible feature set during generation.
         /// </summary>
         [JsonProperty("generate_eligible_features")]
         public string? GenerateEligibleFeatures { get; set; }
@@ -109,49 +108,49 @@ namespace SpeakeasySDK.Models.Shared
         public string? GenerateGenLockId { get; set; }
 
         /// <summary>
-        /// Features post generation
+        /// Features post generation.
         /// </summary>
         [JsonProperty("generate_gen_lock_post_features")]
         public string? GenerateGenLockPostFeatures { get; set; }
 
         /// <summary>
-        /// Blob digest of the Previous Generation
+        /// Blob digest of the Previous Generation.
         /// </summary>
         [JsonProperty("generate_gen_lock_pre_blob_digest")]
         public string? GenerateGenLockPreBlobDigest { get; set; }
 
         /// <summary>
-        /// Checksum of the Previous Rendered OpenAPI document (prior to generation, via gen lock)
+        /// Checksum of the Previous Rendered OpenAPI document (prior to generation, via gen lock).
         /// </summary>
         [JsonProperty("generate_gen_lock_pre_doc_checksum")]
         public string? GenerateGenLockPreDocChecksum { get; set; }
 
         /// <summary>
-        /// info.Version of the Previous Rendered OpenAPI document (prior to generation, via gen lock)
+        /// info.Version of the Previous Rendered OpenAPI document (prior to generation, via gen lock).
         /// </summary>
         [JsonProperty("generate_gen_lock_pre_doc_version")]
         public string? GenerateGenLockPreDocVersion { get; set; }
 
         /// <summary>
-        /// Features prior to generation
+        /// Features prior to generation.
         /// </summary>
         [JsonProperty("generate_gen_lock_pre_features")]
         public string? GenerateGenLockPreFeatures { get; set; }
 
         /// <summary>
-        /// Namespace name of the Previous Generation
+        /// Namespace name of the Previous Generation.
         /// </summary>
         [JsonProperty("generate_gen_lock_pre_namespace_name")]
         public string? GenerateGenLockPreNamespaceName { get; set; }
 
         /// <summary>
-        /// Revision digest of the Previous Generation
+        /// Revision digest of the Previous Generation.
         /// </summary>
         [JsonProperty("generate_gen_lock_pre_revision_digest")]
         public string? GenerateGenLockPreRevisionDigest { get; set; }
 
         /// <summary>
-        /// Artifact version for the Previous Generation
+        /// Artifact version for the Previous Generation.
         /// </summary>
         [JsonProperty("generate_gen_lock_pre_version")]
         public string? GenerateGenLockPreVersion { get; set; }
@@ -283,7 +282,7 @@ namespace SpeakeasySDK.Models.Shared
         public string? GitUserEmail { get; set; }
 
         /// <summary>
-        /// User&apos;s name from git configuration. (not GitHub username)
+        /// User's name from git configuration. (not GitHub username).
         /// </summary>
         [JsonProperty("git_user_name")]
         public string? GitUserName { get; set; }
@@ -361,7 +360,7 @@ namespace SpeakeasySDK.Models.Shared
         public string? ManagementDocVersion { get; set; }
 
         /// <summary>
-        /// Mermaid diagram
+        /// Mermaid diagram.
         /// </summary>
         [JsonProperty("mermaid_diagram")]
         public string? MermaidDiagram { get; set; }
@@ -391,7 +390,7 @@ namespace SpeakeasySDK.Models.Shared
         public long? OpenapiDiffBreakingChangesCount { get; set; }
 
         /// <summary>
-        /// Bump type of the lock file (calculated semver delta, or a custom change (manual release))
+        /// Bump type of the lock file (calculated semver delta, or a custom change (manual release)).
         /// </summary>
         [JsonProperty("openapi_diff_bump_type")]
         public OpenapiDiffBumpType? OpenapiDiffBumpType { get; set; }
@@ -475,31 +474,31 @@ namespace SpeakeasySDK.Models.Shared
         public bool Success { get; set; } = default!;
 
         /// <summary>
-        /// The raw test report xml
+        /// The raw test report xml.
         /// </summary>
         [JsonProperty("test_report_raw")]
         public string? TestReportRaw { get; set; }
 
         /// <summary>
-        /// Workflow lock file (post execution)
+        /// Workflow lock file (post execution).
         /// </summary>
         [JsonProperty("workflow_lock_post_raw")]
         public string? WorkflowLockPostRaw { get; set; }
 
         /// <summary>
-        /// Workflow lock file (prior to execution)
+        /// Workflow lock file (prior to execution).
         /// </summary>
         [JsonProperty("workflow_lock_pre_raw")]
         public string? WorkflowLockPreRaw { get; set; }
 
         /// <summary>
-        /// Workflow file (post execution)
+        /// Workflow file (post execution).
         /// </summary>
         [JsonProperty("workflow_post_raw")]
         public string? WorkflowPostRaw { get; set; }
 
         /// <summary>
-        /// Workflow file (prior to execution)
+        /// Workflow file (prior to execution).
         /// </summary>
         [JsonProperty("workflow_pre_raw")]
         public string? WorkflowPreRaw { get; set; }

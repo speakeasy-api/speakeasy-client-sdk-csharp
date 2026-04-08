@@ -13,7 +13,7 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
     using System;
-    
+
     /// <summary>
     /// The current status of the job. Possible values are `pending` or `running`.
     /// </summary>
@@ -57,5 +57,4 @@ namespace SpeakeasySDK.Models.Shared
             throw new Exception($"Unknown value {value} for enum CodeSamplesJobStatus");
         }
     }
-
 }

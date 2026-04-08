@@ -13,7 +13,7 @@ namespace SpeakeasySDK.Models.Operations
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
     using System;
-    
+
     /// <summary>
     /// The format of the OpenAPI specification.
     /// </summary>
@@ -57,5 +57,4 @@ namespace SpeakeasySDK.Models.Operations
             throw new Exception($"Unknown value {value} for enum Format");
         }
     }
-
 }

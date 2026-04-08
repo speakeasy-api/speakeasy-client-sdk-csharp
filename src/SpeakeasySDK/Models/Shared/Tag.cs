@@ -12,10 +12,9 @@ namespace SpeakeasySDK.Models.Shared
 {
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
-    
+
     public class Tag
     {
-
         /// <summary>
         /// Format {namespace_id}/{tag}
         /// </summary>
@@ -23,7 +22,7 @@ namespace SpeakeasySDK.Models.Shared
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// Human readable tag name
+        /// Human readable tag name.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; } = default!;

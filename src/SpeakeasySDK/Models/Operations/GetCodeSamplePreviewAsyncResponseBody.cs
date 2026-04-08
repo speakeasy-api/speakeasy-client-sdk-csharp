@@ -13,13 +13,12 @@ namespace SpeakeasySDK.Models.Operations
     using Newtonsoft.Json;
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
-    
+
     /// <summary>
-    /// Job is still in progress
+    /// Job is still in progress.
     /// </summary>
     public class GetCodeSamplePreviewAsyncResponseBody
     {
-
         /// <summary>
         /// The current status of the job. Possible values are `pending` or `running`.
         /// </summary>

@@ -24,60 +24,103 @@ namespace SpeakeasySDK
     using System.Threading.Tasks;
 
     /// <summary>
-    /// REST APIs for managing Authentication
+    /// REST APIs for managing Authentication.
     /// </summary>
     public interface IAuth
     {
-
         /// <summary>
-        /// Get access allowances for a particular workspace
-        /// 
-        /// <remarks>
-        /// Checks if generation is permitted for a particular run of the CLI
-        /// </remarks>
+        /// Get access allowances for a particular workspace.
         /// </summary>
-        Task<GetWorkspaceAccessResponse> GetAccessAsync(GetWorkspaceAccessRequest? request = null, RetryConfig? retryConfig = null);
+        /// <remarks>
+        /// Checks if generation is permitted for a particular run of the CLI.
+        /// </remarks>
+        /// <param name="request">A <see cref="GetWorkspaceAccessRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="GetWorkspaceAccessResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<GetWorkspaceAccessResponse> GetAccessAsync(
+            GetWorkspaceAccessRequest? request = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
         /// Get or refresh an access token for the current workspace.
         /// </summary>
-        Task<GetAccessTokenResponse> GetAccessTokenAsync(GetAccessTokenRequest request);
+        /// <param name="request">A <see cref="GetAccessTokenRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="GetAccessTokenResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
+        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
+        public  Task<GetAccessTokenResponse> GetAccessTokenAsync(GetAccessTokenRequest request);
 
         /// <summary>
         /// Get information about the current user.
         /// </summary>
-        Task<GetUserResponse> GetUserAsync();
+        /// <returns>An awaitable task that returns a <see cref="GetUserResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
+        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
+        public  Task<GetUserResponse> GetUserAsync();
 
         /// <summary>
         /// Validate the current api key.
         /// </summary>
-        Task<ValidateApiKeyResponse> ValidateApiKeyAsync();
+        /// <returns>An awaitable task that returns a <see cref="ValidateApiKeyResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
+        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
+        public  Task<ValidateApiKeyResponse> ValidateApiKeyAsync();
     }
 
     /// <summary>
-    /// REST APIs for managing Authentication
+    /// REST APIs for managing Authentication.
     /// </summary>
     public class Auth: IAuth
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public Auth(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<GetWorkspaceAccessResponse> GetAccessAsync(GetWorkspaceAccessRequest? request = null, RetryConfig? retryConfig = null)
+        /// <summary>
+        /// Get access allowances for a particular workspace.
+        /// </summary>
+        /// <remarks>
+        /// Checks if generation is permitted for a particular run of the CLI.
+        /// </remarks>
+        /// <param name="request">A <see cref="GetWorkspaceAccessRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="GetWorkspaceAccessResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<GetWorkspaceAccessResponse> GetAccessAsync(
+            GetWorkspaceAccessRequest? request = null,
+            RetryConfig? retryConfig = null
+        )
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/access", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -139,9 +182,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception error)
+            catch (Exception _hookError)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -195,17 +238,32 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<GetAccessTokenResponse> GetAccessTokenAsync(GetAccessTokenRequest request)
+
+        /// <summary>
+        /// Get or refresh an access token for the current workspace.
+        /// </summary>
+        /// <param name="request">A <see cref="GetAccessTokenRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="GetAccessTokenResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
+        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
+        public async  Task<GetAccessTokenResponse> GetAccessTokenAsync(GetAccessTokenRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.WorkspaceId ??= SDKConfiguration.WorkspaceId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/auth/access_token", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
 
             var hookCtx = new HookContext(SDKConfiguration, baseUrl, "getAccessToken", null, null);
 
@@ -226,9 +284,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception error)
+            catch (Exception _hookError)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -298,14 +356,27 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<GetUserResponse> GetUserAsync()
+
+        /// <summary>
+        /// Get information about the current user.
+        /// </summary>
+        /// <returns>An awaitable task that returns a <see cref="GetUserResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
+        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
+        public async  Task<GetUserResponse> GetUserAsync()
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
             var urlString = baseUrl + "/v1/user";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -331,9 +402,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception error)
+            catch (Exception _hookError)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -403,14 +474,27 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<ValidateApiKeyResponse> ValidateApiKeyAsync()
+
+        /// <summary>
+        /// Validate the current api key.
+        /// </summary>
+        /// <returns>An awaitable task that returns a <see cref="ValidateApiKeyResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
+        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
+        public async  Task<ValidateApiKeyResponse> ValidateApiKeyAsync()
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
             var urlString = baseUrl + "/v1/auth/validate";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -436,9 +520,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception error)
+            catch (Exception _hookError)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -507,5 +591,6 @@ namespace SpeakeasySDK
 
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
+
     }
 }

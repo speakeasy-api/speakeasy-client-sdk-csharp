@@ -39,12 +39,12 @@ var sdk = new SDK(security: new Security() {
 });
 
 Workspace req = new Workspace() {
-    CreatedAt = System.DateTime.Parse("2024-11-17T13:41:10.525Z"),
+    CreatedAt = System.DateTime.Parse("2024-11-17T13:41:10.525Z").ToUniversalTime(),
     Id = "<id>",
     Name = "<value>",
     OrganizationId = "<id>",
     Slug = "<value>",
-    UpdatedAt = System.DateTime.Parse("2025-11-21T08:36:32.740Z"),
+    UpdatedAt = System.DateTime.Parse("2025-11-21T08:36:32.740Z").ToUniversalTime(),
     Verified = true,
 };
 
@@ -93,7 +93,7 @@ var sdk = new SDK(
 CreateWorkspaceTokenRequest req = new CreateWorkspaceTokenRequest() {
     WorkspaceToken = new WorkspaceToken() {
         Alg = "<value>",
-        CreatedAt = System.DateTime.Parse("2025-10-04T10:23:04.522Z"),
+        CreatedAt = System.DateTime.Parse("2025-10-04T10:23:04.522Z").ToUniversalTime(),
         Id = "<id>",
         Key = "<key>",
         Name = "<value>",
@@ -599,12 +599,12 @@ var sdk = new SDK(
 
 UpdateWorkspaceDetailsRequest req = new UpdateWorkspaceDetailsRequest() {
     Workspace = new Workspace() {
-        CreatedAt = System.DateTime.Parse("2024-08-01T22:30:24.264Z"),
+        CreatedAt = System.DateTime.Parse("2024-08-01T22:30:24.264Z").ToUniversalTime(),
         Id = "<id>",
         Name = "<value>",
         OrganizationId = "<id>",
         Slug = "<value>",
-        UpdatedAt = System.DateTime.Parse("2026-01-24T03:53:13.581Z"),
+        UpdatedAt = System.DateTime.Parse("2026-01-24T03:53:13.581Z").ToUniversalTime(),
         Verified = true,
     },
 };
@@ -653,8 +653,8 @@ var sdk = new SDK(
 
 UpdateWorkspaceSettingsRequest req = new UpdateWorkspaceSettingsRequest() {
     WorkspaceSettings = new WorkspaceSettings() {
-        CreatedAt = System.DateTime.Parse("2026-03-09T15:48:09.330Z"),
-        UpdatedAt = System.DateTime.Parse("2026-11-24T16:37:53.492Z"),
+        CreatedAt = System.DateTime.Parse("2026-03-09T15:48:09.330Z").ToUniversalTime(),
+        UpdatedAt = System.DateTime.Parse("2026-11-24T16:37:53.492Z").ToUniversalTime(),
         WebhookUrl = "https://wobbly-lid.org",
         WorkspaceId = "<id>",
     },

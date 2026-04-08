@@ -13,13 +13,12 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
     using System;
-    
+
     /// <summary>
-    /// A workspace token
+    /// A workspace token.
     /// </summary>
     public class WorkspaceToken
     {
-
         [JsonProperty("alg")]
         public string Alg { get; set; } = default!;
 

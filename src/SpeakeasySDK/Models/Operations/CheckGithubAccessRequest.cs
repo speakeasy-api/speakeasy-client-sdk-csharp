@@ -11,10 +11,9 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Utils;
-    
+
     public class CheckGithubAccessRequest
     {
-
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=org")]
         public string Org { get; set; } = default!;
 
