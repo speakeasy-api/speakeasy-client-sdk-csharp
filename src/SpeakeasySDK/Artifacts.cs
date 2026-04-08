@@ -24,170 +24,84 @@ namespace SpeakeasySDK
     using System.Threading.Tasks;
 
     /// <summary>
-    /// REST APIs for working with Registry artifacts.
+    /// REST APIs for working with Registry artifacts
     /// </summary>
     public interface IArtifacts
     {
-        /// <summary>
-        /// Configure a new remote source.
-        /// </summary>
-        /// <param name="request">The configuration for the remote source.</param>
-        /// <returns>An awaitable task that returns a <see cref="CreateRemoteSourceResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<CreateRemoteSourceResponse> CreateRemoteSourceAsync(RemoteSource? request = null);
 
         /// <summary>
-        /// Get blob for a particular digest.
+        /// Configure a new remote source
         /// </summary>
-        /// <param name="request">A <see cref="GetBlobRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GetBlobResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<GetBlobResponse> GetBlobAsync(GetBlobRequest request);
+        Task<CreateRemoteSourceResponse> CreateRemoteSourceAsync(RemoteSource? request = null);
 
         /// <summary>
-        /// Get manifest for a particular reference.
+        /// Get blob for a particular digest
         /// </summary>
-        /// <param name="request">A <see cref="GetManifestRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GetManifestResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<GetManifestResponse> GetManifestAsync(GetManifestRequest request);
+        Task<GetBlobResponse> GetBlobAsync(GetBlobRequest request);
+
+        /// <summary>
+        /// Get manifest for a particular reference
+        /// </summary>
+        Task<GetManifestResponse> GetManifestAsync(GetManifestRequest request);
 
         /// <summary>
         /// Each namespace contains many revisions.
         /// </summary>
-        /// <returns>An awaitable task that returns a <see cref="Models.Operations.GetNamespacesResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<Models.Operations.GetNamespacesResponse> GetNamespacesAsync();
-
-        /// <param name="request">A <see cref="GetRevisionsRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="Models.Operations.GetRevisionsResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<Models.Operations.GetRevisionsResponse> GetRevisionsAsync(GetRevisionsRequest request);
-
-        /// <param name="request">A <see cref="GetTagsRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="Models.Operations.GetTagsResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<Models.Operations.GetTagsResponse> GetTagsAsync(GetTagsRequest request);
+        Task<Models.Operations.GetNamespacesResponse> GetNamespacesAsync();
+        Task<Models.Operations.GetRevisionsResponse> GetRevisionsAsync(GetRevisionsRequest request);
+        Task<Models.Operations.GetTagsResponse> GetTagsAsync(GetTagsRequest request);
 
         /// <summary>
-        /// Get remote sources attached to a particular namespace.
+        /// Get remote sources attached to a particular namespace
         /// </summary>
-        /// <param name="request">A <see cref="ListRemoteSourcesRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="ListRemoteSourcesResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<ListRemoteSourcesResponse> ListRemoteSourcesAsync(ListRemoteSourcesRequest request);
+        Task<ListRemoteSourcesResponse> ListRemoteSourcesAsync(ListRemoteSourcesRequest request);
 
         /// <summary>
-        /// Add tags to an existing revision.
+        /// Add tags to an existing revision
         /// </summary>
-        /// <param name="request">A <see cref="PostTagsRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="PostTagsResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<PostTagsResponse> PostTagsAsync(PostTagsRequest request);
+        Task<PostTagsResponse> PostTagsAsync(PostTagsRequest request);
 
         /// <summary>
-        /// Get access token for communicating with OCI distribution endpoints.
+        /// Get access token for communicating with OCI distribution endpoints
         /// </summary>
-        /// <param name="request">A <see cref="PreflightRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="PreflightResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<PreflightResponse> PreflightAsync(PreflightRequest? request = null);
+        Task<PreflightResponse> PreflightAsync(PreflightRequest? request = null);
 
         /// <summary>
-        /// Set whether a namespace is archived.
+        /// Set whether a namespace is archived
         /// </summary>
-        /// <param name="request">A <see cref="ArchiveNamespaceRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="ArchiveNamespaceResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<ArchiveNamespaceResponse> SetArchivedAsync(ArchiveNamespaceRequest request);
+        Task<ArchiveNamespaceResponse> SetArchivedAsync(ArchiveNamespaceRequest request);
 
         /// <summary>
-        /// Set visibility of a namespace with an existing metadata entry.
+        /// Set visibility of a namespace with an existing metadata entry
         /// </summary>
-        /// <param name="request">A <see cref="SetVisibilityRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="SetVisibilityResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<SetVisibilityResponse> SetVisibilityAsync(SetVisibilityRequest request);
+        Task<SetVisibilityResponse> SetVisibilityAsync(SetVisibilityRequest request);
     }
 
     /// <summary>
-    /// REST APIs for working with Registry artifacts.
+    /// REST APIs for working with Registry artifacts
     /// </summary>
     public class Artifacts: IArtifacts
     {
-        /// <summary>
-        /// SDK Configuration.
-        /// <see cref="SDKConfig"/>
-        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
+
+        private const string _language = Constants.Language;
+        private const string _sdkVersion = Constants.SdkVersion;
+        private const string _sdkGenVersion = Constants.SdkGenVersion;
+        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public Artifacts(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        /// <summary>
-        /// Configure a new remote source.
-        /// </summary>
-        /// <param name="request">The configuration for the remote source.</param>
-        /// <returns>An awaitable task that returns a <see cref="CreateRemoteSourceResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<CreateRemoteSourceResponse> CreateRemoteSourceAsync(RemoteSource? request = null)
+        public async Task<CreateRemoteSourceResponse> CreateRemoteSourceAsync(RemoteSource? request = null)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+
             var urlString = baseUrl + "/v1/artifacts/remote_sources";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json", false, true);
             if (serializedBody != null)
@@ -219,9 +133,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -273,18 +187,7 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Get blob for a particular digest.
-        /// </summary>
-        /// <param name="request">A <see cref="GetBlobRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GetBlobResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<GetBlobResponse> GetBlobAsync(GetBlobRequest request)
+        public async Task<GetBlobResponse> GetBlobAsync(GetBlobRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -293,11 +196,6 @@ namespace SpeakeasySDK
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/octet-stream");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -323,9 +221,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -384,18 +282,7 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Get manifest for a particular reference.
-        /// </summary>
-        /// <param name="request">A <see cref="GetManifestRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GetManifestResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<GetManifestResponse> GetManifestAsync(GetManifestRequest request)
+        public async Task<GetManifestResponse> GetManifestAsync(GetManifestRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -404,11 +291,6 @@ namespace SpeakeasySDK
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/vnd.oci.image.manifest.v1+json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -434,9 +316,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -506,27 +388,14 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Each namespace contains many revisions.
-        /// </summary>
-        /// <returns>An awaitable task that returns a <see cref="Models.Operations.GetNamespacesResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<Models.Operations.GetNamespacesResponse> GetNamespacesAsync()
+        public async Task<Models.Operations.GetNamespacesResponse> GetNamespacesAsync()
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+
             var urlString = baseUrl + "/v1/artifacts/namespaces";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -552,9 +421,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -624,15 +493,7 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <param name="request">A <see cref="GetRevisionsRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="Models.Operations.GetRevisionsResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<Models.Operations.GetRevisionsResponse> GetRevisionsAsync(GetRevisionsRequest request)
+        public async Task<Models.Operations.GetRevisionsResponse> GetRevisionsAsync(GetRevisionsRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -641,11 +502,6 @@ namespace SpeakeasySDK
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -671,9 +527,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -743,15 +599,7 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <param name="request">A <see cref="GetTagsRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="Models.Operations.GetTagsResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<Models.Operations.GetTagsResponse> GetTagsAsync(GetTagsRequest request)
+        public async Task<Models.Operations.GetTagsResponse> GetTagsAsync(GetTagsRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -760,11 +608,6 @@ namespace SpeakeasySDK
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -790,9 +633,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -862,18 +705,7 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Get remote sources attached to a particular namespace.
-        /// </summary>
-        /// <param name="request">A <see cref="ListRemoteSourcesRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="ListRemoteSourcesResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<ListRemoteSourcesResponse> ListRemoteSourcesAsync(ListRemoteSourcesRequest request)
+        public async Task<ListRemoteSourcesResponse> ListRemoteSourcesAsync(ListRemoteSourcesRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -882,11 +714,6 @@ namespace SpeakeasySDK
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -912,9 +739,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -984,18 +811,7 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Add tags to an existing revision.
-        /// </summary>
-        /// <param name="request">A <see cref="PostTagsRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="PostTagsResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<PostTagsResponse> PostTagsAsync(PostTagsRequest request)
+        public async Task<PostTagsResponse> PostTagsAsync(PostTagsRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -1004,11 +820,6 @@ namespace SpeakeasySDK
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "AddTags", "json", false, true);
             if (serializedBody != null)
@@ -1040,9 +851,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -1094,28 +905,14 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Get access token for communicating with OCI distribution endpoints.
-        /// </summary>
-        /// <param name="request">A <see cref="PreflightRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="PreflightResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<PreflightResponse> PreflightAsync(PreflightRequest? request = null)
+        public async Task<PreflightResponse> PreflightAsync(PreflightRequest? request = null)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+
             var urlString = baseUrl + "/v1/artifacts/preflight";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json", false, true);
             if (serializedBody != null)
@@ -1147,9 +944,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -1219,18 +1016,7 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Set whether a namespace is archived.
-        /// </summary>
-        /// <param name="request">A <see cref="ArchiveNamespaceRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="ArchiveNamespaceResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<ArchiveNamespaceResponse> SetArchivedAsync(ArchiveNamespaceRequest request)
+        public async Task<ArchiveNamespaceResponse> SetArchivedAsync(ArchiveNamespaceRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -1239,11 +1025,6 @@ namespace SpeakeasySDK
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "json", false, true);
             if (serializedBody != null)
@@ -1275,9 +1056,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -1329,18 +1110,7 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Set visibility of a namespace with an existing metadata entry.
-        /// </summary>
-        /// <param name="request">A <see cref="SetVisibilityRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="SetVisibilityResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<SetVisibilityResponse> SetVisibilityAsync(SetVisibilityRequest request)
+        public async Task<SetVisibilityResponse> SetVisibilityAsync(SetVisibilityRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -1349,11 +1119,6 @@ namespace SpeakeasySDK
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "json", false, true);
             if (serializedBody != null)
@@ -1385,9 +1150,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -1438,6 +1203,5 @@ namespace SpeakeasySDK
 
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
-
     }
 }

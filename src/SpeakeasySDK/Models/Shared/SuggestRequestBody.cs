@@ -14,9 +14,10 @@ namespace SpeakeasySDK.Models.Shared
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System.Collections.Generic;
-
+    
     public class SuggestRequestBody
     {
+
         [JsonProperty("diagnostics")]
         public List<Diagnostic> Diagnostics { get; set; } = default!;
 

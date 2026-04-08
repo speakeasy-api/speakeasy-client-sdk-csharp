@@ -11,9 +11,10 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Utils;
-
+    
     public class GetBlobRequest
     {
+
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=digest")]
         public string Digest { get; set; } = default!;
 

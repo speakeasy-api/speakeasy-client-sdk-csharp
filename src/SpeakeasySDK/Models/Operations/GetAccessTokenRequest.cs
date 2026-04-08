@@ -11,11 +11,12 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Utils;
-
+    
     public class GetAccessTokenRequest
     {
+
         /// <summary>
-        /// The workspace ID.
+        /// The workspace ID
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=workspace_id")]
         public string WorkspaceId { get; set; } = default!;

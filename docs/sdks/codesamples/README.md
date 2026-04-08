@@ -16,7 +16,7 @@ This endpoint generates Code Sample previews from a file and configuration param
 
 ### Example Usage
 
-<!-- UsageSnippet language="csharp" operationID="generateCodeSamplePreview" method="post" path="/v1/code_sample/preview" example="default" -->
+<!-- UsageSnippet language="csharp" operationID="generateCodeSamplePreview" method="post" path="/v1/code_sample/preview" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Shared;
@@ -106,7 +106,7 @@ Poll for the result of an asynchronous Code Sample preview generation.
 
 ### Example Usage
 
-<!-- UsageSnippet language="csharp" operationID="getCodeSamplePreviewAsync" method="get" path="/v1/code_sample/preview/async/{jobID}" example="default" -->
+<!-- UsageSnippet language="csharp" operationID="getCodeSamplePreviewAsync" method="get" path="/v1/code_sample/preview/async/{jobID}" -->
 ```csharp
 using SpeakeasySDK;
 using SpeakeasySDK.Models.Operations;

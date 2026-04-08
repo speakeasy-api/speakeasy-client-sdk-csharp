@@ -11,9 +11,10 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Utils;
-
+    
     public class LinkGithubAccessRequest
     {
+
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=github_oidc_token")]
         public string? GithubOidcToken { get; set; }
 

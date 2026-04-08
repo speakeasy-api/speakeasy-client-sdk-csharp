@@ -12,20 +12,21 @@ namespace SpeakeasySDK.Models.Shared
 {
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
-
+    
     /// <summary>
-    /// response to a getting the latest action run on a GitHub request.
+    /// response to a getting the latest action run on a GitHub request
     /// </summary>
     public class GithubGetActionResponse
     {
+
         /// <summary>
-        /// The status of the latest action run if available.
+        /// The status of the latest action run if available
         /// </summary>
         [JsonProperty("run_status")]
         public string? RunStatus { get; set; }
 
         /// <summary>
-        /// The URL for latest action run if available.
+        /// The URL for latest action run if available
         /// </summary>
         [JsonProperty("run_url")]
         public string? RunUrl { get; set; }

@@ -24,157 +24,99 @@ namespace SpeakeasySDK
     using System.Threading.Tasks;
 
     /// <summary>
-    /// REST APIs for managing Organizations (speakeasy L1 Tenancy construct).
+    /// REST APIs for managing Organizations (speakeasy L1 Tenancy construct)
     /// </summary>
     public interface IOrganizations
     {
+
         /// <summary>
-        /// Create an organization.
-        /// </summary>
+        /// Create an organization
+        /// 
         /// <remarks>
-        /// Creates an organization.
+        /// Creates an organization
         /// </remarks>
-        /// <param name="request">The organization to create.</param>
-        /// <returns>An awaitable task that returns a <see cref="CreateOrganizationResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<CreateOrganizationResponse> CreateAsync(Organization request);
+        /// </summary>
+        Task<CreateOrganizationResponse> CreateAsync(Organization request);
 
         /// <summary>
-        /// Create billing add ons.
+        /// Create billing add ons
         /// </summary>
-        /// <param name="request">A <see cref="OrganizationBillingAddOnRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="CreateBillingAddOnsResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Error. Thrown when the API returns a 5XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX response.</exception>
-        public  Task<CreateBillingAddOnsResponse> CreateBillingAddOnsAsync(OrganizationBillingAddOnRequest request);
+        Task<CreateBillingAddOnsResponse> CreateBillingAddOnsAsync(OrganizationBillingAddOnRequest request);
 
         /// <summary>
-        /// Create a free trial for an organization.
-        /// </summary>
+        /// Create a free trial for an organization
+        /// 
         /// <remarks>
-        /// Creates a free trial for an organization.
+        /// Creates a free trial for an organization
         /// </remarks>
-        /// <returns>An awaitable task that returns a <see cref="CreateFreeTrialResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<CreateFreeTrialResponse> CreateFreeTrialAsync();
+        /// </summary>
+        Task<CreateFreeTrialResponse> CreateFreeTrialAsync();
 
         /// <summary>
-        /// Delete billing add ons.
+        /// Delete billing add ons
         /// </summary>
-        /// <param name="request">A <see cref="DeleteBillingAddOnRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="DeleteBillingAddOnResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Error. Thrown when the API returns a 5XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX response.</exception>
-        public  Task<DeleteBillingAddOnResponse> DeleteBillingAddOnAsync(DeleteBillingAddOnRequest request);
+        Task<DeleteBillingAddOnResponse> DeleteBillingAddOnAsync(DeleteBillingAddOnRequest request);
 
         /// <summary>
-        /// Get organization.
-        /// </summary>
+        /// Get organization
+        /// 
         /// <remarks>
         /// Get information about a particular organization.
         /// </remarks>
-        /// <param name="request">A <see cref="GetOrganizationRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GetOrganizationResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<GetOrganizationResponse> GetAsync(GetOrganizationRequest request);
+        /// </summary>
+        Task<GetOrganizationResponse> GetAsync(GetOrganizationRequest request);
 
         /// <summary>
-        /// Get organizations for a user.
-        /// </summary>
+        /// Get organizations for a user
+        /// 
         /// <remarks>
-        /// Returns a list of organizations a user has access too.
+        /// Returns a list of organizations a user has access too
         /// </remarks>
-        /// <returns>An awaitable task that returns a <see cref="GetOrganizationsResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<GetOrganizationsResponse> GetAllAsync();
+        /// </summary>
+        Task<GetOrganizationsResponse> GetAllAsync();
 
         /// <summary>
-        /// Get billing add ons.
+        /// Get billing add ons
         /// </summary>
-        /// <returns>An awaitable task that returns a <see cref="GetBillingAddOnsResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Error. Thrown when the API returns a 5XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX response.</exception>
-        public  Task<GetBillingAddOnsResponse> GetBillingAddOnsAsync();
+        Task<GetBillingAddOnsResponse> GetBillingAddOnsAsync();
 
         /// <summary>
-        /// Get billing usage summary for a particular organization.
-        /// </summary>
+        /// Get billing usage summary for a particular organization
+        /// 
         /// <remarks>
-        /// Returns a billing usage summary by target languages for a particular organization.
+        /// Returns a billing usage summary by target languages for a particular organization
         /// </remarks>
-        /// <returns>An awaitable task that returns a <see cref="GetOrganizationUsageResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<GetOrganizationUsageResponse> GetUsageAsync();
+        /// </summary>
+        Task<GetOrganizationUsageResponse> GetUsageAsync();
     }
 
     /// <summary>
-    /// REST APIs for managing Organizations (speakeasy L1 Tenancy construct).
+    /// REST APIs for managing Organizations (speakeasy L1 Tenancy construct)
     /// </summary>
     public class Organizations: IOrganizations
     {
-        /// <summary>
-        /// SDK Configuration.
-        /// <see cref="SDKConfig"/>
-        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
+
+        private const string _language = Constants.Language;
+        private const string _sdkVersion = Constants.SdkVersion;
+        private const string _sdkGenVersion = Constants.SdkGenVersion;
+        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public Organizations(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        /// <summary>
-        /// Create an organization.
-        /// </summary>
-        /// <remarks>
-        /// Creates an organization.
-        /// </remarks>
-        /// <param name="request">The organization to create.</param>
-        /// <returns>An awaitable task that returns a <see cref="CreateOrganizationResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<CreateOrganizationResponse> CreateAsync(Organization request)
+        public async Task<CreateOrganizationResponse> CreateAsync(Organization request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+
             var urlString = baseUrl + "/v1/organization";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json", false, false);
             if (serializedBody != null)
@@ -206,9 +148,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -278,31 +220,16 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Create billing add ons.
-        /// </summary>
-        /// <param name="request">A <see cref="OrganizationBillingAddOnRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="CreateBillingAddOnsResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Error. Thrown when the API returns a 5XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX response.</exception>
-        public async  Task<CreateBillingAddOnsResponse> CreateBillingAddOnsAsync(OrganizationBillingAddOnRequest request)
+        public async Task<CreateBillingAddOnsResponse> CreateBillingAddOnsAsync(OrganizationBillingAddOnRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+
             var urlString = baseUrl + "/v1/organization/add_ons";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json", false, false);
             if (serializedBody != null)
@@ -334,9 +261,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -406,30 +333,14 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Create a free trial for an organization.
-        /// </summary>
-        /// <remarks>
-        /// Creates a free trial for an organization.
-        /// </remarks>
-        /// <returns>An awaitable task that returns a <see cref="CreateFreeTrialResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<CreateFreeTrialResponse> CreateFreeTrialAsync()
+        public async Task<CreateFreeTrialResponse> CreateFreeTrialAsync()
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+
             var urlString = baseUrl + "/v1/organization/free_trial";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -455,9 +366,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -509,18 +420,7 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Delete billing add ons.
-        /// </summary>
-        /// <param name="request">A <see cref="DeleteBillingAddOnRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="DeleteBillingAddOnResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Error. Thrown when the API returns a 5XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX response.</exception>
-        public async  Task<DeleteBillingAddOnResponse> DeleteBillingAddOnAsync(DeleteBillingAddOnRequest request)
+        public async Task<DeleteBillingAddOnResponse> DeleteBillingAddOnAsync(DeleteBillingAddOnRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -529,11 +429,6 @@ namespace SpeakeasySDK
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -559,9 +454,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -613,21 +508,7 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Get organization.
-        /// </summary>
-        /// <remarks>
-        /// Get information about a particular organization.
-        /// </remarks>
-        /// <param name="request">A <see cref="GetOrganizationRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GetOrganizationResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<GetOrganizationResponse> GetAsync(GetOrganizationRequest request)
+        public async Task<GetOrganizationResponse> GetAsync(GetOrganizationRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -636,11 +517,6 @@ namespace SpeakeasySDK
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -666,9 +542,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -738,30 +614,14 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Get organizations for a user.
-        /// </summary>
-        /// <remarks>
-        /// Returns a list of organizations a user has access too.
-        /// </remarks>
-        /// <returns>An awaitable task that returns a <see cref="GetOrganizationsResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<GetOrganizationsResponse> GetAllAsync()
+        public async Task<GetOrganizationsResponse> GetAllAsync()
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+
             var urlString = baseUrl + "/v1/organizations";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -787,9 +647,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -859,27 +719,14 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Get billing add ons.
-        /// </summary>
-        /// <returns>An awaitable task that returns a <see cref="GetBillingAddOnsResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Error. Thrown when the API returns a 5XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX response.</exception>
-        public async  Task<GetBillingAddOnsResponse> GetBillingAddOnsAsync()
+        public async Task<GetBillingAddOnsResponse> GetBillingAddOnsAsync()
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+
             var urlString = baseUrl + "/v1/organization/add_ons";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -905,9 +752,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -977,30 +824,14 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Get billing usage summary for a particular organization.
-        /// </summary>
-        /// <remarks>
-        /// Returns a billing usage summary by target languages for a particular organization.
-        /// </remarks>
-        /// <returns>An awaitable task that returns a <see cref="GetOrganizationUsageResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<GetOrganizationUsageResponse> GetUsageAsync()
+        public async Task<GetOrganizationUsageResponse> GetUsageAsync()
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+
             var urlString = baseUrl + "/v1/organization/usage";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -1026,9 +857,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -1097,6 +928,5 @@ namespace SpeakeasySDK
 
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
-
     }
 }

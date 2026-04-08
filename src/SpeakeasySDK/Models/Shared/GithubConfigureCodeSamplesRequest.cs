@@ -12,26 +12,27 @@ namespace SpeakeasySDK.Models.Shared
 {
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
-
+    
     /// <summary>
-    /// A request to configure GitHub code samples.
+    /// A request to configure GitHub code samples
     /// </summary>
     public class GithubConfigureCodeSamplesRequest
     {
+
         /// <summary>
-        /// The GitHub organization name.
+        /// The GitHub organization name
         /// </summary>
         [JsonProperty("org")]
         public string Org { get; set; } = default!;
 
         /// <summary>
-        /// The GitHub repository name.
+        /// The GitHub repository name
         /// </summary>
         [JsonProperty("repo")]
         public string Repo { get; set; } = default!;
 
         /// <summary>
-        /// The target name for the code samples.
+        /// The target name for the code samples
         /// </summary>
         [JsonProperty("targetName")]
         public string TargetName { get; set; } = default!;
