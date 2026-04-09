@@ -11,10 +11,9 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Utils;
-    
+
     public class GetPublishingTokenTargetByIDRequest
     {
-
         /// <summary>
         /// Unique identifier of the publishing token.
         /// </summary>

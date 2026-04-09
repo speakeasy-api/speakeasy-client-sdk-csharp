@@ -12,13 +12,12 @@ namespace SpeakeasySDK.Models.Operations
 {
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
-    
+
     /// <summary>
-    /// Namespace visibility
+    /// Namespace visibility.
     /// </summary>
     public class SetVisibilityRequestBody
     {
-
         [JsonProperty("public")]
         public bool Public { get; set; } = default!;
     }

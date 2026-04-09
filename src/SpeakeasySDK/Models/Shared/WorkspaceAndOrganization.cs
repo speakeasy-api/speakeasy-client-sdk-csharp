@@ -13,21 +13,20 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
-    
+
     /// <summary>
-    /// A workspace and organization
+    /// A workspace and organization.
     /// </summary>
     public class WorkspaceAndOrganization
     {
-
         /// <summary>
-        /// A speakeasy organization
+        /// A speakeasy organization.
         /// </summary>
         [JsonProperty("organization")]
         public Organization Organization { get; set; } = default!;
 
         /// <summary>
-        /// A speakeasy workspace
+        /// A speakeasy workspace.
         /// </summary>
         [JsonProperty("workspace")]
         public Workspace Workspace { get; set; } = default!;

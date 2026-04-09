@@ -14,39 +14,38 @@ namespace SpeakeasySDK.Models.Shared
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System.Collections.Generic;
-    
+
     /// <summary>
-    /// Returns the requested manifest file
+    /// Returns the requested manifest file.
     /// </summary>
     public class Manifest
     {
-
         /// <summary>
-        /// Annotations
+        /// Annotations.
         /// </summary>
         [JsonProperty("annotations")]
         public Annotations? Annotations { get; set; }
 
         /// <summary>
-        /// Type of artifact
+        /// Type of artifact.
         /// </summary>
         [JsonProperty("artifactType")]
         public string? ArtifactType { get; set; }
 
         /// <summary>
-        /// List of V2 image layer information
+        /// List of V2 image layer information.
         /// </summary>
         [JsonProperty("layers")]
         public List<V2Descriptor>? Layers { get; set; }
 
         /// <summary>
-        /// Media type usually application/vnd.docker.distribution.manifest.v2+json if this is in the accept header
+        /// Media type usually application/vnd.docker.distribution.manifest.v2+json if this is in the accept header.
         /// </summary>
         [JsonProperty("mediaType")]
         public string? MediaType { get; set; }
 
         /// <summary>
-        /// Schema version
+        /// Schema version.
         /// </summary>
         [JsonProperty("schemaVersion")]
         public long? SchemaVersion { get; set; }

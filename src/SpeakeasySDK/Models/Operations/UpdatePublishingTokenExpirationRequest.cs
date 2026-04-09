@@ -12,12 +12,11 @@ namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Models.Operations;
     using SpeakeasySDK.Utils;
-    
+
     public class UpdatePublishingTokenExpirationRequest
     {
-
         /// <summary>
-        /// The publishing token to update
+        /// The publishing token to update.
         /// </summary>
         [SpeakeasyMetadata("request:mediaType=application/json")]
         public UpdatePublishingTokenExpirationRequestBody? RequestBody { get; set; }

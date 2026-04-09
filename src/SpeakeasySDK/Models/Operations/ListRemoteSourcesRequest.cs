@@ -11,10 +11,9 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Utils;
-    
+
     public class ListRemoteSourcesRequest
     {
-
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=namespace_name")]
         public string NamespaceName { get; set; } = default!;
     }

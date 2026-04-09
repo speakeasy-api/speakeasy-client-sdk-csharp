@@ -17,13 +17,12 @@ namespace SpeakeasySDK.Models.Shared
     using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Linq;
-    
+
     /// <summary>
-    /// A request to add billing add ons
+    /// A request to add billing add ons.
     /// </summary>
     public class OrganizationBillingAddOnRequest
     {
-
         [JsonProperty("add_ons")]
         public List<BillingAddOn> AddOns { get; set; } = default!;
     }

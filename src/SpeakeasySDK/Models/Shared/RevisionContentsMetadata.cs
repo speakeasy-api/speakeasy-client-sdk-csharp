@@ -15,10 +15,9 @@ namespace SpeakeasySDK.Models.Shared
     using SpeakeasySDK.Utils;
     using System;
     using System.Collections.Generic;
-    
+
     public class RevisionContentsMetadata
     {
-
         /// <summary>
         /// Whether the OAS contains code samples.
         /// </summary>
@@ -29,19 +28,19 @@ namespace SpeakeasySDK.Models.Shared
         public DateTime CreatedAt { get; set; } = default!;
 
         /// <summary>
-        /// The OAS description
+        /// The OAS description.
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; set; } = default!;
 
         /// <summary>
-        /// The hash of the contents
+        /// The hash of the contents.
         /// </summary>
         [JsonProperty("hash")]
         public string Hash { get; set; } = default!;
 
         /// <summary>
-        /// The fully qualified namespace
+        /// The fully qualified namespace.
         /// </summary>
         [JsonProperty("namespace")]
         public string Namespace { get; set; } = default!;
@@ -59,7 +58,7 @@ namespace SpeakeasySDK.Models.Shared
         public List<string> OperationIds { get; set; } = default!;
 
         /// <summary>
-        /// The digest of the parent bundle
+        /// The digest of the parent bundle.
         /// </summary>
         [JsonProperty("revision_digest")]
         public string RevisionDigest { get; set; } = default!;
@@ -71,7 +70,7 @@ namespace SpeakeasySDK.Models.Shared
         public List<string> Tags { get; set; } = default!;
 
         /// <summary>
-        /// The OAS title
+        /// The OAS title.
         /// </summary>
         [JsonProperty("title")]
         public string Title { get; set; } = default!;
@@ -80,13 +79,13 @@ namespace SpeakeasySDK.Models.Shared
         public RevisionContentsMetadataType Type { get; set; } = default!;
 
         /// <summary>
-        /// The OAS version
+        /// The OAS version.
         /// </summary>
         [JsonProperty("version")]
         public string Version { get; set; } = default!;
 
         /// <summary>
-        /// The workspace ID
+        /// The workspace ID.
         /// </summary>
         [JsonProperty("workspace_id")]
         public string WorkspaceId { get; set; } = default!;

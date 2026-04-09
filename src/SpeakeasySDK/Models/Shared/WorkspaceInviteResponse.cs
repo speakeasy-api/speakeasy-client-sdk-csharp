@@ -13,13 +13,12 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
-    
+
     /// <summary>
-    /// A response for workspace user invite
+    /// A response for workspace user invite.
     /// </summary>
     public class WorkspaceInviteResponse
     {
-
         [JsonProperty("invite_link")]
         public string? InviteLink { get; set; } = null;
 

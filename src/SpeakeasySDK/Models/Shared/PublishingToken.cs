@@ -14,13 +14,12 @@ namespace SpeakeasySDK.Models.Shared
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System;
-    
+
     /// <summary>
-    /// A token used to publish to a target
+    /// A token used to publish to a target.
     /// </summary>
     public class PublishingToken
     {
-
         [JsonProperty("created_at")]
         public DateTime CreatedAt { get; set; } = default!;
 

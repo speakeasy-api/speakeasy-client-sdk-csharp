@@ -11,10 +11,9 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Utils;
-    
+
     public class GetChangesReportSignedUrlRequest
     {
-
         /// <summary>
         /// The checksum of the document to retrieve the signed access url for.
         /// </summary>
