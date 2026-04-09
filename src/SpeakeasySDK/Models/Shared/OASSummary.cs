@@ -14,9 +14,10 @@ namespace SpeakeasySDK.Models.Shared
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System.Collections.Generic;
-
+    
     public class OASSummary
     {
+
         [JsonProperty("info")]
         public OASInfo Info { get; set; } = default!;
 

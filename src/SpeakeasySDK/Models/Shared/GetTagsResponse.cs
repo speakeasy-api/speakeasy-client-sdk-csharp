@@ -14,9 +14,10 @@ namespace SpeakeasySDK.Models.Shared
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System.Collections.Generic;
-
+    
     public class GetTagsResponse
     {
+
         [JsonProperty("items")]
         public List<Tag> Items { get; set; } = default!;
     }

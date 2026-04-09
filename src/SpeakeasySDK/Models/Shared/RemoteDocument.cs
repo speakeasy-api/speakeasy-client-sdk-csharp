@@ -12,12 +12,13 @@ namespace SpeakeasySDK.Models.Shared
 {
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
-
+    
     /// <summary>
-    /// A document hosted in the registry.
+    /// A document hosted in the registry
     /// </summary>
     public class RemoteDocument
     {
+
         [JsonProperty("registry_url")]
         public string RegistryUrl { get; set; } = default!;
     }

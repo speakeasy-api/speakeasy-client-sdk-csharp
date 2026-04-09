@@ -25,150 +25,93 @@ namespace SpeakeasySDK
 
     public interface IPublishingTokens
     {
-        /// <summary>
-        /// Create a publishing token for a workspace.
-        /// </summary>
-        /// <remarks>
-        /// Creates a publishing token for the current workspace.
-        /// </remarks>
-        /// <param name="request">The publishing token to create.</param>
-        /// <returns>An awaitable task that returns a <see cref="CreatePublishingTokenResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<CreatePublishingTokenResponse> CreateAsync(CreatePublishingTokenRequestBody? request = null);
 
         /// <summary>
-        /// Delete a specific publishing token.
+        /// Create a publishing token for a workspace
+        /// 
+        /// <remarks>
+        /// Creates a publishing token for the current workspace
+        /// </remarks>
         /// </summary>
+        Task<CreatePublishingTokenResponse> CreateAsync(CreatePublishingTokenRequestBody? request = null);
+
+        /// <summary>
+        /// Delete a specific publishing token
+        /// 
         /// <remarks>
         /// Delete a particular publishing token.
         /// </remarks>
-        /// <param name="request">A <see cref="DeletePublishingTokenRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="DeletePublishingTokenResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<DeletePublishingTokenResponse> DeleteAsync(DeletePublishingTokenRequest request);
+        /// </summary>
+        Task<DeletePublishingTokenResponse> DeleteAsync(DeletePublishingTokenRequest request);
 
         /// <summary>
-        /// Get a specific publishing token.
-        /// </summary>
+        /// Get a specific publishing token
+        /// 
         /// <remarks>
         /// Get information about a particular publishing token.
         /// </remarks>
-        /// <param name="request">A <see cref="GetPublishingTokenByIDRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GetPublishingTokenByIDResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<GetPublishingTokenByIDResponse> GetAsync(GetPublishingTokenByIDRequest request);
+        /// </summary>
+        Task<GetPublishingTokenByIDResponse> GetAsync(GetPublishingTokenByIDRequest request);
 
         /// <summary>
-        /// Get publishing tokens for a workspace.
-        /// </summary>
+        /// Get publishing tokens for a workspace
+        /// 
         /// <remarks>
-        /// Returns a publishing token for the current workspace.
+        /// Returns a publishing token for the current workspace
         /// </remarks>
-        /// <returns>An awaitable task that returns a <see cref="GetPublishingTokenResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<GetPublishingTokenResponse> ListAsync();
+        /// </summary>
+        Task<GetPublishingTokenResponse> ListAsync();
 
         /// <summary>
-        /// Get metadata about the token.
-        /// </summary>
+        /// Get metadata about the token
+        /// 
         /// <remarks>
         /// Get information about a particular publishing token.
         /// </remarks>
-        /// <param name="request">A <see cref="GetPublishingTokenPublicMetadataRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GetPublishingTokenPublicMetadataResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<GetPublishingTokenPublicMetadataResponse> ResolveMetadataAsync(
-            GetPublishingTokenPublicMetadataRequest request
-        );
+        /// </summary>
+        Task<GetPublishingTokenPublicMetadataResponse> ResolveMetadataAsync(GetPublishingTokenPublicMetadataRequest request);
 
         /// <summary>
-        /// Get a specific publishing token target.
-        /// </summary>
+        /// Get a specific publishing token target
+        /// 
         /// <remarks>
         /// Get information about a particular publishing token target.
         /// </remarks>
-        /// <param name="request">A <see cref="GetPublishingTokenTargetByIDRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GetPublishingTokenTargetByIDResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<GetPublishingTokenTargetByIDResponse> ResolveTargetAsync(
-            GetPublishingTokenTargetByIDRequest request
-        );
+        /// </summary>
+        Task<GetPublishingTokenTargetByIDResponse> ResolveTargetAsync(GetPublishingTokenTargetByIDRequest request);
 
         /// <summary>
-        /// Updates the validitity period of a publishing token.
-        /// </summary>
+        /// Updates the validitity period of a publishing token
+        /// 
         /// <remarks>
         /// Updates the validity period of a particular publishing token.
         /// </remarks>
-        /// <param name="request">A <see cref="UpdatePublishingTokenExpirationRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="UpdatePublishingTokenExpirationResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<UpdatePublishingTokenExpirationResponse> UpdateAsync(UpdatePublishingTokenExpirationRequest request);
+        /// </summary>
+        Task<UpdatePublishingTokenExpirationResponse> UpdateAsync(UpdatePublishingTokenExpirationRequest request);
     }
 
     public class PublishingTokens: IPublishingTokens
     {
-        /// <summary>
-        /// SDK Configuration.
-        /// <see cref="SDKConfig"/>
-        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
+
+        private const string _language = Constants.Language;
+        private const string _sdkVersion = Constants.SdkVersion;
+        private const string _sdkGenVersion = Constants.SdkGenVersion;
+        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public PublishingTokens(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        /// <summary>
-        /// Create a publishing token for a workspace.
-        /// </summary>
-        /// <remarks>
-        /// Creates a publishing token for the current workspace.
-        /// </remarks>
-        /// <param name="request">The publishing token to create.</param>
-        /// <returns>An awaitable task that returns a <see cref="CreatePublishingTokenResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<CreatePublishingTokenResponse> CreateAsync(CreatePublishingTokenRequestBody? request = null)
+        public async Task<CreatePublishingTokenResponse> CreateAsync(CreatePublishingTokenRequestBody? request = null)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+
             var urlString = baseUrl + "/v1/publishing-tokens";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json", false, true);
             if (serializedBody != null)
@@ -200,9 +143,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -272,21 +215,7 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Delete a specific publishing token.
-        /// </summary>
-        /// <remarks>
-        /// Delete a particular publishing token.
-        /// </remarks>
-        /// <param name="request">A <see cref="DeletePublishingTokenRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="DeletePublishingTokenResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<DeletePublishingTokenResponse> DeleteAsync(DeletePublishingTokenRequest request)
+        public async Task<DeletePublishingTokenResponse> DeleteAsync(DeletePublishingTokenRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -295,11 +224,6 @@ namespace SpeakeasySDK
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -325,9 +249,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -379,21 +303,7 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Get a specific publishing token.
-        /// </summary>
-        /// <remarks>
-        /// Get information about a particular publishing token.
-        /// </remarks>
-        /// <param name="request">A <see cref="GetPublishingTokenByIDRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GetPublishingTokenByIDResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<GetPublishingTokenByIDResponse> GetAsync(GetPublishingTokenByIDRequest request)
+        public async Task<GetPublishingTokenByIDResponse> GetAsync(GetPublishingTokenByIDRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -402,11 +312,6 @@ namespace SpeakeasySDK
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -432,9 +337,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -504,30 +409,14 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Get publishing tokens for a workspace.
-        /// </summary>
-        /// <remarks>
-        /// Returns a publishing token for the current workspace.
-        /// </remarks>
-        /// <returns>An awaitable task that returns a <see cref="GetPublishingTokenResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<GetPublishingTokenResponse> ListAsync()
+        public async Task<GetPublishingTokenResponse> ListAsync()
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+
             var urlString = baseUrl + "/v1/publishing-tokens";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -553,9 +442,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -625,23 +514,7 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Get metadata about the token.
-        /// </summary>
-        /// <remarks>
-        /// Get information about a particular publishing token.
-        /// </remarks>
-        /// <param name="request">A <see cref="GetPublishingTokenPublicMetadataRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GetPublishingTokenPublicMetadataResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<GetPublishingTokenPublicMetadataResponse> ResolveMetadataAsync(
-            GetPublishingTokenPublicMetadataRequest request
-        )
+        public async Task<GetPublishingTokenPublicMetadataResponse> ResolveMetadataAsync(GetPublishingTokenPublicMetadataRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -650,11 +523,6 @@ namespace SpeakeasySDK
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -680,9 +548,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -752,23 +620,7 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Get a specific publishing token target.
-        /// </summary>
-        /// <remarks>
-        /// Get information about a particular publishing token target.
-        /// </remarks>
-        /// <param name="request">A <see cref="GetPublishingTokenTargetByIDRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GetPublishingTokenTargetByIDResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<GetPublishingTokenTargetByIDResponse> ResolveTargetAsync(
-            GetPublishingTokenTargetByIDRequest request
-        )
+        public async Task<GetPublishingTokenTargetByIDResponse> ResolveTargetAsync(GetPublishingTokenTargetByIDRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -777,11 +629,6 @@ namespace SpeakeasySDK
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "text/plain");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -807,9 +654,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -868,23 +715,7 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Updates the validitity period of a publishing token.
-        /// </summary>
-        /// <remarks>
-        /// Updates the validity period of a particular publishing token.
-        /// </remarks>
-        /// <param name="request">A <see cref="UpdatePublishingTokenExpirationRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="UpdatePublishingTokenExpirationResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<UpdatePublishingTokenExpirationResponse> UpdateAsync(
-            UpdatePublishingTokenExpirationRequest request
-        )
+        public async Task<UpdatePublishingTokenExpirationResponse> UpdateAsync(UpdatePublishingTokenExpirationRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -893,11 +724,6 @@ namespace SpeakeasySDK
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "json", false, true);
             if (serializedBody != null)
@@ -929,9 +755,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -982,6 +808,5 @@ namespace SpeakeasySDK
 
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
-
     }
 }

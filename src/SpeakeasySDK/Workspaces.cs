@@ -24,248 +24,142 @@ namespace SpeakeasySDK
     using System.Threading.Tasks;
 
     /// <summary>
-    /// REST APIs for managing Workspaces (speakeasy tenancy).
+    /// REST APIs for managing Workspaces (speakeasy tenancy)
     /// </summary>
     public interface IWorkspaces
     {
+
         /// <summary>
-        /// Create a workspace.
-        /// </summary>
+        /// Create a workspace
+        /// 
         /// <remarks>
-        /// Creates a workspace.
+        /// Creates a workspace
         /// </remarks>
-        /// <param name="request">The workspace to create.</param>
-        /// <returns>An awaitable task that returns a <see cref="CreateWorkspaceResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<CreateWorkspaceResponse> CreateAsync(Workspace request);
+        /// </summary>
+        Task<CreateWorkspaceResponse> CreateAsync(Workspace request);
 
         /// <summary>
-        /// Create a token for a particular workspace.
+        /// Create a token for a particular workspace
         /// </summary>
-        /// <param name="request">A <see cref="CreateWorkspaceTokenRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="CreateWorkspaceTokenResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<CreateWorkspaceTokenResponse> CreateTokenAsync(CreateWorkspaceTokenRequest request);
+        Task<CreateWorkspaceTokenResponse> CreateTokenAsync(CreateWorkspaceTokenRequest request);
 
         /// <summary>
-        /// Delete a token for a particular workspace.
+        /// Delete a token for a particular workspace
         /// </summary>
-        /// <param name="request">A <see cref="DeleteWorkspaceTokenRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="DeleteWorkspaceTokenResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<DeleteWorkspaceTokenResponse> DeleteTokenAsync(DeleteWorkspaceTokenRequest request);
+        Task<DeleteWorkspaceTokenResponse> DeleteTokenAsync(DeleteWorkspaceTokenRequest request);
 
         /// <summary>
-        /// Get workspace by context.
-        /// </summary>
+        /// Get workspace by context
+        /// 
         /// <remarks>
         /// Get information about a particular workspace by context.
         /// </remarks>
-        /// <returns>An awaitable task that returns a <see cref="GetWorkspaceByContextResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<GetWorkspaceByContextResponse> GetAsync();
+        /// </summary>
+        Task<GetWorkspaceByContextResponse> GetAsync();
 
         /// <summary>
-        /// Get workspaces for a user.
-        /// </summary>
+        /// Get workspaces for a user
+        /// 
         /// <remarks>
-        /// Returns a list of workspaces a user has access too.
+        /// Returns a list of workspaces a user has access too
         /// </remarks>
-        /// <returns>An awaitable task that returns a <see cref="GetWorkspacesResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<GetWorkspacesResponse> GetAllAsync();
+        /// </summary>
+        Task<GetWorkspacesResponse> GetAllAsync();
 
         /// <summary>
-        /// Get workspace.
-        /// </summary>
+        /// Get workspace
+        /// 
         /// <remarks>
         /// Get information about a particular workspace.
         /// </remarks>
-        /// <param name="request">A <see cref="GetWorkspaceRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GetWorkspaceResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<GetWorkspaceResponse> GetByIDAsync(GetWorkspaceRequest? request = null);
+        /// </summary>
+        Task<GetWorkspaceResponse> GetByIDAsync(GetWorkspaceRequest? request = null);
 
         /// <summary>
-        /// Get workspace feature flags.
+        /// Get workspace feature flags
         /// </summary>
-        /// <param name="request">A <see cref="GetWorkspaceFeatureFlagsRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GetWorkspaceFeatureFlagsResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Error. Thrown when the API returns a 5XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX response.</exception>
-        public  Task<GetWorkspaceFeatureFlagsResponse> GetFeatureFlagsAsync(
-            GetWorkspaceFeatureFlagsRequest? request = null
-        );
+        Task<GetWorkspaceFeatureFlagsResponse> GetFeatureFlagsAsync(GetWorkspaceFeatureFlagsRequest? request = null);
 
         /// <summary>
-        /// Get workspace settings.
-        /// </summary>
+        /// Get workspace settings
+        /// 
         /// <remarks>
         /// Get settings about a particular workspace.
         /// </remarks>
-        /// <param name="request">A <see cref="GetWorkspaceSettingsRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GetWorkspaceSettingsResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<GetWorkspaceSettingsResponse> GetSettingsAsync(GetWorkspaceSettingsRequest? request = null);
+        /// </summary>
+        Task<GetWorkspaceSettingsResponse> GetSettingsAsync(GetWorkspaceSettingsRequest? request = null);
 
         /// <summary>
-        /// Get team members for a particular workspace.
+        /// Get team members for a particular workspace
         /// </summary>
-        /// <param name="request">A <see cref="GetWorkspaceTeamRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GetWorkspaceTeamResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<GetWorkspaceTeamResponse> GetTeamAsync(GetWorkspaceTeamRequest? request = null);
+        Task<GetWorkspaceTeamResponse> GetTeamAsync(GetWorkspaceTeamRequest? request = null);
 
         /// <summary>
-        /// Get tokens for a particular workspace.
+        /// Get tokens for a particular workspace
         /// </summary>
-        /// <param name="request">A <see cref="GetWorkspaceTokensRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GetWorkspaceTokensResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<GetWorkspaceTokensResponse> GetTokensAsync(GetWorkspaceTokensRequest? request = null);
+        Task<GetWorkspaceTokensResponse> GetTokensAsync(GetWorkspaceTokensRequest? request = null);
 
         /// <summary>
-        /// Grant a user access to a particular workspace.
+        /// Grant a user access to a particular workspace
         /// </summary>
-        /// <param name="request">A <see cref="GrantUserAccessToWorkspaceRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GrantUserAccessToWorkspaceResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<GrantUserAccessToWorkspaceResponse> GrantAccessAsync(GrantUserAccessToWorkspaceRequest request);
+        Task<GrantUserAccessToWorkspaceResponse> GrantAccessAsync(GrantUserAccessToWorkspaceRequest request);
 
         /// <summary>
-        /// Revoke a user's access to a particular workspace.
+        /// Revoke a user&apos;s access to a particular workspace
         /// </summary>
-        /// <param name="request">A <see cref="RevokeUserAccessToWorkspaceRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="RevokeUserAccessToWorkspaceResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<RevokeUserAccessToWorkspaceResponse> RevokeAccessAsync(RevokeUserAccessToWorkspaceRequest request);
+        Task<RevokeUserAccessToWorkspaceResponse> RevokeAccessAsync(RevokeUserAccessToWorkspaceRequest request);
 
         /// <summary>
-        /// Set workspace feature flags.
+        /// Set workspace feature flags
         /// </summary>
-        /// <param name="request">A <see cref="WorkspaceFeatureFlagRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="SetWorkspaceFeatureFlagsResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Error. Thrown when the API returns a 5XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX response.</exception>
-        public  Task<SetWorkspaceFeatureFlagsResponse> SetFeatureFlagsAsync(WorkspaceFeatureFlagRequest request);
+        Task<SetWorkspaceFeatureFlagsResponse> SetFeatureFlagsAsync(WorkspaceFeatureFlagRequest request);
 
         /// <summary>
-        /// Update workspace details.
-        /// </summary>
+        /// Update workspace details
+        /// 
         /// <remarks>
         /// Update information about a particular workspace.
         /// </remarks>
-        /// <param name="request">A <see cref="UpdateWorkspaceDetailsRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="UpdateWorkspaceDetailsResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<UpdateWorkspaceDetailsResponse> UpdateAsync(UpdateWorkspaceDetailsRequest request);
+        /// </summary>
+        Task<UpdateWorkspaceDetailsResponse> UpdateAsync(UpdateWorkspaceDetailsRequest request);
 
         /// <summary>
-        /// Update workspace settings.
-        /// </summary>
+        /// Update workspace settings
+        /// 
         /// <remarks>
         /// Update settings about a particular workspace.
         /// </remarks>
-        /// <param name="request">A <see cref="UpdateWorkspaceSettingsRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="UpdateWorkspaceSettingsResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<UpdateWorkspaceSettingsResponse> UpdateSettingsAsync(UpdateWorkspaceSettingsRequest request);
+        /// </summary>
+        Task<UpdateWorkspaceSettingsResponse> UpdateSettingsAsync(UpdateWorkspaceSettingsRequest request);
     }
 
     /// <summary>
-    /// REST APIs for managing Workspaces (speakeasy tenancy).
+    /// REST APIs for managing Workspaces (speakeasy tenancy)
     /// </summary>
     public class Workspaces: IWorkspaces
     {
-        /// <summary>
-        /// SDK Configuration.
-        /// <see cref="SDKConfig"/>
-        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
+
+        private const string _language = Constants.Language;
+        private const string _sdkVersion = Constants.SdkVersion;
+        private const string _sdkGenVersion = Constants.SdkGenVersion;
+        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public Workspaces(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        /// <summary>
-        /// Create a workspace.
-        /// </summary>
-        /// <remarks>
-        /// Creates a workspace.
-        /// </remarks>
-        /// <param name="request">The workspace to create.</param>
-        /// <returns>An awaitable task that returns a <see cref="CreateWorkspaceResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<CreateWorkspaceResponse> CreateAsync(Workspace request)
+        public async Task<CreateWorkspaceResponse> CreateAsync(Workspace request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+
             var urlString = baseUrl + "/v1/workspace";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json", false, false);
             if (serializedBody != null)
@@ -297,9 +191,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -369,32 +263,17 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Create a token for a particular workspace.
-        /// </summary>
-        /// <param name="request">A <see cref="CreateWorkspaceTokenRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="CreateWorkspaceTokenResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<CreateWorkspaceTokenResponse> CreateTokenAsync(CreateWorkspaceTokenRequest request)
+        public async Task<CreateWorkspaceTokenResponse> CreateTokenAsync(CreateWorkspaceTokenRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-            request.WorkspaceId ??= SDKConfiguration.WorkspaceId;
 
+            request.WorkspaceId ??= SDKConfiguration.WorkspaceId;
+            
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/{workspace_id}/tokens", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "WorkspaceToken", "json", false, false);
             if (serializedBody != null)
@@ -426,9 +305,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -480,32 +359,17 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Delete a token for a particular workspace.
-        /// </summary>
-        /// <param name="request">A <see cref="DeleteWorkspaceTokenRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="DeleteWorkspaceTokenResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<DeleteWorkspaceTokenResponse> DeleteTokenAsync(DeleteWorkspaceTokenRequest request)
+        public async Task<DeleteWorkspaceTokenResponse> DeleteTokenAsync(DeleteWorkspaceTokenRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-            request.WorkspaceId ??= SDKConfiguration.WorkspaceId;
 
+            request.WorkspaceId ??= SDKConfiguration.WorkspaceId;
+            
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/{workspace_id}/tokens/{tokenID}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -531,9 +395,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -585,30 +449,14 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Get workspace by context.
-        /// </summary>
-        /// <remarks>
-        /// Get information about a particular workspace by context.
-        /// </remarks>
-        /// <returns>An awaitable task that returns a <see cref="GetWorkspaceByContextResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<GetWorkspaceByContextResponse> GetAsync()
+        public async Task<GetWorkspaceByContextResponse> GetAsync()
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+
             var urlString = baseUrl + "/v1/workspace";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -634,9 +482,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -706,30 +554,14 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Get workspaces for a user.
-        /// </summary>
-        /// <remarks>
-        /// Returns a list of workspaces a user has access too.
-        /// </remarks>
-        /// <returns>An awaitable task that returns a <see cref="GetWorkspacesResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<GetWorkspacesResponse> GetAllAsync()
+        public async Task<GetWorkspacesResponse> GetAllAsync()
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+
             var urlString = baseUrl + "/v1/workspaces";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -755,9 +587,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -827,37 +659,19 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Get workspace.
-        /// </summary>
-        /// <remarks>
-        /// Get information about a particular workspace.
-        /// </remarks>
-        /// <param name="request">A <see cref="GetWorkspaceRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GetWorkspaceResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<GetWorkspaceResponse> GetByIDAsync(GetWorkspaceRequest? request = null)
+        public async Task<GetWorkspaceResponse> GetByIDAsync(GetWorkspaceRequest? request = null)
         {
             if (request == null)
             {
                 request = new GetWorkspaceRequest();
             }
             request.WorkspaceId ??= SDKConfiguration.WorkspaceId;
-
+            
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/{workspace_id}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -883,9 +697,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -955,36 +769,19 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Get workspace feature flags.
-        /// </summary>
-        /// <param name="request">A <see cref="GetWorkspaceFeatureFlagsRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GetWorkspaceFeatureFlagsResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Error. Thrown when the API returns a 5XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX response.</exception>
-        public async  Task<GetWorkspaceFeatureFlagsResponse> GetFeatureFlagsAsync(
-            GetWorkspaceFeatureFlagsRequest? request = null
-        )
+        public async Task<GetWorkspaceFeatureFlagsResponse> GetFeatureFlagsAsync(GetWorkspaceFeatureFlagsRequest? request = null)
         {
             if (request == null)
             {
                 request = new GetWorkspaceFeatureFlagsRequest();
             }
             request.WorkspaceId ??= SDKConfiguration.WorkspaceId;
-
+            
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/{workspace_id}/feature_flags", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -1010,9 +807,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -1082,37 +879,19 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Get workspace settings.
-        /// </summary>
-        /// <remarks>
-        /// Get settings about a particular workspace.
-        /// </remarks>
-        /// <param name="request">A <see cref="GetWorkspaceSettingsRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GetWorkspaceSettingsResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<GetWorkspaceSettingsResponse> GetSettingsAsync(GetWorkspaceSettingsRequest? request = null)
+        public async Task<GetWorkspaceSettingsResponse> GetSettingsAsync(GetWorkspaceSettingsRequest? request = null)
         {
             if (request == null)
             {
                 request = new GetWorkspaceSettingsRequest();
             }
             request.WorkspaceId ??= SDKConfiguration.WorkspaceId;
-
+            
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/{workspace_id}/settings", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -1138,9 +917,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -1210,34 +989,19 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Get team members for a particular workspace.
-        /// </summary>
-        /// <param name="request">A <see cref="GetWorkspaceTeamRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GetWorkspaceTeamResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<GetWorkspaceTeamResponse> GetTeamAsync(GetWorkspaceTeamRequest? request = null)
+        public async Task<GetWorkspaceTeamResponse> GetTeamAsync(GetWorkspaceTeamRequest? request = null)
         {
             if (request == null)
             {
                 request = new GetWorkspaceTeamRequest();
             }
             request.WorkspaceId ??= SDKConfiguration.WorkspaceId;
-
+            
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/{workspace_id}/team", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -1263,9 +1027,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -1335,34 +1099,19 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Get tokens for a particular workspace.
-        /// </summary>
-        /// <param name="request">A <see cref="GetWorkspaceTokensRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GetWorkspaceTokensResponse"/> response envelope when completed.</returns>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<GetWorkspaceTokensResponse> GetTokensAsync(GetWorkspaceTokensRequest? request = null)
+        public async Task<GetWorkspaceTokensResponse> GetTokensAsync(GetWorkspaceTokensRequest? request = null)
         {
             if (request == null)
             {
                 request = new GetWorkspaceTokensRequest();
             }
             request.WorkspaceId ??= SDKConfiguration.WorkspaceId;
-
+            
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/{workspace_id}/tokens", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -1388,9 +1137,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -1460,34 +1209,17 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Grant a user access to a particular workspace.
-        /// </summary>
-        /// <param name="request">A <see cref="GrantUserAccessToWorkspaceRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="GrantUserAccessToWorkspaceResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<GrantUserAccessToWorkspaceResponse> GrantAccessAsync(
-            GrantUserAccessToWorkspaceRequest request
-        )
+        public async Task<GrantUserAccessToWorkspaceResponse> GrantAccessAsync(GrantUserAccessToWorkspaceRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-            request.WorkspaceId ??= SDKConfiguration.WorkspaceId;
 
+            request.WorkspaceId ??= SDKConfiguration.WorkspaceId;
+            
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/{workspace_id}/team/email/{email}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -1513,9 +1245,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -1585,34 +1317,17 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Revoke a user's access to a particular workspace.
-        /// </summary>
-        /// <param name="request">A <see cref="RevokeUserAccessToWorkspaceRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="RevokeUserAccessToWorkspaceResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<RevokeUserAccessToWorkspaceResponse> RevokeAccessAsync(
-            RevokeUserAccessToWorkspaceRequest request
-        )
+        public async Task<RevokeUserAccessToWorkspaceResponse> RevokeAccessAsync(RevokeUserAccessToWorkspaceRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-            request.WorkspaceId ??= SDKConfiguration.WorkspaceId;
 
+            request.WorkspaceId ??= SDKConfiguration.WorkspaceId;
+            
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/{workspace_id}/team/{userId}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
@@ -1638,9 +1353,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -1692,31 +1407,16 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Set workspace feature flags.
-        /// </summary>
-        /// <param name="request">A <see cref="WorkspaceFeatureFlagRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="SetWorkspaceFeatureFlagsResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Error. Thrown when the API returns a 5XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX response.</exception>
-        public async  Task<SetWorkspaceFeatureFlagsResponse> SetFeatureFlagsAsync(WorkspaceFeatureFlagRequest request)
+        public async Task<SetWorkspaceFeatureFlagsResponse> SetFeatureFlagsAsync(WorkspaceFeatureFlagRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+
             var urlString = baseUrl + "/v1/workspace/feature_flags";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json", false, false);
             if (serializedBody != null)
@@ -1748,9 +1448,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -1820,35 +1520,17 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Update workspace details.
-        /// </summary>
-        /// <remarks>
-        /// Update information about a particular workspace.
-        /// </remarks>
-        /// <param name="request">A <see cref="UpdateWorkspaceDetailsRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="UpdateWorkspaceDetailsResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<UpdateWorkspaceDetailsResponse> UpdateAsync(UpdateWorkspaceDetailsRequest request)
+        public async Task<UpdateWorkspaceDetailsResponse> UpdateAsync(UpdateWorkspaceDetailsRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-            request.WorkspaceId ??= SDKConfiguration.WorkspaceId;
 
+            request.WorkspaceId ??= SDKConfiguration.WorkspaceId;
+            
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/{workspace_id}/details", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "Workspace", "json", false, false);
             if (serializedBody != null)
@@ -1880,9 +1562,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -1934,35 +1616,17 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-
-        /// <summary>
-        /// Update workspace settings.
-        /// </summary>
-        /// <remarks>
-        /// Update settings about a particular workspace.
-        /// </remarks>
-        /// <param name="request">A <see cref="UpdateWorkspaceSettingsRequest"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="UpdateWorkspaceSettingsResponse"/> response envelope when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
-        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<UpdateWorkspaceSettingsResponse> UpdateSettingsAsync(UpdateWorkspaceSettingsRequest request)
+        public async Task<UpdateWorkspaceSettingsResponse> UpdateSettingsAsync(UpdateWorkspaceSettingsRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-            request.WorkspaceId ??= SDKConfiguration.WorkspaceId;
 
+            request.WorkspaceId ??= SDKConfiguration.WorkspaceId;
+            
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/v1/workspace/{workspace_id}/settings", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (!httpRequest.Headers.Contains("Accept"))
-            {
-                httpRequest.Headers.Add("Accept", "application/json");
-            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "WorkspaceSettings", "json", false, false);
             if (serializedBody != null)
@@ -1994,9 +1658,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception _hookError)
+            catch (Exception error)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -2047,6 +1711,5 @@ namespace SpeakeasySDK
 
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
-
     }
 }

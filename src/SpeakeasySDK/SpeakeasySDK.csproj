@@ -3,14 +3,14 @@
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <PackageId>SpeakeasySDK</PackageId>
-    <Version>5.13.4</Version>
+    <Version>5.13.5</Version>
     <TargetFramework>net8.0</TargetFramework>
     <Authors>Speakeasy</Authors>
     <Copyright>Copyright (c) Speakeasy 2026</Copyright>
     <RepositoryUrl>https://github.com/speakeasy-api/speakeasy-client-sdk-csharp.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Speakeasy SDK Generation</PackageTags>
-    <Description>Speakeasy API: The Subscriptions API manages subscriptions for CLI and registry events.</Description>
+    <Description>Speakeasy API: The Subscriptions API manages subscriptions for CLI and registry events</Description>
   </PropertyGroup>
 
   <PropertyGroup>

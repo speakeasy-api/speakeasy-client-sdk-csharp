@@ -11,9 +11,10 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Utils;
-
+    
     public class GetWorkspaceTeamRequest
     {
+
         /// <summary>
         /// Unique identifier of the workspace.
         /// </summary>

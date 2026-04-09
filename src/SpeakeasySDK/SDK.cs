@@ -20,139 +20,101 @@ namespace SpeakeasySDK
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading.Tasks;
+
     /// <summary>
-    /// Speakeasy API: The Subscriptions API manages subscriptions for CLI and registry events<br/>
+    /// Speakeasy API: The Subscriptions API manages subscriptions for CLI and registry events
+    /// 
     /// <see href="/docs">The Speakeasy Platform Documentation</see>
     /// </summary>
     public interface ISDK
     {
+
         /// <summary>
-        /// REST APIs for working with Registry artifacts.
+        /// REST APIs for working with Registry artifacts
         /// </summary>
         public IArtifacts Artifacts { get; }
 
         /// <summary>
-        /// REST APIs for managing Authentication.
+        /// REST APIs for managing Authentication
         /// </summary>
         public IAuth Auth { get; }
 
         /// <summary>
-        /// REST APIs for retrieving Code Samples.
+        /// REST APIs for retrieving Code Samples
         /// </summary>
         public ICodeSamples CodeSamples { get; }
 
         /// <summary>
-        /// REST APIs for managing the github integration.
+        /// REST APIs for managing the github integration
         /// </summary>
         public IGithub Github { get; }
 
         /// <summary>
-        /// REST APIs for managing Organizations (speakeasy L1 Tenancy construct).
+        /// REST APIs for managing Organizations (speakeasy L1 Tenancy construct)
         /// </summary>
         public IOrganizations Organizations { get; }
-
         public IPublishingTokens PublishingTokens { get; }
 
         /// <summary>
-        /// REST APIs for managing reports (lint reports, change reports, etc).
+        /// REST APIs for managing reports (lint reports, change reports, etc)
         /// </summary>
         public IReports Reports { get; }
-
         public ISchemaStore SchemaStore { get; }
 
         /// <summary>
-        /// REST APIs for managing short URLs.
+        /// REST APIs for managing short URLs
         /// </summary>
         public IShortURLs ShortURLs { get; }
 
         /// <summary>
-        /// REST APIs for managing subscriptions.
+        /// REST APIs for managing subscriptions
         /// </summary>
         public ISubscriptions Subscriptions { get; }
 
         /// <summary>
-        /// REST APIs for managing LLM OAS suggestions.
+        /// REST APIs for managing LLM OAS suggestions
         /// </summary>
         public ISuggest Suggest { get; }
 
         /// <summary>
-        /// REST APIs for managing Workspaces (speakeasy tenancy).
+        /// REST APIs for managing Workspaces (speakeasy tenancy)
         /// </summary>
         public IWorkspaces Workspaces { get; }
 
         /// <summary>
-        /// REST APIs for managing events captured by a speakeasy binary (CLI, GitHub Action etc).
+        /// REST APIs for managing events captured by a speakeasy binary (CLI, GitHub Action etc)
         /// </summary>
         public IEvents Events { get; }
     }
 
+
     /// <summary>
-    /// Speakeasy API: The Subscriptions API manages subscriptions for CLI and registry events<br/>
+    /// Speakeasy API: The Subscriptions API manages subscriptions for CLI and registry events
+    /// 
     /// <see href="/docs">The Speakeasy Platform Documentation</see>
     /// </summary>
     public class SDK: ISDK
     {
-        /// <summary>
-        /// The main SDK Configuration.
-        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-        /// <summary>
-        /// The Artifacts sub-SDK.
-        /// </summary>
+
+        private const string _language = Constants.Language;
+        private const string _sdkVersion = Constants.SdkVersion;
+        private const string _sdkGenVersion = Constants.SdkGenVersion;
+        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
         public IArtifacts Artifacts { get; private set; }
-        /// <summary>
-        /// The Auth sub-SDK.
-        /// </summary>
         public IAuth Auth { get; private set; }
-        /// <summary>
-        /// The CodeSamples sub-SDK.
-        /// </summary>
         public ICodeSamples CodeSamples { get; private set; }
-        /// <summary>
-        /// The Github sub-SDK.
-        /// </summary>
         public IGithub Github { get; private set; }
-        /// <summary>
-        /// The Organizations sub-SDK.
-        /// </summary>
         public IOrganizations Organizations { get; private set; }
-        /// <summary>
-        /// The PublishingTokens sub-SDK.
-        /// </summary>
         public IPublishingTokens PublishingTokens { get; private set; }
-        /// <summary>
-        /// The Reports sub-SDK.
-        /// </summary>
         public IReports Reports { get; private set; }
-        /// <summary>
-        /// The SchemaStore sub-SDK.
-        /// </summary>
         public ISchemaStore SchemaStore { get; private set; }
-        /// <summary>
-        /// The ShortURLs sub-SDK.
-        /// </summary>
         public IShortURLs ShortURLs { get; private set; }
-        /// <summary>
-        /// The Subscriptions sub-SDK.
-        /// </summary>
         public ISubscriptions Subscriptions { get; private set; }
-        /// <summary>
-        /// The Suggest sub-SDK.
-        /// </summary>
         public ISuggest Suggest { get; private set; }
-        /// <summary>
-        /// The Workspaces sub-SDK.
-        /// </summary>
         public IWorkspaces Workspaces { get; private set; }
-        /// <summary>
-        /// The Events sub-SDK.
-        /// </summary>
         public IEvents Events { get; private set; }
 
-        /// <summary>
-        /// Initializes a new instance of the SDK based on a <see cref="SDKConfig"/> configuration object.
-        /// </summary>
-        /// <param name="config">The SDK configuration object.</param>
         public SDK(SDKConfig config)
         {
             SDKConfiguration = config;
@@ -196,16 +158,7 @@ namespace SpeakeasySDK
         /// <param name="urlParams">A dictionary of parameters to use for templating the serverUrl. Only used when serverUrl is provided.</param>
         /// <param name="client">A custom HTTP client implementation to use for making API requests. If not provided, the default SpeakeasyHttpClient will be used.</param>
         /// <param name="retryConfig">Configuration for retry behavior when API requests fail. Defines retry strategies, backoff policies, and maximum retry attempts.</param>
-        public SDK(
-            SpeakeasySDK.Models.Shared.Security? security = null,
-            Func<SpeakeasySDK.Models.Shared.Security>? securitySource = null,
-            string? workspaceId = null,
-            SDKConfig.Server? server = null,
-            string? serverUrl = null,
-            Dictionary<string, string>? urlParams = null,
-            ISpeakeasyHttpClient? client = null,
-            RetryConfig? retryConfig = null
-        )
+        public SDK(SpeakeasySDK.Models.Shared.Security? security = null, Func<SpeakeasySDK.Models.Shared.Security>? securitySource = null, string? workspaceId = null, SDKConfig.Server? server = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
         {
 
             if (serverUrl != null)
@@ -277,27 +230,18 @@ namespace SpeakeasySDK
             SDKConfiguration = config;
         }
 
-        /// <summary>
-        /// Builder class for constructing an instance of the SDK.
-        /// </summary>
         public class SDKBuilder
         {
             private SDKConfig _sdkConfig = new SDKConfig(client: new SpeakeasyHttpClient());
 
             public SDKBuilder() { }
 
-            /// <summary>
-            /// Overrides the default server by name.
-            /// </summary>
             public SDKBuilder WithServer(SDKConfig.Server server)
             {
                 _sdkConfig.ServerName = server;
                 return this;
             }
 
-            /// <summary>
-            /// Overrides the default server URL for the SDK.
-            /// </summary>
             public SDKBuilder WithServerUrl(string serverUrl, Dictionary<string, string>? serverVariables = null)
             {
                 if (serverVariables != null)
@@ -307,54 +251,37 @@ namespace SpeakeasySDK
                 _sdkConfig.ServerUrl = serverUrl;
                 return this;
             }
-            /// <summary>
-            /// Sets the WorkspaceId global parameter for the SDK.
-            /// </summary>
+
             public SDKBuilder WithWorkspaceId(string workspaceId)
             {
                 _sdkConfig.WorkspaceId = workspaceId;
                 return this;
             }
 
-            /// <summary>
-            /// Sets the securitySource security parameter for the SDK.
-            /// </summary>
             public SDKBuilder WithSecuritySource(Func<SpeakeasySDK.Models.Shared.Security> securitySource)
             {
                 _sdkConfig.SecuritySource = securitySource;
                 return this;
             }
 
-            /// <summary>
-            /// Sets the security security parameter for the SDK.
-            /// </summary>
             public SDKBuilder WithSecurity(SpeakeasySDK.Models.Shared.Security security)
             {
                 _sdkConfig.SecuritySource = () => security;
                 return this;
             }
 
-            /// <summary>
-            /// Sets a custom HTTP client to be used by the SDK.
-            /// </summary>
             public SDKBuilder WithClient(ISpeakeasyHttpClient client)
             {
                 _sdkConfig.Client = client;
                 return this;
             }
 
-            /// <summary>
-            /// Sets the retry configuration for the SDK.
-            /// </summary>
             public SDKBuilder WithRetryConfig(RetryConfig retryConfig)
             {
                 _sdkConfig.RetryConfig = retryConfig;
                 return this;
             }
 
-            /// <summary>
-            /// Builds and returns the SDK instance.
-            /// </summary>
             public SDK Build()
             {
               return new SDK(_sdkConfig);
