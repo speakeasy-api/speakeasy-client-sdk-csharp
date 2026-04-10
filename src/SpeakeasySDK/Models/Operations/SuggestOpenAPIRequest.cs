@@ -12,9 +12,10 @@ namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Models.Operations;
     using SpeakeasySDK.Utils;
-
+    
     public class SuggestOpenAPIRequest
     {
+
         /// <summary>
         /// The schema file to upload provided as a multipart/form-data file segment.
         /// </summary>

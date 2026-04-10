@@ -17,9 +17,10 @@ namespace SpeakeasySDK.Models.Shared
     using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Linq;
-
+    
     public class Workspaces
     {
+
         [JsonProperty("account_type")]
         public AccountType? AccountType { get; set; }
 

@@ -12,7 +12,6 @@ namespace SpeakeasySDK.Utils
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Net.Http;
     using System.Reflection;
     using System.Text;
@@ -24,9 +23,9 @@ namespace SpeakeasySDK.Utils
         private Dictionary<string, string> headerParams { get; } = new Dictionary<string, string>();
         private Dictionary<string, string> queryParams { get; } = new Dictionary<string, string>();
 
-        public SecurityMetadata(Func<object> securitySource, string[]? allowedFields = null)
+        public SecurityMetadata(Func<object> securitySource)
         {
-            ParseSecuritySource(securitySource, allowedFields);
+            ParseSecuritySource(securitySource);
         }
 
         public HttpRequestMessage Apply(HttpRequestMessage request)
@@ -51,7 +50,7 @@ namespace SpeakeasySDK.Utils
             return request;
         }
 
-        private void ParseSecuritySource(Func<object> securitySource, string[]? allowedFields)
+        private void ParseSecuritySource(Func<object> securitySource)
         {
             if (securitySource == null)
             {
@@ -64,16 +63,7 @@ namespace SpeakeasySDK.Utils
                 return;
             }
 
-            var allProps = security.GetType().GetProperties();
-            PropertyInfo[] props = allowedFields != null
-                ? allowedFields
-                    .Select(name => allProps.FirstOrDefault(p => p.Name == name))
-                    .Where(p => p != null)
-                    .Cast<PropertyInfo>()
-                    .ToArray()
-                : allProps;
-
-            foreach (var prop in props)
+            foreach (var prop in security.GetType().GetProperties())
             {
                 var value = prop.GetValue(security, null);
                 if (value == null)
@@ -90,7 +80,6 @@ namespace SpeakeasySDK.Utils
                 if (secMetadata.Option)
                 {
                     ParseOption(value);
-                    return;
                 }
                 else if (secMetadata.Scheme)
                 {
@@ -103,11 +92,6 @@ namespace SpeakeasySDK.Utils
                     {
                         ParseScheme(secMetadata, value);
                     }
-
-                    if (!secMetadata.Composite)
-                    {
-                        return;
-                    }
                 }
             }
 
@@ -116,10 +100,6 @@ namespace SpeakeasySDK.Utils
 
         private void ParseOption(object option)
         {
-            // Check if the option itself IS a basic auth scheme (e.g. UserPassAuth where
-            // fields directly contain username/password with full basic auth metadata).
-            // This is distinct from an option that CONTAINS a basic auth scheme as a
-            // nested class (e.g. SchemeBasicAuth) - that case is handled by ParseScheme.
             foreach (var prop in option.GetType().GetProperties())
             {
                 var value = prop.GetValue(option, null);
@@ -132,12 +112,6 @@ namespace SpeakeasySDK.Utils
                 if (secMetadata == null || !secMetadata.Scheme)
                 {
                     continue;
-                }
-
-                if (secMetadata.Type == "http" && secMetadata.SubType == "basic" && !Utilities.IsClass(value))
-                {
-                    ParseBasicAuthScheme(option);
-                    return;
                 }
 
                 ParseScheme(secMetadata, value);

@@ -14,12 +14,13 @@ namespace SpeakeasySDK.Models.Shared
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System.Collections.Generic;
-
+    
     /// <summary>
     /// An AccessToken is a token that can be used to authenticate with the Speakeasy API.
     /// </summary>
     public class AccessToken
     {
+
         [JsonProperty("access_token")]
         public string AccessTokenValue { get; set; } = default!;
 

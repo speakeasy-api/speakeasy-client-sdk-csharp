@@ -11,9 +11,10 @@
 namespace SpeakeasySDK.Models.Shared
 {
     using SpeakeasySDK.Utils;
-
+    
     public class SchemaFile
     {
+
         [SpeakeasyMetadata("multipartForm:content")]
         public byte[] Content { get; set; } = default!;
 

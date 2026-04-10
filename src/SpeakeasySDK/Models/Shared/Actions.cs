@@ -12,9 +12,10 @@ namespace SpeakeasySDK.Models.Shared
 {
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
-
+    
     public class Actions
     {
+
         [JsonProperty("generation_action_configured")]
         public bool GenerationActionConfigured { get; set; } = default!;
 

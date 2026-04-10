@@ -14,17 +14,18 @@ namespace SpeakeasySDK.Models.Shared
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System.Collections.Generic;
-
+    
     /// <summary>
-    /// Remote source configuration.
+    /// Remote source configuration
     /// </summary>
     public class RemoteSource
     {
+
         [JsonProperty("inputs")]
         public List<RemoteDocument> Inputs { get; set; } = default!;
 
         /// <summary>
-        /// A document hosted in the registry.
+        /// A document hosted in the registry
         /// </summary>
         [JsonProperty("output")]
         public RemoteDocument Output { get; set; } = default!;

@@ -17,12 +17,13 @@ namespace SpeakeasySDK.Models.Shared
     using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Linq;
-
+    
     /// <summary>
-    /// A request to add workspace feature flags.
+    /// A request to add workspace feature flags
     /// </summary>
     public class WorkspaceFeatureFlagRequest
     {
+
         [JsonProperty("feature_flags")]
         public List<WorkspaceFeatureFlag> FeatureFlags { get; set; } = default!;
     }

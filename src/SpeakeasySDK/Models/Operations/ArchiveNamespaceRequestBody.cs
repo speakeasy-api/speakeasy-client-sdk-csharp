@@ -12,12 +12,13 @@ namespace SpeakeasySDK.Models.Operations
 {
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
-
+    
     /// <summary>
-    /// Archived status.
+    /// Archived status
     /// </summary>
     public class ArchiveNamespaceRequestBody
     {
+
         [JsonProperty("archived")]
         public bool? Archived { get; set; } = true;
     }
