@@ -11,10 +11,9 @@
 namespace SpeakeasySDK.Models.Shared
 {
     using SpeakeasySDK.Utils;
-    
+
     public class Security
     {
-
         [SpeakeasyMetadata("security:scheme=true,type=apiKey,subType=header,name=x-api-key")]
         public string? APIKey { get; set; }
 

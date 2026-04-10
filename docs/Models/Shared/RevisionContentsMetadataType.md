@@ -1,5 +1,13 @@
 # RevisionContentsMetadataType
 
+## Example Usage
+
+```csharp
+using SpeakeasySDK.Models.Shared;
+
+var value = RevisionContentsMetadataType.OpenapiBundle;
+```
+
 
 ## Values
 

@@ -16,7 +16,7 @@ namespace SpeakeasySDK.Models.Shared
     using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Linq;
-    
+
     [JsonConverter(typeof(OpenEnumConverter))]
     public class AccountType : IEquatable<AccountType>
     {
@@ -76,5 +76,4 @@ namespace SpeakeasySDK.Models.Shared
 
         public override int GetHashCode() => Value.GetHashCode();
     }
-
 }

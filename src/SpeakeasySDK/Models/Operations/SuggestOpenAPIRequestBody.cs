@@ -13,13 +13,12 @@ namespace SpeakeasySDK.Models.Operations
     using SpeakeasySDK.Models.Operations;
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
-    
+
     /// <summary>
     /// The schema file to upload provided as a multipart/form-data file segment.
     /// </summary>
     public class SuggestOpenAPIRequestBody
     {
-
         [SpeakeasyMetadata("multipartForm:name=opts,json")]
         public SuggestOptsOld? Opts { get; set; }
 

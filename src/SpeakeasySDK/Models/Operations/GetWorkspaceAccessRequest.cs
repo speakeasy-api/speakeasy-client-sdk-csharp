@@ -11,10 +11,9 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Utils;
-    
+
     public class GetWorkspaceAccessRequest
     {
-
         /// <summary>
         /// Unique identifier of the generation target.
         /// </summary>

@@ -13,18 +13,17 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
     using System.Collections.Generic;
-    
+
     public class SuggestItemsRequestBody
     {
-
         /// <summary>
-        /// The list of &quot;things&quot; to get suggestions for. One suggestion will be returned for each item in the list.
+        /// The list of "things" to get suggestions for. One suggestion will be returned for each item in the list.
         /// </summary>
         [JsonProperty("items")]
         public List<string> Items { get; set; } = default!;
 
         /// <summary>
-        /// The prompt to use for the suggestion. Think of this as the &quot;preamble&quot;.
+        /// The prompt to use for the suggestion. Think of this as the "preamble".
         /// </summary>
         [JsonProperty("prompt")]
         public string Prompt { get; set; } = default!;

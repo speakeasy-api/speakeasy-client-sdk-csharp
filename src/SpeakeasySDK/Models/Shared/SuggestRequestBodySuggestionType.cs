@@ -13,7 +13,7 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
     using System;
-    
+
     public enum SuggestRequestBodySuggestionType
     {
         [JsonProperty("method-names")]
@@ -54,5 +54,4 @@ namespace SpeakeasySDK.Models.Shared
             throw new Exception($"Unknown value {value} for enum SuggestRequestBodySuggestionType");
         }
     }
-
 }

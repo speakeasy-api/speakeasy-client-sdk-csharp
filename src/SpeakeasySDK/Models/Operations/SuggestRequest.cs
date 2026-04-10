@@ -12,10 +12,9 @@ namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
-    
+
     public class SuggestRequest
     {
-
         /// <summary>
         /// The OAS summary and diagnostics to use for the suggestion.
         /// </summary>

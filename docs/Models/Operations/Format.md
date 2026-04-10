@@ -2,6 +2,14 @@
 
 The format of the OpenAPI specification.
 
+## Example Usage
+
+```csharp
+using SpeakeasySDK.Models.Operations;
+
+var value = Format.Json;
+```
+
 
 ## Values
 

@@ -12,10 +12,9 @@ namespace SpeakeasySDK.Models.Operations
 {
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
-    
+
     public class GetSchemaStoreItemRequestBody
     {
-
         [JsonProperty("id")]
         public string? Id { get; set; }
     }

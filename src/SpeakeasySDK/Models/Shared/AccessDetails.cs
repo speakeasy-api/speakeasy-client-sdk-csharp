@@ -13,10 +13,9 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
-    
+
     public class AccessDetails
     {
-
         [JsonProperty("generation_allowed")]
         public bool GenerationAllowed { get; set; } = default!;
 
