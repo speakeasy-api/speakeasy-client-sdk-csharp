@@ -11,10 +11,9 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Utils;
-    
+
     public class GetWorkspaceFeatureFlagsRequest
     {
-
         /// <summary>
         /// Unique identifier of the workspace.
         /// </summary>

@@ -11,10 +11,9 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Utils;
-    
+
     public class GetTagsRequest
     {
-
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=namespace_name")]
         public string NamespaceName { get; set; } = default!;
     }

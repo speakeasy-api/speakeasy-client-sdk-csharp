@@ -13,10 +13,9 @@ namespace SpeakeasySDK.Models.Shared
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
     using System.Collections.Generic;
-    
+
     public class RemoteSourceSubscriptionSettings
     {
-
         [JsonProperty("base_spec_namespaces")]
         public List<string> BaseSpecNamespaces { get; set; } = default!;
 

@@ -12,21 +12,20 @@ namespace SpeakeasySDK.Models.Shared
 {
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
-    
+
     /// <summary>
-    /// A request to configure a GitHub target
+    /// A request to configure a GitHub target.
     /// </summary>
     public class GithubConfigureTargetRequest
     {
-
         /// <summary>
-        /// The GitHub organization name
+        /// The GitHub organization name.
         /// </summary>
         [JsonProperty("org")]
         public string Org { get; set; } = default!;
 
         /// <summary>
-        /// The GitHub repository name
+        /// The GitHub repository name.
         /// </summary>
         [JsonProperty("repo_name")]
         public string RepoName { get; set; } = default!;

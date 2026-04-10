@@ -15,10 +15,9 @@ namespace SpeakeasySDK.Models.Shared
     using SpeakeasySDK.Utils;
     using System;
     using System.Collections.Generic;
-    
+
     public class Revision
     {
-
         [JsonProperty("contents_metadata")]
         public RevisionContentsMetadata? ContentsMetadata { get; set; }
 
