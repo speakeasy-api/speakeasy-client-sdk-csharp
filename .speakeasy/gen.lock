@@ -1679,7 +1679,7 @@ trackedFiles:
   src/SpeakeasySDK/Models/Shared/Claims.cs:
     id: 1c13b4d80bee
     last_write_checksum: sha1:b7747911d2b259fecc637599e840c1629f74b22b
-    pristine_git_object: 5b23ab110f4c0c863945a8eb5539ac7f3732db41
+    pristine_git_object: 5b23ab110f4c0c863945a8eb5539ac7f3732d666
   src/SpeakeasySDK/Models/Shared/CliEvent.cs:
     id: 563cf8b48d61
     last_write_checksum: sha1:c49c3adb65b65483d8c615097bc2575862c92166
