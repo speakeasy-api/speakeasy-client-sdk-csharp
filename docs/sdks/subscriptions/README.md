@@ -26,8 +26,8 @@ var sdk = new SDK(security: new Security() {
 });
 
 ActivateSubscriptionNamespaceRequest req = new ActivateSubscriptionNamespaceRequest() {
-    NamespaceName = "<value>",
     SubscriptionID = "<id>",
+    NamespaceName = "<value>",
 };
 
 var res = await sdk.Subscriptions.ActivateSubscriptionNamespaceAsync(req);
@@ -69,8 +69,8 @@ var sdk = new SDK(security: new Security() {
 });
 
 IgnoreSubscriptionNamespaceRequest req = new IgnoreSubscriptionNamespaceRequest() {
-    NamespaceName = "<value>",
     SubscriptionID = "<id>",
+    NamespaceName = "<value>",
 };
 
 var res = await sdk.Subscriptions.IgnoreSubscriptionNamespaceAsync(req);
