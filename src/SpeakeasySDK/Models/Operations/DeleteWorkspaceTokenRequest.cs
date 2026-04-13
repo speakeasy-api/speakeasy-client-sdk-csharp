@@ -15,15 +15,15 @@ namespace SpeakeasySDK.Models.Operations
     public class DeleteWorkspaceTokenRequest
     {
         /// <summary>
-        /// Unique identifier of the token.
-        /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=tokenID")]
-        public string TokenID { get; set; } = default!;
-
-        /// <summary>
         /// Unique identifier of the workspace.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=workspace_id")]
         public string? WorkspaceId { get; set; }
+
+        /// <summary>
+        /// Unique identifier of the token.
+        /// </summary>
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=tokenID")]
+        public string TokenID { get; set; } = default!;
     }
 }

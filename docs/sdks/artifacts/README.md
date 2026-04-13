@@ -74,10 +74,10 @@ var sdk = new SDK(security: new Security() {
 });
 
 GetBlobRequest req = new GetBlobRequest() {
-    Digest = "<value>",
-    NamespaceName = "<value>",
     OrganizationSlug = "<value>",
     WorkspaceSlug = "<value>",
+    NamespaceName = "<value>",
+    Digest = "<value>",
 };
 
 var res = await sdk.Artifacts.GetBlobAsync(req);
@@ -119,10 +119,10 @@ var sdk = new SDK(security: new Security() {
 });
 
 GetManifestRequest req = new GetManifestRequest() {
-    NamespaceName = "<value>",
     OrganizationSlug = "<value>",
-    RevisionReference = "<value>",
     WorkspaceSlug = "<value>",
+    NamespaceName = "<value>",
+    RevisionReference = "<value>",
 };
 
 var res = await sdk.Artifacts.GetManifestAsync(req);
