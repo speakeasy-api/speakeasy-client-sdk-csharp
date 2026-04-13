@@ -12,10 +12,9 @@ namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
-    
+
     public class SearchWorkspaceEventsRequest
     {
-
         /// <summary>
         /// Shared execution ID for cli events across a single action.
         /// </summary>

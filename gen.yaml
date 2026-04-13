@@ -19,15 +19,15 @@ generation:
   schemas:
     allOfMergeStrategy: shallowMerge
   requestBodyFieldName: ""
+  versioningStrategy: automatic
   persistentEdits:
     enabled: "true"
   tests:
     generateTests: true
     generateNewTests: false
     skipResponseBodyAssertions: false
-  versioningStrategy: automatic
 csharp:
-  version: 5.13.3
+  version: 5.13.6
   additionalDependencies: []
   author: Speakeasy
   baseErrorName: SDKBaseException

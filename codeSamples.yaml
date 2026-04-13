@@ -231,8 +231,8 @@ actions:
             CodeSampleSchemaInput req = new CodeSampleSchemaInput() {
                 Language = "<value>",
                 SchemaFile = new SchemaFile() {
-                    FileName = "example.file",
                     Content = System.IO.File.ReadAllBytes("example.file"),
+                    FileName = "example.file",
                 },
             };
 
@@ -255,8 +255,8 @@ actions:
             CodeSampleSchemaInput req = new CodeSampleSchemaInput() {
                 Language = "<value>",
                 SchemaFile = new SchemaFile() {
-                    FileName = "example.file",
                     Content = System.IO.File.ReadAllBytes("example.file"),
+                    FileName = "example.file",
                 },
             };
 
@@ -365,12 +365,12 @@ actions:
             });
 
             GithubConfigureMintlifyRepoRequest req = new GithubConfigureMintlifyRepoRequest() {
-                Org = "<value>",
-                Repo = "<value>",
                 Input = "<value>",
+                Org = "<value>",
                 Overlays = new List<string>() {
                     "<value 1>",
                 },
+                Repo = "<value>",
             };
 
             var res = await sdk.Github.ConfigureMintlifyRepoAsync(req);
@@ -495,9 +495,9 @@ actions:
             });
 
             GetGithubSetupStateRequest req = new GetGithubSetupStateRequest() {
+                GenerateGenLockId = "<id>",
                 Org = "<value>",
                 Repo = "<value>",
-                GenerateGenLockId = "<id>",
             };
 
             var res = await sdk.Github.GetSetupAsync(req);
@@ -517,9 +517,9 @@ actions:
             });
 
             GithubTriggerActionRequest req = new GithubTriggerActionRequest() {
+                GenLockId = "<id>",
                 Org = "<value>",
                 RepoName = "<value>",
-                GenLockId = "<id>",
             };
 
             var res = await sdk.Github.TriggerActionAsync(req);
@@ -540,10 +540,10 @@ actions:
             });
 
             GetBlobRequest req = new GetBlobRequest() {
+                Digest = "<value>",
+                NamespaceName = "<value>",
                 OrganizationSlug = "<value>",
                 WorkspaceSlug = "<value>",
-                NamespaceName = "<value>",
-                Digest = "<value>",
             };
 
             var res = await sdk.Artifacts.GetBlobAsync(req);
@@ -564,10 +564,10 @@ actions:
             });
 
             GetManifestRequest req = new GetManifestRequest() {
-                OrganizationSlug = "<value>",
-                WorkspaceSlug = "<value>",
                 NamespaceName = "<value>",
+                OrganizationSlug = "<value>",
                 RevisionReference = "<value>",
+                WorkspaceSlug = "<value>",
             };
 
             var res = await sdk.Artifacts.GetManifestAsync(req);
@@ -588,14 +588,14 @@ actions:
             });
 
             Organization req = new Organization() {
+                AccountType = AccountType.ScaleUp,
+                CreatedAt = System.DateTime.Parse("2026-10-26T09:05:00.560Z").ToUniversalTime(),
                 Id = "<id>",
                 Name = "<value>",
                 Slug = "<value>",
-                AccountType = AccountType.ScaleUp,
+                SsoActivated = false,
                 TelemetryDisabled = false,
-                CreatedAt = System.DateTime.Parse("2026-12-17T21:02:28.497Z"),
-                UpdatedAt = System.DateTime.Parse("2026-07-22T00:26:10.078Z"),
-                SsoActivated = true,
+                UpdatedAt = System.DateTime.Parse("2024-12-22T08:00:51.380Z").ToUniversalTime(),
             };
 
             var res = await sdk.Organizations.CreateAsync(req);
@@ -887,8 +887,8 @@ actions:
             UploadReportRequestBody req = new UploadReportRequestBody() {
                 Data = new Report() {},
                 File = new SpeakeasySDK.Models.Operations.File() {
-                    FileName = "example.file",
                     Content = System.IO.File.ReadAllBytes("example.file"),
+                    FileName = "example.file",
                 },
             };
 
@@ -971,10 +971,10 @@ actions:
             });
 
             CreateSchemaStoreItemRequestBody req = new CreateSchemaStoreItemRequestBody() {
-                Spec = "<value>",
+                Format = SpeakeasySDK.Models.Operations.Format.Yaml,
                 PackageName = "<value>",
                 SDKClassname = "<value>",
-                Format = SpeakeasySDK.Models.Operations.Format.Yaml,
+                Spec = "<value>",
             };
 
             var res = await sdk.SchemaStore.CreateSchemaStoreItemAsync(req);
@@ -1016,8 +1016,8 @@ actions:
             });
 
             ActivateSubscriptionNamespaceRequest req = new ActivateSubscriptionNamespaceRequest() {
-                SubscriptionID = "<id>",
                 NamespaceName = "<value>",
+                SubscriptionID = "<id>",
             };
 
             var res = await sdk.Subscriptions.ActivateSubscriptionNamespaceAsync(req);
@@ -1038,8 +1038,8 @@ actions:
             });
 
             IgnoreSubscriptionNamespaceRequest req = new IgnoreSubscriptionNamespaceRequest() {
-                SubscriptionID = "<id>",
                 NamespaceName = "<value>",
+                SubscriptionID = "<id>",
             };
 
             var res = await sdk.Subscriptions.IgnoreSubscriptionNamespaceAsync(req);
@@ -1060,10 +1060,10 @@ actions:
             });
 
             SuggestItemsRequestBody req = new SuggestItemsRequestBody() {
-                Prompt = "<value>",
                 Items = new List<string>() {
                     "<value 1>",
                 },
+                Prompt = "<value>",
             };
 
             var res = await sdk.Suggest.SuggestItemsAsync(req);
@@ -1084,13 +1084,13 @@ actions:
             });
 
             SuggestOpenAPIRequest req = new SuggestOpenAPIRequest() {
-                XSessionId = "<id>",
                 RequestBody = new SuggestOpenAPIRequestBody() {
                     Schema = new Schema() {
-                        FileName = "example.file",
                         Content = System.IO.File.ReadAllBytes("example.file"),
+                        FileName = "example.file",
                     },
                 },
+                XSessionId = "<id>",
             };
 
             var res = await sdk.Suggest.SuggestOpenAPIAsync(req);
@@ -1135,21 +1135,40 @@ actions:
             });
 
             SuggestRequest req = new SuggestRequest() {
-                XSessionId = "<id>",
                 SuggestRequestBody = new SuggestRequestBody() {
+                    Diagnostics = new List<Diagnostic>() {
+                        new Diagnostic() {
+                            Message = "<value>",
+                            Path = new List<string>() {
+                                "/usr/src",
+                            },
+                            Type = "<value>",
+                        },
+                    },
                     OasSummary = new OASSummary() {
                         Info = new OASInfo() {
-                            Title = "<value>",
-                            Summary = "<value>",
-                            Description = "strictly shyly who and than majority unit boohoo",
-                            Version = "<value>",
+                            Description = "prioritize bell vainly",
                             License = new License() {},
+                            Summary = "<value>",
+                            Title = "<value>",
+                            Version = "<value>",
                         },
-                        Operations = new List<OASOperation>() {},
+                        Operations = new List<OASOperation>() {
+                            new OASOperation() {
+                                Description = "though since instead accurate safe unnaturally charming",
+                                Method = "<value>",
+                                OperationId = "<id>",
+                                Path = "/usr/local/bin",
+                                Tags = new List<string>() {
+                                    "<value 1>",
+                                    "<value 2>",
+                                },
+                            },
+                        },
                     },
                     SuggestionType = SuggestRequestBodySuggestionType.MethodNames,
-                    Diagnostics = new List<Diagnostic>() {},
                 },
+                XSessionId = "<id>",
             };
 
             var res = await sdk.Suggest.SuggestAsync(req);
@@ -1202,12 +1221,12 @@ actions:
             });
 
             Workspace req = new Workspace() {
-                CreatedAt = System.DateTime.Parse("2024-11-17T13:41:10.525Z"),
+                CreatedAt = System.DateTime.Parse("2024-11-17T13:41:10.525Z").ToUniversalTime(),
                 Id = "<id>",
                 Name = "<value>",
                 OrganizationId = "<id>",
                 Slug = "<value>",
-                UpdatedAt = System.DateTime.Parse("2025-11-21T08:36:32.740Z"),
+                UpdatedAt = System.DateTime.Parse("2025-11-21T08:36:32.740Z").ToUniversalTime(),
                 Verified = true,
             };
 
@@ -1315,12 +1334,12 @@ actions:
 
             UpdateWorkspaceDetailsRequest req = new UpdateWorkspaceDetailsRequest() {
                 Workspace = new Workspace() {
-                    CreatedAt = System.DateTime.Parse("2024-08-01T22:30:24.264Z"),
+                    CreatedAt = System.DateTime.Parse("2024-08-01T22:30:24.264Z").ToUniversalTime(),
                     Id = "<id>",
                     Name = "<value>",
                     OrganizationId = "<id>",
                     Slug = "<value>",
-                    UpdatedAt = System.DateTime.Parse("2026-01-24T03:53:13.581Z"),
+                    UpdatedAt = System.DateTime.Parse("2026-01-24T03:53:13.581Z").ToUniversalTime(),
                     Verified = true,
                 },
             };
@@ -1372,15 +1391,15 @@ actions:
             PostWorkspaceEventsRequest req = new PostWorkspaceEventsRequest() {
                 RequestBody = new List<CliEvent>() {
                     new CliEvent() {
-                        Id = "<id>",
+                        CreatedAt = System.DateTime.Parse("2024-02-16T09:12:42.397Z").ToUniversalTime(),
                         ExecutionId = "<id>",
-                        WorkspaceId = "<id>",
+                        Id = "<id>",
+                        InteractionType = InteractionType.Quickstart,
+                        LocalStartedAt = System.DateTime.Parse("2025-01-23T01:13:51.002Z").ToUniversalTime(),
                         SpeakeasyApiKeyName = "<value>",
-                        InteractionType = InteractionType.CiExec,
-                        LocalStartedAt = System.DateTime.Parse("2025-12-22T21:01:06.740Z"),
-                        CreatedAt = System.DateTime.Parse("2025-01-23T01:13:51.002Z"),
                         SpeakeasyVersion = "<value>",
                         Success = true,
+                        WorkspaceId = "<id>",
                     },
                 },
             };
@@ -1498,10 +1517,10 @@ actions:
 
             UpdateWorkspaceSettingsRequest req = new UpdateWorkspaceSettingsRequest() {
                 WorkspaceSettings = new WorkspaceSettings() {
+                    CreatedAt = System.DateTime.Parse("2026-03-09T15:48:09.330Z").ToUniversalTime(),
+                    UpdatedAt = System.DateTime.Parse("2026-11-24T16:37:53.492Z").ToUniversalTime(),
+                    WebhookUrl = "https://wobbly-lid.org",
                     WorkspaceId = "<id>",
-                    WebhookUrl = "https://wicked-reboot.org",
-                    CreatedAt = System.DateTime.Parse("2025-07-27T10:14:11.397Z"),
-                    UpdatedAt = System.DateTime.Parse("2026-12-12T17:54:28.990Z"),
                 },
             };
 
@@ -1620,12 +1639,12 @@ actions:
 
             CreateWorkspaceTokenRequest req = new CreateWorkspaceTokenRequest() {
                 WorkspaceToken = new WorkspaceToken() {
+                    Alg = "<value>",
+                    CreatedAt = System.DateTime.Parse("2025-10-04T10:23:04.522Z").ToUniversalTime(),
                     Id = "<id>",
+                    Key = "<key>",
                     Name = "<value>",
                     WorkspaceId = "<id>",
-                    Alg = "<value>",
-                    Key = "<key>",
-                    CreatedAt = System.DateTime.Parse("2025-10-04T10:23:04.522Z"),
                 },
             };
 

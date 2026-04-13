@@ -13,13 +13,12 @@ namespace SpeakeasySDK.Models.Operations
     using Newtonsoft.Json;
     using SpeakeasySDK.Utils;
     using System;
-    
+
     /// <summary>
-    /// OK
+    /// OK.
     /// </summary>
     public class GetPublishingTokenPublicMetadataResponseBody
     {
-
         [JsonProperty("organization_id")]
         public string? OrganizationId { get; set; }
 

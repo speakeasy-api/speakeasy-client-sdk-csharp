@@ -14,13 +14,12 @@ namespace SpeakeasySDK.Models.Shared
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
     using System;
-    
+
     /// <summary>
     /// A namespace contains many revisions.
     /// </summary>
     public class Namespace
     {
-
         [JsonProperty("archived_at")]
         public DateTime? ArchivedAt { get; set; }
 
@@ -46,7 +45,7 @@ namespace SpeakeasySDK.Models.Shared
         public string Name { get; set; } = default!;
 
         /// <summary>
-        /// Indicates whether the namespace is publicly accessible
+        /// Indicates whether the namespace is publicly accessible.
         /// </summary>
         [JsonProperty("public")]
         public bool? Public { get; set; }
