@@ -16,6 +16,10 @@ name: Generate
             target:
                 description: 'optionally: set a specific target to generate, default is all'
                 type: string
+            speakeasy_version:
+                description: 'optionally: set a specific speakeasy version, default is latest'
+                type: string
+                default: latest
     schedule:
         - cron: 0 0 * * *
 jobs:
@@ -25,7 +29,7 @@ jobs:
             force: ${{ github.event.inputs.force }}
             mode: pr
             set_version: ${{ github.event.inputs.set_version }}
-            speakeasy_version: latest
+            speakeasy_version: ${{ github.event.inputs.speakeasy_version || 'latest' }}
             target: ${{ github.event.inputs.target }}
             runs-on: ubuntu-24.04
         secrets:
