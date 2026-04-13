@@ -5,13 +5,13 @@ generation:
     optionalPropertyRendering: withExample
     sdkInitStyle: constructor
   fixes:
-    nameResolutionFeb2025: false
-    parameterOrderingFeb2024: false
-    requestResponseComponentNamesFeb2024: false
-    securityFeb2025: false
-    sharedErrorComponentsApr2025: false
-    sharedNestedComponentsJan2026: false
-    nameOverrideFeb2026: false
+    nameResolutionFeb2025: true
+    parameterOrderingFeb2024: true
+    requestResponseComponentNamesFeb2024: true
+    securityFeb2025: true
+    sharedErrorComponentsApr2025: true
+    sharedNestedComponentsJan2026: true
+    nameOverrideFeb2026: true
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
