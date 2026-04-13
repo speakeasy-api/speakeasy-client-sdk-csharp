@@ -8,7 +8,7 @@ name: Publish
       - RELEASES.md
 jobs:
   publish:
-    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@gen2879
+    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@v15
     with:
       runs-on: ubuntu-22.04
     secrets:
