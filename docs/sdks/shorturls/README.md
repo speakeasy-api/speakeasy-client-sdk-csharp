@@ -24,7 +24,7 @@ var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
 });
 
-CreateRequestBody req = new CreateRequestBody() {
+CreateRequest req = new CreateRequest() {
     Url = "https://exalted-heroine.org/",
 };
 
@@ -35,9 +35,9 @@ var res = await sdk.ShortURLs.CreateAsync(req);
 
 ### Parameters
 
-| Parameter                                                         | Type                                                              | Required                                                          | Description                                                       |
-| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
-| `request`                                                         | [CreateRequestBody](../../Models/Operations/CreateRequestBody.md) | :heavy_check_mark:                                                | The request object to use for the request.                        |
+| Parameter                                                 | Type                                                      | Required                                                  | Description                                               |
+| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
+| `request`                                                 | [CreateRequest](../../Models/Operations/CreateRequest.md) | :heavy_check_mark:                                        | The request object to use for the request.                |
 
 ### Response
 

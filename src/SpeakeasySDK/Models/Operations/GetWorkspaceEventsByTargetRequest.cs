@@ -16,10 +16,10 @@ namespace SpeakeasySDK.Models.Operations
     public class GetWorkspaceEventsByTargetRequest
     {
         /// <summary>
-        /// Filter to only return events created after this timestamp.
+        /// Unique identifier of the workspace.
         /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=after_created_at")]
-        public DateTime? AfterCreatedAt { get; set; }
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=workspace_id")]
+        public string? WorkspaceId { get; set; }
 
         /// <summary>
         /// Filter to only return events corresponding to a particular gen_lock_id (gen_lock_id uniquely identifies a target).
@@ -28,9 +28,9 @@ namespace SpeakeasySDK.Models.Operations
         public string TargetId { get; set; } = default!;
 
         /// <summary>
-        /// Unique identifier of the workspace.
+        /// Filter to only return events created after this timestamp.
         /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=workspace_id")]
-        public string? WorkspaceId { get; set; }
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=after_created_at")]
+        public DateTime? AfterCreatedAt { get; set; }
     }
 }
