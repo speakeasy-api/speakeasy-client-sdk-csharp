@@ -108,7 +108,7 @@ var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
 });
 
-UploadReportRequestBody req = new UploadReportRequestBody() {
+UploadReportRequest req = new UploadReportRequest() {
     Data = new Report() {},
     File = new SpeakeasySDK.Models.Operations.File() {
         Content = System.IO.File.ReadAllBytes("example.file"),
@@ -123,9 +123,9 @@ var res = await sdk.Reports.UploadReportAsync(req);
 
 ### Parameters
 
-| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
-| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `request`                                                                     | [UploadReportRequestBody](../../Models/Operations/UploadReportRequestBody.md) | :heavy_check_mark:                                                            | The request object to use for the request.                                    |
+| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `request`                                                             | [UploadReportRequest](../../Models/Operations/UploadReportRequest.md) | :heavy_check_mark:                                                    | The request object to use for the request.                            |
 
 ### Response
 

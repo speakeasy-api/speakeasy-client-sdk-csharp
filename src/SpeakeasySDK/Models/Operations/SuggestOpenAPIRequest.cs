@@ -15,13 +15,13 @@ namespace SpeakeasySDK.Models.Operations
 
     public class SuggestOpenAPIRequest
     {
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=x-session-id")]
+        public string XSessionId { get; set; } = default!;
+
         /// <summary>
         /// The schema file to upload provided as a multipart/form-data file segment.
         /// </summary>
         [SpeakeasyMetadata("request:mediaType=multipart/form-data")]
         public SuggestOpenAPIRequestBody RequestBody { get; set; } = default!;
-
-        [SpeakeasyMetadata("header:style=simple,explode=false,name=x-session-id")]
-        public string XSessionId { get; set; } = default!;
     }
 }

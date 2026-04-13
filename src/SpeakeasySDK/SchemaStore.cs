@@ -28,25 +28,25 @@ namespace SpeakeasySDK
         /// <summary>
         /// Create a schema in the schema store.
         /// </summary>
-        /// <param name="request">A <see cref="CreateSchemaStoreItemRequestBody"/> parameter.</param>
+        /// <param name="request">A <see cref="CreateSchemaStoreItemRequest"/> parameter.</param>
         /// <returns>An awaitable task that returns a <see cref="CreateSchemaStoreItemResponse"/> response envelope when completed.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
         /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
         /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<CreateSchemaStoreItemResponse> CreateSchemaStoreItemAsync(CreateSchemaStoreItemRequestBody request);
+        public  Task<CreateSchemaStoreItemResponse> CreateSchemaStoreItemAsync(CreateSchemaStoreItemRequest request);
 
         /// <summary>
         /// Get a OAS schema from the schema store.
         /// </summary>
-        /// <param name="request">A <see cref="GetSchemaStoreItemRequestBody"/> parameter.</param>
+        /// <param name="request">A <see cref="GetSchemaStoreItemRequest"/> parameter.</param>
         /// <returns>An awaitable task that returns a <see cref="GetSchemaStoreItemResponse"/> response envelope when completed.</returns>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
         /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
         /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<GetSchemaStoreItemResponse> GetSchemaStoreItemAsync(GetSchemaStoreItemRequestBody? request = null);
+        public  Task<GetSchemaStoreItemResponse> GetSchemaStoreItemAsync(GetSchemaStoreItemRequest? request = null);
     }
 
     public class SchemaStore: ISchemaStore
@@ -65,7 +65,7 @@ namespace SpeakeasySDK
         /// <summary>
         /// Create a schema in the schema store.
         /// </summary>
-        /// <param name="request">A <see cref="CreateSchemaStoreItemRequestBody"/> parameter.</param>
+        /// <param name="request">A <see cref="CreateSchemaStoreItemRequest"/> parameter.</param>
         /// <returns>An awaitable task that returns a <see cref="CreateSchemaStoreItemResponse"/> response envelope when completed.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
@@ -73,7 +73,7 @@ namespace SpeakeasySDK
         /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
         /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
         public async  Task<CreateSchemaStoreItemResponse> CreateSchemaStoreItemAsync(
-            CreateSchemaStoreItemRequestBody request
+            CreateSchemaStoreItemRequest request
         )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
@@ -178,6 +178,7 @@ namespace SpeakeasySDK
                         throw new ResponseValidationException("Failed to deserialize response body into ErrorPayload.", httpResponse, httpResponseBody, ex);
                     }
 
+                    payload.RawResponse = httpResponse;
                     throw new Error(payload, httpResponse, httpResponseBody);
                 }
 
@@ -195,15 +196,13 @@ namespace SpeakeasySDK
         /// <summary>
         /// Get a OAS schema from the schema store.
         /// </summary>
-        /// <param name="request">A <see cref="GetSchemaStoreItemRequestBody"/> parameter.</param>
+        /// <param name="request">A <see cref="GetSchemaStoreItemRequest"/> parameter.</param>
         /// <returns>An awaitable task that returns a <see cref="GetSchemaStoreItemResponse"/> response envelope when completed.</returns>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
         /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
         /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<GetSchemaStoreItemResponse> GetSchemaStoreItemAsync(
-            GetSchemaStoreItemRequestBody? request = null
-        )
+        public async  Task<GetSchemaStoreItemResponse> GetSchemaStoreItemAsync(GetSchemaStoreItemRequest? request = null)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = baseUrl + "/v1/schema_store";
@@ -305,6 +304,7 @@ namespace SpeakeasySDK
                         throw new ResponseValidationException("Failed to deserialize response body into ErrorPayload.", httpResponse, httpResponseBody, ex);
                     }
 
+                    payload.RawResponse = httpResponse;
                     throw new Error(payload, httpResponse, httpResponseBody);
                 }
 
