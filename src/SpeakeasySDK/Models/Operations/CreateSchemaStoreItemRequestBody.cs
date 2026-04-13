@@ -13,10 +13,9 @@ namespace SpeakeasySDK.Models.Operations
     using Newtonsoft.Json;
     using SpeakeasySDK.Models.Operations;
     using SpeakeasySDK.Utils;
-    
+
     public class CreateSchemaStoreItemRequestBody
     {
-
         /// <summary>
         /// The format of the OpenAPI specification.
         /// </summary>

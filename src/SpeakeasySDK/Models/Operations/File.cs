@@ -11,10 +11,9 @@
 namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Utils;
-    
+
     public class File
     {
-
         [SpeakeasyMetadata("multipartForm:content")]
         public byte[] Content { get; set; } = default!;
 

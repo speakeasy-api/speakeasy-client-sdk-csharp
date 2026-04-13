@@ -12,10 +12,9 @@ namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
-    
+
     public class CreateWorkspaceTokenRequest
     {
-
         [SpeakeasyMetadata("request:mediaType=application/json")]
         public WorkspaceToken WorkspaceToken { get; set; } = default!;
 

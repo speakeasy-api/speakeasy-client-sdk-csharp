@@ -12,12 +12,11 @@ namespace SpeakeasySDK.Models.Operations
 {
     using SpeakeasySDK.Models.Shared;
     using SpeakeasySDK.Utils;
-    
+
     public class SuggestOpenAPIRegistryRequest
     {
-
         /// <summary>
-        /// Suggest options
+        /// Suggest options.
         /// </summary>
         [SpeakeasyMetadata("request:mediaType=application/json")]
         public SuggestRequestBody? SuggestRequestBody { get; set; }
@@ -26,7 +25,7 @@ namespace SpeakeasySDK.Models.Operations
         public string NamespaceName { get; set; } = default!;
 
         /// <summary>
-        /// Tag or digest
+        /// Tag or digest.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=revision_reference")]
         public string RevisionReference { get; set; } = default!;

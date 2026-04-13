@@ -24,72 +24,107 @@ namespace SpeakeasySDK
     using System.Threading.Tasks;
 
     /// <summary>
-    /// REST APIs for managing LLM OAS suggestions
+    /// REST APIs for managing LLM OAS suggestions.
     /// </summary>
     public interface ISuggest
     {
-
         /// <summary>
         /// Generate suggestions for improving an OpenAPI document.
-        /// 
+        /// </summary>
         /// <remarks>
         /// Get suggestions from an LLM model for improving an OpenAPI document.
         /// </remarks>
-        /// </summary>
-        Task<SuggestResponse> SuggestAsync(SuggestRequest request);
+        /// <param name="request">A <see cref="SuggestRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="SuggestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<SuggestResponse> SuggestAsync(SuggestRequest request);
 
         /// <summary>
         /// Generate generic suggestions for a list of items.
         /// </summary>
-        Task<SuggestItemsResponse> SuggestItemsAsync(SuggestItemsRequestBody request);
+        /// <param name="request">The OAS summary and diagnostics to use for the suggestion.</param>
+        /// <returns>An awaitable task that returns a <see cref="SuggestItemsResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<SuggestItemsResponse> SuggestItemsAsync(SuggestItemsRequestBody request);
 
         /// <summary>
         /// (DEPRECATED) Generate suggestions for improving an OpenAPI document.
-        /// 
+        /// </summary>
         /// <remarks>
         /// Get suggestions from an LLM model for improving an OpenAPI document.
         /// </remarks>
-        /// </summary>
-        Task<SuggestOpenAPIResponse> SuggestOpenAPIAsync(SuggestOpenAPIRequest request);
+        /// <param name="request">A <see cref="SuggestOpenAPIRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="SuggestOpenAPIResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<SuggestOpenAPIResponse> SuggestOpenAPIAsync(SuggestOpenAPIRequest request);
 
         /// <summary>
         /// Generate suggestions for improving an OpenAPI document stored in the registry.
-        /// 
+        /// </summary>
         /// <remarks>
         /// Get suggestions from an LLM model for improving an OpenAPI document stored in the registry.
         /// </remarks>
-        /// </summary>
-        Task<SuggestOpenAPIRegistryResponse> SuggestOpenAPIRegistryAsync(SuggestOpenAPIRegistryRequest request);
+        /// <param name="request">A <see cref="SuggestOpenAPIRegistryRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="SuggestOpenAPIRegistryResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<SuggestOpenAPIRegistryResponse> SuggestOpenAPIRegistryAsync(SuggestOpenAPIRegistryRequest request);
     }
 
     /// <summary>
-    /// REST APIs for managing LLM OAS suggestions
+    /// REST APIs for managing LLM OAS suggestions.
     /// </summary>
     public class Suggest: ISuggest
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public Suggest(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<SuggestResponse> SuggestAsync(SuggestRequest request)
+        /// <summary>
+        /// Generate suggestions for improving an OpenAPI document.
+        /// </summary>
+        /// <remarks>
+        /// Get suggestions from an LLM model for improving an OpenAPI document.
+        /// </remarks>
+        /// <param name="request">A <see cref="SuggestRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="SuggestResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<SuggestResponse> SuggestAsync(SuggestRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
             var urlString = baseUrl + "/v1/suggest/openapi_from_summary";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "SuggestRequestBody", "json", false, false);
             if (serializedBody != null)
@@ -121,9 +156,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception error)
+            catch (Exception _hookError)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -166,16 +201,30 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<SuggestItemsResponse> SuggestItemsAsync(SuggestItemsRequestBody request)
+
+        /// <summary>
+        /// Generate generic suggestions for a list of items.
+        /// </summary>
+        /// <param name="request">The OAS summary and diagnostics to use for the suggestion.</param>
+        /// <returns>An awaitable task that returns a <see cref="SuggestItemsResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<SuggestItemsResponse> SuggestItemsAsync(SuggestItemsRequestBody request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
             var urlString = baseUrl + "/v1/suggest/items";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json", false, false);
             if (serializedBody != null)
@@ -207,9 +256,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception error)
+            catch (Exception _hookError)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -263,17 +312,34 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<SuggestOpenAPIResponse> SuggestOpenAPIAsync(SuggestOpenAPIRequest request)
+
+        /// <summary>
+        /// (DEPRECATED) Generate suggestions for improving an OpenAPI document.
+        /// </summary>
+        /// <remarks>
+        /// Get suggestions from an LLM model for improving an OpenAPI document.
+        /// </remarks>
+        /// <param name="request">A <see cref="SuggestOpenAPIRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="SuggestOpenAPIResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<SuggestOpenAPIResponse> SuggestOpenAPIAsync(SuggestOpenAPIRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
             var urlString = baseUrl + "/v1/suggest/openapi";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "multipart", false, false);
             if (serializedBody != null)
@@ -305,9 +371,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception error)
+            catch (Exception _hookError)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -350,7 +416,22 @@ namespace SpeakeasySDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<SuggestOpenAPIRegistryResponse> SuggestOpenAPIRegistryAsync(SuggestOpenAPIRegistryRequest request)
+
+        /// <summary>
+        /// Generate suggestions for improving an OpenAPI document stored in the registry.
+        /// </summary>
+        /// <remarks>
+        /// Get suggestions from an LLM model for improving an OpenAPI document stored in the registry.
+        /// </remarks>
+        /// <param name="request">A <see cref="SuggestOpenAPIRegistryRequest"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="SuggestOpenAPIRegistryResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<SuggestOpenAPIRegistryResponse> SuggestOpenAPIRegistryAsync(
+            SuggestOpenAPIRegistryRequest request
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -360,6 +441,11 @@ namespace SpeakeasySDK
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "SuggestRequestBody", "json", false, true);
             if (serializedBody != null)
@@ -391,9 +477,9 @@ namespace SpeakeasySDK
                     }
                 }
             }
-            catch (Exception error)
+            catch (Exception _hookError)
             {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
                 if (_httpResponse != null)
                 {
                     httpResponse = _httpResponse;
@@ -435,5 +521,6 @@ namespace SpeakeasySDK
 
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
+
     }
 }
