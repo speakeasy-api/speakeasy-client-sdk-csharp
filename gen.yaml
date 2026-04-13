@@ -5,6 +5,7 @@ generation:
     optionalPropertyRendering: withExample
     sdkInitStyle: constructor
   fixes:
+    nameResolutionDec2023: true
     nameResolutionFeb2025: true
     parameterOrderingFeb2024: true
     requestResponseComponentNamesFeb2024: true
@@ -27,7 +28,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 csharp:
-  version: 5.13.6
+  version: 5.13.7
   additionalDependencies: []
   author: Speakeasy
   baseErrorName: SDKBaseException

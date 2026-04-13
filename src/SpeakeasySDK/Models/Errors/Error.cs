@@ -18,6 +18,12 @@ namespace SpeakeasySDK.Models.Errors
     public class ErrorPayload
     {
         /// <summary>
+        /// Raw HTTP response; suitable for custom response parsing.
+        /// </summary>
+        [JsonProperty("-")]
+        public HttpResponseMessage? RawResponse { get; set; }
+
+        /// <summary>
         /// A developer-facing error message.
         /// </summary>
         [JsonProperty("message")]
