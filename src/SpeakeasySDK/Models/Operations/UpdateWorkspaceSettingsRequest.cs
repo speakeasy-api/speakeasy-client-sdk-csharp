@@ -16,15 +16,15 @@ namespace SpeakeasySDK.Models.Operations
     public class UpdateWorkspaceSettingsRequest
     {
         /// <summary>
-        /// The workspace settings to update.
-        /// </summary>
-        [SpeakeasyMetadata("request:mediaType=application/json")]
-        public WorkspaceSettings WorkspaceSettings { get; set; } = default!;
-
-        /// <summary>
         /// Unique identifier of the workspace.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=workspace_id")]
         public string? WorkspaceId { get; set; }
+
+        /// <summary>
+        /// The workspace settings to update.
+        /// </summary>
+        [SpeakeasyMetadata("request:mediaType=application/json")]
+        public WorkspaceSettings WorkspaceSettings { get; set; } = default!;
     }
 }

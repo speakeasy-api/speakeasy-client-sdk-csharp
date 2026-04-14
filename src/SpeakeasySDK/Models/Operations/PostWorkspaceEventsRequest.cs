@@ -16,13 +16,13 @@ namespace SpeakeasySDK.Models.Operations
 
     public class PostWorkspaceEventsRequest
     {
-        [SpeakeasyMetadata("request:mediaType=application/json")]
-        public List<CliEvent> RequestBody { get; set; } = default!;
-
         /// <summary>
         /// Unique identifier of the workspace.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=workspace_id")]
         public string? WorkspaceId { get; set; }
+
+        [SpeakeasyMetadata("request:mediaType=application/json")]
+        public List<CliEvent> RequestBody { get; set; } = default!;
     }
 }
