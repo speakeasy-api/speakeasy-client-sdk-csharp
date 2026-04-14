@@ -21,15 +21,15 @@ namespace SpeakeasySDK.Models.Operations
         public string? GenLockId { get; set; }
 
         /// <summary>
-        /// Skip side-effects like incrementing metrics.
-        /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=passive")]
-        public bool? Passive { get; set; }
-
-        /// <summary>
         /// The type of the generated target.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=targetType")]
         public string? TargetType { get; set; }
+
+        /// <summary>
+        /// Skip side-effects like incrementing metrics.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=passive")]
+        public bool? Passive { get; set; }
     }
 }
