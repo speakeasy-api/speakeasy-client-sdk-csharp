@@ -35,6 +35,6 @@ namespace SpeakeasySDK.Models.Operations
         /// <summary>
         /// OK.
         /// </summary>
-        public UploadReportUploadedReport? UploadedReport { get; set; }
+        public UploadedReport? UploadedReport { get; set; }
     }
 }

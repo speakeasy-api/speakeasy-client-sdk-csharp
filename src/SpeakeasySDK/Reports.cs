@@ -63,7 +63,7 @@ namespace SpeakeasySDK
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
         /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<UploadReportResponse> UploadReportAsync(UploadReportRequestBody request);
+        public  Task<UploadReportResponse> UploadReportAsync(UploadReportRequest request);
     }
 
     /// <summary>
@@ -305,7 +305,7 @@ namespace SpeakeasySDK
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
         /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<UploadReportResponse> UploadReportAsync(UploadReportRequestBody request)
+        public async  Task<UploadReportResponse> UploadReportAsync(UploadReportRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -372,14 +372,14 @@ namespace SpeakeasySDK
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    UploadReportUploadedReport obj;
+                    UploadedReport obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<UploadReportUploadedReport>(httpResponseBody, NullValueHandling.Ignore);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<UploadedReport>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into UploadReportUploadedReport.", httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into UploadedReport.", httpResponse, httpResponseBody, ex);
                     }
 
                     var response = new UploadReportResponse()
