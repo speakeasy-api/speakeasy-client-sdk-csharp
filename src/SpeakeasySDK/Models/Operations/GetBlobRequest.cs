@@ -14,16 +14,16 @@ namespace SpeakeasySDK.Models.Operations
 
     public class GetBlobRequest
     {
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=digest")]
-        public string Digest { get; set; } = default!;
-
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=namespace_name")]
-        public string NamespaceName { get; set; } = default!;
-
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=organization_slug")]
         public string OrganizationSlug { get; set; } = default!;
 
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=workspace_slug")]
         public string WorkspaceSlug { get; set; } = default!;
+
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=namespace_name")]
+        public string NamespaceName { get; set; } = default!;
+
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=digest")]
+        public string Digest { get; set; } = default!;
     }
 }
