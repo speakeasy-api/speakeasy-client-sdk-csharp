@@ -56,7 +56,7 @@ namespace SpeakeasySDK
             ServerUrl = "";
             ServerName = null;
             WorkspaceId = null;
-            UserAgent = "speakeasy-sdk/csharp 5.13.6 2.879.11 0.4.0 SpeakeasySDK";
+            UserAgent = "speakeasy-sdk/csharp 5.13.7 2.881.0 0.4.0 SpeakeasySDK";
             SecuritySource = null;
             Hooks = new SDKHooks();
             RetryConfig = null;
