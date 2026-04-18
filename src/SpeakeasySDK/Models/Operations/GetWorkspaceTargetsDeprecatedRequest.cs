@@ -16,15 +16,15 @@ namespace SpeakeasySDK.Models.Operations
     public class GetWorkspaceTargetsDeprecatedRequest
     {
         /// <summary>
-        /// Filter to only return targets with events created after this timestamp.
-        /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=after_last_event_created_at")]
-        public DateTime? AfterLastEventCreatedAt { get; set; }
-
-        /// <summary>
         /// Unique identifier of the workspace.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=workspace_id")]
         public string? WorkspaceId { get; set; }
+
+        /// <summary>
+        /// Filter to only return targets with events created after this timestamp.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=after_last_event_created_at")]
+        public DateTime? AfterLastEventCreatedAt { get; set; }
     }
 }
