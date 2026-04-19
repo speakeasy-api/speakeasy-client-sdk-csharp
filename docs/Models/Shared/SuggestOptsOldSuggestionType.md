@@ -1,11 +1,11 @@
-# SuggestionType
+# SuggestOptsOldSuggestionType
 
 ## Example Usage
 
 ```csharp
 using SpeakeasySDK.Models.Shared;
 
-var value = SuggestionType.MethodNames;
+var value = SuggestOptsOldSuggestionType.MethodNames;
 ```
 
 

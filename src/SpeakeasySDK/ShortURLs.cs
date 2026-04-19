@@ -31,13 +31,13 @@ namespace SpeakeasySDK
         /// <summary>
         /// Shorten a URL.
         /// </summary>
-        /// <param name="request">A <see cref="CreateRequestBody"/> parameter.</param>
+        /// <param name="request">A <see cref="CreateRequest"/> parameter.</param>
         /// <returns>An awaitable task that returns a <see cref="CreateResponse"/> response envelope when completed.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
         /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<CreateResponse> CreateAsync(CreateRequestBody request);
+        public  Task<CreateResponse> CreateAsync(CreateRequest request);
     }
 
     /// <summary>
@@ -59,13 +59,13 @@ namespace SpeakeasySDK
         /// <summary>
         /// Shorten a URL.
         /// </summary>
-        /// <param name="request">A <see cref="CreateRequestBody"/> parameter.</param>
+        /// <param name="request">A <see cref="CreateRequest"/> parameter.</param>
         /// <returns>An awaitable task that returns a <see cref="CreateResponse"/> response envelope when completed.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
         /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<CreateResponse> CreateAsync(CreateRequestBody request)
+        public async  Task<CreateResponse> CreateAsync(CreateRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
