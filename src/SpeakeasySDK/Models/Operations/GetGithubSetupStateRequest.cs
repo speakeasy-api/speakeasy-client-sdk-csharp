@@ -14,13 +14,13 @@ namespace SpeakeasySDK.Models.Operations
 
     public class GetGithubSetupStateRequest
     {
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=generate_gen_lock_id")]
-        public string GenerateGenLockId { get; set; } = default!;
-
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=org")]
         public string Org { get; set; } = default!;
 
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=repo")]
         public string Repo { get; set; } = default!;
+
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=generate_gen_lock_id")]
+        public string GenerateGenLockId { get; set; } = default!;
     }
 }
