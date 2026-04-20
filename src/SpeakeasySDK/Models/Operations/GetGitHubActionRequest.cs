@@ -14,16 +14,16 @@ namespace SpeakeasySDK.Models.Operations
 
     public class GetGitHubActionRequest
     {
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=org")]
-        public string Org { get; set; } = default!;
-
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=repo")]
-        public string Repo { get; set; } = default!;
-
         /// <summary>
         /// The targetName of the workflow target.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=targetName")]
         public string? TargetName { get; set; }
+
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=org")]
+        public string Org { get; set; } = default!;
+
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=repo")]
+        public string Repo { get; set; } = default!;
     }
 }
