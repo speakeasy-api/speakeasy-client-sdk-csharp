@@ -1,4 +1,4 @@
-# CreatePublishingTokenRequestBody
+# CreatePublishingTokenRequest
 
 The publishing token to create
 
