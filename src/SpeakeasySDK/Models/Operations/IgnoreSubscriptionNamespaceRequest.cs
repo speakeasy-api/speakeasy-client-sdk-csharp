@@ -15,15 +15,15 @@ namespace SpeakeasySDK.Models.Operations
     public class IgnoreSubscriptionNamespaceRequest
     {
         /// <summary>
-        /// The namespace name.
-        /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=namespaceName")]
-        public string NamespaceName { get; set; } = default!;
-
-        /// <summary>
         /// The existing subscription ID.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=subscriptionID")]
         public string SubscriptionID { get; set; } = default!;
+
+        /// <summary>
+        /// The namespace name.
+        /// </summary>
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=namespaceName")]
+        public string NamespaceName { get; set; } = default!;
     }
 }

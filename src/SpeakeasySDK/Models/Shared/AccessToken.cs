@@ -33,6 +33,6 @@ namespace SpeakeasySDK.Models.Shared
         public AccessTokenUser User { get; set; } = default!;
 
         [JsonProperty("workspaces")]
-        public List<Models.Shared.Workspaces>? Workspaces { get; set; }
+        public List<AccessTokenWorkspace>? Workspaces { get; set; }
     }
 }
