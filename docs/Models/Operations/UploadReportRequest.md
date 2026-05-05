@@ -1,4 +1,4 @@
-# UploadReportRequestBody
+# UploadReportRequest
 
 The report file to upload provided as a multipart/form-data file segment.
 
