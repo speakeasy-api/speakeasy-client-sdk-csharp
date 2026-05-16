@@ -37,7 +37,7 @@ namespace SpeakeasySDK
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
         /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
         /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public  Task<CreatePublishingTokenResponse> CreateAsync(CreatePublishingTokenRequestBody? request = null);
+        public  Task<CreatePublishingTokenResponse> CreateAsync(CreatePublishingTokenRequest? request = null);
 
         /// <summary>
         /// Delete a specific publishing token.
@@ -157,7 +157,7 @@ namespace SpeakeasySDK
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
         /// <exception cref="Error">Default error response. Thrown when the API returns a 4XX response.</exception>
         /// <exception cref="SDKException">Default API Exception. Thrown when the API returns a 5XX response.</exception>
-        public async  Task<CreatePublishingTokenResponse> CreateAsync(CreatePublishingTokenRequestBody? request = null)
+        public async  Task<CreatePublishingTokenResponse> CreateAsync(CreatePublishingTokenRequest? request = null)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = baseUrl + "/v1/publishing-tokens";
@@ -259,6 +259,7 @@ namespace SpeakeasySDK
                         throw new ResponseValidationException("Failed to deserialize response body into ErrorPayload.", httpResponse, httpResponseBody, ex);
                     }
 
+                    payload.RawResponse = httpResponse;
                     throw new Error(payload, httpResponse, httpResponseBody);
                 }
 
@@ -366,6 +367,7 @@ namespace SpeakeasySDK
                         throw new ResponseValidationException("Failed to deserialize response body into ErrorPayload.", httpResponse, httpResponseBody, ex);
                     }
 
+                    payload.RawResponse = httpResponse;
                     throw new Error(payload, httpResponse, httpResponseBody);
                 }
 
@@ -491,6 +493,7 @@ namespace SpeakeasySDK
                         throw new ResponseValidationException("Failed to deserialize response body into ErrorPayload.", httpResponse, httpResponseBody, ex);
                     }
 
+                    payload.RawResponse = httpResponse;
                     throw new Error(payload, httpResponse, httpResponseBody);
                 }
 
@@ -612,6 +615,7 @@ namespace SpeakeasySDK
                         throw new ResponseValidationException("Failed to deserialize response body into ErrorPayload.", httpResponse, httpResponseBody, ex);
                     }
 
+                    payload.RawResponse = httpResponse;
                     throw new Error(payload, httpResponse, httpResponseBody);
                 }
 
@@ -739,6 +743,7 @@ namespace SpeakeasySDK
                         throw new ResponseValidationException("Failed to deserialize response body into ErrorPayload.", httpResponse, httpResponseBody, ex);
                     }
 
+                    payload.RawResponse = httpResponse;
                     throw new Error(payload, httpResponse, httpResponseBody);
                 }
 
@@ -855,6 +860,7 @@ namespace SpeakeasySDK
                         throw new ResponseValidationException("Failed to deserialize response body into ErrorPayload.", httpResponse, httpResponseBody, ex);
                     }
 
+                    payload.RawResponse = httpResponse;
                     throw new Error(payload, httpResponse, httpResponseBody);
                 }
 
@@ -970,6 +976,7 @@ namespace SpeakeasySDK
                         throw new ResponseValidationException("Failed to deserialize response body into ErrorPayload.", httpResponse, httpResponseBody, ex);
                     }
 
+                    payload.RawResponse = httpResponse;
                     throw new Error(payload, httpResponse, httpResponseBody);
                 }
 
