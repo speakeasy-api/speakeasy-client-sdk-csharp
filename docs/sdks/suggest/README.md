@@ -29,6 +29,7 @@ var sdk = new SDK(security: new Security() {
 });
 
 SuggestRequest req = new SuggestRequest() {
+    XSessionId = "<id>",
     SuggestRequestBody = new SuggestRequestBody() {
         Diagnostics = new List<Diagnostic>() {
             new Diagnostic() {
@@ -62,7 +63,6 @@ SuggestRequest req = new SuggestRequest() {
         },
         SuggestionType = SuggestRequestBodySuggestionType.MethodNames,
     },
-    XSessionId = "<id>",
 };
 
 var res = await sdk.Suggest.SuggestAsync(req);
@@ -147,13 +147,13 @@ var sdk = new SDK(security: new Security() {
 });
 
 SuggestOpenAPIRequest req = new SuggestOpenAPIRequest() {
+    XSessionId = "<id>",
     RequestBody = new SuggestOpenAPIRequestBody() {
         Schema = new Schema() {
             Content = System.IO.File.ReadAllBytes("example.file"),
             FileName = "example.file",
         },
     },
-    XSessionId = "<id>",
 };
 
 var res = await sdk.Suggest.SuggestOpenAPIAsync(req);
@@ -194,9 +194,9 @@ var sdk = new SDK(security: new Security() {
 });
 
 SuggestOpenAPIRegistryRequest req = new SuggestOpenAPIRegistryRequest() {
+    XSessionId = "<id>",
     NamespaceName = "<value>",
     RevisionReference = "<value>",
-    XSessionId = "<id>",
 };
 
 var res = await sdk.Suggest.SuggestOpenAPIRegistryAsync(req);
