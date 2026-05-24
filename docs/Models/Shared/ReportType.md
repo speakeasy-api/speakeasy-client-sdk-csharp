@@ -1,11 +1,11 @@
-# Type
+# ReportType
 
 ## Example Usage
 
 ```csharp
 using SpeakeasySDK.Models.Shared;
 
-var value = Type.Linting;
+var value = ReportType.Linting;
 ```
 
 
