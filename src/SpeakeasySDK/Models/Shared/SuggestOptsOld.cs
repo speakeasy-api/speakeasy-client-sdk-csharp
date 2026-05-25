@@ -21,6 +21,6 @@ namespace SpeakeasySDK.Models.Shared
         public List<Diagnostic>? Diagnostics { get; set; }
 
         [JsonProperty("suggestion_type")]
-        public SuggestionType SuggestionType { get; set; } = default!;
+        public SuggestOptsOldSuggestionType SuggestionType { get; set; } = default!;
     }
 }
