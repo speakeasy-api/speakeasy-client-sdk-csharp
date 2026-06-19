@@ -15,11 +15,8 @@ namespace SpeakeasySDK.Models.Operations
 
     public class SuggestOpenAPIRegistryRequest
     {
-        /// <summary>
-        /// Suggest options.
-        /// </summary>
-        [SpeakeasyMetadata("request:mediaType=application/json")]
-        public SuggestRequestBody? SuggestRequestBody { get; set; }
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=x-session-id")]
+        public string XSessionId { get; set; } = default!;
 
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=namespace_name")]
         public string NamespaceName { get; set; } = default!;
@@ -30,7 +27,10 @@ namespace SpeakeasySDK.Models.Operations
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=revision_reference")]
         public string RevisionReference { get; set; } = default!;
 
-        [SpeakeasyMetadata("header:style=simple,explode=false,name=x-session-id")]
-        public string XSessionId { get; set; } = default!;
+        /// <summary>
+        /// Suggest options.
+        /// </summary>
+        [SpeakeasyMetadata("request:mediaType=application/json")]
+        public SuggestRequestBody? SuggestRequestBody { get; set; }
     }
 }
