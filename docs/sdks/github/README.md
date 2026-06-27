@@ -323,9 +323,9 @@ var sdk = new SDK(security: new Security() {
 });
 
 GetGithubSetupStateRequest req = new GetGithubSetupStateRequest() {
-    GenerateGenLockId = "<id>",
     Org = "<value>",
     Repo = "<value>",
+    GenerateGenLockId = "<id>",
 };
 
 var res = await sdk.Github.GetSetupAsync(req);
