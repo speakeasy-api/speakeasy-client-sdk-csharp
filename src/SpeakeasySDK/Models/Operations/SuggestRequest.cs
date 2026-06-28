@@ -15,13 +15,13 @@ namespace SpeakeasySDK.Models.Operations
 
     public class SuggestRequest
     {
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=x-session-id")]
+        public string XSessionId { get; set; } = default!;
+
         /// <summary>
         /// The OAS summary and diagnostics to use for the suggestion.
         /// </summary>
         [SpeakeasyMetadata("request:mediaType=application/json")]
         public SuggestRequestBody SuggestRequestBody { get; set; } = default!;
-
-        [SpeakeasyMetadata("header:style=simple,explode=false,name=x-session-id")]
-        public string XSessionId { get; set; } = default!;
     }
 }
