@@ -23,7 +23,7 @@ var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
 });
 
-CreateSchemaStoreItemRequestBody req = new CreateSchemaStoreItemRequestBody() {
+CreateSchemaStoreItemRequest req = new CreateSchemaStoreItemRequest() {
     Format = SpeakeasySDK.Models.Operations.Format.Yaml,
     PackageName = "<value>",
     SDKClassname = "<value>",
@@ -37,9 +37,9 @@ var res = await sdk.SchemaStore.CreateSchemaStoreItemAsync(req);
 
 ### Parameters
 
-| Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
-| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `request`                                                                                       | [CreateSchemaStoreItemRequestBody](../../Models/Operations/CreateSchemaStoreItemRequestBody.md) | :heavy_check_mark:                                                                              | The request object to use for the request.                                                      |
+| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `request`                                                                               | [CreateSchemaStoreItemRequest](../../Models/Operations/CreateSchemaStoreItemRequest.md) | :heavy_check_mark:                                                                      | The request object to use for the request.                                              |
 
 ### Response
 
@@ -68,7 +68,7 @@ var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
 });
 
-GetSchemaStoreItemRequestBody? req = null;
+GetSchemaStoreItemRequest? req = null;
 
 var res = await sdk.SchemaStore.GetSchemaStoreItemAsync(req);
 
@@ -77,9 +77,9 @@ var res = await sdk.SchemaStore.GetSchemaStoreItemAsync(req);
 
 ### Parameters
 
-| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
-| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `request`                                                                                 | [GetSchemaStoreItemRequestBody](../../Models/Operations/GetSchemaStoreItemRequestBody.md) | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
+| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `request`                                                                         | [GetSchemaStoreItemRequest](../../Models/Operations/GetSchemaStoreItemRequest.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
 
 ### Response
 
