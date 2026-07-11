@@ -16,28 +16,16 @@ namespace SpeakeasySDK.Models.Operations
     public class SearchWorkspaceEventsRequest
     {
         /// <summary>
-        /// Shared execution ID for cli events across a single action.
+        /// Unique identifier of the workspace.
         /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=execution_id")]
-        public string? ExecutionId { get; set; }
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=workspace_id")]
+        public string? WorkspaceId { get; set; }
 
         /// <summary>
-        /// A specific gen lock ID for the events.
+        /// Unique identifier of the source revision digest.
         /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=generate_gen_lock_id")]
-        public string? GenerateGenLockId { get; set; }
-
-        /// <summary>
-        /// Specified interaction type for events.
-        /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=interaction_type")]
-        public InteractionType? InteractionType { get; set; }
-
-        /// <summary>
-        /// Number of results to return.
-        /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=limit")]
-        public long? Limit { get; set; }
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=source_revision_digest")]
+        public string? SourceRevisionDigest { get; set; }
 
         /// <summary>
         /// Unique identifier of the lint report digest.
@@ -52,10 +40,22 @@ namespace SpeakeasySDK.Models.Operations
         public string? OpenapiDiffReportDigest { get; set; }
 
         /// <summary>
-        /// Unique identifier of the source revision digest.
+        /// Specified interaction type for events.
         /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=source_revision_digest")]
-        public string? SourceRevisionDigest { get; set; }
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=interaction_type")]
+        public InteractionType? InteractionType { get; set; }
+
+        /// <summary>
+        /// A specific gen lock ID for the events.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=generate_gen_lock_id")]
+        public string? GenerateGenLockId { get; set; }
+
+        /// <summary>
+        /// Shared execution ID for cli events across a single action.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=execution_id")]
+        public string? ExecutionId { get; set; }
 
         /// <summary>
         /// Whether the event was successful or not.
@@ -64,9 +64,9 @@ namespace SpeakeasySDK.Models.Operations
         public bool? Success { get; set; }
 
         /// <summary>
-        /// Unique identifier of the workspace.
+        /// Number of results to return.
         /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=workspace_id")]
-        public string? WorkspaceId { get; set; }
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=limit")]
+        public long? Limit { get; set; }
     }
 }
