@@ -15,13 +15,13 @@ namespace SpeakeasySDK.Models.Operations
 
     public class ArchiveNamespaceRequest
     {
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=namespace_name")]
+        public string NamespaceName { get; set; } = default!;
+
         /// <summary>
         /// Archived status.
         /// </summary>
         [SpeakeasyMetadata("request:mediaType=application/json")]
         public ArchiveNamespaceRequestBody? RequestBody { get; set; }
-
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=namespace_name")]
-        public string NamespaceName { get; set; } = default!;
     }
 }
