@@ -28,7 +28,7 @@ var sdk = new SDK(security: new Security() {
     APIKey = "<YOUR_API_KEY_HERE>",
 });
 
-CreatePublishingTokenRequestBody? req = null;
+CreatePublishingTokenRequest? req = null;
 
 var res = await sdk.PublishingTokens.CreateAsync(req);
 
@@ -37,9 +37,9 @@ var res = await sdk.PublishingTokens.CreateAsync(req);
 
 ### Parameters
 
-| Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
-| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `request`                                                                                       | [CreatePublishingTokenRequestBody](../../Models/Operations/CreatePublishingTokenRequestBody.md) | :heavy_check_mark:                                                                              | The request object to use for the request.                                                      |
+| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `request`                                                                               | [CreatePublishingTokenRequest](../../Models/Operations/CreatePublishingTokenRequest.md) | :heavy_check_mark:                                                                      | The request object to use for the request.                                              |
 
 ### Response
 
