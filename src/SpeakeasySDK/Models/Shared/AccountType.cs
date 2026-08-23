@@ -18,7 +18,7 @@ namespace SpeakeasySDK.Models.Shared
     using System.Linq;
 
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class AccountType : IEquatable<AccountType>
+    public class AccountType : IEquatable<AccountType>, IOpenEnum<string>
     {
         public static readonly AccountType Free = new AccountType("free");
         public static readonly AccountType ScaleUp = new AccountType("scale-up");
@@ -58,7 +58,7 @@ namespace SpeakeasySDK.Models.Shared
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {
