@@ -1,4 +1,4 @@
-# CreateRequestBody
+# CreateRequest
 
 
 ## Fields
