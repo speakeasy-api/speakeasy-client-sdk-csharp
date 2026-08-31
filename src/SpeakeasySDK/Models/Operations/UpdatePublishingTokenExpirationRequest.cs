@@ -16,15 +16,15 @@ namespace SpeakeasySDK.Models.Operations
     public class UpdatePublishingTokenExpirationRequest
     {
         /// <summary>
-        /// The publishing token to update.
-        /// </summary>
-        [SpeakeasyMetadata("request:mediaType=application/json")]
-        public UpdatePublishingTokenExpirationRequestBody? RequestBody { get; set; }
-
-        /// <summary>
         /// Unique identifier of the publishing token.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=tokenID")]
         public string TokenID { get; set; } = default!;
+
+        /// <summary>
+        /// The publishing token to update.
+        /// </summary>
+        [SpeakeasyMetadata("request:mediaType=application/json")]
+        public UpdatePublishingTokenExpirationRequestBody? RequestBody { get; set; }
     }
 }
