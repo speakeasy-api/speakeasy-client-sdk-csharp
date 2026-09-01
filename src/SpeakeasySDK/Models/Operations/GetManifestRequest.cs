@@ -14,19 +14,19 @@ namespace SpeakeasySDK.Models.Operations
 
     public class GetManifestRequest
     {
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=namespace_name")]
-        public string NamespaceName { get; set; } = default!;
-
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=organization_slug")]
         public string OrganizationSlug { get; set; } = default!;
+
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=workspace_slug")]
+        public string WorkspaceSlug { get; set; } = default!;
+
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=namespace_name")]
+        public string NamespaceName { get; set; } = default!;
 
         /// <summary>
         /// Tag or digest.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=revision_reference")]
         public string RevisionReference { get; set; } = default!;
-
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=workspace_slug")]
-        public string WorkspaceSlug { get; set; } = default!;
     }
 }
