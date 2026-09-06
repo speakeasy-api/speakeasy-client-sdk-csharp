@@ -18,7 +18,7 @@ namespace SpeakeasySDK.Models.Shared
     using System.Linq;
 
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class BillingAddOn : IEquatable<BillingAddOn>
+    public class BillingAddOn : IEquatable<BillingAddOn>, IOpenEnum<string>
     {
         public static readonly BillingAddOn Webhooks = new BillingAddOn("webhooks");
         public static readonly BillingAddOn SDKTesting = new BillingAddOn("sdk_testing");
@@ -58,7 +58,7 @@ namespace SpeakeasySDK.Models.Shared
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {
