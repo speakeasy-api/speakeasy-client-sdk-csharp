@@ -201,8 +201,9 @@ catch (SDKBaseException ex)  // all SDK exceptions inherit from SDKBaseException
     {
         // Check error data fields
         ErrorPayload payload = ex.Payload;
+        HttpResponseMessage RawResponse = payload.RawResponse;
         string Message = payload.Message;
-        int StatusCode = payload.StatusCode;
+        // ...
     }
 
     // An underlying cause may be provided
