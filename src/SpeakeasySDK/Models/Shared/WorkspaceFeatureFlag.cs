@@ -21,7 +21,7 @@ namespace SpeakeasySDK.Models.Shared
     /// enum value workspace feature flag.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class WorkspaceFeatureFlag : IEquatable<WorkspaceFeatureFlag>
+    public class WorkspaceFeatureFlag : IEquatable<WorkspaceFeatureFlag>, IOpenEnum<string>
     {
         public static readonly WorkspaceFeatureFlag SchemaRegistry = new WorkspaceFeatureFlag("schema_registry");
         public static readonly WorkspaceFeatureFlag ChangesReport = new WorkspaceFeatureFlag("changes_report");
@@ -61,7 +61,7 @@ namespace SpeakeasySDK.Models.Shared
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {
